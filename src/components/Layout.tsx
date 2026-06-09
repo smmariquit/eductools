@@ -1,10 +1,19 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 const Layout = () => {
   const { t, i18n } = useTranslation();
   const [language, setLanguage] = useState<'EN' | 'PH'>('EN');
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  };
 
   const handleLanguageChange = (lng: 'EN' | 'PH') => {
     setLanguage(lng);
@@ -36,13 +45,34 @@ const Layout = () => {
             <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center' }}>
               <nav className="nav-menu">
                 <Link to="/">{t('Home')}</Link>
+                <Link to="/?subject=Biology">{t('Biology')}</Link>
+                <Link to="/?subject=Physics">{t('Physics')}</Link>
+                <Link to="/?subject=Chemistry">{t('Chemistry')}</Link>
+                <Link to="/?subject=Earth Science">{t('Earth Science')}</Link>
                 <Link to="/blog">{t('Blog')}</Link>
-                <Link to="/visualizer/solar-system">{t('Solar System')}</Link>
-                <Link to="/visualizer/wave-physics">{t('Wave Physics')}</Link>
               </nav>
 
-            <div style={{ display: 'flex', background: 'var(--surface-color)', border: '1px solid var(--border-color)', borderRadius: '4px', overflow: 'hidden' }}>
+            <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
               <button 
+                onClick={toggleTheme}
+                aria-label="Toggle dark mode"
+                style={{
+                  background: 'var(--surface-color)',
+                  border: '1px solid var(--border-color)',
+                  color: 'var(--text-secondary)',
+                  borderRadius: '4px',
+                  padding: '0.35rem 0.5rem',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                {theme === 'dark' ? '☀️' : '🌙'}
+              </button>
+
+              <div style={{ display: 'flex', background: 'var(--surface-color)', border: '1px solid var(--border-color)', borderRadius: '4px', overflow: 'hidden' }}>
+                <button 
                 onClick={() => handleLanguageChange('EN')}
                 aria-label="Switch to English"
                 style={{ 
