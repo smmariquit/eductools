@@ -22,7 +22,7 @@ const PhotosynthesisVisualizer = () => {
         </>
       }
     >
-      <div className="card" style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '2rem' }}>
+      <div className="legacy-card" style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '2rem' }}>
         <div style={{ background: 'var(--bg-color)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-end', minHeight: '300px', paddingBottom: '2rem', border: '1px solid var(--border-color)' }}>
           <div style={{ display: 'flex', gap: '1rem' }}>
             {/* Oxygen bubbles based on rate */}

@@ -112,7 +112,7 @@ const ProjectileMotionVisualizer = () => {
         </>
       }
     >
-      <div className="card flex-col gap-2">
+      <div className="legacy-card flex-col gap-2">
         <div style={{ background: 'var(--bg-color)', border: '1px solid var(--border-color)', borderRadius: '4px', overflow: 'hidden', position: 'relative' }}>
           <canvas ref={canvasRef} width={600} height={400} style={{ width: '100%', height: 'auto', display: 'block', background: '#0f172a' }} />
           
@@ -152,8 +152,8 @@ const ProjectileMotionVisualizer = () => {
           </div>
           
           <div className="flex-col gap-1 flex-center">
-            <button className="btn btn-primary" onClick={() => { setTime(0); setIsPlaying(true); }} style={{ width: '100%' }}>Fire Projectile!</button>
-            <button className="btn btn-outline" onClick={() => { setIsPlaying(false); setTime(0); }} style={{ width: '100%' }}>Reset</button>
+            <button className="legacy-btn legacy-btn-primary" onClick={() => { setTime(0); setIsPlaying(true); }} style={{ width: '100%' }}>Fire Projectile!</button>
+            <button className="legacy-btn legacy-btn-outline" onClick={() => { setIsPlaying(false); setTime(0); }} style={{ width: '100%' }}>Reset</button>
           </div>
         </div>
       </div>

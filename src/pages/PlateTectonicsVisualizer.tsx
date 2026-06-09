@@ -8,17 +8,17 @@ const PlateTectonicsVisualizer = () => {
   return (
     <div className="page-container">
       <div style={{ marginBottom: '1.5rem' }}>
-        <Link to="/" className="btn btn-outline" style={{ display: 'inline-block', fontSize: '0.875rem' }}>&larr; Back to Modules</Link>
+        <Link to="/" className="legacy-btn legacy-btn-outline" style={{ display: 'inline-block', fontSize: '0.875rem' }}>&larr; Back to Modules</Link>
       </div>
       <div style={{ paddingBottom: '1rem', borderBottom: '1px solid var(--border-color)', marginBottom: '2rem' }}>
         <h1 style={{ color: 'var(--accent-color)' }}>Plate Tectonics</h1>
         <p>Visualize different types of tectonic plate boundaries.</p>
       </div>
 
-      <div className="card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <div className="legacy-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
           {['Convergent', 'Divergent', 'Transform'].map(b => (
-            <button key={b} className={`btn ${boundary === b ? 'btn-primary' : 'btn-outline'}`} onClick={() => setBoundary(b)}>
+            <button key={b} className={`btn ${boundary === b ? 'legacy-btn-primary' : 'legacy-btn-outline'}`} onClick={() => setBoundary(b)}>
               {b}
             </button>
           ))}

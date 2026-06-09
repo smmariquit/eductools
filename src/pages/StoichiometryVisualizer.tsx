@@ -12,14 +12,14 @@ const StoichiometryVisualizer = () => {
   return (
     <div className="page-container">
       <div style={{ marginBottom: '1.5rem' }}>
-        <Link to="/" className="btn btn-outline">&larr; Back to Modules</Link>
+        <Link to="/" className="legacy-btn legacy-btn-outline">&larr; Back to Modules</Link>
       </div>
       <div style={{ paddingBottom: '1rem', borderBottom: '1px solid var(--border-color)', marginBottom: '2rem' }}>
         <h1 style={{ color: 'var(--accent-color)' }}>Balancing Chemical Equations</h1>
         <p>Apply the Law of Conservation of Mass to synthesize water.</p>
       </div>
 
-      <div className="card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem' }}>
+      <div className="legacy-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem' }}>
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', fontSize: '2rem', flexWrap: 'wrap', justifyContent: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <input type="number" min="1" max="5" value={h2} onChange={e => setH2(Number(e.target.value))} style={{ width: '60px', marginRight: '10px' }} />

@@ -11,14 +11,14 @@ const SeasonsVisualizer = () => {
   return (
     <div className="page-container">
       <div style={{ marginBottom: '1.5rem' }}>
-        <Link to="/" className="btn btn-outline">&larr; Back to Modules</Link>
+        <Link to="/" className="legacy-btn legacy-btn-outline">&larr; Back to Modules</Link>
       </div>
       <div style={{ paddingBottom: '1rem', borderBottom: '1px solid var(--border-color)', marginBottom: '2rem' }}>
         <h1 style={{ color: 'var(--accent-color)' }}>Seasons and Earth's Tilt</h1>
         <p>Understand why the Earth experiences seasons due to its axial tilt.</p>
       </div>
 
-      <div className="card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <div className="legacy-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <div style={{ position: 'relative', width: '400px', height: '400px', borderRadius: '50%', border: '1px dashed var(--text-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           {/* Sun */}
           <div style={{ width: '60px', height: '60px', background: '#facc15', borderRadius: '50%', boxShadow: '0 0 30px #facc15' }} />

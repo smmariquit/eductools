@@ -83,31 +83,43 @@ const StatesOfMatterVisualizer = () => {
   }, [temperature, state]);
 
   return (
-    <div className="page-container">
-      <div style={{ marginBottom: '1.5rem' }}>
-        <Link to="/" className="btn btn-outline" style={{ display: 'inline-block', fontSize: '0.875rem' }}>&larr; Back to Modules</Link>
+  return (
+    <div className="w-full">
+      <div className="mb-6">
+        <Link to="/" className="btn btn-outline btn-sm">&larr; Back to Modules</Link>
       </div>
-      <div style={{ paddingBottom: '1rem', borderBottom: '1px solid var(--border-color)', marginBottom: '2rem' }}>
-        <h1 style={{ color: 'var(--accent-color)' }}>States of Matter Simulator</h1>
-        <p>Interactive tool for understanding how temperature affects particle motion.</p>
+      <div className="pb-4 border-b border-base-300 mb-8">
+        <h1 className="text-3xl font-bold text-primary mb-2">States of Matter Simulator</h1>
+        <p className="text-base-content/80">Interactive tool for understanding how temperature affects particle motion.</p>
       </div>
 
-      <div className="card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <div style={{ width: '100%', maxWidth: '600px', background: 'var(--bg-color)', border: '1px solid var(--border-color)', borderRadius: '4px', overflow: 'hidden' }}>
-          <canvas ref={canvasRef} width={600} height={300} style={{ width: '100%', height: 'auto', display: 'block' }} />
-        </div>
-        
-        <div style={{ width: '100%', maxWidth: '600px', marginTop: '2rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-            <span>Temperature: {temperature}°C</span>
-            <span style={{ fontWeight: 600, color: 'var(--accent-color)' }}>State: {state}</span>
+      <div className="card bg-base-100 shadow-xl border border-base-200">
+        <div className="card-body items-center p-4 md:p-8">
+          <div className="w-full max-w-3xl bg-base-300 border border-base-300 rounded-xl overflow-hidden shadow-inner">
+            <canvas ref={canvasRef} width={600} height={300} className="w-full h-auto block" />
           </div>
-          <input type="range" min="0" max="100" value={temperature} onChange={(e) => setTemperature(Number(e.target.value))} style={{ width: '100%' }} />
+          
+          <div className="w-full max-w-3xl mt-8 bg-base-200 p-6 rounded-xl border border-base-300">
+            <div className="flex justify-between mb-4 font-semibold text-base-content">
+              <span>Temperature: {temperature}°C</span>
+              <span className="text-primary text-lg">State: {state}</span>
+            </div>
+            <input 
+              type="range" min="0" max="100" 
+              value={temperature} 
+              onChange={(e) => setTemperature(Number(e.target.value))} 
+              className="range range-primary w-full" 
+            />
+            <div className="flex justify-between text-xs px-2 mt-2 text-base-content/60 font-medium">
+              <span>0°C (Solid)</span>
+              <span>100°C (Gas)</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <article className="article-content">
-        <h2>States of Matter: Grade 3 Science</h2>
+      <article className="prose lg:prose-xl mt-12 pt-8 border-t border-base-300 max-w-none text-base-content">
+        <h2 className="text-primary">States of Matter: Grade 3 Science</h2>
         <p>Matter is everything around us. It exists primarily in three states: Solid, Liquid, and Gas. Understanding these states is a fundamental concept in the Key Stage 1 MATATAG curriculum.</p>
         <h3>How Temperature Affects Matter</h3>
         <ul>
@@ -116,7 +128,9 @@ const StatesOfMatterVisualizer = () => {
           <li><strong>Gas:</strong> At high temperatures, particles have high energy and move freely, filling their container.</li>
         </ul>
       </article>
-      <AdUnit slotId="1001" format="auto" />
+      <div className="mt-8">
+        <AdUnit slotId="1001" format="auto" />
+      </div>
     </div>
   );
 };

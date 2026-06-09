@@ -22,14 +22,14 @@ const ElectromagneticSpectrumVisualizer = () => {
   return (
     <div className="page-container">
       <div style={{ marginBottom: '1.5rem' }}>
-        <Link to="/" className="btn btn-outline">&larr; Back to Modules</Link>
+        <Link to="/" className="legacy-btn legacy-btn-outline">&larr; Back to Modules</Link>
       </div>
       <div style={{ paddingBottom: '1rem', borderBottom: '1px solid var(--border-color)', marginBottom: '2rem' }}>
         <h1 style={{ color: 'var(--accent-color)' }}>Electromagnetic Spectrum</h1>
         <p>Explore the relationship between wavelength, frequency, and energy.</p>
       </div>
 
-      <div className="card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <div className="legacy-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         
         {/* Wave visualizer */}
         <div style={{ width: '100%', height: '200px', background: 'var(--bg-color)', position: 'relative', overflow: 'hidden', border: '1px solid var(--border-color)', marginBottom: '2rem' }}>

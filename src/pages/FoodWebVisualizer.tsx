@@ -15,14 +15,14 @@ const FoodWebVisualizer = () => {
   return (
     <div className="page-container">
       <div style={{ marginBottom: '1.5rem' }}>
-        <Link to="/" className="btn btn-outline">&larr; Back to Modules</Link>
+        <Link to="/" className="legacy-btn legacy-btn-outline">&larr; Back to Modules</Link>
       </div>
       <div style={{ paddingBottom: '1rem', borderBottom: '1px solid var(--border-color)', marginBottom: '2rem' }}>
         <h1 style={{ color: 'var(--accent-color)' }}>Food Chain Visualizer (Sapot ng Pagkain)</h1>
         <p>Explore the flow of energy from local producers to apex predators in the Philippines.</p>
       </div>
 
-      <div className="card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <div className="legacy-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', height: '150px' }}>
           {Object.keys(relations).map((org, index, arr) => (
             <div key={org} style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>

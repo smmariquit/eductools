@@ -23,7 +23,7 @@ const PunnettSquareVisualizer = () => {
         </>
       }
     >
-      <div className="card" style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '2rem' }}>
+      <div className="legacy-card" style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '2rem' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '50px 100px 100px', gridTemplateRows: '50px 100px 100px', gap: '5px', justifyContent: 'center' }}>
           <div></div>
           <div style={{ fontSize: '2rem', textAlign: 'center', alignSelf: 'end' }}>{p1_alleles[0]}</div>
@@ -53,16 +53,16 @@ const PunnettSquareVisualizer = () => {
         <div>
           <label style={{ display: 'block', marginBottom: '0.5rem' }}>Parent 1 Genotype:</label>
           <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1.5rem' }}>
-            <button onClick={() => setParent1('RR')} className={`btn ${parent1 === 'RR' ? 'btn-primary' : 'btn-outline'} btn-sm`} style={{ flex: 1 }}>RR</button>
-            <button onClick={() => setParent1('Rr')} className={`btn ${parent1 === 'Rr' ? 'btn-primary' : 'btn-outline'} btn-sm`} style={{ flex: 1 }}>Rr</button>
-            <button onClick={() => setParent1('rr')} className={`btn ${parent1 === 'rr' ? 'btn-primary' : 'btn-outline'} btn-sm`} style={{ flex: 1 }}>rr</button>
+            <button onClick={() => setParent1('RR')} className={`btn ${parent1 === 'RR' ? 'legacy-btn-primary' : 'legacy-btn-outline'} btn-sm`} style={{ flex: 1 }}>RR</button>
+            <button onClick={() => setParent1('Rr')} className={`btn ${parent1 === 'Rr' ? 'legacy-btn-primary' : 'legacy-btn-outline'} btn-sm`} style={{ flex: 1 }}>Rr</button>
+            <button onClick={() => setParent1('rr')} className={`btn ${parent1 === 'rr' ? 'legacy-btn-primary' : 'legacy-btn-outline'} btn-sm`} style={{ flex: 1 }}>rr</button>
           </div>
 
           <label style={{ display: 'block', marginBottom: '0.5rem' }}>Parent 2 Genotype:</label>
           <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
-            <button onClick={() => setParent2('RR')} className={`btn ${parent2 === 'RR' ? 'btn-primary' : 'btn-outline'} btn-sm`} style={{ flex: 1 }}>RR</button>
-            <button onClick={() => setParent2('Rr')} className={`btn ${parent2 === 'Rr' ? 'btn-primary' : 'btn-outline'} btn-sm`} style={{ flex: 1 }}>Rr</button>
-            <button onClick={() => setParent2('rr')} className={`btn ${parent2 === 'rr' ? 'btn-primary' : 'btn-outline'} btn-sm`} style={{ flex: 1 }}>rr</button>
+            <button onClick={() => setParent2('RR')} className={`btn ${parent2 === 'RR' ? 'legacy-btn-primary' : 'legacy-btn-outline'} btn-sm`} style={{ flex: 1 }}>RR</button>
+            <button onClick={() => setParent2('Rr')} className={`btn ${parent2 === 'Rr' ? 'legacy-btn-primary' : 'legacy-btn-outline'} btn-sm`} style={{ flex: 1 }}>Rr</button>
+            <button onClick={() => setParent2('rr')} className={`btn ${parent2 === 'rr' ? 'legacy-btn-primary' : 'legacy-btn-outline'} btn-sm`} style={{ flex: 1 }}>rr</button>
           </div>
         </div>
       </div>

@@ -10,14 +10,14 @@ const CellDivisionVisualizer = () => {
   return (
     <div className="page-container">
       <div style={{ marginBottom: '1.5rem' }}>
-        <Link to="/" className="btn btn-outline">&larr; Back to Modules</Link>
+        <Link to="/" className="legacy-btn legacy-btn-outline">&larr; Back to Modules</Link>
       </div>
       <div style={{ paddingBottom: '1rem', borderBottom: '1px solid var(--border-color)', marginBottom: '2rem' }}>
         <h1 style={{ color: 'var(--accent-color)' }}>Mitosis Cell Division</h1>
         <p>Observe the stages of cellular replication.</p>
       </div>
 
-      <div className="card" style={{ display: 'grid', gridTemplateColumns: '1fr 200px', gap: '2rem' }}>
+      <div className="legacy-card" style={{ display: 'grid', gridTemplateColumns: '1fr 200px', gap: '2rem' }}>
         <div style={{ height: '300px', background: 'var(--bg-color)', border: '1px solid var(--border-color)', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           
           {/* Cell Membrane */}
@@ -66,7 +66,7 @@ const CellDivisionVisualizer = () => {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           {phases.map((p, i) => (
-            <button key={p} onClick={() => setPhase(i)} className={`btn ${phase === i ? 'btn-primary' : 'btn-outline'}`}>
+            <button key={p} onClick={() => setPhase(i)} className={`btn ${phase === i ? 'legacy-btn-primary' : 'legacy-btn-outline'}`}>
               {p}
             </button>
           ))}

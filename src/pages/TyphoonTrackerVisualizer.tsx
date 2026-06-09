@@ -37,7 +37,7 @@ const TyphoonTrackerVisualizer = () => {
         </>
       }
     >
-      <div className="card flex-col gap-2">
+      <div className="legacy-card flex-col gap-2">
         
         {/* Controls */}
         <div style={{ background: 'var(--surface-hover)', padding: '1.5rem', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
@@ -118,7 +118,7 @@ const TyphoonTrackerVisualizer = () => {
         </div>
 
         <div className="flex-center">
-          <button className="btn btn-primary" onClick={() => { setSimulating(false); setTimeout(() => setSimulating(true), 100); }} style={{ width: '200px' }}>
+          <button className="legacy-btn legacy-btn-primary" onClick={() => { setSimulating(false); setTimeout(() => setSimulating(true), 100); }} style={{ width: '200px' }}>
             Simulate Landfall
           </button>
         </div>

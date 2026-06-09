@@ -10,14 +10,14 @@ const MicroscopeVisualizer = () => {
   return (
     <div className="page-container">
       <div style={{ marginBottom: '1.5rem' }}>
-        <Link to="/" className="btn btn-outline" style={{ display: 'inline-block', fontSize: '0.875rem' }}>&larr; Back to Modules</Link>
+        <Link to="/" className="legacy-btn legacy-btn-outline" style={{ display: 'inline-block', fontSize: '0.875rem' }}>&larr; Back to Modules</Link>
       </div>
       <div style={{ paddingBottom: '1rem', borderBottom: '1px solid var(--border-color)', marginBottom: '2rem' }}>
         <h1 style={{ color: 'var(--accent-color)' }}>Virtual Microscope</h1>
         <p>Examine cellular structures of a plant cell at varying magnifications.</p>
       </div>
 
-      <div className="card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <div className="legacy-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         
         {/* Microscope Lens Viewport */}
         <div style={{ 
@@ -84,9 +84,9 @@ const MicroscopeVisualizer = () => {
 
         <div style={{ marginTop: '2rem', width: '100%', maxWidth: '500px' }}>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem' }}>
-            <button className={`btn ${zoomLevel === 1 ? 'btn-primary' : 'btn-outline'}`} onClick={() => setZoomLevel(1)}>Low Power (40x)</button>
-            <button className={`btn ${zoomLevel === 2 ? 'btn-primary' : 'btn-outline'}`} onClick={() => setZoomLevel(2)}>High Power (100x)</button>
-            <button className={`btn ${zoomLevel === 3 ? 'btn-primary' : 'btn-outline'}`} onClick={() => setZoomLevel(3)}>Oil Immersion (400x)</button>
+            <button className={`btn ${zoomLevel === 1 ? 'legacy-btn-primary' : 'legacy-btn-outline'}`} onClick={() => setZoomLevel(1)}>Low Power (40x)</button>
+            <button className={`btn ${zoomLevel === 2 ? 'legacy-btn-primary' : 'legacy-btn-outline'}`} onClick={() => setZoomLevel(2)}>High Power (100x)</button>
+            <button className={`btn ${zoomLevel === 3 ? 'legacy-btn-primary' : 'legacy-btn-outline'}`} onClick={() => setZoomLevel(3)}>Oil Immersion (400x)</button>
           </div>
         </div>
       </div>

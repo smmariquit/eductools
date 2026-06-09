@@ -12,27 +12,31 @@ interface VisualizerLayoutProps {
 
 const VisualizerLayout = ({ title, description, children, educationalContent, adSlotId }: VisualizerLayoutProps) => {
   return (
-    <div className="page-container">
-      <div className="layout-header">
+    <div className="w-full">
+      <div className="mb-6">
         <Link to="/" className="btn btn-outline btn-sm">&larr; Back to Modules</Link>
       </div>
       
-      <div className="layout-title">
-        <h1>{title}</h1>
-        <p>{description}</p>
+      <div className="pb-4 border-b border-base-300 mb-8">
+        <h1 className="text-3xl font-bold text-primary mb-2">{title}</h1>
+        <p className="text-base-content/80">{description}</p>
       </div>
 
-      <div className="visualizer-content">
+      <div className="mb-8">
         {children}
       </div>
 
       {educationalContent && (
-        <article className="article-content">
+        <article className="prose lg:prose-xl mt-12 pt-8 border-t border-base-300 max-w-none text-base-content">
           {educationalContent}
         </article>
       )}
       
-      {adSlotId && <AdUnit slotId={adSlotId} format="auto" />}
+      {adSlotId && (
+        <div className="mt-8">
+          <AdUnit slotId={adSlotId} format="auto" />
+        </div>
+      )}
     </div>
   );
 };

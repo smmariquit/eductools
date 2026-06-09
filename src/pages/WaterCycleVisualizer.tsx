@@ -8,14 +8,14 @@ const WaterCycleVisualizer = () => {
   return (
     <div className="page-container">
       <div style={{ marginBottom: '1.5rem' }}>
-        <Link to="/" className="btn btn-outline">&larr; Back to Modules</Link>
+        <Link to="/" className="legacy-btn legacy-btn-outline">&larr; Back to Modules</Link>
       </div>
       <div style={{ paddingBottom: '1rem', borderBottom: '1px solid var(--border-color)', marginBottom: '2rem' }}>
         <h1 style={{ color: 'var(--accent-color)' }}>Water Cycle</h1>
         <p>Interactive visualization of Evaporation, Condensation, and Precipitation.</p>
       </div>
 
-      <div className="card" style={{ display: 'grid', gridTemplateColumns: '1fr 200px', gap: '2rem' }}>
+      <div className="legacy-card" style={{ display: 'grid', gridTemplateColumns: '1fr 200px', gap: '2rem' }}>
         <div style={{ background: '#0ea5e9', height: '300px', position: 'relative', overflow: 'hidden', border: '1px solid var(--border-color)', borderRadius: '4px' }}>
           {/* Ground/Water */}
           <div style={{ position: 'absolute', bottom: 0, width: '100%', height: '100px', background: '#2563eb' }} />
@@ -65,7 +65,7 @@ const WaterCycleVisualizer = () => {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           {['Evaporation', 'Condensation', 'Precipitation'].map(s => (
-            <button key={s} onClick={() => setStage(s)} className={`btn ${stage === s ? 'btn-primary' : 'btn-outline'}`}>
+            <button key={s} onClick={() => setStage(s)} className={`btn ${stage === s ? 'legacy-btn-primary' : 'legacy-btn-outline'}`}>
               {s}
             </button>
           ))}

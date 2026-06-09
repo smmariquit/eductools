@@ -8,18 +8,18 @@ const RockCycleVisualizer = () => {
   return (
     <div className="page-container">
       <div style={{ marginBottom: '1.5rem' }}>
-        <Link to="/" className="btn btn-outline">&larr; Back to Modules</Link>
+        <Link to="/" className="legacy-btn legacy-btn-outline">&larr; Back to Modules</Link>
       </div>
       <div style={{ paddingBottom: '1rem', borderBottom: '1px solid var(--border-color)', marginBottom: '2rem' }}>
         <h1 style={{ color: 'var(--accent-color)' }}>The Rock Cycle</h1>
         <p>Discover how geological processes transform rocks over time.</p>
       </div>
 
-      <div className="card" style={{ textAlign: 'center' }}>
+      <div className="legacy-card" style={{ textAlign: 'center' }}>
         
         <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', marginBottom: '3rem', flexWrap: 'wrap' }}>
           {['Magma', 'Igneous', 'Sedimentary', 'Metamorphic'].map((r) => (
-            <button key={r} onClick={() => setRock(r)} className={`btn ${rock === r ? 'btn-primary' : 'btn-outline'}`}>
+            <button key={r} onClick={() => setRock(r)} className={`btn ${rock === r ? 'legacy-btn-primary' : 'legacy-btn-outline'}`}>
               {r}
             </button>
           ))}

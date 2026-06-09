@@ -31,15 +31,15 @@ const HumanBodyVisualizer = () => {
         </>
       }
     >
-      <div className="card" style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '2rem', alignItems: 'center' }}>
-        <div style={{ background: 'var(--bg-color)', height: '500px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '4px', border: '1px solid var(--border-color)', position: 'relative' }}>
+      <div className="card lg:card-side bg-base-100 shadow-xl border border-base-200 p-0 overflow-hidden">
+        <div className="lg:w-2/3 bg-base-300 h-[500px] flex items-center justify-center relative border-b lg:border-b-0 lg:border-r border-base-200">
           
-          <svg viewBox="0 0 200 500" style={{ height: '100%', width: '100%' }}>
+          <svg viewBox="0 0 200 500" className="h-full w-full max-w-full">
             {/* Outline of Human Body */}
-            <path d="M 100 20 C 115 20, 125 35, 125 50 C 125 70, 110 80, 100 80 C 90 80, 75 70, 75 50 C 75 35, 85 20, 100 20 Z" fill="none" stroke="var(--text-secondary)" strokeWidth="2" strokeDasharray="4 4" />
-            <path d="M 75 80 L 50 100 L 40 220 L 60 220 L 70 140 L 75 140 M 125 80 L 150 100 L 160 220 L 140 220 L 130 140 L 125 140" fill="none" stroke="var(--text-secondary)" strokeWidth="2" strokeDasharray="4 4" />
-            <path d="M 75 80 L 125 80 L 120 240 L 80 240 Z" fill="none" stroke="var(--text-secondary)" strokeWidth="2" strokeDasharray="4 4" />
-            <path d="M 80 240 L 70 450 L 95 450 L 100 280 M 120 240 L 130 450 L 105 450 L 100 280" fill="none" stroke="var(--text-secondary)" strokeWidth="2" strokeDasharray="4 4" />
+            <path d="M 100 20 C 115 20, 125 35, 125 50 C 125 70, 110 80, 100 80 C 90 80, 75 70, 75 50 C 75 35, 85 20, 100 20 Z" fill="none" stroke="currentColor" className="text-base-content/30" strokeWidth="2" strokeDasharray="4 4" />
+            <path d="M 75 80 L 50 100 L 40 220 L 60 220 L 70 140 L 75 140 M 125 80 L 150 100 L 160 220 L 140 220 L 130 140 L 125 140" fill="none" stroke="currentColor" className="text-base-content/30" strokeWidth="2" strokeDasharray="4 4" />
+            <path d="M 75 80 L 125 80 L 120 240 L 80 240 Z" fill="none" stroke="currentColor" className="text-base-content/30" strokeWidth="2" strokeDasharray="4 4" />
+            <path d="M 80 240 L 70 450 L 95 450 L 100 280 M 120 240 L 130 450 L 105 450 L 100 280" fill="none" stroke="currentColor" className="text-base-content/30" strokeWidth="2" strokeDasharray="4 4" />
 
             {/* Skeletal System */}
             {system === 'Skeletal' && (
@@ -114,16 +114,20 @@ const HumanBodyVisualizer = () => {
           </svg>
         </div>
         
-        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <h2 style={{ marginBottom: '1.5rem', color: 'var(--accent-color)' }}>{system} System</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '2rem' }}>
+        <div className="card-body lg:w-1/3 flex flex-col justify-center p-6">
+          <h2 className="text-2xl font-bold text-primary mb-6">{system} System</h2>
+          <div className="grid grid-cols-2 gap-3 mb-6">
             {['Skeletal', 'Muscular', 'Digestive', 'Respiratory'].map((s) => (
-              <button key={s} onClick={() => setSystem(s)} className={`btn ${system === s ? 'btn-primary' : 'btn-outline'}`} style={{ padding: '0.75rem 0.5rem' }}>
+              <button 
+                key={s} 
+                onClick={() => setSystem(s)} 
+                className={`btn btn-sm h-12 ${system === s ? 'btn-primary' : 'btn-outline'}`}
+              >
                 {s}
               </button>
             ))}
           </div>
-          <p>This interactive diagram dynamically displays the major organs and structures of the {system.toLowerCase()} system.</p>
+          <p className="text-base-content/80 text-sm">This interactive diagram dynamically displays the major organs and structures of the {system.toLowerCase()} system.</p>
         </div>
       </div>
     </VisualizerLayout>

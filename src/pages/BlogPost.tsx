@@ -10,7 +10,7 @@ const BlogPost = () => {
     return (
       <div className="page-container">
         <h2>Article not found</h2>
-        <Link to="/blog" className="btn btn-outline">Return to Blog</Link>
+        <Link to="/blog" className="legacy-btn legacy-btn-outline">Return to Blog</Link>
       </div>
     );
   }
@@ -18,8 +18,8 @@ const BlogPost = () => {
   return (
     <div className="page-container" style={{ maxWidth: '800px' }}>
       <div style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'space-between' }}>
-        <Link to="/blog" className="btn btn-outline">&larr; Back to Articles</Link>
-        <Link to={`/visualizer/${post.toolId}`} className="btn btn-primary">Try the Visualizer Tool</Link>
+        <Link to="/blog" className="legacy-btn legacy-btn-outline">&larr; Back to Articles</Link>
+        <Link to={`/visualizer/${post.toolId}`} className="legacy-btn legacy-btn-primary">Try the Visualizer Tool</Link>
       </div>
       <article className="article-content" style={{ background: 'var(--card-bg, #1e293b)', padding: '2rem', borderRadius: '12px' }}>
         <h1 style={{ color: 'var(--accent-color)' }}>{post.title}</h1>

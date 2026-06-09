@@ -12,11 +12,11 @@ const Blog = () => {
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '2rem' }}>
         {blogPosts.map(article => (
-          <div key={article.id} className="card">
+          <div key={article.id} className="legacy-card">
             <h2 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: 'var(--accent-color)' }}>{article.title}</h2>
             <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', marginBottom: '1rem' }}>{article.date}</p>
             <p style={{ marginBottom: '1.5rem' }}>{article.excerpt}</p>
-            <Link to={`/blog/${article.id}`} className="btn btn-outline">Read Full Article &rarr;</Link>
+            <Link to={`/blog/${article.id}`} className="legacy-btn legacy-btn-outline">Read Full Article &rarr;</Link>
           </div>
         ))}
       </div>

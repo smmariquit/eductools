@@ -44,7 +44,7 @@ const DensityVisualizer = () => {
         </>
       }
     >
-      <div className="card flex-col gap-2">
+      <div className="legacy-card flex-col gap-2">
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
           <div style={{ background: 'var(--surface-hover)', padding: '1.5rem', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
             <label style={{ display: 'flex', flexDirection: 'column', fontWeight: 600, gap: '0.5rem', marginBottom: '1rem' }}>
@@ -70,10 +70,10 @@ const DensityVisualizer = () => {
         </div>
 
         <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center' }}>
-          <button onClick={() => setPreset(600, 1.0)} className="btn btn-outline btn-sm">Wood (600 kg/m³)</button>
-          <button onClick={() => setPreset(920, 1.0)} className="btn btn-outline btn-sm">Ice (920 kg/m³)</button>
-          <button onClick={() => setPreset(2000, 1.0)} className="btn btn-outline btn-sm">Brick (2000 kg/m³)</button>
-          <button onClick={() => setPreset(1000, 1.0)} className="btn btn-outline btn-sm">Water Balloon (1000 kg/m³)</button>
+          <button onClick={() => setPreset(600, 1.0)} className="legacy-btn legacy-btn-outline btn-sm">Wood (600 kg/m³)</button>
+          <button onClick={() => setPreset(920, 1.0)} className="legacy-btn legacy-btn-outline btn-sm">Ice (920 kg/m³)</button>
+          <button onClick={() => setPreset(2000, 1.0)} className="legacy-btn legacy-btn-outline btn-sm">Brick (2000 kg/m³)</button>
+          <button onClick={() => setPreset(1000, 1.0)} className="legacy-btn legacy-btn-outline btn-sm">Water Balloon (1000 kg/m³)</button>
         </div>
 
         <div style={{ position: 'relative', height: '350px', background: 'var(--bg-color)', border: '2px solid var(--border-color)', borderRadius: '8px', overflow: 'hidden' }}>

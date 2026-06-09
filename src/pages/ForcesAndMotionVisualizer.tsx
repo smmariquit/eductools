@@ -24,14 +24,14 @@ const ForcesAndMotionVisualizer = () => {
   return (
     <div className="page-container">
       <div style={{ marginBottom: '1.5rem' }}>
-        <Link to="/" className="btn btn-outline" style={{ display: 'inline-block', fontSize: '0.875rem' }}>&larr; Back to Modules</Link>
+        <Link to="/" className="legacy-btn legacy-btn-outline" style={{ display: 'inline-block', fontSize: '0.875rem' }}>&larr; Back to Modules</Link>
       </div>
       <div style={{ paddingBottom: '1rem', borderBottom: '1px solid var(--border-color)', marginBottom: '2rem' }}>
         <h1 style={{ color: 'var(--accent-color)' }}>Forces and Motion</h1>
         <p>Simulate Newton's Second Law of Motion (F = ma).</p>
       </div>
 
-      <div className="card">
+      <div className="legacy-card">
         <div style={{ height: '200px', background: 'var(--bg-color)', position: 'relative', borderBottom: '4px solid var(--border-color)', marginBottom: '2rem', overflow: 'hidden' }}>
           <div style={{ 
             position: 'absolute', bottom: 0, left: `${position}%`, 
@@ -57,10 +57,10 @@ const ForcesAndMotionVisualizer = () => {
               <strong>Acceleration:</strong> {(force / mass).toFixed(2)} m/s²<br/>
               <strong>Velocity:</strong> {velocity.toFixed(2)} m/s
             </div>
-            <button className="btn btn-primary" onClick={() => setIsPlaying(!isPlaying)}>
+            <button className="legacy-btn legacy-btn-primary" onClick={() => setIsPlaying(!isPlaying)}>
               {isPlaying ? 'Stop' : 'Apply Force'}
             </button>
-            <button className="btn btn-outline" onClick={() => { setPosition(0); setVelocity(0); setIsPlaying(false); }}>Reset</button>
+            <button className="legacy-btn legacy-btn-outline" onClick={() => { setPosition(0); setVelocity(0); setIsPlaying(false); }}>Reset</button>
           </div>
         </div>
       </div>

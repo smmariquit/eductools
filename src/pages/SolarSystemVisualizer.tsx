@@ -63,75 +63,75 @@ const SolarSystemVisualizer = () => {
   ];
 
   return (
-    <div className="page-container">
-      <div style={{ marginBottom: '1.5rem' }}>
-        <Link to="/" className="btn btn-outline" style={{ display: 'inline-block', fontSize: '0.875rem' }}>&larr; Back to Modules</Link>
+  return (
+    <div className="w-full">
+      <div className="mb-6">
+        <Link to="/" className="btn btn-outline btn-sm">&larr; Back to Modules</Link>
       </div>
-      <div style={{ paddingBottom: '1rem', borderBottom: '1px solid var(--border-color)', marginBottom: '2rem' }}>
-        <h1 style={{ color: 'var(--accent-color)' }}>Solar System Explorer (3D)</h1>
-        <p>A robust interactive 3D visualizer demonstrating planetary orbits and relative distances.</p>
+      <div className="pb-4 border-b border-base-300 mb-8">
+        <h1 className="text-3xl font-bold text-primary mb-2">Solar System Explorer (3D)</h1>
+        <p className="text-base-content/80">A robust interactive 3D visualizer demonstrating planetary orbits and relative distances.</p>
       </div>
 
-      <div className="card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <div style={{ 
-          width: '100%', height: '500px', 
-          background: '#000000', 
-          borderRadius: '8px', 
-          overflow: 'hidden',
-          cursor: 'grab'
-        }}>
-          <Canvas camera={{ position: [0, 15, 30], fov: 45 }}>
-            <ambientLight intensity={0.1} />
-            {/* The Sun acts as a point light source */}
-            <pointLight position={[0, 0, 0]} intensity={1000} distance={100} color="#ffecd4" />
-            
-            <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
-            <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
-            
-            {/* Sun */}
-            <mesh>
-              <sphereGeometry args={[2, 32, 32]} />
-              <meshBasicMaterial color="#facc15" />
-              <Html distanceFactor={15} position={[0, 3, 0]} center>
-                <div style={{ color: 'white', background: 'rgba(0,0,0,0.5)', padding: '2px 5px', borderRadius: '4px', fontSize: '10px' }}>
-                  Sun
-                </div>
-              </Html>
-            </mesh>
+      <div className="card bg-base-100 shadow-xl border border-base-200">
+        <div className="card-body items-center p-4 md:p-8">
+          <div className="w-full h-[500px] bg-black rounded-xl overflow-hidden cursor-grab active:cursor-grabbing border border-base-300">
+            <Canvas camera={{ position: [0, 15, 30], fov: 45 }}>
+              <ambientLight intensity={0.1} />
+              {/* The Sun acts as a point light source */}
+              <pointLight position={[0, 0, 0]} intensity={1000} distance={100} color="#ffecd4" />
+              
+              <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
+              <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
+              
+              {/* Sun */}
+              <mesh>
+                <sphereGeometry args={[2, 32, 32]} />
+                <meshBasicMaterial color="#facc15" />
+                <Html distanceFactor={15} position={[0, 3, 0]} center>
+                  <div className="text-white bg-black/50 px-2 py-0.5 rounded text-[10px]">
+                    Sun
+                  </div>
+                </Html>
+              </mesh>
 
-            {/* Planets and their orbits */}
-            {planets.map((p, i) => (
-              <group key={i}>
-                <OrbitPath radius={p.distance} />
-                <Planet {...p} />
-              </group>
-            ))}
-          </Canvas>
-        </div>
+              {/* Planets and their orbits */}
+              {planets.map((p, i) => (
+                <group key={i}>
+                  <OrbitPath radius={p.distance} />
+                  <Planet {...p} />
+                </group>
+              ))}
+            </Canvas>
+          </div>
 
-        <div style={{ marginTop: '2rem', width: '100%', maxWidth: '600px' }}>
-          <label style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
-            <span>Orbital Speed Multiplier: {speedMultiplier}x</span>
-          </label>
-          <input 
-            type="range" min="0" max="5" step="0.5" 
-            value={speedMultiplier} 
-            onChange={(e) => setSpeedMultiplier(Number(e.target.value))} 
-            style={{ width: '100%' }} 
-          />
-          <p style={{ marginTop: '1rem', fontSize: '0.875rem', color: 'var(--text-secondary)', textAlign: 'center' }}>
-            Click and drag to rotate the camera. Scroll to zoom.
-          </p>
+          <div className="mt-8 w-full max-w-2xl bg-base-200 p-6 rounded-xl border border-base-300">
+            <label className="flex justify-between mb-4 font-semibold text-base-content">
+              <span>Orbital Speed Multiplier:</span>
+              <span className="text-primary">{speedMultiplier}x</span>
+            </label>
+            <input 
+              type="range" min="0" max="5" step="0.5" 
+              value={speedMultiplier} 
+              onChange={(e) => setSpeedMultiplier(Number(e.target.value))} 
+              className="range range-primary w-full" 
+            />
+            <p className="mt-4 text-sm text-base-content/60 text-center font-medium">
+              Click and drag to rotate the camera. Scroll to zoom.
+            </p>
+          </div>
         </div>
       </div>
 
-      <article className="article-content">
-        <h2>Earth and Space: Grade 6 Science</h2>
+      <article className="prose lg:prose-xl mt-12 pt-8 border-t border-base-300 max-w-none text-base-content">
+        <h2 className="text-primary">Earth and Space: Grade 6 Science</h2>
         <p>The solar system consists of the Sun and everything that orbits around it, bound by gravity. This robust 3D model allows you to explore the relative speeds and distances of the inner planets and Jupiter.</p>
         <h3>Planetary Motion</h3>
         <p>Notice that planets closer to the Sun (like Mercury) orbit much faster than planets further away (like Jupiter). This is described by Kepler's Laws of Planetary Motion.</p>
       </article>
-      <AdUnit slotId="1000" format="auto" />
+      <div className="mt-8">
+        <AdUnit slotId="1000" format="auto" />
+      </div>
     </div>
   );
 };

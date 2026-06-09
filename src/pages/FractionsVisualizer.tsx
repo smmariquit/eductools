@@ -17,7 +17,7 @@ const FractionsVisualizer = () => {
         </>
       }
     >
-      <div className="card flex-col flex-center">
+      <div className="legacy-card flex-col flex-center">
         <div style={{ display: 'flex', width: '300px', height: '50px', background: 'var(--bg-color)', border: '2px solid var(--border-color)', marginBottom: '2rem' }}>
           {Array.from({ length: denominator }).map((_, i) => (
             <div key={i} style={{ flex: 1, background: i < numerator ? 'var(--accent-color)' : 'transparent', borderRight: i < denominator - 1 ? '1px solid var(--border-color)' : 'none' }} />
