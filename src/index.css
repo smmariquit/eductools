@@ -1,0 +1,283 @@
+:root {
+  /* Professional, muted dark theme (easy on the eyes, authoritative, no glassmorphism) */
+  --bg-color: #0f172a;
+  --surface-color: #1e293b;
+  --surface-hover: #334155;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --accent-color: #3b82f6; 
+  --accent-hover: #60a5fa;
+  --border-color: #334155;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  line-height: 1.7;
+  font-size: 1.125rem; /* Increased from default 1rem for better readability */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Form Elements */
+input[type="number"],
+input[type="text"],
+input[type="url"],
+select,
+textarea {
+  background-color: var(--surface-hover);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  width: auto;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+/* Custom Range Slider */
+input[type="range"] {
+  accent-color: var(--accent-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 600; /* Less bold, more readable */
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.card {
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 1.5rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid transparent;
+  gap: 0.5rem;
+  font-family: 'Inter', sans-serif;
+  text-decoration: none !important;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background-color: var(--accent-color);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.btn-outline:hover {
+  background-color: var(--surface-hover);
+}
+
+/* Maximize real estate */
+.page-container {
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Institutional Layout styles */
+.header-institutional {
+  background-color: var(--surface-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 0;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-menu a {
+  color: var(--text-primary);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-menu a:hover {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.footer-institutional {
+  background-color: var(--surface-color);
+  border-top: 1px solid var(--border-color);
+  padding: 2rem 0;
+  margin-top: 4rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* Article Styles for SEO */
+.article-content {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.article-content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  color: var(--accent-color);
+}
+
+.article-content h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.article-content p {
+  margin-bottom: 1rem;
+}
+
+.article-content ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.article-content li {
+  margin-bottom: 0.5rem;
+}
+
+.ad-placeholder {
+  background-color: var(--surface-hover);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  text-align: center;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  font-size: 0.875rem;
+  border-radius: 4px;
+}
+
+/* -----------------------------
+   RESPONSIVENESS (Mobile & Tablet) 
+   ----------------------------- */
+
+/* Tablet & Smaller */
+@media (max-width: 1024px) {
+  .page-container {
+    padding: 1.5rem;
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+  .page-container {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem !important; /* Scale down large headers */
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
+  }
+
+  /* Make sure grids don't overflow on small screens */
+  .card {
+    padding: 1rem;
+  }
+  
+  /* Stack grid layouts that are using hard pixel values */
+  div[style*="gridTemplateColumns"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Very Small Devices */
+@media (max-width: 480px) {
+  .page-container {
+    padding: 0.75rem;
+  }
+
+  .btn {
+    width: 100%; /* Make buttons stretch for easy tapping */
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* -----------------------------
+   LAYOUT UTILITIES
+   ----------------------------- */
+
+.layout-header {
+  margin-bottom: 1.5rem;
+}
+
+.layout-title {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 2rem;
+}
+
+.layout-title h1 {
+  color: var(--accent-color);
+}
+
+.btn-sm {
+  display: inline-block;
+  font-size: 0.875rem;
+}
+
+.visualizer-content {
+  margin-bottom: 2rem;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
