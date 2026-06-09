@@ -32,7 +32,7 @@ import BlogPost from './pages/BlogPost';
 function App() {
   return (
     <BrowserRouter>
-      <Suspense fallback={<div className="page-container" style={{ textAlign: 'center', padding: '5rem', color: 'var(--text-secondary)' }}>Loading interactive module...</div>}>
+      <Suspense fallback={<div className="flex items-center justify-center min-h-screen text-base-content/50 text-xl font-semibold"><span className="loading loading-spinner loading-lg mr-4"></span>Loading interactive module...</div>}>
         <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />

@@ -21,102 +21,73 @@ const Layout = () => {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      <header className="header-institutional">
-        <div className="page-container" style={{ padding: '0 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+    <div className="flex flex-col min-h-screen bg-base-100 text-base-content font-sans">
+      <header className="bg-base-200 border-b border-base-300 py-4 shadow-sm">
+        <div className="max-w-[1600px] w-full mx-auto px-4 md:px-8 flex justify-between items-center flex-wrap gap-4">
           <div>
-            <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <Link to="/" className="flex items-center gap-3 no-underline">
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="var(--accent-color)" fillOpacity="0.2" stroke="var(--accent-color)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M2 17L12 22L22 17M2 12L12 17L22 12" stroke="var(--accent-color)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                <circle cx="12" cy="12" r="2" fill="var(--accent-color)"/>
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" className="fill-primary stroke-primary opacity-20" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M2 17L12 22L22 17M2 12L12 17L22 12" className="stroke-primary" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <circle cx="12" cy="12" r="2" className="fill-primary"/>
               </svg>
               <div>
-                <div style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--accent-color)', letterSpacing: '1px', lineHeight: 1.1 }}>
+                <div className="text-2xl font-extrabold text-primary tracking-wide leading-tight">
                   EDUCTOOLS
                 </div>
-                <div style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                <div className="text-[0.7rem] text-base-content/60 uppercase tracking-wider font-semibold">
                   Philippine Educational Portal
                 </div>
               </div>
             </Link>
           </div>
           
-            <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center' }}>
-              <nav className="nav-menu">
-                <Link to="/">{t('Home')}</Link>
-                <Link to="/?subject=Biology">{t('Biology')}</Link>
-                <Link to="/?subject=Physics">{t('Physics')}</Link>
-                <Link to="/?subject=Chemistry">{t('Chemistry')}</Link>
-                <Link to="/?subject=Earth Science">{t('Earth Science')}</Link>
-                <Link to="/blog">{t('Blog')}</Link>
-              </nav>
+          <div className="flex gap-6 items-center flex-wrap justify-center">
+            <nav className="flex gap-6 items-center text-sm font-medium">
+              <Link to="/" className="hover:text-primary transition-colors">{t('Home')}</Link>
+              <Link to="/?subject=Biology" className="hover:text-primary transition-colors">{t('Biology')}</Link>
+              <Link to="/?subject=Physics" className="hover:text-primary transition-colors">{t('Physics')}</Link>
+              <Link to="/?subject=Chemistry" className="hover:text-primary transition-colors">{t('Chemistry')}</Link>
+              <Link to="/?subject=Earth Science" className="hover:text-primary transition-colors">{t('Earth Science')}</Link>
+              <Link to="/blog" className="hover:text-primary transition-colors">{t('Blog')}</Link>
+            </nav>
 
-            <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
-              <button 
-                onClick={toggleTheme}
-                aria-label="Toggle dark mode"
-                style={{
-                  background: 'var(--surface-color)',
-                  border: '1px solid var(--border-color)',
-                  color: 'var(--text-secondary)',
-                  borderRadius: '4px',
-                  padding: '0.35rem 0.5rem',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}
-              >
-                {theme === 'dark' ? '☀️' : '🌙'}
-              </button>
+            <div className="flex gap-3 items-center">
+              <label className="swap swap-rotate btn btn-sm btn-ghost btn-circle border border-base-300">
+                <input type="checkbox" onChange={toggleTheme} checked={theme === 'light'} />
+                <span className="swap-on text-lg">☀️</span>
+                <span className="swap-off text-lg">🌙</span>
+              </label>
 
-              <div style={{ display: 'flex', background: 'var(--surface-color)', border: '1px solid var(--border-color)', borderRadius: '4px', overflow: 'hidden' }}>
+              <div className="join border border-base-300">
                 <button 
-                onClick={() => handleLanguageChange('EN')}
-                aria-label="Switch to English"
-                style={{ 
-                  padding: '0.25rem 0.5rem', 
-                  fontSize: '0.75rem', 
-                  fontWeight: 600, 
-                  border: 'none', 
-                  background: language === 'EN' ? 'var(--accent-color)' : 'transparent',
-                  color: language === 'EN' ? 'white' : 'var(--text-secondary)',
-                  cursor: 'pointer'
-                }}
-              >
-                EN
-              </button>
-              <button 
-                onClick={() => handleLanguageChange('PH')}
-                aria-label="Switch to Tagalog"
-                style={{ 
-                  padding: '0.25rem 0.5rem', 
-                  fontSize: '0.75rem', 
-                  fontWeight: 600, 
-                  border: 'none', 
-                  background: language === 'PH' ? 'var(--accent-color)' : 'transparent',
-                  color: language === 'PH' ? 'white' : 'var(--text-secondary)',
-                  cursor: 'pointer'
-                }}
-              >
-                PH
-              </button>
+                  onClick={() => handleLanguageChange('EN')}
+                  className={`join-item btn btn-xs ${language === 'EN' ? 'btn-primary' : 'btn-ghost'}`}
+                >
+                  EN
+                </button>
+                <button 
+                  onClick={() => handleLanguageChange('PH')}
+                  className={`join-item btn btn-xs ${language === 'PH' ? 'btn-primary' : 'btn-ghost'}`}
+                >
+                  PH
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </header>
 
-      <main style={{ flex: 1 }}>
+      <main className="flex-1 w-full max-w-[1600px] mx-auto p-4 md:p-8">
         <Outlet />
       </main>
 
-      <footer className="footer-institutional">
-        <div className="page-container" style={{ padding: '0 2rem', textAlign: 'center' }}>
-          <p style={{ fontWeight: 600, marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Eductools Philippine Educational Portal</p>
+      <footer className="footer footer-center p-10 bg-base-200 text-base-content border-t border-base-300 mt-16">
+        <aside>
+          <p className="font-bold text-lg">Eductools Philippine Educational Portal</p>
           <p>Designed in alignment with the MATATAG curriculum guidelines to support formal education.</p>
-          <p style={{ marginTop: '1rem' }}>© {new Date().getFullYear()} Eductools. All rights reserved.</p>
-        </div>
+          <p className="mt-4">© {new Date().getFullYear()} Eductools. All rights reserved.</p>
+        </aside>
       </footer>
     </div>
   );

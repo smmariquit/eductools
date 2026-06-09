@@ -34,10 +34,10 @@ const Home = () => {
   });
 
   return (
-    <div className="page-container">
-      <div style={{ padding: '2rem 0', borderBottom: '1px solid var(--border-color)', marginBottom: '2rem' }}>
-        <h1 style={{ color: 'var(--accent-color)', fontSize: '2.5rem', marginBottom: '1rem' }}>{t('Welcome')}</h1>
-        <p style={{ fontSize: '1.125rem' }}>
+    <div className="w-full">
+      <div className="py-8 border-b border-base-300 mb-8">
+        <h1 className="text-4xl font-extrabold text-primary mb-4">{t('Welcome')}</h1>
+        <p className="text-lg text-base-content/80">
           {t('WelcomeDesc')}
         </p>
       </div>
@@ -45,16 +45,16 @@ const Home = () => {
       <AdUnit slotId="1111111111" />
 
       {/* Filter Section */}
-      <div style={{ marginBottom: '2rem', display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: '1.5rem', alignItems: 'center', background: 'var(--surface-color)', padding: '1rem 1.5rem', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
-        <h3 style={{ fontSize: '1.125rem', margin: 0, color: 'var(--text-primary)' }}>{t('Filter by')}:</h3>
+      <div className="mb-8 flex flex-wrap gap-6 items-center bg-base-200 p-4 lg:p-6 rounded-xl border border-base-300 shadow-sm">
+        <h3 className="text-lg font-bold text-base-content m-0">{t('Filter by')}:</h3>
         
         {/* Grade Filter */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <label style={{ fontSize: '0.75rem', letterSpacing: '1px', textTransform: 'uppercase', fontWeight: 600, color: 'var(--text-secondary)' }}>Grade Level</label>
+        <div className="flex items-center gap-2">
+          <label className="text-xs tracking-widest uppercase font-semibold text-base-content/60">Grade Level</label>
           <select 
             value={activeGrade} 
             onChange={e => setActiveGrade(e.target.value)}
-            style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid var(--border-color)', background: 'var(--bg-color)', color: 'var(--text-primary)', outline: 'none' }}
+            className="select select-bordered select-sm bg-base-100"
           >
             {grades.map(grade => (
               <option key={grade} value={grade}>{grade}</option>
@@ -63,12 +63,12 @@ const Home = () => {
         </div>
 
         {/* Subject Filter */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <label style={{ fontSize: '0.75rem', letterSpacing: '1px', textTransform: 'uppercase', fontWeight: 600, color: 'var(--text-secondary)' }}>Subject Area</label>
+        <div className="flex items-center gap-2">
+          <label className="text-xs tracking-widest uppercase font-semibold text-base-content/60">Subject Area</label>
           <select 
             value={activeSubject} 
             onChange={e => setActiveSubject(e.target.value)}
-            style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid var(--border-color)', background: 'var(--bg-color)', color: 'var(--text-primary)', outline: 'none' }}
+            className="select select-bordered select-sm bg-base-100"
           >
             {subjects.map(subject => (
               <option key={subject} value={subject}>{subject}</option>
@@ -77,50 +77,48 @@ const Home = () => {
         </div>
 
         {/* Alignment */}
-        <div style={{ marginLeft: 'auto' }}>
-           <label style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer', userSelect: 'none' }}>
-              <input type="checkbox" checked={matatagOnly} onChange={e => setMatatagOnly(e.target.checked)} style={{ width: '1.1rem', height: '1.1rem', accentColor: 'var(--accent-color)', cursor: 'pointer' }} />
-              <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-primary)' }}>MATATAG Aligned Only</span>
+        <div className="ml-auto">
+           <label className="label cursor-pointer flex items-center gap-2">
+              <input type="checkbox" checked={matatagOnly} onChange={e => setMatatagOnly(e.target.checked)} className="checkbox checkbox-primary checkbox-sm" />
+              <span className="label-text font-semibold text-base-content">MATATAG Aligned Only</span>
            </label>
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem', marginTop: '1rem' }}>
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
         {filteredModules.length > 0 ? filteredModules.map((mod) => (
-          <div key={mod.id} className="card" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-            <div style={{ flex: 1 }}>
-              <h2 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: 'var(--accent-color)' }}>{mod.title}</h2>
-              <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
+          <div key={mod.id} className="card bg-base-100 shadow-md border border-base-200 hover:shadow-lg transition-shadow">
+            <div className="card-body">
+              <h2 className="card-title text-2xl text-primary">{mod.title}</h2>
+              <div className="flex flex-wrap gap-2 my-2">
                 {mod.tags.map(tag => (
-                  <span key={tag} style={{ 
-                    background: 'var(--bg-color)', 
-                    border: '1px solid var(--border-color)', 
-                    padding: '0.15rem 0.5rem', 
-                    borderRadius: '4px', 
-                    fontSize: '0.75rem', 
-                    fontWeight: 600,
-                    color: 'var(--text-secondary)' 
-                  }}>
+                  <span key={tag} className="badge badge-outline badge-sm font-semibold">
                     {tag}
                   </span>
                 ))}
               </div>
-              <p style={{ marginBottom: '1.5rem' }}>
+              <p className="text-base-content/80 mt-2 mb-4">
                 {mod.description}
               </p>
+              <div className="card-actions justify-end mt-auto">
+                <Link to={mod.path} className="btn btn-primary w-full">{t('Open Module')}</Link>
+              </div>
             </div>
-            <Link to={mod.path} className="btn btn-primary" style={{ width: '100%', padding: '1rem' }}>{t('Open Module')}</Link>
           </div>
         )) : (
-          <div className="card" style={{ textAlign: 'center', color: 'var(--text-secondary)', gridColumn: '1 / -1', padding: '3rem 1rem' }}>
-            <p style={{ fontSize: '1.25rem' }}>{t('No modules found matching these criteria.')}</p>
-            <button onClick={() => { setActiveGrade('All'); setActiveSubject('All'); setMatatagOnly(false); }} className="btn btn-outline" style={{ marginTop: '1rem', padding: '0.75rem 1.5rem' }}>{t('Clear Filters')}</button>
+          <div className="card bg-base-200 col-span-full border border-base-300">
+            <div className="card-body items-center text-center py-12">
+              <p className="text-xl text-base-content/60">{t('No modules found matching these criteria.')}</p>
+              <div className="card-actions mt-4">
+                <button onClick={() => { setActiveGrade('All'); setActiveSubject('All'); setMatatagOnly(false); }} className="btn btn-outline">{t('Clear Filters')}</button>
+              </div>
+            </div>
           </div>
         )}
       </div>
 
-      <article className="article-content">
-        <h2>The Importance of Visual Learning in the MATATAG Curriculum</h2>
+      <article className="prose lg:prose-xl mt-16 pt-8 border-t border-base-300 max-w-none text-base-content">
+        <h2 className="text-primary">The Importance of Visual Learning in the MATATAG Curriculum</h2>
         <p>
           The Department of Education (DepEd) in the Philippines has introduced the MATATAG Curriculum to decongest learning competencies and focus on foundational skills. A core component of this revised educational framework is the emphasis on experiential and visually-driven learning. 
         </p>
