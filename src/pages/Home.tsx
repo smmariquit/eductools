@@ -2,17 +2,25 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import AdUnit from '../components/AdUnit';
-import { visualizerModules, allTags } from '../data/registry';
+import { visualizerModules } from '../data/registry';
 
 const Home = () => {
   const { t } = useTranslation();
-  const [activeFilter, setActiveFilter] = useState('All');
+  const [activeGrade, setActiveGrade] = useState('All');
+  const [activeSubject, setActiveSubject] = useState('All');
+  const [matatagOnly, setMatatagOnly] = useState(false);
 
   const modules = visualizerModules;
 
-  const filteredModules = activeFilter === 'All' 
-    ? modules 
-    : modules.filter(m => m.tags.includes(activeFilter));
+  const grades = ['All', 'Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8', 'Grade 9', 'Grade 10', 'Grade 11', 'Grade 12'];
+  const subjects = ['All', 'Math', 'Science', 'Biology', 'Physics', 'Chemistry', 'Earth Science', 'DRRR'];
+
+  const filteredModules = modules.filter(m => {
+    const matchGrade = activeGrade === 'All' || m.tags.includes(activeGrade);
+    const matchSubject = activeSubject === 'All' || m.tags.includes(activeSubject);
+    const matchMatatag = !matatagOnly || m.tags.includes('MATATAG Aligned');
+    return matchGrade && matchSubject && matchMatatag;
+  });
 
   return (
     <div className="page-container">
@@ -26,20 +34,49 @@ const Home = () => {
       <AdUnit slotId="1111111111" />
 
       {/* Filter Section */}
-      <div style={{ marginBottom: '2rem' }}>
-        <h3 style={{ fontSize: '1.125rem', marginBottom: '1rem', color: 'var(--text-secondary)' }}>{t('Filter by')}</h3>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-          {allTags.map(tag => (
-            <button
-              key={tag}
-              onClick={() => setActiveFilter(tag)}
-              className={`btn ${activeFilter === tag ? 'btn-primary' : 'btn-outline'}`}
-              style={{ padding: '0.25rem 0.75rem', fontSize: '0.875rem', borderRadius: '20px' }}
-              aria-label={`Filter by ${tag}`}
-            >
-              {tag}
-            </button>
-          ))}
+      <div style={{ marginBottom: '2rem', display: 'flex', flexDirection: 'column', gap: '1.5rem', background: 'var(--surface-color)', padding: '1.5rem', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
+        <h3 style={{ fontSize: '1.25rem', margin: 0, color: 'var(--text-primary)' }}>{t('Filter by')}</h3>
+        
+        {/* Grade Filter */}
+        <div>
+          <div style={{ fontSize: '0.75rem', letterSpacing: '1px', textTransform: 'uppercase', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>Grade Level</div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+            {grades.map(grade => (
+              <button
+                key={grade}
+                onClick={() => setActiveGrade(grade)}
+                className={`btn ${activeGrade === grade ? 'btn-primary' : 'btn-outline'}`}
+                style={{ padding: '0.25rem 0.75rem', fontSize: '0.875rem', borderRadius: '20px' }}
+              >
+                {grade}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Subject Filter */}
+        <div>
+          <div style={{ fontSize: '0.75rem', letterSpacing: '1px', textTransform: 'uppercase', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>Subject Area</div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+            {subjects.map(subject => (
+              <button
+                key={subject}
+                onClick={() => setActiveSubject(subject)}
+                className={`btn ${activeSubject === subject ? 'btn-primary' : 'btn-outline'}`}
+                style={{ padding: '0.25rem 0.75rem', fontSize: '0.875rem', borderRadius: '20px' }}
+              >
+                {subject}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Alignment */}
+        <div>
+           <label style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer', background: 'var(--surface-hover)', padding: '0.5rem 1rem', borderRadius: '20px', border: '1px solid var(--border-color)', userSelect: 'none' }}>
+              <input type="checkbox" checked={matatagOnly} onChange={e => setMatatagOnly(e.target.checked)} style={{ width: '1.1rem', height: '1.1rem', accentColor: 'var(--accent-color)', cursor: 'pointer' }} />
+              <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-primary)' }}>MATATAG Curriculum Aligned Only</span>
+           </label>
         </div>
       </div>
 
@@ -71,8 +108,8 @@ const Home = () => {
           </div>
         )) : (
           <div className="card" style={{ textAlign: 'center', color: 'var(--text-secondary)', gridColumn: '1 / -1', padding: '3rem 1rem' }}>
-            <p style={{ fontSize: '1.25rem' }}>{t('No modules')}</p>
-            <button onClick={() => setActiveFilter('All')} className="btn btn-outline" style={{ marginTop: '1rem', padding: '0.75rem 1.5rem' }}>{t('Clear Filters')}</button>
+            <p style={{ fontSize: '1.25rem' }}>{t('No modules found matching these criteria.')}</p>
+            <button onClick={() => { setActiveGrade('All'); setActiveSubject('All'); setMatatagOnly(false); }} className="btn btn-outline" style={{ marginTop: '1rem', padding: '0.75rem 1.5rem' }}>{t('Clear Filters')}</button>
           </div>
         )}
       </div>

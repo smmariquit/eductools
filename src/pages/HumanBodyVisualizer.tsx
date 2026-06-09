@@ -4,7 +4,9 @@ import VisualizerLayout from '../components/VisualizerLayout';
 const SvgLabel = ({ x, y, lineX, lineY, text }: { x: number, y: number, lineX: number, lineY: number, text: string }) => (
   <g>
     <line x1={x} y1={y} x2={lineX} y2={lineY} stroke="var(--text-secondary)" strokeWidth="1" strokeDasharray="2 2" />
-    <text x={x} y={y - 2} fill="#e2e8f0" fontSize="10" fontWeight="600" textAnchor={x < 100 ? "end" : "start"}>{text}</text>
+    <text x={x} y={y - 2} fill="#f8fafc" fontSize="8" fontWeight="normal" letterSpacing="0.5" textAnchor={x < 100 ? "end" : "start"}>
+      {text}
+    </text>
   </g>
 );
 
