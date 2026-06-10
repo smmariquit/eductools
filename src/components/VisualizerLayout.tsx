@@ -1,6 +1,7 @@
 import { type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import AdUnit from './AdUnit';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 interface VisualizerLayoutProps {
   title: string;
@@ -11,6 +12,7 @@ interface VisualizerLayoutProps {
 }
 
 const VisualizerLayout = ({ title, description, children, educationalContent, adSlotId }: VisualizerLayoutProps) => {
+  usePageMeta({ title, description });
   return (
     <div className="w-full">
       <div className="mb-6">

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { visualizerModules } from '../data/registry';
 
 // Read persisted preferences, with fallbacks
 function getStoredTheme(): 'dark' | 'light' {
@@ -35,25 +34,19 @@ const Layout = () => {
     i18n.changeLanguage(language);
   }, []);  // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Generate dynamic favicon showing total tool count
+  // Set favicon to the Eductools logo
   useEffect(() => {
-    const totalTools = visualizerModules.length;
-    
-    // Create an SVG favicon
     const svg = `
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
         <rect width="64" height="64" rx="16" fill="#3b82f6" />
-        <path d="M16 20L8 32L16 44L32 32L16 20Z" fill="white" opacity="0.3" stroke="white" stroke-width="2" />
-        <text x="32" y="44" font-family="system-ui, sans-serif" font-weight="900" font-size="28" fill="white" text-anchor="middle">
-          ${totalTools}+
-        </text>
+        <path d="M32 8L8 20L32 32L56 20L32 8Z" fill="white" opacity="0.3" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M8 44L32 56L56 44M8 32L32 44L56 32" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="32" cy="32" r="4" fill="white"/>
       </svg>
     `;
     
-    // Convert to data URI
     const svgUrl = `data:image/svg+xml;base64,${btoa(svg)}`;
     
-    // Find or create favicon link element
     let link = document.querySelector("link[rel~='icon']") as HTMLLinkElement;
     if (!link) {
       link = document.createElement('link');
@@ -140,6 +133,9 @@ const Layout = () => {
         <aside>
           <p className="font-bold text-lg">Eductools Philippine Educational Portal</p>
           <p>Designed in alignment with the MATATAG curriculum guidelines to support formal education.</p>
+          <div className="flex gap-4 mt-4 text-sm">
+            <Link to="/privacy" className="link link-hover link-primary">Privacy Policy</Link>
+          </div>
           <p className="mt-4">© {new Date().getFullYear()} Eductools. All rights reserved.</p>
         </aside>
       </footer>

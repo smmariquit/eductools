@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import AdUnit from '../components/AdUnit';
 import { blogPosts } from '../data/blogPosts';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 const Blog = () => {
+  usePageMeta({ title: 'Educational Insights Blog', description: 'Articles and updates on Philippine education technology, MATATAG curriculum alignment, and STEM pedagogy.', path: '/blog' });
   return (
     <div className="page-container">
       <div style={{ paddingBottom: '1rem', borderBottom: '1px solid var(--border-color)', marginBottom: '2rem' }}>

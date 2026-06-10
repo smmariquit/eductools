@@ -3,8 +3,10 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import AdUnit from '../components/AdUnit';
 import { visualizerModules } from '../data/registry';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 const Home = () => {
+  usePageMeta({ title: 'Interactive STEM Visualizers', description: 'Free interactive STEM visualizers aligned with the Philippine DepEd MATATAG curriculum. Explore Physics, Chemistry, Biology, and Earth Science.', path: '/' });
   const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
   const subjectParam = searchParams.get('subject');

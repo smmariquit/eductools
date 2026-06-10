@@ -50,14 +50,14 @@ const DensityVisualizer = () => {
             <div className="bg-base-200 p-6 rounded-xl border border-base-300">
               <label className="flex flex-col font-semibold gap-2 mb-6">
                 <div className="flex justify-between">
-                  <span>Mass / Bigat ($m$)</span>
+                  <span>Mass / Bigat (<InlineMath math="m" />)</span>
                   <span className="text-primary">{mass} kg</span>
                 </div>
                 <input type="range" min="100" max="3000" step="50" value={mass} onChange={e => setMass(Number(e.target.value))} className="range range-primary" />
               </label>
               <label className="flex flex-col font-semibold gap-2">
                 <div className="flex justify-between">
-                  <span>Volume / Laki ($V$)</span>
+                  <span>Volume / Laki (<InlineMath math="V" />)</span>
                   <span className="text-secondary">{volume.toFixed(1)} m³</span>
                 </div>
                 <input type="range" min="0.1" max="3.0" step="0.1" value={volume} onChange={e => setVolume(Number(e.target.value))} className="range range-secondary" />
