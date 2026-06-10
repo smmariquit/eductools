@@ -1,5 +1,6 @@
 import ChemicalBondingMdx from '../../content/deep-dives/chemical-bonding.mdx';
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { motion } from 'framer-motion';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
 const ChemicalBondingVisualizer = () => {
@@ -79,7 +80,7 @@ const ChemicalBondingVisualizer = () => {
 
           {!show3D ? (
             <>
-              <div className="flex flex-col md:flex-row gap-8 items-center relative min-w-[500px]">
+              <div className="flex flex-col md:flex-row gap-8 items-center relative min-w-0 md:min-w-[500px]">
                 {/* Sodium Atom */}
                 <div className="relative w-[200px] h-[200px] flex items-center justify-center">
                   <div className="z-10 w-12 h-12 bg-red-500 rounded-full flex items-center justify-center font-bold text-white shadow-lg border-2 border-red-700">
@@ -88,7 +89,9 @@ const ChemicalBondingVisualizer = () => {
                   <div className="absolute w-[80px] h-[80px] border border-base-content/20 rounded-full"></div>
                   <div className="absolute w-[130px] h-[130px] border border-base-content/20 rounded-full"></div>
                   <div className="absolute w-[180px] h-[180px] border border-dashed border-base-content/40 rounded-full transition-opacity duration-1000" style={{ opacity: bonded ? 0.1 : 1 }}></div>
-                  <div className="absolute w-4 h-4 bg-yellow-400 rounded-full shadow-[0_0_15px_#facc15] transition-transform duration-1000 ease-in-out z-20" style={{ top: '6px', right: '86px', transform: bonded ? 'translate(260px, 90px)' : 'translate(0, 0)' }}></div>
+                  {!bonded && (
+                    <motion.div layoutId="transfer-electron" transition={{ duration: 1, ease: "easeInOut" }} className="absolute w-4 h-4 bg-yellow-400 rounded-full shadow-[0_0_15px_#facc15] z-20" style={{ top: '6px', right: '86px' }}></motion.div>
+                  )}
                 </div>
 
                 <div className="text-base-content/40 text-4xl hidden md:block font-bold">&rarr;</div>
@@ -109,6 +112,9 @@ const ChemicalBondingVisualizer = () => {
                     <div className="absolute w-3 h-3 bg-blue-400 rounded-full bottom-[4px] left-[95px]"></div>
                     <div className="absolute w-3 h-3 bg-blue-400 rounded-full bottom-[30px] left-[30px]"></div>
                     <div className="absolute w-3 h-3 bg-blue-400 rounded-full top-[95px] left-[-6px]"></div>
+                    {bonded && (
+                      <motion.div layoutId="transfer-electron" transition={{ duration: 1, ease: "easeInOut" }} className="absolute w-4 h-4 bg-yellow-400 rounded-full shadow-[0_0_15px_#facc15] z-20" style={{ top: '28px', left: '28px' }}></motion.div>
+                    )}
                   </div>
                 </div>
               </div>
