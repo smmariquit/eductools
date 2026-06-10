@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import AdUnit from '../components/AdUnit';
+import VisualizerLayout from '../components/VisualizerLayout';
+import { InlineMath, BlockMath } from 'react-katex';
 
 const StoichiometryVisualizer = () => {
   const [h2, setH2] = useState(1);
@@ -10,49 +10,92 @@ const StoichiometryVisualizer = () => {
   const isBalanced = (h2 * 2 === h2o * 2) && (o2 * 2 === h2o * 1);
 
   return (
-    <div className="page-container">
-      <div style={{ marginBottom: '1.5rem' }}>
-        <Link to="/" className="legacy-btn legacy-btn-outline">&larr; Back to Modules</Link>
-      </div>
-      <div style={{ paddingBottom: '1rem', borderBottom: '1px solid var(--border-color)', marginBottom: '2rem' }}>
-        <h1 style={{ color: 'var(--accent-color)' }}>Balancing Chemical Equations</h1>
-        <p>Apply the Law of Conservation of Mass to synthesize water.</p>
-      </div>
+    <VisualizerLayout
+      title="Pagbalanse ng Chemical Equations"
+      description="Apply the Law of Conservation of Mass to synthesize water, essential for local irrigation."
+      adSlotId="2002"
+      educationalContent={
+        <>
+          <h2>Stoichiometry: Grade 10 Chemistry</h2>
+          <p>The Law of Conservation of Mass states that matter cannot be created or destroyed. In a chemical reaction, the number of atoms for each element must be equal on both the reactant side and the product side.</p>
+          <h3>Synthesizing Water</h3>
+          <p>Water (<InlineMath math="H_2O" />) is vital for life and agriculture (like watering rice fields). To make water chemically, hydrogen gas (<InlineMath math="H_2" />) reacts with oxygen gas (<InlineMath math="O_2" />). Try adjusting the coefficients until the equation is balanced!</p>
+        </>
+      }
+    >
+      <div className="card bg-base-100 shadow-xl border border-base-200">
+        <div className="card-body p-6 md:p-8">
+          
+          <div className="text-center bg-base-200 p-6 rounded-xl border border-base-300 mb-8 overflow-x-auto shadow-inner">
+            <div className="min-w-max text-3xl font-bold p-4">
+              <span className={h2 > 0 ? 'text-primary' : 'text-base-content/30'}>{h2}</span> H<sub className="text-lg">2</sub>
+              <span className="mx-4 text-base-content/50">+</span>
+              <span className={o2 > 0 ? 'text-secondary' : 'text-base-content/30'}>{o2}</span> O<sub className="text-lg">2</sub>
+              <span className="mx-4 text-base-content/50">&rarr;</span>
+              <span className={h2o > 0 ? 'text-success' : 'text-base-content/30'}>{h2o}</span> H<sub className="text-lg">2</sub>O
+            </div>
+            
+            {/* KaTeX exact equation */}
+            <div className="mt-4 opacity-70">
+              <BlockMath math={`${h2}\\text{H}_2 + ${o2}\\text{O}_2 \\rightarrow ${h2o}\\text{H}_2\\text{O}`} />
+            </div>
 
-      <div className="legacy-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem' }}>
-        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', fontSize: '2rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <input type="number" min="1" max="5" value={h2} onChange={e => setH2(Number(e.target.value))} style={{ width: '60px', marginRight: '10px' }} />
-            H<sub>2</sub>
+            <div className={`mt-6 badge badge-lg p-4 font-bold ${isBalanced ? 'badge-success animate-bounce' : 'badge-error'}`}>
+              {isBalanced ? 'BALANCED! (Tumpak!)' : 'NOT BALANCED (Hindi Balanse)'}
+            </div>
           </div>
-          <div>+</div>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <input type="number" min="1" max="5" value={o2} onChange={e => setO2(Number(e.target.value))} style={{ width: '60px', marginRight: '10px' }} />
-            O<sub>2</sub>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="flex flex-col gap-6">
+              <div className="flex items-center justify-between p-4 border rounded-lg border-primary/30 bg-primary/5">
+                <div className="font-semibold text-lg">H<sub className="text-xs">2</sub> Multiplier:</div>
+                <input type="number" min="1" max="10" value={h2} onChange={e => setH2(Number(e.target.value))} className="input input-bordered w-24 text-center font-mono text-xl" />
+              </div>
+              <div className="flex items-center justify-between p-4 border rounded-lg border-secondary/30 bg-secondary/5">
+                <div className="font-semibold text-lg">O<sub className="text-xs">2</sub> Multiplier:</div>
+                <input type="number" min="1" max="10" value={o2} onChange={e => setO2(Number(e.target.value))} className="input input-bordered w-24 text-center font-mono text-xl" />
+              </div>
+              <div className="flex items-center justify-between p-4 border rounded-lg border-success/30 bg-success/5">
+                <div className="font-semibold text-lg">H<sub className="text-xs">2</sub>O Multiplier:</div>
+                <input type="number" min="1" max="10" value={h2o} onChange={e => setH2o(Number(e.target.value))} className="input input-bordered w-24 text-center font-mono text-xl" />
+              </div>
+            </div>
+
+            <div className="bg-slate-900 text-white p-6 rounded-xl flex flex-col justify-center shadow-inner relative overflow-hidden">
+              <div className="absolute top-4 left-4 text-white/30 text-xs tracking-widest font-mono">ATOM COUNT</div>
+              
+              <div className="grid grid-cols-2 gap-4 mt-6">
+                <div>
+                  <h4 className="border-b border-white/20 pb-2 mb-4 text-sm font-bold tracking-widest text-white/70">REACTANTS</h4>
+                  <div className="flex justify-between mb-2">
+                    <span className="text-blue-300">Hydrogen (H):</span>
+                    <span className="font-mono text-xl font-bold">{h2 * 2}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-red-300">Oxygen (O):</span>
+                    <span className="font-mono text-xl font-bold">{o2 * 2}</span>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 className="border-b border-white/20 pb-2 mb-4 text-sm font-bold tracking-widest text-white/70">PRODUCTS</h4>
+                  <div className="flex justify-between mb-2">
+                    <span className="text-blue-300">Hydrogen (H):</span>
+                    <span className={`font-mono text-xl font-bold ${h2 * 2 === h2o * 2 ? 'text-emerald-400' : 'text-rose-400'}`}>{h2o * 2}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-red-300">Oxygen (O):</span>
+                    <span className={`font-mono text-xl font-bold ${o2 * 2 === h2o * 1 ? 'text-emerald-400' : 'text-rose-400'}`}>{h2o * 1}</span>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
           </div>
-          <div>&rarr;</div>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <input type="number" min="1" max="5" value={h2o} onChange={e => setH2o(Number(e.target.value))} style={{ width: '60px', marginRight: '10px' }} />
-            H<sub>2</sub>O
-          </div>
+
         </div>
-
-        <div style={{ padding: '1.5rem', background: isBalanced ? 'rgba(16, 185, 129, 0.2)' : 'rgba(239, 68, 68, 0.2)', border: `2px solid ${isBalanced ? '#10b981' : '#ef4444'}`, borderRadius: '4px', width: '100%', maxWidth: '400px', textAlign: 'center' }}>
-          <h3 style={{ marginBottom: '1rem', color: isBalanced ? '#10b981' : '#ef4444' }}>
-            {isBalanced ? "Equation is Balanced!" : "Equation is NOT Balanced"}
-          </h3>
-          <p>Reactant Atoms: H = {h2 * 2}, O = {o2 * 2}</p>
-          <p>Product Atoms: H = {h2o * 2}, O = {h2o * 1}</p>
-        </div>
       </div>
-
-      <article className="article-content">
-        <h2>Stoichiometry: Grade 12 Chemistry</h2>
-        <p>The Law of Conservation of Mass states that matter cannot be created or destroyed. In a chemical reaction, the number of atoms of each element in the reactants must equal the number of atoms of each element in the products.</p>
-        <p>To balance the synthesis of water, you must ensure there are equal numbers of Hydrogen (H) and Oxygen (O) atoms on both sides of the arrow.</p>
-      </article>
-      <AdUnit slotId="2010" format="auto" />
-    </div>
+    </VisualizerLayout>
   );
 };
 export default StoichiometryVisualizer;

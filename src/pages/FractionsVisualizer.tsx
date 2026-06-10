@@ -3,42 +3,90 @@ import VisualizerLayout from '../components/VisualizerLayout';
 
 const FractionsVisualizer = () => {
   const [numerator, setNumerator] = useState(1);
-  const [denominator, setDenominator] = useState(4);
+  const [denominator, setDenominator] = useState(8); // Standard pizza slices
 
   return (
     <VisualizerLayout
-      title="Fractions Visualizer"
-      description="Interactive tool for understanding basic mathematical fractions."
+      title="Hatig-bilang (Fractions Visualizer)"
+      description="Interactive tool for understanding basic mathematical fractions using a Buko Pie."
       adSlotId="1010"
       educationalContent={
         <>
           <h2>Understanding Fractions: Primary Mathematics</h2>
-          <p>A fraction represents a part of a whole. The top number (numerator) specifies how many parts we have, and the bottom number (denominator) specifies how many equal parts the whole is divided into.</p>
+          <p>A fraction represents a part of a whole. Let's use a famous Laguna <strong>Buko Pie</strong> as our whole!</p>
+          <ul>
+            <li><strong>Numerator (Nasa Itaas):</strong> Specifies how many slices you have eaten or taken.</li>
+            <li><strong>Denominator (Nasa Ibaba):</strong> Specifies how many equal slices the entire pie was cut into.</li>
+          </ul>
         </>
       }
     >
-      <div className="legacy-card flex-col flex-center">
-        <div style={{ display: 'flex', width: '300px', height: '50px', background: 'var(--bg-color)', border: '2px solid var(--border-color)', marginBottom: '2rem' }}>
-          {Array.from({ length: denominator }).map((_, i) => (
-            <div key={i} style={{ flex: 1, background: i < numerator ? 'var(--accent-color)' : 'transparent', borderRight: i < denominator - 1 ? '1px solid var(--border-color)' : 'none' }} />
-          ))}
-        </div>
+      <div className="card bg-base-100 shadow-xl border border-base-200">
+        <div className="card-body p-6 md:p-10 flex flex-col items-center">
+          
+          {/* Circular "Pie" Visualization */}
+          <div className="relative w-[250px] h-[250px] md:w-[300px] md:h-[300px] rounded-full border-4 border-orange-200 bg-orange-100 shadow-inner overflow-hidden mb-12 transform rotate-90">
+            {Array.from({ length: denominator }).map(() => {
+              // Only works perfectly for SVG, using conic-gradient for CSS circle slicing
+              return null;
+            })}
+            
+            <div 
+              className="absolute inset-0"
+              style={{
+                background: `conic-gradient(#f59e0b 0deg, #f59e0b ${numerator * (360/denominator)}deg, transparent ${numerator * (360/denominator)}deg, transparent 360deg)`
+              }}
+            ></div>
 
-        <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
-          <div style={{ textAlign: 'center', fontSize: '2rem', fontWeight: 700 }}>
-            <div style={{ borderBottom: '4px solid var(--text-primary)', padding: '0 1rem' }}>{numerator}</div>
-            <div>{denominator}</div>
+            {/* Slice Lines */}
+            {Array.from({ length: denominator }).map((_, i) => (
+              <div 
+                key={i}
+                className="absolute top-0 left-1/2 w-[2px] h-1/2 origin-bottom bg-orange-300"
+                style={{ transform: `translateX(-50%) rotate(${i * (360/denominator)}deg)` }}
+              />
+            ))}
+            
+            {/* Pie Crust effect */}
+            <div className="absolute inset-0 rounded-full border-[10px] border-amber-600/30 pointer-events-none"></div>
           </div>
-          <div>
-            <label style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '260px', marginBottom: '1rem' }}>
-              <span style={{ fontWeight: 600 }}>Numerator:</span>
-              <input type="number" min="0" max={denominator} value={numerator} onChange={e => setNumerator(Number(e.target.value))} style={{ width: '100px', textAlign: 'center' }} />
-            </label>
-            <label style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '260px' }}>
-              <span style={{ fontWeight: 600 }}>Denominator:</span>
-              <input type="number" min="1" max="20" value={denominator} onChange={e => { setDenominator(Number(e.target.value)); if(numerator > Number(e.target.value)) setNumerator(Number(e.target.value)); }} style={{ width: '100px', textAlign: 'center' }} />
-            </label>
+
+          <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-center w-full max-w-lg">
+            
+            {/* The Fraction */}
+            <div className="flex flex-col items-center text-5xl md:text-6xl font-black text-base-content font-mono">
+              <div className="border-b-[6px] border-base-content px-4 pb-2 text-primary">{numerator}</div>
+              <div className="pt-2 text-secondary">{denominator}</div>
+            </div>
+            
+            {/* Controls */}
+            <div className="flex flex-col gap-6 w-full">
+              <div className="bg-base-200 p-4 rounded-xl border border-base-300">
+                <label className="flex flex-col gap-2 font-semibold">
+                  <div className="flex justify-between text-sm">
+                    <span className="uppercase tracking-wider">Slices Taken (Numerator)</span>
+                    <span className="text-primary">{numerator}</span>
+                  </div>
+                  <input type="range" min="0" max={denominator} value={numerator} onChange={e => setNumerator(Number(e.target.value))} className="range range-primary" />
+                </label>
+              </div>
+              
+              <div className="bg-base-200 p-4 rounded-xl border border-base-300">
+                <label className="flex flex-col gap-2 font-semibold">
+                  <div className="flex justify-between text-sm">
+                    <span className="uppercase tracking-wider">Total Slices (Denominator)</span>
+                    <span className="text-secondary">{denominator}</span>
+                  </div>
+                  <input type="range" min="1" max="20" value={denominator} onChange={e => { 
+                    const val = Number(e.target.value);
+                    setDenominator(val); 
+                    if(numerator > val) setNumerator(val); 
+                  }} className="range range-secondary" />
+                </label>
+              </div>
+            </div>
           </div>
+          
         </div>
       </div>
     </VisualizerLayout>

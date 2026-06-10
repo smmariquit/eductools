@@ -3,47 +3,49 @@ import VisualizerLayout from '../components/VisualizerLayout';
 
 const SvgLabel = ({ x, y, lineX, lineY, text }: { x: number, y: number, lineX: number, lineY: number, text: string }) => (
   <g>
-    <line x1={x} y1={y} x2={lineX} y2={lineY} stroke="var(--text-secondary)" strokeWidth="1" strokeDasharray="2 2" />
-    <text x={x} y={y - 2} fill="#f8fafc" fontSize="8" fontWeight="normal" letterSpacing="0.5" textAnchor={x < 100 ? "end" : "start"}>
+    <line x1={x} y1={y} x2={lineX} y2={lineY} stroke="currentColor" strokeOpacity={0.4} strokeWidth="1" strokeDasharray="2 2" />
+    <text x={x} y={y - 2} fill="currentColor" className="text-base-content font-semibold" fontSize="8" letterSpacing="0.5" textAnchor={x < 100 ? "end" : "start"}>
       {text}
     </text>
   </g>
 );
 
 const HumanBodyVisualizer = () => {
-  const [system, setSystem] = useState('Skeletal');
+  const [system, setSystem] = useState('Kalansay (Skeletal)');
+
+  const systems = ['Kalansay (Skeletal)', 'Kalamnan (Muscular)', 'Panunaw (Digestive)', 'Paghininga (Respiratory)'];
 
   return (
     <VisualizerLayout
-      title="Human Body Systems"
+      title="Mga Sistema ng Katawang Tao"
       description="Interactive anatomical diagram with explicit organ labels and biological structures."
       adSlotId="1003"
       educationalContent={
         <>
           <h2>The Human Organ Systems: Grade 5 Science</h2>
-          <p>Understanding the human body is essential for health and biology. The body is made of interacting systems that work together to maintain homeostasis.</p>
+          <p>The human body is made of interacting systems that work together to maintain homeostasis (internal balance) even when the Philippine weather changes drastically.</p>
           <ul>
-            <li><strong>Skeletal System:</strong> Provides structural support and protects internal organs using rigid bones like the skull, ribs, and femur.</li>
-            <li><strong>Muscular System:</strong> Enables movement and generates heat through the contraction of tissues (e.g., pectorals, biceps).</li>
-            <li><strong>Digestive System:</strong> Breaks down food starting from the esophagus, into the stomach, and through the intestines to absorb nutrients.</li>
-            <li><strong>Respiratory System:</strong> Facilitates the exchange of oxygen and carbon dioxide via the trachea, lungs, and diaphragm.</li>
+            <li><strong>Kalansay (Skeletal System):</strong> Provides structural support and protects internal organs using rigid bones like the skull, ribs, and femur.</li>
+            <li><strong>Kalamnan (Muscular System):</strong> Enables movement and generates heat.</li>
+            <li><strong>Panunaw (Digestive System):</strong> Breaks down the food we eat (like rice and ulam) starting from the esophagus, into the stomach, to absorb nutrients.</li>
+            <li><strong>Paghininga (Respiratory System):</strong> Facilitates the exchange of oxygen and carbon dioxide via the trachea, lungs, and diaphragm.</li>
           </ul>
         </>
       }
     >
-      <div className="card lg:card-side bg-base-100 shadow-xl border border-base-200 p-0 overflow-hidden">
-        <div className="lg:w-2/3 bg-base-300 h-[500px] flex items-center justify-center relative border-b lg:border-b-0 lg:border-r border-base-200">
+      <div className="card lg:card-side bg-base-100 shadow-xl border border-base-200 overflow-hidden">
+        <div className="lg:w-2/3 bg-base-200 h-[500px] flex items-center justify-center relative border-b lg:border-b-0 lg:border-r border-base-300">
           
-          <svg viewBox="0 0 200 500" className="h-full w-full max-w-full">
+          <svg viewBox="0 0 200 500" className="h-full w-full max-w-full drop-shadow-xl">
             {/* Outline of Human Body */}
-            <path d="M 100 20 C 115 20, 125 35, 125 50 C 125 70, 110 80, 100 80 C 90 80, 75 70, 75 50 C 75 35, 85 20, 100 20 Z" fill="none" stroke="currentColor" className="text-base-content/30" strokeWidth="2" strokeDasharray="4 4" />
-            <path d="M 75 80 L 50 100 L 40 220 L 60 220 L 70 140 L 75 140 M 125 80 L 150 100 L 160 220 L 140 220 L 130 140 L 125 140" fill="none" stroke="currentColor" className="text-base-content/30" strokeWidth="2" strokeDasharray="4 4" />
-            <path d="M 75 80 L 125 80 L 120 240 L 80 240 Z" fill="none" stroke="currentColor" className="text-base-content/30" strokeWidth="2" strokeDasharray="4 4" />
-            <path d="M 80 240 L 70 450 L 95 450 L 100 280 M 120 240 L 130 450 L 105 450 L 100 280" fill="none" stroke="currentColor" className="text-base-content/30" strokeWidth="2" strokeDasharray="4 4" />
+            <path d="M 100 20 C 115 20, 125 35, 125 50 C 125 70, 110 80, 100 80 C 90 80, 75 70, 75 50 C 75 35, 85 20, 100 20 Z" fill="none" stroke="currentColor" className="text-base-content/20" strokeWidth="2" strokeDasharray="4 4" />
+            <path d="M 75 80 L 50 100 L 40 220 L 60 220 L 70 140 L 75 140 M 125 80 L 150 100 L 160 220 L 140 220 L 130 140 L 125 140" fill="none" stroke="currentColor" className="text-base-content/20" strokeWidth="2" strokeDasharray="4 4" />
+            <path d="M 75 80 L 125 80 L 120 240 L 80 240 Z" fill="none" stroke="currentColor" className="text-base-content/20" strokeWidth="2" strokeDasharray="4 4" />
+            <path d="M 80 240 L 70 450 L 95 450 L 100 280 M 120 240 L 130 450 L 105 450 L 100 280" fill="none" stroke="currentColor" className="text-base-content/20" strokeWidth="2" strokeDasharray="4 4" />
 
             {/* Skeletal System */}
-            {system === 'Skeletal' && (
-              <g stroke="#f8fafc" strokeWidth="4" strokeLinecap="round">
+            {system === 'Kalansay (Skeletal)' && (
+              <g stroke="#94a3b8" strokeWidth="4" strokeLinecap="round">
                 <circle cx="100" cy="50" r="15" fill="none" strokeWidth="3" />
                 <line x1="100" y1="65" x2="100" y2="230" />
                 <path d="M 100 100 Q 75 110 85 130 M 100 100 Q 125 110 115 130" fill="none" strokeWidth="2" />
@@ -55,8 +57,8 @@ const HumanBodyVisualizer = () => {
                 <line x1="80" y1="340" x2="75" y2="440" />
                 <line x1="120" y1="340" x2="125" y2="440" />
                 
-                <SvgLabel x={40} y={40} lineX={85} lineY={50} text="Skull (Cranium)" />
-                <SvgLabel x={160} y={110} lineX={115} lineY={120} text="Rib Cage" />
+                <SvgLabel x={40} y={40} lineX={85} lineY={50} text="Bungo (Skull)" />
+                <SvgLabel x={160} y={110} lineX={115} lineY={120} text="Tadyang (Ribs)" />
                 <SvgLabel x={40} y={180} lineX={100} lineY={180} text="Spine" />
                 <SvgLabel x={160} y={240} lineX={100} lineY={240} text="Pelvis" />
                 <SvgLabel x={40} y={300} lineX={85} lineY={290} text="Femur" />
@@ -64,7 +66,7 @@ const HumanBodyVisualizer = () => {
             )}
 
             {/* Muscular System */}
-            {system === 'Muscular' && (
+            {system === 'Kalamnan (Muscular)' && (
               <g fill="#ef4444" opacity="0.9">
                 <path d="M 100 90 Q 120 90 125 110 Q 100 115 100 120 Q 100 115 75 110 Q 80 90 100 90 Z" />
                 <rect x="90" y="125" width="20" height="40" rx="2" />
@@ -83,7 +85,7 @@ const HumanBodyVisualizer = () => {
             )}
 
             {/* Digestive System */}
-            {system === 'Digestive' && (
+            {system === 'Panunaw (Digestive)' && (
               <g>
                 <path d="M 100 65 C 105 90, 95 110, 100 130" stroke="#f59e0b" strokeWidth="4" fill="none" />
                 <path d="M 100 130 C 120 120, 130 150, 105 160 C 90 165, 80 140, 100 130 Z" fill="#d97706" />
@@ -91,14 +93,14 @@ const HumanBodyVisualizer = () => {
                 <path d="M 100 160 Q 80 180 100 190 Q 120 200 100 210 Q 80 215 100 220" fill="none" stroke="#fbbf24" strokeWidth="6" strokeLinecap="round" />
                 
                 <SvgLabel x={40} y={90} lineX={98} lineY={90} text="Esophagus" />
-                <SvgLabel x={160} y={145} lineX={115} lineY={145} text="Stomach" />
+                <SvgLabel x={160} y={145} lineX={115} lineY={145} text="Sikmura (Stomach)" />
                 <SvgLabel x={40} y={170} lineX={80} lineY={170} text="Large Int." />
                 <SvgLabel x={160} y={200} lineX={110} lineY={200} text="Small Int." />
               </g>
             )}
 
             {/* Respiratory System */}
-            {system === 'Respiratory' && (
+            {system === 'Paghininga (Respiratory)' && (
               <g>
                 <path d="M 100 65 L 100 110" stroke="#93c5fd" strokeWidth="4" />
                 <path d="M 100 110 L 85 125 M 100 110 L 115 125" stroke="#93c5fd" strokeWidth="3" />
@@ -107,7 +109,7 @@ const HumanBodyVisualizer = () => {
                 <path d="M 70 175 Q 100 160 130 175" fill="none" stroke="#2dd4bf" strokeWidth="4" />
                 
                 <SvgLabel x={40} y={80} lineX={100} lineY={80} text="Trachea" />
-                <SvgLabel x={160} y={140} lineX={120} lineY={140} text="Lungs" />
+                <SvgLabel x={160} y={140} lineX={120} lineY={140} text="Baga (Lungs)" />
                 <SvgLabel x={40} y={175} lineX={80} lineY={170} text="Diaphragm" />
               </g>
             )}
@@ -115,19 +117,19 @@ const HumanBodyVisualizer = () => {
         </div>
         
         <div className="card-body lg:w-1/3 flex flex-col justify-center p-6">
-          <h2 className="text-2xl font-bold text-primary mb-6">{system} System</h2>
-          <div className="grid grid-cols-2 gap-3 mb-6">
-            {['Skeletal', 'Muscular', 'Digestive', 'Respiratory'].map((s) => (
+          <h2 className="text-2xl font-bold text-primary mb-6 leading-tight">{system}</h2>
+          <div className="flex flex-col gap-3 mb-6">
+            {systems.map((s) => (
               <button 
                 key={s} 
                 onClick={() => setSystem(s)} 
-                className={`btn btn-sm h-12 ${system === s ? 'btn-primary' : 'btn-outline'}`}
+                className={`btn text-sm ${system === s ? 'btn-primary' : 'btn-outline'}`}
               >
                 {s}
               </button>
             ))}
           </div>
-          <p className="text-base-content/80 text-sm">This interactive diagram dynamically displays the major organs and structures of the {system.toLowerCase()} system.</p>
+          <p className="text-base-content/70 text-sm p-4 bg-base-200 rounded-lg">This interactive diagram dynamically displays the major organs and structures of the active biological system.</p>
         </div>
       </div>
     </VisualizerLayout>
