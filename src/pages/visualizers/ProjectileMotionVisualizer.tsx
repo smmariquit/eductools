@@ -139,6 +139,7 @@ const ProjectileMotionVisualizer = () => {
     draw();
 
     return () => cancelAnimationFrame(animId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPlaying, angle, velocity, isSapul]);
 
   return (

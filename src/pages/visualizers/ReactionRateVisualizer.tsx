@@ -18,12 +18,13 @@ const ReactionRateVisualizer = () => {
   const [hasCatalyst, setHasCatalyst] = useState(false);
   const [collisionCount, setCollisionCount] = useState(0);
   const [reactionCount, setReactionCount] = useState(0);
+  const [reactionRate, setReactionRate] = useState("0.00");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const animFrameRef = useRef<number>(0);
   const collisionCountRef = useRef(0);
   const reactionCountRef = useRef(0);
-  const lastResetRef = useRef(Date.now());
+  const lastResetRef = useRef(0);
 
   const activationEnergy = hasCatalyst ? 150 : 350; // lower with catalyst
   const speedMultiplier = temperature / 300;
@@ -46,13 +47,18 @@ const ReactionRateVisualizer = () => {
     collisionCountRef.current = 0;
     reactionCountRef.current = 0;
     lastResetRef.current = Date.now();
-    setCollisionCount(0);
-    setReactionCount(0);
+    
+    // We update state inside requestAnimationFrame or via setTimeout to avoid cascading renders
+    requestAnimationFrame(() => {
+      setCollisionCount(0);
+      setReactionCount(0);
+    });
   }, [concentration, speedMultiplier]);
 
   useEffect(() => {
     initParticles();
-  }, [concentration, hasCatalyst]);
+    lastResetRef.current = Date.now();
+  }, [concentration, hasCatalyst, initParticles]);
 
   // Update speeds when temperature changes
   useEffect(() => {
@@ -222,6 +228,8 @@ const ReactionRateVisualizer = () => {
       if (frameCount % 30 === 0) {
         setCollisionCount(collisionCountRef.current);
         setReactionCount(reactionCountRef.current);
+        const elapsed = Math.max(1, (Date.now() - lastResetRef.current) / 1000);
+        setReactionRate((reactionCountRef.current / elapsed).toFixed(2));
       }
 
       animFrameRef.current = requestAnimationFrame(animate);
@@ -231,8 +239,7 @@ const ReactionRateVisualizer = () => {
     return () => cancelAnimationFrame(animFrameRef.current);
   }, [hasCatalyst, activationEnergy, temperature]);
 
-  const elapsedSeconds = Math.max(1, (Date.now() - lastResetRef.current) / 1000);
-  const reactionRate = (reactionCount / elapsedSeconds).toFixed(2);
+  // reactionRate state is moved to the top of the component
 
   return (
     <VisualizerLayout

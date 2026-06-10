@@ -404,7 +404,7 @@ const ReflexEngine = () => {
         });
       }, 30);
     } else {
-      setTime(0);
+      setTimeout(() => setTime(0), 0);
     }
     return () => clearInterval(timer);
   }, [phase]);

@@ -14,12 +14,9 @@ const DensityVisualizer = () => {
   const densityRatio = density / 1000;
 
   // Top is 0, Water surface is at 150px, Bottom is at 350px
-  let dropPosition = 0;
-  if (isFloating) {
-    dropPosition = 150 - sideLength * (1 - densityRatio);
-  } else {
-    dropPosition = 350 - sideLength;
-  }
+  const dropPosition = isFloating 
+    ? 150 - sideLength * (1 - densityRatio) 
+    : 350 - sideLength;
 
   const setPreset = (m: number, v: number) => {
     setMass(m);

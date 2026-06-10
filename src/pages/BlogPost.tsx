@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
-import { lazy, Suspense, type ComponentType } from 'react';
+import React, { lazy, Suspense, type ComponentType } from 'react';
 import AdUnit from '../components/AdUnit';
 import { blogPosts } from '../data/blogPosts';
 
@@ -7,7 +7,7 @@ import { blogPosts } from '../data/blogPosts';
 const mdxComponents = import.meta.glob('../content/blog/*.mdx');
 
 // Cache lazy components at module level to prevent re-creation on render
-const mdxCache = new Map<string, React.LazyExoticComponent<any>>();
+const mdxCache = new Map<string, React.LazyExoticComponent<ComponentType<Record<string, unknown>>>>();
 function getMdxComponent(id: string) {
   if (!mdxCache.has(id)) {
     const importFn = mdxComponents[`../content/blog/${id}.mdx`];
@@ -22,6 +22,8 @@ const BlogPost = () => {
   const { id } = useParams<{ id: string }>();
   const post = id ? blogPosts.find(p => p.id === id) : null;
 
+  const contentComponent = React.useMemo(() => id ? getMdxComponent(id) : null, [id]);
+
   if (!post || !id) {
     return (
       <div className="container mx-auto px-4 py-8">
@@ -30,8 +32,6 @@ const BlogPost = () => {
       </div>
     );
   }
-
-  const MdxContent = getMdxComponent(id);
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-3xl">
@@ -46,7 +46,7 @@ const BlogPost = () => {
         <p className="text-base-content/50 italic mb-8">{post.date}</p>
         
         <Suspense fallback={<div className="flex justify-center p-12"><span className="loading loading-spinner loading-lg"></span></div>}>
-          {MdxContent ? <MdxContent /> : <p>Loading content...</p>}
+          {contentComponent ? React.createElement(contentComponent) : <p>Loading content...</p>}
         </Suspense>
       </article>
 

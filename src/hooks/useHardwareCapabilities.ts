@@ -18,7 +18,7 @@ export const useHardwareCapabilities = (): HardwareProfile => {
   useEffect(() => {
     // navigator.deviceMemory and hardwareConcurrency are not supported in all browsers (e.g., Safari),
     // but they are widely supported in Chromium-based browsers which dominate Android usage.
-    const nav = navigator as any;
+    const nav = navigator as unknown as { deviceMemory?: number; hardwareConcurrency?: number };
     
     const deviceMemory = nav.deviceMemory; // Returns RAM in GB (approximate, maxes at 8)
     const hardwareConcurrency = nav.hardwareConcurrency; // Returns logical CPU cores
@@ -38,16 +38,18 @@ export const useHardwareCapabilities = (): HardwareProfile => {
       if (!gl) {
         unsupportedWebGL = true;
       }
-    } catch (e) {
+    } catch {
       unsupportedWebGL = true;
     }
 
-    setProfile({
-      isLowEnd: isMemoryLow || isCpuLow || unsupportedWebGL,
-      deviceMemory,
-      hardwareConcurrency,
-      unsupportedWebGL
-    });
+    setTimeout(() => {
+      setProfile({
+        isLowEnd: !!(isMemoryLow || isCpuLow || unsupportedWebGL),
+        deviceMemory,
+        hardwareConcurrency,
+        unsupportedWebGL
+      });
+    }, 0);
   }, []);
 
   return profile;

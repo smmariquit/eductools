@@ -1,0 +1,133 @@
+
+> eductools@0.0.0 lint
+> eslint .
+
+
+/home/stimmie/dev/personal/eductools/src/hooks/useHardwareCapabilities.ts
+  21:30  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+  41:14  error  'e' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            @typescript-eslint/no-unused-vars
+  45:5   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/home/stimmie/dev/personal/eductools/src/hooks/useHardwareCapabilities.ts:45:5
+  43 |     }
+  44 |
+> 45 |     setProfile({
+     |     ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  46 |       isLowEnd: isMemoryLow || isCpuLow || unsupportedWebGL,
+  47 |       deviceMemory,
+  48 |       hardwareConcurrency,  react-hooks/set-state-in-effect
+
+/home/stimmie/dev/personal/eductools/src/pages/BlogPost.tsx
+  10:60  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             @typescript-eslint/no-explicit-any
+  49:26  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+/home/stimmie/dev/personal/eductools/src/pages/BlogPost.tsx:49:26
+  47 |         
+  48 |         <Suspense fallback={<div className="flex justify-center p-12"><span className="loading loading-spinner loading-lg"></span></div>}>
+> 49 |           {MdxContent ? <MdxContent /> : <p>Loading content...</p>}
+     |                          ^^^^^^^^^^ This component is created during render
+  50 |         </Suspense>
+  51 |       </article>
+  52 |
+
+/home/stimmie/dev/personal/eductools/src/pages/BlogPost.tsx:34:22
+  32 |   }
+  33 |
+> 34 |   const MdxContent = getMdxComponent(id);
+     |                      ^^^^^^^^^^^^^^^^^^^ The component is created during render here
+  35 |
+  36 |   return (
+  37 |     <div className="container mx-auto px-4 py-8 max-w-3xl">  react-hooks/static-components
+
+/home/stimmie/dev/personal/eductools/src/pages/visualizers/DensityVisualizer.tsx
+  17:7  error  The value assigned to 'dropPosition' is not used in subsequent statements  no-useless-assignment
+
+/home/stimmie/dev/personal/eductools/src/pages/visualizers/HumanBodyVisualizer.tsx
+  407:7  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/home/stimmie/dev/personal/eductools/src/pages/visualizers/HumanBodyVisualizer.tsx:407:7
+  405 |       }, 30);
+  406 |     } else {
+> 407 |       setTime(0);
+      |       ^^^^^^^ Avoid calling setState() directly within an effect
+  408 |     }
+  409 |     return () => clearInterval(timer);
+  410 |   }, [phase]);  react-hooks/set-state-in-effect
+
+/home/stimmie/dev/personal/eductools/src/pages/visualizers/ProjectileMotionVisualizer.tsx
+  142:6  warning  React Hook useEffect has missing dependencies: 'time', 'v0x', and 'v0y'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+/home/stimmie/dev/personal/eductools/src/pages/visualizers/ReactionRateVisualizer.tsx
+   26:31  error    Error: Cannot call impure function during render
+
+`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+/home/stimmie/dev/personal/eductools/src/pages/visualizers/ReactionRateVisualizer.tsx:26:31
+  24 |   const collisionCountRef = useRef(0);
+  25 |   const reactionCountRef = useRef(0);
+> 26 |   const lastResetRef = useRef(Date.now());
+     |                               ^^^^^^^^^^ Cannot call impure function
+  27 |
+  28 |   const activationEnergy = hasCatalyst ? 150 : 350; // lower with catalyst
+  29 |   const speedMultiplier = temperature / 300;                                                                                                                                                                                                                                                              react-hooks/purity
+   54:5   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/home/stimmie/dev/personal/eductools/src/pages/visualizers/ReactionRateVisualizer.tsx:54:5
+  52 |
+  53 |   useEffect(() => {
+> 54 |     initParticles();
+     |     ^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  55 |   }, [concentration, hasCatalyst]);
+  56 |
+  57 |   // Update speeds when temperature changes  react-hooks/set-state-in-effect
+   55:6   warning  React Hook useEffect has a missing dependency: 'initParticles'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              react-hooks/exhaustive-deps
+  234:39  error    Error: Cannot call impure function during render
+
+`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+/home/stimmie/dev/personal/eductools/src/pages/visualizers/ReactionRateVisualizer.tsx:234:39
+  232 |   }, [hasCatalyst, activationEnergy, temperature]);
+  233 |
+> 234 |   const elapsedSeconds = Math.max(1, (Date.now() - lastResetRef.current) / 1000);
+      |                                       ^^^^^^^^^^ Cannot call impure function
+  235 |   const reactionRate = (reactionCount / elapsedSeconds).toFixed(2);
+  236 |
+  237 |   return (                                                                                                                                                                                                                                                                         react-hooks/purity
+  234:52  error    Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+/home/stimmie/dev/personal/eductools/src/pages/visualizers/ReactionRateVisualizer.tsx:234:52
+  232 |   }, [hasCatalyst, activationEnergy, temperature]);
+  233 |
+> 234 |   const elapsedSeconds = Math.max(1, (Date.now() - lastResetRef.current) / 1000);
+      |                                                    ^^^^^^^^^^^^^^^^^^^^ Cannot access ref value during render
+  235 |   const reactionRate = (reactionCount / elapsedSeconds).toFixed(2);
+  236 |
+  237 |   return (                                                                                                                                                                                                                  react-hooks/refs
+
+/home/stimmie/dev/personal/eductools/src/pages/visualizers/StatesOfMatterVisualizer.tsx
+  6:54  error  'Composite' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+✖ 14 problems (12 errors, 2 warnings)
+

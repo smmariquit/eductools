@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import Matter from 'matter-js';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
-const { Engine, Render, World, Bodies, Body, Runner, Composite } = Matter;
+const { Engine, Render, World, Bodies, Body, Runner } = Matter;
 
 const PARTICLE_COUNT = 80;
 const CANVAS_W = 600;
@@ -164,7 +164,7 @@ const StatesOfMatterVisualizer = () => {
             </div>
             <div className="absolute top-4 right-4 pointer-events-none">
               <span className={`badge badge-sm ${temperature <= 30 ? 'badge-info' : temperature <= 70 ? 'badge-primary' : 'badge-secondary'}`}>
-                {Composite.allBodies(engineRef.current?.world || Engine.create().world).filter(b => !b.isStatic).length} particles
+                {PARTICLE_COUNT} particles
               </span>
             </div>
           </div>
