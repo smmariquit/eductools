@@ -193,16 +193,16 @@ const GasLawsVisualizer = () => {
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col lg:flex-row gap-8">
           {/* Canvas */}
-          <div className="flex-1">
+          <div className="flex-1 min-w-0">
             <canvas
               ref={canvasRef}
               width={500}
               height={300}
-              className="w-full rounded-xl border-2 border-base-300"
+              className="w-full h-auto aspect-[5/3] rounded-xl border-2 border-base-300"
             />
 
             {/* Live readout */}
-            <div className="grid grid-cols-3 gap-3 mt-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4">
               <div className={`text-center p-3 rounded-lg border ${law === 'boyle' ? 'bg-primary/10 border-primary/30' : law === 'gaylussac' ? 'bg-warning/10 border-warning/30' : 'bg-base-200 border-base-300'}`}>
                 <div className="text-xs uppercase tracking-wider font-bold text-base-content/60">Pressure</div>
                 <div className="text-2xl font-bold font-mono">{displayP.toFixed(2)}</div>
