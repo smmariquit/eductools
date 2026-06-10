@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import VisualizerLayout from '../components/VisualizerLayout';
-import { InlineMath } from 'react-katex';
 
 const ForcesAndMotionVisualizer = () => {
   const [force, setForce] = useState(0);
@@ -88,11 +87,11 @@ const ForcesAndMotionVisualizer = () => {
             <div className="flex flex-col justify-center gap-4">
               <div className="bg-base-200 p-4 rounded-xl border border-base-300 flex flex-col gap-2">
                 <div className="flex justify-between">
-                  <span className="font-semibold text-base-content/70">Acceleration (<InlineMath math="a" />):</span>
+                  <span className="font-semibold text-base-content/70">Acceleration (<span className="font-serif italic">a</span>):</span>
                   <span className="font-mono font-bold">{(force / mass).toFixed(2)} m/s²</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="font-semibold text-base-content/70">Velocity (<InlineMath math="v" />):</span>
+                  <span className="font-semibold text-base-content/70">Velocity (<span className="font-serif italic">v</span>):</span>
                   <span className="font-mono font-bold">{velocity.toFixed(2)} m/s</span>
                 </div>
               </div>

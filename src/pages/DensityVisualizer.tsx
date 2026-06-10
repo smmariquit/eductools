@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import VisualizerLayout from '../components/VisualizerLayout';
-import { InlineMath, BlockMath } from 'react-katex';
 
 const DensityVisualizer = () => {
   const [mass, setMass] = useState(600); // kg
@@ -34,9 +33,9 @@ const DensityVisualizer = () => {
       educationalContent={
         <>
           <h2>Properties of Matter: Grade 7 Science</h2>
-          <p>Density (<InlineMath math={"\\rho"} />) is a measure of mass (<InlineMath math="m" />) per unit of volume (<InlineMath math="V" />). The formula is:</p>
+          <p>Density (<span className="font-serif italic">&rho;</span>) is a measure of mass (<span className="font-serif italic">m</span>) per unit of volume (<span className="font-serif italic">V</span>). The formula is:</p>
           <div className="bg-base-200 p-2 rounded-lg text-center my-2 border border-base-300">
-            <BlockMath math={"\\rho = \\frac{m}{V}"} />
+            <span className="font-serif italic text-xl">&rho; = m / V</span>
           </div>
           <h3>Bakit lumulutang ang Bangka? (Why do boats float?)</h3>
           <p>A massive wooden <em>Bangka</em> (boat) can float while a tiny <em>Piso</em> (1-peso coin) sinks immediately. This is because density, not just mass, determines buoyancy. The density of pure water is <strong>1000 kg/m³</strong>. If an object's overall density is less than water's, it floats!</p>
@@ -50,14 +49,14 @@ const DensityVisualizer = () => {
             <div className="bg-base-200 p-6 rounded-xl border border-base-300">
               <label className="flex flex-col font-semibold gap-2 mb-6">
                 <div className="flex justify-between">
-                  <span>Mass / Bigat (<InlineMath math="m" />)</span>
+                  <span>Mass / Bigat (<span className="font-serif italic">m</span>)</span>
                   <span className="text-primary">{mass} kg</span>
                 </div>
                 <input type="range" min="100" max="3000" step="50" value={mass} onChange={e => setMass(Number(e.target.value))} className="range range-primary" />
               </label>
               <label className="flex flex-col font-semibold gap-2">
                 <div className="flex justify-between">
-                  <span>Volume / Laki (<InlineMath math="V" />)</span>
+                  <span>Volume / Laki (<span className="font-serif italic">V</span>)</span>
                   <span className="text-secondary">{volume.toFixed(1)} m³</span>
                 </div>
                 <input type="range" min="0.1" max="3.0" step="0.1" value={volume} onChange={e => setVolume(Number(e.target.value))} className="range range-secondary" />
@@ -67,8 +66,8 @@ const DensityVisualizer = () => {
             <div className="bg-slate-900 text-white p-6 rounded-xl border border-base-300 flex flex-col justify-center shadow-inner">
               <div className="mb-4">
                 <span className="text-white/60 text-sm uppercase tracking-wider block mb-2">Calculation:</span>
-                <div className="text-xl px-2 py-1 bg-white/10 rounded">
-                  <InlineMath math={`\\rho = \\frac{${mass}}{${volume.toFixed(1)}} =`} />
+                <div className="text-xl px-2 py-1 bg-white/10 rounded font-serif italic">
+                  &rho; = {mass} / {volume.toFixed(1)} =
                 </div>
                 <div className={`text-4xl font-bold mt-1 ${isFloating ? 'text-emerald-400' : 'text-red-400'}`}>
                   {density.toFixed(0)} <span className="text-lg font-normal">kg/m³</span>

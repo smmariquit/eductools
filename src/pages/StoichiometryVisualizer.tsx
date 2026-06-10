@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import VisualizerLayout from '../components/VisualizerLayout';
-import { InlineMath, BlockMath } from 'react-katex';
 
 const StoichiometryVisualizer = () => {
   const [h2, setH2] = useState(1);
@@ -19,7 +18,7 @@ const StoichiometryVisualizer = () => {
           <h2>Stoichiometry: Grade 10 Chemistry</h2>
           <p>The Law of Conservation of Mass states that matter cannot be created or destroyed. In a chemical reaction, the number of atoms for each element must be equal on both the reactant side and the product side.</p>
           <h3>Synthesizing Water</h3>
-          <p>Water (<InlineMath math="H_2O" />) is vital for life and agriculture (like watering rice fields). To make water chemically, hydrogen gas (<InlineMath math="H_2" />) reacts with oxygen gas (<InlineMath math="O_2" />). Try adjusting the coefficients until the equation is balanced!</p>
+          <p>Water (H&sub2;O) is vital for life and agriculture (like watering rice fields). To make water chemically, hydrogen gas (H&sub2;) reacts with oxygen gas (O&sub2;). Try adjusting the coefficients until the equation is balanced!</p>
         </>
       }
     >
@@ -35,9 +34,9 @@ const StoichiometryVisualizer = () => {
               <span className={h2o > 0 ? 'text-success' : 'text-base-content/30'}>{h2o}</span> H<sub className="text-lg">2</sub>O
             </div>
             
-            {/* KaTeX exact equation */}
-            <div className="mt-4 opacity-70">
-              <BlockMath math={`${h2}\\text{H}_2 + ${o2}\\text{O}_2 \\rightarrow ${h2o}\\text{H}_2\\text{O}`} />
+            {/* Native HTML fallback for equation */}
+            <div className="mt-4 opacity-70 font-serif text-2xl tracking-widest text-center">
+              {h2}H&sub2; + {o2}O&sub2; &rarr; {h2o}H&sub2;O
             </div>
 
             <div className={`mt-6 badge badge-lg p-4 font-bold ${isBalanced ? 'badge-success animate-bounce' : 'badge-error'}`}>

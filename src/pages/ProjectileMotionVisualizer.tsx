@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import VisualizerLayout from '../components/VisualizerLayout';
-import { InlineMath } from 'react-katex';
 
 const ProjectileMotionVisualizer = () => {
   const [angle, setAngle] = useState(35);
@@ -152,8 +151,8 @@ const ProjectileMotionVisualizer = () => {
           <p>Projectile motion is the motion of an object projected into the air, subject to gravity. To make this relatable, we use the traditional Filipino game <strong>Tumbang Preso</strong>.</p>
           <p>To score a <strong>"SAPUL!"</strong> (Direct Hit), you must adjust your angle and velocity so that the <em>Pamato</em> lands exactly on the <em>Lata</em> located 20 meters away.</p>
           <div className="bg-base-200 p-3 rounded-lg space-y-2 border border-base-300">
-            <div><strong>Layo (Distance x):</strong> <InlineMath math={"x = v \\cos(\\theta) \\cdot t"} /></div>
-            <div><strong>Taas (Height y):</strong> <InlineMath math={"y = v \\sin(\\theta) \\cdot t - \\frac{1}{2}gt^2"} /></div>
+            <div><strong>Layo (Distance x):</strong> <span className="font-serif italic text-lg">x = v cos(&theta;) &middot; t</span></div>
+            <div><strong>Taas (Height y):</strong> <span className="font-serif italic text-lg">y = v sin(&theta;) &middot; t - &frac12;gt&sup2;</span></div>
           </div>
         </>
       }
@@ -190,7 +189,7 @@ const ProjectileMotionVisualizer = () => {
             <div className="flex flex-col gap-4">
               <div>
                 <label className="flex justify-between mb-2 font-semibold text-sm">
-                  <span>Anggulo (Angle <InlineMath math={"\\theta"} />)</span>
+                  <span>Anggulo (Angle <span className="font-serif italic">&theta;</span>)</span>
                   <span className="text-primary">{angle}°</span>
                 </label>
                 <input type="range" min="0" max="90" value={angle} onChange={(e) => setAngle(Number(e.target.value))} className="range range-primary range-sm" />
