@@ -59,6 +59,49 @@ const ProjectileMotionVisualizer = () => {
       ctx.fillStyle = '#f87171';
       ctx.fillRect(targetX - 5, groundY - 15, 10, 5); // red stripe on can
 
+      // Draw Angle Visualizer & Velocity Vector
+      if (t === 0 || !isPlaying) {
+        ctx.save();
+        ctx.translate(startX, groundY);
+        
+        // Angle Arc
+        ctx.beginPath();
+        ctx.arc(0, 0, 40, 0, -angle * (Math.PI / 180), true);
+        ctx.lineTo(0, 0);
+        ctx.fillStyle = 'rgba(251, 191, 36, 0.2)'; // amber-400 opacity
+        ctx.fill();
+        ctx.strokeStyle = '#fbbf24';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        // Angle Text
+        ctx.fillStyle = '#fbbf24';
+        ctx.font = '14px sans-serif';
+        ctx.fillText(`${angle}°`, 45, -15);
+        
+        // Velocity Vector Arrow
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        const vectorLength = velocity * 4;
+        const vx = vectorLength * Math.cos(-angle * (Math.PI / 180));
+        const vy = vectorLength * Math.sin(-angle * (Math.PI / 180));
+        ctx.lineTo(vx, vy);
+        ctx.strokeStyle = '#f43f5e'; // rose-400
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        
+        // Arrowhead
+        ctx.beginPath();
+        ctx.moveTo(vx, vy);
+        ctx.lineTo(vx - 8 * Math.cos(-angle * (Math.PI / 180) - 0.5), vy - 8 * Math.sin(-angle * (Math.PI / 180) - 0.5));
+        ctx.lineTo(vx - 8 * Math.cos(-angle * (Math.PI / 180) + 0.5), vy - 8 * Math.sin(-angle * (Math.PI / 180) + 0.5));
+        ctx.closePath();
+        ctx.fillStyle = '#f43f5e';
+        ctx.fill();
+
+        ctx.restore();
+      }
+
       // Physics Calculation
       if (isPlaying) {
         t += 0.03; 
