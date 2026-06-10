@@ -14,7 +14,7 @@ const GasLawsVisualizer = () => {
   const [law, setLaw] = useState<'boyle' | 'charles' | 'gaylussac'>('boyle');
   const [temperature, setTemperature] = useState(300); // Kelvin
   const [pressure, setPressure] = useState(1); // atm
-  const [volume, setVolume] = useState(100); // arbitrary units (percentage of canvas width)
+  const [volume, setVolume] = useState(50); // arbitrary units (percentage of canvas width)
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const animFrameRef = useRef<number>(0);
@@ -28,23 +28,23 @@ const GasLawsVisualizer = () => {
 
   const getComputedValues = useCallback(() => {
     const baseP = 1;
-    const baseV = 100;
+    const baseV = 50; // Set to 50 so it can expand up to 100
     const baseT = 300;
 
     switch (law) {
       case 'boyle': {
         // PV = const → V = baseP * baseV / P
-        const computedV = Math.max(30, Math.min(100, (baseP * baseV) / pressure));
+        const computedV = Math.max(10, Math.min(100, (baseP * baseV) / pressure));
         return { displayP: pressure, displayV: computedV, displayT: temperature };
       }
       case 'charles': {
         // V/T = const → V = baseV * T / baseT
-        const computedV = Math.max(30, Math.min(100, (baseV * temperature) / baseT));
+        const computedV = Math.max(10, Math.min(100, (baseV * temperature) / baseT));
         return { displayP: pressure, displayV: computedV, displayT: temperature };
       }
       case 'gaylussac': {
         // P/T = const → P = baseP * T / baseT
-        const computedP = Math.max(0.3, Math.min(5, (baseP * temperature) / baseT));
+        const computedP = Math.max(0.1, Math.min(5, (baseP * temperature) / baseT));
         return { displayP: computedP, displayV: volume, displayT: temperature };
       }
       default:
@@ -230,7 +230,7 @@ const GasLawsVisualizer = () => {
                 {(['boyle', 'charles', 'gaylussac'] as const).map(l => (
                   <button
                     key={l}
-                    onClick={() => { setLaw(l); setPressure(1); setTemperature(300); setVolume(100); }}
+                    onClick={() => { setLaw(l); setPressure(1); setTemperature(300); setVolume(50); }}
                     className={`btn btn-sm ${law === l ? 'btn-primary' : 'btn-outline'}`}
                   >
                     {lawInfo[l].name}

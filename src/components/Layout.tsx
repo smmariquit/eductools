@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import Footer from './Footer';
+import CookieConsent from './CookieConsent';
 
 // Read persisted preferences, with fallbacks
 function getStoredTheme(): 'dark' | 'light' {
@@ -129,16 +131,8 @@ const Layout = () => {
         <Outlet />
       </main>
 
-      <footer className="footer footer-center p-10 bg-base-200 text-base-content border-t border-base-300 mt-16">
-        <aside>
-          <p className="font-bold text-lg">Eductools Philippine Educational Portal</p>
-          <p>Designed in alignment with the MATATAG curriculum guidelines to support formal education.</p>
-          <div className="flex gap-4 mt-4 text-sm">
-            <Link to="/privacy" className="link link-hover link-primary">Privacy Policy</Link>
-          </div>
-          <p className="mt-4">© {new Date().getFullYear()} Eductools. All rights reserved.</p>
-        </aside>
-      </footer>
+      <Footer />
+      <CookieConsent />
     </div>
   );
 };

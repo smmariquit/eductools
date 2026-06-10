@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import { HelmetProvider } from 'react-helmet-async';
 import './index.css'
+import 'katex/dist/katex.min.css';
 import './i18n';
 import { registerSW } from 'virtual:pwa-register';
 import posthog from 'posthog-js';
