@@ -1,6 +1,7 @@
 import PermutationsCombinationsMdx from '../../content/deep-dives/permutations-combinations.mdx';
 import { useState, useMemo, useEffect, useRef } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { Slider } from '../../components/ui/Slider';
 import katex from 'katex';
 import 'katex/dist/katex.min.css';
 
@@ -173,20 +174,22 @@ const PermutationsCombinationsVisualizer = () => {
             {/* Controls & formula */}
             <div className="w-full lg:w-80 flex flex-col gap-6">
               <div className="bg-base-200 p-6 rounded-xl border border-base-300 flex flex-col gap-5">
-                <div>
-                  <label className="flex justify-between mb-2 font-semibold text-sm">
-                    <span>Total items (<span className="font-serif italic">n</span>)</span>
-                    <span className="text-primary font-mono">{n}</span>
-                  </label>
-                  <input type="range" min="2" max="10" step="1" value={n} onChange={e => { const v = Number(e.target.value); setN(v); if (r > v) setR(v); }} className="range range-primary range-sm" />
-                </div>
-                <div>
-                  <label className="flex justify-between mb-2 font-semibold text-sm">
-                    <span>Choose (<span className="font-serif italic">r</span>)</span>
-                    <span className="text-secondary font-mono">{r}</span>
-                  </label>
-                  <input type="range" min="1" max={n} step="1" value={r} onChange={e => setR(Number(e.target.value))} className="range range-secondary range-sm" />
-                </div>
+                <Slider
+                  label={<>Total items (<span className="font-serif italic">n</span>)</>}
+                  value={n}
+                  min={2}
+                  max={10}
+                  colorClass="primary"
+                  onChange={e => { const v = Number(e.target.value); setN(v); if (r > v) setR(v); }}
+                />
+                <Slider
+                  label={<>Choose (<span className="font-serif italic">r</span>)</>}
+                  value={r}
+                  min={1}
+                  max={n}
+                  colorClass="secondary"
+                  onChange={e => setR(Number(e.target.value))}
+                />
               </div>
 
               {/* Formula breakdown */}

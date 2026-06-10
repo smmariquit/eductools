@@ -1,7 +1,8 @@
 import { type ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import AdUnit from './AdUnit';
 import { Helmet } from 'react-helmet-async';
+import { visualizerModules } from '../data/registry';
 
 interface VisualizerLayoutProps {
   title: string;
@@ -11,7 +12,13 @@ interface VisualizerLayoutProps {
   adSlotId?: string;
 }
 
-const VisualizerLayout = ({ title, description, children, educationalContent, adSlotId }: VisualizerLayoutProps) => {
+const VisualizerLayout = ({ title: fallbackTitle, description: fallbackDesc, children, educationalContent, adSlotId }: VisualizerLayoutProps) => {
+  const location = useLocation();
+  const moduleInfo = visualizerModules.find(m => m.path === location.pathname);
+  
+  const title = moduleInfo ? moduleInfo.title : fallbackTitle;
+  const description = moduleInfo ? moduleInfo.description : fallbackDesc;
+
   const fullTitle = `${title} | Eductools`;
   const ogImageUrl = `https://eductools.ph/api/og?title=${encodeURIComponent(title)}&desc=${encodeURIComponent(description.slice(0, 100))}`;
 
