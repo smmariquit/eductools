@@ -189,8 +189,8 @@ const PythagoreanVisualizer = () => {
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col lg:flex-row gap-8">
           {/* Canvas */}
-          <div className="flex-1">
-            <canvas ref={canvasRef} width={600} height={450} className="w-full rounded-xl border-2 border-base-300" />
+          <div className="flex-1 min-w-0">
+            <canvas ref={canvasRef} width={600} height={450} className="w-full h-auto aspect-[4/3] rounded-xl border-2 border-base-300" />
           </div>
 
           {/* Controls & Proof */}

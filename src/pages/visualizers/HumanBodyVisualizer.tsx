@@ -140,7 +140,7 @@ const HomeostasisEngine = () => {
         </div>
       </div>
       <div className="flex justify-center w-full">
-         <canvas ref={canvasRef} width={750} height={400} className="rounded-xl border-2 border-base-300 w-full max-w-[750px] bg-slate-900" />
+         <canvas ref={canvasRef} width={750} height={400} className="rounded-xl border-2 border-base-300 w-full h-auto aspect-[15/8] max-w-[750px] bg-slate-900" />
       </div>
     </div>
   );
@@ -269,7 +269,7 @@ const VascularEngine = () => {
 
   return (
     <div className="flex justify-center w-full">
-      <canvas ref={canvasRef} width={750} height={500} className="rounded-xl border-2 border-base-300 w-full max-w-[750px] bg-slate-900" />
+      <canvas ref={canvasRef} width={750} height={500} className="rounded-xl border-2 border-base-300 w-full h-auto aspect-[3/2] max-w-[750px] bg-slate-900" />
     </div>
   );
 };
@@ -377,7 +377,7 @@ const AbsorptionEngine = () => {
 
   return (
     <div className="flex justify-center w-full">
-      <canvas ref={canvasRef} width={600} height={500} className="rounded-xl border-2 border-base-300 w-full max-w-[600px] bg-slate-900" />
+      <canvas ref={canvasRef} width={600} height={500} className="rounded-xl border-2 border-base-300 w-full h-auto aspect-[6/5] max-w-[600px] bg-slate-900" />
     </div>
   );
 };

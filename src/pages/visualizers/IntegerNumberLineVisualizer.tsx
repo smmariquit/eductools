@@ -192,7 +192,7 @@ const IntegerNumberLineVisualizer = () => {
             ref={canvasRef}
             width={800}
             height={250}
-            className="w-full rounded-xl border-2 border-base-300"
+            className="w-full h-auto aspect-[16/5] rounded-xl border-2 border-base-300"
           />
 
           {/* Equation display */}

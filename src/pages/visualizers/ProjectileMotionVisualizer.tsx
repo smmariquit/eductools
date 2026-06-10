@@ -151,7 +151,7 @@ const ProjectileMotionVisualizer = () => {
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6">
           <div className="bg-slate-900 border border-base-300 rounded-xl overflow-hidden relative">
-            <canvas ref={canvasRef} width={600} height={400} className="w-full h-auto block bg-slate-900" />
+            <canvas ref={canvasRef} width={600} height={400} className="w-full h-auto aspect-[3/2] block bg-slate-900" />
             
             {/* Translanguaged HUD */}
             <div className="absolute top-4 right-4 bg-black/80 p-4 rounded-lg border border-base-content/20 text-sm backdrop-blur-sm">

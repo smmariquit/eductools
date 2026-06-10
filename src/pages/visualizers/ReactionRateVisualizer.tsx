@@ -244,11 +244,11 @@ const ReactionRateVisualizer = () => {
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col lg:flex-row gap-8">
           {/* Canvas */}
-          <div className="flex-1">
-            <canvas ref={canvasRef} width={500} height={300} className="w-full rounded-xl border-2 border-base-300" />
+          <div className="flex-1 min-w-0">
+            <canvas ref={canvasRef} width={500} height={300} className="w-full h-auto aspect-[5/3] rounded-xl border-2 border-base-300" />
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-3 mt-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4">
               <div className="text-center p-3 rounded-lg bg-base-200 border border-base-300">
                 <div className="text-xs uppercase tracking-wider font-bold text-base-content/60">Collisions</div>
                 <div className="text-2xl font-bold font-mono text-primary">{collisionCount}</div>
