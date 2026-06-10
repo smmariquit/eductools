@@ -37,7 +37,9 @@ const BlogPost = () => {
     <div className="container mx-auto px-4 py-8 max-w-3xl">
       <div className="mb-8 flex justify-between items-center">
         <Link to="/blog" className="btn btn-ghost">&larr; Back to Articles</Link>
-        <Link to={`/visualizer/${post.toolId}`} className="btn btn-primary">Try the Visualizer Tool</Link>
+        {post.toolId && (
+          <Link to={`/visualizer/${post.toolId}`} className="btn btn-primary">Try the Visualizer Tool</Link>
+        )}
       </div>
       
       <article className="prose prose-lg dark:prose-invert max-w-none bg-base-100 p-8 md:p-12 rounded-2xl shadow-xl border border-base-200">

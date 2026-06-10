@@ -9,6 +9,13 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "digital-divide",
+    toolId: "", // Not directly linked to a specific tool
+    title: "The Digital Divide in Philippine Public Education",
+    excerpt: "An Analysis of Resource Gaps, Subject-Specific Vulnerabilities, and Policy Interventions in the MATATAG era.",
+    date: "October 20, 2026"
+  },
+  {
     id: "solar-system",
     toolId: "solar-system",
     title: "Exploring the Solar System: Philippine Astronomy",
