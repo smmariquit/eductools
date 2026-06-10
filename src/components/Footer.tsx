@@ -46,6 +46,11 @@ const Footer = () => {
           </div>
         </nav>
       </div>
+
+      <div className="max-w-[1600px] mx-auto w-full mt-12 pt-8 border-t border-base-content/10 text-xs text-base-content/60 leading-relaxed text-center md:text-left">
+        <p className="mb-2"><strong>Disclaimer:</strong> Eductools is an independent educational platform. We are not officially affiliated with, endorsed by, or connected to the Department of Education (DepEd) of the Philippines or any government agency. The references to the MATATAG curriculum are for educational alignment and organizational purposes only.</p>
+        <p>The interactive visualizers and simulations provided are intended for supplementary educational purposes. While we strive for scientific and mathematical accuracy, these tools should not be used for professional engineering, medical diagnostics, or critical safety calculations.</p>
+      </div>
     </footer>
   );
 };

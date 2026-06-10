@@ -16,6 +16,7 @@ const Home = () => {
 
   const [activeGrade, setActiveGrade] = useState('All');
   const [matatagOnly, setMatatagOnly] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   // Derive activeSubject directly from URL params — no useEffect needed
   const activeSubject = subjectParam || 'All';
@@ -35,7 +36,11 @@ const Home = () => {
     const matchGrade = activeGrade === 'All' || m.tags.includes(activeGrade);
     const matchSubject = activeSubject === 'All' || m.tags.includes(activeSubject);
     const matchMatatag = !matatagOnly || m.tags.includes('MATATAG Aligned');
-    return matchGrade && matchSubject && matchMatatag;
+    const matchSearch = searchQuery.trim() === '' || 
+                        m.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                        m.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                        m.tags.some(t => t.toLowerCase().includes(searchQuery.toLowerCase()));
+    return matchGrade && matchSubject && matchMatatag && matchSearch;
   });
 
   return (
@@ -73,11 +78,24 @@ const Home = () => {
       <AdUnit slotId="1111111111" />
 
       {/* Filter Section */}
-      <div className="mb-8 flex flex-wrap gap-6 items-center bg-base-200 p-4 lg:p-6 rounded-xl border border-base-300 shadow-sm">
-        <h3 className="text-lg font-bold text-base-content m-0">{t('Filter by')}:</h3>
+      <div className="mb-8 flex flex-col md:flex-row gap-4 bg-base-200 p-4 lg:p-6 rounded-xl border border-base-300 shadow-sm">
         
-        {/* Grade Filter */}
-        <div className="flex items-center gap-2">
+        {/* Search Bar */}
+        <div className="w-full md:w-1/3">
+          <input 
+            type="text" 
+            placeholder={t('Search tools...')} 
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="input input-bordered w-full bg-base-100"
+          />
+        </div>
+
+        <div className="flex flex-wrap gap-4 items-center flex-1">
+          <h3 className="text-lg font-bold text-base-content hidden lg:block m-0">{t('Filter by')}:</h3>
+          
+          {/* Grade Filter */}
+          <div className="flex items-center gap-2">
           <label className="text-xs tracking-widest uppercase font-semibold text-base-content/60">Grade Level</label>
           <select 
             value={activeGrade} 
@@ -104,12 +122,13 @@ const Home = () => {
           </select>
         </div>
 
-        {/* Alignment */}
-        <div className="ml-auto">
-           <label className="label cursor-pointer flex items-center gap-2">
-              <input type="checkbox" checked={matatagOnly} onChange={e => setMatatagOnly(e.target.checked)} className="checkbox checkbox-primary checkbox-sm" />
-              <span className="label-text font-semibold text-base-content">MATATAG Aligned Only</span>
-           </label>
+          {/* Alignment */}
+          <div className="ml-auto">
+             <label className="label cursor-pointer flex items-center gap-2">
+                <input type="checkbox" checked={matatagOnly} onChange={e => setMatatagOnly(e.target.checked)} className="checkbox checkbox-primary checkbox-sm" />
+                <span className="label-text font-semibold text-base-content">MATATAG Aligned Only</span>
+             </label>
+          </div>
         </div>
       </div>
 
@@ -138,7 +157,7 @@ const Home = () => {
             <div className="card-body items-center text-center py-12">
               <p className="text-xl text-base-content/60">{t('No modules found matching these criteria.')}</p>
               <div className="card-actions mt-4">
-                <button onClick={() => { setActiveGrade('All'); setActiveSubject('All'); setMatatagOnly(false); }} className="btn btn-outline">{t('Clear Filters')}</button>
+                <button onClick={() => { setActiveGrade('All'); setActiveSubject('All'); setMatatagOnly(false); setSearchQuery(''); }} className="btn btn-outline">{t('Clear Filters')}</button>
               </div>
             </div>
           </div>
