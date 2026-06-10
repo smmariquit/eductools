@@ -53,11 +53,21 @@ const Home = () => {
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={ogImageUrl} />
       </Helmet>
-      <div className="py-8 border-b border-base-300 mb-8">
-        <h1 className="text-4xl font-extrabold text-primary mb-4">{t('Welcome')}</h1>
-        <p className="text-lg text-base-content/80">
-          {t('WelcomeDesc')}
-        </p>
+      <div className="py-8 border-b border-base-300 mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div>
+          <h1 className="text-4xl font-extrabold text-primary mb-4">{t('Welcome')}</h1>
+          <p className="text-lg text-base-content/80 max-w-3xl">
+            {t('WelcomeDesc')}
+          </p>
+        </div>
+        <div className="flex-shrink-0">
+          <Link to="/units" className="btn btn-secondary btn-outline shadow-sm hover:shadow-md transition-shadow">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 mr-2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+            </svg>
+            Scientific Units Reference
+          </Link>
+        </div>
       </div>
 
       <AdUnit slotId="1111111111" />
