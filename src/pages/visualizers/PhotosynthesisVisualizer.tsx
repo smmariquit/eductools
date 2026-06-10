@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import VisualizerLayout from '../../components/VisualizerLayout';
 import PhotosynthesisMdx from '../../content/blog/photosynthesis.mdx';
 
@@ -299,7 +300,7 @@ const PhotosynthesisVisualizer = () => {
             <label className="flex flex-col text-sm font-medium">
               <div className="flex justify-between mb-1">
                 <span>Light Irradiance</span>
-                <span className="font-mono text-warning">{light} <span className="text-[10px]">μmol m⁻² s⁻¹</span></span>
+                <span className="font-mono text-warning">{light} <Link to="/units#μmol-m⁻²-s⁻¹" className="text-[10px] hover:text-warning/70 underline decoration-dotted" title="Photosynthetic Photon Flux Density">μmol m⁻² s⁻¹</Link></span>
               </div>
               <input type="range" min="0" max="2000" value={light} onChange={e => setLight(Number(e.target.value))} className="range range-xs range-warning" />
             </label>
@@ -307,7 +308,7 @@ const PhotosynthesisVisualizer = () => {
             <label className="flex flex-col text-sm font-medium">
               <div className="flex justify-between mb-1">
                 <span>Atmospheric CO₂</span>
-                <span className="font-mono text-neutral-500">{co2} <span className="text-[10px]">ppm</span></span>
+                <span className="font-mono text-neutral-500">{co2} <Link to="/units#ppm" className="text-[10px] hover:text-neutral-400 underline decoration-dotted" title="Parts Per Million">ppm</Link></span>
               </div>
               <input type="range" min="0" max="1000" value={co2} onChange={e => setCo2(Number(e.target.value))} className="range range-xs range-neutral" />
             </label>
