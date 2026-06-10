@@ -9,7 +9,7 @@ import BlogPost from './pages/BlogPost';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 
 // Dynamically import all visualizer pages using Vite's glob
-const visualizerPages = import.meta.glob('./pages/*Visualizer.tsx') as Record<
+const visualizerPages = import.meta.glob('./pages/visualizers/*Visualizer.tsx') as Record<
   string,
   () => Promise<{ default: React.ComponentType }>
 >;
@@ -21,8 +21,8 @@ function buildVisualizerRoutes() {
   const routes: { path: string; Component: React.LazyExoticComponent<React.ComponentType> }[] = [];
 
   for (const filePath of Object.keys(visualizerPages)) {
-    // Extract the component name, e.g. "SolarSystem" from "./pages/SolarSystemVisualizer.tsx"
-    const match = filePath.match(/\.\/pages\/(.+)Visualizer\.tsx$/);
+    // Extract the component name, e.g. "SolarSystem" from "./pages/visualizers/SolarSystemVisualizer.tsx"
+    const match = filePath.match(/\.\/pages\/visualizers\/(.+)Visualizer\.tsx$/);
     if (!match) continue;
 
     const pascalName = match[1]; // e.g. "SolarSystem", "WavePhysics", "StatesOfMatter"
