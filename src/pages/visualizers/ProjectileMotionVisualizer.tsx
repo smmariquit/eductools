@@ -1,4 +1,4 @@
-import ProjectileMotionMdx from '../../content/blog/projectile-motion.mdx';
+import ProjectileMotionMdx from '../../content/deep-dives/projectile-motion.mdx';
 import { useState, useEffect, useRef } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 

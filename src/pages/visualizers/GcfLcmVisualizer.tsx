@@ -1,4 +1,4 @@
-import GcfLcmMdx from '../../content/blog/gcf-lcm.mdx';
+import GcfLcmMdx from '../../content/deep-dives/gcf-lcm.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 

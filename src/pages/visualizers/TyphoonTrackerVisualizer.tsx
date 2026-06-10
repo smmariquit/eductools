@@ -1,4 +1,4 @@
-import TyphoonTrackerMdx from '../../content/blog/typhoon-tracker.mdx';
+import TyphoonTrackerMdx from '../../content/deep-dives/typhoon-tracker.mdx';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import VisualizerLayout from '../../components/VisualizerLayout';

@@ -1,4 +1,4 @@
-import StoichiometryMdx from '../../content/blog/stoichiometry.mdx';
+import StoichiometryMdx from '../../content/deep-dives/stoichiometry.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 

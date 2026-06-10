@@ -1,4 +1,4 @@
-import SolutionConcentrationMdx from '../../content/blog/solution-concentration.mdx';
+import SolutionConcentrationMdx from '../../content/deep-dives/solution-concentration.mdx';
 import { useState, useRef, useEffect } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 

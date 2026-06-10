@@ -1,4 +1,4 @@
-import FoodWebMdx from '../../content/blog/food-web.mdx';
+import FoodWebMdx from '../../content/deep-dives/food-web.mdx';
 import { useState, useEffect, useRef } from 'react';
 import cytoscape from 'cytoscape';
 import VisualizerLayout from '../../components/VisualizerLayout';

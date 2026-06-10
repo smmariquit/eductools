@@ -1,4 +1,4 @@
-import FractionsMdx from '../../content/blog/fractions.mdx';
+import FractionsMdx from '../../content/deep-dives/fractions.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 

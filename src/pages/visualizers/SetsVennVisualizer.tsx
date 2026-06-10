@@ -1,4 +1,4 @@
-import SetsVennMdx from '../../content/blog/sets-venn.mdx';
+import SetsVennMdx from '../../content/deep-dives/sets-venn.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 

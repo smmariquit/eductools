@@ -1,4 +1,4 @@
-import IntegerNumberLineMdx from '../../content/blog/integer-number-line.mdx';
+import IntegerNumberLineMdx from '../../content/deep-dives/integer-number-line.mdx';
 import { useState, useRef, useEffect } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 

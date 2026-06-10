@@ -1,4 +1,4 @@
-import WaterCycleMdx from '../../content/blog/water-cycle.mdx';
+import WaterCycleMdx from '../../content/deep-dives/water-cycle.mdx';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import VisualizerLayout from '../../components/VisualizerLayout';

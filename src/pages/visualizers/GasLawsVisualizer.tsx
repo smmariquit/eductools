@@ -1,4 +1,4 @@
-import GasLawsMdx from '../../content/blog/gas-laws.mdx';
+import GasLawsMdx from '../../content/deep-dives/gas-laws.mdx';
 import { useState, useRef, useEffect, useCallback } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 

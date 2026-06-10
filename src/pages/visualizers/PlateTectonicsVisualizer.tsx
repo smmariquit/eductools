@@ -1,4 +1,4 @@
-import PlateTectonicsMdx from '../../content/blog/plate-tectonics.mdx';
+import PlateTectonicsMdx from '../../content/deep-dives/plate-tectonics.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 

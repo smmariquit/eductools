@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import VisualizerLayout from '../../components/VisualizerLayout';
-import ComputerScienceMdx from '../../content/blog/computer-science.mdx';
+import ComputerScienceMdx from '../../content/deep-dives/computer-science.mdx';
 
 const ByteEditor = ({ label, color, bits, onChange }: { label: string, color: string, bits: number[], onChange: (bits: number[]) => void }) => {
   const toggleBit = (index: number) => {

@@ -1,4 +1,4 @@
-import ElectromagneticSpectrumMdx from '../../content/blog/electromagnetic-spectrum.mdx';
+import ElectromagneticSpectrumMdx from '../../content/deep-dives/electromagnetic-spectrum.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 

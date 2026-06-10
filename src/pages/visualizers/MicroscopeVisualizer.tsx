@@ -1,4 +1,4 @@
-import MicroscopeMdx from '../../content/blog/microscope.mdx';
+import MicroscopeMdx from '../../content/deep-dives/microscope.mdx';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import VisualizerLayout from '../../components/VisualizerLayout';

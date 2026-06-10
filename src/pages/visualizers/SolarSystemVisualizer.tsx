@@ -1,4 +1,4 @@
-import SolarSystemMdx from '../../content/blog/solar-system.mdx';
+import SolarSystemMdx from '../../content/deep-dives/solar-system.mdx';
 import { useRef, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Stars, Html } from '@react-three/drei';

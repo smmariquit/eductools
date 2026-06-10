@@ -1,4 +1,4 @@
-import RockCycleMdx from '../../content/blog/rock-cycle.mdx';
+import RockCycleMdx from '../../content/deep-dives/rock-cycle.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 import { motion } from 'framer-motion';

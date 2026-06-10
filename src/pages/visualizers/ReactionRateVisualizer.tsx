@@ -1,4 +1,4 @@
-import ReactionRateMdx from '../../content/blog/reaction-rate.mdx';
+import ReactionRateMdx from '../../content/deep-dives/reaction-rate.mdx';
 import { useState, useRef, useEffect, useCallback } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 

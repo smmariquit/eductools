@@ -1,4 +1,4 @@
-import TrigonometryMdx from '../../content/blog/trigonometry.mdx';
+import TrigonometryMdx from '../../content/deep-dives/trigonometry.mdx';
 import { useState, useRef, useEffect } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 

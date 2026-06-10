@@ -1,4 +1,4 @@
-import ChemicalBondingMdx from '../../content/blog/chemical-bonding.mdx';
+import ChemicalBondingMdx from '../../content/deep-dives/chemical-bonding.mdx';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 

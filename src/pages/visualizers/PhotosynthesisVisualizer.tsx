@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import VisualizerLayout from '../../components/VisualizerLayout';
-import PhotosynthesisMdx from '../../content/blog/photosynthesis.mdx';
+import PhotosynthesisMdx from '../../content/deep-dives/photosynthesis.mdx';
 
 // ==========================================
 // Object Pool for Canvas Particles (GC Friendly)

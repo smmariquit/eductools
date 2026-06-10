@@ -1,4 +1,4 @@
-import SequencesMdx from '../../content/blog/sequences.mdx';
+import SequencesMdx from '../../content/deep-dives/sequences.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 

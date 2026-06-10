@@ -1,4 +1,4 @@
-import PermutationsCombinationsMdx from '../../content/blog/permutations-combinations.mdx';
+import PermutationsCombinationsMdx from '../../content/deep-dives/permutations-combinations.mdx';
 import { useState, useMemo } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 

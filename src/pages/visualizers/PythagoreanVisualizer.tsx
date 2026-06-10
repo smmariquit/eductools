@@ -1,4 +1,4 @@
-import PythagoreanMdx from '../../content/blog/pythagorean.mdx';
+import PythagoreanMdx from '../../content/deep-dives/pythagorean.mdx';
 import { useState, useRef, useEffect } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 

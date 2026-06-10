@@ -1,4 +1,4 @@
-import LifeCyclesMdx from '../../content/blog/life-cycles.mdx';
+import LifeCyclesMdx from '../../content/deep-dives/life-cycles.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 

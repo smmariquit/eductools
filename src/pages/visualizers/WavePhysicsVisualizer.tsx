@@ -1,4 +1,4 @@
-import WavePhysicsMdx from '../../content/blog/wave-physics.mdx';
+import WavePhysicsMdx from '../../content/deep-dives/wave-physics.mdx';
 import { useRef, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Environment } from '@react-three/drei';

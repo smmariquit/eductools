@@ -1,4 +1,4 @@
-import DensityMdx from '../../content/blog/density.mdx';
+import DensityMdx from '../../content/deep-dives/density.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 

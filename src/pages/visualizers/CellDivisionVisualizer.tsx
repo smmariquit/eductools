@@ -1,4 +1,4 @@
-import CellDivisionMdx from '../../content/blog/cell-division.mdx';
+import CellDivisionMdx from '../../content/deep-dives/cell-division.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 

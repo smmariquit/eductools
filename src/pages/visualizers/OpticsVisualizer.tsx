@@ -1,4 +1,4 @@
-import OpticsMdx from '../../content/blog/optics.mdx';
+import OpticsMdx from '../../content/deep-dives/optics.mdx';
 import { useState, useRef, useEffect } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 

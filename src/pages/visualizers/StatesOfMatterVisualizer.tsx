@@ -1,4 +1,4 @@
-import StatesOfMatterMdx from '../../content/blog/states-of-matter.mdx';
+import StatesOfMatterMdx from '../../content/deep-dives/states-of-matter.mdx';
 import { useState, useEffect, useRef } from 'react';
 import Matter from 'matter-js';
 import VisualizerLayout from '../../components/VisualizerLayout';

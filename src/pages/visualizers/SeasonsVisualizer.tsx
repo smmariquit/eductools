@@ -1,4 +1,4 @@
-import SeasonsMdx from '../../content/blog/seasons.mdx';
+import SeasonsMdx from '../../content/deep-dives/seasons.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 

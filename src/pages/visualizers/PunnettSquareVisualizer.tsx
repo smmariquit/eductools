@@ -1,4 +1,4 @@
-import PunnettSquareMdx from '../../content/blog/punnett-square.mdx';
+import PunnettSquareMdx from '../../content/deep-dives/punnett-square.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 

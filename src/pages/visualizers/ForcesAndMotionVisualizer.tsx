@@ -1,4 +1,4 @@
-import ForcesAndMotionMdx from '../../content/blog/forces-and-motion.mdx';
+import ForcesAndMotionMdx from '../../content/deep-dives/forces-and-motion.mdx';
 import { useState, useEffect } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 

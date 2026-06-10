@@ -1,4 +1,4 @@
-import SurfaceAreaMdx from '../../content/blog/surface-area.mdx';
+import SurfaceAreaMdx from '../../content/deep-dives/surface-area.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 

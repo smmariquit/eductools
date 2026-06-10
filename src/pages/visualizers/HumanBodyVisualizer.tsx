@@ -1,4 +1,4 @@
-import HumanBodyMdx from '../../content/blog/human-body.mdx';
+import HumanBodyMdx from '../../content/deep-dives/human-body.mdx';
 import { useState, useEffect, useRef } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 

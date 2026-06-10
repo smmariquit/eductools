@@ -1,4 +1,4 @@
-import ElectricCircuitsMdx from '../../content/blog/electric-circuits.mdx';
+import ElectricCircuitsMdx from '../../content/deep-dives/electric-circuits.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
