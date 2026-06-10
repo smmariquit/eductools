@@ -1,3 +1,4 @@
+import WaterCycleMdx from '../../content/blog/water-cycle.mdx';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import VisualizerLayout from '../../components/VisualizerLayout';
@@ -12,17 +13,7 @@ const WaterCycleVisualizer = () => {
       title="Siklo ng Tubig (Water Cycle)"
       description="Interactive visualization of how water moves through the Philippine environment."
       adSlotId="2001"
-      educationalContent={
-        <>
-          <h2>The Water Cycle in the Philippines</h2>
-          <p>The water cycle describes the continuous movement of water on, above, and below the surface of the Earth. In a tropical archipelago like the Philippines, this cycle drives our distinct <strong>Tag-araw</strong> (Dry) and <strong>Tag-ulan</strong> (Wet) seasons.</p>
-          <ul>
-            <li><strong>Pagsingaw (Evaporation):</strong> The intense tropical sun heats up water in bodies like the <em>Pacific Ocean</em> or <em>Laguna de Bay</em>, turning it into water vapor.</li>
-            <li><strong>Pamumuo (Condensation):</strong> As warm, moist air rises over our mountainous regions (like the <em>Cordilleras</em>), it cools down and changes back into liquid drops, forming the heavy Cumulonimbus clouds often monitored by PAGASA.</li>
-            <li><strong>Pag-ulan (Precipitation):</strong> When clouds become too heavy, water falls back to the islands as rain. This is vital for agriculture (like rice terraces) and fills up reservoirs like the <em>Angat Dam</em>, though intense precipitation leads to typhoons.</li>
-          </ul>
-        </>
-      }
+      educationalContent={<WaterCycleMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 grid md:grid-cols-2 gap-8">

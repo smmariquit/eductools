@@ -1,3 +1,4 @@
+import FractionsMdx from '../../content/blog/fractions.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -10,16 +11,7 @@ const FractionsVisualizer = () => {
       title="Hatig-bilang (Fractions Visualizer)"
       description="Interactive tool for understanding basic mathematical fractions using a Buko Pie."
       adSlotId="1010"
-      educationalContent={
-        <>
-          <h2>Understanding Fractions: Primary Mathematics</h2>
-          <p>A fraction represents a part of a whole. Let's use a famous Laguna <strong>Buko Pie</strong> as our whole!</p>
-          <ul>
-            <li><strong>Numerator (Nasa Itaas):</strong> Specifies how many slices you have eaten or taken.</li>
-            <li><strong>Denominator (Nasa Ibaba):</strong> Specifies how many equal slices the entire pie was cut into.</li>
-          </ul>
-        </>
-      }
+      educationalContent={<FractionsMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-10 flex flex-col items-center">

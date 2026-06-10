@@ -1,3 +1,4 @@
+import SequencesMdx from '../../content/blog/sequences.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -39,21 +40,7 @@ const SequencesVisualizer = () => {
       title="Sequences & Patterns (Mga Pagkakasunud-sunod)"
       description="Visualize arithmetic and geometric sequences. Build the formula for the nth term interactively."
       adSlotId="2013"
-      educationalContent={
-        <>
-          <h2>Sequences and Series: Math Grade 8 (MATATAG)</h2>
-          <p>A <strong>sequence</strong> is an ordered list of numbers that follows a specific pattern or rule. Understanding how to find the rule behind a pattern and express it as a formula is a critical algebraic skill.</p>
-          <h3>Arithmetic Sequence (Pagkakasunodsunod na Aritmetika)</h3>
-          <p>Each term is found by <strong>adding</strong> a constant value called the <strong>common difference (d)</strong>.</p>
-          <p>Formula: <span className="font-serif italic">a<sub>n</sub></span> = <span className="font-serif italic">a<sub>1</sub></span> + (<span className="font-serif italic">n</span> − 1)<span className="font-serif italic">d</span></p>
-          <p>Example: 2, 5, 8, 11, 14... (d = 3)</p>
-          <h3>Geometric Sequence (Pagkakasunodsunod na Heometriko)</h3>
-          <p>Each term is found by <strong>multiplying</strong> by a constant value called the <strong>common ratio (r)</strong>.</p>
-          <p>Formula: <span className="font-serif italic">a<sub>n</sub></span> = <span className="font-serif italic">a<sub>1</sub></span> · <span className="font-serif italic">r</span><sup>(<span className="font-serif italic">n</span> − 1)</sup></p>
-          <p>Example: 3, 6, 12, 24, 48... (r = 2)</p>
-          <p>Try changing the first term, common difference/ratio, and see how the pattern changes in the bar chart above!</p>
-        </>
-      }
+      educationalContent={<SequencesMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col lg:flex-row gap-8">

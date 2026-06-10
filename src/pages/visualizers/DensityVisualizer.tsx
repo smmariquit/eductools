@@ -1,3 +1,4 @@
+import DensityMdx from '../../content/blog/density.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -30,17 +31,7 @@ const DensityVisualizer = () => {
       title="Density at Buoyancy (Lulutang o Lulubog?)"
       description="Observe Archimedes' principle to see why heavy boats float while small coins sink."
       adSlotId="2004"
-      educationalContent={
-        <>
-          <h2>Properties of Matter: Grade 7 Science</h2>
-          <p>Density (<span className="font-serif italic">&rho;</span>) is a measure of mass (<span className="font-serif italic">m</span>) per unit of volume (<span className="font-serif italic">V</span>). The formula is:</p>
-          <div className="bg-base-200 p-2 rounded-lg text-center my-2 border border-base-300">
-            <span className="font-serif italic text-xl">&rho; = m / V</span>
-          </div>
-          <h3>Bakit lumulutang ang Bangka? (Why do boats float?)</h3>
-          <p>A massive wooden <em>Bangka</em> (boat) can float while a tiny <em>Piso</em> (1-peso coin) sinks immediately. This is because density, not just mass, determines buoyancy. The density of pure water is <strong>1000 kg/m³</strong>. If an object's overall density is less than water's, it floats!</p>
-        </>
-      }
+      educationalContent={<DensityMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8">

@@ -1,3 +1,4 @@
+import SolarSystemMdx from '../../content/blog/solar-system.mdx';
 import { useRef, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Stars, Html } from '@react-three/drei';
@@ -62,14 +63,7 @@ const SolarSystemVisualizer = () => {
       title="Ang Sistema Solar (Solar System)"
       description="Interactive 3D visualizer demonstrating planetary orbits and relative distances."
       adSlotId="1009"
-      educationalContent={
-        <>
-          <h2>Earth and Space: Grade 6 Science</h2>
-          <p>The Solar System consists of the Sun and the astronomical objects bound to it by gravity. Historically, ancient Filipinos (like pre-colonial Visayans and Tagalogs) used the stars and planets for navigation and agriculture, observing cycles to know when to plant crops.</p>
-          <h3>Planetary Orbits</h3>
-          <p>Notice how planets closer to the Sun (like Merkuryo) travel much faster and have shorter orbital periods compared to gas giants like Jupiter, due to stronger gravitational pull.</p>
-        </>
-      }
+      educationalContent={<SolarSystemMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-4 md:p-6">

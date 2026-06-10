@@ -1,3 +1,4 @@
+import IntegerNumberLineMdx from '../../content/blog/integer-number-line.mdx';
 import { useState, useRef, useEffect } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -182,22 +183,7 @@ const IntegerNumberLineVisualizer = () => {
       title="Integer Number Line (Bilang na Buumbilang)"
       description="Visualize addition and subtraction of integers on an interactive number line. Understand positive and negative numbers."
       adSlotId="2011"
-      educationalContent={
-        <>
-          <h2>Integers and Operations: Math Grade 7 (MATATAG)</h2>
-          <p>An <strong>integer</strong> is any whole number, including negative numbers, zero, and positive numbers: ...−3, −2, −1, 0, 1, 2, 3...</p>
-          <h3>Paano Gamitin ang Number Line</h3>
-          <ul>
-            <li><strong>Addition of a Positive:</strong> Move to the <span className="text-success font-bold">RIGHT</span> on the number line.</li>
-            <li><strong>Addition of a Negative:</strong> Move to the <span className="text-error font-bold">LEFT</span> on the number line.</li>
-            <li><strong>Subtraction of a Positive:</strong> Move to the <span className="text-error font-bold">LEFT</span> (opposite of addition).</li>
-            <li><strong>Subtraction of a Negative:</strong> Move to the <span className="text-success font-bold">RIGHT</span> (subtracting a negative is adding).</li>
-          </ul>
-          <h3>Bakit Mahalaga ang Integers?</h3>
-          <p>Understanding integer operations is the <strong>absolute foundation</strong> for all algebra. If you cannot add and subtract negative numbers confidently, you cannot solve equations, work with coordinates, or understand scientific formulas. Every mathematical concept from Grade 8 onward depends on this skill.</p>
-          <p>Use the simulator above to see how the arrows move on the number line. Pay attention to the <strong>direction</strong> of movement — that's the key to understanding integer operations!</p>
-        </>
-      }
+      educationalContent={<IntegerNumberLineMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col gap-8">

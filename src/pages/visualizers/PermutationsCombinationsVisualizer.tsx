@@ -1,3 +1,4 @@
+import PermutationsCombinationsMdx from '../../content/blog/permutations-combinations.mdx';
 import { useState, useMemo } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -81,19 +82,7 @@ const PermutationsCombinationsVisualizer = () => {
       title="Permutations & Combinations (Permutasyon at Kumbinasyon)"
       description="Understand the difference between permutations (order matters) and combinations (order doesn't matter) with visual counting."
       adSlotId="2020"
-      educationalContent={
-        <>
-          <h2>Permutations and Combinations: Math Grade 10 (MATATAG)</h2>
-          <p>Both permutations and combinations deal with choosing items from a group, but they differ in whether <strong>order matters</strong>.</p>
-          <h3>Permutation (Pagkakaayos)</h3>
-          <p>Order <strong>MATTERS</strong>. Choosing a President, VP, and Secretary from 5 people is a permutation because each role is different.</p>
-          <p className="font-mono text-lg"><span className="font-serif italic">P</span>(<span className="font-serif italic">n</span>, <span className="font-serif italic">r</span>) = <span className="font-serif italic">n</span>! / (<span className="font-serif italic">n</span> − <span className="font-serif italic">r</span>)!</p>
-          <h3>Combination (Pagpili)</h3>
-          <p>Order <strong>DOES NOT matter</strong>. Choosing 3 people for a committee from 5 is a combination because all committee members have the same role.</p>
-          <p className="font-mono text-lg"><span className="font-serif italic">C</span>(<span className="font-serif italic">n</span>, <span className="font-serif italic">r</span>) = <span className="font-serif italic">n</span>! / (<span className="font-serif italic">r</span>! × (<span className="font-serif italic">n</span> − <span className="font-serif italic">r</span>)!)</p>
-          <p>Notice how permutations always produce a larger number than combinations (or equal, when r ≤ 1). That's because multiple orderings of the same group collapse into one combination!</p>
-        </>
-      }
+      educationalContent={<PermutationsCombinationsMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col gap-8">

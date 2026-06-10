@@ -1,3 +1,4 @@
+import PlateTectonicsMdx from '../../content/blog/plate-tectonics.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -9,17 +10,7 @@ const PlateTectonicsVisualizer = () => {
       title="Philippine Plate Tectonics"
       description="Visualize different types of tectonic plate boundaries using Philippine geological features."
       adSlotId="1007"
-      educationalContent={
-        <>
-          <h2>Earth's Plates: Grade 10 Earth Science</h2>
-          <p>The Earth's lithosphere is broken into massive plates that slowly move. The Philippines is a highly geologically active country situated along the Pacific Ring of Fire.</p>
-          <ul>
-            <li><strong>Nagsasalpukan (Convergent Boundaries):</strong> Plates collide. The subduction of the Philippine Sea Plate creates trenches and active volcanoes like <strong>Mt. Mayon</strong>.</li>
-            <li><strong>Naghihiwalay (Divergent Boundaries):</strong> Plates move apart. Magma rises to create new crust.</li>
-            <li><strong>Nagkikiskisan (Transform Boundaries):</strong> Plates slide past each other horizontally. The <strong>Philippine Fault Zone</strong> is a major transform fault system causing significant earthquakes across the archipelago.</li>
-          </ul>
-        </>
-      }
+      educationalContent={<PlateTectonicsMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body items-center p-6 md:p-10">

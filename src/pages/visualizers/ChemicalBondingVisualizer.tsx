@@ -1,3 +1,4 @@
+import ChemicalBondingMdx from '../../content/blog/chemical-bonding.mdx';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -65,15 +66,7 @@ const ChemicalBondingVisualizer = () => {
       title="Pagbuo ng Asin (Chemical Bonding)"
       description="Visualize ionic bonding and electron transfer between Sodium (Na) and Chlorine (Cl) to make Table Salt."
       adSlotId="1006"
-      educationalContent={
-        <>
-          <h2>Ionic Bonds: Grade 9 Chemistry</h2>
-          <p>Chemical bonding involves the transfer or sharing of electrons to achieve a stable electron configuration, known as the octet rule.</p>
-          <h3>Sodium Chloride (Asin)</h3>
-          <p>Table salt (Asin) is a staple in Philippine cooking, essential for making <em>Tuyo</em>, <em>Daing</em>, and flavoring <em>Sinigang</em>.</p>
-          <p>Sodium (Na) has one valence electron, while Chlorine (Cl) has seven. By transferring its single valence electron to Chlorine, Sodium empties its outermost shell. The opposite charges attract, forming an <strong>ionic bond</strong>.</p>
-        </>
-      }
+      educationalContent={<ChemicalBondingMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body items-center py-12 overflow-x-auto">

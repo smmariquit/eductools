@@ -1,3 +1,4 @@
+import ElectricCircuitsMdx from '../../content/blog/electric-circuits.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -11,15 +12,7 @@ const ElectricCircuitsVisualizer = () => {
       title="Electric Circuits (Kuryente)"
       description="Compare how Series and Parallel circuits work."
       adSlotId="2008"
-      educationalContent={
-        <>
-          <h2>Electricity and Circuits: Science Grade 8</h2>
-          <p>An electric circuit is a path in which electrons from a voltage or current source flow.</p>
-          <h3>Series vs. Parallel Circuits</h3>
-          <p>In a <strong>Series Circuit</strong>, components are connected end-to-end, forming a single path for current flow. If one bulb burns out, the entire circuit is broken.</p>
-          <p>In a <strong>Parallel Circuit</strong>, components are connected across each other, forming exactly two sets of electrically common points. If one bulb burns out, the other branches continue to work.</p>
-        </>
-      }
+      educationalContent={<ElectricCircuitsMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col md:flex-row gap-10">

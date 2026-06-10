@@ -1,3 +1,4 @@
+import RockCycleMdx from '../../content/blog/rock-cycle.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 import { motion } from 'framer-motion';
@@ -17,17 +18,7 @@ const RockCycleVisualizer = () => {
       title="Siklo ng mga Bato (Rock Cycle)"
       description="Discover how geological processes transform rocks over time in the Philippine archipelago."
       adSlotId="2009"
-      educationalContent={
-        <>
-          <h2>Earth Science: Grade 11</h2>
-          <p>The rock cycle describes transitions through geologic time among the three main rock types. The Philippines, being highly volcanic and tectonically active, exhibits all these rocks vividly.</p>
-          <ul>
-            <li><strong>Batong Apoy (Igneous):</strong> Formed from cooling magma or lava. The 1991 eruption of Mt. Pinatubo produced massive amounts of Pumice and Ash (igneous materials).</li>
-            <li><strong>Batong Latak (Sedimentary):</strong> Formed from compaction of sediments over millions of years. The famous Subterranean River National Park in Palawan is carved out of massive limestone karst (sedimentary rock).</li>
-            <li><strong>Batong Nagbago (Metamorphic):</strong> Existing rocks transformed by extreme heat and pressure deep underground. The province of Romblon is the "Marble Capital of the Philippines" because of its rich deposits of high-quality metamorphic marble.</li>
-          </ul>
-        </>
-      }
+      educationalContent={<RockCycleMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-10 text-center">

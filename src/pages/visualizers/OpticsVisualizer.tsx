@@ -1,3 +1,4 @@
+import OpticsMdx from '../../content/blog/optics.mdx';
 import { useState, useRef, useEffect } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -251,21 +252,7 @@ const OpticsVisualizer = () => {
       title="Optics Simulator (Optika)"
       description="Explore image formation by concave, convex, and plane mirrors. Trace rays and understand magnification."
       adSlotId="2014"
-      educationalContent={
-        <>
-          <h2>Light and Optics: Science Grade 10 (MATATAG)</h2>
-          <p>Mirrors form images by reflecting light. The type of image depends on the <strong>mirror shape</strong> and the <strong>object distance</strong>.</p>
-          <h3>Mirror Equation</h3>
-          <p className="font-mono text-lg">1/<span className="font-serif italic">f</span> = 1/<span className="font-serif italic">d<sub>o</sub></span> + 1/<span className="font-serif italic">d<sub>i</sub></span></p>
-          <p>Where <span className="font-serif italic">f</span> = focal length, <span className="font-serif italic">d<sub>o</sub></span> = object distance, <span className="font-serif italic">d<sub>i</sub></span> = image distance.</p>
-          <h3>Types of Images</h3>
-          <ul>
-            <li><strong>Real Image:</strong> Light rays actually converge. Can be projected on a screen. Always inverted.</li>
-            <li><strong>Virtual Image:</strong> Light rays appear to diverge from the image. Cannot be projected. Always upright.</li>
-          </ul>
-          <p>Move the object closer and farther from the mirror to see how the image changes!</p>
-        </>
-      }
+      educationalContent={<OpticsMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col lg:flex-row gap-8">

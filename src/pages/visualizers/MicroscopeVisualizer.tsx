@@ -1,3 +1,4 @@
+import MicroscopeMdx from '../../content/blog/microscope.mdx';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import VisualizerLayout from '../../components/VisualizerLayout';
@@ -11,20 +12,7 @@ const MicroscopeVisualizer = () => {
       title="Birtwal na Mikroskopyo (Microscope)"
       description="Examine the cellular structures of a Mango leaf at varying magnifications."
       adSlotId="1004"
-      educationalContent={
-        <>
-          <h2>Microscopy and Cells: Grade 7 Science</h2>
-          <p>The microscope is the primary tool used by biologists to study cells, the basic unit of life. Not all schools have physical microscopes, so this virtual tool helps you see the microscopic world.</p>
-          <h3>Dahon ng Mangga (Mango Leaf Cell)</h3>
-          <p>In this simulation, you are viewing a typical plant cell from a Mango tree. Switch objectives to observe detail:</p>
-          <ul>
-            <li><strong>Cell Wall:</strong> The rigid outer boundary that gives the plant cell its shape.</li>
-            <li><strong>Nucleus (Blue):</strong> The control center of the cell containing genetic material.</li>
-            <li><strong>Large Central Vacuole (Light Blue):</strong> Stores water and maintains turgor pressure during the dry season.</li>
-            <li><strong>Chloroplasts (Green):</strong> The site of photosynthesis. At 400x magnification, you can see the internal grana stacks.</li>
-          </ul>
-        </>
-      }
+      educationalContent={<MicroscopeMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body items-center p-6 md:p-10">

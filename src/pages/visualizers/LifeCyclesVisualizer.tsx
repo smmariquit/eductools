@@ -1,3 +1,4 @@
+import LifeCyclesMdx from '../../content/blog/life-cycles.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -15,14 +16,7 @@ const LifeCyclesVisualizer = () => {
       title="Sardinella tawilis Life Cycle"
       description="Explore the biological life cycle of the endemic Sardinella tawilis of Taal Lake."
       adSlotId="1002"
-      educationalContent={
-        <>
-          <h2>Understanding Life Cycles in Grade 4 Science</h2>
-          <p>The study of animal life cycles introduces students to biological growth, development, and reproduction. The MATATAG curriculum emphasizes contextualizing science using local biodiversity.</p>
-          <h3>The Endemic Tawilis</h3>
-          <p>The <strong>Sardinella tawilis</strong> is the only known species of sardine that exists entirely in freshwater. Found exclusively in Taal Lake, Philippines, studying its life cycle helps students appreciate local ecology and the importance of conservation.</p>
-        </>
-      }
+      educationalContent={<LifeCyclesMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200 text-center py-10">
         <div className="card-body items-center">

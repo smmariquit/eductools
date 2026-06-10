@@ -1,3 +1,4 @@
+import SetsVennMdx from '../../content/blog/sets-venn.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -57,24 +58,7 @@ const SetsVennVisualizer = () => {
       title="Sets & Venn Diagrams (Mga Set at Venn Diagram)"
       description="Explore set operations: union, intersection, and difference using interactive Venn diagrams."
       adSlotId="2016"
-      educationalContent={
-        <>
-          <h2>Sets and Set Operations: Math Grade 7 (MATATAG)</h2>
-          <p>A <strong>set</strong> is a well-defined collection of distinct objects, called <strong>elements</strong> or <strong>members</strong>.</p>
-          <h3>Notations</h3>
-          <ul>
-            <li><strong>Roster Method:</strong> List all elements inside braces. Example: A = &#123;1, 2, 3, 4&#125;</li>
-            <li><strong>Cardinality:</strong> The number of elements in a set. n(A) = 4</li>
-          </ul>
-          <h3>Set Operations</h3>
-          <ul>
-            <li><strong>Union (A ∪ B):</strong> All elements that are in A <em>or</em> B (or both). Combine everything.</li>
-            <li><strong>Intersection (A ∩ B):</strong> Only elements that are in <em>both</em> A and B. The overlap.</li>
-            <li><strong>Difference (A − B):</strong> Elements in A that are <em>not</em> in B.</li>
-          </ul>
-          <p>Try entering your own sets and selecting different operations to see how the Venn diagram highlights change!</p>
-        </>
-      }
+      educationalContent={<SetsVennMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col gap-8">

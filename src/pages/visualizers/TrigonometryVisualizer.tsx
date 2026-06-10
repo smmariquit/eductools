@@ -1,3 +1,4 @@
+import TrigonometryMdx from '../../content/blog/trigonometry.mdx';
 import { useState, useRef, useEffect } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -206,21 +207,7 @@ const TrigonometryVisualizer = () => {
       title="Trigonometry Visualizer (Trigonometriya)"
       description="Explore sine, cosine, and tangent ratios with an interactive right triangle. See how changing the angle affects the ratios in real time."
       adSlotId="2012"
-      educationalContent={
-        <>
-          <h2>Trigonometric Ratios: Math Grade 9 (MATATAG)</h2>
-          <p>Trigonometry is the study of relationships between the sides and angles of triangles. The three primary trigonometric ratios are based on a <strong>right triangle</strong>:</p>
-          <h3>SOH-CAH-TOA</h3>
-          <ul>
-            <li><strong>SOH:</strong> <span className="font-serif italic">sin(θ)</span> = <span className="text-error font-bold">Opposite</span> / <span className="text-info font-bold">Hypotenuse</span></li>
-            <li><strong>CAH:</strong> <span className="font-serif italic">cos(θ)</span> = <span className="text-success font-bold">Adjacent</span> / <span className="text-info font-bold">Hypotenuse</span></li>
-            <li><strong>TOA:</strong> <span className="font-serif italic">tan(θ)</span> = <span className="text-error font-bold">Opposite</span> / <span className="text-success font-bold">Adjacent</span></li>
-          </ul>
-          <h3>Real-World Applications (Paggamit sa Tunay na Buhay)</h3>
-          <p>Trigonometry is used to calculate the height of buildings, the distance across rivers, the angle of elevation when looking at a mountain peak, and even in navigation and engineering. Filipino surveyors use these ratios every day to measure land parcels and building heights.</p>
-          <p>Try setting the angle to 45° — notice how sin and cos are equal! At 30° and 60°, observe the classic ratios used throughout physics and engineering.</p>
-        </>
-      }
+      educationalContent={<TrigonometryMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col lg:flex-row gap-8">

@@ -1,3 +1,4 @@
+import SeasonsMdx from '../../content/blog/seasons.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -20,18 +21,7 @@ const SeasonsVisualizer = () => {
       title="Panahon sa Pilipinas (Seasons & Monsoons)"
       description="Understand why the Earth's tilt causes seasons, and how it affects the Philippine wet and dry periods."
       adSlotId="2003"
-      educationalContent={
-        <>
-          <h2>Earth and Space: Grade 6 Science</h2>
-          <p>The Earth's axis of rotation is tilted at an angle of 23.5 degrees relative to its orbital plane around the Sun. This tilt is the primary reason for seasons globally.</p>
-          <h3>Why no Winter in the Philippines?</h3>
-          <p>Because the Philippines is located very close to the equator, we do not experience the dramatic four seasons (Spring, Summer, Autumn, Winter) of temperate regions. Instead, we have two primary seasons dictated by trade winds and monsoon patterns:</p>
-          <ul>
-            <li><strong>Tag-araw (Dry Season):</strong> Generally from December to May. It includes the cool dry months dominated by the <em>Amihan</em> (Northeast Monsoon) and the hot dry months.</li>
-            <li><strong>Tag-ulan (Wet Season):</strong> Generally from June to November. Driven by the <em>Habagat</em> (Southwest Monsoon), bringing heavy rainfall and typhoons.</li>
-          </ul>
-        </>
-      }
+      educationalContent={<SeasonsMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body items-center p-6 md:p-10">

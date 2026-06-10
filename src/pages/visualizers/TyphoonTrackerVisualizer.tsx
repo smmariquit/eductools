@@ -1,3 +1,4 @@
+import TyphoonTrackerMdx from '../../content/blog/typhoon-tracker.mdx';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import VisualizerLayout from '../../components/VisualizerLayout';
@@ -22,20 +23,7 @@ const TyphoonTrackerVisualizer = () => {
       title="Typhoon Tracker (DRRR)"
       description="Simulate PAGASA Tropical Cyclone categories and potential landfall impacts."
       adSlotId="1009"
-      educationalContent={
-        <>
-          <h2>Disaster Readiness and Risk Reduction (DRRR)</h2>
-          <p>The Philippines uses the PAGASA Tropical Cyclone Wind Signal (TCWS) system to categorize storms based on maximum sustained winds.</p>
-          <ul>
-            <li><strong>Tropical Depression (TD):</strong> Up to 61 km/h</li>
-            <li><strong>Tropical Storm (TS):</strong> 62 to 88 km/h</li>
-            <li><strong>Severe Tropical Storm (STS):</strong> 89 to 117 km/h</li>
-            <li><strong>Typhoon (TY):</strong> 118 to 184 km/h</li>
-            <li><strong>Super Typhoon (STY):</strong> 185 km/h or higher</li>
-          </ul>
-          <p>Lower central pressure (hPa) generally correlates with higher wind speeds. Storm surge potential increases exponentially with wind energy.</p>
-        </>
-      }
+      educationalContent={<TyphoonTrackerMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 flex flex-col gap-6">

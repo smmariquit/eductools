@@ -1,3 +1,4 @@
+import GcfLcmMdx from '../../content/blog/gcf-lcm.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -91,26 +92,7 @@ const GcfLcmVisualizer = () => {
       title="GCF & LCM Explorer (GCF at LCM)"
       description="Find the Greatest Common Factor and Least Common Multiple using prime factorization and Venn diagrams."
       adSlotId="2015"
-      educationalContent={
-        <>
-          <h2>GCF and LCM: Math Grade 4-5 (MATATAG)</h2>
-          <p>The <strong>Greatest Common Factor (GCF)</strong> is the largest number that divides evenly into two or more numbers. The <strong>Least Common Multiple (LCM)</strong> is the smallest number that is a multiple of both numbers.</p>
-          <h3>Using Prime Factorization</h3>
-          <ul>
-            <li><strong>Step 1:</strong> Break each number into its prime factors (factor tree).</li>
-            <li><strong>Step 2:</strong> Put the factors into a Venn diagram.</li>
-            <li><strong>Step 3:</strong> The <strong>GCF</strong> is the product of the <em>common</em> (overlapping) factors.</li>
-            <li><strong>Step 4:</strong> The <strong>LCM</strong> is the product of <em>all</em> factors in the entire diagram.</li>
-          </ul>
-          <p>Example: For 12 and 18:</p>
-          <ul>
-            <li>12 = 2 × 2 × 3</li>
-            <li>18 = 2 × 3 × 3</li>
-            <li>Common: 2 × 3 = <strong>GCF = 6</strong></li>
-            <li>All: 2 × 2 × 3 × 3 = <strong>LCM = 36</strong></li>
-          </ul>
-        </>
-      }
+      educationalContent={<GcfLcmMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col gap-8">

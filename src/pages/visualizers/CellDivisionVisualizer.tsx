@@ -1,3 +1,4 @@
+import CellDivisionMdx from '../../content/blog/cell-division.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -11,20 +12,7 @@ const CellDivisionVisualizer = () => {
       title="Pagdami ng Selula (Cell Division)"
       description="Observe the stages of cellular replication (Mitosis) used for growth and repair."
       adSlotId="2008"
-      educationalContent={
-        <>
-          <h2>Cellular Reproduction: Grade 8 Biology</h2>
-          <p>Mitosis is a part of the cell cycle where replicated chromosomes are separated into two new, identical nuclei. This process is essential for growth and repair.</p>
-          <h3>Healing a "Sugat" (Wound)</h3>
-          <p>Imagine you get a scrape on your knee while playing basketball in the barangay court. How does your skin heal? Your skin cells undergo <strong>Mitosis</strong> to multiply and replace the damaged tissue.</p>
-          <ul>
-            <li><strong>Prophase:</strong> Chromosomes condense and become visible.</li>
-            <li><strong>Metaphase:</strong> They align at the cell's center (equator).</li>
-            <li><strong>Anaphase:</strong> They are pulled apart to opposite sides.</li>
-            <li><strong>Telophase:</strong> The cell divides into two identical daughter cells, ready to heal your skin!</li>
-          </ul>
-        </>
-      }
+      educationalContent={<CellDivisionMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-10 grid md:grid-cols-[1fr_250px] gap-8">

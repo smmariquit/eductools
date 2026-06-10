@@ -1,3 +1,4 @@
+import HumanBodyMdx from '../../content/blog/human-body.mdx';
 import { useState, useEffect, useRef } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -11,18 +12,7 @@ const HumanBodyVisualizer = () => {
       title="Advanced Human Body Systems"
       description="Interactive physiological models based on international competency standards."
       adSlotId="1003"
-      educationalContent={
-        <>
-          <h2>Human Physiology & System Integration (Grades 7-10)</h2>
-          <p>This advanced visualizer moves beyond simple organ identification to demonstrate how the human body acts as an integrated network of subsystems to maintain internal balance (homeostasis).</p>
-          <ul>
-            <li><strong>Cardiorespiratory Homeostasis:</strong> See how exercise increases carbon dioxide, triggering faster heart rates and deeper breaths.</li>
-            <li><strong>Vascular Mapping:</strong> Understand that blood is never blue! Watch how oxygenation changes blood color from bright crimson to dark purplish-red in both systemic and pulmonary circuits.</li>
-            <li><strong>Intestinal Absorption:</strong> Zoom into a single microscopic villus to watch nutrients diffuse into blood capillaries and lymphatic lacteals.</li>
-            <li><strong>Synaptic Reflex Arc:</strong> Trace a nerve impulse in real-time. See how the spinal cord uses excitatory and inhibitory signals to coordinate muscle movements simultaneously.</li>
-          </ul>
-        </>
-      }
+      educationalContent={<HumanBodyMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200 overflow-hidden">
         

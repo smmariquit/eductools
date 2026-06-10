@@ -1,3 +1,4 @@
+import SolutionConcentrationMdx from '../../content/blog/solution-concentration.mdx';
 import { useState, useRef, useEffect } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -174,20 +175,7 @@ const SolutionConcentrationVisualizer = () => {
       title="Solution Concentration Lab (Konsentrasyon ng Solusyon)"
       description="Explore percent by mass and percent by volume. Observe saturation and solubility limits visually with a virtual beaker."
       adSlotId="2010"
-      educationalContent={
-        <>
-          <h2>Solutions and Concentration: Science Grade 7 (MATATAG)</h2>
-          <p>A <strong>solution</strong> is a homogeneous mixture of a <strong>solute</strong> (the substance being dissolved) and a <strong>solvent</strong> (the substance doing the dissolving). The <strong>concentration</strong> tells us how much solute is dissolved in a given amount of solution.</p>
-          <h3>Paraan ng Pagsukat ng Konsentrasyon</h3>
-          <ul>
-            <li><strong>Percent by Mass (%m/m):</strong> (Mass of Solute / Total Mass of Solution) × 100. If you dissolve 10g of salt in 90g of water, the total solution mass is 100g, and the percent by mass is 10%.</li>
-            <li><strong>Percent by Volume (%m/v):</strong> (Mass of Solute / Volume of Solvent) × 100. Used when mixing a solid into a liquid.</li>
-          </ul>
-          <h3>Saturated vs. Unsaturated</h3>
-          <p>Every solute has a <strong>solubility limit</strong> — the maximum amount that can dissolve in a given volume at a specific temperature. NaCl (table salt) dissolves up to ~36g per 100mL of water. If you add more than that, the excess salt sinks to the bottom — the solution is <strong>saturated</strong>.</p>
-          <p>Try adding more and more solute in the simulator above and watch the particles pile up at the bottom once saturation is reached!</p>
-        </>
-      }
+      educationalContent={<SolutionConcentrationMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col lg:flex-row gap-8">

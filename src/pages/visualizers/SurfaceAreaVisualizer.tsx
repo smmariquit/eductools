@@ -1,3 +1,4 @@
+import SurfaceAreaMdx from '../../content/blog/surface-area.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -69,19 +70,7 @@ const SurfaceAreaVisualizer = () => {
       title="Surface Area Builder (Sukat ng Ibabaw)"
       description="Unfold 3D shapes into flat nets. Calculate the surface area by adding up the area of each face."
       adSlotId="2017"
-      educationalContent={
-        <>
-          <h2>Surface Area: Math Grade 6 (MATATAG)</h2>
-          <p><strong>Surface area</strong> is the total area of all the outer surfaces (faces) of a 3D shape. Imagine cutting the shape apart and laying all the pieces flat — the total area of those flat pieces is the surface area.</p>
-          <h3>Paano Kalkulahin</h3>
-          <ul>
-            <li><strong>Cube:</strong> SA = 6<span className="font-serif italic">s</span>² (6 identical square faces)</li>
-            <li><strong>Rectangular Prism:</strong> SA = 2(<span className="font-serif italic">lw</span> + <span className="font-serif italic">lh</span> + <span className="font-serif italic">wh</span>)</li>
-            <li><strong>Cylinder:</strong> SA = 2<span className="font-serif italic">πr</span>² + 2<span className="font-serif italic">πrh</span></li>
-          </ul>
-          <p>Use the net view to see how each face contributes to the total surface area!</p>
-        </>
-      }
+      educationalContent={<SurfaceAreaMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col gap-8">

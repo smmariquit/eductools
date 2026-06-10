@@ -1,3 +1,4 @@
+import StatesOfMatterMdx from '../../content/blog/states-of-matter.mdx';
 import { useState, useEffect, useRef } from 'react';
 import Matter from 'matter-js';
 import VisualizerLayout from '../../components/VisualizerLayout';
@@ -151,18 +152,7 @@ const StatesOfMatterVisualizer = () => {
       title="Mga Anyo ng Bagay (States of Matter)"
       description="Matter.js-powered particle simulation showing how temperature affects molecular motion."
       adSlotId="1001"
-      educationalContent={
-        <>
-          <h2>States of Matter: Grade 3 Science</h2>
-          <p>Matter is everything around us. It exists primarily in three states: Solid, Liquid, and Gas. This simulation uses a real <strong>2D physics engine (Matter.js)</strong> to model particle behavior.</p>
-          <h3>How Temperature Affects Matter</h3>
-          <ul>
-            <li><strong>Solid (Halimbawa: Ice Candy):</strong> Particles are tightly packed and vibrate in place. This happens at lower temperatures. Notice how the physics engine keeps them settled at the bottom.</li>
-            <li><strong>Liquid (Halimbawa: Tubig sa baso):</strong> As temperature increases, particles gain energy and slide past each other, affected by gravity but free to flow.</li>
-            <li><strong>Gas (Halimbawa: Singaw ng mainit na Sinigang):</strong> At high temperatures, gravity is effectively overcome. Particles move freely with high kinetic energy, bouncing off walls elastically.</li>
-          </ul>
-        </>
-      }
+      educationalContent={<StatesOfMatterMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body items-center p-4 md:p-8">

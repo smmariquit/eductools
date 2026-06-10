@@ -1,3 +1,4 @@
+import StoichiometryMdx from '../../content/blog/stoichiometry.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -13,14 +14,7 @@ const StoichiometryVisualizer = () => {
       title="Pagbalanse ng Chemical Equations"
       description="Apply the Law of Conservation of Mass to synthesize water, essential for local irrigation."
       adSlotId="2002"
-      educationalContent={
-        <>
-          <h2>Stoichiometry: Grade 10 Chemistry</h2>
-          <p>The Law of Conservation of Mass states that matter cannot be created or destroyed. In a chemical reaction, the number of atoms for each element must be equal on both the reactant side and the product side.</p>
-          <h3>Synthesizing Water</h3>
-          <p>Water (H&sub2;O) is vital for life and agriculture (like watering rice fields). To make water chemically, hydrogen gas (H&sub2;) reacts with oxygen gas (O&sub2;). Try adjusting the coefficients until the equation is balanced!</p>
-        </>
-      }
+      educationalContent={<StoichiometryMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8">

@@ -1,3 +1,4 @@
+import PythagoreanMdx from '../../content/blog/pythagorean.mdx';
 import { useState, useRef, useEffect } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -183,17 +184,7 @@ const PythagoreanVisualizer = () => {
       title="Pythagorean Theorem (Teorema ni Pythagoras)"
       description="See the visual proof of a² + b² = c². Watch how the squares on each side of a right triangle relate to each other."
       adSlotId="2018"
-      educationalContent={
-        <>
-          <h2>Pythagorean Theorem: Math Grade 8 (MATATAG)</h2>
-          <p>The <strong>Pythagorean Theorem</strong> states that in any right triangle, the square of the hypotenuse (the longest side, opposite the right angle) equals the sum of the squares of the other two sides.</p>
-          <h3>Formula</h3>
-          <p className="text-2xl font-mono font-bold"><span className="text-error">a²</span> + <span className="text-success">b²</span> = <span className="text-info">c²</span></p>
-          <h3>Visual Proof (Patunay)</h3>
-          <p>If you build a square on each side of the triangle, the <strong>area</strong> of the two smaller squares always adds up exactly to the area of the largest square. This isn't a coincidence — it's a fundamental law of geometry!</p>
-          <p>Try a classic 3-4-5 triangle: 3² + 4² = 9 + 16 = 25 = 5². The areas perfectly balance!</p>
-        </>
-      }
+      educationalContent={<PythagoreanMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col lg:flex-row gap-8">

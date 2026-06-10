@@ -1,3 +1,4 @@
+import ReactionRateMdx from '../../content/blog/reaction-rate.mdx';
 import { useState, useRef, useEffect, useCallback } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -238,19 +239,7 @@ const ReactionRateVisualizer = () => {
       title="Reaction Rate Simulator (Bilis ng Reaksyon)"
       description="Explore how temperature, concentration, and catalysts affect the rate of chemical reactions through collision theory."
       adSlotId="2019"
-      educationalContent={
-        <>
-          <h2>Reaction Rates: Science Grade 10 (MATATAG)</h2>
-          <p>Chemical reactions occur when reactant particles <strong>collide</strong> with enough energy. The <strong>Collision Theory</strong> explains that not all collisions lead to reactions — only those with enough <strong>activation energy</strong> and the correct orientation.</p>
-          <h3>Factors Affecting Reaction Rate</h3>
-          <ul>
-            <li><strong>Temperature (Temperatura):</strong> Higher temperature → faster particles → more energetic collisions → faster reaction.</li>
-            <li><strong>Concentration (Konsentrasyon):</strong> More particles → more frequent collisions → faster reaction.</li>
-            <li><strong>Catalyst (Katalista):</strong> Lowers the activation energy needed, so more collisions become successful without changing the products.</li>
-          </ul>
-          <p>Watch the blue and red reactant particles collide — when they have enough energy, they react and turn <strong className="text-success">green</strong>!</p>
-        </>
-      }
+      educationalContent={<ReactionRateMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col lg:flex-row gap-8">

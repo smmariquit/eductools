@@ -1,3 +1,4 @@
+import GasLawsMdx from '../../content/blog/gas-laws.mdx';
 import { useState, useRef, useEffect, useCallback } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -187,19 +188,7 @@ const GasLawsVisualizer = () => {
       title="Gas Laws Simulator (Mga Batas ng Gas)"
       description="Explore Boyle's, Charles's, and Gay-Lussac's Laws with an interactive piston and animated gas particles. Understand the Kinetic Molecular Theory visually."
       adSlotId="2009"
-      educationalContent={
-        <>
-          <h2>Gas Laws: Science Grade 10 (MATATAG)</h2>
-          <p>Gas behavior is governed by the <strong>Kinetic Molecular Theory</strong>: gas particles are in constant, random motion and their collisions with container walls create pressure. Understanding the relationships between Pressure (P), Volume (V), and Temperature (T) is essential for chemistry and physics.</p>
-          <h3>Tatlong Batas ng Gas</h3>
-          <ul>
-            <li><strong>Boyle's Law (P₁V₁ = P₂V₂):</strong> At constant temperature, increasing pressure decreases volume (inverse relationship). Imagine pressing a syringe — the air compresses.</li>
-            <li><strong>Charles's Law (V₁/T₁ = V₂/T₂):</strong> At constant pressure, heating a gas increases its volume (direct relationship). A hot air balloon rises because the heated air inside expands.</li>
-            <li><strong>Gay-Lussac's Law (P₁/T₁ = P₂/T₂):</strong> At constant volume, heating a gas increases its pressure. This is why aerosol cans warn against exposure to heat.</li>
-          </ul>
-          <p>Use the simulator above to observe how particles behave — watch their speed change with temperature and how the piston moves as you adjust the variables!</p>
-        </>
-      }
+      educationalContent={<GasLawsMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col lg:flex-row gap-8">

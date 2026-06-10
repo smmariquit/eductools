@@ -1,3 +1,4 @@
+import ElectromagneticSpectrumMdx from '../../content/blog/electromagnetic-spectrum.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -22,14 +23,7 @@ const ElectromagneticSpectrumVisualizer = () => {
       title="Electromagnetic Spectrum (Mga Uri ng Radiation)"
       description="Explore the relationship between wavelength, frequency, and real-world energy applications."
       adSlotId="2007"
-      educationalContent={
-        <>
-          <h2>Electromagnetic Radiation: Grade 10 Physics</h2>
-          <p>The electromagnetic (EM) spectrum is the range of all types of EM radiation. Radiation is energy that travels and spreads out as it goes.</p>
-          <p>As you move from Radio Waves to Gamma Rays, the <strong>wavelength decreases</strong> while the <strong>frequency and energy increase</strong>.</p>
-          <p>This is why Radio Waves safely pass through us every day, but high-energy Ultraviolet (UV) rays can cause sunburns during summer, requiring sunblock.</p>
-        </>
-      }
+      educationalContent={<ElectromagneticSpectrumMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body items-center p-6 md:p-10">

@@ -1,3 +1,4 @@
+import ForcesAndMotionMdx from '../../content/blog/forces-and-motion.mdx';
 import { useState, useEffect } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -25,14 +26,7 @@ const ForcesAndMotionVisualizer = () => {
       title="Jeepney Dynamics (Forces & Motion)"
       description="Simulate Newton's Second Law of Motion (F = ma) using the Philippine Jeepney."
       adSlotId="1005"
-      educationalContent={
-        <>
-          <h2>Newton's Laws of Motion: Grade 8 Physics</h2>
-          <p>Newton's Second Law of Motion states that the acceleration of an object is directly proportional to the net force acting on it and inversely proportional to its mass.</p>
-          <h3>Arangkada ng Jeepney! (F = ma)</h3>
-          <p>In this simulation, applying a larger <strong>Pwersa ng Makina (Engine Force)</strong> makes the jeepney accelerate faster. However, loading more <strong>Pasahero (Passengers/Mass)</strong> makes it much harder for the jeepney to speed up.</p>
-        </>
-      }
+      educationalContent={<ForcesAndMotionMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8">

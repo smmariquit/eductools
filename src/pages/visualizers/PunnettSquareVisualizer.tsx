@@ -1,3 +1,4 @@
+import PunnettSquareMdx from '../../content/blog/punnett-square.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -16,15 +17,7 @@ const PunnettSquareVisualizer = () => {
       title="Punnett Square (Pagmamana ng Katangian)"
       description="Simulate Mendelian inheritance using Philippine Gumamela flowers (R = Red dominant, r = White recessive)."
       adSlotId="2005"
-      educationalContent={
-        <>
-          <h2>Genetics and Heredity: Grade 8 Science</h2>
-          <p>A Punnett square is a graphical representation of the possible genotypes of an offspring arising from a particular cross or breeding event.</p>
-          <h3>Ang mga Bulaklak ng Gumamela</h3>
-          <p>Dominant alleles (capital letters) mask recessive alleles (lowercase letters). In our garden, the Red Gumamela allele (<strong>R</strong>) is dominant over the White Gumamela allele (<strong>r</strong>).</p>
-          <p>Try crossing two heterozygous (Rr) Gumamelas to see the 3:1 phenotypic ratio that Gregor Mendel discovered!</p>
-        </>
-      }
+      educationalContent={<PunnettSquareMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col md:flex-row gap-10">

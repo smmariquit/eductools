@@ -1,3 +1,4 @@
+import FoodWebMdx from '../../content/blog/food-web.mdx';
 import { useState, useEffect, useRef } from 'react';
 import cytoscape from 'cytoscape';
 import VisualizerLayout from '../../components/VisualizerLayout';
@@ -116,18 +117,7 @@ const FoodWebVisualizer = () => {
       title="Sapot ng Pagkain (Philippine Food Web)"
       description="Interactive Cytoscape.js network graph of a Philippine rice paddy ecosystem."
       adSlotId="2002"
-      educationalContent={
-        <>
-          <h2>Ecosystems and Energy Flow: Grade 7 Science</h2>
-          <p>A food web shows interconnected food chains. This graph uses <strong>Cytoscape.js</strong>, the same library used by research biologists. Click any node to explore relationships.</p>
-          <ul>
-            <li><strong>Producers:</strong> <em>Palay</em> and <em>Kangkong</em></li>
-            <li><strong>Primary Consumers:</strong> <em>Tipaklong</em> and <em>Suso</em></li>
-            <li><strong>Secondary Consumers:</strong> <em>Palaka</em> and <em>Tagak</em></li>
-            <li><strong>Apex Predator:</strong> <em>Philippine Eagle</em></li>
-          </ul>
-        </>
-      }
+      educationalContent={<FoodWebMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-4 md:p-8">
