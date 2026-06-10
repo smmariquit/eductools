@@ -1,3 +1,48 @@
-# Photosynthesis: How the Tropics Harness the Sun
+# Photosynthesis: Unlocking the Mechanics of Plant Biomass
 
-Students can manipulate variables like sunlight intensity and water availability to see how plants in our tropical climate produce energy.
+If you ask anyone on the street where a tree gets its mass from, they'll probably point at the dirt. It makes sense, right? We eat solid food to grow, so plants must eat the soil they sit in. 
+
+This intuition is incredibly common, but it's completely wrong. 
+
+## The Van Helmont Paradox
+
+Back in 1648, Jan Baptista van Helmont decided to test this "plants eat dirt" theory. He took a willow sapling weighing exactly 5 pounds and planted it in a pot containing exactly 200 pounds of thoroughly dried soil. For five years, he added absolutely nothing but water.
+
+When he pulled the tree out five years later, it had grown to a massive 169 pounds. 
+
+But here's the crazy part: when he dried and re-weighed the soil in the pot, it had lost barely two ounces. The tree hadn't consumed the soil at all. 
+
+While van Helmont thought the extra 164 pounds came strictly from the water he added, we now know the truth is way cooler: **plant mass is materialized out of thin air.** 
+
+Through carbon fixation, plants absorb atmospheric Carbon Dioxide (CO₂), strip away the Carbon atoms, and use them to physically build solid glucose and cellulose. That massive Narra tree outside your window? It's basically constructed from invisible gas.
+
+## Microscopic Gatekeepers: Stomatal Gas Exchange
+
+To actually harvest that invisible carbon, plants rely on microscopic pores called *stomata*, mostly found underneath their leaves. These pores are guarded by two specialized "Guard Cells."
+
+Think of guard cells like tiny hydraulic doors. When the plant has plenty of water and sunlight, the cells pump in potassium ions. Water follows via osmosis, causing the cells to swell up and bow outward. This pops the pore open.
+
+Once the gateway is open, CO₂ rushes in, while Oxygen (O₂) and water vapor rush out. 
+
+But if the soil dries up, the plant is forced to make a brutal choice. It can keep the stomata open to keep harvesting carbon (and risk dehydrating to death), or it can slam the doors shut to save water—halting photosynthesis completely.
+
+## The Math Behind the Magic: Blackman's Law
+
+Photosynthesis isn't a magic dial you can just turn up infinitely. It's strictly governed by **Blackman's Law of Limiting Factors**. The rule is simple: a biological process is bottlenecked by whichever resource is in shortest supply.
+
+### Light Limitation (Non-Rectangular Hyperbola)
+If you're in a dim room and start turning up the lights, photosynthesis speeds up linearly. But eventually, the chloroplasts hit their maximum processing speed. No matter how much brighter you make the lights, the rate hits a hard ceiling. In our visualizer, we model this plateau using a Non-Rectangular Hyperbola equation that factors in the leaf's quantum yield.
+
+### $CO_2$ Limitation (Michaelis-Menten Kinetics)
+Even if you blast the plant with blinding sunlight, it can't build anything if the Rubisco enzyme runs out of carbon to stitch together. We apply Michaelis-Menten kinetic modeling to restrict the photosynthetic speed based on exactly how much atmospheric carbon dioxide is available. 
+
+---
+*Legend for the Visualizer:* Red dots = Oxygen (O₂). Grey dots = Carbon Dioxide (CO₂).
+
+## Further Exploration (External Sources)
+
+If you want to dig deeper into the mechanics of photosynthesis, check out these excellent tools and simulations:
+
+- [PhET Interactive Simulations - Molecules and Light](https://phet.colorado.edu/en/simulations/molecules-and-light): Explore how different wavelengths of light physically interact with atmospheric gases.
+- [LabXchange - Diffusion and Osmosis](https://www.labxchange.org/library/items/lb:LabXchange:153e34b1:lx_simulation:1): A detailed look at how water and gases move across cellular membranes, just like in stomatal gas exchange.
+- [Jon Darkow - Dynamics of Photosynthesis](https://sites.google.com/site/biologydarkow/metabolism/photosynthesis-simulation): An advanced system-dynamics simulation for high school students looking to manipulate ATP and NADPH cycles mathematically.

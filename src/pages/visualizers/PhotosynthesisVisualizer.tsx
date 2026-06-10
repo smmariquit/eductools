@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import PhotosynthesisMdx from '../../content/blog/photosynthesis.mdx';
 
 // ==========================================
 // Object Pool for Canvas Particles (GC Friendly)
@@ -272,66 +273,7 @@ const PhotosynthesisVisualizer = () => {
       title="Advanced Photosynthesis Model"
       description="Interactive biological simulation of photosynthesis using real metabolic rate curves."
       adSlotId="1008"
-      educationalContent={
-        <div className="space-y-6">
-          <h2 className="text-3xl font-extrabold text-primary border-b-2 border-primary/20 pb-4">Photosynthesis: Unlocking the Mechanics of Plant Biomass</h2>
-          
-          <div className="bg-base-200/50 p-6 rounded-xl border border-base-300">
-            <h3 className="text-xl font-bold mb-3 text-secondary">The Van Helmont Paradox: Where Does Wood Come From?</h3>
-            <p className="mb-4">
-              It is a profound and deeply ingrained misconception that plants "eat" dirt, drawing their solid mass from the soil beneath them. This intuitive—yet entirely incorrect—belief was challenged in 1648 by Jan Baptista van Helmont. He planted a 5-pound willow sapling in precisely 200 pounds of dried soil. For five years, he added nothing but water. 
-            </p>
-            <p className="mb-4">
-              When he finally uprooted the tree, it weighed 169 pounds, yet the soil had lost a mere <strong>two ounces</strong>. The plant had not consumed the soil! While van Helmont erroneously concluded the mass came solely from water, the truth is far more fascinating: <strong>plant mass is constructed from invisible gas</strong>.
-            </p>
-            <p>
-              Through the process of carbon fixation, plants absorb atmospheric Carbon Dioxide ($CO_2$), strip away the Carbon atoms, and stitch them together to form solid glucose and cellulose. The tree you see outside your window is quite literally materialized from the air.
-            </p>
-          </div>
-
-          <div className="bg-base-200/50 p-6 rounded-xl border border-base-300">
-            <h3 className="text-xl font-bold mb-3 text-secondary">Microscopic Gatekeepers: Stomatal Gas Exchange</h3>
-            <p className="mb-4">
-              To harvest this invisible carbon, plants rely on microscopic pores called <em>stomata</em>, located primarily on the underside of their leaves. These pores are regulated by two specialized <strong>Guard Cells</strong>.
-            </p>
-            <p className="mb-4">
-              When a plant has abundant water and sunlight, the guard cells pump in potassium ions, causing water to follow via osmosis. The cells swell, become turgid, and bow outward, opening the pore. This open gateway allows $CO_2$ to diffuse into the intercellular leaf space, while Oxygen ($O_2$) and water vapor diffuse out. 
-            </p>
-            <p>
-              However, if the soil dries out, the plant faces a deadly dilemma: keep the stomata open to harvest carbon but risk dehydrating to death, or close the stomata to conserve water but halt photosynthesis entirely. 
-            </p>
-          </div>
-
-          <div className="bg-base-200/50 p-6 rounded-xl border border-base-300">
-            <h3 className="text-xl font-bold mb-3 text-secondary">Mathematical Modeling: Blackman's Law of Limiting Factors</h3>
-            <p className="mb-4">
-              The rate of photosynthesis does not increase infinitely as you add more light or $CO_2$. Instead, it is strictly governed by <strong>Blackman's Law of Limiting Factors</strong>, which states that a biological process will be constrained by whichever vital resource is in the shortest supply.
-            </p>
-            <div className="grid md:grid-cols-2 gap-6 mt-4">
-              <div className="bg-base-100 p-4 rounded-lg shadow-sm border border-base-200">
-                <h4 className="font-bold text-sm mb-2 text-warning">Light Limitation (Non-Rectangular Hyperbola)</h4>
-                <p className="text-sm">
-                  At low light intensities, photosynthesis increases linearly. However, as light increases, the chloroplasts reach their processing capacity, and the curve bends into a plateau. This visualizer models this using the Non-Rectangular Hyperbola equation, integrating the leaf's quantum yield and maximum dark respiration.
-                </p>
-              </div>
-              <div className="bg-base-100 p-4 rounded-lg shadow-sm border border-base-200">
-                <h4 className="font-bold text-sm mb-2 text-neutral">CO₂ Limitation (Michaelis-Menten Kinetics)</h4>
-                <p className="text-sm">
-                  Even in blinding sunlight, the plant cannot produce glucose if the Rubisco enzyme lacks carbon substrate. The visualizer applies Michaelis-Menten kinetic modeling to restrict the photosynthetic velocity based on the available partial pressure of atmospheric carbon dioxide.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-base-300 p-4 rounded-lg mt-8 flex flex-wrap gap-6 items-center justify-center">
-            <h4 className="font-bold text-sm">Molecular Color Legend (CPK Standard):</h4>
-            <div className="flex gap-4 text-sm font-mono font-bold">
-              <span className="flex items-center gap-2"><span className="w-4 h-4 rounded-full bg-[#EF4444] inline-block shadow-md border border-red-700"></span> Oxygen (O₂)</span>
-              <span className="flex items-center gap-2"><span className="w-4 h-4 rounded-full bg-[#9CA3AF] inline-block shadow-md border border-gray-600"></span> Carbon Dioxide (CO₂)</span>
-            </div>
-          </div>
-        </div>
-      }
+      educationalContent={<PhotosynthesisMdx />}
     >
       <div className="card bg-base-100 shadow-xl border border-base-200 overflow-hidden">
         
