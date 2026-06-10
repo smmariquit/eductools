@@ -34,9 +34,9 @@ const DensityVisualizer = () => {
       educationalContent={
         <>
           <h2>Properties of Matter: Grade 7 Science</h2>
-          <p>Density (<InlineMath math="\rho" />) is a measure of mass (<InlineMath math="m" />) per unit of volume (<InlineMath math="V" />). The formula is:</p>
+          <p>Density (<InlineMath math={String.raw`\rho`} />) is a measure of mass (<InlineMath math="m" />) per unit of volume (<InlineMath math="V" />). The formula is:</p>
           <div className="bg-base-200 p-2 rounded-lg text-center my-2 border border-base-300">
-            <BlockMath math="\rho = \frac{m}{V}" />
+            <BlockMath math={String.raw`\rho = \frac{m}{V}`} />
           </div>
           <h3>Bakit lumulutang ang Bangka? (Why do boats float?)</h3>
           <p>A massive wooden <em>Bangka</em> (boat) can float while a tiny <em>Piso</em> (1-peso coin) sinks immediately. This is because density, not just mass, determines buoyancy. The density of pure water is <strong>1000 kg/m³</strong>. If an object's overall density is less than water's, it floats!</p>

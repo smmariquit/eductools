@@ -5,37 +5,10 @@
 }
 
 :root {
-  /* Professional, muted dark theme (easy on the eyes, authoritative, no glassmorphism) */
-  --bg-color: #0f172a;
-  --surface-color: #1e293b;
-  --surface-hover: #334155;
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --accent-color: #3b82f6; 
-  --accent-hover: #60a5fa;
-  --border-color: #334155;
+  /* Tailwind and DaisyUI handle our theme colors now. */
 }
 
 [data-theme="light"] {
-  --bg-color: #f8fafc;
-  --surface-color: #ffffff;
-  --surface-hover: #f1f5f9;
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --accent-color: #2563eb; 
-  --accent-hover: #1d4ed8;
-  --border-color: #e2e8f0;
 }
 
-body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-primary);
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-}
 
-/* Custom Form Elements - keeping some base styles if they affect standard inputs not covered by Daisy */
-input[type="range"] {
-  accent-color: var(--accent-color);
-}
