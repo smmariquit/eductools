@@ -1,7 +1,28 @@
 import PermutationsCombinationsMdx from '../../content/deep-dives/permutations-combinations.mdx';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
-import { BlockMath, InlineMath } from 'react-katex';
+import katex from 'katex';
+import 'katex/dist/katex.min.css';
+
+const BlockMath = ({ math }: { math: string }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (ref.current) {
+      katex.render(math, ref.current, { displayMode: true, throwOnError: false });
+    }
+  }, [math]);
+  return <div ref={ref} />;
+};
+
+const InlineMath = ({ math }: { math: string }) => {
+  const ref = useRef<HTMLSpanElement>(null);
+  useEffect(() => {
+    if (ref.current) {
+      katex.render(math, ref.current, { displayMode: false, throwOnError: false });
+    }
+  }, [math]);
+  return <span ref={ref} />;
+};
 
 type Mode = 'permutation' | 'combination';
 

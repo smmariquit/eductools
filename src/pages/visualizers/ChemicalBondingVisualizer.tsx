@@ -119,7 +119,7 @@ const ChemicalBondingVisualizer = () => {
             </>
           ) : (
             <div className="w-full">
-              <div ref={viewerRef} className="w-full h-[400px] rounded-xl border-[3px] border-slate-700 shadow-inner" />
+              <div ref={viewerRef} className="relative w-full h-[400px] rounded-xl border-[3px] border-slate-700 shadow-inner overflow-hidden" />
               <p className="text-center text-sm text-base-content/60 mt-4">Drag to rotate • Scroll to zoom • This is a 3D NaCl crystal lattice rendered by <strong>3Dmol.js</strong></p>
             </div>
           )}
