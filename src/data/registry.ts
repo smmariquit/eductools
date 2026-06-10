@@ -33,7 +33,11 @@ export const visualizerModules: VisualizerModule[] = [
   { id: 'gas-laws', title: 'Gas Laws Simulator', description: 'Explore Boyle\'s, Charles\'s, and Gay-Lussac\'s Laws with animated gas particles and a virtual piston.', path: '/visualizer/gas-laws', tags: ['Grade 10', 'Physics', 'Chemistry', 'MATATAG Aligned'] },
   { id: 'solution-concentration', title: 'Solution Concentration Lab', description: 'Explore percent by mass and percent by volume. Observe saturation and solubility limits visually.', path: '/visualizer/solution-concentration', tags: ['Grade 7', 'Chemistry', 'MATATAG Aligned'] },
   { id: 'integer-number-line', title: 'Integer Number Line', description: 'Visualize addition and subtraction of integers on an interactive number line.', path: '/visualizer/integer-number-line', tags: ['Grade 7', 'Math', 'MATATAG Aligned'] },
-  { id: 'trigonometry', title: 'Trigonometry Visualizer', description: 'Explore sine, cosine, and tangent ratios with an interactive right triangle and unit circle.', path: '/visualizer/trigonometry', tags: ['Grade 9', 'Math', 'MATATAG Aligned'] }
+  { id: 'trigonometry', title: 'Trigonometry Visualizer', description: 'Explore sine, cosine, and tangent ratios with an interactive right triangle and unit circle.', path: '/visualizer/trigonometry', tags: ['Grade 9', 'Math', 'MATATAG Aligned'] },
+  { id: 'sequences', title: 'Sequences & Patterns', description: 'Visualize arithmetic and geometric sequences. Build the formula for the nth term interactively.', path: '/visualizer/sequences', tags: ['Grade 8', 'Math', 'MATATAG Aligned'] },
+  { id: 'optics', title: 'Optics Simulator', description: 'Explore image formation by concave, convex, and plane mirrors with ray tracing.', path: '/visualizer/optics', tags: ['Grade 10', 'Physics', 'MATATAG Aligned'] },
+  { id: 'gcf-lcm', title: 'GCF & LCM Explorer', description: 'Find the Greatest Common Factor and Least Common Multiple using prime factorization and Venn diagrams.', path: '/visualizer/gcf-lcm', tags: ['Grade 4', 'Grade 5', 'Math', 'MATATAG Aligned'] },
+  { id: 'sets-venn', title: 'Sets & Venn Diagrams', description: 'Explore set operations: union, intersection, and difference using interactive Venn diagrams.', path: '/visualizer/sets-venn', tags: ['Grade 7', 'Math', 'MATATAG Aligned'] }
 ];
 
 // Derive tags from actual data instead of maintaining a separate manual list
