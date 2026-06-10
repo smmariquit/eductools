@@ -8,23 +8,26 @@ Gas behavior is governed by the
 Kinetic Molecular Theory
 : gas particles are in constant, random motion and their collisions with container walls create pressure. Understanding the relationships between Pressure (P), Volume (V), and Temperature (T) is essential for chemistry and physics.
 
-Tatlong Batas ng Gas
+# The Ideal Gas Law: A Microscopic Deep Dive
 
-Boyle's Law (P₁V₁ = P₂V₂):
- At constant temperature, increasing pressure decreases volume (inverse relationship). Imagine pressing a syringe — the air compresses.
+The Gas Laws simulator demonstrates the macro-level effects (Volume, Pressure, Temperature) of micro-level particle interactions. To truly understand why a balloon expands when heated, we must look at the variables mathematically and physically.
 
-Charles's Law (V₁/T₁ = V₂/T₂):
- At constant pressure, heating a gas increases its volume (direct relationship). A hot air balloon rises because the heated air inside expands.
+## Dissection of the Variables
 
-Gay-Lussac's Law (P₁/T₁ = P₂/T₂):
- At constant volume, heating a gas increases its pressure. This is why aerosol cans warn against exposure to heat.
+### 1. Pressure ($P$)
+- **Unit**: Pascals ($\text{Pa}$), Atmospheres ($\text{atm}$), or $\text{mmHg}$.
+- **What it actually is**: Pressure is not a "squeezing force". It is literally the sum of billions of tiny particle collisions against the wall of the container. Every time a gas molecule bounces off the piston, it exerts a microscopic force. The total force over the area of the piston equals the Pressure ($P = \frac{F}{A}$).
 
-Use the simulator above to observe how particles behave — watch their speed change with temperature and how the piston moves as you adjust the variables!
+### 2. Volume ($V$)
+- **Unit**: Liters ($\text{L}$) or Cubic Meters ($\text{m}^3$).
+- **What it actually is**: The 3D space the gas is allowed to occupy. In the simulator, increasing the volume gives the particles more distance to travel before hitting a wall. This directly reduces the frequency of collisions, which is why **Boyle's Law** states that Volume and Pressure are inversely proportional ($P_1V_1 = P_2V_2$).
 
-## Dissection of Variables
-
-- **Variable 1**: Explanation of how it works in the physical world.
-- **Variable 2**: Deep dive into the math and units.
+### 3. Temperature ($T$)
+- **Unit**: Kelvin ($\text{K}$). *(Note: Gas laws completely fail if you use Celsius, because 0 °C would result in impossible math!)*
+- **What it actually is**: Temperature is just the average kinetic energy (speed) of the particles. When you apply heat in the simulator, you are literally speeding up the particles. Faster particles hit the walls harder and more frequently. According to **Charles's Law**, if pressure is held constant, heating the gas must cause the volume to expand to handle the more violent collisions ($\frac{V_1}{T_1} = \frac{V_2}{T_2}$).
 
 ---
-*Note: This is a deep dive section that breaks down the variables and the underlying physics/math of the simulation.*
+*By combining all these variables, we arrive at the Ideal Gas Law:*
+$$ PV = nRT $$
+
+*Where $n$ is the number of moles of gas, and $R$ is the ideal gas constant.*
