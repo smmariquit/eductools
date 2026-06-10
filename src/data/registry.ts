@@ -28,7 +28,12 @@ export const visualizerModules: VisualizerModule[] = [
   { id: 'cell-division', title: 'Mitosis Cell Division', description: 'Observe the stages of cellular replication.', path: '/visualizer/cell-division', tags: ['Grade 11', 'Grade 12', 'Biology'] },
   { id: 'rock-cycle', title: 'The Rock Cycle', description: 'Discover how geological processes transform rocks over time.', path: '/visualizer/rock-cycle', tags: ['Grade 11', 'Earth Science'] },
   { id: 'stoichiometry', title: 'Balancing Chemical Equations', description: 'Apply the Law of Conservation of Mass to synthesize water.', path: '/visualizer/stoichiometry', tags: ['Grade 12', 'Chemistry'] },
-  { id: 'typhoon-tracker', title: 'Typhoon Tracker (DRRR)', description: 'Simulate typhoon categories and potential landfall impacts.', path: '/visualizer/typhoon-tracker', tags: ['Grade 11', 'Grade 12', 'Earth Science', 'DRRR'] }
+  { id: 'typhoon-tracker', title: 'Typhoon Tracker (DRRR)', description: 'Simulate typhoon categories and potential landfall impacts.', path: '/visualizer/typhoon-tracker', tags: ['Grade 11', 'Grade 12', 'Earth Science', 'DRRR'] },
+  { id: 'electric-circuits', title: 'Electric Circuits Simulator', description: 'Compare how Series and Parallel circuits work.', path: '/visualizer/electric-circuits', tags: ['Grade 8', 'Physics', 'MATATAG Aligned'] },
+  { id: 'gas-laws', title: 'Gas Laws Simulator', description: 'Explore Boyle\'s, Charles\'s, and Gay-Lussac\'s Laws with animated gas particles and a virtual piston.', path: '/visualizer/gas-laws', tags: ['Grade 10', 'Physics', 'Chemistry', 'MATATAG Aligned'] },
+  { id: 'solution-concentration', title: 'Solution Concentration Lab', description: 'Explore percent by mass and percent by volume. Observe saturation and solubility limits visually.', path: '/visualizer/solution-concentration', tags: ['Grade 7', 'Chemistry', 'MATATAG Aligned'] },
+  { id: 'integer-number-line', title: 'Integer Number Line', description: 'Visualize addition and subtraction of integers on an interactive number line.', path: '/visualizer/integer-number-line', tags: ['Grade 7', 'Math', 'MATATAG Aligned'] },
+  { id: 'trigonometry', title: 'Trigonometry Visualizer', description: 'Explore sine, cosine, and tangent ratios with an interactive right triangle and unit circle.', path: '/visualizer/trigonometry', tags: ['Grade 9', 'Math', 'MATATAG Aligned'] }
 ];
 
 // Derive tags from actual data instead of maintaining a separate manual list

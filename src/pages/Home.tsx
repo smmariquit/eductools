@@ -3,10 +3,13 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import AdUnit from '../components/AdUnit';
 import { visualizerModules } from '../data/registry';
-import { usePageMeta } from '../hooks/usePageMeta';
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
-  usePageMeta({ title: 'Interactive STEM Visualizers', description: 'Free interactive STEM visualizers aligned with the Philippine DepEd MATATAG curriculum. Explore Physics, Chemistry, Biology, and Earth Science.', path: '/' });
+  const fullTitle = 'Interactive STEM Visualizers | Eductools';
+  const description = 'Free interactive STEM visualizers aligned with the Philippine DepEd MATATAG curriculum. Explore Physics, Chemistry, Biology, and Earth Science.';
+  const ogImageUrl = `https://eductools.ph/api/og?title=${encodeURIComponent('Interactive STEM Visualizers')}&desc=${encodeURIComponent(description.slice(0, 100))}`;
+
   const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
   const subjectParam = searchParams.get('subject');
@@ -37,6 +40,19 @@ const Home = () => {
 
   return (
     <div className="w-full">
+      <Helmet>
+        <title>{fullTitle}</title>
+        <meta name="description" content={description} />
+        <meta property="og:title" content={fullTitle} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Eductools" />
+        <meta property="og:image" content={ogImageUrl} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={fullTitle} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImageUrl} />
+      </Helmet>
       <div className="py-8 border-b border-base-300 mb-8">
         <h1 className="text-4xl font-extrabold text-primary mb-4">{t('Welcome')}</h1>
         <p className="text-lg text-base-content/80">

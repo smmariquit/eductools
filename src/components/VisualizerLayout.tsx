@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import AdUnit from './AdUnit';
-import { usePageMeta } from '../hooks/usePageMeta';
+import { Helmet } from 'react-helmet-async';
 
 interface VisualizerLayoutProps {
   title: string;
@@ -12,9 +12,24 @@ interface VisualizerLayoutProps {
 }
 
 const VisualizerLayout = ({ title, description, children, educationalContent, adSlotId }: VisualizerLayoutProps) => {
-  usePageMeta({ title, description });
+  const fullTitle = `${title} | Eductools`;
+  const ogImageUrl = `https://eductools.ph/api/og?title=${encodeURIComponent(title)}&desc=${encodeURIComponent(description.slice(0, 100))}`;
+
   return (
     <div className="w-full">
+      <Helmet>
+        <title>{fullTitle}</title>
+        <meta name="description" content={description} />
+        <meta property="og:title" content={fullTitle} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Eductools" />
+        <meta property="og:image" content={ogImageUrl} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={fullTitle} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImageUrl} />
+      </Helmet>
       <div className="mb-6">
         <Link to="/" className="btn btn-outline btn-sm">&larr; Back to Modules</Link>
       </div>

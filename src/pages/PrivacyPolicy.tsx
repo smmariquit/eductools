@@ -1,11 +1,27 @@
 import { Link } from 'react-router-dom';
 import AdUnit from '../components/AdUnit';
-import { usePageMeta } from '../hooks/usePageMeta';
+import { Helmet } from 'react-helmet-async';
 
 const PrivacyPolicy = () => {
-  usePageMeta({ title: 'Privacy Policy & Data Processing Agreement', description: 'Eductools privacy policy compliant with the Philippine Data Privacy Act of 2012 (RA 10173). Learn how we protect your data.', path: '/privacy' });
+  const fullTitle = 'Privacy Policy & Data Processing Agreement | Eductools';
+  const description = 'Eductools privacy policy compliant with the Philippine Data Privacy Act of 2012 (RA 10173). Learn how we protect your data.';
+  const ogImageUrl = `https://eductools.ph/api/og?title=${encodeURIComponent('Privacy Policy')}&desc=${encodeURIComponent(description.slice(0, 100))}`;
+
   return (
     <div className="w-full">
+      <Helmet>
+        <title>{fullTitle}</title>
+        <meta name="description" content={description} />
+        <meta property="og:title" content={fullTitle} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Eductools" />
+        <meta property="og:image" content={ogImageUrl} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={fullTitle} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImageUrl} />
+      </Helmet>
       <div className="mb-6">
         <Link to="/" className="btn btn-outline btn-sm">&larr; Back to Home</Link>
       </div>
