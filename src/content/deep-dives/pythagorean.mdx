@@ -1,33 +1,22 @@
-# Pythagorean Deep Dive
+# Pythagorean Theorem: Beyond the Triangle
 
+The Pythagorean theorem ($a^2 + b^2 = c^2$) is widely taught as a formula to find the missing side of a right triangle. However, the true mathematical rigor lies in understanding that it's actually an equation relating **areas**.
 
+## Dissection of the Variables
 
-Pythagorean Theorem: Math Grade 8 (MATATAG)
+### 1. Side $a$ and Side $b$ (The Legs)
+- **Unit**: Linear units ($\text{cm}$, $\text{m}$, etc.)
+- **What they actually are**: The two sides that intersect to form exactly a $90^\circ$ angle. In coordinate geometry, these often represent the $\Delta x$ and $\Delta y$ (change in X and change in Y) between two points.
 
-The 
-Pythagorean Theorem
- states that in any right triangle, the square of the hypotenuse (the longest side, opposite the right angle) equals the sum of the squares of the other two sides.
+### 2. $a^2$ and $b^2$ (The Areas)
+- **Unit**: Square units ($\text{cm}^2$, $\text{m}^2$)
+- **What they actually are**: This is the core visual insight. When you square a number geometrically, you are literally constructing a square shape where every side has that length. $a^2$ is the physical 2D area of a square built attached to side $a$. 
 
-Formula
+### 3. $c$ (The Hypotenuse)
+- **What it actually is**: The longest side of the right triangle, always opposite the right angle. In the real world, this is the "straight-line distance" between two points. Because calculating $c$ involves a square root ($c = \sqrt{a^2 + b^2}$), the result is frequently an irrational number (like $\sqrt{98}$).
 
-a²
- + 
-b²
- = 
-c²
-
-Visual Proof (Patunay)
-
-If you build a square on each side of the triangle, the 
-area
- of the two smaller squares always adds up exactly to the area of the largest square. This isn't a coincidence — it's a fundamental law of geometry!
-
-Try a classic 3-4-5 triangle: 3² + 4² = 9 + 16 = 25 = 5². The areas perfectly balance!
-
-## Dissection of Variables
-
-- **Variable 1**: Explanation of how it works in the physical world.
-- **Variable 2**: Deep dive into the math and units.
+### 4. Pythagorean Triples
+- **What they actually are**: Rare sets of three positive integers $(a, b, c)$ that perfectly satisfy the theorem without producing decimals. The most famous is $3, 4, 5$. If you have a rope with $12$ evenly spaced knots, you can form a $3-4-5$ right triangle. Ancient builders (like the Egyptians) used this exact method to ensure their corners were perfectly square without modern protractors!
 
 ---
-*Note: This is a deep dive section that breaks down the variables and the underlying physics/math of the simulation.*
+*The simulator visually proves this ancient relationship: if you were to cut up the red square ($a^2$) and the green square ($b^2$), the pieces would perfectly fill the area of the blue square ($c^2$) every single time.*

@@ -1,3 +1,23 @@
-# Understanding Wave Physics: From Tsunamis to Radios
+# Wave Physics: Mechanical Interferences
 
-In an archipelago prone to tsunamis and reliant on radio communication, understanding wave mechanics is vital. This tool helps students visualize how frequency and amplitude dictate a wave's energy.
+A wave is a disturbance that travels through a medium, transferring energy from one point to another without permanently displacing the medium itself. The 3D surface in this visualizer mathematically models the interference pattern of mechanical waves (like ripples in water).
+
+## Dissection of the Variables
+
+### 1. Laki ng Alon / Amplitude ($A$)
+- **Unit**: Meters ($\text{m}$) or arbitrary units.
+- **What it actually is**: The maximum displacement of the medium from its equilibrium (rest) position. Physically, it represents the energy of the wave. Higher amplitude means a taller, more energetic wave (like a tsunami versus a puddle ripple).
+
+### 2. Dalas / Frequency ($f$)
+- **Unit**: Hertz ($\text{Hz}$), where $1\text{ Hz} = 1\text{ cycle per second}$.
+- **What it actually is**: How many wave cycles pass a fixed point in one second. High frequency means the waves are closely packed together (short wavelength). In the simulator math, this is represented by the wave number ($k$), which dictates the spatial frequency across the grid.
+
+### 3. Bilis / Speed ($v$)
+- **Unit**: Meters per second ($\text{m/s}$).
+- **What it actually is**: The speed at which the wave propagation travels across the surface. In our equation, this relates to the angular frequency ($\omega$). The relationship between speed, frequency, and wavelength ($\lambda$) is a fundamental wave equation:
+  - $v = f \lambda$
+
+### The 3D Wave Equation
+The simulator calculates the height ($Z$) of every point on the mesh using a combined sine and cosine function modulated by time ($t$):
+$$ Z(x, y, t) = A \cdot \sin(kx + \omega t) \cdot \cos(ky + \omega t) $$
+This creates the complex, mesmerizing interference patterns you see, where waves crash into each other to create constructive and destructive interference.
