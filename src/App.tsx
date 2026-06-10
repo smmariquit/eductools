@@ -8,6 +8,11 @@ import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import ScientificUnits from './pages/ScientificUnits';
+import TermsOfUse from './pages/TermsOfUse';
+import Accessibility from './pages/Accessibility';
+import AboutUs from './pages/AboutUs';
+import HelpFaq from './pages/HelpFaq';
+import Contact from './pages/Contact';
 
 // Dynamically import all visualizer pages using Vite's glob
 const visualizerPages = import.meta.glob('./pages/visualizers/*Visualizer.tsx') as Record<
@@ -55,6 +60,11 @@ function App() {
           <Route path="blog" element={<Blog />} />
           <Route path="blog/:id" element={<BlogPost />} />
           <Route path="privacy" element={<PrivacyPolicy />} />
+          <Route path="terms" element={<TermsOfUse />} />
+          <Route path="accessibility" element={<Accessibility />} />
+          <Route path="about" element={<AboutUs />} />
+          <Route path="help" element={<HelpFaq />} />
+          <Route path="contact" element={<Contact />} />
           <Route path="units" element={<ScientificUnits />} />
           
           {/* Dynamically generated visualizer routes from file glob */}

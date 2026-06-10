@@ -30,9 +30,9 @@ const Footer = () => {
         <nav>
           <header className="footer-title text-base-content font-bold mb-4 uppercase tracking-wider">Company</header>
           <div className="flex flex-col gap-3 text-sm">
-            <Link to="/#about" className="link link-hover text-base-content/80 hover:text-primary transition-colors">About Us</Link>
-            <Link to="/#help" className="link link-hover text-base-content/80 hover:text-primary transition-colors">Help & FAQs</Link>
-            <Link to="/#contact" className="link link-hover text-base-content/80 hover:text-primary transition-colors">Contact</Link>
+            <Link to="/about" className="link link-hover text-base-content/80 hover:text-primary transition-colors">About Us</Link>
+            <Link to="/help" className="link link-hover text-base-content/80 hover:text-primary transition-colors">Help & FAQs</Link>
+            <Link to="/contact" className="link link-hover text-base-content/80 hover:text-primary transition-colors">Contact</Link>
           </div>
         </nav>
 
@@ -41,8 +41,8 @@ const Footer = () => {
           <header className="footer-title text-base-content font-bold mb-4 uppercase tracking-wider">Legal</header>
           <div className="flex flex-col gap-3 text-sm">
             <Link to="/privacy" className="link link-hover text-base-content/80 hover:text-primary transition-colors">Privacy Policy</Link>
-            <Link to="/#terms" className="link link-hover text-base-content/80 hover:text-primary transition-colors">Terms of Use</Link>
-            <Link to="/#accessibility" className="link link-hover text-base-content/80 hover:text-primary transition-colors">Accessibility Statement</Link>
+            <Link to="/terms" className="link link-hover text-base-content/80 hover:text-primary transition-colors">Terms of Use</Link>
+            <Link to="/accessibility" className="link link-hover text-base-content/80 hover:text-primary transition-colors">Accessibility Statement</Link>
           </div>
         </nav>
       </div>
