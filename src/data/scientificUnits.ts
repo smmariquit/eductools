@@ -657,5 +657,32 @@ export const scientificUnits = [
     name: 'Planck Length', symbol: 'ℓP', category: 'Quantum Physics',
     description: 'The base unit of length in the system of Planck units, roughly 1.616 × 10⁻³⁵ meters.',
     misconception: 'Often described as the "pixel size" of the universe. Meaningful physics models break down if you attempt to measure distances smaller than this.'
+  },
+
+  // --- COMPUTER SCIENCE ---
+  {
+    name: 'Bit', symbol: 'b', category: 'Computer Science',
+    description: 'The most basic unit of information in computing, representing a single binary value (either 0 or 1).',
+    misconception: 'Students often confuse megabits (Mbps) with megabytes (MB/s) when looking at internet speeds. A bit is a lowercase "b", while a byte is a capital "B".'
+  },
+  {
+    name: 'Byte', symbol: 'B', category: 'Computer Science',
+    description: 'A unit of digital information that most commonly consists of exactly 8 bits. It represents a single character of text in a computer.',
+    misconception: 'Assuming 1 Kilobyte is exactly 1,000 bytes. Because computers operate in binary (base 2), a traditional kilobyte (Kibibyte) is actually 1,024 bytes (2¹⁰).'
+  },
+  {
+    name: 'FLOPS', symbol: 'FLOPS', category: 'Computer Science',
+    description: 'Floating Point Operations Per Second. A measure of computer performance, specifically calculating how many complex math equations a processor can solve in one second.',
+    misconception: 'Often confused with Clock Speed (Hertz). Hertz measures how fast the processor ticks, while FLOPS measures how much actual math gets done during those ticks.'
+  },
+  {
+    name: 'Pixel', symbol: 'px', category: 'Computer Science / Graphics',
+    description: 'The smallest controllable element of a picture represented on a screen. Short for "Picture Element".',
+    misconception: 'Assuming a pixel has a set physical size. A pixel on a giant Jumbotron is massive; a pixel on a modern smartphone is microscopic.'
+  },
+  {
+    name: 'Baud', symbol: 'Bd', category: 'Computer Science / Telecommunications',
+    description: 'The unit for symbol rate or modulation rate in a digitally modulated signal. One baud is one symbol (or state change) per second.',
+    misconception: 'Confused with bits per second (bps). If a single signal change carries 4 bits of data, a 1,000 Baud connection is actually transmitting at 4,000 bps.'
   }
 ];

@@ -81,15 +81,15 @@ const ScientificUnits = () => {
                 <div className="collapse-content peer-checked:bg-base-300/20 pt-2 pb-5 border-t border-base-300/50"> 
                   <div className="space-y-5 mt-4">
                     <div>
-                      <h3 className="text-xs font-bold uppercase tracking-wider text-base-content/50 m-0 mb-1">What it measures</h3>
-                      <p className="text-base text-base-content/90 m-0 leading-relaxed">{unit.description}</p>
+                      <h3 className="text-xs font-bold uppercase tracking-wider text-base-content/70 m-0 mb-1">What it measures</h3>
+                      <p className="text-base text-base-content m-0 leading-relaxed">{unit.description}</p>
                     </div>
                     {unit.misconception && (
-                      <div className="bg-warning/10 border border-warning/20 p-4 rounded-xl">
-                        <h3 className="text-xs font-bold uppercase tracking-wider text-warning-content/80 m-0 flex items-center gap-2 mb-2">
+                      <div className="bg-warning/10 border border-warning/30 p-4 rounded-xl">
+                        <h3 className="text-sm font-black uppercase tracking-wider text-warning m-0 flex items-center gap-2 mb-2">
                           <span className="text-warning text-base">⚠️</span> Common Misconception
                         </h3>
-                        <p className="m-0 text-sm leading-relaxed text-warning-content/90">{unit.misconception}</p>
+                        <p className="m-0 text-sm leading-relaxed text-base-content/90 font-medium">{unit.misconception}</p>
                       </div>
                     )}
                   </div>

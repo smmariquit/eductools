@@ -41,7 +41,8 @@ export const visualizerModules: VisualizerModule[] = [
   { id: 'surface-area', title: 'Surface Area Builder', description: 'Unfold 3D shapes into flat nets and calculate the surface area face by face.', path: '/visualizer/surface-area', tags: ['Grade 6', 'Math', 'MATATAG Aligned'] },
   { id: 'pythagorean', title: 'Pythagorean Theorem', description: 'See the visual proof of a² + b² = c² with interactive squares on a right triangle.', path: '/visualizer/pythagorean', tags: ['Grade 8', 'Math', 'MATATAG Aligned'] },
   { id: 'reaction-rate', title: 'Reaction Rate Simulator', description: 'Explore how temperature, concentration, and catalysts affect reaction rates through collision theory.', path: '/visualizer/reaction-rate', tags: ['Grade 10', 'Science', 'MATATAG Aligned'] },
-  { id: 'permutations-combinations', title: 'Permutations & Combinations', description: 'Understand the difference between permutations (order matters) and combinations (order doesn\'t matter).', path: '/visualizer/permutations-combinations', tags: ['Grade 10', 'Math', 'MATATAG Aligned'] }
+  { id: 'permutations-combinations', title: 'Permutations & Combinations', description: 'Understand the difference between permutations (order matters) and combinations (order doesn\'t matter).', path: '/visualizer/permutations-combinations', tags: ['Grade 10', 'Math', 'MATATAG Aligned'] },
+  { id: 'computer-science', title: 'Digital Logic: Bits to Pixels', description: 'Interact with bits to see how raw binary voltage creates physical RGB pixels on a screen.', path: '/visualizer/computer-science', tags: ['Computer Science', 'Physics', 'Grade 8', 'Grade 9', 'Grade 10'] }
 ];
 
 // Derive tags from actual data instead of maintaining a separate manual list

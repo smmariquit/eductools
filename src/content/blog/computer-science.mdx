@@ -1,0 +1,40 @@
+# From Bits to Pixels: The Physics of Computation
+
+When we talk about computer science, it is easy to forget that the "digital" world is completely bound by the laws of physical science. At its core, a computer does not understand numbers, text, or video. It only understands voltage.
+
+## The Physical Reality of a Bit
+
+A **Bit** (Binary Digit) is the fundamental atomic unit of computing. But it isn't an abstract mathematical concept—it's a physical state. 
+
+Inside the silicon of a computer processor are billions of microscopic electronic switches called transistors. When a transistor is charged with a high voltage (roughly 1.0 Volt), it represents a **1**. When the voltage is dropped (roughly 0 Volts), it represents a **0**. 
+
+When you download a 10 Megabyte song, you are downloading exactly 83,886,080 distinct high or low voltage states. 
+
+## Grouping Bits: Bytes and Hexadecimal
+
+Because reading 83 million individual zeros and ones is impossible for humans, we group bits together. 
+
+The most common grouping is an 8-bit cluster known as a **Byte**. An 8-bit Byte can hold exactly $2^8$ (256) unique patterns, from `00000000` to `11111111`.
+
+To make it even easier to read, programmers compress these 8-bit patterns into two-digit Hexadecimal (Base-16) numbers. Instead of counting from 0 to 9, hexadecimal counts from 0 to F (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F). 
+- `00000000` becomes `00`
+- `11111111` becomes `FF`
+
+## Painting with Bytes: The Pixel
+
+How do voltages become a photograph? Through **Pixels** (Picture Elements). 
+
+Modern screens use the RGB (Red, Green, Blue) color model. Every single pixel on your screen is composed of three microscopic physical lights: one red, one green, and one blue. 
+
+A computer assigns exactly **one Byte (8 bits)** to control the brightness of each light. 
+- A byte value of `0` turns the light completely off.
+- A byte value of `255` (or `FF` in Hex) turns the light to maximum brightness.
+
+Because each pixel requires 3 Bytes (Red, Green, Blue), it requires exactly 24 bits. This is known as "24-bit True Color" and it allows for $256 \times 256 \times 256 = 16,777,216$ unique colors!
+
+---
+*Legend for the Visualizer:* The grid on the left represents individual Bits toggling between 0 (Off) and 1 (On). The right side shows how those 8-bit groups combine to physically control the RGB brightness of a single Pixel.
+
+## Further Exploration (External Sources)
+- [LabXchange: Digital Logic Simulation](https://www.labxchange.org/)
+- [PhET: Color Vision](https://phet.colorado.edu/en/simulations/color-vision)
