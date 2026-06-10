@@ -2,6 +2,8 @@ import PermutationsCombinationsMdx from '../../content/deep-dives/permutations-c
 import { useState, useMemo, useEffect, useRef } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 import { Slider } from '../../components/ui/Slider';
+import { StatCard } from '../../components/ui/StatCard';
+import { Toggle } from '../../components/ui/Toggle';
 import katex from 'katex';
 import 'katex/dist/katex.min.css';
 
@@ -111,16 +113,14 @@ const PermutationsCombinationsVisualizer = () => {
         <div className="card-body p-6 md:p-8 flex flex-col gap-8">
 
           {/* Mode toggle */}
-          <div className="flex justify-center">
-            <div className="join">
-              <button onClick={() => setMode('permutation')} className={`join-item btn ${mode === 'permutation' ? 'btn-primary' : 'btn-outline'}`}>
-                Permutation (Order Matters)
-              </button>
-              <button onClick={() => setMode('combination')} className={`join-item btn ${mode === 'combination' ? 'btn-secondary' : 'btn-outline'}`}>
-                Combination (Order Doesn't)
-              </button>
-            </div>
-          </div>
+          <Toggle 
+            options={[
+              { value: 'permutation', label: 'Permutation (Order Matters)', activeColor: 'primary' },
+              { value: 'combination', label: "Combination (Order Doesn't)", activeColor: 'secondary' }
+            ]}
+            value={mode}
+            onChange={(val) => setMode(val as 'permutation' | 'combination')}
+          />
 
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Visual area */}
@@ -208,26 +208,30 @@ const PermutationsCombinationsVisualizer = () => {
                   </div>
                 )}
 
-                <div className="text-center p-4 rounded-lg bg-warning/10 border-2 border-warning/30">
-                  <div className="text-xs text-warning/70 font-bold uppercase mb-1">Result</div>
-                  <div className="text-4xl font-extrabold font-mono text-warning">
-                    {result > 9999 ? result.toExponential(2) : result}
-                  </div>
-                </div>
+                <StatCard 
+                  label="Result"
+                  value={result > 9999 ? result.toExponential(2) : result}
+                  color="warning"
+                  borderWidth={2}
+                />
               </div>
 
               {/* Comparison */}
               <div className="bg-base-200 p-5 rounded-xl border border-base-300">
                 <h3 className="font-bold text-xs uppercase tracking-wider text-base-content/60 mb-3">Compare</h3>
                 <div className="grid grid-cols-2 gap-3">
-                  <div className="text-center p-3 rounded-lg bg-primary/10 border border-primary/30 flex flex-col items-center">
-                    <div className="text-primary mb-1"><InlineMath math={`P(${n},${r})`} /></div>
-                    <div className="font-mono font-bold text-primary">{nPr > 9999 ? nPr.toExponential(1) : nPr}</div>
-                  </div>
-                  <div className="text-center p-3 rounded-lg bg-secondary/10 border border-secondary/30 flex flex-col items-center">
-                    <div className="text-secondary mb-1"><InlineMath math={`C(${n},${r})`} /></div>
-                    <div className="font-mono font-bold text-secondary">{nCr > 9999 ? nCr.toExponential(1) : nCr}</div>
-                  </div>
+                  <StatCard 
+                    label={<InlineMath math={`P(${n},${r})`} />}
+                    value={nPr > 9999 ? nPr.toExponential(1) : nPr}
+                    color="primary"
+                    valueClassName="font-mono font-bold text-lg"
+                  />
+                  <StatCard 
+                    label={<InlineMath math={`C(${n},${r})`} />}
+                    value={nCr > 9999 ? nCr.toExponential(1) : nCr}
+                    color="secondary"
+                    valueClassName="font-mono font-bold text-lg"
+                  />
                 </div>
                 <div className="text-xs text-center mt-2 text-base-content/50">
                   P is always ≥ C because order creates more arrangements
