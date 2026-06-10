@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import VisualizerLayout from '../components/VisualizerLayout';
+import { Link } from 'react-router-dom';
+import AdUnit from '../components/AdUnit';
 
 const WaterCycleVisualizer = () => {
   const [stage, setStage] = useState('Evaporation');

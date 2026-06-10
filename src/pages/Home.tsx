@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import AdUnit from '../components/AdUnit';
@@ -6,27 +6,27 @@ import { visualizerModules } from '../data/registry';
 
 const Home = () => {
   const { t } = useTranslation();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const subjectParam = searchParams.get('subject');
 
   const [activeGrade, setActiveGrade] = useState('All');
-  const [activeSubject, setActiveSubject] = useState(subjectParam || 'All');
   const [matatagOnly, setMatatagOnly] = useState(false);
 
-  useEffect(() => {
-    if (subjectParam) {
-      setActiveSubject(subjectParam);
+  // Derive activeSubject directly from URL params — no useEffect needed
+  const activeSubject = subjectParam || 'All';
+  const setActiveSubject = (value: string) => {
+    if (value === 'All') {
+      searchParams.delete('subject');
+      setSearchParams(searchParams);
     } else {
-      setActiveSubject('All');
+      setSearchParams({ subject: value });
     }
-  }, [subjectParam]);
-
-  const modules = visualizerModules;
+  };
 
   const grades = ['All', 'Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8', 'Grade 9', 'Grade 10', 'Grade 11', 'Grade 12'];
   const subjects = ['All', 'Math', 'Science', 'Biology', 'Physics', 'Chemistry', 'Earth Science', 'DRRR'];
 
-  const filteredModules = modules.filter(m => {
+  const filteredModules = visualizerModules.filter(m => {
     const matchGrade = activeGrade === 'All' || m.tags.includes(activeGrade);
     const matchSubject = activeSubject === 'All' || m.tags.includes(activeSubject);
     const matchMatatag = !matatagOnly || m.tags.includes('MATATAG Aligned');

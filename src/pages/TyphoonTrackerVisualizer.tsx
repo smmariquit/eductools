@@ -37,90 +37,102 @@ const TyphoonTrackerVisualizer = () => {
         </>
       }
     >
-      <div className="legacy-card flex-col gap-2">
-        
-        {/* Controls */}
-        <div style={{ background: 'var(--surface-hover)', padding: '1.5rem', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
-          <label style={{ display: 'flex', flexDirection: 'column', fontWeight: 600, gap: '0.5rem' }}>
-            Maximum Sustained Wind Speed: <span style={{ color: data.color, fontSize: '1.25rem' }}>{windSpeed} km/h</span>
-            <input 
-              type="range" 
-              min="40" 
-              max="300" 
-              step="5"
-              value={windSpeed} 
-              onChange={e => setWindSpeed(Number(e.target.value))} 
-              style={{ width: '100%', accentColor: data.color }} 
-              disabled={simulating}
-            />
-          </label>
-        </div>
-
-        {/* Map Viewport */}
-        <div style={{ height: '400px', background: '#0f172a', position: 'relative', overflow: 'hidden', border: '2px solid var(--border-color)', borderRadius: '8px' }}>
+      <div className="card bg-base-100 shadow-xl border border-base-200">
+        <div className="card-body p-6 flex flex-col gap-6">
           
-          {/* Distance Scale / Grid Lines */}
-          <div style={{ position: 'absolute', top: 0, bottom: 0, left: '20%', borderLeft: '1px dashed rgba(255,255,255,0.2)' }} />
-          <div style={{ position: 'absolute', top: 0, bottom: 0, left: '40%', borderLeft: '1px dashed rgba(255,255,255,0.2)' }} />
-          <div style={{ position: 'absolute', top: 0, bottom: 0, left: '60%', borderLeft: '1px dashed rgba(255,255,255,0.2)' }} />
-          <div style={{ position: 'absolute', bottom: '10px', left: '20%', color: 'rgba(255,255,255,0.5)', fontSize: '0.75rem', transform: 'translateX(-50%)' }}>1000 km</div>
-          <div style={{ position: 'absolute', bottom: '10px', left: '40%', color: 'rgba(255,255,255,0.5)', fontSize: '0.75rem', transform: 'translateX(-50%)' }}>500 km</div>
-          <div style={{ position: 'absolute', bottom: '10px', left: '60%', color: 'rgba(255,255,255,0.5)', fontSize: '0.75rem', transform: 'translateX(-50%)' }}>250 km</div>
-
-          {/* HUD Overlay */}
-          <div style={{ position: 'absolute', top: '1rem', left: '1rem', background: 'rgba(0,0,0,0.8)', padding: '1rem', borderRadius: '8px', border: `1px solid ${data.color}`, color: '#fff', zIndex: 10 }}>
-            <h3 style={{ margin: '0 0 0.5rem 0', color: data.color }}>{data.category}</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', fontSize: '0.875rem' }}>
-              <div>
-                <span style={{ color: 'var(--text-secondary)' }}>Wind</span><br/>
-                <strong>{windSpeed} km/h</strong>
+          {/* Controls */}
+          <div className="bg-base-200 p-6 rounded-xl border border-base-300">
+            <label className="flex flex-col font-bold gap-4">
+              <div className="flex justify-between items-center text-sm md:text-base">
+                <span>Maximum Sustained Wind Speed:</span>
+                <span className="text-2xl font-mono" style={{ color: data.color }}>{windSpeed} km/h</span>
               </div>
-              <div>
-                <span style={{ color: 'var(--text-secondary)' }}>Pressure</span><br/>
-                <strong>{pressure} hPa</strong>
-              </div>
-              <div>
-                <span style={{ color: 'var(--text-secondary)' }}>Est. Surge</span><br/>
-                <strong>{data.surge}</strong>
-              </div>
-            </div>
+              <input 
+                type="range" 
+                min="40" 
+                max="300" 
+                step="5"
+                value={windSpeed} 
+                onChange={e => setWindSpeed(Number(e.target.value))} 
+                className="range"
+                style={{ '--range-shdw': data.color } as React.CSSProperties}
+                disabled={simulating}
+              />
+            </label>
           </div>
 
-          {/* Mock Philippine Map (Eastern Seaboard) */}
-          <svg style={{ position: 'absolute', right: '5%', top: '5%', width: '30%', height: '90%', opacity: 0.9, zIndex: 5 }} viewBox="0 0 100 200" preserveAspectRatio="none">
-            <path d="M50 10 Q70 30 60 70 T40 130 Q30 160 50 190 L80 190 Q90 150 85 100 T95 20 Z" fill="#166534" stroke="#4ade80" strokeWidth="1"/>
-            <text x="65" y="100" fill="#4ade80" fontSize="8" fontWeight="bold">PHILIPPINES</text>
-          </svg>
-          
-          {/* Typhoon Simulation Node */}
-          <motion.div 
-            animate={{ 
-              rotate: 360,
-              left: simulating ? '70%' : '10%'
-            }}
-            transition={{ 
-              rotate: { duration: Math.max(0.2, 2 - (windSpeed / 150)), repeat: Infinity, ease: "linear" },
-              left: { duration: 4, ease: "linear" }
-            }}
-            style={{
-              position: 'absolute', top: '40%',
-              width: `${data.size}px`, height: `${data.size}px`,
-              background: `radial-gradient(circle, rgba(255,255,255,0.8) 0%, ${data.color}40 40%, transparent 70%)`,
-              borderRadius: '50%',
-              originX: 0.5, originY: 0.5,
-              transform: 'translate(-50%, -50%)',
-              zIndex: 8
-            }}
-          >
-            {/* Eye of the storm */}
-            <div style={{ position: 'absolute', top: '50%', left: '50%', width: '15%', height: '15%', background: '#0f172a', borderRadius: '50%', transform: 'translate(-50%, -50%)', border: '1px solid rgba(255,255,255,0.5)' }} />
-          </motion.div>
-        </div>
+          {/* Map Viewport */}
+          <div className="h-[400px] bg-slate-900 relative overflow-hidden border-2 border-base-content/20 rounded-xl shadow-inner">
+            
+            {/* Distance Scale / Grid Lines */}
+            <div className="absolute top-0 bottom-0 left-[20%] border-l border-dashed border-white/20" />
+            <div className="absolute top-0 bottom-0 left-[40%] border-l border-dashed border-white/20" />
+            <div className="absolute top-0 bottom-0 left-[60%] border-l border-dashed border-white/20" />
+            <div className="absolute bottom-2 left-[20%] text-white/50 text-xs -translate-x-1/2">1000 km</div>
+            <div className="absolute bottom-2 left-[40%] text-white/50 text-xs -translate-x-1/2">500 km</div>
+            <div className="absolute bottom-2 left-[60%] text-white/50 text-xs -translate-x-1/2">250 km</div>
 
-        <div className="flex-center">
-          <button className="legacy-btn legacy-btn-primary" onClick={() => { setSimulating(false); setTimeout(() => setSimulating(true), 100); }} style={{ width: '200px' }}>
-            Simulate Landfall
-          </button>
+            {/* HUD Overlay */}
+            <div 
+              className="absolute top-4 left-4 bg-black/80 backdrop-blur-sm p-4 rounded-xl border text-white z-10 shadow-lg min-w-[250px]"
+              style={{ borderColor: data.color }}
+            >
+              <h3 className="m-0 mb-4 font-bold text-lg leading-tight" style={{ color: data.color }}>{data.category}</h3>
+              <div className="grid grid-cols-2 gap-4 text-sm">
+                <div>
+                  <span className="text-white/60 text-xs uppercase tracking-wider block">Wind</span>
+                  <strong className="font-mono text-base">{windSpeed} km/h</strong>
+                </div>
+                <div>
+                  <span className="text-white/60 text-xs uppercase tracking-wider block">Pressure</span>
+                  <strong className="font-mono text-base">{pressure} hPa</strong>
+                </div>
+                <div className="col-span-2">
+                  <span className="text-white/60 text-xs uppercase tracking-wider block">Est. Storm Surge</span>
+                  <strong className="font-mono text-base">{data.surge}</strong>
+                </div>
+              </div>
+            </div>
+
+            {/* Mock Philippine Map (Eastern Seaboard) */}
+            <svg className="absolute right-[5%] top-[5%] w-[30%] h-[90%] opacity-90 z-[5]" viewBox="0 0 100 200" preserveAspectRatio="none">
+              <path d="M50 10 Q70 30 60 70 T40 130 Q30 160 50 190 L80 190 Q90 150 85 100 T95 20 Z" fill="#166534" stroke="#4ade80" strokeWidth="1"/>
+              <text x="65" y="100" fill="#4ade80" fontSize="8" fontWeight="bold">PHILIPPINES</text>
+            </svg>
+            
+            {/* Typhoon Simulation Node */}
+            <motion.div 
+              animate={{ 
+                rotate: 360,
+                left: simulating ? '70%' : '10%'
+              }}
+              transition={{ 
+                rotate: { duration: Math.max(0.2, 2 - (windSpeed / 150)), repeat: Infinity, ease: "linear" },
+                left: { duration: 4, ease: "linear" }
+              }}
+              style={{
+                position: 'absolute', top: '40%',
+                width: `${data.size}px`, height: `${data.size}px`,
+                background: `radial-gradient(circle, rgba(255,255,255,0.8) 0%, ${data.color}40 40%, transparent 70%)`,
+                borderRadius: '50%',
+                originX: 0.5, originY: 0.5,
+                transform: 'translate(-50%, -50%)',
+                zIndex: 8
+              }}
+            >
+              {/* Eye of the storm */}
+              <div className="absolute top-1/2 left-1/2 w-[15%] h-[15%] bg-slate-900 rounded-full border border-white/50 -translate-x-1/2 -translate-y-1/2" />
+            </motion.div>
+          </div>
+
+          <div className="flex justify-center mt-2">
+            <button 
+              className="btn btn-primary btn-wide shadow-md" 
+              onClick={() => { setSimulating(false); setTimeout(() => setSimulating(true), 100); }}
+            >
+              Simulate Landfall
+            </button>
+          </div>
         </div>
       </div>
     </VisualizerLayout>

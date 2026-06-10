@@ -1,15 +1,68 @@
 import { useState, useEffect } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { visualizerModules } from '../data/registry';
+
+// Read persisted preferences, with fallbacks
+function getStoredTheme(): 'dark' | 'light' {
+  try {
+    const stored = localStorage.getItem('eductools-theme');
+    if (stored === 'light' || stored === 'dark') return stored;
+  } catch { /* localStorage not available */ }
+  return 'dark';
+}
+
+function getStoredLanguage(): 'EN' | 'PH' {
+  try {
+    const stored = localStorage.getItem('eductools-lang');
+    if (stored === 'EN' || stored === 'PH') return stored;
+  } catch { /* localStorage not available */ }
+  return 'EN';
+}
 
 const Layout = () => {
   const { t, i18n } = useTranslation();
-  const [language, setLanguage] = useState<'EN' | 'PH'>('EN');
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const [language, setLanguage] = useState<'EN' | 'PH'>(getStoredLanguage);
+  const [theme, setTheme] = useState<'dark' | 'light'>(getStoredTheme);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
+    try { localStorage.setItem('eductools-theme', theme); } catch { /* noop */ }
   }, [theme]);
+
+  // Sync language on mount
+  useEffect(() => {
+    i18n.changeLanguage(language);
+  }, []);  // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Generate dynamic favicon showing total tool count
+  useEffect(() => {
+    const totalTools = visualizerModules.length;
+    
+    // Create an SVG favicon
+    const svg = `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+        <rect width="64" height="64" rx="16" fill="#3b82f6" />
+        <path d="M16 20L8 32L16 44L32 32L16 20Z" fill="white" opacity="0.3" stroke="white" stroke-width="2" />
+        <text x="32" y="44" font-family="system-ui, sans-serif" font-weight="900" font-size="28" fill="white" text-anchor="middle">
+          ${totalTools}+
+        </text>
+      </svg>
+    `;
+    
+    // Convert to data URI
+    const svgUrl = `data:image/svg+xml;base64,${btoa(svg)}`;
+    
+    // Find or create favicon link element
+    let link = document.querySelector("link[rel~='icon']") as HTMLLinkElement;
+    if (!link) {
+      link = document.createElement('link');
+      link.rel = 'icon';
+      document.head.appendChild(link);
+    }
+    
+    link.href = svgUrl;
+  }, []);
 
   const toggleTheme = () => {
     setTheme(prev => prev === 'dark' ? 'light' : 'dark');
@@ -18,6 +71,7 @@ const Layout = () => {
   const handleLanguageChange = (lng: 'EN' | 'PH') => {
     setLanguage(lng);
     i18n.changeLanguage(lng);
+    try { localStorage.setItem('eductools-lang', lng); } catch { /* noop */ }
   };
 
   return (

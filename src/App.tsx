@@ -1,33 +1,47 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
+import ErrorBoundary from './components/ErrorBoundary';
 import Home from './pages/Home';
-const SolarSystemVisualizer = lazy(() => import('./pages/SolarSystemVisualizer'));
-const WavePhysicsVisualizer = lazy(() => import('./pages/WavePhysicsVisualizer'));
-const StatesOfMatterVisualizer = lazy(() => import('./pages/StatesOfMatterVisualizer'));
-const LifeCyclesVisualizer = lazy(() => import('./pages/LifeCyclesVisualizer'));
-const HumanBodyVisualizer = lazy(() => import('./pages/HumanBodyVisualizer'));
-const MicroscopeVisualizer = lazy(() => import('./pages/MicroscopeVisualizer'));
-const ForcesAndMotionVisualizer = lazy(() => import('./pages/ForcesAndMotionVisualizer'));
-const ChemicalBondingVisualizer = lazy(() => import('./pages/ChemicalBondingVisualizer'));
-const PlateTectonicsVisualizer = lazy(() => import('./pages/PlateTectonicsVisualizer'));
-const PhotosynthesisVisualizer = lazy(() => import('./pages/PhotosynthesisVisualizer'));
-const TyphoonTrackerVisualizer = lazy(() => import('./pages/TyphoonTrackerVisualizer'));
-const FractionsVisualizer = lazy(() => import('./pages/FractionsVisualizer'));
-
-// New batch of 10 tools
-const WaterCycleVisualizer = lazy(() => import('./pages/WaterCycleVisualizer'));
-const FoodWebVisualizer = lazy(() => import('./pages/FoodWebVisualizer'));
-const SeasonsVisualizer = lazy(() => import('./pages/SeasonsVisualizer'));
-const DensityVisualizer = lazy(() => import('./pages/DensityVisualizer'));
-const PunnettSquareVisualizer = lazy(() => import('./pages/PunnettSquareVisualizer'));
-const ProjectileMotionVisualizer = lazy(() => import('./pages/ProjectileMotionVisualizer'));
-const ElectromagneticSpectrumVisualizer = lazy(() => import('./pages/ElectromagneticSpectrumVisualizer'));
-const CellDivisionVisualizer = lazy(() => import('./pages/CellDivisionVisualizer'));
-const RockCycleVisualizer = lazy(() => import('./pages/RockCycleVisualizer'));
-const StoichiometryVisualizer = lazy(() => import('./pages/StoichiometryVisualizer'));
+import NotFound from './pages/NotFound';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
+
+// Dynamically import all visualizer pages using Vite's glob
+const visualizerPages = import.meta.glob('./pages/*Visualizer.tsx') as Record<
+  string,
+  () => Promise<{ default: React.ComponentType }>
+>;
+
+// Build a map from route slug to lazy component
+// File naming convention: ./pages/{PascalCaseName}Visualizer.tsx
+// Route convention: /visualizer/{kebab-case-name}
+function buildVisualizerRoutes() {
+  const routes: { path: string; Component: React.LazyExoticComponent<React.ComponentType> }[] = [];
+
+  for (const filePath of Object.keys(visualizerPages)) {
+    // Extract the component name, e.g. "SolarSystem" from "./pages/SolarSystemVisualizer.tsx"
+    const match = filePath.match(/\.\/pages\/(.+)Visualizer\.tsx$/);
+    if (!match) continue;
+
+    const pascalName = match[1]; // e.g. "SolarSystem", "WavePhysics", "StatesOfMatter"
+    
+    // Convert PascalCase to kebab-case for the route
+    const kebab = pascalName
+      .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+      .replace(/([A-Z])([A-Z][a-z])/g, '$1-$2')
+      .toLowerCase();
+
+    routes.push({
+      path: `visualizer/${kebab}`,
+      Component: lazy(visualizerPages[filePath]),
+    });
+  }
+
+  return routes;
+}
+
+const visualizerRoutes = buildVisualizerRoutes();
 
 function App() {
   return (
@@ -38,29 +52,22 @@ function App() {
           <Route index element={<Home />} />
           <Route path="blog" element={<Blog />} />
           <Route path="blog/:id" element={<BlogPost />} />
-          <Route path="visualizer/solar-system" element={<SolarSystemVisualizer />} />
-          <Route path="visualizer/wave-physics" element={<WavePhysicsVisualizer />} />
-          <Route path="visualizer/states-of-matter" element={<StatesOfMatterVisualizer />} />
-          <Route path="visualizer/life-cycles" element={<LifeCyclesVisualizer />} />
-          <Route path="visualizer/human-body" element={<HumanBodyVisualizer />} />
-          <Route path="visualizer/microscope" element={<MicroscopeVisualizer />} />
-          <Route path="visualizer/forces-motion" element={<ForcesAndMotionVisualizer />} />
-          <Route path="visualizer/chemical-bonding" element={<ChemicalBondingVisualizer />} />
-          <Route path="visualizer/plate-tectonics" element={<PlateTectonicsVisualizer />} />
-          <Route path="visualizer/photosynthesis" element={<PhotosynthesisVisualizer />} />
-          <Route path="visualizer/typhoon-tracker" element={<TyphoonTrackerVisualizer />} />
-          <Route path="visualizer/fractions" element={<FractionsVisualizer />} />
           
-          <Route path="visualizer/water-cycle" element={<WaterCycleVisualizer />} />
-          <Route path="visualizer/food-web" element={<FoodWebVisualizer />} />
-          <Route path="visualizer/seasons" element={<SeasonsVisualizer />} />
-          <Route path="visualizer/density" element={<DensityVisualizer />} />
-          <Route path="visualizer/punnett-square" element={<PunnettSquareVisualizer />} />
-          <Route path="visualizer/projectile-motion" element={<ProjectileMotionVisualizer />} />
-          <Route path="visualizer/em-spectrum" element={<ElectromagneticSpectrumVisualizer />} />
-          <Route path="visualizer/cell-division" element={<CellDivisionVisualizer />} />
-          <Route path="visualizer/rock-cycle" element={<RockCycleVisualizer />} />
-          <Route path="visualizer/stoichiometry" element={<StoichiometryVisualizer />} />
+          {/* Dynamically generated visualizer routes from file glob */}
+          {visualizerRoutes.map(({ path, Component }) => (
+            <Route
+              key={path}
+              path={path}
+              element={
+                <ErrorBoundary>
+                  <Component />
+                </ErrorBoundary>
+              }
+            />
+          ))}
+
+          {/* 404 catch-all */}
+          <Route path="*" element={<NotFound />} />
         </Route>
         </Routes>
       </Suspense>

@@ -31,4 +31,5 @@ export const visualizerModules: VisualizerModule[] = [
   { id: 'typhoon-tracker', title: 'Typhoon Tracker (DRRR)', description: 'Simulate typhoon categories and potential landfall impacts.', path: '/visualizer/typhoon-tracker', tags: ['Grade 11', 'Grade 12', 'Earth Science', 'DRRR'] }
 ];
 
-export const allTags = ['All', 'Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8', 'Grade 9', 'Grade 10', 'Grade 11', 'Grade 12', 'Math', 'Science', 'Biology', 'Physics', 'Chemistry', 'Earth Science', 'DRRR', 'MATATAG Aligned'];
+// Derive tags from actual data instead of maintaining a separate manual list
+export const allTags = ['All', ...Array.from(new Set(visualizerModules.flatMap(m => m.tags)))];

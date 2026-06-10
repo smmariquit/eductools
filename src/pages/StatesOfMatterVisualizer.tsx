@@ -83,7 +83,6 @@ const StatesOfMatterVisualizer = () => {
   }, [temperature, state]);
 
   return (
-  return (
     <div className="w-full">
       <div className="mb-6">
         <Link to="/" className="btn btn-outline btn-sm">&larr; Back to Modules</Link>
