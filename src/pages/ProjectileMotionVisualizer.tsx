@@ -196,7 +196,7 @@ const ProjectileMotionVisualizer = () => {
               </div>
               <div>
                 <label className="flex justify-between mb-2 font-semibold text-sm">
-                  <span>Bilis ng Hagis (Velocity <InlineMath math="v_0" />)</span>
+                  <span>Bilis ng Hagis (Velocity <span className="font-serif italic">v<sub className="text-xs">0</sub></span>)</span>
                   <span className="text-secondary">{velocity} m/s</span>
                 </label>
                 <input type="range" min="0" max="40" value={velocity} onChange={(e) => setVelocity(Number(e.target.value))} className="range range-secondary range-sm" />
