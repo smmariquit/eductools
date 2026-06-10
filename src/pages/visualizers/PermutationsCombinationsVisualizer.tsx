@@ -1,6 +1,7 @@
 import PermutationsCombinationsMdx from '../../content/deep-dives/permutations-combinations.mdx';
 import { useState, useMemo } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { BlockMath, InlineMath } from 'react-katex';
 
 type Mode = 'permutation' | 'combination';
 
@@ -172,22 +173,14 @@ const PermutationsCombinationsVisualizer = () => {
                 <h3 className="font-bold text-sm uppercase tracking-wider text-base-content/60">Formula</h3>
 
                 {mode === 'permutation' ? (
-                  <div className="space-y-3">
-                    <div className="font-mono text-lg text-center">
-                      <span className="text-primary font-bold">P</span>({n}, {r}) = {n}! / ({n}−{r})!
-                    </div>
-                    <div className="font-mono text-sm text-center text-base-content/60">
-                      = {factorial(n)} / {factorial(n - r)}
-                    </div>
+                  <div className="overflow-x-auto text-primary">
+                    <BlockMath math={`P(${n}, ${r}) = \\frac{${n}!}{(${n}-${r})!}`} />
+                    <BlockMath math={`= \\frac{${factorial(n)}}{${factorial(n - r)}}`} />
                   </div>
                 ) : (
-                  <div className="space-y-3">
-                    <div className="font-mono text-lg text-center">
-                      <span className="text-secondary font-bold">C</span>({n}, {r}) = {n}! / ({r}! × ({n}−{r})!)
-                    </div>
-                    <div className="font-mono text-sm text-center text-base-content/60">
-                      = {factorial(n)} / ({factorial(r)} × {factorial(n - r)})
-                    </div>
+                  <div className="overflow-x-auto text-secondary">
+                    <BlockMath math={`C(${n}, ${r}) = \\frac{${n}!}{${r}! \\times (${n}-${r})!}`} />
+                    <BlockMath math={`= \\frac{${factorial(n)}}{${factorial(r)} \\times ${factorial(n - r)}}`} />
                   </div>
                 )}
 
@@ -203,12 +196,12 @@ const PermutationsCombinationsVisualizer = () => {
               <div className="bg-base-200 p-5 rounded-xl border border-base-300">
                 <h3 className="font-bold text-xs uppercase tracking-wider text-base-content/60 mb-3">Compare</h3>
                 <div className="grid grid-cols-2 gap-3">
-                  <div className="text-center p-3 rounded-lg bg-primary/10 border border-primary/30">
-                    <div className="text-xs text-primary/70 font-bold">P({n},{r})</div>
+                  <div className="text-center p-3 rounded-lg bg-primary/10 border border-primary/30 flex flex-col items-center">
+                    <div className="text-primary mb-1"><InlineMath math={`P(${n},${r})`} /></div>
                     <div className="font-mono font-bold text-primary">{nPr > 9999 ? nPr.toExponential(1) : nPr}</div>
                   </div>
-                  <div className="text-center p-3 rounded-lg bg-secondary/10 border border-secondary/30">
-                    <div className="text-xs text-secondary/70 font-bold">C({n},{r})</div>
+                  <div className="text-center p-3 rounded-lg bg-secondary/10 border border-secondary/30 flex flex-col items-center">
+                    <div className="text-secondary mb-1"><InlineMath math={`C(${n},${r})`} /></div>
                     <div className="font-mono font-bold text-secondary">{nCr > 9999 ? nCr.toExponential(1) : nCr}</div>
                   </div>
                 </div>
