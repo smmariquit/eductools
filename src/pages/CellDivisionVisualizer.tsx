@@ -1,85 +1,96 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import AdUnit from '../components/AdUnit';
+import VisualizerLayout from '../components/VisualizerLayout';
 
 const CellDivisionVisualizer = () => {
   const [phase, setPhase] = useState(0); // 0: Prophase, 1: Metaphase, 2: Anaphase, 3: Telophase
 
-  const phases = ['Prophase', 'Metaphase', 'Anaphase', 'Telophase'];
+  const phases = ['Prophase', 'Metaphase', 'Anaphase', 'Telophase / Cytokinesis'];
 
   return (
-    <div className="page-container">
-      <div style={{ marginBottom: '1.5rem' }}>
-        <Link to="/" className="legacy-btn legacy-btn-outline">&larr; Back to Modules</Link>
-      </div>
-      <div style={{ paddingBottom: '1rem', borderBottom: '1px solid var(--border-color)', marginBottom: '2rem' }}>
-        <h1 style={{ color: 'var(--accent-color)' }}>Mitosis Cell Division</h1>
-        <p>Observe the stages of cellular replication.</p>
-      </div>
-
-      <div className="legacy-card" style={{ display: 'grid', gridTemplateColumns: '1fr 200px', gap: '2rem' }}>
-        <div style={{ height: '300px', background: 'var(--bg-color)', border: '1px solid var(--border-color)', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <VisualizerLayout
+      title="Pagdami ng Selula (Cell Division)"
+      description="Observe the stages of cellular replication (Mitosis) used for growth and repair."
+      adSlotId="2008"
+      educationalContent={
+        <>
+          <h2>Cellular Reproduction: Grade 8 Biology</h2>
+          <p>Mitosis is a part of the cell cycle where replicated chromosomes are separated into two new, identical nuclei. This process is essential for growth and repair.</p>
+          <h3>Healing a "Sugat" (Wound)</h3>
+          <p>Imagine you get a scrape on your knee while playing basketball in the barangay court. How does your skin heal? Your skin cells undergo <strong>Mitosis</strong> to multiply and replace the damaged tissue.</p>
+          <ul>
+            <li><strong>Prophase:</strong> Chromosomes condense and become visible.</li>
+            <li><strong>Metaphase:</strong> They align at the cell's center (equator).</li>
+            <li><strong>Anaphase:</strong> They are pulled apart to opposite sides.</li>
+            <li><strong>Telophase:</strong> The cell divides into two identical daughter cells, ready to heal your skin!</li>
+          </ul>
+        </>
+      }
+    >
+      <div className="card bg-base-100 shadow-xl border border-base-200">
+        <div className="card-body p-6 md:p-10 grid md:grid-cols-[1fr_250px] gap-8">
           
-          {/* Cell Membrane */}
-          {phase < 3 ? (
-             <div style={{ width: '200px', height: '200px', borderRadius: '50%', border: '4px solid #10b981', position: 'relative' }}>
-                {/* Chromosomes inside single cell */}
-                {phase === 0 && (
-                  <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '100px', height: '100px', border: '2px dashed #3b82f6', borderRadius: '50%' }}>
-                     <div style={{ position: 'absolute', top: '20px', left: '20px', fontSize: '2rem', color: '#ef4444' }}>X X</div>
-                     <div style={{ position: 'absolute', bottom: '20px', right: '20px', fontSize: '2rem', color: '#ef4444' }}>X X</div>
-                  </div>
-                )}
-                {phase === 1 && (
-                  <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', display: 'flex', flexDirection: 'column', gap: '5px' }}>
-                     <div style={{ fontSize: '1.5rem', color: '#ef4444' }}>X</div>
-                     <div style={{ fontSize: '1.5rem', color: '#ef4444' }}>X</div>
-                     <div style={{ fontSize: '1.5rem', color: '#ef4444' }}>X</div>
-                     <div style={{ fontSize: '1.5rem', color: '#ef4444' }}>X</div>
-                  </div>
-                )}
-                {phase === 2 && (
-                  <>
-                    <div style={{ position: 'absolute', top: '20%', left: '20%', display: 'flex', flexDirection: 'column', gap: '5px' }}>
-                       <div style={{ fontSize: '1.5rem', color: '#ef4444' }}>&lt;</div>
-                       <div style={{ fontSize: '1.5rem', color: '#ef4444' }}>&lt;</div>
+          <div className="h-[300px] bg-slate-900 rounded-xl border border-base-300 relative flex items-center justify-center overflow-hidden">
+            {/* Cell Membrane */}
+            {phase < 3 ? (
+               <div className="w-[200px] h-[200px] rounded-full border-4 border-emerald-500 relative bg-emerald-900/20 shadow-[0_0_30px_rgba(16,185,129,0.2)]">
+                  {/* Chromosomes inside single cell */}
+                  {phase === 0 && (
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100px] h-[100px] border-2 border-dashed border-blue-400 rounded-full animate-pulse">
+                       <div className="absolute top-5 left-5 text-2xl text-red-400 font-bold">X X</div>
+                       <div className="absolute bottom-5 right-5 text-2xl text-red-400 font-bold">X X</div>
                     </div>
-                    <div style={{ position: 'absolute', top: '20%', right: '20%', display: 'flex', flexDirection: 'column', gap: '5px' }}>
-                       <div style={{ fontSize: '1.5rem', color: '#ef4444' }}>&gt;</div>
-                       <div style={{ fontSize: '1.5rem', color: '#ef4444' }}>&gt;</div>
+                  )}
+                  {phase === 1 && (
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-1 items-center">
+                       <div className="text-xl text-red-400 font-bold">X</div>
+                       <div className="text-xl text-red-400 font-bold">X</div>
+                       <div className="text-xl text-red-400 font-bold">X</div>
+                       <div className="text-xl text-red-400 font-bold">X</div>
                     </div>
-                  </>
-                )}
-             </div>
-          ) : (
-            // Telophase / Cytokinesis: Two cells splitting
-            <div style={{ display: 'flex', gap: '10px' }}>
-              <div style={{ width: '150px', height: '150px', borderRadius: '50%', border: '4px solid #10b981', position: 'relative' }}>
-                 <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '60px', height: '60px', border: '2px solid #3b82f6', borderRadius: '50%' }}></div>
+                  )}
+                  {phase === 2 && (
+                    <>
+                      <div className="absolute top-1/4 left-1/4 flex flex-col gap-2 items-center transition-all duration-1000">
+                         <div className="text-xl text-red-400 font-bold">&lt;</div>
+                         <div className="text-xl text-red-400 font-bold">&lt;</div>
+                         <div className="text-xl text-red-400 font-bold">&lt;</div>
+                      </div>
+                      <div className="absolute top-1/4 right-1/4 flex flex-col gap-2 items-center transition-all duration-1000">
+                         <div className="text-xl text-red-400 font-bold">&gt;</div>
+                         <div className="text-xl text-red-400 font-bold">&gt;</div>
+                         <div className="text-xl text-red-400 font-bold">&gt;</div>
+                      </div>
+                    </>
+                  )}
+               </div>
+            ) : (
+              // Telophase / Cytokinesis: Two cells splitting
+              <div className="flex gap-4">
+                <div className="w-[140px] h-[140px] rounded-full border-4 border-emerald-500 relative bg-emerald-900/20 animate-[pulse_2s_ease-in-out_infinite]">
+                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50px] h-[50px] border-2 border-blue-400 rounded-full bg-blue-500/20"></div>
+                </div>
+                <div className="w-[140px] h-[140px] rounded-full border-4 border-emerald-500 relative bg-emerald-900/20 animate-[pulse_2s_ease-in-out_infinite]">
+                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50px] h-[50px] border-2 border-blue-400 rounded-full bg-blue-500/20"></div>
+                </div>
               </div>
-              <div style={{ width: '150px', height: '150px', borderRadius: '50%', border: '4px solid #10b981', position: 'relative' }}>
-                 <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '60px', height: '60px', border: '2px solid #3b82f6', borderRadius: '50%' }}></div>
-              </div>
-            </div>
-          )}
-        </div>
+            )}
+          </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          {phases.map((p, i) => (
-            <button key={p} onClick={() => setPhase(i)} className={`btn ${phase === i ? 'legacy-btn-primary' : 'legacy-btn-outline'}`}>
-              {p}
-            </button>
-          ))}
+          <div className="flex flex-col gap-3 justify-center">
+            <h3 className="font-bold text-lg mb-2">Select Stage:</h3>
+            {phases.map((p, i) => (
+              <button 
+                key={p} 
+                onClick={() => setPhase(i)} 
+                className={`btn ${phase === i ? 'btn-primary' : 'btn-outline'}`}
+              >
+                {p}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
-
-      <article className="article-content">
-        <h2>Cellular Reproduction: Senior High Biology</h2>
-        <p>Mitosis is a part of the cell cycle when replicated chromosomes are separated into two new nuclei.</p>
-        <p>In <strong>Prophase</strong>, chromosomes condense. In <strong>Metaphase</strong>, they align at the cell equator. In <strong>Anaphase</strong>, sister chromatids are pulled apart. In <strong>Telophase</strong>, the cell divides into two identical daughter cells.</p>
-      </article>
-      <AdUnit slotId="2008" format="auto" />
-    </div>
+    </VisualizerLayout>
   );
 };
 export default CellDivisionVisualizer;

@@ -1,92 +1,86 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import AdUnit from '../components/AdUnit';
+import VisualizerLayout from '../components/VisualizerLayout';
 
 const WaterCycleVisualizer = () => {
-  const [stage, setStage] = useState('Evaporation');
+  const [stage, setStage] = useState('Pagsingaw (Evaporation)');
+
+  const stages = ['Pagsingaw (Evaporation)', 'Pamumuo (Condensation)', 'Pag-ulan (Precipitation)'];
 
   return (
-    <div className="page-container">
-      <div style={{ marginBottom: '1.5rem' }}>
-        <Link to="/" className="legacy-btn legacy-btn-outline">&larr; Back to Modules</Link>
-      </div>
-      <div style={{ paddingBottom: '1rem', borderBottom: '1px solid var(--border-color)', marginBottom: '2rem' }}>
-        <h1 style={{ color: 'var(--accent-color)' }}>Water Cycle</h1>
-        <p>Interactive visualization of Evaporation, Condensation, and Precipitation.</p>
-      </div>
-
-      <div className="legacy-card" style={{ display: 'grid', gridTemplateColumns: '1fr 200px', gap: '2rem' }}>
-        <div style={{ background: '#0ea5e9', height: '300px', position: 'relative', overflow: 'hidden', border: '1px solid var(--border-color)', borderRadius: '4px' }}>
-          {/* Ground/Water */}
-          <div style={{ position: 'absolute', bottom: 0, width: '100%', height: '100px', background: '#2563eb' }} />
-          <div style={{ position: 'absolute', bottom: '100px', width: '40%', height: '50px', background: '#16a34a', borderRadius: '0 50px 0 0' }} />
+    <VisualizerLayout
+      title="Siklo ng Tubig (Water Cycle)"
+      description="Interactive visualization of how water moves through the Philippine environment."
+      adSlotId="2001"
+      educationalContent={
+        <>
+          <h2>The Water Cycle in the Philippines</h2>
+          <p>The water cycle describes the continuous movement of water on, above, and below the surface of the Earth. In a tropical archipelago like the Philippines, this cycle drives our distinct <strong>Tag-araw</strong> (Dry) and <strong>Tag-ulan</strong> (Wet) seasons.</p>
+          <ul>
+            <li><strong>Pagsingaw (Evaporation):</strong> The intense tropical sun heats up water in bodies like the <em>Pacific Ocean</em> or <em>Laguna de Bay</em>, turning it into water vapor.</li>
+            <li><strong>Pamumuo (Condensation):</strong> As warm, moist air rises over our mountainous regions (like the <em>Cordilleras</em>), it cools down and changes back into liquid drops, forming the heavy Cumulonimbus clouds often monitored by PAGASA.</li>
+            <li><strong>Pag-ulan (Precipitation):</strong> When clouds become too heavy, water falls back to the islands as rain. This is vital for agriculture (like rice terraces) and fills up reservoirs like the <em>Angat Dam</em>, though intense precipitation leads to typhoons.</li>
+          </ul>
+        </>
+      }
+    >
+      <div className="card bg-base-100 shadow-xl border border-base-200">
+        <div className="card-body p-6 md:p-8 grid md:grid-cols-2 gap-8">
           
-          {/* Sun */}
-          <div style={{ position: 'absolute', top: '20px', right: '20px', width: '50px', height: '50px', background: '#facc15', borderRadius: '50%' }} />
-          
-          {/* Clouds */}
-          <div style={{ position: 'absolute', top: '40px', left: '30%', width: '100px', height: '40px', background: 'white', borderRadius: '20px', opacity: stage === 'Evaporation' ? 0.3 : 1 }} />
+          <div className="bg-sky-400 h-[300px] relative overflow-hidden border border-base-300 rounded-xl">
+            {/* Ground/Water */}
+            <div className="absolute bottom-0 w-full h-[100px] bg-blue-600" />
+            <div className="absolute bottom-[100px] w-2/5 h-[50px] bg-green-600 rounded-tr-[50px]" />
+            
+            {/* Sun */}
+            <div className="absolute top-4 right-4 w-12 h-12 bg-yellow-400 rounded-full shadow-[0_0_20px_rgba(250,204,21,0.8)]" />
+            
+            {/* Clouds */}
+            <div className={`absolute top-10 left-1/3 w-24 h-10 bg-white rounded-full transition-opacity duration-1000 ${stage === 'Pagsingaw (Evaporation)' ? 'opacity-40' : 'opacity-100 shadow-lg'}`} />
+            <div className={`absolute top-14 left-[40%] w-20 h-8 bg-white rounded-full transition-opacity duration-1000 ${stage === 'Pagsingaw (Evaporation)' ? 'opacity-30' : 'opacity-90 shadow-lg'}`} />
 
-          {/* Animations based on stage */}
-          {stage === 'Evaporation' && (
-            <div style={{ position: 'absolute', bottom: '100px', right: '30%', display: 'flex', gap: '20px' }}>
-              <motion.div 
-                animate={{ y: [0, -50], opacity: [1, 0] }}
-                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                style={{ width: '2px', height: '50px', background: 'rgba(255,255,255,0.5)' }} 
-              />
-              <motion.div 
-                animate={{ y: [0, -50], opacity: [1, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-                style={{ width: '2px', height: '50px', background: 'rgba(255,255,255,0.5)' }} 
-              />
-            </div>
-          )}
-          {stage === 'Precipitation' && (
-            <div style={{ position: 'absolute', top: '80px', left: '30%', display: 'flex', gap: '20px' }}>
-              <motion.div 
-                animate={{ y: [0, 100], opacity: [1, 0] }}
-                transition={{ duration: 0.5, repeat: Infinity, ease: "linear" }}
-                style={{ width: '4px', height: '10px', background: '#38bdf8' }} 
-              />
-              <motion.div 
-                animate={{ y: [0, 100], opacity: [1, 0] }}
-                transition={{ duration: 0.7, repeat: Infinity, ease: "linear" }}
-                style={{ width: '4px', height: '10px', background: '#38bdf8' }} 
-              />
-              <motion.div 
-                animate={{ y: [0, 100], opacity: [1, 0] }}
-                transition={{ duration: 0.4, repeat: Infinity, ease: "linear" }}
-                style={{ width: '4px', height: '10px', background: '#38bdf8' }} 
-              />
-            </div>
-          )}
-        </div>
+            {/* Animations based on stage */}
+            {stage === 'Pagsingaw (Evaporation)' && (
+              <div className="absolute bottom-[100px] right-1/4 flex gap-6">
+                <motion.div animate={{ y: [0, -60], opacity: [1, 0] }} transition={{ duration: 1.2, repeat: Infinity, ease: "linear" }} className="w-1 h-12 bg-white/50 rounded-full" />
+                <motion.div animate={{ y: [0, -60], opacity: [1, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }} className="w-1 h-12 bg-white/50 rounded-full" />
+                <motion.div animate={{ y: [0, -60], opacity: [1, 0] }} transition={{ duration: 1.0, repeat: Infinity, ease: "linear" }} className="w-1 h-12 bg-white/50 rounded-full" />
+              </div>
+            )}
+            
+            {stage === 'Pag-ulan (Precipitation)' && (
+              <div className="absolute top-20 left-1/3 flex gap-4">
+                <motion.div animate={{ y: [0, 120], opacity: [1, 0] }} transition={{ duration: 0.6, repeat: Infinity, ease: "linear" }} className="w-1 h-4 bg-blue-300 rounded-full" />
+                <motion.div animate={{ y: [0, 120], opacity: [1, 0] }} transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }} className="w-1 h-4 bg-blue-300 rounded-full" />
+                <motion.div animate={{ y: [0, 120], opacity: [1, 0] }} transition={{ duration: 0.5, repeat: Infinity, ease: "linear" }} className="w-1 h-4 bg-blue-300 rounded-full" />
+                <motion.div animate={{ y: [0, 120], opacity: [1, 0] }} transition={{ duration: 0.7, repeat: Infinity, ease: "linear" }} className="w-1 h-4 bg-blue-300 rounded-full" />
+              </div>
+            )}
+          </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          {['Evaporation', 'Condensation', 'Precipitation'].map(s => (
-            <button key={s} onClick={() => setStage(s)} className={`btn ${stage === s ? 'legacy-btn-primary' : 'legacy-btn-outline'}`}>
-              {s}
-            </button>
-          ))}
-          <p style={{ marginTop: '1rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-            Select a stage to observe the water's movement.
-          </p>
+          <div className="flex flex-col justify-center gap-4">
+            <h3 className="text-xl font-bold text-base-content mb-2">Select a Stage:</h3>
+            <div className="flex flex-col gap-3">
+              {stages.map(s => (
+                <button 
+                  key={s} 
+                  onClick={() => setStage(s)} 
+                  className={`btn ${stage === s ? 'btn-primary' : 'btn-outline'}`}
+                >
+                  {s}
+                </button>
+              ))}
+            </div>
+            
+            <div className="mt-6 p-4 bg-base-200 rounded-lg text-sm border border-base-300">
+              {stage === 'Pagsingaw (Evaporation)' && "Water absorbs heat energy from the sun and turns into vapor."}
+              {stage === 'Pamumuo (Condensation)' && "Water vapor cools as it rises, forming clouds over the mountains."}
+              {stage === 'Pag-ulan (Precipitation)' && "The clouds release water back to the ground as rain, supporting ecosystems."}
+            </div>
+          </div>
         </div>
       </div>
-
-      <article className="article-content">
-        <h2>The Water Cycle (Siklo ng Tubig): Philippine Context</h2>
-        <p>The water cycle describes the continuous movement of water on, above, and below the surface of the Earth. In a tropical archipelago like the Philippines, this cycle is highly visible through our distinct wet and dry seasons, and phenomena like the Habagat (Southwest Monsoon).</p>
-        <ul>
-          <li><strong>Evaporation (Pagsingaw):</strong> The intense tropical sun heats up water in bodies like Laguna de Bay, the Sulu Sea, or local rivers, turning it into water vapor.</li>
-          <li><strong>Condensation (Kondensasyon):</strong> As the warm, moist air rises over our mountainous regions (like the Cordilleras), it cools down and changes back into liquid drops, forming the heavy clouds often monitored by PAGASA.</li>
-          <li><strong>Precipitation (Presipitasyon):</strong> When the clouds become too heavy, water falls back to the Philippine islands as rain, which is vital for our agriculture (like rice terraces) but can also lead to typhoons if intense.</li>
-        </ul>
-      </article>
-      <AdUnit slotId="2001" format="auto" />
-    </div>
+    </VisualizerLayout>
   );
 };
 export default WaterCycleVisualizer;

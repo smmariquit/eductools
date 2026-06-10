@@ -10,43 +10,55 @@ const PhotosynthesisVisualizer = () => {
 
   return (
     <VisualizerLayout
-      title="Photosynthesis Simulator"
-      description="Explore limiting factors in the process of photosynthesis."
+      title="Paggawa ng Pagkain (Photosynthesis)"
+      description="Explore the limiting factors in how plants produce their own food using sunlight."
       adSlotId="1008"
       educationalContent={
         <>
-          <h2>Photosynthesis: Senior High School Biology</h2>
-          <p>Photosynthesis is the process by which green plants use sunlight to synthesize nutrients from carbon dioxide and water.</p>
-          <h3>Limiting Factors</h3>
-          <p>The rate of photosynthesis is affected by light intensity, carbon dioxide concentration, and temperature. If any of these factors is in short supply, it limits the overall rate of oxygen and glucose production.</p>
+          <h2>Photosynthesis: Grade 9 Science</h2>
+          <p>Photosynthesis is the process by which green plants, like our local <em>Palay</em> (Rice) or <em>Mangga</em> (Mango) trees, use sunlight to synthesize nutrients from Carbon Dioxide (CO2) and water.</p>
+          <h3>Limiting Factors in the Tropics</h3>
+          <p>The rate of photosynthesis is heavily affected by <strong>Light Intensity</strong> and <strong>CO2 Concentration</strong>. In the Philippines, plants usually get abundant sunlight, allowing for lush tropical rainforests and robust agriculture. However, during heavy typhoons (cloudy days), the drop in light intensity slows down their food production.</p>
         </>
       }
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8">
           <div className="grid md:grid-cols-[1fr_300px] gap-8">
-            <div className="bg-base-200 rounded-xl flex flex-col items-center justify-end min-h-[300px] pb-8 border border-base-300 relative overflow-hidden">
+            <div className="bg-sky-900 rounded-xl flex flex-col items-center justify-end min-h-[350px] pb-8 border border-base-300 relative overflow-hidden shadow-inner">
+              
               {/* Sun visualization based on light */}
               <div 
-                className="absolute top-4 right-4 rounded-full bg-warning transition-all duration-300 blur-[2px]"
+                className="absolute top-4 right-4 rounded-full bg-yellow-400 transition-all duration-300 blur-[2px] shadow-[0_0_50px_rgba(250,204,21,0.8)]"
                 style={{ 
-                  width: `${light}px`, 
-                  height: `${light}px`,
-                  opacity: light / 100
+                  width: `${Math.max(20, light)}px`, 
+                  height: `${Math.max(20, light)}px`,
+                  opacity: light / 100 + 0.1
                 }}
               />
-              <div className="flex gap-4">
-                {/* Oxygen bubbles based on rate */}
-                {Array.from({ length: Math.floor(oxygenRate / 10) }).map((_, i) => (
-                  <motion.div 
-                    key={i} 
-                    animate={{ y: [0, -150], opacity: [1, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "linear", delay: i * 0.2 }}
-                    className="w-3 h-3 bg-info rounded-full shadow-sm"
-                  />
-                ))}
+
+              {/* Plant visual (Palay/Seedling) */}
+              <div className="relative z-10 flex flex-col items-center">
+                <div className="flex gap-4 absolute -top-16">
+                  {/* Oxygen bubbles based on rate */}
+                  {Array.from({ length: Math.floor(oxygenRate / 10) }).map((_, i) => (
+                    <motion.div 
+                      key={i} 
+                      animate={{ y: [0, -200], opacity: [1, 0], scale: [0.5, 1.5] }}
+                      transition={{ duration: 2.5, repeat: Infinity, ease: "easeOut", delay: i * 0.3 }}
+                      className="w-4 h-4 bg-cyan-300/60 rounded-full shadow-sm flex items-center justify-center text-[8px] text-cyan-900"
+                    >
+                      O₂
+                    </motion.div>
+                  ))}
+                </div>
+                <div className="text-9xl filter drop-shadow-xl transition-transform duration-500" style={{ transform: `scale(${0.8 + (oxygenRate/200)})` }}>
+                  🌾
+                </div>
               </div>
-              <div className="text-7xl mt-4 z-10">🌱</div>
+
+              {/* Ground */}
+              <div className="absolute bottom-0 w-full h-12 bg-emerald-800 border-t-4 border-emerald-600"></div>
             </div>
 
             <div className="flex flex-col gap-6">
@@ -54,7 +66,7 @@ const PhotosynthesisVisualizer = () => {
               
               <div>
                 <label className="flex justify-between mb-2 font-semibold text-sm">
-                  <span>Light Intensity</span>
+                  <span>Liwanag ng Araw (Light)</span>
                   <span className="text-warning">{light}%</span>
                 </label>
                 <input 
@@ -67,20 +79,23 @@ const PhotosynthesisVisualizer = () => {
               
               <div>
                 <label className="flex justify-between mb-2 font-semibold text-sm">
-                  <span>CO2 Concentration</span>
-                  <span className="text-neutral-500">{co2}%</span>
+                  <span>Carbon Dioxide (CO₂)</span>
+                  <span className="text-emerald-500">{co2}%</span>
                 </label>
                 <input 
                   type="range" min="0" max="100" 
                   value={co2} 
                   onChange={e => setCo2(Number(e.target.value))} 
-                  className="range range-neutral w-full" 
+                  className="range range-success w-full" 
                 />
               </div>
               
-              <div className="bg-base-200 p-5 rounded-xl border border-base-300 mt-auto">
-                <strong className="block text-sm text-base-content/70 mb-1">Oxygen Production Rate:</strong>
-                <span className="text-3xl font-bold text-success">{oxygenRate.toFixed(1)}%</span>
+              <div className="bg-base-200 p-5 rounded-xl border border-base-300 mt-auto shadow-sm">
+                <strong className="block text-sm text-base-content/70 mb-1">Rate of Oxygen Production:</strong>
+                <div className="flex items-end gap-2">
+                  <span className="text-4xl font-extrabold text-info">{oxygenRate.toFixed(1)}</span>
+                  <span className="text-info/70 font-semibold pb-1">%</span>
+                </div>
               </div>
             </div>
           </div>

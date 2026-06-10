@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import AdUnit from '../components/AdUnit';
+import VisualizerLayout from '../components/VisualizerLayout';
 
 const SeasonsVisualizer = () => {
   const [month, setMonth] = useState(6); // 1 = Jan, 6 = June, 12 = Dec
@@ -8,55 +7,82 @@ const SeasonsVisualizer = () => {
   // Rough angle based on month
   const angle = ((month - 3) / 12) * 360; 
 
-  return (
-    <div className="page-container">
-      <div style={{ marginBottom: '1.5rem' }}>
-        <Link to="/" className="legacy-btn legacy-btn-outline">&larr; Back to Modules</Link>
-      </div>
-      <div style={{ paddingBottom: '1rem', borderBottom: '1px solid var(--border-color)', marginBottom: '2rem' }}>
-        <h1 style={{ color: 'var(--accent-color)' }}>Seasons and Earth's Tilt</h1>
-        <p>Understand why the Earth experiences seasons due to its axial tilt.</p>
-      </div>
+  const getPhilippineSeason = (m: number) => {
+    // Roughly: Dec-May is Dry, Jun-Nov is Wet
+    if (m >= 6 && m <= 11) return { season: 'Tag-ulan (Wet Season)', wind: 'Habagat (Southwest Monsoon)' };
+    return { season: 'Tag-araw / Tag-init (Dry Season)', wind: 'Amihan (Northeast Monsoon)' };
+  };
 
-      <div className="legacy-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <div style={{ position: 'relative', width: '400px', height: '400px', borderRadius: '50%', border: '1px dashed var(--text-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          {/* Sun */}
-          <div style={{ width: '60px', height: '60px', background: '#facc15', borderRadius: '50%', boxShadow: '0 0 30px #facc15' }} />
+  const { season, wind } = getPhilippineSeason(month);
+
+  return (
+    <VisualizerLayout
+      title="Panahon sa Pilipinas (Seasons & Monsoons)"
+      description="Understand why the Earth's tilt causes seasons, and how it affects the Philippine wet and dry periods."
+      adSlotId="2003"
+      educationalContent={
+        <>
+          <h2>Earth and Space: Grade 6 Science</h2>
+          <p>The Earth's axis of rotation is tilted at an angle of 23.5 degrees relative to its orbital plane around the Sun. This tilt is the primary reason for seasons globally.</p>
+          <h3>Why no Winter in the Philippines?</h3>
+          <p>Because the Philippines is located very close to the equator, we do not experience the dramatic four seasons (Spring, Summer, Autumn, Winter) of temperate regions. Instead, we have two primary seasons dictated by trade winds and monsoon patterns:</p>
+          <ul>
+            <li><strong>Tag-araw (Dry Season):</strong> Generally from December to May. It includes the cool dry months dominated by the <em>Amihan</em> (Northeast Monsoon) and the hot dry months.</li>
+            <li><strong>Tag-ulan (Wet Season):</strong> Generally from June to November. Driven by the <em>Habagat</em> (Southwest Monsoon), bringing heavy rainfall and typhoons.</li>
+          </ul>
+        </>
+      }
+    >
+      <div className="card bg-base-100 shadow-xl border border-base-200">
+        <div className="card-body items-center p-6 md:p-10">
           
-          {/* Earth Orbit Container */}
-          <div style={{ 
-            position: 'absolute', width: '100%', height: '100%', 
-            transform: `rotate(${angle}deg)`, transition: 'transform 1s ease-in-out' 
-          }}>
-            <div style={{ 
-              position: 'absolute', right: '-15px', top: '185px', 
-              width: '30px', height: '30px', background: '#3b82f6', borderRadius: '50%',
-              transform: `rotate(-${angle}deg) rotate(23.5deg)`, // Keeps earth upright but tilted 23.5
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              border: '2px solid white'
-            }}>
-              {/* Equator line */}
-              <div style={{ width: '30px', height: '1px', background: 'rgba(255,255,255,0.8)' }} />
+          <div className="relative w-[300px] md:w-[400px] h-[300px] md:h-[400px] rounded-full border border-dashed border-base-content/30 flex items-center justify-center mb-8">
+            {/* Sun */}
+            <div className="w-16 h-16 bg-yellow-400 rounded-full shadow-[0_0_40px_rgba(250,204,21,0.6)] z-10" />
+            
+            {/* Earth Orbit Container */}
+            <div 
+              className="absolute w-full h-full transition-transform duration-1000 ease-in-out"
+              style={{ transform: `rotate(${angle}deg)` }}
+            >
+              <div 
+                className="absolute -right-4 top-1/2 -translate-y-1/2 w-8 h-8 bg-blue-500 rounded-full border-2 border-white shadow-lg flex items-center justify-center"
+                style={{ transform: `rotate(-${angle}deg) rotate(23.5deg)` }} // Keeps earth upright but tilted 23.5
+              >
+                {/* Equator line */}
+                <div className="w-8 h-px bg-white/80" />
+              </div>
             </div>
           </div>
-        </div>
 
-        <div style={{ marginTop: '2rem', width: '100%', maxWidth: '400px' }}>
-          <label style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
-            <span>Month: {month}</span>
-            <span>{month === 6 || month === 7 || month === 8 ? 'Northern Summer' : month === 12 || month === 1 || month === 2 ? 'Northern Winter' : 'Equinox'}</span>
-          </label>
-          <input type="range" min="1" max="12" value={month} onChange={(e) => setMonth(Number(e.target.value))} style={{ width: '100%' }} />
+          <div className="w-full max-w-md bg-base-200 p-6 rounded-xl border border-base-300">
+            <div className="flex justify-between items-end mb-4">
+              <div>
+                <div className="text-sm text-base-content/60 font-semibold uppercase tracking-wider mb-1">Month</div>
+                <div className="text-2xl font-bold text-primary">{new Date(2024, month - 1).toLocaleString('default', { month: 'long' })}</div>
+              </div>
+              <div className="text-right">
+                <div className="font-bold text-secondary">{season}</div>
+                <div className="text-sm text-base-content/70">{wind}</div>
+              </div>
+            </div>
+            
+            <input 
+              type="range" min="1" max="12" 
+              value={month} 
+              onChange={(e) => setMonth(Number(e.target.value))} 
+              className="range range-primary w-full" 
+            />
+            <div className="w-full flex justify-between text-xs px-2 mt-2 text-base-content/50">
+              <span>Jan</span>
+              <span>Jun</span>
+              <span>Dec</span>
+            </div>
+          </div>
+          
         </div>
       </div>
-
-      <article className="article-content">
-        <h2>Earth and Space: Grade 6 Science</h2>
-        <p>The Earth's axis of rotation is tilted at an angle of 23.5 degrees relative to its orbital plane around the Sun.</p>
-        <p>As the Earth orbits the Sun, different parts of Earth receive the Sun's most direct rays. When the North Pole tilts toward the Sun, it's summer in the Northern Hemisphere. When the South Pole tilts toward the Sun, it's winter in the Northern Hemisphere.</p>
-      </article>
-      <AdUnit slotId="2003" format="auto" />
-    </div>
+    </VisualizerLayout>
   );
 };
 export default SeasonsVisualizer;

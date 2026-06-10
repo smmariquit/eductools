@@ -1,9 +1,8 @@
 import { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Stars, Html } from '@react-three/drei';
 import * as THREE from 'three';
-import AdUnit from '../components/AdUnit';
+import VisualizerLayout from '../components/VisualizerLayout';
 
 // Component for individual planets
 const Planet = ({ 
@@ -29,14 +28,10 @@ const Planet = ({
         <meshStandardMaterial color={color} metalness={0.1} roughness={0.8} />
       </mesh>
       <Html distanceFactor={15} position={[0, labelY, 0]} center>
-        <div style={{ color: 'white', background: 'rgba(0,0,0,0.5)', padding: '2px 5px', borderRadius: '4px', fontSize: '10px' }}>
+        <div className="text-white bg-black/60 px-2 py-0.5 rounded border border-white/20 text-[10px] font-semibold backdrop-blur-sm shadow-lg whitespace-nowrap">
           {name}
         </div>
       </Html>
-      {/* Orbit ring */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
-        {/* We can't easily draw an orbit ring inside the moving group. We will draw them centrally later. */}
-      </mesh>
     </group>
   );
 };
@@ -46,7 +41,7 @@ const OrbitPath = ({ radius }: { radius: number }) => {
   return (
     <mesh rotation={[-Math.PI / 2, 0, 0]}>
       <ringGeometry args={[radius - 0.05, radius + 0.05, 64]} />
-      <meshBasicMaterial color="rgba(255, 255, 255, 0.1)" side={THREE.DoubleSide} transparent />
+      <meshBasicMaterial color="rgba(255, 255, 255, 0.15)" side={THREE.DoubleSide} transparent />
     </mesh>
   );
 };
@@ -55,29 +50,32 @@ const SolarSystemVisualizer = () => {
   const [speedMultiplier, setSpeedMultiplier] = useState(1);
 
   const planets = [
-    { name: 'Mercury', color: '#888888', radius: 0.3, distance: 4, speed: 0.8 * speedMultiplier, labelY: 0.8 },
+    { name: 'Merkuryo (Mercury)', color: '#888888', radius: 0.3, distance: 4, speed: 0.8 * speedMultiplier, labelY: 0.8 },
     { name: 'Venus', color: '#eab308', radius: 0.5, distance: 7, speed: 0.6 * speedMultiplier, labelY: 1.0 },
-    { name: 'Earth', color: '#3b82f6', radius: 0.6, distance: 10, speed: 0.4 * speedMultiplier, labelY: 1.2 },
+    { name: 'Mundo (Earth)', color: '#3b82f6', radius: 0.6, distance: 10, speed: 0.4 * speedMultiplier, labelY: 1.2 },
     { name: 'Mars', color: '#ef4444', radius: 0.4, distance: 13, speed: 0.3 * speedMultiplier, labelY: 1.0 },
     { name: 'Jupiter', color: '#f59e0b', radius: 1.5, distance: 18, speed: 0.1 * speedMultiplier, labelY: 2.5 }
   ];
 
   return (
-    <div className="w-full">
-      <div className="mb-6">
-        <Link to="/" className="btn btn-outline btn-sm">&larr; Back to Modules</Link>
-      </div>
-      <div className="pb-4 border-b border-base-300 mb-8">
-        <h1 className="text-3xl font-bold text-primary mb-2">Solar System Explorer (3D)</h1>
-        <p className="text-base-content/80">A robust interactive 3D visualizer demonstrating planetary orbits and relative distances.</p>
-      </div>
-
+    <VisualizerLayout
+      title="Ang Sistema Solar (Solar System)"
+      description="Interactive 3D visualizer demonstrating planetary orbits and relative distances."
+      adSlotId="1009"
+      educationalContent={
+        <>
+          <h2>Earth and Space: Grade 6 Science</h2>
+          <p>The Solar System consists of the Sun and the astronomical objects bound to it by gravity. Historically, ancient Filipinos (like pre-colonial Visayans and Tagalogs) used the stars and planets for navigation and agriculture, observing cycles to know when to plant crops.</p>
+          <h3>Planetary Orbits</h3>
+          <p>Notice how planets closer to the Sun (like Merkuryo) travel much faster and have shorter orbital periods compared to gas giants like Jupiter, due to stronger gravitational pull.</p>
+        </>
+      }
+    >
       <div className="card bg-base-100 shadow-xl border border-base-200">
-        <div className="card-body items-center p-4 md:p-8">
-          <div className="w-full h-[500px] bg-black rounded-xl overflow-hidden cursor-grab active:cursor-grabbing border border-base-300">
+        <div className="card-body p-4 md:p-6">
+          <div className="w-full h-[400px] md:h-[500px] bg-black rounded-xl overflow-hidden cursor-grab active:cursor-grabbing border border-base-300 relative">
             <Canvas camera={{ position: [0, 15, 30], fov: 45 }}>
               <ambientLight intensity={0.1} />
-              {/* The Sun acts as a point light source */}
               <pointLight position={[0, 0, 0]} intensity={1000} distance={100} color="#ffecd4" />
               
               <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
@@ -88,8 +86,8 @@ const SolarSystemVisualizer = () => {
                 <sphereGeometry args={[2, 32, 32]} />
                 <meshBasicMaterial color="#facc15" />
                 <Html distanceFactor={15} position={[0, 3, 0]} center>
-                  <div className="text-white bg-black/50 px-2 py-0.5 rounded text-[10px]">
-                    Sun
+                  <div className="text-yellow-400 bg-black/60 px-2 py-0.5 rounded border border-yellow-400/30 text-[12px] font-bold">
+                    Araw (Sun)
                   </div>
                 </Html>
               </mesh>
@@ -102,37 +100,27 @@ const SolarSystemVisualizer = () => {
                 </group>
               ))}
             </Canvas>
+            
+            <div className="absolute bottom-4 left-4 bg-black/50 p-2 rounded text-xs text-white/50 pointer-events-none">
+              Scroll to zoom, drag to rotate
+            </div>
           </div>
 
-          <div className="mt-8 w-full max-w-2xl bg-base-200 p-6 rounded-xl border border-base-300">
-            <label className="flex justify-between mb-4 font-semibold text-base-content">
-              <span>Orbital Speed Multiplier:</span>
-              <span className="text-primary">{speedMultiplier}x</span>
+          <div className="mt-6 bg-base-200 p-4 rounded-xl border border-base-300">
+            <label className="flex justify-between mb-2 font-semibold text-sm">
+              <span>Bilis ng Pag-ikot (Orbital Speed Multiplier)</span>
+              <span className="text-primary">{speedMultiplier.toFixed(1)}x</span>
             </label>
             <input 
-              type="range" min="0" max="5" step="0.5" 
+              type="range" min="0.1" max="5" step="0.1" 
               value={speedMultiplier} 
               onChange={(e) => setSpeedMultiplier(Number(e.target.value))} 
               className="range range-primary w-full" 
             />
-            <p className="mt-4 text-sm text-base-content/60 text-center font-medium">
-              Click and drag to rotate the camera. Scroll to zoom.
-            </p>
           </div>
         </div>
       </div>
-
-      <article className="prose lg:prose-xl mt-12 pt-8 border-t border-base-300 max-w-none text-base-content">
-        <h2 className="text-primary">Earth and Space: Grade 6 Science</h2>
-        <p>The solar system consists of the Sun and everything that orbits around it, bound by gravity. This robust 3D model allows you to explore the relative speeds and distances of the inner planets and Jupiter.</p>
-        <h3>Planetary Motion</h3>
-        <p>Notice that planets closer to the Sun (like Mercury) orbit much faster than planets further away (like Jupiter). This is described by Kepler's Laws of Planetary Motion.</p>
-      </article>
-      <div className="mt-8">
-        <AdUnit slotId="1000" format="auto" />
-      </div>
-    </div>
+    </VisualizerLayout>
   );
 };
-
 export default SolarSystemVisualizer;
