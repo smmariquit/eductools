@@ -260,7 +260,7 @@ const PrivacyPolicy = () => {
             </div>
             <div className="flex gap-2">
               <strong className="w-32 shrink-0">Email:</strong>
-              <span>privacy@eductools.ph</span>
+              <span>semariquit@gmail.com</span>
             </div>
           </div>
         </div>
