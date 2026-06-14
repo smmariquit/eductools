@@ -116,7 +116,7 @@ const SetsVennVisualizer = () => {
             <div className="flex items-center justify-center relative min-h-[220px]">
               {/* Circle A */}
               <div className={`w-56 h-56 rounded-full border-3 flex items-center justify-center relative -mr-16 z-10 transition-all duration-300 ${
-                operation === 'differenceBA' ? 'border-primary/20 bg-primary/5' : 'border-primary/50 bg-primary/10'
+                operation === 'differenceBA' ? 'border-base-300 bg-base-200/50' : 'border-base-300 bg-base-200'
               }`}>
                 <div className="absolute -top-2 left-4 text-sm font-bold text-primary">Set A</div>
                 <div className="flex flex-wrap gap-2 justify-center pr-14 max-w-28">
@@ -149,7 +149,7 @@ const SetsVennVisualizer = () => {
 
               {/* Circle B */}
               <div className={`w-56 h-56 rounded-full border-3 flex items-center justify-center relative -ml-16 z-10 transition-all duration-300 ${
-                operation === 'differenceAB' ? 'border-secondary/20 bg-secondary/5' : 'border-secondary/50 bg-secondary/10'
+                operation === 'differenceAB' ? 'border-base-300 bg-base-200/50' : 'border-base-300 bg-base-200'
               }`}>
                 <div className="absolute -top-2 right-4 text-sm font-bold text-secondary">Set B</div>
                 <div className="flex flex-wrap gap-2 justify-center pl-14 max-w-28">

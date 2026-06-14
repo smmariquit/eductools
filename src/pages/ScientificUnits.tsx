@@ -220,7 +220,7 @@ const ScientificUnits = () => {
                     }}
                     className={`w-full flex items-center gap-3 p-3 rounded-xl border text-left transition-all ${
                       isActive
-                        ? 'bg-primary/10 border-primary/35 text-primary font-semibold shadow-sm'
+                        ? 'bg-base-200 border-base-300 text-primary font-semibold shadow-sm'
                         : 'bg-base-100 hover:bg-base-200/50 border-base-200 text-base-content'
                     }`}
                   >
@@ -265,7 +265,7 @@ const ScientificUnits = () => {
                   Back to List
                 </button>
 
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-secondary/10 text-secondary border border-secondary/20 mb-4 uppercase tracking-wider">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-base-200 text-base-content/80 border border-base-300 mb-4 uppercase tracking-wider">
                   {currentUnit.category}
                 </div>
 
