@@ -202,17 +202,17 @@ const GasLawsVisualizer = () => {
 
             {/* Live readout */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4">
-              <div className={`text-center p-3 rounded-lg border ${law === 'boyle' ? 'bg-primary/10 border-primary/30' : law === 'gaylussac' ? 'bg-warning/10 border-warning/30' : 'bg-base-200 border-base-300'}`}>
+              <div className={`text-center p-3 rounded-lg border ${law === 'boyle' ? 'bg-base-200 border-base-300' : law === 'gaylussac' ? 'bg-base-200 border-base-300' : 'bg-base-200 border-base-300'}`}>
                 <div className="text-xs uppercase tracking-wider font-bold text-base-content/60">Pressure</div>
                 <div className="text-2xl font-bold font-mono">{displayP.toFixed(2)}</div>
                 <div className="text-xs text-base-content/50">atm</div>
               </div>
-              <div className={`text-center p-3 rounded-lg border ${law === 'boyle' || law === 'charles' ? 'bg-secondary/10 border-secondary/30' : 'bg-base-200 border-base-300'}`}>
+              <div className={`text-center p-3 rounded-lg border ${law === 'boyle' || law === 'charles' ? 'bg-base-200 border-base-300' : 'bg-base-200 border-base-300'}`}>
                 <div className="text-xs uppercase tracking-wider font-bold text-base-content/60">Volume</div>
                 <div className="text-2xl font-bold font-mono">{displayV.toFixed(0)}</div>
                 <div className="text-xs text-base-content/50">mL</div>
               </div>
-              <div className={`text-center p-3 rounded-lg border ${law === 'charles' || law === 'gaylussac' ? 'bg-accent/10 border-accent/30' : 'bg-base-200 border-base-300'}`}>
+              <div className={`text-center p-3 rounded-lg border ${law === 'charles' || law === 'gaylussac' ? 'bg-base-200 border-base-300' : 'bg-base-200 border-base-300'}`}>
                 <div className="text-xs uppercase tracking-wider font-bold text-base-content/60">Temperature</div>
                 <div className="text-2xl font-bold font-mono">{displayT}</div>
                 <div className="text-xs text-base-content/50">K</div>

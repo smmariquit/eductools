@@ -1,5 +1,5 @@
 import { getRequestConfig } from 'next-intl/server';
-import { headers } from 'next/headers';
+
 
 export default getRequestConfig(async () => {
   // Using 'en' as default, but this could easily be expanded to read 

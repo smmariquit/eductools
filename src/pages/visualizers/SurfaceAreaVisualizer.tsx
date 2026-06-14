@@ -24,31 +24,31 @@ const SurfaceAreaVisualizer = () => {
     switch (shape) {
       case 'cube':
         return [
-          { label: 'Top / Bottom', width: length, height: length, area: length * length, count: 2, color: 'bg-primary/20 border-primary/40' },
-          { label: 'Front / Back', width: length, height: length, area: length * length, count: 2, color: 'bg-secondary/20 border-secondary/40' },
-          { label: 'Left / Right', width: length, height: length, area: length * length, count: 2, color: 'bg-accent/20 border-accent/40' },
+          { label: 'Top / Bottom', width: length, height: length, area: length * length, count: 2, color: 'bg-base-200 border-base-300' },
+          { label: 'Front / Back', width: length, height: length, area: length * length, count: 2, color: 'bg-base-200 border-base-300' },
+          { label: 'Left / Right', width: length, height: length, area: length * length, count: 2, color: 'bg-base-200 border-base-300' },
         ];
       case 'rectangular-prism':
         return [
-          { label: 'Top / Bottom', width: length, height: width, area: length * width, count: 2, color: 'bg-primary/20 border-primary/40' },
-          { label: 'Front / Back', width: length, height: height, area: length * height, count: 2, color: 'bg-secondary/20 border-secondary/40' },
-          { label: 'Left / Right', width: width, height: height, area: width * height, count: 2, color: 'bg-accent/20 border-accent/40' },
+          { label: 'Top / Bottom', width: length, height: width, area: length * width, count: 2, color: 'bg-base-200 border-base-300' },
+          { label: 'Front / Back', width: length, height: height, area: length * height, count: 2, color: 'bg-base-200 border-base-300' },
+          { label: 'Left / Right', width: width, height: height, area: width * height, count: 2, color: 'bg-base-200 border-base-300' },
         ];
       case 'triangular-prism': {
         const triArea = 0.5 * width * height;
         const slant = Math.sqrt((width / 2) ** 2 + height ** 2);
         return [
-          { label: 'Triangle faces', width: width, height: height, area: triArea, count: 2, color: 'bg-primary/20 border-primary/40' },
-          { label: 'Bottom rect', width: length, height: width, area: length * width, count: 1, color: 'bg-secondary/20 border-secondary/40' },
-          { label: 'Side rects', width: length, height: slant, area: length * slant, count: 2, color: 'bg-accent/20 border-accent/40' },
+          { label: 'Triangle faces', width: width, height: height, area: triArea, count: 2, color: 'bg-base-200 border-base-300' },
+          { label: 'Bottom rect', width: length, height: width, area: length * width, count: 1, color: 'bg-base-200 border-base-300' },
+          { label: 'Side rects', width: length, height: slant, area: length * slant, count: 2, color: 'bg-base-200 border-base-300' },
         ];
       }
       case 'cylinder': {
         const circleArea = Math.PI * radius * radius;
         const lateralArea = 2 * Math.PI * radius * height;
         return [
-          { label: 'Top / Bottom circles', width: radius * 2, height: radius * 2, area: circleArea, count: 2, color: 'bg-primary/20 border-primary/40' },
-          { label: 'Lateral surface', width: 2 * Math.PI * radius, height: height, area: lateralArea, count: 1, color: 'bg-secondary/20 border-secondary/40' },
+          { label: 'Top / Bottom circles', width: radius * 2, height: radius * 2, area: circleArea, count: 2, color: 'bg-base-200 border-base-300' },
+          { label: 'Lateral surface', width: 2 * Math.PI * radius, height: height, area: lateralArea, count: 1, color: 'bg-base-200 border-base-300' },
         ];
       }
     }

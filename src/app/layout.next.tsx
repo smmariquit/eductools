@@ -1,5 +1,5 @@
 import '../index.css';
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 
