@@ -5,12 +5,7 @@ interface AdUnitProps {
 }
 
 const AdUnit = ({ slotId = '0000000000', format = 'auto', className = '' }: AdUnitProps) => {
-  return (
-    <div className={`ad-placeholder ${className}`}>
-      <strong>Advertisement</strong><br/>
-      <small>Google Ad Slot ({format}) - ID: {slotId}</small>
-    </div>
-  );
+  return null;
 };
 
 export default AdUnit;
