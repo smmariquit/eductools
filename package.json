@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "sync-i18n": "node scripts/sync-locales.js",
+    "next:dev": "npm run sync-i18n && next dev -p 3001",
+    "next:build": "npm run sync-i18n && next build"
   },
   "dependencies": {
     "@mdx-js/react": "^3.1.1",
@@ -24,6 +27,8 @@
     "katex": "^0.17.0",
     "lucide-react": "^1.17.0",
     "matter-js": "^0.20.0",
+    "next": "^16.2.9",
+    "next-intl": "^4.13.0",
     "posthog-js": "^1.383.1",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
