@@ -4,7 +4,7 @@ interface AdUnitProps {
   className?: string;
 }
 
-const AdUnit = ({ slotId = '0000000000', format = 'auto', className = '' }: AdUnitProps) => {
+const AdUnit = (_props: AdUnitProps) => {
   return null;
 };
 
