@@ -56,6 +56,9 @@ const AboutUs = () => {
             <div className="text-center mt-2">
               <div className="font-bold text-xl text-base-content">Simonee Ezekiel Mariquit</div>
               <div className="text-xs font-extrabold text-primary uppercase tracking-widest mt-1">Lead Developer & Creator</div>
+              <p className="text-sm text-base-content/70 mt-4 max-w-[250px] mx-auto leading-relaxed">
+                Computer Science student at the University of the Philippines Los Baños (UPLB) and a scholar of the Department of Science and Technology (DOST).
+              </p>
             </div>
           </div>
           
