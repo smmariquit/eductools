@@ -224,7 +224,7 @@ const ScientificUnits = () => {
                         : 'bg-base-100 hover:bg-base-200/50 border-base-200 text-base-content'
                     }`}
                   >
-                    <div className={`w-12 h-10 shrink-0 flex items-center justify-center font-mono text-sm font-black rounded-lg shadow-sm border ${
+                    <div className={`min-w-[3rem] min-h-[2.5rem] w-auto h-auto px-2 py-1 shrink-0 flex items-center justify-center font-mono text-xs sm:text-sm font-black rounded-lg shadow-sm border text-center break-words max-w-[80px] sm:max-w-none ${
                       isActive
                         ? 'bg-primary text-primary-content border-primary/20'
                         : 'bg-base-200 text-secondary border-base-300'
