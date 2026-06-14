@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+import { LayoutGrid, List } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import AdUnit from '../components/AdUnit';
 import { visualizerModules } from '../data/registry';
@@ -17,6 +18,7 @@ const Home = () => {
   const [activeGrade, setActiveGrade] = useState('All');
   const [matatagOnly, setMatatagOnly] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
   // Derive activeSubject directly from URL params — no useEffect needed
   const activeSubject = subjectParam || 'All';
@@ -129,26 +131,46 @@ const Home = () => {
                 <span className="label-text font-semibold text-base-content">MATATAG Aligned Only</span>
              </label>
           </div>
+
+          {/* View Toggle */}
+          <div className="flex items-center gap-2 border-l border-base-300 pl-4 ml-auto lg:ml-2">
+            <button 
+              onClick={() => setViewMode('grid')}
+              className={`btn btn-sm btn-square ${viewMode === 'grid' ? 'btn-primary' : 'btn-ghost'}`}
+              title="Grid View"
+            >
+              <LayoutGrid className="w-4 h-4" />
+            </button>
+            <button 
+              onClick={() => setViewMode('list')}
+              className={`btn btn-sm btn-square ${viewMode === 'list' ? 'btn-primary' : 'btn-ghost'}`}
+              title="List View"
+            >
+              <List className="w-4 h-4" />
+            </button>
+          </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
+      <div className={viewMode === 'grid' ? "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-4" : "flex flex-col gap-4 mt-4"}>
         {filteredModules.length > 0 ? filteredModules.map((mod) => (
-          <div key={mod.id} className="card bg-base-100 shadow-md border border-base-200 hover:shadow-lg transition-shadow">
-            <div className="card-body">
-              <h2 className="card-title text-2xl text-primary">{mod.title}</h2>
-              <div className="flex flex-wrap gap-2 my-2">
-                {mod.tags.map(tag => (
-                  <span key={tag} className="badge badge-outline badge-sm font-semibold">
-                    {tag}
-                  </span>
-                ))}
+          <div key={mod.id} className={`card bg-base-100 shadow-md border border-base-200 hover:shadow-lg transition-shadow`}>
+            <div className={`card-body ${viewMode === 'list' ? 'md:flex-row md:items-center' : ''}`}>
+              <div className={viewMode === 'list' ? "md:flex-1 md:pr-6" : ""}>
+                <h2 className="card-title text-2xl text-primary">{mod.title}</h2>
+                <div className="flex flex-wrap gap-2 my-2">
+                  {mod.tags.map(tag => (
+                    <span key={tag} className="badge badge-outline badge-sm font-semibold">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <p className="text-base-content/80 mt-2 mb-4">
+                  {mod.description}
+                </p>
               </div>
-              <p className="text-base-content/80 mt-2 mb-4">
-                {mod.description}
-              </p>
-              <div className="card-actions justify-end mt-auto">
-                <Link to={mod.path} className="btn btn-primary w-full">{t('Open Module')}</Link>
+              <div className={`card-actions justify-end mt-auto ${viewMode === 'list' ? 'md:mt-0 md:shrink-0' : ''}`}>
+                <Link to={mod.path} className="btn btn-primary w-full md:w-auto">{t('Open Module')}</Link>
               </div>
             </div>
           </div>
