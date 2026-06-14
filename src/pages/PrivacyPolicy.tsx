@@ -35,7 +35,7 @@ const PrivacyPolicy = () => {
 
         <div className="alert alert-info shadow-sm not-prose mb-8">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-current shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          <span>This document is written in plain language to be understandable by educators, parents, and students. It is compliant with the <strong>Philippine Data Privacy Act of 2012 (Republic Act No. 10173)</strong> and its Implementing Rules and Regulations (IRR).</span>
+          <span>This document complies with the <strong>Philippine Data Privacy Act of 2012 (Republic Act No. 10173)</strong> and its Implementing Rules and Regulations (IRR).</span>
         </div>
 
         {/* ─── SECTION 1 ─── */}
