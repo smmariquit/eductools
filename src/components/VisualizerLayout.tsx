@@ -81,6 +81,15 @@ const VisualizerLayout = ({ title: fallbackTitle, description: fallbackDesc, chi
         {children}
       </div>
 
+      <div className="mt-8 flex justify-center text-xs text-base-content/60">
+        <span className="flex items-center gap-1.5 bg-base-200/50 px-3 py-1.5 rounded-full border border-base-300">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5 text-primary">
+            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" />
+          </svg>
+          Tool developed and verified by <a href="https://stimmie.dev" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold tracking-wide">Simonee Ezekiel Mariquit</a>
+        </span>
+      </div>
+
       {writeupComponent && (
         <div className="mt-16 pt-8 border-t border-base-300">
           <article className="prose prose-lg dark:prose-invert max-w-none bg-base-200 p-8 md:p-12 rounded-2xl shadow-sm border border-base-300">
