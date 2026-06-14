@@ -1,4 +1,3 @@
-import DensityMdx from '../../content/deep-dives/density.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -28,7 +27,7 @@ const DensityVisualizer = () => {
       title="Density at Buoyancy (Lulutang o Lulubog?)"
       description="Observe Archimedes' principle to see why heavy boats float while small coins sink."
       adSlotId="2004"
-      educationalContent={<DensityMdx />}
+      guideLink="/blog/density"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8">

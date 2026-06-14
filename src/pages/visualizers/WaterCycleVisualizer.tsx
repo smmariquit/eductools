@@ -1,4 +1,3 @@
-import WaterCycleMdx from '../../content/deep-dives/water-cycle.mdx';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import VisualizerLayout from '../../components/VisualizerLayout';
@@ -13,7 +12,7 @@ const WaterCycleVisualizer = () => {
       title="Siklo ng Tubig (Water Cycle)"
       description="Interactive visualization of how water moves through the Philippine environment."
       adSlotId="2001"
-      educationalContent={<WaterCycleMdx />}
+      guideLink="/blog/water-cycle"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 grid md:grid-cols-2 gap-8">

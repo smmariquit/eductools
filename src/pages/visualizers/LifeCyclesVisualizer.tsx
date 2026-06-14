@@ -1,4 +1,3 @@
-import LifeCyclesMdx from '../../content/deep-dives/life-cycles.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -16,7 +15,7 @@ const LifeCyclesVisualizer = () => {
       title="Sardinella tawilis Life Cycle"
       description="Explore the biological life cycle of the endemic Sardinella tawilis of Taal Lake."
       adSlotId="1002"
-      educationalContent={<LifeCyclesMdx />}
+      guideLink="/blog/life-cycles"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200 text-center py-10">
         <div className="card-body items-center">

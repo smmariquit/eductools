@@ -1,4 +1,3 @@
-import StatesOfMatterMdx from '../../content/deep-dives/states-of-matter.mdx';
 import { useState, useEffect, useRef } from 'react';
 import Matter from 'matter-js';
 import VisualizerLayout from '../../components/VisualizerLayout';
@@ -152,7 +151,7 @@ const StatesOfMatterVisualizer = () => {
       title="Mga Anyo ng Bagay (States of Matter)"
       description="Matter.js-powered particle simulation showing how temperature affects molecular motion."
       adSlotId="1001"
-      educationalContent={<StatesOfMatterMdx />}
+      guideLink="/blog/states-of-matter"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body items-center p-4 md:p-8">

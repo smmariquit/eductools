@@ -1,4 +1,3 @@
-import StoichiometryMdx from '../../content/deep-dives/stoichiometry.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -14,7 +13,7 @@ const StoichiometryVisualizer = () => {
       title="Pagbalanse ng Chemical Equations"
       description="Apply the Law of Conservation of Mass to synthesize water, essential for local irrigation."
       adSlotId="2002"
-      educationalContent={<StoichiometryMdx />}
+      guideLink="/blog/stoichiometry"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8">

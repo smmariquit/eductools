@@ -1,4 +1,3 @@
-import ElectromagneticSpectrumMdx from '../../content/deep-dives/electromagnetic-spectrum.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -23,7 +22,7 @@ const ElectromagneticSpectrumVisualizer = () => {
       title="Electromagnetic Spectrum (Mga Uri ng Radiation)"
       description="Explore the relationship between wavelength, frequency, and real-world energy applications."
       adSlotId="2007"
-      educationalContent={<ElectromagneticSpectrumMdx />}
+      guideLink="/blog/electromagnetic-spectrum"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body items-center p-6 md:p-10">

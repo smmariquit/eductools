@@ -1,4 +1,3 @@
-import SurfaceAreaMdx from '../../content/deep-dives/surface-area.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -70,7 +69,7 @@ const SurfaceAreaVisualizer = () => {
       title="Surface Area Builder (Sukat ng Ibabaw)"
       description="Unfold 3D shapes into flat nets. Calculate the surface area by adding up the area of each face."
       adSlotId="2017"
-      educationalContent={<SurfaceAreaMdx />}
+      guideLink="/blog/surface-area"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col gap-8">
@@ -92,60 +91,60 @@ const SurfaceAreaVisualizer = () => {
                   <div className="text-xs text-base-content/50 uppercase tracking-wider font-bold mb-2">Unfolded Net</div>
                   {shape === 'cube' && (
                     <div className="grid gap-1" style={{ gridTemplateColumns: `repeat(4, ${Math.min(60, length * 10)}px)`, gridTemplateRows: `repeat(3, ${Math.min(60, length * 10)}px)` }}>
-                      <div /><div className="bg-primary/30 border-2 border-primary/50 rounded flex items-center justify-center text-xs font-mono text-primary">{length}²</div><div /><div />
-                      <div className="bg-accent/30 border-2 border-accent/50 rounded flex items-center justify-center text-xs font-mono text-accent">{length}²</div>
-                      <div className="bg-secondary/30 border-2 border-secondary/50 rounded flex items-center justify-center text-xs font-mono text-secondary">{length}²</div>
-                      <div className="bg-accent/30 border-2 border-accent/50 rounded flex items-center justify-center text-xs font-mono text-accent">{length}²</div>
-                      <div className="bg-secondary/30 border-2 border-secondary/50 rounded flex items-center justify-center text-xs font-mono text-secondary">{length}²</div>
-                      <div /><div className="bg-primary/30 border-2 border-primary/50 rounded flex items-center justify-center text-xs font-mono text-primary">{length}²</div><div /><div />
+                      <div /><div className="bg-base-200 border-2 border-base-300 rounded flex items-center justify-center text-xs font-mono text-primary">{length}²</div><div /><div />
+                      <div className="bg-base-200 border-2 border-base-300 rounded flex items-center justify-center text-xs font-mono text-accent">{length}²</div>
+                      <div className="bg-base-200 border-2 border-base-300 rounded flex items-center justify-center text-xs font-mono text-secondary">{length}²</div>
+                      <div className="bg-base-200 border-2 border-base-300 rounded flex items-center justify-center text-xs font-mono text-accent">{length}²</div>
+                      <div className="bg-base-200 border-2 border-base-300 rounded flex items-center justify-center text-xs font-mono text-secondary">{length}²</div>
+                      <div /><div className="bg-base-200 border-2 border-base-300 rounded flex items-center justify-center text-xs font-mono text-primary">{length}²</div><div /><div />
                     </div>
                   )}
                   {shape === 'rectangular-prism' && (
                     <div className="flex flex-col items-center gap-1">
-                      <div className="bg-primary/30 border-2 border-primary/50 rounded flex items-center justify-center text-xs font-mono text-primary p-3" style={{ width: Math.min(200, length * 20), height: Math.min(60, width * 12) }}>
+                      <div className="bg-base-200 border-2 border-base-300 rounded flex items-center justify-center text-xs font-mono text-primary p-3" style={{ width: Math.min(200, length * 20), height: Math.min(60, width * 12) }}>
                         {length}×{width}
                       </div>
                       <div className="flex gap-1">
-                        <div className="bg-accent/30 border-2 border-accent/50 rounded flex items-center justify-center text-xs font-mono text-accent p-2" style={{ width: Math.min(60, width * 12), height: Math.min(80, height * 14) }}>
+                        <div className="bg-base-200 border-2 border-base-300 rounded flex items-center justify-center text-xs font-mono text-accent p-2" style={{ width: Math.min(60, width * 12), height: Math.min(80, height * 14) }}>
                           {width}×{height}
                         </div>
-                        <div className="bg-secondary/30 border-2 border-secondary/50 rounded flex items-center justify-center text-xs font-mono text-secondary p-2" style={{ width: Math.min(200, length * 20), height: Math.min(80, height * 14) }}>
+                        <div className="bg-base-200 border-2 border-base-300 rounded flex items-center justify-center text-xs font-mono text-secondary p-2" style={{ width: Math.min(200, length * 20), height: Math.min(80, height * 14) }}>
                           {length}×{height}
                         </div>
-                        <div className="bg-accent/30 border-2 border-accent/50 rounded flex items-center justify-center text-xs font-mono text-accent p-2" style={{ width: Math.min(60, width * 12), height: Math.min(80, height * 14) }}>
+                        <div className="bg-base-200 border-2 border-base-300 rounded flex items-center justify-center text-xs font-mono text-accent p-2" style={{ width: Math.min(60, width * 12), height: Math.min(80, height * 14) }}>
                           {width}×{height}
                         </div>
                       </div>
-                      <div className="bg-primary/30 border-2 border-primary/50 rounded flex items-center justify-center text-xs font-mono text-primary p-3" style={{ width: Math.min(200, length * 20), height: Math.min(60, width * 12) }}>
+                      <div className="bg-base-200 border-2 border-base-300 rounded flex items-center justify-center text-xs font-mono text-primary p-3" style={{ width: Math.min(200, length * 20), height: Math.min(60, width * 12) }}>
                         {length}×{width}
                       </div>
                     </div>
                   )}
                   {shape === 'cylinder' && (
                     <div className="flex flex-col items-center gap-2">
-                      <div className="bg-primary/30 border-2 border-primary/50 rounded-full flex items-center justify-center text-xs font-mono text-primary" style={{ width: Math.min(80, radius * 20), height: Math.min(80, radius * 20) }}>
+                      <div className="bg-base-200 border-2 border-base-300 rounded-full flex items-center justify-center text-xs font-mono text-primary" style={{ width: Math.min(80, radius * 20), height: Math.min(80, radius * 20) }}>
                         πr²
                       </div>
-                      <div className="bg-secondary/30 border-2 border-secondary/50 rounded flex items-center justify-center text-xs font-mono text-secondary p-3" style={{ width: Math.min(240, 2 * Math.PI * radius * 12), height: Math.min(80, height * 14) }}>
+                      <div className="bg-base-200 border-2 border-base-300 rounded flex items-center justify-center text-xs font-mono text-secondary p-3" style={{ width: Math.min(240, 2 * Math.PI * radius * 12), height: Math.min(80, height * 14) }}>
                         2πr × h
                       </div>
-                      <div className="bg-primary/30 border-2 border-primary/50 rounded-full flex items-center justify-center text-xs font-mono text-primary" style={{ width: Math.min(80, radius * 20), height: Math.min(80, radius * 20) }}>
+                      <div className="bg-base-200 border-2 border-base-300 rounded-full flex items-center justify-center text-xs font-mono text-primary" style={{ width: Math.min(80, radius * 20), height: Math.min(80, radius * 20) }}>
                         πr²
                       </div>
                     </div>
                   )}
                   {shape === 'triangular-prism' && (
                     <div className="flex flex-col items-center gap-1">
-                      <div className="bg-primary/30 border-2 border-primary/50 rounded flex items-center justify-center text-xs font-mono text-primary p-2" style={{ width: Math.min(80, width * 14), height: Math.min(60, height * 10), clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
+                      <div className="bg-base-200 border-2 border-base-300 rounded flex items-center justify-center text-xs font-mono text-primary p-2" style={{ width: Math.min(80, width * 14), height: Math.min(60, height * 10), clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
                       </div>
                       <div className="flex gap-1">
-                        <div className="bg-accent/30 border-2 border-accent/50 rounded flex items-center justify-center text-[10px] font-mono text-accent p-1" style={{ width: Math.min(80, length * 12), height: Math.min(60, 40) }}>
+                        <div className="bg-base-200 border-2 border-base-300 rounded flex items-center justify-center text-[10px] font-mono text-accent p-1" style={{ width: Math.min(80, length * 12), height: Math.min(60, 40) }}>
                           side
                         </div>
-                        <div className="bg-secondary/30 border-2 border-secondary/50 rounded flex items-center justify-center text-[10px] font-mono text-secondary p-1" style={{ width: Math.min(80, length * 12), height: Math.min(60, width * 8) }}>
+                        <div className="bg-base-200 border-2 border-base-300 rounded flex items-center justify-center text-[10px] font-mono text-secondary p-1" style={{ width: Math.min(80, length * 12), height: Math.min(60, width * 8) }}>
                           base
                         </div>
-                        <div className="bg-accent/30 border-2 border-accent/50 rounded flex items-center justify-center text-[10px] font-mono text-accent p-1" style={{ width: Math.min(80, length * 12), height: Math.min(60, 40) }}>
+                        <div className="bg-base-200 border-2 border-base-300 rounded flex items-center justify-center text-[10px] font-mono text-accent p-1" style={{ width: Math.min(80, length * 12), height: Math.min(60, 40) }}>
                           side
                         </div>
                       </div>
@@ -218,7 +217,7 @@ const SurfaceAreaVisualizer = () => {
           </div>
 
           {/* Total */}
-          <div className="text-center p-6 rounded-xl bg-warning/10 border-2 border-warning/30">
+          <div className="text-center p-6 rounded-xl bg-base-200 border-2 border-base-300">
             <div className="text-xs uppercase tracking-wider font-bold text-warning/70 mb-2">Total Surface Area</div>
             <div className="text-4xl font-extrabold font-mono text-warning">{totalSA.toFixed(2)} sq. units</div>
             <div className="text-sm font-mono text-base-content/60 mt-2">

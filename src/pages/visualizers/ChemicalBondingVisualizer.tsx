@@ -1,4 +1,3 @@
-import ChemicalBondingMdx from '../../content/deep-dives/chemical-bonding.mdx';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import VisualizerLayout from '../../components/VisualizerLayout';
@@ -67,7 +66,7 @@ const ChemicalBondingVisualizer = () => {
       title="Pagbuo ng Asin (Chemical Bonding)"
       description="Visualize ionic bonding and electron transfer between Sodium (Na) and Chlorine (Cl) to make Table Salt."
       adSlotId="1006"
-      educationalContent={<ChemicalBondingMdx />}
+      guideLink="/blog/chemical-bonding"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body items-center py-12 overflow-x-auto">

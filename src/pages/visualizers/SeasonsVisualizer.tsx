@@ -1,4 +1,3 @@
-import SeasonsMdx from '../../content/deep-dives/seasons.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -21,7 +20,7 @@ const SeasonsVisualizer = () => {
       title="Panahon sa Pilipinas (Seasons & Monsoons)"
       description="Understand why the Earth's tilt causes seasons, and how it affects the Philippine wet and dry periods."
       adSlotId="2003"
-      educationalContent={<SeasonsMdx />}
+      guideLink="/blog/seasons"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body items-center p-6 md:p-10">

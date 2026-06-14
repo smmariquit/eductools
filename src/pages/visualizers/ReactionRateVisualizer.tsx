@@ -1,4 +1,3 @@
-import ReactionRateMdx from '../../content/deep-dives/reaction-rate.mdx';
 import { useState, useRef, useEffect, useCallback } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -246,7 +245,7 @@ const ReactionRateVisualizer = () => {
       title="Reaction Rate Simulator (Bilis ng Reaksyon)"
       description="Explore how temperature, concentration, and catalysts affect the rate of chemical reactions through collision theory."
       adSlotId="2019"
-      educationalContent={<ReactionRateMdx />}
+      guideLink="/blog/reaction-rate"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col lg:flex-row gap-8">

@@ -118,7 +118,7 @@ const PrivacyPolicy = () => {
               'Photos, videos, or biometric data',
               'Any data from minors without parental consent',
             ].map((item, i) => (
-              <div key={i} className="flex items-start gap-2 p-3 bg-error/10 border border-error/20 rounded-lg text-sm">
+              <div key={i} className="flex items-start gap-2 p-3 bg-base-200 border border-base-300 rounded-lg text-sm">
                 <span className="text-error font-bold shrink-0">✕</span>
                 <span>{item}</span>
               </div>

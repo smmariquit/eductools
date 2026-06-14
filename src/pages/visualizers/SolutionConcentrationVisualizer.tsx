@@ -1,4 +1,3 @@
-import SolutionConcentrationMdx from '../../content/deep-dives/solution-concentration.mdx';
 import { useState, useRef, useEffect } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -175,7 +174,7 @@ const SolutionConcentrationVisualizer = () => {
       title="Solution Concentration Lab (Konsentrasyon ng Solusyon)"
       description="Explore percent by mass and percent by volume. Observe saturation and solubility limits visually with a virtual beaker."
       adSlotId="2010"
-      educationalContent={<SolutionConcentrationMdx />}
+      guideLink="/blog/solution-concentration"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col lg:flex-row gap-8">

@@ -1,4 +1,3 @@
-import PlateTectonicsMdx from '../../content/deep-dives/plate-tectonics.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -10,7 +9,7 @@ const PlateTectonicsVisualizer = () => {
       title="Philippine Plate Tectonics"
       description="Visualize different types of tectonic plate boundaries using Philippine geological features."
       adSlotId="1007"
-      educationalContent={<PlateTectonicsMdx />}
+      guideLink="/blog/plate-tectonics"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body items-center p-6 md:p-10">

@@ -1,4 +1,3 @@
-import MicroscopeMdx from '../../content/deep-dives/microscope.mdx';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import VisualizerLayout from '../../components/VisualizerLayout';
@@ -12,7 +11,7 @@ const MicroscopeVisualizer = () => {
       title="Birtwal na Mikroskopyo (Microscope)"
       description="Examine the cellular structures of a Mango leaf at varying magnifications."
       adSlotId="1004"
-      educationalContent={<MicroscopeMdx />}
+      guideLink="/blog/microscope"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body items-center p-6 md:p-10">

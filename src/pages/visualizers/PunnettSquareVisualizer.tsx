@@ -1,4 +1,3 @@
-import PunnettSquareMdx from '../../content/deep-dives/punnett-square.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -17,7 +16,7 @@ const PunnettSquareVisualizer = () => {
       title="Punnett Square (Pagmamana ng Katangian)"
       description="Simulate Mendelian inheritance using Philippine Gumamela flowers (R = Red dominant, r = White recessive)."
       adSlotId="2005"
-      educationalContent={<PunnettSquareMdx />}
+      guideLink="/blog/punnett-square"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col md:flex-row gap-10">

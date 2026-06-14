@@ -1,4 +1,3 @@
-import IntegerNumberLineMdx from '../../content/deep-dives/integer-number-line.mdx';
 import { useState, useRef, useEffect } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -183,7 +182,7 @@ const IntegerNumberLineVisualizer = () => {
       title="Integer Number Line (Bilang na Buumbilang)"
       description="Visualize addition and subtraction of integers on an interactive number line. Understand positive and negative numbers."
       adSlotId="2011"
-      educationalContent={<IntegerNumberLineMdx />}
+      guideLink="/blog/integer-number-line"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col gap-8">

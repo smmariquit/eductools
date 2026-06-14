@@ -1,4 +1,3 @@
-import PythagoreanMdx from '../../content/deep-dives/pythagorean.mdx';
 import { useState, useRef, useEffect } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -184,7 +183,7 @@ const PythagoreanVisualizer = () => {
       title="Pythagorean Theorem (Teorema ni Pythagoras)"
       description="See the visual proof of a² + b² = c². Watch how the squares on each side of a right triangle relate to each other."
       adSlotId="2018"
-      educationalContent={<PythagoreanMdx />}
+      guideLink="/blog/pythagorean"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col lg:flex-row gap-8">
@@ -228,12 +227,12 @@ const PythagoreanVisualizer = () => {
               <h3 className="font-bold text-sm uppercase tracking-wider text-base-content/60">Live Proof</h3>
 
               <div className="flex items-center gap-3">
-                <div className="text-center p-3 rounded-lg bg-error/10 border border-error/30 flex-1">
+                <div className="text-center p-3 rounded-lg bg-base-200 border border-base-300 flex-1">
                   <div className="text-xs text-error/70 font-bold">a²</div>
                   <div className="text-xl font-bold font-mono text-error">{areaA}</div>
                 </div>
                 <span className="text-2xl font-bold text-base-content/50">+</span>
-                <div className="text-center p-3 rounded-lg bg-success/10 border border-success/30 flex-1">
+                <div className="text-center p-3 rounded-lg bg-base-200 border border-base-300 flex-1">
                   <div className="text-xs text-success/70 font-bold">b²</div>
                   <div className="text-xl font-bold font-mono text-success">{areaB}</div>
                 </div>
@@ -241,7 +240,7 @@ const PythagoreanVisualizer = () => {
 
               <div className="text-center text-2xl font-bold text-base-content/50">=</div>
 
-              <div className="text-center p-4 rounded-lg bg-info/10 border-2 border-info/30">
+              <div className="text-center p-4 rounded-lg bg-base-200 border-2 border-base-300">
                 <div className="text-xs text-info/70 font-bold">c²</div>
                 <div className="text-3xl font-extrabold font-mono text-info">{areaC.toFixed(1)}</div>
               </div>

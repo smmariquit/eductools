@@ -1,4 +1,3 @@
-import SequencesMdx from '../../content/deep-dives/sequences.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -40,7 +39,7 @@ const SequencesVisualizer = () => {
       title="Sequences & Patterns (Mga Pagkakasunud-sunod)"
       description="Visualize arithmetic and geometric sequences. Build the formula for the nth term interactively."
       adSlotId="2013"
-      educationalContent={<SequencesMdx />}
+      guideLink="/blog/sequences"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col lg:flex-row gap-8">

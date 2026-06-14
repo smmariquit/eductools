@@ -1,4 +1,3 @@
-import ProjectileMotionMdx from '../../content/deep-dives/projectile-motion.mdx';
 import { useState, useEffect, useRef } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -147,7 +146,7 @@ const ProjectileMotionVisualizer = () => {
       title="Tumbang Preso (Projectile Motion)"
       description="Analyze 2D kinematics of throwing a Pamato at a Lata 20 meters away."
       adSlotId="2006"
-      educationalContent={<ProjectileMotionMdx />}
+      guideLink="/blog/projectile-motion"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6">

@@ -288,7 +288,7 @@ const ScientificUnits = () => {
                   </div>
 
                   {/* Formal Scientific Definition */}
-                  <div className="bg-primary/5 border border-primary/20 rounded-2xl p-5 md:p-6 shadow-sm">
+                  <div className="bg-base-200 border border-base-300 rounded-2xl p-5 md:p-6 shadow-sm">
                     <div className="flex items-center gap-2 mb-3">
                       <Info className="h-4 w-4 text-primary" />
                       <h4 className="text-xs font-bold uppercase tracking-wider text-primary">Formal Scientific Definition</h4>
@@ -311,7 +311,7 @@ const ScientificUnits = () => {
 
                   {/* Common Student Misconception */}
                   {currentUnit.misconception && (
-                    <div className="bg-warning/5 border border-warning/20 rounded-2xl p-5 md:p-6 shadow-sm">
+                    <div className="bg-base-200 border border-base-300 rounded-2xl p-5 md:p-6 shadow-sm">
                       <div className="flex items-center gap-2 mb-3 text-warning">
                         <AlertTriangle className="h-4 w-4" />
                         <h4 className="text-xs font-bold uppercase tracking-wider">Common Student Misconception</h4>

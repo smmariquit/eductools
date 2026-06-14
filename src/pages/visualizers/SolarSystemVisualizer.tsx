@@ -1,4 +1,3 @@
-import SolarSystemMdx from '../../content/deep-dives/solar-system.mdx';
 import { useRef, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Stars, Html } from '@react-three/drei';
@@ -63,7 +62,7 @@ const SolarSystemVisualizer = () => {
       title="Ang Sistema Solar (Solar System)"
       description="Interactive 3D visualizer demonstrating planetary orbits and relative distances."
       adSlotId="1009"
-      educationalContent={<SolarSystemMdx />}
+      guideLink="/blog/solar-system"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-4 md:p-6">

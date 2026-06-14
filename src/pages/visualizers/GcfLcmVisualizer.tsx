@@ -1,4 +1,3 @@
-import GcfLcmMdx from '../../content/deep-dives/gcf-lcm.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -92,7 +91,7 @@ const GcfLcmVisualizer = () => {
       title="GCF & LCM Explorer (GCF at LCM)"
       description="Find the Greatest Common Factor and Least Common Multiple using prime factorization and Venn diagrams."
       adSlotId="2015"
-      educationalContent={<GcfLcmMdx />}
+      guideLink="/blog/gcf-lcm"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col gap-8">
@@ -172,14 +171,14 @@ const GcfLcmVisualizer = () => {
 
           {/* Results */}
           <div className="grid grid-cols-2 gap-6">
-            <div className="text-center p-6 rounded-xl bg-warning/10 border-2 border-warning/30">
+            <div className="text-center p-6 rounded-xl bg-base-200 border-2 border-base-300">
               <div className="text-xs uppercase tracking-wider font-bold text-warning/70 mb-2">Greatest Common Factor</div>
               <div className="text-4xl font-extrabold font-mono text-warning mb-2">{gcfValue}</div>
               <div className="text-sm font-mono text-base-content/60">
                 GCF = {commonFactors.length > 0 ? commonFactors.join(' × ') : '1'}
               </div>
             </div>
-            <div className="text-center p-6 rounded-xl bg-accent/10 border-2 border-accent/30">
+            <div className="text-center p-6 rounded-xl bg-base-200 border-2 border-base-300">
               <div className="text-xs uppercase tracking-wider font-bold text-accent/70 mb-2">Least Common Multiple</div>
               <div className="text-4xl font-extrabold font-mono text-accent mb-2">{lcmValue}</div>
               <div className="text-sm font-mono text-base-content/60">

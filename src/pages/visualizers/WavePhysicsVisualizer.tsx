@@ -1,4 +1,3 @@
-import WavePhysicsMdx from '../../content/deep-dives/wave-physics.mdx';
 import { useRef, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Environment } from '@react-three/drei';
@@ -55,7 +54,7 @@ const WavePhysicsVisualizer = () => {
       title="Mga Alon (Wave Physics)"
       description="Interactive 3D visualizer demonstrating mechanical wave interference, amplitude, and frequency."
       adSlotId="1005"
-      educationalContent={<WavePhysicsMdx />}
+      guideLink="/blog/wave-physics"
     >
       <div className="card lg:card-side bg-base-100 shadow-xl border border-base-200 overflow-hidden">
         <div className="w-full lg:w-2/3 h-[400px] md:h-[500px] bg-[#020617] cursor-grab active:cursor-grabbing relative border-b lg:border-b-0 lg:border-r border-base-300">

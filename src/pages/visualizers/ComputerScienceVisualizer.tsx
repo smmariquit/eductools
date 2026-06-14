@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import VisualizerLayout from '../../components/VisualizerLayout';
-import ComputerScienceMdx from '../../content/deep-dives/computer-science.mdx';
-
 const ByteEditor = ({ label, color, bits, onChange }: { label: string, color: string, bits: number[], onChange: (bits: number[]) => void }) => {
   const toggleBit = (index: number) => {
     const newBits = [...bits];
@@ -81,7 +79,7 @@ const ComputerScienceVisualizer = () => {
     <VisualizerLayout
       title="Digital Logic: Bits to Pixels"
       description="Interact with bits to see how raw binary voltage creates physical RGB pixels on a screen."
-      educationalContent={<ComputerScienceMdx />}
+      guideLink="/blog/computer-science"
     >
       <div className="flex flex-col lg:flex-row gap-8 w-full max-w-6xl mx-auto">
         

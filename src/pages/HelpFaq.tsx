@@ -80,11 +80,14 @@ const HelpFaq = () => {
           </div>
         </div>
 
-        <div className="mt-12 bg-info/10 border border-info/30 p-6 rounded-xl">
-          <h3 className="mt-0 text-info font-bold">Still need help?</h3>
-          <p className="mb-0">
-            If you have a question that isn't answered here, feel free to reach out via our <Link to="/contact" className="link-info font-bold">Contact Page</Link>.
-          </p>
+        <div className="mt-12 bg-base-200 border border-base-300 p-5 rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 not-prose">
+          <div>
+            <div className="text-info font-bold text-lg">Still need help?</div>
+            <div className="text-base-content/80 text-sm mt-1">
+              If you have a question that isn't answered here, feel free to reach out.
+            </div>
+          </div>
+          <Link to="/contact" className="btn btn-info btn-sm shrink-0">Contact Page</Link>
         </div>
       </div>
     </div>

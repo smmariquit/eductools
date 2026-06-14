@@ -1,4 +1,3 @@
-import GasLawsMdx from '../../content/deep-dives/gas-laws.mdx';
 import { useState, useRef, useEffect, useCallback } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -188,7 +187,7 @@ const GasLawsVisualizer = () => {
       title="Gas Laws Simulator (Mga Batas ng Gas)"
       description="Explore Boyle's, Charles's, and Gay-Lussac's Laws with an interactive piston and animated gas particles. Understand the Kinetic Molecular Theory visually."
       adSlotId="2009"
-      educationalContent={<GasLawsMdx />}
+      guideLink="/blog/gas-laws"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col lg:flex-row gap-8">

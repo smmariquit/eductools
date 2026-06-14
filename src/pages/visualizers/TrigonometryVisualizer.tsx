@@ -1,4 +1,3 @@
-import TrigonometryMdx from '../../content/deep-dives/trigonometry.mdx';
 import { useState, useRef, useEffect } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -207,7 +206,7 @@ const TrigonometryVisualizer = () => {
       title="Trigonometry Visualizer (Trigonometriya)"
       description="Explore sine, cosine, and tangent ratios with an interactive right triangle. See how changing the angle affects the ratios in real time."
       adSlotId="2012"
-      educationalContent={<TrigonometryMdx />}
+      guideLink="/blog/trigonometry"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col lg:flex-row gap-8">
@@ -309,15 +308,15 @@ const TrigonometryVisualizer = () => {
 
             {/* Side lengths */}
             <div className="grid grid-cols-3 gap-2">
-              <div className="text-center p-2 rounded-lg bg-success/10 border border-success/30">
+              <div className="text-center p-2 rounded-lg bg-base-200 border border-base-300">
                 <div className="text-[10px] uppercase font-bold text-success/70">Adjacent</div>
                 <div className="font-mono font-bold text-success">{adjacent.toFixed(2)}</div>
               </div>
-              <div className="text-center p-2 rounded-lg bg-error/10 border border-error/30">
+              <div className="text-center p-2 rounded-lg bg-base-200 border border-base-300">
                 <div className="text-[10px] uppercase font-bold text-error/70">Opposite</div>
                 <div className="font-mono font-bold text-error">{opposite.toFixed(2)}</div>
               </div>
-              <div className="text-center p-2 rounded-lg bg-info/10 border border-info/30">
+              <div className="text-center p-2 rounded-lg bg-base-200 border border-base-300">
                 <div className="text-[10px] uppercase font-bold text-info/70">Hypotenuse</div>
                 <div className="font-mono font-bold text-info">{hypotenuse.toFixed(1)}</div>
               </div>

@@ -1,8 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import VisualizerLayout from '../../components/VisualizerLayout';
-import PhotosynthesisMdx from '../../content/deep-dives/photosynthesis.mdx';
-
 // ==========================================
 // Object Pool for Canvas Particles (GC Friendly)
 // ==========================================
@@ -274,7 +272,7 @@ const PhotosynthesisVisualizer = () => {
       title="Advanced Photosynthesis Model"
       description="Interactive biological simulation of photosynthesis using real metabolic rate curves."
       adSlotId="1008"
-      educationalContent={<PhotosynthesisMdx />}
+      guideLink="/blog/photosynthesis"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200 overflow-hidden">
         

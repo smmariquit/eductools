@@ -1,4 +1,3 @@
-import SetsVennMdx from '../../content/deep-dives/sets-venn.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -58,7 +57,7 @@ const SetsVennVisualizer = () => {
       title="Sets & Venn Diagrams (Mga Set at Venn Diagram)"
       description="Explore set operations: union, intersection, and difference using interactive Venn diagrams."
       adSlotId="2016"
-      educationalContent={<SetsVennMdx />}
+      guideLink="/blog/sets-venn"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col gap-8">
@@ -170,7 +169,7 @@ const SetsVennVisualizer = () => {
           </div>
 
           {/* Result */}
-          <div className="bg-warning/10 border-2 border-warning/30 rounded-xl p-6 text-center">
+          <div className="bg-base-200 border-2 border-base-300 rounded-xl p-6 text-center">
             <div className="text-sm font-bold text-warning/70 uppercase tracking-wider mb-2">
               {getOperationLabel()}
             </div>

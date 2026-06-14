@@ -1,4 +1,3 @@
-import TyphoonTrackerMdx from '../../content/deep-dives/typhoon-tracker.mdx';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import VisualizerLayout from '../../components/VisualizerLayout';
@@ -23,7 +22,7 @@ const TyphoonTrackerVisualizer = () => {
       title="Typhoon Tracker (DRRR)"
       description="Simulate PAGASA Tropical Cyclone categories and potential landfall impacts."
       adSlotId="1009"
-      educationalContent={<TyphoonTrackerMdx />}
+      guideLink="/blog/typhoon-tracker"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 flex flex-col gap-6">

@@ -1,4 +1,3 @@
-import ElectricCircuitsMdx from '../../content/deep-dives/electric-circuits.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -12,7 +11,7 @@ const ElectricCircuitsVisualizer = () => {
       title="Electric Circuits (Kuryente)"
       description="Compare how Series and Parallel circuits work."
       adSlotId="2008"
-      educationalContent={<ElectricCircuitsMdx />}
+      guideLink="/blog/electric-circuits"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col md:flex-row gap-10">

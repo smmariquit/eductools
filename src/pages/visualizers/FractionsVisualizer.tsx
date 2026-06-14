@@ -1,4 +1,3 @@
-import FractionsMdx from '../../content/deep-dives/fractions.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -11,7 +10,7 @@ const FractionsVisualizer = () => {
       title="Hatig-bilang (Fractions Visualizer)"
       description="Interactive tool for understanding basic mathematical fractions using a Buko Pie."
       adSlotId="1010"
-      educationalContent={<FractionsMdx />}
+      guideLink="/blog/fractions"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-10 flex flex-col items-center">

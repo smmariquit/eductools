@@ -1,4 +1,3 @@
-import CellDivisionMdx from '../../content/deep-dives/cell-division.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -12,7 +11,7 @@ const CellDivisionVisualizer = () => {
       title="Pagdami ng Selula (Cell Division)"
       description="Observe the stages of cellular replication (Mitosis) used for growth and repair."
       adSlotId="2008"
-      educationalContent={<CellDivisionMdx />}
+      guideLink="/blog/cell-division"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-10 grid md:grid-cols-[1fr_250px] gap-8">

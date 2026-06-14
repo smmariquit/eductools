@@ -1,4 +1,3 @@
-import OpticsMdx from '../../content/deep-dives/optics.mdx';
 import { useState, useRef, useEffect } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -252,7 +251,7 @@ const OpticsVisualizer = () => {
       title="Optics Simulator (Optika)"
       description="Explore image formation by concave, convex, and plane mirrors. Trace rays and understand magnification."
       adSlotId="2014"
-      educationalContent={<OpticsMdx />}
+      guideLink="/blog/optics"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col lg:flex-row gap-8">

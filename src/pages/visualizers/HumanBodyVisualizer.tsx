@@ -1,4 +1,3 @@
-import HumanBodyMdx from '../../content/deep-dives/human-body.mdx';
 import { useState, useEffect, useRef } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -12,7 +11,7 @@ const HumanBodyVisualizer = () => {
       title="Advanced Human Body Systems"
       description="Interactive physiological models based on international competency standards."
       adSlotId="1003"
-      educationalContent={<HumanBodyMdx />}
+      guideLink="/blog/human-body"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200 overflow-hidden">
         

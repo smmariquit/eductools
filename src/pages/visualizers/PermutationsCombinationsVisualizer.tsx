@@ -1,4 +1,3 @@
-import PermutationsCombinationsMdx from '../../content/deep-dives/permutations-combinations.mdx';
 import { useState, useMemo, useEffect, useRef } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 import { Slider } from '../../components/ui/Slider';
@@ -107,7 +106,7 @@ const PermutationsCombinationsVisualizer = () => {
       title="Permutations & Combinations (Permutasyon at Kumbinasyon)"
       description="Understand the difference between permutations (order matters) and combinations (order doesn't matter) with visual counting."
       adSlotId="2020"
-      educationalContent={<PermutationsCombinationsMdx />}
+      guideLink="/blog/permutations-combinations"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col gap-8">

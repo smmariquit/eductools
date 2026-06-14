@@ -1,4 +1,3 @@
-import ForcesAndMotionMdx from '../../content/deep-dives/forces-and-motion.mdx';
 import { useState, useEffect } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 
@@ -26,7 +25,7 @@ const ForcesAndMotionVisualizer = () => {
       title="Jeepney Dynamics (Forces & Motion)"
       description="Simulate Newton's Second Law of Motion (F = ma) using the Philippine Jeepney."
       adSlotId="1005"
-      educationalContent={<ForcesAndMotionMdx />}
+      guideLink="/blog/forces-and-motion"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8">

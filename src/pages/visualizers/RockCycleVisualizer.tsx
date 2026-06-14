@@ -1,4 +1,3 @@
-import RockCycleMdx from '../../content/deep-dives/rock-cycle.mdx';
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 import { motion } from 'framer-motion';
@@ -18,7 +17,7 @@ const RockCycleVisualizer = () => {
       title="Siklo ng mga Bato (Rock Cycle)"
       description="Discover how geological processes transform rocks over time in the Philippine archipelago."
       adSlotId="2009"
-      educationalContent={<RockCycleMdx />}
+      guideLink="/blog/rock-cycle"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-10 text-center">
