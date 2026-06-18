@@ -1,0 +1,22 @@
+---
+description: Slider and parameter control UX — keep labels and values visually paired
+alwaysApply: true
+---
+
+# Slider & parameter control UX
+
+## Label + value stay together
+
+For sliders, steppers, and any live parameter readout:
+
+- **Do not** use `justify-between` (or equivalent) to pin the label on the far left and the value on the far right of a wide row. On desktop that separates name from number and forces unnecessary eye travel.
+- **Do** place the value immediately after the label on the same line, e.g. `Temperatura (Temperature) · -6°C`, with a small gap or middot separator.
+- Use the shared `<Slider />` component (`src/components/ui/Slider.tsx`) for range inputs — it already groups label + readout.
+
+## When two different readouts share a row
+
+If a control row shows **two unrelated metrics** (e.g. temperature vs. phase state), `justify-between` between those **groups** is fine. Do not duplicate the slider’s label/value in a separate header above the slider.
+
+## Compact / rail-only sliders
+
+Use `compact` when the parent supplies context. Use `hideReadout` only when the value is shown elsewhere **next to** the same label, not on the opposite side of the layout.

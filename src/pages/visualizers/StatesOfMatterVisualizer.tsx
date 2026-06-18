@@ -233,21 +233,21 @@ const StatesOfMatterVisualizer = () => {
           </div>
 
           <div className="w-full max-w-3xl mt-8 bg-base-200 p-6 rounded-xl border border-base-300">
-            <div className="flex flex-col sm:flex-row justify-between mb-2 font-semibold text-base-content gap-4">
-              <label htmlFor="temperature" className="text-xl">Temperatura (Temperature): <span className="text-primary font-mono ml-2">{temperature}°C</span></label>
-              <span className="text-xl">Anyo (State): <span className="text-secondary font-bold ml-2">{state}</span></span>
+            <div className="flex justify-end mb-1">
+              <span className="text-sm font-semibold text-base-content">
+                Anyo (State): <span className="text-secondary font-bold">{state}</span>
+              </span>
             </div>
-            <p className="text-sm text-base-content/70 mb-6">{ARRANGEMENT[phase]}</p>
+            <p className="text-sm text-base-content/70 mb-4">{ARRANGEMENT[phase]}</p>
 
             <Slider
               id="temperature"
               motif="temperature"
               label={<>Temperatura (Temperature)</>}
-              readout={<><span className="text-primary font-mono">{temperature}°C</span></>}
               value={temperature}
               min={-20}
               max={120}
-              hideReadout={false}
+              unit="°C"
               colorClass="primary"
               onChange={(e) => setTemperature(Number(e.target.value))}
               aria-valuetext={`${temperature} degrees Celsius, ${state}`}

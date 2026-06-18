@@ -20,6 +20,13 @@ export const SITE_VERSION: string = packageJson.version;
 
 export const siteChangelog: ReleaseEntry[] = [
   {
+    version: '1.1.4',
+    date: '2026-06-18',
+    changes: [
+      'Slider labels and values now sit together (no more far-apart readouts).',
+    ],
+  },
+  {
     version: '1.1.3',
     date: '2026-06-18',
     changes: [

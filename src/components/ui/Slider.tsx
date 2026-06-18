@@ -59,13 +59,20 @@ export const Slider: React.FC<SliderProps> = ({
   return (
     <div className={`crayon-slider w-full ${className}`} data-motif={motif}>
       {!compact && (
-        <label htmlFor={inputId} className="flex justify-between mb-2 font-semibold text-sm gap-2">
-          <span>{label}</span>
-          {!hideReadout && (
-            <span className={`text-${colorClass} font-mono shrink-0`}>
-              {readout ?? displayValue}
-            </span>
-          )}
+        <label htmlFor={inputId} className="crayon-slider__label block mb-2 text-sm font-semibold">
+          <span className="inline-flex flex-wrap items-baseline gap-x-1.5 gap-y-0.5">
+            <span>{label}</span>
+            {!hideReadout && (
+              <>
+                <span className="text-base-content/35 font-normal" aria-hidden="true">
+                  ·
+                </span>
+                <span className={`text-${colorClass} font-mono tabular-nums`}>
+                  {readout ?? displayValue}
+                </span>
+              </>
+            )}
+          </span>
         </label>
       )}
 
