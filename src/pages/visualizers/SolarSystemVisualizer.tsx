@@ -3,6 +3,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Stars, Html } from '@react-three/drei';
 import * as THREE from 'three';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { Slider } from '../../components/ui/Slider';
 import { IntroState, useIntroState } from '../../components/onboarding';
 
 // Real mean orbital radii in astronomical units (AU). Source: NASA planetary
@@ -145,16 +146,18 @@ const SolarSystemVisualizer = () => {
 
           {/* Speed control */}
           <div className="bg-base-200 p-4 rounded-xl border border-base-300">
-            <label htmlFor="orbit-speed" className="flex justify-between mb-2 font-semibold text-sm">
-              <span>Bilis ng Pag-ikot (Orbital Speed)</span>
-              <span className="text-primary font-mono">{speedMultiplier.toFixed(1)}×</span>
-            </label>
-            <input
+            <Slider
               id="orbit-speed"
-              type="range" min="0" max="5" step="0.1"
+              motif="orbit"
+              label="Bilis ng Pag-ikot (Orbital Speed)"
               value={speedMultiplier}
+              min={0}
+              max={5}
+              step={0.1}
+              unit="×"
+              colorClass="primary"
+              formatValue={(v) => v.toFixed(1)}
               onChange={(e) => setSpeedMultiplier(Number(e.target.value))}
-              className="range range-primary w-full"
               aria-valuetext={speedMultiplier === 0 ? 'paused' : `${speedMultiplier.toFixed(1)} times speed`}
             />
             {speedMultiplier === 0 && <p className="text-xs text-base-content/60 mt-2 m-0">Orbits are paused. Drag the slider to start the planets moving.</p>}

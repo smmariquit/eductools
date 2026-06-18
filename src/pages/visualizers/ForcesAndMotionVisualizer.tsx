@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { Slider } from '../../components/ui/Slider';
 import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
 
 const G = 9.8; // m/s², for the weight that sets the friction force
@@ -92,54 +93,51 @@ const ForcesAndMotionVisualizer = () => {
   const trackPercent = ((motion.x / 40) % 1 + 1) % 1 * 100;
 
   const forceControl = (
-    <div>
-      <label htmlFor="fm-force" className="flex justify-between mb-2 font-semibold text-sm text-base-content">
-        <span>Pwersa ng Makina (Applied force)</span>
-        <span className="text-primary">{force} N</span>
-      </label>
-      <input
-        id="fm-force"
-        type="range" min="0" max="8000" step="100"
-        value={force}
-        onChange={(e) => { setForce(Number(e.target.value)); fields.touch('force'); }}
-        className="range range-primary w-full"
-        aria-valuetext={`${force} newtons applied force`}
-      />
-    </div>
+    <Slider
+      id="fm-force"
+      motif="force"
+      label="Pwersa ng Makina (Applied force)"
+      value={force}
+      min={0}
+      max={8000}
+      step={100}
+      unit=" N"
+      colorClass="primary"
+      onChange={(e) => { setForce(Number(e.target.value)); fields.touch('force'); }}
+      aria-valuetext={`${force} newtons applied force`}
+    />
   );
 
   const massControl = (
-    <div>
-      <label htmlFor="fm-mass" className="flex justify-between mb-2 font-semibold text-sm text-base-content">
-        <span>Bigat: Jeep + Pasahero (Mass)</span>
-        <span className="text-primary">{mass} kg</span>
-      </label>
-      <input
-        id="fm-mass"
-        type="range" min="1500" max="4000" step="100"
-        value={mass}
-        onChange={(e) => { setMass(Number(e.target.value)); fields.touch('mass'); }}
-        className="range range-secondary w-full"
-        aria-valuetext={`${mass} kilograms total mass`}
-      />
-    </div>
+    <Slider
+      id="fm-mass"
+      motif="mass"
+      label="Bigat: Jeep + Pasahero (Mass)"
+      value={mass}
+      min={1500}
+      max={4000}
+      step={100}
+      unit=" kg"
+      colorClass="secondary"
+      onChange={(e) => { setMass(Number(e.target.value)); fields.touch('mass'); }}
+      aria-valuetext={`${mass} kilograms total mass`}
+    />
   );
 
   const frictionControl = (
-    <div>
-      <label htmlFor="fm-friction" className="flex justify-between mb-2 font-semibold text-sm text-base-content">
-        <span>Friksyon sa Kalsada (Friction coefficient)</span>
-        <span className="text-primary">{friction.toFixed(2)}</span>
-      </label>
-      <input
-        id="fm-friction"
-        type="range" min="0" max="0.4" step="0.01"
-        value={friction}
-        onChange={(e) => { setFriction(Number(e.target.value)); fields.touch('friction'); }}
-        className="range range-accent w-full"
-        aria-valuetext={`friction coefficient ${friction.toFixed(2)}`}
-      />
-    </div>
+    <Slider
+      id="fm-friction"
+      motif="friction"
+      label="Friksyon sa Kalsada (Friction coefficient)"
+      value={friction}
+      min={0}
+      max={0.4}
+      step={0.01}
+      colorClass="accent"
+      formatValue={(v) => v.toFixed(2)}
+      onChange={(e) => { setFriction(Number(e.target.value)); fields.touch('friction'); }}
+      aria-valuetext={`friction coefficient ${friction.toFixed(2)}`}
+    />
   );
 
   return (

@@ -5,7 +5,9 @@ import AdUnit from './AdUnit';
 import { Helmet } from 'react-helmet-async';
 import { visualizerModules } from '../data/registry';
 import { getVisualizerDates, getWriteupDates } from '../data/contentDates';
+import { getToolVersion } from '../data/versioning';
 import { ContentDatesLine } from './content/ContentDatesLine';
+import { ToolVersionPanel, VersionBadge } from './versioning';
 
 const mdxComponents = import.meta.glob([
   '../content/blog/*.mdx',
@@ -57,6 +59,7 @@ const VisualizerLayout = ({ title: fallbackTitle, description: fallbackDesc, chi
   const writeupSlug = guideLink?.split('/').pop();
   const toolDates = moduleInfo ? getVisualizerDates(moduleInfo.id) : undefined;
   const writeupDates = writeupSlug ? getWriteupDates(writeupSlug) : undefined;
+  const toolVersion = moduleInfo ? getToolVersion(moduleInfo.id) : undefined;
 
   return (
     <div className="w-full">
@@ -102,9 +105,17 @@ const VisualizerLayout = ({ title: fallbackTitle, description: fallbackDesc, chi
             </a>
           </p>
           {toolDates && (
-            <ContentDatesLine created={toolDates.created} updated={toolDates.updated} className="mb-2" />
+            <ContentDatesLine created={toolDates.created} updated={toolDates.updated} className="mb-1" />
+          )}
+          {toolVersion && (
+            <div className="flex flex-wrap items-center gap-2 mb-2">
+              <VersionBadge version={toolVersion.version} size="sm" />
+            </div>
           )}
           <p className="text-base-content/80 max-w-prose">{description}</p>
+          {toolVersion && moduleInfo && (
+            <ToolVersionPanel toolTitle={title} record={toolVersion} />
+          )}
         </div>
         {adSlotId && (
           <div className="hidden md:block shrink-0">

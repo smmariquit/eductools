@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Check } from 'lucide-react';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { Slider } from '../../components/ui/Slider';
 import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
 
 const DEFAULTS = { numA: 12, numB: 18 };
@@ -111,23 +112,33 @@ const GcfLcmVisualizer = () => {
   };
 
   const numAControl = (
-    <div>
-      <label htmlFor="gcf-a" className="flex justify-between mb-2 font-semibold text-sm">
-        <span>Number A</span>
-        <span className="text-primary font-mono text-lg font-bold">{numA}</span>
-      </label>
-      <input id="gcf-a" type="range" min="2" max="60" step="1" value={numA} onChange={(e) => { setNumA(Number(e.target.value)); fields.touch('a'); }} className="range range-primary range-sm" aria-valuetext={`Number A is ${numA}`} />
-    </div>
+    <Slider
+      id="gcf-a"
+      motif="number"
+      label="Number A"
+      value={numA}
+      min={2}
+      max={60}
+      step={1}
+      colorClass="primary"
+      onChange={(e) => { setNumA(Number(e.target.value)); fields.touch('a'); }}
+      aria-valuetext={`Number A is ${numA}`}
+    />
   );
 
   const numBControl = (
-    <div>
-      <label htmlFor="gcf-b" className="flex justify-between mb-2 font-semibold text-sm">
-        <span>Number B</span>
-        <span className="text-secondary font-mono text-lg font-bold">{numB}</span>
-      </label>
-      <input id="gcf-b" type="range" min="2" max="60" step="1" value={numB} onChange={(e) => { setNumB(Number(e.target.value)); fields.touch('b'); }} className="range range-secondary range-sm" aria-valuetext={`Number B is ${numB}`} />
-    </div>
+    <Slider
+      id="gcf-b"
+      motif="number"
+      label="Number B"
+      value={numB}
+      min={2}
+      max={60}
+      step={1}
+      colorClass="secondary"
+      onChange={(e) => { setNumB(Number(e.target.value)); fields.touch('b'); }}
+      aria-valuetext={`Number B is ${numB}`}
+    />
   );
 
   const factorsA = primeFactorize(numA);

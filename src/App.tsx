@@ -14,6 +14,7 @@ import AboutUs from './pages/AboutUs';
 import HelpFaq from './pages/HelpFaq';
 import Contact from './pages/Contact';
 import CrayonGallery from './pages/CrayonGallery';
+import ChangelogPage from './pages/Changelog';
 
 // Dynamically import all visualizer pages using Vite's glob
 const visualizerPages = import.meta.glob('./pages/visualizers/*Visualizer.tsx') as Record<
@@ -77,6 +78,7 @@ function App() {
           <Route path="about" element={<AboutUs />} />
           <Route path="help" element={<HelpFaq />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="changelog" element={<ChangelogPage />} />
           <Route path="units" element={<ScientificUnits />} />
           <Route path="crayon" element={<CrayonGallery />} />
           

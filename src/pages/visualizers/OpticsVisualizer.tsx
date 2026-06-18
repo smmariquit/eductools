@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { Slider } from '../../components/ui/Slider';
 import { IntroState, useIntroState } from '../../components/onboarding';
 
 type MirrorType = 'concave' | 'convex' | 'plane';
@@ -330,22 +331,34 @@ const OpticsVisualizer = () => {
               </div>
             </div>
 
-            <div>
-              <label htmlFor="optics-obj" className="flex justify-between mb-2 font-semibold text-sm">
-                <span>Object distance</span>
-                <span className="text-primary font-mono">{objectCm} cm</span>
-              </label>
-              <input id="optics-obj" type="range" min="4" max="35" step="0.5" value={objectCm} onChange={(e) => setObjectCm(Number(e.target.value))} className="range range-primary range-sm w-full" aria-valuetext={`object distance ${objectCm} centimetres`} />
-            </div>
+            <Slider
+              id="optics-obj"
+              motif="object"
+              label="Object distance"
+              value={objectCm}
+              min={4}
+              max={35}
+              step={0.5}
+              unit=" cm"
+              colorClass="primary"
+              onChange={(e) => setObjectCm(Number(e.target.value))}
+              aria-valuetext={`object distance ${objectCm} centimetres`}
+            />
 
             {mirrorType !== 'plane' && (
-              <div>
-                <label htmlFor="optics-focal" className="flex justify-between mb-2 font-semibold text-sm">
-                  <span>Focal length</span>
-                  <span className="text-warning font-mono">{focalCm} cm</span>
-                </label>
-                <input id="optics-focal" type="range" min="3" max="15" step="0.5" value={focalCm} onChange={(e) => setFocalCm(Number(e.target.value))} className="range range-warning range-sm w-full" aria-valuetext={`focal length ${focalCm} centimetres`} />
-              </div>
+              <Slider
+                id="optics-focal"
+                motif="focal"
+                label="Focal length"
+                value={focalCm}
+                min={3}
+                max={15}
+                step={0.5}
+                unit=" cm"
+                colorClass="warning"
+                onChange={(e) => setFocalCm(Number(e.target.value))}
+                aria-valuetext={`focal length ${focalCm} centimetres`}
+              />
             )}
 
             <div className="bg-base-100 p-4 rounded-lg border border-base-300 space-y-2">

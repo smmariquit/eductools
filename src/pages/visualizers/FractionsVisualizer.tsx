@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { Slider } from '../../components/ui/Slider';
 import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
 
 const DEFAULTS = { numA: 1, denA: 2, numB: 2, denB: 3 };
@@ -112,42 +113,37 @@ const FractionsVisualizer = () => {
     den: number,
     setNum: (v: number) => void,
     setDen: (v: number) => void,
-    accent: string,
     idPrefix: string,
     touchKey: 'a' | 'b',
   ) => (
     <div className="space-y-3 pt-1">
-      <div>
-        <label htmlFor={`${idPrefix}-num`} className="flex justify-between mb-1 font-semibold text-sm">
-          <span>Numerator</span>
-          <span className={`font-mono ${accent}`}>{num}</span>
-        </label>
-        <input
-          id={`${idPrefix}-num`}
-          type="range" min="0" max={den} value={num}
-          onChange={(e) => { setNum(Number(e.target.value)); fields.touch(touchKey); }}
-          className="range range-sm range-primary"
-          aria-valuetext={`${num} of ${den} parts`}
-        />
-      </div>
-      <div>
-        <label htmlFor={`${idPrefix}-den`} className="flex justify-between mb-1 font-semibold text-sm">
-          <span>Denominator</span>
-          <span className="font-mono text-base-content/80">{den}</span>
-        </label>
-        <input
-          id={`${idPrefix}-den`}
-          type="range" min="1" max="12" value={den}
-          onChange={(e) => {
-            const v = Number(e.target.value);
-            setDen(v);
-            if (num > v) setNum(v);
-            fields.touch(touchKey);
-          }}
-          className="range range-sm range-secondary"
-          aria-valuetext={`cut into ${den} equal parts`}
-        />
-      </div>
+      <Slider
+        id={`${idPrefix}-num`}
+        motif="fraction"
+        label="Numerator"
+        value={num}
+        min={0}
+        max={den}
+        colorClass="primary"
+        onChange={(e) => { setNum(Number(e.target.value)); fields.touch(touchKey); }}
+        aria-valuetext={`${num} of ${den} parts`}
+      />
+      <Slider
+        id={`${idPrefix}-den`}
+        motif="denominator"
+        label="Denominator"
+        value={den}
+        min={1}
+        max={12}
+        colorClass="secondary"
+        onChange={(e) => {
+          const v = Number(e.target.value);
+          setDen(v);
+          if (num > v) setNum(v);
+          fields.touch(touchKey);
+        }}
+        aria-valuetext={`cut into ${den} equal parts`}
+      />
     </div>
   );
 
@@ -193,7 +189,7 @@ const FractionsVisualizer = () => {
         </div>
       </div>
 
-      {renderFractionSliders(num, den, setNum, setDen, accent, idPrefix, touchKey)}
+      {renderFractionSliders(num, den, setNum, setDen, idPrefix, touchKey)}
     </div>
   );
 
@@ -210,8 +206,8 @@ const FractionsVisualizer = () => {
           onFillExample={fillExample}
           onReset={reset}
           steps={[
-            { id: 'a', title: 'Build fraction A', helper: 'Set its numerator and denominator (up to 12).', complete: fields.isTouched('a'), children: renderFractionSliders(numA, denA, setNumA, setDenA, 'text-primary', 'fracA', 'a') },
-            { id: 'b', title: 'Build fraction B', helper: 'Set its numerator and denominator (up to 12).', complete: fields.isTouched('b'), children: renderFractionSliders(numB, denB, setNumB, setDenB, 'text-secondary', 'fracB', 'b') },
+            { id: 'a', title: 'Build fraction A', helper: 'Set its numerator and denominator (up to 12).', complete: fields.isTouched('a'), children: renderFractionSliders(numA, denA, setNumA, setDenA, 'fracA', 'a') },
+            { id: 'b', title: 'Build fraction B', helper: 'Set its numerator and denominator (up to 12).', complete: fields.isTouched('b'), children: renderFractionSliders(numB, denB, setNumB, setDenB, 'fracB', 'b') },
           ]}
         />
       ) : (

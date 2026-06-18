@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { Slider } from '../../components/ui/Slider';
 import { IntroState, useIntroState } from '../../components/onboarding';
 
 // Physical constants (SI).
@@ -124,15 +125,17 @@ const ElectromagneticSpectrumVisualizer = () => {
               c = fλ = {formatSci(frequency)} Hz × {formatSci(wavelength)} m ≈ {formatSci(frequency * wavelength)} m/s &nbsp;•&nbsp; E = hf
             </div>
 
-            <label htmlFor="freq-slider" className="block font-semibold text-sm mb-2 text-base-content/70">
-              Frequency (log scale)
-            </label>
-            <input
+            <Slider
               id="freq-slider"
-              type="range" min={LOG_F_MIN} max={LOG_F_MAX} step="0.05"
+              motif="frequency"
+              label="Frequency (log scale)"
               value={logF}
-              onChange={e => setLogF(Number(e.target.value))}
-              className="range range-primary w-full"
+              min={LOG_F_MIN}
+              max={LOG_F_MAX}
+              step={0.05}
+              colorClass="primary"
+              formatValue={() => `${data.name}: ${formatSci(frequency)} Hz`}
+              onChange={(e) => setLogF(Number(e.target.value))}
               aria-valuetext={`${data.name}: frequency ${formatSci(frequency)} hertz, wavelength ${formatSci(wavelength)} meters, energy ${formatSci(energyEv)} electronvolts`}
             />
 

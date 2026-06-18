@@ -1,5 +1,6 @@
 import { useState, useSyncExternalStore } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { Slider } from '../../components/ui/Slider';
 import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
 
 const DEFAULT_MASS = 600; // kg
@@ -78,32 +79,53 @@ const DensityVisualizer = () => {
   ];
 
   const massControl = (
-    <div>
-      <label htmlFor="d-mass" className="flex justify-between font-semibold mb-2">
-        <span>Mass / Bigat (<span className="font-serif italic">m</span>)</span>
-        <span className="text-primary">{mass} kg</span>
-      </label>
-      <input id="d-mass" type="range" min="100" max="3000" step="50" value={mass} onChange={(e) => { setMass(Number(e.target.value)); fields.touch('mass'); }} className="range range-primary w-full" aria-valuetext={`${mass} kilograms`} />
-    </div>
+    <Slider
+      id="d-mass"
+      motif="mass"
+      label={<>Mass / Bigat (<span className="font-serif italic">m</span>)</>}
+      value={mass}
+      min={100}
+      max={3000}
+      step={50}
+      unit=" kg"
+      colorClass="primary"
+      onChange={(e) => { setMass(Number(e.target.value)); fields.touch('mass'); }}
+      aria-valuetext={`${mass} kilograms`}
+    />
   );
 
   const volumeControl = (
-    <div>
-      <label htmlFor="d-volume" className="flex justify-between font-semibold mb-2">
-        <span>Volume / Laki (<span className="font-serif italic">V</span>)</span>
-        <span className="text-secondary">{volume.toFixed(1)} m³</span>
-      </label>
-      <input id="d-volume" type="range" min="0.1" max="3.0" step="0.1" value={volume} onChange={(e) => { setVolume(Number(e.target.value)); fields.touch('volume'); }} className="range range-secondary w-full" aria-valuetext={`${volume.toFixed(1)} cubic metres`} />
-    </div>
+    <Slider
+      id="d-volume"
+      motif="volume"
+      label={<>Volume / Laki (<span className="font-serif italic">V</span>)</>}
+      value={volume}
+      min={0.1}
+      max={3.0}
+      step={0.1}
+      unit=" m³"
+      colorClass="secondary"
+      formatValue={(v) => v.toFixed(1)}
+      onChange={(e) => { setVolume(Number(e.target.value)); fields.touch('volume'); }}
+      aria-valuetext={`${volume.toFixed(1)} cubic metres`}
+    />
   );
 
   const fluidControl = (
     <div>
-      <label htmlFor="d-fluid" className="flex justify-between font-semibold mb-2">
-        <span>Fluid density / Likido (<span className="font-serif italic">ρ</span><sub>fluid</sub>)</span>
-        <span className="text-accent">{fluidDensity} kg/m³</span>
-      </label>
-      <input id="d-fluid" type="range" min="500" max="1500" step="5" value={fluidDensity} onChange={(e) => { setFluidDensity(Number(e.target.value)); fields.touch('fluid'); }} className="range range-accent w-full" aria-valuetext={`fluid density ${fluidDensity} kilograms per cubic metre`} />
+      <Slider
+        id="d-fluid"
+        motif="fluid"
+        label={<>Fluid density / Likido (<span className="font-serif italic">ρ</span><sub>fluid</sub>)</>}
+        value={fluidDensity}
+        min={500}
+        max={1500}
+        step={5}
+        unit=" kg/m³"
+        colorClass="accent"
+        onChange={(e) => { setFluidDensity(Number(e.target.value)); fields.touch('fluid'); }}
+        aria-valuetext={`fluid density ${fluidDensity} kilograms per cubic metre`}
+      />
       <div className="flex flex-wrap gap-2 mt-2">
         {FLUIDS.map((f) => (
           <button

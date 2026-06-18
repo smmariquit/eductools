@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { Slider } from '../../components/ui/Slider';
 import { IntroState, useIntroState } from '../../components/onboarding';
 import { PhilippinesMap } from '../../components/maps/PhilippinesMap';
 
@@ -88,17 +89,17 @@ const SeasonsVisualizer = () => {
 
           {/* Shared month control */}
           <div className="bg-base-200 p-5 rounded-xl border border-base-300">
-            <div className="flex justify-between items-end mb-3">
-              <label htmlFor="month" className="text-sm font-semibold uppercase tracking-wider text-base-content/60">Month</label>
-              <span className="text-2xl font-bold text-primary">{monthName}</span>
-            </div>
-            <input
+            <Slider
               id="month"
-              type="range" min="1" max="12"
+              motif="orbit"
+              label="Month"
               value={month}
+              min={1}
+              max={12}
+              colorClass="primary"
+              readout={<span className="text-2xl font-bold">{monthName}</span>}
               onChange={(e) => setMonth(Number(e.target.value))}
-              className="range range-primary w-full"
-              aria-valuetext={`${monthName}`}
+              aria-valuetext={monthName}
             />
             <div className="w-full flex justify-between text-xs px-1 mt-2 text-base-content/50">
               <span>Jan</span><span>Jun</span><span>Dec</span>

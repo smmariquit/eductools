@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { Slider } from '../../components/ui/Slider';
 import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
 
 type Shape = 'rectangular-prism' | 'cube' | 'triangular-prism' | 'cylinder';
@@ -267,40 +268,61 @@ const SurfaceAreaVisualizer = () => {
   const dimensionControls = (
     <>
       {shape !== 'cylinder' && (
-        <div>
-          <label htmlFor="sa-length" className="flex justify-between mb-2 font-semibold text-sm">
-            <span>{shape === 'cube' ? 'Side' : 'Length'} (<span className="font-serif italic">{shape === 'cube' ? 's' : 'l'}</span>)</span>
-            <span className="text-primary font-mono">{length}</span>
-          </label>
-          <input id="sa-length" type="range" min="1" max="10" step="1" value={length} onChange={(e) => { setLength(Number(e.target.value)); fields.touch('dims'); }} className="range range-primary range-sm" aria-valuetext={`${shape === 'cube' ? 'side' : 'length'} ${length} units`} />
-        </div>
+        <Slider
+          id="sa-length"
+          motif="length"
+          label={<>{shape === 'cube' ? 'Side' : 'Length'} (<span className="font-serif italic">{shape === 'cube' ? 's' : 'l'}</span>)</>}
+          value={length}
+          min={1}
+          max={10}
+          step={1}
+          colorClass="primary"
+          onChange={(e) => { setLength(Number(e.target.value)); fields.touch('dims'); }}
+          aria-valuetext={`${shape === 'cube' ? 'side' : 'length'} ${length} units`}
+        />
       )}
       {(shape === 'rectangular-prism' || shape === 'triangular-prism') && (
-        <div>
-          <label htmlFor="sa-width" className="flex justify-between mb-2 font-semibold text-sm">
-            <span>Width (<span className="font-serif italic">w</span>)</span>
-            <span className="text-secondary font-mono">{width}</span>
-          </label>
-          <input id="sa-width" type="range" min="1" max="10" step="1" value={width} onChange={(e) => { setWidth(Number(e.target.value)); fields.touch('dims'); }} className="range range-secondary range-sm" aria-valuetext={`width ${width} units`} />
-        </div>
+        <Slider
+          id="sa-width"
+          motif="width"
+          label={<>Width (<span className="font-serif italic">w</span>)</>}
+          value={width}
+          min={1}
+          max={10}
+          step={1}
+          colorClass="secondary"
+          onChange={(e) => { setWidth(Number(e.target.value)); fields.touch('dims'); }}
+          aria-valuetext={`width ${width} units`}
+        />
       )}
       {shape !== 'cube' && (
-        <div>
-          <label htmlFor="sa-height" className="flex justify-between mb-2 font-semibold text-sm">
-            <span>Height (<span className="font-serif italic">h</span>)</span>
-            <span className="text-accent font-mono">{height}</span>
-          </label>
-          <input id="sa-height" type="range" min="1" max="10" step="1" value={height} onChange={(e) => { setHeight(Number(e.target.value)); fields.touch('dims'); }} className="range range-accent range-sm" aria-valuetext={`height ${height} units`} />
-        </div>
+        <Slider
+          id="sa-height"
+          motif="height"
+          label={<>Height (<span className="font-serif italic">h</span>)</>}
+          value={height}
+          min={1}
+          max={10}
+          step={1}
+          colorClass="accent"
+          onChange={(e) => { setHeight(Number(e.target.value)); fields.touch('dims'); }}
+          aria-valuetext={`height ${height} units`}
+        />
       )}
       {shape === 'cylinder' && (
-        <div>
-          <label htmlFor="sa-radius" className="flex justify-between mb-2 font-semibold text-sm">
-            <span>Radius (<span className="font-serif italic">r</span>)</span>
-            <span className="text-primary font-mono">{radius}</span>
-          </label>
-          <input id="sa-radius" type="range" min="1" max="8" step="0.5" value={radius} onChange={(e) => { setRadius(Number(e.target.value)); fields.touch('dims'); }} className="range range-primary range-sm" aria-valuetext={`radius ${radius} units`} />
-        </div>
+        <Slider
+          id="sa-radius"
+          motif="radius"
+          label={<>Radius (<span className="font-serif italic">r</span>)</>}
+          value={radius}
+          min={1}
+          max={8}
+          step={0.5}
+          colorClass="primary"
+          formatValue={(v) => String(v)}
+          onChange={(e) => { setRadius(Number(e.target.value)); fields.touch('dims'); }}
+          aria-valuetext={`radius ${radius} units`}
+        />
       )}
     </>
   );
@@ -380,15 +402,16 @@ const SurfaceAreaVisualizer = () => {
 
               {/* Fold control */}
               <div className="bg-base-200 p-4 rounded-xl border border-base-300">
-                <div className="flex items-center justify-between mb-2">
-                  <label htmlFor="sa-fold" className="text-sm font-semibold uppercase tracking-wider text-base-content/60">Fold</label>
-                  <span className="text-sm font-mono text-base-content/70">{fold === 0 ? 'flat net' : fold >= 1 ? 'folded' : `${foldPct}%`}</span>
-                </div>
-                <input
+                <Slider
                   id="sa-fold"
-                  type="range" min="0" max="100" value={foldPct}
+                  motif="fold"
+                  label="Fold"
+                  value={foldPct}
+                  min={0}
+                  max={100}
+                  colorClass="primary"
+                  readout={fold === 0 ? 'flat net' : fold >= 1 ? 'folded' : `${foldPct}%`}
                   onChange={(e) => { stop(); setFold(Number(e.target.value) / 100); }}
-                  className="range range-primary w-full"
                   aria-valuetext={`${foldPct} percent folded`}
                 />
                 <div className="flex gap-2 mt-3">

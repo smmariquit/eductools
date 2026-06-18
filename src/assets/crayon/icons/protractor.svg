@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <path class="crayon-fill-sky" d="M18 78 Q18 38 50 22 Q82 38 82 78 Z" opacity="0.35"/>
+  <path class="crayon-draw crayon-stroke-ink" pathLength="1" d="M18 78 L82 78 M18 78 Q18 38 50 22 Q82 38 82 78" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path class="crayon-draw crayon-stroke-berry" pathLength="1" d="M50 78 L68 42" stroke-width="4" stroke-linecap="round"/>
+  <circle class="crayon-fill-paper crayon-stroke-ink" cx="50" cy="78" r="4" stroke-width="3"/>
+</svg>

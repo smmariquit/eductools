@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { Slider } from '../../components/ui/Slider';
 import { IntroState, useIntroState } from '../../components/onboarding';
 
 const BULB_RESISTANCE = 10; // ohms per identical bulb
@@ -126,23 +127,19 @@ const ElectricCircuitsVisualizer = () => {
               </select>
             </div>
 
-            <div>
-              <label htmlFor="battery-voltage" className="flex justify-between mb-2 font-bold text-sm">
-                <span>Voltage (Battery)</span>
-                <span className="text-primary">{batteryVoltage}V</span>
-              </label>
-              <input
-                id="battery-voltage"
-                type="range"
-                min="1.5"
-                max={MAX_VOLTAGE}
-                step="1.5"
-                value={batteryVoltage}
-                onChange={(e) => setBatteryVoltage(Number(e.target.value))}
-                className="range range-primary range-sm"
-                aria-valuetext={`${batteryVoltage} volts`}
-              />
-            </div>
+            <Slider
+              id="battery-voltage"
+              motif="electric"
+              label="Voltage (Battery)"
+              value={batteryVoltage}
+              min={1.5}
+              max={MAX_VOLTAGE}
+              step={1.5}
+              unit="V"
+              colorClass="primary"
+              onChange={(e) => setBatteryVoltage(Number(e.target.value))}
+              aria-valuetext={`${batteryVoltage} volts`}
+            />
 
             {/* Live physics readout */}
             <div className="bg-base-100 p-4 rounded-lg border border-base-300 space-y-2 text-sm">

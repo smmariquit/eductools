@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { Slider } from '../../components/ui/Slider';
 import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
 
 const DEFAULT_ANGLE = 30;
@@ -34,16 +35,17 @@ const TrigonometryVisualizer = () => {
 
   const angleSlider = (
     <div>
-      <label htmlFor="trig-angle" className="flex justify-between mb-2 font-semibold text-sm">
-        <span>Angle θ (Anggulo)</span>
-        <span className="text-warning font-mono">{angle}°</span>
-      </label>
-      <input
+      <Slider
         id="trig-angle"
-        type="range" min="5" max="85" step="1"
+        motif="angle"
+        label="Angle θ (Anggulo)"
         value={angle}
+        min={5}
+        max={85}
+        step={1}
+        unit="°"
+        colorClass="warning"
         onChange={(e) => { setAngle(Number(e.target.value)); fields.touch('angle'); }}
-        className="range range-warning range-sm"
         aria-valuetext={`${angle} degrees`}
       />
       <div className="flex justify-between text-xs text-base-content/50 mt-1">
@@ -237,21 +239,20 @@ const TrigonometryVisualizer = () => {
             <div className="bg-base-200 p-6 rounded-xl border border-base-300 flex flex-col gap-5">
               {angleSlider}
 
-              <div>
-                <label htmlFor="trig-hyp" className="flex justify-between mb-2 font-semibold text-sm">
-                  <span>Hypotenuse</span>
-                  <span className="text-info font-mono">{hypotenuse.toFixed(1)}</span>
-                </label>
-                <input
-                  id="trig-hyp"
-                  type="range" min="3" max="12" step="0.5"
-                  value={hypotenuse}
-                  onChange={(e) => setHypotenuse(Number(e.target.value))}
-                  className="range range-info range-sm"
-                  aria-valuetext={`hypotenuse length ${hypotenuse.toFixed(1)}`}
-                />
-                <p className="text-xs text-base-content/50 mt-1 m-0">Stretching the hypotenuse scales the triangle but never changes the ratios.</p>
-              </div>
+              <Slider
+                id="trig-hyp"
+                motif="length"
+                label="Hypotenuse"
+                value={hypotenuse}
+                min={3}
+                max={12}
+                step={0.5}
+                colorClass="info"
+                formatValue={(v) => v.toFixed(1)}
+                onChange={(e) => setHypotenuse(Number(e.target.value))}
+                aria-valuetext={`hypotenuse length ${hypotenuse.toFixed(1)}`}
+              />
+              <p className="text-xs text-base-content/50 mt-1 m-0">Stretching the hypotenuse scales the triangle but never changes the ratios.</p>
 
               {/* Quick presets */}
               <div>

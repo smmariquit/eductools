@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { Slider } from '../../components/ui/Slider';
 import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
 
 interface Reaction {
@@ -107,37 +108,35 @@ const StoichiometryVisualizer = () => {
   );
 
   const sliderR1 = (
-    <div>
-      <label htmlFor="moles-r1" className="flex justify-between mb-2 font-semibold text-sm">
-        <span className="text-primary">Moles of {r1.sym}</span>
-        <span className="font-mono">{molesR1} mol</span>
-      </label>
-      <input
-        id="moles-r1"
-        type="range" min="0" max="12" step="1"
-        value={molesR1}
-        onChange={(e) => { setMolesR1(Number(e.target.value)); fields.touch('r1'); }}
-        className="range range-primary w-full"
-        aria-valuetext={`${molesR1} moles of ${r1.sym}`}
-      />
-    </div>
+    <Slider
+      id="moles-r1"
+      motif="number"
+      label={<span className="text-primary">Moles of {r1.sym}</span>}
+      value={molesR1}
+      min={0}
+      max={12}
+      step={1}
+      unit=" mol"
+      colorClass="primary"
+      onChange={(e) => { setMolesR1(Number(e.target.value)); fields.touch('r1'); }}
+      aria-valuetext={`${molesR1} moles of ${r1.sym}`}
+    />
   );
 
   const sliderR2 = (
-    <div>
-      <label htmlFor="moles-r2" className="flex justify-between mb-2 font-semibold text-sm">
-        <span className="text-secondary">Moles of {r2.sym}</span>
-        <span className="font-mono">{molesR2} mol</span>
-      </label>
-      <input
-        id="moles-r2"
-        type="range" min="0" max="12" step="1"
-        value={molesR2}
-        onChange={(e) => { setMolesR2(Number(e.target.value)); fields.touch('r2'); }}
-        className="range range-secondary w-full"
-        aria-valuetext={`${molesR2} moles of ${r2.sym}`}
-      />
-    </div>
+    <Slider
+      id="moles-r2"
+      motif="number"
+      label={<span className="text-secondary">Moles of {r2.sym}</span>}
+      value={molesR2}
+      min={0}
+      max={12}
+      step={1}
+      unit=" mol"
+      colorClass="secondary"
+      onChange={(e) => { setMolesR2(Number(e.target.value)); fields.touch('r2'); }}
+      aria-valuetext={`${molesR2} moles of ${r2.sym}`}
+    />
   );
 
   return (

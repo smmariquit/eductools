@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { Slider } from '../../components/ui/Slider';
 import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
 
 const DEFAULTS = { num1: 3, num2: -5, operation: '+' as '+' | '-' };
@@ -217,15 +218,16 @@ const IntegerNumberLineVisualizer = () => {
 
   const num1Slider = (
     <div>
-      <label htmlFor="int-num1" className="flex justify-between mb-2 font-semibold text-sm">
-        <span>1st Number (Unang Bilang)</span>
-        <span className="text-primary font-mono">{num1}</span>
-      </label>
-      <input
+      <Slider
         id="int-num1"
-        type="range" min="-15" max="15" step="1" value={num1}
+        motif="number"
+        label="1st Number (Unang Bilang)"
+        value={num1}
+        min={-15}
+        max={15}
+        step={1}
+        colorClass="primary"
         onChange={(e) => changeNum1(Number(e.target.value))}
-        className="range range-primary range-sm"
         aria-valuetext={`first number ${num1}`}
       />
       <div className="flex justify-between text-xs text-base-content/50 mt-1">
@@ -260,15 +262,16 @@ const IntegerNumberLineVisualizer = () => {
 
   const num2Slider = (
     <div>
-      <label htmlFor="int-num2" className="flex justify-between mb-2 font-semibold text-sm">
-        <span>2nd Number (Pangalawang Bilang)</span>
-        <span className="text-secondary font-mono">{num2}</span>
-      </label>
-      <input
+      <Slider
         id="int-num2"
-        type="range" min="-15" max="15" step="1" value={num2}
+        motif="number"
+        label="2nd Number (Pangalawang Bilang)"
+        value={num2}
+        min={-15}
+        max={15}
+        step={1}
+        colorClass="secondary"
         onChange={(e) => changeNum2(Number(e.target.value))}
-        className="range range-secondary range-sm"
         aria-valuetext={`second number ${num2}`}
       />
       <div className="flex justify-between text-xs text-base-content/50 mt-1">

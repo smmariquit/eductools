@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { Slider } from '../../components/ui/Slider';
 import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
 
 const DEFAULT_A = 3;
@@ -106,35 +107,33 @@ const PythagoreanVisualizer = () => {
   const aTriple = TRIPLES.find((tr) => tr.a === sideA && tr.b === sideB);
 
   const sliderA = (
-    <div>
-      <label htmlFor="pyth-a" className="flex justify-between mb-2 font-semibold text-sm">
-        <span>Side <span className="text-error font-bold">a</span></span>
-        <span className="text-error font-mono">{sideA}</span>
-      </label>
-      <input
-        id="pyth-a"
-        type="range" min="1" max="12" step="1" value={sideA}
-        onChange={(e) => { setSideA(Number(e.target.value)); fields.touch('a'); }}
-        className="range range-error range-sm"
-        aria-valuetext={`Leg a is ${sideA} units`}
-      />
-    </div>
+    <Slider
+      id="pyth-a"
+      motif="length"
+      label={<>Side <span className="text-error font-bold">a</span></>}
+      value={sideA}
+      min={1}
+      max={12}
+      step={1}
+      colorClass="error"
+      onChange={(e) => { setSideA(Number(e.target.value)); fields.touch('a'); }}
+      aria-valuetext={`Leg a is ${sideA} units`}
+    />
   );
 
   const sliderB = (
-    <div>
-      <label htmlFor="pyth-b" className="flex justify-between mb-2 font-semibold text-sm">
-        <span>Side <span className="text-success font-bold">b</span></span>
-        <span className="text-success font-mono">{sideB}</span>
-      </label>
-      <input
-        id="pyth-b"
-        type="range" min="1" max="12" step="1" value={sideB}
-        onChange={(e) => { setSideB(Number(e.target.value)); fields.touch('b'); }}
-        className="range range-success range-sm"
-        aria-valuetext={`Leg b is ${sideB} units`}
-      />
-    </div>
+    <Slider
+      id="pyth-b"
+      motif="length"
+      label={<>Side <span className="text-success font-bold">b</span></>}
+      value={sideB}
+      min={1}
+      max={12}
+      step={1}
+      colorClass="success"
+      onChange={(e) => { setSideB(Number(e.target.value)); fields.touch('b'); }}
+      aria-valuetext={`Leg b is ${sideB} units`}
+    />
   );
 
   return (
@@ -225,23 +224,19 @@ const PythagoreanVisualizer = () => {
 
             {/* Rearrange control */}
             <div className="mt-4 bg-base-200 p-4 rounded-xl border border-base-300">
-              <div className="flex items-center justify-between mb-2">
-                <label htmlFor="pyth-rearrange" className="text-sm font-semibold uppercase tracking-wider text-base-content/60">Rearrange</label>
-                <span className="text-sm font-mono text-base-content/70">
-                  {phase === 'legs' ? 'a² + b²' : phase === 'hyp' ? 'c²' : `${pct}%`}
-                </span>
-              </div>
-              <input
+              <Slider
                 id="pyth-rearrange"
-                type="range"
-                min="0"
-                max="100"
+                motif="rearrange"
+                label="Rearrange"
                 value={Math.round(t * 100)}
+                min={0}
+                max={100}
+                colorClass="warning"
+                readout={phase === 'legs' ? 'a² + b²' : phase === 'hyp' ? 'c²' : `${pct}%`}
                 onChange={(e) => {
                   stop();
                   setT(Number(e.target.value) / 100);
                 }}
-                className="range range-warning w-full"
                 aria-valuetext={`${pct} percent rearranged`}
               />
               <div className="flex gap-2 mt-3">

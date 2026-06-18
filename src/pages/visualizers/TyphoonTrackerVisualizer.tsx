@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Check } from 'lucide-react';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { Slider } from '../../components/ui/Slider';
 import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
 import { PhilippinesMap } from '../../components/maps/PhilippinesMap';
 
@@ -99,16 +100,16 @@ const TyphoonTrackerVisualizer = () => {
         <label htmlFor="wind-speed" className="text-sm font-bold shrink-0">Maximum Sustained Wind Speed</label>
         <span className="text-lg font-mono font-bold tabular-nums shrink-0" style={{ color: data.color }}>{windSpeed} km/h</span>
         <div className="flex-1 min-w-[12rem] basis-[200px]">
-          <input
+          <Slider
             id="wind-speed"
-            type="range"
-            min="40"
-            max="300"
-            step="5"
+            compact
+            motif="wind"
+            label="Maximum Sustained Wind Speed"
             value={windSpeed}
-            onChange={e => { setWindSpeed(Number(e.target.value)); fields.touch('wind'); }}
-            className="range w-full"
-            style={{ '--range-shdw': data.color } as React.CSSProperties}
+            min={40}
+            max={300}
+            step={5}
+            onChange={(e) => { setWindSpeed(Number(e.target.value)); fields.touch('wind'); }}
             disabled={simulating}
             aria-valuetext={`${windSpeed} km/h, ${data.category}, ${signal.label}`}
           />

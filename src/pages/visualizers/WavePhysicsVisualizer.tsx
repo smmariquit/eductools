@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { Slider } from '../../components/ui/Slider';
 import { IntroState, useIntroState } from '../../components/onboarding';
 
 const CANVAS_W = 600;
@@ -180,50 +181,50 @@ const WavePhysicsVisualizer = () => {
         </div>
 
         <div className="card-body lg:w-1/3 flex flex-col gap-6 justify-center bg-base-100">
-          <div>
-            <label htmlFor="wave-amplitude" className="flex justify-between mb-2 font-semibold text-sm">
-              <span>Laki ng Alon (Amplitude)</span>
-              <span className="text-primary font-mono">{amplitude.toFixed(1)} m</span>
-            </label>
-            <input
-              id="wave-amplitude"
-              type="range" min="0.2" max="1.5" step="0.1"
-              value={amplitude}
-              onChange={(e) => setAmplitude(Number(e.target.value))}
-              className="range range-primary range-sm w-full"
-              aria-valuetext={`${amplitude.toFixed(1)} metres`}
-            />
-          </div>
+          <Slider
+            id="wave-amplitude"
+            motif="amplitude"
+            label="Laki ng Alon (Amplitude)"
+            value={amplitude}
+            min={0.2}
+            max={1.5}
+            step={0.1}
+            unit=" m"
+            colorClass="primary"
+            formatValue={(v) => v.toFixed(1)}
+            onChange={(e) => setAmplitude(Number(e.target.value))}
+            aria-valuetext={`${amplitude.toFixed(1)} metres`}
+          />
 
-          <div>
-            <label htmlFor="wave-frequency" className="flex justify-between mb-2 font-semibold text-sm">
-              <span>Dalas (Frequency)</span>
-              <span className="text-secondary font-mono">{frequency.toFixed(1)} Hz</span>
-            </label>
-            <input
-              id="wave-frequency"
-              type="range" min="0.2" max="2" step="0.1"
-              value={frequency}
-              onChange={(e) => setFrequency(Number(e.target.value))}
-              className="range range-secondary range-sm w-full"
-              aria-valuetext={`${frequency.toFixed(1)} hertz`}
-            />
-          </div>
+          <Slider
+            id="wave-frequency"
+            motif="frequency"
+            label="Dalas (Frequency)"
+            value={frequency}
+            min={0.2}
+            max={2}
+            step={0.1}
+            unit=" Hz"
+            colorClass="secondary"
+            formatValue={(v) => v.toFixed(1)}
+            onChange={(e) => setFrequency(Number(e.target.value))}
+            aria-valuetext={`${frequency.toFixed(1)} hertz`}
+          />
 
-          <div>
-            <label htmlFor="wave-wavelength" className="flex justify-between mb-2 font-semibold text-sm">
-              <span>Haba ng Alon (Wavelength λ)</span>
-              <span className="text-accent font-mono">{wavelength.toFixed(1)} m</span>
-            </label>
-            <input
-              id="wave-wavelength"
-              type="range" min="0.5" max="5" step="0.1"
-              value={wavelength}
-              onChange={(e) => setWavelength(Number(e.target.value))}
-              className="range range-accent range-sm w-full"
-              aria-valuetext={`${wavelength.toFixed(1)} metres`}
-            />
-          </div>
+          <Slider
+            id="wave-wavelength"
+            motif="wavelength"
+            label="Haba ng Alon (Wavelength λ)"
+            value={wavelength}
+            min={0.5}
+            max={5}
+            step={0.1}
+            unit=" m"
+            colorClass="accent"
+            formatValue={(v) => v.toFixed(1)}
+            onChange={(e) => setWavelength(Number(e.target.value))}
+            aria-valuetext={`${wavelength.toFixed(1)} metres`}
+          />
 
           <div className="text-xs text-base-content/60 bg-base-200 rounded-lg p-3 border border-base-300">
             Speed isn't a separate slider — it's computed as <span className="font-mono">v = f × λ</span>, so the three quantities always stay consistent.

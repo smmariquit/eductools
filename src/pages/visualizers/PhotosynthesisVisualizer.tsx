@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { Slider } from '../../components/ui/Slider';
 import { IntroState, useIntroState } from '../../components/onboarding';
 // ==========================================
 // Object Pool for Canvas Particles (GC Friendly)
@@ -322,29 +323,38 @@ const PhotosynthesisVisualizer = () => {
           <div className="xl:w-80 flex flex-col gap-6 bg-base-200/50 p-6 rounded-xl border border-base-200 shadow-sm">
             <h3 className="font-bold text-lg border-b border-base-300 pb-2">Environmental Limiting Factors</h3>
             
-            <label className="flex flex-col text-sm font-medium">
-              <div className="flex justify-between mb-1">
-                <span>Light Irradiance</span>
-                <span className="font-mono text-warning">{light} <Link to="/units#μmol-m⁻²-s⁻¹" className="text-[10px] hover:text-warning/70 underline decoration-dotted" title="Photosynthetic Photon Flux Density">μmol m⁻² s⁻¹</Link></span>
-              </div>
-              <input type="range" min="0" max="2000" value={light} onChange={e => setLight(Number(e.target.value))} className="range range-xs range-warning" />
-            </label>
-            
-            <label className="flex flex-col text-sm font-medium">
-              <div className="flex justify-between mb-1">
-                <span>Atmospheric CO₂</span>
-                <span className="font-mono text-neutral-500">{co2} <Link to="/units#ppm" className="text-[10px] hover:text-neutral-400 underline decoration-dotted" title="Parts Per Million">ppm</Link></span>
-              </div>
-              <input type="range" min="0" max="1000" value={co2} onChange={e => setCo2(Number(e.target.value))} className="range range-xs range-neutral" />
-            </label>
+            <Slider
+              motif="light"
+              label="Light Irradiance"
+              value={light}
+              min={0}
+              max={2000}
+              colorClass="warning"
+              readout={<>{light} <Link to="/units#μmol-m⁻²-s⁻¹" className="text-[10px] hover:text-warning/70 underline decoration-dotted" title="Photosynthetic Photon Flux Density">μmol m⁻² s⁻¹</Link></>}
+              onChange={(e) => setLight(Number(e.target.value))}
+            />
 
-            <label className="flex flex-col text-sm font-medium">
-              <div className="flex justify-between mb-1">
-                <span>Soil Water Availability</span>
-                <span className="font-mono text-info">{water}%</span>
-              </div>
-              <input type="range" min="0" max="100" value={water} onChange={e => setWater(Number(e.target.value))} className="range range-xs range-info" />
-            </label>
+            <Slider
+              motif="co2"
+              label="Atmospheric CO₂"
+              value={co2}
+              min={0}
+              max={1000}
+              colorClass="neutral"
+              readout={<>{co2} <Link to="/units#ppm" className="text-[10px] hover:text-neutral-400 underline decoration-dotted" title="Parts Per Million">ppm</Link></>}
+              onChange={(e) => setCo2(Number(e.target.value))}
+            />
+
+            <Slider
+              motif="water"
+              label="Soil Water Availability"
+              value={water}
+              min={0}
+              max={100}
+              unit="%"
+              colorClass="info"
+              onChange={(e) => setWater(Number(e.target.value))}
+            />
 
             <div className="mt-auto bg-base-100 p-4 rounded-lg border border-base-300 shadow text-center">
               <div className="text-xs uppercase text-base-content/60 font-bold mb-1 tracking-wider">Net Photosynthetic Rate</div>

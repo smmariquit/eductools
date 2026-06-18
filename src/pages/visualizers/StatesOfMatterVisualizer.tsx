@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Matter from 'matter-js';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { Slider } from '../../components/ui/Slider';
 import { IntroState, useIntroState } from '../../components/onboarding';
 
 const { Engine, Render, World, Bodies, Body, Runner, Events } = Matter;
@@ -238,12 +239,17 @@ const StatesOfMatterVisualizer = () => {
             </div>
             <p className="text-sm text-base-content/70 mb-6">{ARRANGEMENT[phase]}</p>
 
-            <input
+            <Slider
               id="temperature"
-              type="range" min="-20" max="120"
+              motif="temperature"
+              label={<>Temperatura (Temperature)</>}
+              readout={<><span className="text-primary font-mono">{temperature}°C</span></>}
               value={temperature}
+              min={-20}
+              max={120}
+              hideReadout={false}
+              colorClass="primary"
               onChange={(e) => setTemperature(Number(e.target.value))}
-              className="range range-primary w-full"
               aria-valuetext={`${temperature} degrees Celsius, ${state}`}
             />
 

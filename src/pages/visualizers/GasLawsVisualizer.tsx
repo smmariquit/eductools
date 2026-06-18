@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useCallback, useSyncExternalStore } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { Slider } from '../../components/ui/Slider';
 import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
 
 interface Particle {
@@ -264,37 +265,36 @@ const GasLawsVisualizer = () => {
   );
 
   const volumeSlider = (
-    <div>
-      <label htmlFor="gas-volume" className="flex justify-between mb-2 font-semibold text-sm">
-        <span>Volume (Dami)</span>
-        <span className="text-secondary">{volume.toFixed(0)} units</span>
-      </label>
-      <input
-        id="gas-volume"
-        type="range" min="15" max="100" step="1"
-        value={volume}
-        onChange={(e) => { setVolume(Number(e.target.value)); fields.touch('param'); }}
-        className="range range-secondary range-sm w-full"
-        aria-valuetext={`${volume.toFixed(0)} container units`}
-      />
-    </div>
+    <Slider
+      id="gas-volume"
+      motif="volume"
+      label="Volume (Dami)"
+      value={volume}
+      min={15}
+      max={100}
+      step={1}
+      colorClass="secondary"
+      formatValue={(v) => v.toFixed(0)}
+      unit=" units"
+      onChange={(e) => { setVolume(Number(e.target.value)); fields.touch('param'); }}
+      aria-valuetext={`${volume.toFixed(0)} container units`}
+    />
   );
 
   const tempSlider = (
-    <div>
-      <label htmlFor="gas-temp" className="flex justify-between mb-2 font-semibold text-sm">
-        <span>Temperature (Temperatura)</span>
-        <span className="text-accent">{temperature} K</span>
-      </label>
-      <input
-        id="gas-temp"
-        type="range" min="100" max="600" step="10"
-        value={temperature}
-        onChange={(e) => { setTemperature(Number(e.target.value)); fields.touch('param'); }}
-        className="range range-accent range-sm w-full"
-        aria-valuetext={`${temperature} kelvin`}
-      />
-    </div>
+    <Slider
+      id="gas-temp"
+      motif="temperature"
+      label="Temperature (Temperatura)"
+      value={temperature}
+      min={100}
+      max={600}
+      step={10}
+      unit=" K"
+      colorClass="accent"
+      onChange={(e) => { setTemperature(Number(e.target.value)); fields.touch('param'); }}
+      aria-valuetext={`${temperature} kelvin`}
+    />
   );
 
   const paramSlider = law === 'boyle' ? volumeSlider : tempSlider;

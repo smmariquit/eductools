@@ -146,6 +146,7 @@ const PermutationsCombinationsVisualizer = () => {
 
   const nControl = (
     <Slider
+      motif="number"
       label={<>Total items (<span className="font-serif italic">n</span>)</>}
       value={n}
       min={2}
@@ -158,6 +159,7 @@ const PermutationsCombinationsVisualizer = () => {
 
   const rControl = (
     <Slider
+      motif="ratio"
       label={<>Choose (<span className="font-serif italic">r</span>)</>}
       value={r}
       min={1}

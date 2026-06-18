@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { Slider } from '../../components/ui/Slider';
 import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
 
 const SolutionConcentrationVisualizer = () => {
@@ -72,37 +73,35 @@ const SolutionConcentrationVisualizer = () => {
   );
 
   const massSlider = (
-    <div>
-      <label htmlFor="solute-mass" className="flex justify-between mb-2 font-semibold text-sm">
-        <span>Mass ng {soluteLabel}</span>
-        <span className="text-primary">{soluteMass}g</span>
-      </label>
-      <input
-        id="solute-mass"
-        type="range" min="0" max="80" step="1"
-        value={soluteMass}
-        onChange={(e) => { setSoluteMass(Number(e.target.value)); fields.touch('mass'); }}
-        className="range range-primary range-sm"
-        aria-valuetext={`${soluteMass} grams of solute`}
-      />
-    </div>
+    <Slider
+      id="solute-mass"
+      motif="concentration"
+      label={`Mass ng ${soluteLabel}`}
+      value={soluteMass}
+      min={0}
+      max={80}
+      step={1}
+      unit="g"
+      colorClass="primary"
+      onChange={(e) => { setSoluteMass(Number(e.target.value)); fields.touch('mass'); }}
+      aria-valuetext={`${soluteMass} grams of solute`}
+    />
   );
 
   const volumeSlider = (
-    <div>
-      <label htmlFor="solvent-volume" className="flex justify-between mb-2 font-semibold text-sm">
-        <span>Volume ng Tubig</span>
-        <span className="text-secondary">{solventVolume} mL</span>
-      </label>
-      <input
-        id="solvent-volume"
-        type="range" min="50" max="200" step="10"
-        value={solventVolume}
-        onChange={(e) => { setSolventVolume(Number(e.target.value)); fields.touch('volume'); }}
-        className="range range-secondary range-sm"
-        aria-valuetext={`${solventVolume} millilitres of water`}
-      />
-    </div>
+    <Slider
+      id="solvent-volume"
+      motif="volume"
+      label="Volume ng Tubig"
+      value={solventVolume}
+      min={50}
+      max={200}
+      step={10}
+      unit=" mL"
+      colorClass="secondary"
+      onChange={(e) => { setSolventVolume(Number(e.target.value)); fields.touch('volume'); }}
+      aria-valuetext={`${solventVolume} millilitres of water`}
+    />
   );
 
   // Initialize particles when solute mass changes

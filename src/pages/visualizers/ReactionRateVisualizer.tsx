@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { Slider } from '../../components/ui/Slider';
 import { IntroState, useIntroState } from '../../components/onboarding';
 
 interface Particle {
@@ -415,36 +416,33 @@ const ReactionRateVisualizer = () => {
 
           {/* Controls */}
           <div className="w-full lg:w-72 flex flex-col gap-5 bg-base-200 p-6 rounded-xl border border-base-300">
-            <div>
-              <label htmlFor="temperature" className="flex justify-between mb-2 font-semibold text-sm">
-                <span>Temperature (Temperatura)</span>
-                <span className="text-accent font-mono">{temperature} K</span>
-              </label>
-              <input
-                id="temperature"
-                type="range" min="100" max="600" step="25"
-                value={temperature}
-                onChange={(e) => setTemperature(Number(e.target.value))}
-                className="range range-accent range-sm w-full"
-                aria-valuetext={`${temperature} kelvin`}
-              />
-              <div className="flex justify-between text-xs text-base-content/50 mt-1"><span>Cold</span><span>Hot</span></div>
-            </div>
+            <Slider
+              id="temperature"
+              motif="temperature"
+              label="Temperature (Temperatura)"
+              value={temperature}
+              min={100}
+              max={600}
+              step={25}
+              unit=" K"
+              colorClass="accent"
+              onChange={(e) => setTemperature(Number(e.target.value))}
+              aria-valuetext={`${temperature} kelvin`}
+            />
+            <div className="flex justify-between text-xs text-base-content/50 -mt-3"><span>Cold</span><span>Hot</span></div>
 
-            <div>
-              <label htmlFor="concentration" className="flex justify-between mb-2 font-semibold text-sm">
-                <span>Concentration (Particles)</span>
-                <span className="text-primary font-mono">{concentration}</span>
-              </label>
-              <input
-                id="concentration"
-                type="range" min="6" max="50" step="2"
-                value={concentration}
-                onChange={(e) => setConcentration(Number(e.target.value))}
-                className="range range-primary range-sm w-full"
-                aria-valuetext={`${concentration} molecules`}
-              />
-            </div>
+            <Slider
+              id="concentration"
+              motif="particles"
+              label="Concentration (Particles)"
+              value={concentration}
+              min={6}
+              max={50}
+              step={2}
+              colorClass="primary"
+              onChange={(e) => setConcentration(Number(e.target.value))}
+              aria-valuetext={`${concentration} molecules`}
+            />
 
             <button
               type="button"

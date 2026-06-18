@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Coffee } from 'lucide-react';
 import { GitHubMark } from './icons/GitHubMark';
+import { VersionBadge } from './versioning';
+import { SITE_VERSION } from '../data/versioning';
 
 const REPO_URL = 'https://github.com/smmariquit/eduvisualsph';
 
@@ -19,6 +21,9 @@ const Footer = () => {
             <div>
               <div className="text-xl font-extrabold text-primary tracking-wide leading-tight">
                 EduVisualsPH
+              </div>
+              <div className="mt-1">
+                <VersionBadge version={SITE_VERSION} size="sm" />
               </div>
             </div>
           </div>
@@ -56,6 +61,7 @@ const Footer = () => {
           <header className="footer-title text-base-content font-bold mb-4 uppercase tracking-wider">Company</header>
           <div className="flex flex-col gap-3 text-sm">
             <Link to="/about" className="link link-hover text-base-content hover:text-primary transition-colors font-medium">About Us</Link>
+            <Link to="/changelog" className="link link-hover text-base-content hover:text-primary transition-colors font-medium">Changelog</Link>
             <Link to="/help" className="link link-hover text-base-content hover:text-primary transition-colors font-medium">Help & FAQs</Link>
             <Link to="/contact" className="link link-hover text-base-content hover:text-primary transition-colors font-medium">Contact</Link>
           </div>

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { Slider } from '../../components/ui/Slider';
 import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
 
 const G = 9.8; // m/s²
@@ -244,35 +245,33 @@ const ProjectileMotionVisualizer = () => {
   };
 
   const angleControl = (
-    <div>
-      <label htmlFor="proj-angle" className="flex justify-between mb-2 font-semibold text-sm">
-        <span>Anggulo (Angle <span className="font-serif italic">θ</span>)</span>
-        <span className="text-primary font-mono">{angle}°</span>
-      </label>
-      <input
-        id="proj-angle"
-        type="range" min="0" max="90" value={angle}
-        onChange={(e) => { setAngle(Number(e.target.value)); setT(0); setIsPlaying(false); fields.touch('angle'); }}
-        className="range range-primary range-sm"
-        aria-valuetext={`${angle} degrees`}
-      />
-    </div>
+    <Slider
+      id="proj-angle"
+      motif="angle"
+      label={<>Anggulo (Angle <span className="font-serif italic">θ</span>)</>}
+      value={angle}
+      min={0}
+      max={90}
+      unit="°"
+      colorClass="primary"
+      onChange={(e) => { setAngle(Number(e.target.value)); setT(0); setIsPlaying(false); fields.touch('angle'); }}
+      aria-valuetext={`${angle} degrees`}
+    />
   );
 
   const velocityControl = (
-    <div>
-      <label htmlFor="proj-vel" className="flex justify-between mb-2 font-semibold text-sm">
-        <span>Bilis ng Hagis (Velocity <span className="font-serif italic">v<sub className="text-xs">0</sub></span>)</span>
-        <span className="text-secondary font-mono">{velocity} m/s</span>
-      </label>
-      <input
-        id="proj-vel"
-        type="range" min="1" max="40" value={velocity}
-        onChange={(e) => { setVelocity(Number(e.target.value)); setT(0); setIsPlaying(false); fields.touch('velocity'); }}
-        className="range range-secondary range-sm"
-        aria-valuetext={`${velocity} metres per second`}
-      />
-    </div>
+    <Slider
+      id="proj-vel"
+      motif="speed"
+      label={<>Bilis ng Hagis (Velocity <span className="font-serif italic">v<sub className="text-xs">0</sub></span>)</>}
+      value={velocity}
+      min={1}
+      max={40}
+      unit=" m/s"
+      colorClass="secondary"
+      onChange={(e) => { setVelocity(Number(e.target.value)); setT(0); setIsPlaying(false); fields.touch('velocity'); }}
+      aria-valuetext={`${velocity} metres per second`}
+    />
   );
 
   return (

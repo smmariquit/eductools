@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { Slider } from '../../components/ui/Slider';
 import { IntroState, useIntroState } from '../../components/onboarding';
 
 type ViewMode = 'map' | 'homeostasis' | 'vascular' | 'absorption' | 'reflex';
@@ -32,15 +33,16 @@ const ActivitySlider = ({
       <label htmlFor={id} className="text-sm font-bold shrink-0">{label}</label>
       <span className="text-primary font-mono text-sm font-bold tabular-nums shrink-0">{formatValue(value)}</span>
       <div className="flex-1 min-w-[12rem] basis-[200px]">
-        <input
+        <Slider
           id={id}
-          type="range"
+          compact
+          motif="intensity"
+          label={label}
+          value={value}
           min={0}
           max={1}
           step={0.05}
-          value={value}
           onChange={(e) => onChange(parseFloat(e.target.value))}
-          className="range range-primary w-full"
           aria-valuetext={formatValue(value)}
         />
         <div className="flex justify-between text-[10px] mt-0.5 text-base-content/60 font-semibold uppercase tracking-wide">

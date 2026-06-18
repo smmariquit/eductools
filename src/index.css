@@ -225,3 +225,93 @@ body::before {
     stroke-dashoffset: 0 !important;
   }
 }
+
+/* ===========================================================================
+   WHIMSICAL SLIDERS — crayon motif holder + themed rail behind the track.
+   =========================================================================== */
+.crayon-slider__rail-art svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.crayon-slider__input {
+  --crayon-thumb-size: 1.35rem;
+  background: transparent !important;
+}
+
+.crayon-slider__input::-webkit-slider-runnable-track {
+  height: 0.55rem;
+  border-radius: 999px;
+  border: 2px solid color-mix(in srgb, var(--color-base-content) 18%, transparent);
+  background: color-mix(in srgb, var(--color-base-100) 70%, transparent);
+  box-shadow: inset 0 1px 2px rgba(43, 43, 58, 0.08);
+}
+
+.crayon-slider__input::-moz-range-track {
+  height: 0.55rem;
+  border-radius: 999px;
+  border: 2px solid color-mix(in srgb, var(--color-base-content) 18%, transparent);
+  background: color-mix(in srgb, var(--color-base-100) 70%, transparent);
+  box-shadow: inset 0 1px 2px rgba(43, 43, 58, 0.08);
+}
+
+.crayon-slider__input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: var(--crayon-thumb-size);
+  height: var(--crayon-thumb-size);
+  margin-top: calc((0.55rem - var(--crayon-thumb-size)) / 2 - 2px);
+  border-radius: 999px;
+  border: 3px solid var(--crayon-ink);
+  background: var(--crayon-paper);
+  box-shadow:
+    2px 3px 0 rgba(43, 43, 58, 0.22),
+    0 0 0 2px color-mix(in srgb, var(--color-primary) 35%, transparent);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.crayon-slider__input::-moz-range-thumb {
+  width: var(--crayon-thumb-size);
+  height: var(--crayon-thumb-size);
+  border-radius: 999px;
+  border: 3px solid var(--crayon-ink);
+  background: var(--crayon-paper);
+  box-shadow:
+    2px 3px 0 rgba(43, 43, 58, 0.22),
+    0 0 0 2px color-mix(in srgb, var(--color-primary) 35%, transparent);
+}
+
+.crayon-slider__input:active::-webkit-slider-thumb {
+  transform: scale(1.12);
+}
+
+.crayon-slider__input:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.crayon-slider__input:focus-visible::-moz-range-thumb {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.crayon-slider[data-motif="temperature"] .crayon-slider__input::-webkit-slider-thumb,
+.crayon-slider[data-motif="temperature"] .crayon-slider__input::-moz-range-thumb {
+  box-shadow:
+    2px 3px 0 rgba(43, 43, 58, 0.22),
+    0 0 0 2px color-mix(in srgb, var(--crayon-berry) 45%, transparent);
+}
+
+.crayon-slider[data-motif="light"] .crayon-slider__input::-webkit-slider-thumb,
+.crayon-slider[data-motif="light"] .crayon-slider__input::-moz-range-thumb {
+  box-shadow:
+    2px 3px 0 rgba(43, 43, 58, 0.18),
+    0 0 0 3px color-mix(in srgb, var(--crayon-sunshine) 50%, transparent);
+}
+
+.crayon-slider[data-motif="wind"] .crayon-slider__holder,
+.crayon-slider[data-motif="wave"] .crayon-slider__holder {
+  transform: rotate(-6deg);
+}
+

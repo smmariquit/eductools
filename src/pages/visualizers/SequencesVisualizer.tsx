@@ -1,5 +1,6 @@
 import { useState, useSyncExternalStore } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { Slider } from '../../components/ui/Slider';
 import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
 
 type SeqType = 'arithmetic' | 'geometric';
@@ -100,51 +101,48 @@ const SequencesVisualizer = () => {
   );
 
   const firstSlider = (
-    <div>
-      <label htmlFor="seq-first" className="flex justify-between mb-2 font-semibold text-sm">
-        <span>First Term (<span className="font-serif italic">a<sub>1</sub></span>)</span>
-        <span className="text-primary font-mono">{firstTerm}</span>
-      </label>
-      <input
-        id="seq-first"
-        type="range" min="-5" max="10" step="1" value={firstTerm}
-        onChange={(e) => { setFirstTerm(Number(e.target.value)); fields.touch('first'); }}
-        className="range range-primary range-sm"
-        aria-valuetext={`first term ${firstTerm}`}
-      />
-    </div>
+    <Slider
+      id="seq-first"
+      motif="terms"
+      label={<>First Term (<span className="font-serif italic">a<sub>1</sub></span>)</>}
+      value={firstTerm}
+      min={-5}
+      max={10}
+      step={1}
+      colorClass="primary"
+      onChange={(e) => { setFirstTerm(Number(e.target.value)); fields.touch('first'); }}
+      aria-valuetext={`first term ${firstTerm}`}
+    />
   );
 
   const diffSlider = (
-    <div>
-      <label htmlFor="seq-diff" className="flex justify-between mb-2 font-semibold text-sm">
-        <span>Common Diff (<span className="font-serif italic">d</span>)</span>
-        <span className="text-accent font-mono">{commonDiff}</span>
-      </label>
-      <input
-        id="seq-diff"
-        type="range" min="-5" max="10" step="1" value={commonDiff}
-        onChange={(e) => { setCommonDiff(Number(e.target.value)); fields.touch('rule'); }}
-        className="range range-accent range-sm"
-        aria-valuetext={`common difference ${commonDiff}`}
-      />
-    </div>
+    <Slider
+      id="seq-diff"
+      motif="number"
+      label={<>Common Diff (<span className="font-serif italic">d</span>)</>}
+      value={commonDiff}
+      min={-5}
+      max={10}
+      step={1}
+      colorClass="accent"
+      onChange={(e) => { setCommonDiff(Number(e.target.value)); fields.touch('rule'); }}
+      aria-valuetext={`common difference ${commonDiff}`}
+    />
   );
 
   const ratioSlider = (
-    <div>
-      <label htmlFor="seq-ratio" className="flex justify-between mb-2 font-semibold text-sm">
-        <span>Common Ratio (<span className="font-serif italic">r</span>)</span>
-        <span className="text-accent font-mono">{commonRatio}</span>
-      </label>
-      <input
-        id="seq-ratio"
-        type="range" min="-3" max="5" step="1" value={commonRatio}
-        onChange={(e) => { setCommonRatio(Number(e.target.value)); fields.touch('rule'); }}
-        className="range range-accent range-sm"
-        aria-valuetext={`common ratio ${commonRatio}`}
-      />
-    </div>
+    <Slider
+      id="seq-ratio"
+      motif="ratio"
+      label={<>Common Ratio (<span className="font-serif italic">r</span>)</>}
+      value={commonRatio}
+      min={-3}
+      max={5}
+      step={1}
+      colorClass="accent"
+      onChange={(e) => { setCommonRatio(Number(e.target.value)); fields.touch('rule'); }}
+      aria-valuetext={`common ratio ${commonRatio}`}
+    />
   );
 
   const ruleSlider = seqType === 'arithmetic' ? diffSlider : ratioSlider;
@@ -333,19 +331,18 @@ const SequencesVisualizer = () => {
 
             {ruleSlider}
 
-            <div>
-              <label htmlFor="seq-n" className="flex justify-between mb-2 font-semibold text-sm">
-                <span>Show terms up to <span className="font-serif italic">n</span></span>
-                <span className="text-warning font-mono">{nthTerm}</span>
-              </label>
-              <input
-                id="seq-n"
-                type="range" min="3" max="15" step="1" value={nthTerm}
-                onChange={(e) => setNthTerm(Number(e.target.value))}
-                className="range range-warning range-sm"
-                aria-valuetext={`showing ${nthTerm} terms`}
-              />
-            </div>
+            <Slider
+              id="seq-n"
+              motif="terms"
+              label={<>Show terms up to <span className="font-serif italic">n</span></>}
+              value={nthTerm}
+              min={3}
+              max={15}
+              step={1}
+              colorClass="warning"
+              onChange={(e) => setNthTerm(Number(e.target.value))}
+              aria-valuetext={`showing ${nthTerm} terms`}
+            />
 
             {hasNegative && (
               <p className="text-xs text-base-content/60 m-0">
