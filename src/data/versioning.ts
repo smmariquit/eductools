@@ -20,6 +20,13 @@ export const SITE_VERSION: string = packageJson.version;
 
 export const siteChangelog: ReleaseEntry[] = [
   {
+    version: '1.1.6',
+    date: '2026-06-18',
+    changes: [
+      'Units reference: full SI prefix ladder including hecto, deca, deci, centi, and yotta–yocto.',
+    ],
+  },
+  {
     version: '1.1.5',
     date: '2026-06-18',
     changes: [

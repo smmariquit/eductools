@@ -6,7 +6,7 @@ import type { SourceItem } from '../content';
 /*
  * Canonical, widely-recognized reference visuals for the SI:
  *  1. The seven SI base units and the defining constant behind each.
- *  2. The SI prefix ladder (tera down to pico, powers of ten).
+ *  2. The SI prefix ladder (full NIST set, yotta down to yocto).
  *  3. How common derived units are built from the base units.
  *
  * All colors come from crayon CSS variables and DaisyUI semantic theme
@@ -51,19 +51,33 @@ interface Prefix {
   power: string;
   factorWords: string;
   color: Crayon;
+  /** Major rungs jump by 1000; minor rungs are hecto, deca, deci, centi (×100 or ×10). */
+  tier: 'major' | 'minor';
 }
 
-// Per NIST, SI Prefixes. Ordered largest to smallest, tera down to pico.
+// Full SI prefix table per NIST / BIPM, largest to smallest.
 const PREFIXES: Prefix[] = [
-  { name: 'tera', symbol: 'T', power: '12', factorWords: 'trillion', color: 'grape' },
-  { name: 'giga', symbol: 'G', power: '9', factorWords: 'billion', color: 'berry' },
-  { name: 'mega', symbol: 'M', power: '6', factorWords: 'million', color: 'sunshine' },
-  { name: 'kilo', symbol: 'k', power: '3', factorWords: 'thousand', color: 'leaf' },
-  { name: '(base unit)', symbol: '', power: '0', factorWords: 'one', color: 'ink' },
-  { name: 'milli', symbol: 'm', power: '-3', factorWords: 'thousandth', color: 'leaf' },
-  { name: 'micro', symbol: 'μ', power: '-6', factorWords: 'millionth', color: 'sunshine' },
-  { name: 'nano', symbol: 'n', power: '-9', factorWords: 'billionth', color: 'berry' },
-  { name: 'pico', symbol: 'p', power: '-12', factorWords: 'trillionth', color: 'grape' },
+  { name: 'yotta', symbol: 'Y', power: '24', factorWords: 'septillion', color: 'grape', tier: 'major' },
+  { name: 'zetta', symbol: 'Z', power: '21', factorWords: 'sextillion', color: 'grape', tier: 'major' },
+  { name: 'exa', symbol: 'E', power: '18', factorWords: 'quintillion', color: 'grape', tier: 'major' },
+  { name: 'peta', symbol: 'P', power: '15', factorWords: 'quadrillion', color: 'berry', tier: 'major' },
+  { name: 'tera', symbol: 'T', power: '12', factorWords: 'trillion', color: 'berry', tier: 'major' },
+  { name: 'giga', symbol: 'G', power: '9', factorWords: 'billion', color: 'berry', tier: 'major' },
+  { name: 'mega', symbol: 'M', power: '6', factorWords: 'million', color: 'sunshine', tier: 'major' },
+  { name: 'kilo', symbol: 'k', power: '3', factorWords: 'thousand', color: 'leaf', tier: 'major' },
+  { name: 'hecto', symbol: 'h', power: '2', factorWords: 'hundred', color: 'sky', tier: 'minor' },
+  { name: 'deca', symbol: 'da', power: '1', factorWords: 'ten', color: 'sky', tier: 'minor' },
+  { name: '(base unit)', symbol: '', power: '0', factorWords: 'one', color: 'ink', tier: 'major' },
+  { name: 'deci', symbol: 'd', power: '-1', factorWords: 'tenth', color: 'sky', tier: 'minor' },
+  { name: 'centi', symbol: 'c', power: '-2', factorWords: 'hundredth', color: 'sky', tier: 'minor' },
+  { name: 'milli', symbol: 'm', power: '-3', factorWords: 'thousandth', color: 'leaf', tier: 'major' },
+  { name: 'micro', symbol: 'μ', power: '-6', factorWords: 'millionth', color: 'sunshine', tier: 'major' },
+  { name: 'nano', symbol: 'n', power: '-9', factorWords: 'billionth', color: 'berry', tier: 'major' },
+  { name: 'pico', symbol: 'p', power: '-12', factorWords: 'trillionth', color: 'berry', tier: 'major' },
+  { name: 'femto', symbol: 'f', power: '-15', factorWords: 'quadrillionth', color: 'grape', tier: 'major' },
+  { name: 'atto', symbol: 'a', power: '-18', factorWords: 'quintillionth', color: 'grape', tier: 'major' },
+  { name: 'zepto', symbol: 'z', power: '-21', factorWords: 'sextillionth', color: 'grape', tier: 'major' },
+  { name: 'yocto', symbol: 'y', power: '-24', factorWords: 'septillionth', color: 'grape', tier: 'major' },
 ];
 
 interface Derived {
@@ -132,33 +146,53 @@ const BaseUnitsFigure = () => (
 );
 
 const PrefixLadder = () => {
-  const rungH = 46;
+  const rungHMajor = 40;
+  const rungHMinor = 32;
   const top = 14;
-  const height = top * 2 + rungH * (PREFIXES.length - 1);
+  const rungY = (index: number) => {
+    let y = top;
+    for (let i = 0; i < index; i++) {
+      y += PREFIXES[i].tier === 'minor' ? rungHMinor : rungHMajor;
+    }
+    return y;
+  };
+  const height =
+    top +
+    PREFIXES.slice(0, -1).reduce((sum, p) => sum + (p.tier === 'minor' ? rungHMinor : rungHMajor), 0) +
+    top;
   return (
     <figure className="not-prose">
       <SectionHeading
         kicker="Figure 2"
         title="The SI prefix ladder"
-        blurb="Each big rung multiplies or divides the base unit by another factor of one thousand, from tera at the top to pico at the bottom. Same unit, different scale."
+        blurb="Every official SI prefix from yotta (10²⁴) down to yocto (10⁻²⁴). Most rungs jump by a thousand; hecto, deca, deci, and centi are the ×100 and ×10 steps in between — the ones behind centimetres, hectopascals, and decilitres."
       />
-      <div className="bg-base-100 border border-base-300 rounded-2xl p-4 md:p-6 shadow-sm overflow-x-auto">
-        <svg viewBox={`0 0 520 ${height}`} className="w-full min-w-[460px]" role="img" aria-label="SI prefix ladder from tera to pico">
+      <div className="bg-base-100 border border-base-300 rounded-2xl p-4 md:p-6 shadow-sm overflow-x-auto max-h-[min(72vh,780px)] overflow-y-auto">
+        <svg viewBox={`0 0 520 ${height}`} className="w-full min-w-[460px]" role="img" aria-label="SI prefix ladder from yotta to yocto, including hecto, deca, deci, and centi">
           <line x1="150" y1={top} x2="150" y2={height - top} stroke="var(--crayon-ink)" strokeWidth="2" opacity="0.25" />
           {PREFIXES.map((p, i) => {
-            const y = top + i * rungH;
+            const y = rungY(i);
             const isBase = p.symbol === '';
+            const isMinor = p.tier === 'minor';
             return (
-              <g key={p.name}>
-                <line x1="150" y1={y} x2="178" y2={y} stroke={crayonVar(p.color)} strokeWidth="3" />
-                <circle cx="150" cy={y} r="6" fill={crayonVar(p.color)} />
-                <text x="138" y={y} textAnchor="end" dominantBaseline="central" fontSize="13" fontWeight="700" fill="var(--crayon-ink)">
+              <g key={p.name} opacity={isMinor ? 0.92 : 1}>
+                <line
+                  x1="150"
+                  y1={y}
+                  x2={isMinor ? '172' : '178'}
+                  y2={y}
+                  stroke={crayonVar(p.color)}
+                  strokeWidth={isMinor ? 2 : 3}
+                  strokeDasharray={isMinor ? '4 3' : undefined}
+                />
+                <circle cx="150" cy={y} r={isMinor ? 4.5 : 6} fill={crayonVar(p.color)} />
+                <text x="138" y={y} textAnchor="end" dominantBaseline="central" fontSize={isMinor ? 12 : 13} fontWeight="700" fill="var(--crayon-ink)">
                   {p.name}
                 </text>
-                <text x="190" y={y} dominantBaseline="central" fontSize="15" fontWeight="800" fill={crayonVar(p.color)} fontFamily="ui-monospace, monospace">
+                <text x="190" y={y} dominantBaseline="central" fontSize={isMinor ? 14 : 15} fontWeight="800" fill={crayonVar(p.color)} fontFamily="ui-monospace, monospace">
                   {isBase ? '1' : p.symbol}
                 </text>
-                <text x="230" y={y} dominantBaseline="central" fontSize="13" fill="var(--crayon-ink)" fontFamily="ui-monospace, monospace">
+                <text x="230" y={y} dominantBaseline="central" fontSize={isMinor ? 12 : 13} fill="var(--crayon-ink)" fontFamily="ui-monospace, monospace">
                   {isBase ? '10⁰' : `10${p.power.startsWith('-') ? '⁻' : ''}${superscript(p.power.replace('-', ''))}`}
                 </text>
                 <text x="320" y={y} dominantBaseline="central" fontSize="12" fill="var(--crayon-ink)" opacity="0.7">
