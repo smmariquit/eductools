@@ -1,41 +1,71 @@
-# SolutionConcentration Deep Dive
+import { BarChart, Aside, Sources, Changelog } from '../../components/content'
 
+# Concentration: counting what is dissolved, and how strong it really is
 
+I started building the concentration tool after a tutee asked me, in total sincerity, why her "10% salt water" recipe kept coming out wrong. She was measuring 10 grams of asin into 100 grams of water and calling it 10%. Close, but that is the single most common slip in the whole topic, and it is worth fixing out loud before anything else: percent by mass uses the mass of the *whole solution* in the denominator, not the water on its own. Her solution weighed 110 grams, so it was about 9.1% salt, not 10%.
 
-Solutions and Concentration: Science Grade 7 (MATATAG)
+That little error is a good doorway into the real subject. A solution is just a homogeneous mixture (one uniform phase, no visible bits) of a solute, the thing being dissolved, and a solvent, the thing doing the dissolving. Stir sugar into water and you cannot pick the grains back out. Concentration is the bookkeeping for "how much solute sits in how much solution," and chemistry keeps several different units for it because different jobs genuinely need different ones.
 
-A 
-solution
- is a homogeneous mixture of a 
-solute
- (the substance being dissolved) and a 
-solvent
- (the substance doing the dissolving). The 
-concentration
- tells us how much solute is dissolved in a given amount of solution.
+## Paraan ng pagsukat: the percent measures
 
-Paraan ng Pagsukat ng Konsentrasyon
+The friendliest measure, and the one the tool centers on, is **percent by mass** ($\%\,m/m$): the mass of solute divided by the total mass of the solution, times 100. Dissolve 10 g of asin in 90 g of water and the solution weighs 100 g, so it is a true $10\%$ by mass. The tool prints this live and, importantly, shows its own working, so you can watch the denominator stay glued to the *solution* mass and never drift back to just the water.
 
-Percent by Mass (%m/m):
- (Mass of Solute / Total Mass of Solution) × 100. If you dissolve 10g of salt in 90g of water, the total solution mass is 100g, and the percent by mass is 10%.
+Its close cousin is **percent by mass/volume** ($\%\,m/v$), the mass of solute divided by the *volume of the finished solution*, reported as grams per 100 mL. This is the form you see on the saline bags hanging in a hospital ward and on a lot of lab reagents. The tool shows both side by side precisely because students tend to assume they are interchangeable, and they are not: one divides by a mass, the other by a volume, and the finished solution's volume is slightly more than the water you started with once the solute spreads into it.
 
-Percent by Volume (%m/v):
- (Mass of Solute / Volume of Solvent) × 100. Used when mixing a solid into a liquid.
+## When the count of particles is what matters
 
-Saturated vs. Unsaturated
+For percent measures, you are weighing things. But a lot of chemistry does not care about weight at all; it cares about the sheer *number* of particles, because that is what determines how a reaction proceeds. That is what **molarity** ($M$) captures: moles of solute per litre of solution,
 
-Every solute has a 
-solubility limit
- — the maximum amount that can dissolve in a given volume at a specific temperature. NaCl (table salt) dissolves up to ~36g per 100mL of water. If you add more than that, the excess salt sinks to the bottom — the solution is 
-saturated
-.
+$$ M = \frac{\text{moles of solute}}{\text{litres of solution}} $$
 
-Try adding more and more solute in the simulator above and watch the particles pile up at the bottom once saturation is reached!
+A 1 M solution holds one mole, about $6.02 \times 10^{23}$ formula units, in every litre. The catch is that one mole weighs a completely different amount depending on what you dissolved, which is exactly why you weigh by molar mass instead of by eye when preparing a solution.
 
-## Dissection of Variables
+<BarChart
+  title="One mole, very different weights (why '1 M' tells you nothing about grams)"
+  unit=" g/mol"
+  source="OpenStax, Chemistry 2e §3.1 (molar masses from standard atomic weights)"
+  data={[
+    { label: 'NaOH', value: 40.0, color: 'sky' },
+    { label: 'NaCl (asin)', value: 58.44, color: 'leaf' },
+    { label: 'Glucose', value: 180.16, color: 'sunshine' },
+    { label: 'Sucrose (asukal)', value: 342.30, color: 'berry' },
+  ]}
+/>
 
-- **Variable 1**: Explanation of how it works in the physical world.
-- **Variable 2**: Deep dive into the math and units.
+To make a litre of 1 M table salt you weigh out 58.44 g. To make a litre of 1 M table sugar you need 342.30 g, almost six times as much, even though both are labelled "1 M." The molarity is identical because the *particle count* is identical. That gap between mass and moles is the single idea that makes molarity worth the extra arithmetic.
 
----
-*Note: This is a deep dive section that breaks down the variables and the underlying physics/math of the simulation.*
+## Saturation: when the solvent says tama na
+
+Every solute has a solubility limit, the most that will dissolve in a given amount of solvent at a given temperature. The tool bakes in two real ones: sodium chloride tops out near 36 g per 100 mL of water at room temperature, while sucrose dissolves far more, around 200 g per 100 mL. Push past the limit and the excess just settles to the bottom as an undissolved pile, which is the moment the tool flips the status badge from **unsaturated** to **saturated**, and then to **supersaturated** if you really overload it. A saturated solution is not doing nothing, by the way. It sits at equilibrium, with solute dissolving and recrystallizing at the very same rate, so the amount in solution holds steady.
+
+That limit is not fixed, though, and the exception is delicious. For most solids, solubility climbs with temperature, which is exactly how rock candy and supersaturated hand-warmers work: dissolve a lot in hot water, cool it gently, and you can briefly hold more in solution than the cold water "should" allow. Tip a real glass of that and it crashes out all at once.
+
+## Dilution: same solute, more solvent
+
+Most of the time in a lab you are not building a solution from scratch. You are weakening a concentrated stock by adding solvent, which spreads the same number of solute particles through a larger volume. The particle count itself does not change; only the count per litre falls. That conservation is the entire content of the dilution equation:
+
+$$ M_1 V_1 = M_2 V_2 $$
+
+Take 50 mL of 6.0 M hydrochloric acid and dilute it to 300 mL, and the concentration drops to $M_2 = \frac{(6.0)(50)}{300} = 1.0$ M, because the moles on both sides are the same six-tenths of a mole the whole time. One safety note I repeat to every student until it sticks: when the solute is a strong acid, you add the acid *to* the water, never the water to the acid. The mixing releases enough heat to spit boiling, corrosive liquid back at your face if you do it the wrong way round. The arithmetic forgives a slip. The chemistry of doing it in the wrong order does not.
+
+<Aside variant="tool" title="PhET, Concentration" href="https://phet.colorado.edu/en/simulations/concentration" credit="PhET Interactive Simulations, CU Boulder">
+  Our tool stays on percent and saturation, the parts a Grade 7 to 10 class meets first. PhET's Concentration is where to go next for molarity itself: you can pour stock in, evaporate solvent off, and watch the molarity number respond, which makes the dilution equation feel less like algebra.
+</Aside>
+
+<Sources
+  items={[
+    { label: 'OpenStax, Chemistry 2e §3.3: Molarity.', href: 'https://openstax.org/books/chemistry-2e/pages/3-3-molarity' },
+    { label: 'OpenStax, Chemistry 2e §3.4: Other Units for Solution Concentrations.', href: 'https://openstax.org/books/chemistry-2e/pages/3-4-other-units-for-solution-concentrations' },
+    { label: 'OpenStax, Chemistry 2e §3.1: Formula Mass and the Mole Concept.', href: 'https://openstax.org/books/chemistry-2e/pages/3-1-formula-mass-and-the-mole-concept' },
+    { label: 'OpenStax, Chemistry 2e §11.3: Solubility.', href: 'https://openstax.org/books/chemistry-2e/pages/11-3-solubility' },
+    { label: 'PhET Interactive Simulations (University of Colorado Boulder): Concentration.', href: 'https://phet.colorado.edu/en/simulations/concentration' },
+  ]}
+/>
+
+<Changelog
+  created="2026-06-11"
+  updated="2026-06-18"
+  entries={[
+    { date: "2026-06-18", note: "Re-toned into the house voice for Grades 9–10 (tutee 10%-salt-water open, whole-solution-denominator misconception); described the tool accurately as percent-by-mass / percent m/v plus salt and sugar saturation with the undissolved pile; kept the molar-mass chart and verified sources; added PhET credit and the Changelog block." },
+  ]}
+/>

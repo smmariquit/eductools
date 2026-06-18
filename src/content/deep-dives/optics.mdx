@@ -1,53 +1,82 @@
-# Optics Deep Dive
+import { Table, Sources, Changelog } from '../../components/content'
 
+# Optics: How Light Bounces, Bends, and Forms Images
 
+The thing that got me to build this optics tool was the back of a spoon. Look at your reflection in the bowl of a metal spoon and you are upside down; flip it over and you are suddenly upright, but tiny. Same spoon, same face, two completely different images, and most people have stared at this since childhood without ever being told why. The answer is just two short rules about how light behaves at a surface, and once they click, the spoon stops being a magic trick and becomes geometry you can predict. The visualizer above lets you slide an object toward and away from a curved mirror and watch the image flip, shrink, and grow, which is the fastest way to feel the rules instead of memorizing them.
 
-Light and Optics: Science Grade 10 (MATATAG)
+## The image behind the mirror is not really there
 
-Mirrors form images by reflecting light. The type of image depends on the 
-mirror shape
- and the 
-object distance
-.
+Here is the part almost everyone gets backwards. When you look in a bathroom mirror, your reflection seems to sit behind the glass, as if there is a copy of you standing in the next room. There is nothing back there. The light never goes behind the mirror at all. Your brain assumes light travels in straight lines, so when reflected rays reach your eye it traces them straight backward to a point behind the glass, and that imagined meeting point is what you call your reflection. Physicists have a name for this kind of "looks like it is there but isn't" image: a *virtual image*.
 
-Mirror Equation
+The rule that produces it is simple. When light hits a smooth surface, the angle it comes in at equals the angle it leaves at, both measured from the line perpendicular to the surface. A flat mirror just hands you back an upright, same-size virtual copy that appears to sit as far behind the glass as you stand in front of it. Curved mirrors are where it gets interesting, because a concave mirror (curving inward, like the bowl of the spoon) gathers parallel rays toward a single focal point and can magnify or flip the image depending on where the object sits. A convex mirror (bulging outward, like the back of the spoon) always gives a small upright image, which is exactly why it is the shape used for the wide-view security mirrors at the sari-sari store door.
 
-1/
-f
- = 1/
-d
-o
+## Real images you can catch, virtual ones you cannot
 
- + 1/
-d
-i
+For a spherical mirror, the object distance $d_o$, the image distance $d_i$, and the focal length $f$ are tied together by one relation:
 
-Where 
-f
- = focal length, 
-d
-o
+$$ \frac{1}{f} = \frac{1}{d_o} + \frac{1}{d_i} $$
 
- = object distance, 
-d
-i
+The sign of $d_i$ tells you what kind of image you get, and this is the single most useful thing the tool makes visible. A *real image* forms where light rays actually converge, so you could catch it on a screen, and it always comes out inverted; this is what a concave mirror does to a distant object. A *virtual image* forms where the rays only appear to come from, sits behind the mirror, cannot be projected onto anything, and stays upright. As you drag the object across the focal point in the simulation, watch the $d_i$ readout flip its sign and the image turn over, and watch the panel switch the label between "Real" and "Virtual" as it happens. Park the object right at the focal point and the tool reports the image at infinity, because the reflected rays come out parallel and never meet.
 
- = image distance.
+## Why the pencil looks broken in the water
 
-Types of Images
+Reflection is only half of optics. The other half is refraction, and the visualizer above sticks to mirrors, so for this part picture the classic glass of water on a merienda table. Light slows down when it enters a denser transparent material, and that change of speed is what bends the ray. The index of refraction $n$ measures the slowdown directly, $n = c/v$, where $c$ is the speed of light in vacuum and $v$ is its speed inside the material. Because nothing carries light faster than vacuum, $n$ is always at least 1. The bending itself follows Snell's law:
 
-Real Image:
- Light rays actually converge. Can be projected on a screen. Always inverted.
+$$ n_1 \sin\theta_1 = n_2 \sin\theta_2 $$
 
-Virtual Image:
- Light rays appear to diverge from the image. Cannot be projected. Always upright.
+The bigger the jump in index between the two materials, the harder the ray turns. That is why a pencil standing in a glass of water looks snapped at the surface, and why a diamond throws light around far more dramatically than a chip of window glass.
 
-Move the object closer and farther from the mirror to see how the image changes!
+<Table
+  title="Index of refraction of common media (light at 589 nm)"
+  source="OpenStax, University Physics Vol. 3, Table 1.1 (speed inside computed as 1/n)"
+  columns={['Medium', 'Index of refraction', 'Light speed inside (× c)']}
+  align={['left', 'right', 'right']}
+  rows={[
+    ['Water (fresh)', '1.333', '0.75'],
+    ['Glass (crown)', '1.52', '0.66'],
+    ['Glass (flint)', '1.66', '0.60'],
+    ['Zircon', '1.923', '0.52'],
+    ['Diamond', '2.419', '0.41'],
+  ]}
+/>
 
-## Dissection of Variables
+Water sits at 1.333, ordinary crown glass at 1.52, and diamond all the way up at 2.419, which means light moves at less than half its vacuum speed inside a diamond. That steep index is also why total internal reflection is so easy to trigger in a cut diamond: light bouncing around inside struggles to escape, so it keeps reflecting until it finally exits through a facet, and the stone appears to sparkle from within. Zircon, at 1.923, is the classic cheaper stand-in for exactly this reason.
 
-- **Variable 1**: Explanation of how it works in the physical world.
-- **Variable 2**: Deep dive into the math and units.
+## Lenses are just refraction, twice
 
----
-*Note: This is a deep dive section that breaks down the variables and the underlying physics/math of the simulation.*
+A lens is refraction put to work twice, once as light enters the glass and once as it leaves. A converging (convex) lens bends parallel rays toward a focal point and is what sits in a magnifying glass, a camera, and the cornea of your own eye. The same equation that governs mirrors also governs thin lenses:
+
+$$ \frac{1}{f} = \frac{1}{d_o} + \frac{1}{d_i} $$
+
+Pull the object far away and a converging lens makes a small, inverted, real image, the situation a camera sensor relies on. Bring the object inside the focal length and the same lens produces an enlarged, upright, virtual image, which is the magnifying-glass mode. Eyeglasses lean on this: a converging lens nudges the focus forward for someone who is farsighted, while a diverging lens pushes it back for someone nearsighted. The whole prescription industry is Snell's law applied with a steady hand.
+
+## A few questions I actually get
+
+**Why am I upside down in a spoon but not in a bathroom mirror?**
+The bowl of the spoon is a concave mirror, and when your face is farther from it than the focal point, it forms an inverted real image. A flat bathroom mirror has no curve and no focal point, so it can only ever give an upright virtual image. Flip the spoon to its convex back and you go upright again, just shrunk.
+
+**What is the difference between a real and a virtual image?**
+A real image is where light rays actually meet, so you can catch it on a screen, and it comes out inverted. A virtual image is where the rays only appear to come from, so it cannot be projected, and it stays upright. The tool labels every image as one or the other and flips the label as you drag the object past the focal point.
+
+**Why does a pencil look broken in a glass of water?**
+Light from the underwater part of the pencil bends as it leaves the water and enters the air, because the two materials have different indices of refraction. Your eye still assumes the light came straight, so it places that part of the pencil in the wrong spot, and the pencil appears to jump sideways at the waterline.
+
+<Sources
+  items={[
+    { label: 'OpenStax, University Physics Volume 3, 1.1 The Propagation of Light (Table 1.1, index of refraction).', href: 'https://openstax.org/books/university-physics-volume-3/pages/1-1-the-propagation-of-light' },
+    { label: 'OpenStax, University Physics Volume 3, 1.3 Refraction (Snell\'s law).', href: 'https://openstax.org/books/university-physics-volume-3/pages/1-3-refraction' },
+    { label: 'OpenStax, University Physics Volume 3, 2.2 Spherical Mirrors.', href: 'https://openstax.org/books/university-physics-volume-3/pages/2-2-spherical-mirrors' },
+    { label: 'OpenStax, University Physics Volume 3, 2.4 Thin Lenses.', href: 'https://openstax.org/books/university-physics-volume-3/pages/2-4-thin-lenses' },
+    { label: 'PhET Interactive Simulations, Bending Light (University of Colorado Boulder).', href: 'https://phet.colorado.edu/en/simulations/bending-light' },
+    { label: 'PhET Interactive Simulations, Geometric Optics (University of Colorado Boulder).', href: 'https://phet.colorado.edu/en/simulations/geometric-optics' },
+  ]}
+/>
+
+<Changelog
+  created="2026-06-11"
+  updated="2026-06-18"
+  entries={[
+    { date: "2026-06-18", note: "Switched the index-of-refraction chart from a bar chart to a Table (reference lookup data) and added a computed 'light speed inside (× c)' column, which the prose references." },
+    { date: "2026-06-18", note: "Re-toned into the house voice (spoon-reflection origin open, virtual-image misconception bust, casual headers, plain-spoken FAQ); clarified that the visualizer covers mirrors specifically while keeping refraction and lenses as supporting physics; kept the index-of-refraction chart and verified sources; added the mandatory Changelog block." },
+  ]}
+/>

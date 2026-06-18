@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <path class="crayon-fill-sunshine" d="M22 33 L67 28 Q72 28 73 33 L78 66 Q79 71 73 72 L29 77 Q24 77 23 72 Z" opacity="0.9" transform="rotate(-8 50 52)"/>
+  <path class="crayon-draw crayon-stroke-ink" pathLength="1" d="M22 33 L67 28 Q72 28 73 33 L78 66 Q79 71 73 72 L29 77 Q24 77 23 72 Z" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="rotate(-8 50 52)"/>
+  <path class="crayon-draw crayon-stroke-ink" pathLength="1" d="M33 31 L34 41 M44 30 L46 46 M55 29 L56 39 M66 32 L67 47" stroke-width="3.4" stroke-linecap="round" transform="rotate(-8 50 52)"/>
+</svg>

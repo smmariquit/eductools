@@ -1,83 +1,99 @@
-import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import ProcessCycle, { type ProcessStage } from '../../components/visualizers/ProcessCycle';
+import { IntroState, useIntroState } from '../../components/onboarding';
+
+const stages: ProcessStage[] = [
+  {
+    id: 'interphase',
+    title: 'Interphase',
+    subtitle: 'Grow & copy DNA',
+    art: '🧬',
+    description:
+      'Before mitosis begins, the cell grows and copies all of its DNA. Each chromosome is now made of two identical sister chromatids joined at a centromere.',
+  },
+  {
+    id: 'prophase',
+    title: 'Prophase',
+    subtitle: 'Chromosomes appear',
+    art: '🌀',
+    description:
+      'The loose chromatin coils tightly into visible chromosomes. The nuclear envelope breaks down and spindle fibres begin to form across the cell.',
+  },
+  {
+    id: 'metaphase',
+    title: 'Metaphase',
+    subtitle: 'Line up in the middle',
+    art: '🪢',
+    description:
+      'The chromosomes line up single-file along the middle of the cell (the metaphase plate). Spindle fibres attach to the centromere of each chromosome.',
+  },
+  {
+    id: 'anaphase',
+    title: 'Anaphase',
+    subtitle: 'Chromatids pulled apart',
+    art: '↔️',
+    description:
+      'The spindle fibres pull the sister chromatids apart, dragging one copy of each chromosome to opposite poles of the cell. Each pole now has a complete set.',
+  },
+  {
+    id: 'telophase',
+    title: 'Telophase',
+    subtitle: 'Two nuclei form',
+    art: '🔵',
+    description:
+      'The separated chromosomes reach the poles and unwind back into chromatin. A new nuclear envelope forms around each set, making two nuclei.',
+  },
+  {
+    id: 'cytokinesis',
+    title: 'Cytokinesis',
+    subtitle: 'Cell splits in two',
+    art: '✌️',
+    description:
+      'The cytoplasm pinches and divides, producing two genetically identical daughter cells. Each can then re-enter interphase and repeat the cycle.',
+  },
+];
 
 const CellDivisionVisualizer = () => {
-  const [phase, setPhase] = useState(0); // 0: Prophase, 1: Metaphase, 2: Anaphase, 3: Telophase
-
-  const phases = ['Prophase', 'Metaphase', 'Anaphase', 'Telophase / Cytokinesis'];
-
+  const intro = useIntroState();
   return (
     <VisualizerLayout
-      title="Pagdami ng Selula (Cell Division)"
-      description="Observe the stages of cellular replication (Mitosis) used for growth and repair."
+      title="Mitosis: Cell Division"
+      description="Step through the phases of mitosis and track what happens to the chromosomes at each stage."
       adSlotId="2008"
       guideLink="/blog/cell-division"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
-        <div className="card-body p-6 md:p-10 grid md:grid-cols-[1fr_250px] gap-8">
-          
-          <div className="h-[300px] bg-slate-900 rounded-xl border border-base-300 relative flex items-center justify-center overflow-hidden">
-            {/* Cell Membrane */}
-            {phase < 3 ? (
-               <div className="w-[200px] h-[200px] rounded-full border-4 border-emerald-500 relative bg-emerald-900/20 shadow-[0_0_30px_rgba(16,185,129,0.2)]">
-                  {/* Chromosomes inside single cell */}
-                  {phase === 0 && (
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100px] h-[100px] border-2 border-dashed border-blue-400 rounded-full animate-pulse">
-                       <div className="absolute top-5 left-5 text-2xl text-red-400 font-bold">X X</div>
-                       <div className="absolute bottom-5 right-5 text-2xl text-red-400 font-bold">X X</div>
-                    </div>
-                  )}
-                  {phase === 1 && (
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-1 items-center">
-                       <div className="text-xl text-red-400 font-bold">X</div>
-                       <div className="text-xl text-red-400 font-bold">X</div>
-                       <div className="text-xl text-red-400 font-bold">X</div>
-                       <div className="text-xl text-red-400 font-bold">X</div>
-                    </div>
-                  )}
-                  {phase === 2 && (
-                    <>
-                      <div className="absolute top-1/4 left-1/4 flex flex-col gap-2 items-center transition-all duration-1000">
-                         <div className="text-xl text-red-400 font-bold">&lt;</div>
-                         <div className="text-xl text-red-400 font-bold">&lt;</div>
-                         <div className="text-xl text-red-400 font-bold">&lt;</div>
-                      </div>
-                      <div className="absolute top-1/4 right-1/4 flex flex-col gap-2 items-center transition-all duration-1000">
-                         <div className="text-xl text-red-400 font-bold">&gt;</div>
-                         <div className="text-xl text-red-400 font-bold">&gt;</div>
-                         <div className="text-xl text-red-400 font-bold">&gt;</div>
-                      </div>
-                    </>
-                  )}
-               </div>
-            ) : (
-              // Telophase / Cytokinesis: Two cells splitting
-              <div className="flex gap-4">
-                <div className="w-[140px] h-[140px] rounded-full border-4 border-emerald-500 relative bg-emerald-900/20 animate-[pulse_2s_ease-in-out_infinite]">
-                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50px] h-[50px] border-2 border-blue-400 rounded-full bg-blue-500/20"></div>
-                </div>
-                <div className="w-[140px] h-[140px] rounded-full border-4 border-emerald-500 relative bg-emerald-900/20 animate-[pulse_2s_ease-in-out_infinite]">
-                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50px] h-[50px] border-2 border-blue-400 rounded-full bg-blue-500/20"></div>
-                </div>
-              </div>
-            )}
-          </div>
+        <div className="card-body p-6 md:p-8 gap-6">
+          {!intro.started ? (
+            <IntroState
+              lead="Step through the phases of mitosis and track what happens to the chromosomes at each stage."
+              actionLabel="Start the cycle"
+              onStart={intro.start}
+            />
+          ) : (
+          <>
+          <p className="text-center text-sm text-base-content/70 max-w-2xl mx-auto">
+            Mitosis makes two identical cells from one — the process behind growth, replacing dead
+            skin, and healing a wound. Play the cycle or step through each phase.
+          </p>
 
-          <div className="flex flex-col gap-3 justify-center">
-            <h3 className="font-bold text-lg mb-2">Select Stage:</h3>
-            {phases.map((p, i) => (
-              <button 
-                key={p} 
-                onClick={() => setPhase(i)} 
-                className={`btn ${phase === i ? 'btn-primary' : 'btn-outline'}`}
-              >
-                {p}
-              </button>
-            ))}
+          <ProcessCycle
+            stages={stages}
+            mode="cycle"
+            diagramAriaLabel="Phases of mitosis"
+          />
+
+          <div className="rounded-2xl border border-base-300 bg-base-200 p-4 md:p-5 text-sm text-base-content/80 leading-relaxed">
+            <strong className="text-base-content">Key idea:</strong> the cell copies its DNA{' '}
+            <em>once</em> (interphase) and divides it evenly (anaphase), so each daughter cell ends
+            up with the same number and kind of chromosomes as the parent.
           </div>
+          </>
+          )}
         </div>
       </div>
     </VisualizerLayout>
   );
 };
+
 export default CellDivisionVisualizer;

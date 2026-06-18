@@ -1,48 +1,46 @@
-# SetsVenn Deep Dive
+import { Sources, Changelog } from '../../components/content'
 
+# Sets and Venn diagrams: sorting the world into braces
 
+I built the sets tool because the notation scares students off a topic they already understand. Braces and the $\cup$ and $\cap$ symbols look like a foreign alphabet, so a Grade 7 class freezes up over ideas they use every day. Ask them to list what is in their bag and they have already done set theory. They just have not written the braces yet. The visualizer above shades the regions as you build them, so the picture lands first and the symbols turn into labels for something you can already see.
 
-Sets and Set Operations: Math Grade 7 (MATATAG)
+A **set** is a well-defined collection of distinct objects, and the two words carrying the weight there are "well-defined" and "distinct." Well-defined means anyone can agree whether something belongs. "The even numbers from 1 to 10" is a set. "The nice numbers" is not, because nice is an opinion, not a rule. Distinct means you never write the same thing twice. The set of letters in the word *BANANA* is $\{B, A, N\}$, not $\{B, A, N, A, N, A\}$. Each member shows up once, and order does not matter, so $\{B, A, N\}$ and $\{N, A, B\}$ are the same set.
 
-A 
-set
- is a well-defined collection of distinct objects, called 
-elements
- or 
-members
-.
+Here is the misconception worth killing early: students treat a set like a list, where repeats and order count. A set is not a list. Two of the same thing collapses into one, and shuffling the members changes nothing. Get that wrong and the counting later comes out wrong too.
 
-Notations
+We write sets a few standard ways, and the MATATAG Grade 7 strand expects students to move between them. The **roster method** lists everything inside braces: $A = \{1, 2, 3, 4\}$. When a set is large or never-ending you switch to **set-builder notation**, which states the rule instead of the contents: $\{x \mid x \text{ is an even number}\}$. And the **cardinality** of a set, written $n(A)$, is just how many elements it has, so for $A = \{1, 2, 3, 4\}$ we have $n(A) = 4$. Cardinality only trips people when they forget the "distinct" rule and double-count.
 
-Roster Method:
- List all elements inside braces. Example: A = &#123;1, 2, 3, 4&#125;
+## The three operations the tool draws
 
-Cardinality:
- The number of elements in a set. n(A) = 4
+Most of the work in this topic is combining two sets, and the visualizer shades each result so you can see what the symbols are actually doing. Take $A = \{1, 2, 3, 4\}$ and $B = \{3, 4, 5, 6\}$.
 
-Set Operations
+The **union**, written $A \cup B$, collects everything that is in A *or* in B, both circles taken together: $\{1, 2, 3, 4, 5, 6\}$. Notice that 3 and 4 each appear once even though they live in both sets, because elements stay distinct. The **intersection**, $A \cap B$, keeps only what is in *both*, the overlap in the middle: $\{3, 4\}$. And the **difference**, $A - B$, keeps what is in A but *not* in B, so you start from A and erase anything B also claims: $\{1, 2\}$. Flip the order and $B - A = \{5, 6\}$, a useful reminder that difference, unlike union and intersection, is not symmetric. The order you subtract in changes the answer.
 
-Union (A ∪ B):
- All elements that are in A 
-or
- B (or both). Combine everything.
+A Venn diagram is just a picture of these rules. Two overlapping circles sit inside a rectangle, and the rectangle is the **universal set** of everything under discussion. The overlap is the intersection, the two circles together are the union, and the crescent left when you cut the overlap out of one circle is a difference. When two sets share nothing at all, like the odd and the even numbers, the circles are drawn apart and we call the sets **disjoint**. Their intersection is the **empty set**, written $\varnothing$ or $\{\}$, with cardinality zero.
 
-Intersection (A ∩ B):
- Only elements that are in 
-both
- A and B. The overlap.
+## Why a Grade 7 topic keeps coming back
 
-Difference (A − B):
- Elements in A that are 
-not
- in B.
+It is tempting to treat sets as vocabulary you cram for one quarter and forget, but the notation holds up almost everything that follows. Probability is built on sets: an "event" is a subset of all the possible outcomes, the chance of A *or* B is a union question, and A *and* B is an intersection. Database queries do the same work under different names, where a JOIN behaves like an intersection and a UNION is, unsurprisingly, a union. Even the Venn diagram you might sketch to compare two barangay programs, the families served by one, by the other, or by both, is the same machinery.
 
-Try entering your own sets and selecting different operations to see how the Venn diagram highlights change!
+There is a counting payoff that shows up almost immediately, too. For two finite sets,
 
-## Dissection of Variables
+$$n(A \cup B) = n(A) + n(B) - n(A \cap B).$$
 
-- **Variable 1**: Explanation of how it works in the physical world.
-- **Variable 2**: Deep dive into the math and units.
+You add the two counts and subtract the overlap once, because adding both sets whole counts every shared member twice. If 18 students take robotics, 15 take chess, and 6 do both, the number in at least one club is $18 + 15 - 6 = 27$, not 33. Shade the regions in the tool first, and that formula stops being something to memorize and becomes something you can point at.
 
----
-*Note: This is a deep dive section that breaks down the variables and the underlying physics/math of the simulation.*
+<Sources
+  items={[
+    { label: 'Weisstein, Eric W. "Set." Wolfram MathWorld.', href: 'https://mathworld.wolfram.com/Set.html' },
+    { label: 'Weisstein, Eric W. "Venn Diagram." Wolfram MathWorld.', href: 'https://mathworld.wolfram.com/VennDiagram.html' },
+    { label: 'Khan Academy. "Intersection and union of sets."', href: 'https://www.khanacademy.org/math/statistics-probability/probability-library/basic-set-ops/a/intersection-and-union-of-sets' },
+    { label: 'Encyclopaedia Britannica. "Set theory."', href: 'https://www.britannica.com/science/set-theory' },
+  ]}
+/>
+
+<Changelog
+  created="2026-06-11"
+  updated="2026-06-18"
+  entries={[
+    { date: "2026-06-18", note: "Re-toned into the house voice; moved set notation to KaTeX; tied examples to the live Venn shading and inclusion-exclusion count." },
+  ]}
+/>

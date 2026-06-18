@@ -45,8 +45,10 @@ export const Toggle = <T extends string>({
           return (
             <button 
               key={option.value}
+              type="button"
               onClick={() => onChange(option.value)} 
               className={`join-item btn ${sizeClass} ${btnClass}`}
+              aria-pressed={isActive}
             >
               {option.label}
             </button>

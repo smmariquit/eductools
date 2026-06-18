@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <path class="crayon-stroke-sky" d="M76 28 Q84 34 82 42" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+  <path class="crayon-stroke-sky" d="M24 72 Q16 66 18 58" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+  <circle class="crayon-fill-paper" cx="50" cy="50" r="26"/>
+  <circle class="crayon-draw crayon-stroke-ink" pathLength="1" cx="50" cy="50" r="26" stroke-width="5"/>
+  <path class="crayon-fill-sky" d="M43 39 Q40 39 40 42 L40 58 Q40 61 43 61 Q46 61 46 58 L46 42 Q46 39 43 39 Z"/>
+  <path class="crayon-fill-sky" d="M57 39 Q54 39 54 42 L54 58 Q54 61 57 61 Q60 61 60 58 L60 42 Q60 39 57 39 Z"/>
+  <path class="crayon-draw crayon-stroke-ink" pathLength="1" d="M43 39 Q40 39 40 42 L40 58 Q40 61 43 61 Q46 61 46 58 L46 42 Q46 39 43 39 Z" stroke-width="3" stroke-linejoin="round"/>
+  <path class="crayon-draw crayon-stroke-ink" pathLength="1" d="M57 39 Q54 39 54 42 L54 58 Q54 61 57 61 Q60 61 60 58 L60 42 Q60 39 57 39 Z" stroke-width="3" stroke-linejoin="round"/>
+</svg>

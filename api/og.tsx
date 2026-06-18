@@ -3,7 +3,7 @@ import { ImageResponse } from '@vercel/og';
 
 export default async function handler(req: Request) {
   const { searchParams } = new URL(req.url);
-  const title = searchParams.get('title') || 'Eductools';
+  const title = searchParams.get('title') || 'EduVisualsPH';
   const desc = searchParams.get('desc') || 'Interactive STEM Visualizers for Philippine Education';
 
   return new ImageResponse(
@@ -40,7 +40,7 @@ export default async function handler(req: Request) {
           </div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <span style={{ color: '#3b82f6', fontSize: '24px', fontWeight: 800, letterSpacing: '2px' }}>
-              EDUCTOOLS
+              EduVisualsPH
             </span>
             <span style={{ color: '#94a3b8', fontSize: '14px', fontWeight: 600, letterSpacing: '1px' }}>
               Philippine Educational Portal

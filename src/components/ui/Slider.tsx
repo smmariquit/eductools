@@ -1,4 +1,4 @@
-import React, { type ReactNode } from 'react';
+import React, { type ReactNode, useId } from 'react';
 
 export interface SliderProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: ReactNode;
@@ -21,17 +21,22 @@ export const Slider: React.FC<SliderProps> = ({
   colorClass = 'primary',
   onChange,
   className = '',
+  id,
+  'aria-valuetext': ariaValueText,
   ...props 
 }) => {
+  const generatedId = useId();
+  const inputId = id ?? generatedId;
   return (
     <div className={`w-full ${className}`}>
-      <label className="flex justify-between mb-2 font-semibold text-sm">
+      <label htmlFor={inputId} className="flex justify-between mb-2 font-semibold text-sm">
         <span>{label}</span>
         <span className={`text-${colorClass} font-mono`}>
           {value}{unit}
         </span>
       </label>
       <input 
+        id={inputId}
         type="range" 
         min={min} 
         max={max} 
@@ -39,6 +44,7 @@ export const Slider: React.FC<SliderProps> = ({
         value={value} 
         onChange={onChange} 
         className={`range range-${colorClass} range-sm`} 
+        aria-valuetext={ariaValueText ?? `${value}${unit}`}
         {...props}
       />
     </div>

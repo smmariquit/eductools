@@ -1,40 +1,58 @@
-# From Bits to Pixels: The Physics of Computation
+import { BarChart, Sources, Changelog } from '../../components/content'
 
-When we talk about computer science, it is easy to forget that the "digital" world is completely bound by the laws of physical science. At its core, a computer does not understand numbers, text, or video. It only understands voltage.
+# Your phone does not know what a photo is
 
-## The Physical Reality of a Bit
+I made this tool because of a question a student asked that I could not answer cleanly on the spot: "If the computer stores my photo, what is it actually storing?" We talk about the "digital" world as if it floats free of the physical one, but a computer does not understand numbers, text, or pictures in any direct sense. It understands voltage. Everything else is a convention we stacked on top of voltage so that humans could get useful work out of it. Tracing that stack from a single electrical state up to a full-color photo is one of the more satisfying things to show a student, because every step is concrete and nothing has to be taken on faith.
 
-A **Bit** (Binary Digit) is the fundamental atomic unit of computing. But it isn't an abstract mathematical concept—it's a physical state. 
+## What a bit really is
 
-Inside the silicon of a computer processor are billions of microscopic electronic switches called transistors. When a transistor is charged with a high voltage (roughly 1.0 Volt), it represents a **1**. When the voltage is dropped (roughly 0 Volts), it represents a **0**. 
+A **bit** (short for binary digit) is the smallest unit of information a computer stores, and it is a physical state, not an abstract idea. Inside the silicon of a processor sit billions of microscopic switches called transistors. When a transistor holds a high voltage, on the order of a volt in many chips, we agree to read it as a **1**. When the voltage drops near zero, we read it as a **0**. That is the whole alphabet: two states, nothing in between. That simplicity is exactly why it is so reliable. A circuit only has to tell "clearly on" from "clearly off" instead of measuring a precise level, so a little electrical noise on a cheap, shared machine will not flip a 1 into a 0.
 
-When you download a 10 Megabyte song, you are downloading exactly 83,886,080 distinct high or low voltage states. 
+That two-state design is also why files look enormous when you count them in bits. A 10-megabyte song is roughly 83,886,080 separate high-or-low states, each one a transistor pushed on or off. The number is huge because each bit, on its own, carries so little.
 
-## Grouping Bits: Bytes and Hexadecimal
+## Grouping bits into bytes
 
-Because reading 83 million individual zeros and ones is impossible for humans, we group bits together. 
+Reading tens of millions of individual 1s and 0s is hopeless for a person, so bits get grouped. The standard cluster is 8 bits, called a **byte**. Eight switches, each on or off, give $2^8 = 256$ distinct patterns, running from `00000000` to `11111111`. Those 256 patterns are enough to cover the basic Latin alphabet, the digits, and punctuation, which is how a byte became the common unit for a single character of text.
 
-The most common grouping is an 8-bit cluster known as a **Byte**. An 8-bit Byte can hold exactly $2^8$ (256) unique patterns, from `00000000` to `11111111`.
+Each position in a byte carries a fixed value, a power of two, and the number a pattern stands for is just the sum of the place values that are switched on. Those place values double as you move from right to left:
 
-To make it even easier to read, programmers compress these 8-bit patterns into two-digit Hexadecimal (Base-16) numbers. Instead of counting from 0 to 9, hexadecimal counts from 0 to F (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F). 
-- `00000000` becomes `00`
-- `11111111` becomes `FF`
+<BarChart
+  title="Place values of an 8-bit byte (powers of two)"
+  source='Weisstein, "Binary," Wolfram MathWorld'
+  data={[
+    { label: 'bit 0 (2⁰)', value: 1, color: 'sky' },
+    { label: 'bit 1 (2¹)', value: 2, color: 'sky' },
+    { label: 'bit 2 (2²)', value: 4, color: 'leaf' },
+    { label: 'bit 3 (2³)', value: 8, color: 'leaf' },
+    { label: 'bit 4 (2⁴)', value: 16, color: 'sunshine' },
+    { label: 'bit 5 (2⁵)', value: 32, color: 'sunshine' },
+    { label: 'bit 6 (2⁶)', value: 64, color: 'berry' },
+    { label: 'bit 7 (2⁷)', value: 128, color: 'berry' },
+  ]}
+/>
 
-## Painting with Bytes: The Pixel
+Turn on every position and you add $128 + 64 + 32 + 16 + 8 + 4 + 2 + 1 = 255$, which is why the largest value a single byte holds is 255, not 256. (256 is the *count* of patterns, once you include zero.) To write these patterns compactly, programmers use **hexadecimal**, base 16, which counts 0 through 9 and then A through F before rolling over. Two hex digits cover one byte exactly, so `00000000` is `00` and `11111111` is `FF`. Hex is not a different kind of number, just a shorter way to spell the same bits.
 
-How do voltages become a photograph? Through **Pixels** (Picture Elements). 
+## Painting with bytes
 
-Modern screens use the RGB (Red, Green, Blue) color model. Every single pixel on your screen is composed of three microscopic physical lights: one red, one green, and one blue. 
+So how does voltage become a photograph? Through **pixels** (picture elements). Modern screens use the RGB model, where every pixel is three tiny physical lights, one red, one green, one blue. The computer gives each light one byte to set its brightness, so a value of 0 means that light is off and 255 means it is at full blast. Mixing the three at different levels produces every color the pixel can show.
 
-A computer assigns exactly **one Byte (8 bits)** to control the brightness of each light. 
-- A byte value of `0` turns the light completely off.
-- A byte value of `255` (or `FF` in Hex) turns the light to maximum brightness.
+Three bytes per pixel is 24 bits, which is where the term "24-bit true color" comes from. Because each of the three channels has 256 settings, the total is $256 \times 256 \times 256 = 16{,}777{,}216$ distinct colors, more than the human eye can reliably tell apart. The tool makes this chain visible. You get three rows of eight switches, one row per color channel, and each row shows its own decimal and hex value as you flip bits. Beside them, a single pixel updates live to the color those three bytes describe, along with a bar for how bright each subpixel is and the final hex code. Hit Randomize a few times, or just toggle one bit in the red row and watch the color shift, and the jump from "voltage" to "image" stops feeling like magic and starts feeling like counting.
 
-Because each pixel requires 3 Bytes (Red, Green, Blue), it requires exactly 24 bits. This is known as "24-bit True Color" and it allows for $256 \times 256 \times 256 = 16,777,216$ unique colors!
+<Sources
+  items={[
+    { label: 'Weisstein, Eric W. "Binary." Wolfram MathWorld.', href: 'https://mathworld.wolfram.com/BinaryNumber.html' },
+    { label: 'CS Unplugged. "Binary Numbers."', href: 'https://www.csunplugged.org/en/topics/binary-numbers/' },
+    { label: 'MDN Web Docs. "RGB" (Glossary).', href: 'https://developer.mozilla.org/en-US/docs/Glossary/RGB' },
+    { label: 'Khan Academy. "Computers and the Internet."', href: 'https://www.khanacademy.org/computing/computers-and-internet' },
+    { label: 'PhET Interactive Simulations. "Color Vision."', href: 'https://phet.colorado.edu/en/simulations/color-vision' },
+  ]}
+/>
 
----
-*Legend for the Visualizer:* The grid on the left represents individual Bits toggling between 0 (Off) and 1 (On). The right side shows how those 8-bit groups combine to physically control the RGB brightness of a single Pixel.
-
-## Further Exploration (External Sources)
-- [LabXchange: Digital Logic Simulation](https://www.labxchange.org/)
-- [PhET: Color Vision](https://phet.colorado.edu/en/simulations/color-vision)
+<Changelog
+  created="2026-06-11"
+  updated="2026-06-18"
+  entries={[
+    { date: "2026-06-18", note: "Re-toned into the house voice (origin-story open, voltage-not-numbers misconception); matched the tool's three RGB byte editors, live pixel, and Randomize; replaced the Cloudflare-blocked Britannica link with Wolfram MathWorld." },
+  ]}
+/>

@@ -1,238 +1,292 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
+
+const DEFAULT_A = 3;
+const DEFAULT_B = 4;
+const ANIM_MS = 1300;
+
+type Pt = [number, number];
+
+const TRIPLES: { label: string; a: number; b: number }[] = [
+  { label: '3-4-5', a: 3, b: 4 },
+  { label: '5-12-13', a: 5, b: 12 },
+  { label: '6-8-10', a: 6, b: 8 },
+  { label: '7-7', a: 7, b: 7 },
+];
+
+const reducedMotion = () =>
+  typeof window !== 'undefined' &&
+  typeof window.matchMedia === 'function' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const easeInOut = (k: number) => (k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2);
+const lerp = (p: Pt, q: Pt, t: number): Pt => [p[0] + (q[0] - p[0]) * t, p[1] + (q[1] - p[1]) * t];
 
 const PythagoreanVisualizer = () => {
-  const [sideA, setSideA] = useState(3);
-  const [sideB, setSideB] = useState(4);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [sideA, setSideA] = useState(DEFAULT_A);
+  const [sideB, setSideB] = useState(DEFAULT_B);
+  // 0 = squares on the legs (a² + b²), 1 = single square on the hypotenuse (c²)
+  const [t, setT] = useState(0);
+  const rafRef = useRef<number | null>(null);
+  const fields = useTouchedFields<'a' | 'b'>();
+  const ready = fields.isTouched('a') && fields.isTouched('b');
 
   const sideC = Math.sqrt(sideA * sideA + sideB * sideB);
   const areaA = sideA * sideA;
   const areaB = sideB * sideB;
-  const areaC = sideC * sideC; // = areaA + areaB
+  const areaC = areaA + areaB;
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
+  const stop = useCallback(() => {
+    if (rafRef.current != null) cancelAnimationFrame(rafRef.current);
+    rafRef.current = null;
+  }, []);
 
-    const w = canvas.width;
-    const h = canvas.height;
-
-    ctx.clearRect(0, 0, w, h);
-    ctx.fillStyle = '#0f172a';
-    ctx.fillRect(0, 0, w, h);
-
-    // Scale factor to fit
-    const scale = Math.min((w - 160) / (sideB + sideC + 2), (h - 120) / (sideA + sideC + 2)) * 0.42;
-
-    // Triangle vertices (right angle at bottom-left)
-    const originX = w * 0.35;
-    const originY = h * 0.62;
-
-    const ax = originX; // right angle vertex
-    const ay = originY;
-    const bx = originX + sideB * scale; // bottom-right
-    const by = originY;
-    const cx = originX; // top
-    const cy = originY - sideA * scale;
-
-    // --- Draw squares on each side ---
-
-    // Square on side a (vertical side, drawn to the left)
-    ctx.fillStyle = 'rgba(239, 68, 68, 0.15)';
-    ctx.strokeStyle = '#ef4444';
-    ctx.lineWidth = 2;
-    ctx.beginPath();
-    ctx.rect(ax - sideA * scale, cy, sideA * scale, sideA * scale);
-    ctx.fill();
-    ctx.stroke();
-
-    // Grid lines in square a
-    ctx.strokeStyle = 'rgba(239, 68, 68, 0.15)';
-    ctx.lineWidth = 1;
-    for (let i = 1; i < sideA; i++) {
-      const frac = i / sideA;
-      ctx.beginPath();
-      ctx.moveTo(ax - sideA * scale, cy + frac * sideA * scale);
-      ctx.lineTo(ax, cy + frac * sideA * scale);
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.moveTo(ax - sideA * scale + frac * sideA * scale, cy);
-      ctx.lineTo(ax - sideA * scale + frac * sideA * scale, ay);
-      ctx.stroke();
+  const play = useCallback(() => {
+    stop();
+    if (reducedMotion()) {
+      setT((prev) => (prev >= 1 ? 0 : 1));
+      return;
     }
+    const goingForward = t < 1;
+    const begin = performance.now();
+    const tick = (now: number) => {
+      const k = Math.min(1, (now - begin) / ANIM_MS);
+      const e = easeInOut(k);
+      setT(goingForward ? e : 1 - e);
+      if (k < 1) rafRef.current = requestAnimationFrame(tick);
+      else rafRef.current = null;
+    };
+    rafRef.current = requestAnimationFrame(tick);
+  }, [stop, t]);
 
-    // Label
-    ctx.fillStyle = '#ef4444';
-    ctx.font = 'bold 14px Inter, system-ui';
-    ctx.textAlign = 'center';
-    ctx.fillText(`a² = ${sideA}² = ${areaA}`, ax - sideA * scale / 2, cy + sideA * scale / 2 + 5);
+  useEffect(() => stop, [stop]);
 
-    // Square on side b (horizontal side, drawn below)
-    ctx.fillStyle = 'rgba(34, 197, 94, 0.15)';
-    ctx.strokeStyle = '#22c55e';
-    ctx.lineWidth = 2;
-    ctx.beginPath();
-    ctx.rect(ax, ay, sideB * scale, sideB * scale);
-    ctx.fill();
-    ctx.stroke();
+  const reset = () => {
+    stop();
+    setSideA(DEFAULT_A);
+    setSideB(DEFAULT_B);
+    setT(0);
+    fields.reset();
+  };
 
-    // Grid lines in square b
-    ctx.strokeStyle = 'rgba(34, 197, 94, 0.15)';
-    ctx.lineWidth = 1;
-    for (let i = 1; i < sideB; i++) {
-      const frac = i / sideB;
-      ctx.beginPath();
-      ctx.moveTo(ax, ay + frac * sideB * scale);
-      ctx.lineTo(bx, ay + frac * sideB * scale);
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.moveTo(ax + frac * sideB * scale, ay);
-      ctx.lineTo(ax + frac * sideB * scale, ay + sideB * scale);
-      ctx.stroke();
-    }
+  const fillExample = () => {
+    setSideA(3);
+    setSideB(4);
+    fields.touchAll(['a', 'b']);
+  };
 
-    ctx.fillStyle = '#22c55e';
-    ctx.font = 'bold 14px Inter, system-ui';
-    ctx.fillText(`b² = ${sideB}² = ${areaB}`, (ax + bx) / 2, ay + sideB * scale / 2 + 5);
+  // ---- Geometry (a big square of side a+b holds four congruent right triangles) ----
+  // At t=0 the leftover space is two squares a² and b²; at t=1 it is one tilted
+  // square c². The four triangles slide (pure translation) between the two layouts,
+  // so equal area is preserved the whole way: a² + b² = c².
+  const a = sideA;
+  const b = sideB;
+  const S = a + b;
+  const PAD = 30;
+  const BOX = 300;
+  const scale = BOX / S;
+  const px = (x: number) => PAD + x * scale;
+  const poly = (pts: Pt[]) => pts.map((p) => `${px(p[0])},${px(p[1])}`).join(' ');
 
-    // Square on hypotenuse c
-    // Need to rotate: the square sits on the hypotenuse line
-    const hypAngle = Math.atan2(cy - by, cx - bx);
-    const cSquareSize = sideC * scale;
+  // Each triangle keeps its orientation, so start → end is a straight slide.
+  const triangles: { start: Pt[]; end: Pt[] }[] = [
+    { start: [[a, 0], [S, 0], [a, a]], end: [[0, 0], [b, 0], [0, a]] },
+    { start: [[S, a], [a, a], [S, 0]], end: [[S, S], [a, S], [S, b]] },
+    { start: [[a, a], [a, S], [0, a]], end: [[S, 0], [S, b], [b, 0]] },
+    { start: [[0, S], [0, a], [a, S]], end: [[0, S], [0, a], [a, S]] },
+  ];
 
-    ctx.save();
-    ctx.translate(bx, by);
-    ctx.rotate(hypAngle);
+  const cSquare: Pt[] = [[b, 0], [S, b], [a, S], [0, a]];
+  const labelOpacityLegs = Math.max(0, 1 - t * 1.4);
+  const labelOpacityHyp = Math.max(0, (t - 0.3) / 0.7);
+  const phase = t < 0.05 ? 'legs' : t > 0.95 ? 'hyp' : 'moving';
 
-    ctx.fillStyle = 'rgba(96, 165, 250, 0.15)';
-    ctx.strokeStyle = '#60a5fa';
-    ctx.lineWidth = 2;
-    ctx.beginPath();
-    ctx.rect(0, 0, cSquareSize, cSquareSize);
-    ctx.fill();
-    ctx.stroke();
+  const pct = Math.round(t * 100);
+  const aTriple = TRIPLES.find((tr) => tr.a === sideA && tr.b === sideB);
 
-    // Grid lines in square c
-    ctx.strokeStyle = 'rgba(96, 165, 250, 0.12)';
-    ctx.lineWidth = 1;
-    const cGrid = Math.max(1, Math.round(sideC));
-    for (let i = 1; i < cGrid; i++) {
-      const frac = i / cGrid;
-      ctx.beginPath();
-      ctx.moveTo(0, frac * cSquareSize);
-      ctx.lineTo(cSquareSize, frac * cSquareSize);
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.moveTo(frac * cSquareSize, 0);
-      ctx.lineTo(frac * cSquareSize, cSquareSize);
-      ctx.stroke();
-    }
+  const sliderA = (
+    <div>
+      <label htmlFor="pyth-a" className="flex justify-between mb-2 font-semibold text-sm">
+        <span>Side <span className="text-error font-bold">a</span></span>
+        <span className="text-error font-mono">{sideA}</span>
+      </label>
+      <input
+        id="pyth-a"
+        type="range" min="1" max="12" step="1" value={sideA}
+        onChange={(e) => { setSideA(Number(e.target.value)); fields.touch('a'); }}
+        className="range range-error range-sm"
+        aria-valuetext={`Leg a is ${sideA} units`}
+      />
+    </div>
+  );
 
-    ctx.fillStyle = '#60a5fa';
-    ctx.font = 'bold 14px Inter, system-ui';
-    ctx.textAlign = 'center';
-    ctx.fillText(`c² = ${areaC.toFixed(1)}`, cSquareSize / 2, cSquareSize / 2 + 5);
-
-    ctx.restore();
-
-    // --- Draw the triangle ---
-    ctx.strokeStyle = '#fbbf24';
-    ctx.lineWidth = 4;
-    ctx.beginPath();
-    ctx.moveTo(ax, ay);
-    ctx.lineTo(bx, by);
-    ctx.lineTo(cx, cy);
-    ctx.closePath();
-    ctx.stroke();
-
-    // Right angle marker
-    const markSize = 12;
-    ctx.strokeStyle = '#fbbf24';
-    ctx.lineWidth = 2;
-    ctx.beginPath();
-    ctx.moveTo(ax + markSize, ay);
-    ctx.lineTo(ax + markSize, ay - markSize);
-    ctx.lineTo(ax, ay - markSize);
-    ctx.stroke();
-
-    // Side labels
-    ctx.font = 'bold 16px Inter, system-ui';
-    ctx.textAlign = 'center';
-
-    // a (vertical)
-    ctx.fillStyle = '#ef4444';
-    ctx.fillText(`a = ${sideA}`, ax - 20, (ay + cy) / 2);
-
-    // b (horizontal)
-    ctx.fillStyle = '#22c55e';
-    ctx.fillText(`b = ${sideB}`, (ax + bx) / 2, ay - 10);
-
-    // c (hypotenuse)
-    ctx.fillStyle = '#60a5fa';
-    const midHypX = (bx + cx) / 2 + 18;
-    const midHypY = (by + cy) / 2;
-    ctx.fillText(`c = ${sideC.toFixed(2)}`, midHypX, midHypY);
-
-  }, [sideA, sideB, sideC, areaA, areaB, areaC]);
+  const sliderB = (
+    <div>
+      <label htmlFor="pyth-b" className="flex justify-between mb-2 font-semibold text-sm">
+        <span>Side <span className="text-success font-bold">b</span></span>
+        <span className="text-success font-mono">{sideB}</span>
+      </label>
+      <input
+        id="pyth-b"
+        type="range" min="1" max="12" step="1" value={sideB}
+        onChange={(e) => { setSideB(Number(e.target.value)); fields.touch('b'); }}
+        className="range range-success range-sm"
+        aria-valuetext={`Leg b is ${sideB} units`}
+      />
+    </div>
+  );
 
   return (
     <VisualizerLayout
       title="Pythagorean Theorem (Teorema ni Pythagoras)"
-      description="See the visual proof of a² + b² = c². Watch how the squares on each side of a right triangle relate to each other."
+      description="Drag or play the rearrangement to watch the squares on the two legs slide together into the square on the hypotenuse, showing a² + b² = c²."
       adSlotId="2018"
       guideLink="/blog/pythagorean"
     >
+      {!ready ? (
+        <GuidedInputFlow
+          intro="Set the two shorter sides (legs) of a right triangle, then watch the squares rearrange to prove a² + b² = c²."
+          onFillExample={fillExample}
+          onReset={reset}
+          steps={[
+            { id: 'a', title: 'Choose side a', helper: 'The first leg, from 1 to 12 units.', complete: fields.isTouched('a'), children: sliderA },
+            { id: 'b', title: 'Choose side b', helper: 'The second leg, from 1 to 12 units.', complete: fields.isTouched('b'), children: sliderB },
+          ]}
+        />
+      ) : (
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col lg:flex-row gap-8">
-          {/* Canvas */}
+          {/* Diagram */}
           <div className="flex-1 min-w-0">
-            <canvas ref={canvasRef} width={600} height={450} className="w-full h-auto aspect-[4/3] rounded-xl border-2 border-base-300" />
+            <div className="rounded-xl border-2 border-base-300 bg-base-200 p-4">
+              <svg
+                viewBox={`0 0 ${BOX + 2 * PAD} ${BOX + 2 * PAD}`}
+                className="w-full h-auto"
+                role="img"
+                aria-label={`Dissection proof, ${pct}% rearranged from two leg squares into one hypotenuse square`}
+              >
+                {/* containing (a+b) square */}
+                <rect
+                  x={px(0)}
+                  y={px(0)}
+                  width={S * scale}
+                  height={S * scale}
+                  fill="none"
+                  className="text-base-content"
+                  stroke="currentColor"
+                  strokeOpacity="0.25"
+                  strokeWidth="1.5"
+                />
+
+                {/* a² square (fades out as the pieces move) */}
+                {labelOpacityLegs > 0 && (
+                  <g className="text-error" opacity={labelOpacityLegs}>
+                    <rect x={px(0)} y={px(0)} width={a * scale} height={a * scale} fill="currentColor" fillOpacity="0.15" stroke="currentColor" strokeWidth="2" />
+                    <text x={px(a / 2)} y={px(a / 2)} textAnchor="middle" dominantBaseline="central" fontSize="15" fontWeight="bold" fill="currentColor">a² = {areaA}</text>
+                  </g>
+                )}
+
+                {/* b² square */}
+                {labelOpacityLegs > 0 && (
+                  <g className="text-success" opacity={labelOpacityLegs}>
+                    <rect x={px(a)} y={px(a)} width={b * scale} height={b * scale} fill="currentColor" fillOpacity="0.15" stroke="currentColor" strokeWidth="2" />
+                    <text x={px(a + b / 2)} y={px(a + b / 2)} textAnchor="middle" dominantBaseline="central" fontSize="15" fontWeight="bold" fill="currentColor">b² = {areaB}</text>
+                  </g>
+                )}
+
+                {/* c² tilted square (fades in) */}
+                {labelOpacityHyp > 0 && (
+                  <g className="text-info" opacity={labelOpacityHyp}>
+                    <polygon points={poly(cSquare)} fill="currentColor" fillOpacity="0.18" stroke="currentColor" strokeWidth="2" />
+                    <text x={px(S / 2)} y={px(S / 2)} textAnchor="middle" dominantBaseline="central" fontSize="15" fontWeight="bold" fill="currentColor">c² = {areaC.toFixed(0)}</text>
+                  </g>
+                )}
+
+                {/* the four sliding right triangles */}
+                <g className="text-warning">
+                  {triangles.map((tri, i) => {
+                    const pts: Pt[] = tri.start.map((s, j) => lerp(s, tri.end[j], t));
+                    return (
+                      <polygon
+                        key={i}
+                        points={poly(pts)}
+                        fill="currentColor"
+                        fillOpacity="0.35"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinejoin="round"
+                      />
+                    );
+                  })}
+                </g>
+              </svg>
+            </div>
+
+            {/* Rearrange control */}
+            <div className="mt-4 bg-base-200 p-4 rounded-xl border border-base-300">
+              <div className="flex items-center justify-between mb-2">
+                <label htmlFor="pyth-rearrange" className="text-sm font-semibold uppercase tracking-wider text-base-content/60">Rearrange</label>
+                <span className="text-sm font-mono text-base-content/70">
+                  {phase === 'legs' ? 'a² + b²' : phase === 'hyp' ? 'c²' : `${pct}%`}
+                </span>
+              </div>
+              <input
+                id="pyth-rearrange"
+                type="range"
+                min="0"
+                max="100"
+                value={Math.round(t * 100)}
+                onChange={(e) => {
+                  stop();
+                  setT(Number(e.target.value) / 100);
+                }}
+                className="range range-warning w-full"
+                aria-valuetext={`${pct} percent rearranged`}
+              />
+              <div className="flex gap-2 mt-3">
+                <button className="btn btn-primary btn-sm" onClick={play}>
+                  {t < 1 ? 'Play rearrangement' : 'Play back'}
+                </button>
+                <button className="btn btn-outline btn-sm" onClick={reset}>Reset</button>
+              </div>
+            </div>
           </div>
 
-          {/* Controls & Proof */}
+          {/* Controls & proof */}
           <div className="w-full lg:w-80 flex flex-col gap-6">
             <div className="bg-base-200 p-6 rounded-xl border border-base-300 flex flex-col gap-5">
-              <div>
-                <label className="flex justify-between mb-2 font-semibold text-sm">
-                  <span>Side <span className="text-error font-bold">a</span></span>
-                  <span className="text-error font-mono">{sideA}</span>
-                </label>
-                <input type="range" min="1" max="12" step="1" value={sideA} onChange={e => setSideA(Number(e.target.value))} className="range range-error range-sm" />
-              </div>
-              <div>
-                <label className="flex justify-between mb-2 font-semibold text-sm">
-                  <span>Side <span className="text-success font-bold">b</span></span>
-                  <span className="text-success font-mono">{sideB}</span>
-                </label>
-                <input type="range" min="1" max="12" step="1" value={sideB} onChange={e => setSideB(Number(e.target.value))} className="range range-success range-sm" />
-              </div>
+              {sliderA}
+              {sliderB}
 
-              {/* Pythagorean triples */}
               <div className="border-t border-base-300 pt-4">
-                <label className="block mb-2 font-bold text-xs text-base-content/60 uppercase tracking-wider">Pythagorean Triples</label>
+                <span className="block mb-2 font-bold text-xs text-base-content/60 uppercase tracking-wider">Common right triangles</span>
                 <div className="flex flex-wrap gap-2">
-                  <button onClick={() => { setSideA(3); setSideB(4); }} className="btn btn-outline btn-xs">3-4-5</button>
-                  <button onClick={() => { setSideA(5); setSideB(12); }} className="btn btn-outline btn-xs">5-12-13</button>
-                  <button onClick={() => { setSideA(8); setSideB(6); }} className="btn btn-outline btn-xs">6-8-10</button>
-                  <button onClick={() => { setSideA(7); setSideB(7); }} className="btn btn-outline btn-xs">7-7-√98</button>
+                  {TRIPLES.map((tr) => (
+                    <button
+                      key={tr.label}
+                      onClick={() => { setSideA(tr.a); setSideB(tr.b); }}
+                      className={`btn btn-xs ${aTriple?.label === tr.label ? 'btn-primary' : 'btn-outline'}`}
+                      aria-pressed={aTriple?.label === tr.label}
+                    >
+                      {tr.label}
+                    </button>
+                  ))}
                 </div>
               </div>
             </div>
 
             {/* Live proof */}
             <div className="bg-base-200 p-6 rounded-xl border border-base-300 space-y-4">
-              <h3 className="font-bold text-sm uppercase tracking-wider text-base-content/60">Live Proof</h3>
+              <h3 className="font-bold text-sm uppercase tracking-wider text-base-content/60">Live numbers</h3>
 
               <div className="flex items-center gap-3">
-                <div className="text-center p-3 rounded-lg bg-base-200 border border-base-300 flex-1">
+                <div className="text-center p-3 rounded-lg bg-base-100 border border-base-300 flex-1">
                   <div className="text-xs text-error/70 font-bold">a²</div>
                   <div className="text-xl font-bold font-mono text-error">{areaA}</div>
                 </div>
                 <span className="text-2xl font-bold text-base-content/50">+</span>
-                <div className="text-center p-3 rounded-lg bg-base-200 border border-base-300 flex-1">
+                <div className="text-center p-3 rounded-lg bg-base-100 border border-base-300 flex-1">
                   <div className="text-xs text-success/70 font-bold">b²</div>
                   <div className="text-xl font-bold font-mono text-success">{areaB}</div>
                 </div>
@@ -240,25 +294,25 @@ const PythagoreanVisualizer = () => {
 
               <div className="text-center text-2xl font-bold text-base-content/50">=</div>
 
-              <div className="text-center p-4 rounded-lg bg-base-200 border-2 border-base-300">
+              <div className="text-center p-4 rounded-lg bg-base-100 border-2 border-base-300">
                 <div className="text-xs text-info/70 font-bold">c²</div>
-                <div className="text-3xl font-extrabold font-mono text-info">{areaC.toFixed(1)}</div>
+                <div className="text-3xl font-extrabold font-mono text-info">{areaC.toFixed(0)}</div>
               </div>
 
               <div className="text-center font-mono text-sm text-base-content/60">
-                c = √{areaC.toFixed(1)} = <span className="text-info font-bold">{sideC.toFixed(4)}</span>
+                c = √{areaC.toFixed(0)} = <span className="text-info font-bold">{sideC.toFixed(4)}</span>
               </div>
 
-              {/* Check if it's a perfect triple */}
               {Number.isInteger(sideC) && (
                 <div className="alert alert-success py-2 text-sm">
-                  <span>🎉 Perfect Pythagorean Triple! ({sideA}, {sideB}, {sideC})</span>
+                  <span>Whole-number hypotenuse: ({sideA}, {sideB}, {sideC}) is a Pythagorean triple.</span>
                 </div>
               )}
             </div>
           </div>
         </div>
       </div>
+      )}
     </VisualizerLayout>
   );
 };

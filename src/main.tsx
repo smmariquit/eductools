@@ -5,8 +5,6 @@ import App from './App.tsx'
 import { HelmetProvider } from 'react-helmet-async';
 import './index.css'
 import 'katex/dist/katex.min.css';
-import './i18n';
-import { registerSW } from 'virtual:pwa-register';
 import posthog from 'posthog-js';
 
 // Initialize PostHog only when a real API key is configured
@@ -18,8 +16,8 @@ if (posthogKey && posthogKey !== 'YOUR_POSTHOG_PROJECT_API_KEY') {
   });
 }
 
-// Register PWA service worker for offline use
-registerSW({ immediate: true });
+// The PWA service worker is registered via the useRegisterSW hook in
+// <PwaStatus />, which also surfaces the offline-ready and update toasts.
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

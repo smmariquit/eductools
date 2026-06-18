@@ -1,29 +1,58 @@
 import { useState, useEffect, useRef } from 'react';
 import Matter from 'matter-js';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { IntroState, useIntroState } from '../../components/onboarding';
 
-const { Engine, Render, World, Bodies, Body, Runner } = Matter;
+const { Engine, Render, World, Bodies, Body, Runner, Events } = Matter;
 
 const PARTICLE_COUNT = 80;
 const CANVAS_W = 600;
 const CANVAS_H = 350;
 const PARTICLE_RADIUS = 7;
 
+const DEFAULT_TEMP = 20;
+
+// Water phase points (°C) — transitions happen at the SAME values the axis labels.
+const FREEZING = 0;
+const BOILING = 100;
+
+type Phase = 'solid' | 'liquid' | 'gas';
+const phaseOf = (t: number): Phase => (t <= FREEZING ? 'solid' : t >= BOILING ? 'gas' : 'liquid');
+
+const STATE_LABEL: Record<Phase, string> = {
+  solid: 'Solid (Solido)',
+  liquid: 'Liquid (Likido)',
+  gas: 'Gas (Gas)',
+};
+
+const ARRANGEMENT: Record<Phase, string> = {
+  solid: 'Packed lattice — particles locked in place, only vibrating.',
+  liquid: 'Sliding — particles stay close but flow past one another.',
+  gas: 'Dispersed — particles spread out to fill the container.',
+};
+
 const StatesOfMatterVisualizer = () => {
-  const [temperature, setTemperature] = useState(20);
+  const intro = useIntroState();
+  const [temperature, setTemperature] = useState(DEFAULT_TEMP);
   const containerRef = useRef<HTMLDivElement>(null);
   const engineRef = useRef<Matter.Engine | null>(null);
-  const renderRef = useRef<Matter.Render | null>(null);
-  const runnerRef = useRef<Matter.Runner | null>(null);
   const particlesRef = useRef<Matter.Body[]>([]);
+  const homesRef = useRef<{ x: number; y: number }[]>([]);
+  const tempRef = useRef(temperature);
 
-  let state = 'Solid (Yelo)';
-  if (temperature > 30 && temperature <= 70) state = 'Liquid (Tubig)';
-  else if (temperature > 70) state = 'Gas (Singaw)';
-
-  // Initialize Matter.js engine and renderer once
+  // Keep the latest temperature available to the persistent physics loop
+  // without re-subscribing or re-randomising velocities each slider tick.
   useEffect(() => {
-    if (!containerRef.current) return;
+    tempRef.current = temperature;
+  }, [temperature]);
+
+  const phase = phaseOf(temperature);
+  const state = STATE_LABEL[phase];
+
+  // Initialize Matter.js engine and renderer once the learner has started
+  // (the canvas container only renders after the intro state).
+  useEffect(() => {
+    if (!intro.started || !containerRef.current) return;
 
     const engine = Engine.create({
       gravity: { x: 0, y: 1, scale: 0.001 },
@@ -37,11 +66,10 @@ const StatesOfMatterVisualizer = () => {
         width: CANVAS_W,
         height: CANVAS_H,
         wireframes: false,
-        background: '#0f172a',
+        background: '#2b2b3a', // crayon ink, matches bg-neutral
         pixelRatio: window.devicePixelRatio || 1,
       },
     });
-    renderRef.current = render;
 
     // Walls (invisible containment)
     const wallOptions = { isStatic: true, render: { visible: false }, restitution: 0.8 };
@@ -52,21 +80,24 @@ const StatesOfMatterVisualizer = () => {
       Bodies.rectangle(CANVAS_W + 25, CANVAS_H / 2, 50, CANVAS_H, wallOptions),   // right
     ];
 
-    // Create particles in a grid
+    // Create particles in a packed grid — these positions double as the
+    // "home" lattice sites the solid springs back to.
     const particles: Matter.Body[] = [];
+    const homes: { x: number; y: number }[] = [];
     const cols = 10;
     for (let i = 0; i < PARTICLE_COUNT; i++) {
       const col = i % cols;
       const row = Math.floor(i / cols);
       const x = 150 + col * (PARTICLE_RADIUS * 2.5);
       const y = CANVAS_H - 50 - row * (PARTICLE_RADIUS * 2.5);
-      
+      homes.push({ x, y });
+
       const particle = Bodies.circle(x, y, PARTICLE_RADIUS, {
         restitution: 0.9,
         friction: 0.01,
-        frictionAir: 0.005,
+        frictionAir: 0.05,
         render: {
-          fillStyle: '#3b82f6',
+          fillStyle: '#93c5fd',
           strokeStyle: '#1d4ed8',
           lineWidth: 1,
         },
@@ -74,11 +105,42 @@ const StatesOfMatterVisualizer = () => {
       particles.push(particle);
     }
     particlesRef.current = particles;
+    homesRef.current = homes;
 
     World.add(engine.world, [...walls, ...particles]);
 
+    // Persistent thermal loop: applies forces each tick based on the CURRENT
+    // temperature. Particles keep their own velocities — we never overwrite
+    // them wholesale, so dragging the slider nudges motion instead of resetting it.
+    Events.on(engine, 'beforeUpdate', () => {
+      const t = tempRef.current;
+      const ph = phaseOf(t);
+      const bodies = particlesRef.current;
+      const homeSites = homesRef.current;
+
+      bodies.forEach((p, i) => {
+        if (ph === 'solid') {
+          // Spring toward the lattice site + tiny vibration that grows with T.
+          const home = homeSites[i];
+          const k = 0.0009;
+          const jiggle = 0.000015 * ((t + 20) / 20); // a little even below 0
+          Body.applyForce(p, p.position, {
+            x: (home.x - p.position.x) * k + (Math.random() - 0.5) * jiggle,
+            y: (home.y - p.position.y) * k + (Math.random() - 0.5) * jiggle,
+          });
+        } else {
+          // Liquid/gas: random thermal agitation scaled by temperature.
+          const warmth = ph === 'gas' ? (t / 100) : (t - FREEZING) / (BOILING - FREEZING);
+          const mag = (ph === 'gas' ? 0.00009 : 0.00004) * Math.max(0.2, warmth);
+          Body.applyForce(p, p.position, {
+            x: (Math.random() - 0.5) * mag,
+            y: (Math.random() - 0.5) * mag,
+          });
+        }
+      });
+    });
+
     const runner = Runner.create();
-    runnerRef.current = runner;
     Runner.run(runner, engine);
     Render.run(render);
 
@@ -88,6 +150,7 @@ const StatesOfMatterVisualizer = () => {
     canvas.style.height = 'auto';
 
     return () => {
+      Events.off(engine, 'beforeUpdate');
       Render.stop(render);
       Runner.stop(runner);
       World.clear(engine.world, false);
@@ -96,55 +159,47 @@ const StatesOfMatterVisualizer = () => {
         render.canvas.parentNode.removeChild(render.canvas);
       }
     };
-  }, []);
+  }, [intro.started]);
 
-  // React to temperature changes by adjusting particle behavior
+  // React to temperature changes by adjusting bulk PROPERTIES only
+  // (gravity, damping, restitution, color) — never by re-rolling velocities.
   useEffect(() => {
     const engine = engineRef.current;
     const particles = particlesRef.current;
     if (!engine || particles.length === 0) return;
 
-    const isSolid = temperature <= 30;
-    const isLiquid = temperature > 30 && temperature <= 70;
-    const isGas = temperature > 70;
+    const ph = phaseOf(temperature);
 
-    // Adjust gravity based on state
-    if (isSolid) {
-      engine.gravity.y = 2;
-      engine.gravity.scale = 0.001;
-    } else if (isLiquid) {
+    if (ph === 'solid') {
+      engine.gravity.scale = 0; // the lattice spring holds the shape
+    } else if (ph === 'liquid') {
       engine.gravity.y = 1;
-      engine.gravity.scale = 0.001;
+      engine.gravity.scale = 0.001; // pools and flows at the bottom
     } else {
-      engine.gravity.y = 0;
-      engine.gravity.scale = 0;
+      engine.gravity.scale = 0; // gas disperses, no settling
     }
 
-    // Apply velocity and visual changes to each particle
     particles.forEach(p => {
-      const speed = isGas ? 8 + temperature * 0.05 : isLiquid ? 2 + (temperature - 30) * 0.08 : 0.3;
-      
-      Body.setVelocity(p, {
-        x: (Math.random() - 0.5) * speed,
-        y: (Math.random() - 0.5) * speed,
-      });
-
-      // Color shift: blue (solid) → deep blue (liquid) → purple (gas)
-      if (isSolid) {
+      if (ph === 'solid') {
         p.render.fillStyle = '#93c5fd';
         p.render.strokeStyle = '#1d4ed8';
-      } else if (isLiquid) {
+        p.frictionAir = 0.12; // damp vibration so the lattice is crisp
+        p.restitution = 0.2;
+      } else if (ph === 'liquid') {
         p.render.fillStyle = '#3b82f6';
         p.render.strokeStyle = '#1e3a8a';
+        p.frictionAir = 0.02;
+        p.restitution = 0.5;
       } else {
         p.render.fillStyle = '#c084fc';
         p.render.strokeStyle = '#7e22ce';
+        p.frictionAir = 0.001;
+        p.restitution = 1.0;
       }
-
-      p.frictionAir = isGas ? 0.0005 : isLiquid ? 0.005 : 0.08;
-      p.restitution = isGas ? 1.0 : isLiquid ? 0.7 : 0.2;
     });
-  }, [temperature]);
+  }, [temperature, intro.started]);
+
+  const reset = () => setTemperature(DEFAULT_TEMP);
 
   return (
     <VisualizerLayout
@@ -155,38 +210,57 @@ const StatesOfMatterVisualizer = () => {
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body items-center p-4 md:p-8">
-          
-          <div className="w-full max-w-3xl bg-slate-900 rounded-xl overflow-hidden shadow-inner border-[4px] border-slate-700 relative">
+          {!intro.started ? (
+            <IntroState
+              lead="Drag a temperature slider to watch water particles freeze, flow, and spread out as a solid, liquid, and gas."
+              actionLabel="Start the simulation"
+              onStart={intro.start}
+            />
+          ) : (
+            <>
+
+          <div className="w-full max-w-3xl bg-neutral rounded-xl overflow-hidden shadow-inner border-[4px] border-base-300 relative">
             <div ref={containerRef} className="w-full" />
             <div className="absolute top-4 left-4 text-white/50 text-xs tracking-widest font-mono pointer-events-none">
-              MATTER.JS KINETIC SIMULATION
+              WATER (TUBIG) · {PARTICLE_COUNT} PARTICLES
             </div>
             <div className="absolute top-4 right-4 pointer-events-none">
-              <span className={`badge badge-sm ${temperature <= 30 ? 'badge-info' : temperature <= 70 ? 'badge-primary' : 'badge-secondary'}`}>
-                {PARTICLE_COUNT} particles
+              <span className={`badge badge-sm ${phase === 'solid' ? 'badge-info' : phase === 'liquid' ? 'badge-primary' : 'badge-secondary'}`}>
+                {state}
               </span>
             </div>
           </div>
-          
+
           <div className="w-full max-w-3xl mt-8 bg-base-200 p-6 rounded-xl border border-base-300">
-            <div className="flex flex-col sm:flex-row justify-between mb-6 font-semibold text-base-content gap-4">
-              <span className="text-xl">Init (Temperature): <span className="text-primary font-mono ml-2">{temperature}°C</span></span>
+            <div className="flex flex-col sm:flex-row justify-between mb-2 font-semibold text-base-content gap-4">
+              <label htmlFor="temperature" className="text-xl">Temperatura (Temperature): <span className="text-primary font-mono ml-2">{temperature}°C</span></label>
               <span className="text-xl">Anyo (State): <span className="text-secondary font-bold ml-2">{state}</span></span>
             </div>
-            
-            <input 
-              type="range" min="0" max="100" 
-              value={temperature} 
-              onChange={(e) => setTemperature(Number(e.target.value))} 
-              className="range range-primary w-full" 
+            <p className="text-sm text-base-content/70 mb-6">{ARRANGEMENT[phase]}</p>
+
+            <input
+              id="temperature"
+              type="range" min="-20" max="120"
+              value={temperature}
+              onChange={(e) => setTemperature(Number(e.target.value))}
+              className="range range-primary w-full"
+              aria-valuetext={`${temperature} degrees Celsius, ${state}`}
             />
-            
+
             <div className="flex justify-between text-xs sm:text-sm px-2 mt-4 text-base-content/60 font-medium">
-              <span>0°C (Nagyeyelo / Freezing)</span>
-              <span>100°C (Kumukulo / Boiling)</span>
+              <span>-20°C</span>
+              <span>0°C (Freezing)</span>
+              <span>100°C (Boiling)</span>
+              <span>120°C</span>
+            </div>
+
+            <div className="flex justify-end mt-4">
+              <button className="btn btn-outline btn-sm" onClick={reset}>Reset</button>
             </div>
           </div>
-          
+
+            </>
+          )}
         </div>
       </div>
     </VisualizerLayout>

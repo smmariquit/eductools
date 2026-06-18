@@ -1,40 +1,58 @@
-# SurfaceArea Deep Dive
+import { Sources, Changelog } from '../../components/content'
 
+# How much skin does a box have?
 
+I built the surface area tool because of one moment that kept repeating in class. A kid could chant "six times side squared" for a cube, but if you asked what the answer meant or where it came from, you got a blank look. They were memorizing the formula the way you memorize a phone number. So I wanted a tool that takes the box apart in front of you, because once you see a solid laid out flat, the formula stops being a magic spell and turns into something you could have figured out yourself.
 
-Surface Area: Math Grade 6 (MATATAG)
+Surface area sits in Grade 6 math under the MATATAG curriculum, and it answers a question with a thousand everyday versions. How much wrapping paper covers a gift box? How much tin (the *lata*) goes into a can of sardinas? How many liters of paint coat a water tank? Surface area is the total area of every outer face of a solid, the amount of "skin" the shape has.
 
-Surface area
- is the total area of all the outer surfaces (faces) of a 3D shape. Imagine cutting the shape apart and laying all the pieces flat — the total area of those flat pieces is the surface area.
+## A solid is just a flat shape, folded up
 
-Paano Kalkulahin
+Here is the move that makes all of it easier. Take a cardboard box, cut along its edges, and flatten it on the floor. What you get is called a *net*: all the faces of the box lying flat in one plane. Surface area is nothing more than the area of that flat net added together. That is the whole idea, and it is exactly what the Fold slider in the tool does. Slide it one way and the flat net folds up into the solid. Slide it back and the solid opens out into flat shapes you already know how to measure.
 
-Cube:
- SA = 6
-s
-² (6 identical square faces)
+Once the box is flat, the scary 3D problem turns into a few ordinary rectangles and circles. A cube has six identical square faces. Each face is a square with side $s$, so its area is $s^2$, and six of them give
 
-Rectangular Prism:
- SA = 2(
-lw
- + 
-lh
- + 
-wh
-)
+$$SA = 6s^2.$$
 
-Cylinder:
- SA = 2
-πr
-² + 2
-πrh
+A rectangular prism, which is just an ordinary box, has three pairs of matching rectangles: top and bottom, front and back, left and right. Their areas are $lw$, $lh$, and $wh$. Take one of each and double the lot:
 
-Use the net view to see how each face contributes to the total surface area!
+$$SA = 2(lw + lh + wh).$$
 
-## Dissection of Variables
+A cylinder, like a tin can, is the interesting one, because its net is not all rectangles. Unroll the curved side and it flattens into one long rectangle. Its height is the can's height $h$, and its width is the distance all the way around the circle, which is $2\pi r$. So the curved part has area $2\pi r h$. Add the two round lids, each $\pi r^2$, and you get
 
-- **Variable 1**: Explanation of how it works in the physical world.
-- **Variable 2**: Deep dive into the math and units.
+$$SA = 2\pi r^2 + 2\pi r h.$$
 
----
-*Note: This is a deep dive section that breaks down the variables and the underlying physics/math of the simulation.*
+The tool also folds a triangular prism, and the same rule still holds: flatten it, find the area of each face, add them up. So if you ever forget a formula, do not panic. Rebuild the net and the faces tell you what to add. In the tool you can tap any term in the formula and the matching faces light up, which makes it easy to see exactly which piece of the shape each part of the formula is counting.
+
+## Why the units are squared
+
+Here is the part students trip on most. Surface area is always measured in *square* units, like $\text{cm}^2$ or $\text{m}^2$. Never plain centimeters, and never cubic centimeters. That is not a rule to memorize, it is what area actually is. Area counts how many little unit squares it takes to cover a shape, so the units always carry two lengths multiplied together.
+
+This matters well beyond the exam. Surface area, the squared quantity, tells you how much material wraps or coats a solid. Volume, the cubed quantity measured in $\text{cm}^3$, tells you how much fits *inside*. Mix the two up and you buy paint to fill a tank or sand to paint a wall. A *tindera* pricing custom gift wrapping needs surface area. The same shop pricing how much *palaman* fills a container needs volume. Same box, two different questions, two different units.
+
+## Painting a real water drum
+
+Let me show one you can check by hand. Say a closed cylindrical water drum has radius $r = 0.5\ \text{m}$ and height $h = 1.2\ \text{m}$, and you want to repaint the whole outside. Work the net in two pieces.
+
+The two round ends give $2\pi r^2 = 2\pi (0.5)^2 \approx 1.571\ \text{m}^2$. The curved side gives $2\pi r h = 2\pi (0.5)(1.2) \approx 3.770\ \text{m}^2$. Add them:
+
+$$SA = 0.5\pi + 1.2\pi = 1.7\pi \approx 5.34\ \text{m}^2.$$
+
+If one liter of paint covers about $10\ \text{m}^2$, a single liter does the job with paint to spare. Notice that the curved side carried more than twice the area of the two ends put together. For a tall, thin drum, the side is where most of the material goes, and that is the kind of thing the net shows you at a glance while a bare formula hides it. Build the net, measure each piece, add. That recipe works for any solid you will meet at this level.
+
+<Sources
+  items={[
+    { label: 'OpenStax, Prealgebra 2e: Solve Geometry Applications: Volume and Surface Area.', href: 'https://openstax.org/books/prealgebra-2e/pages/9-6-solve-geometry-applications-volume-and-surface-area' },
+    { label: 'Weisstein, E. W. Surface Area (Wolfram MathWorld).', href: 'https://mathworld.wolfram.com/SurfaceArea.html' },
+    { label: 'Weisstein, E. W. Cylinder (Wolfram MathWorld).', href: 'https://mathworld.wolfram.com/Cylinder.html' },
+    { label: 'Khan Academy: Volume and surface area.', href: 'https://www.khanacademy.org/math/basic-geo/basic-geometry-volume-surface-area' },
+  ]}
+/>
+
+<Changelog
+  created="2026-06-11"
+  updated="2026-06-18"
+  entries={[
+    { date: "2026-06-18", note: "Re-toned into the house voice (origin-story open, net-folding framing, units misconception, water-drum worked example); matched the tool's shape selector, Fold slider, and term highlighting; kept all formulas and verified sources." },
+  ]}
+/>

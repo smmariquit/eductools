@@ -1,0 +1,88 @@
+/** ISO dates (YYYY-MM-DD) for visualizers and their deep-dive writeups. */
+export interface ContentDates {
+  created: string;
+  updated: string;
+}
+
+export const contentDates: Record<string, ContentDates> = {
+  'cell-division': { created: '2026-06-10', updated: '2026-06-18' },
+  'chemical-bonding': { created: '2026-06-10', updated: '2026-06-18' },
+  'computer-science': { created: '2026-06-11', updated: '2026-06-18' },
+  'density': { created: '2026-06-10', updated: '2026-06-18' },
+  'electric-circuits': { created: '2026-06-10', updated: '2026-06-18' },
+  'em-spectrum': { created: '2026-06-10', updated: '2026-06-18' },
+  'food-web': { created: '2026-06-10', updated: '2026-06-18' },
+  'forces-and-motion': { created: '2026-06-11', updated: '2026-06-18' },
+  'fractions': { created: '2026-06-10', updated: '2026-06-18' },
+  'gas-laws': { created: '2026-06-10', updated: '2026-06-18' },
+  'gcf-lcm': { created: '2026-06-10', updated: '2026-06-18' },
+  'human-body': { created: '2026-06-10', updated: '2026-06-18' },
+  'integer-number-line': { created: '2026-06-10', updated: '2026-06-18' },
+  'life-cycles': { created: '2026-06-10', updated: '2026-06-18' },
+  'microscope': { created: '2026-06-10', updated: '2026-06-18' },
+  'optics': { created: '2026-06-10', updated: '2026-06-18' },
+  'permutations-combinations': { created: '2026-06-10', updated: '2026-06-18' },
+  'photosynthesis': { created: '2026-06-10', updated: '2026-06-18' },
+  'plate-tectonics': { created: '2026-06-10', updated: '2026-06-18' },
+  'projectile-motion': { created: '2026-06-10', updated: '2026-06-18' },
+  'punnett-square': { created: '2026-06-10', updated: '2026-06-18' },
+  'pythagorean': { created: '2026-06-10', updated: '2026-06-18' },
+  'reaction-rate': { created: '2026-06-10', updated: '2026-06-18' },
+  'rock-cycle': { created: '2026-06-10', updated: '2026-06-18' },
+  'seasons': { created: '2026-06-10', updated: '2026-06-18' },
+  'sequences': { created: '2026-06-10', updated: '2026-06-18' },
+  'sets-venn': { created: '2026-06-10', updated: '2026-06-18' },
+  'solar-system': { created: '2026-06-10', updated: '2026-06-18' },
+  'solution-concentration': { created: '2026-06-10', updated: '2026-06-18' },
+  'states-of-matter': { created: '2026-06-10', updated: '2026-06-18' },
+  'stoichiometry': { created: '2026-06-10', updated: '2026-06-18' },
+  'surface-area': { created: '2026-06-10', updated: '2026-06-18' },
+  'trigonometry': { created: '2026-06-10', updated: '2026-06-18' },
+  'typhoon-tracker': { created: '2026-06-10', updated: '2026-06-18' },
+  'water-cycle': { created: '2026-06-10', updated: '2026-06-18' },
+  'wave-physics': { created: '2026-06-10', updated: '2026-06-18' },
+  'writeup:cell-division': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:chemical-bonding': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:computer-science': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:density': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:electric-circuits': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:electromagnetic-spectrum': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:food-web': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:forces-and-motion': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:fractions': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:gas-laws': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:gcf-lcm': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:human-body': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:integer-number-line': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:life-cycles': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:microscope': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:optics': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:permutations-combinations': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:photosynthesis': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:plate-tectonics': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:projectile-motion': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:punnett-square': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:pythagorean': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:reaction-rate': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:rock-cycle': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:seasons': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:sequences': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:sets-venn': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:solar-system': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:solution-concentration': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:states-of-matter': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:stoichiometry': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:surface-area': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:trigonometry': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:typhoon-tracker': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:water-cycle': { created: '2026-06-11', updated: '2026-06-18' },
+  'writeup:wave-physics': { created: '2026-06-11', updated: '2026-06-18' },
+};
+
+export function getVisualizerDates(id: string): ContentDates | undefined {
+  return contentDates[id];
+}
+
+export function getWriteupDates(slug: string): ContentDates | undefined {
+  return contentDates[`writeup:${slug}`];
+}

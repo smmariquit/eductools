@@ -1,3 +1,67 @@
-# Gamifying Fractions: Slicing the Buko Pie
+import { Sources, Changelog } from '../../components/content'
 
-Fractions are notoriously difficult for early learners. By slicing a familiar item like a Buko Pie, we make numerators and denominators intuitive and fun.
+# Slicing the buko pie until fractions click
+
+I built the fractions tool because I got tired of watching kids memorize rules with nothing behind them. "Flip the second one." "Make the bottoms the same." They could chant the steps and still not tell me what $\tfrac{3}{8}$ actually was. So I went back to the thing that always works in a real classroom: cut up a buko pie. The meaning shows up in the pie long before it shows up in the symbols, and that is the whole idea behind the visualizer above. It slices two pies for you so you can see the amount, not just the numbers.
+
+Here is the part most kids get backwards. They read $\tfrac{3}{8}$ as two separate numbers, a 3 and an 8, stacked up. It is not two numbers. It is one amount of pie. The 3 and the 8 are just directions for finding it.
+
+## What the top and bottom each do
+
+Slice one buko pie into 8 equal pieces and take 3 of them. Now you are holding $\tfrac{3}{8}$ of the pie. The bottom number, the **denominator**, tells you how many equal slices the whole pie was cut into. The top number, the **numerator**, tells you how many of those slices you took.
+
+The word "equal" is the part everyone skips, and it is the part that decides everything. If the slices come out different sizes, $\tfrac{3}{8}$ stops meaning anything, because "3 out of 8" only describes an amount when the 8 pieces are the same. When the top and the bottom match, like $\tfrac{8}{8}$, you have the whole pie back, which is just another way of writing 1. Push Fraction A up to $\tfrac{8}{8}$ in the tool and watch the pie fill all the way.
+
+## The same slice with a different name
+
+This is the move that opens up everything else. Take the pie that is cut into 8 slices and run the knife through each slice one more time. Now there are 16 thin slices, and the 3 you were holding turned into 6. You did not eat anything. You did not get more pie. So $\tfrac{3}{8}$ and $\tfrac{6}{16}$ are the same amount wearing different numbers. We call them **equivalent fractions**.
+
+On paper, that extra knife cut is just multiplying the top and bottom by the same number:
+
+$$\frac{3}{8} = \frac{3 \times 2}{8 \times 2} = \frac{6}{16}.$$
+
+Run it the other way, dividing the top and bottom by a number they both share, and you **simplify** the fraction, which means writing it with the smallest numbers possible: $\tfrac{6}{16} = \tfrac{6\,\div\,2}{16\,\div\,2} = \tfrac{3}{8}$. A fraction is in simplest form when the top and bottom share no whole number bigger than 1. That is why a teacher asks for $\tfrac{1}{2}$ instead of $\tfrac{50}{100}$. They are the same number. One half is just its cleanest name. The tool does this checking for you: it lists a short row of equivalent fractions and prints the simplest form right under each pie.
+
+## Which slice is actually bigger?
+
+Comparing two fractions is the main thing the visualizer is for, and it does it the way that never lies, by cross-multiplying. Eyeballing fails fast. Is $\tfrac{3}{8}$ of a pie more than $\tfrac{2}{5}$? Hard to say by staring. Multiply across: $3 \times 5 = 15$ on one side, $2 \times 8 = 16$ on the other. Since $15 < 16$, you know $\tfrac{3}{8} < \tfrac{2}{5}$, with no decimals and no rounding. The tool sets up two pies, A and B, and prints that exact cross-multiplication under them, so you can see why one slice wins instead of guessing.
+
+## When you add, the slices have to match first
+
+Here is the most common fraction mistake in the whole topic, and the pie explains it in one second. You cannot just add $\tfrac{1}{2}$ and $\tfrac{1}{3}$ the easy way, for the same reason you cannot add 2 slices to 3 slices when the slices are different sizes. Set Fraction A to $\tfrac{1}{2}$ and Fraction B to $\tfrac{1}{3}$ in the tool, and you can see straight away that the pieces are not the same size, so counting them together would be meaningless.
+
+You fix it by renaming both into a shared slice size. Sixths work for both: $\tfrac{1}{2}$ becomes $\tfrac{3}{6}$ and $\tfrac{1}{3}$ becomes $\tfrac{2}{6}$. Now the slices match, so you add the tops and keep the bottom: $\tfrac{3}{6} + \tfrac{2}{6} = \tfrac{5}{6}$. This is exactly why "just add the bottoms too" gives nonsense. That wrong method turns $\tfrac{1}{2} + \tfrac{1}{3}$ into $\tfrac{2}{5}$, which is less than half a pie, even though half a pie plus a third of one is clearly more than half.
+
+Multiplying is the friendly one, oddly enough, because it needs no matching at all: multiply the tops, multiply the bottoms. So $\tfrac{2}{3} \times \tfrac{3}{4} = \tfrac{6}{12}$, which simplifies to $\tfrac{1}{2}$. Read it as "half of three-quarters" and that answer feels right, which is a handy gut check.
+
+## Why it is worth slowing down here
+
+Under the MATATAG curriculum, Filipino learners build fractions across roughly Grades 3 to 5, starting with naming simple parts and working up to adding and subtracting them. Whether that exact order is the best one is a fair question for the people who study it. What I can tell you from the tool side is narrower and pretty consistent: the kids who hit a wall later in ratio, percent, and early algebra are almost always the ones who never pictured a fraction as an amount. They saw a pair of numbers and a stack of rules to memorize, and the rules eventually ran out. Get the picture first, and the rest has something solid to stand on.
+
+## A few questions I actually get
+
+**If $\tfrac{1}{2}$ and $\tfrac{50}{100}$ are equal, why do teachers insist on simplest form?**
+Because the smallest names are the easiest to work with and to compare. Both are correct answers. One half is just less to carry around, and it makes the next step (adding, comparing, dividing) cleaner.
+
+**Why can't I add the tops and the bottoms?**
+Because the bottom is a slice size, not a count. Adding the bottoms is like saying two small slices plus three big slices makes five medium slices, which is not a real thing. Rename both fractions to the same slice size first, then add only the tops.
+
+**Is $\tfrac{3}{8}$ bigger or smaller than $\tfrac{1}{2}$?**
+Smaller. Half of 8 is 4, and you only have 3 slices, so you are one slice short of half. Cross-multiply to be sure: $3 \times 2 = 6$ and $1 \times 8 = 8$, and $6 < 8$.
+
+<Sources
+  items={[
+    { label: 'OpenStax. Prealgebra 2e, "Visualize Fractions."', href: 'https://openstax.org/books/prealgebra-2e/pages/4-1-visualize-fractions' },
+    { label: 'Khan Academy. "Equivalent fractions review."', href: 'https://www.khanacademy.org/math/arithmetic/fraction-arithmetic/arith-review-equivalent-fractions/a/equivalent-fractions-review' },
+    { label: 'Weisstein, Eric W. "Fraction." Wolfram MathWorld.', href: 'https://mathworld.wolfram.com/Fraction.html' },
+    { label: 'Encyclopaedia Britannica. "Fraction."', href: 'https://www.britannica.com/science/fraction-mathematics' },
+  ]}
+/>
+
+<Changelog
+  created="2026-06-11"
+  updated="2026-06-18"
+  entries={[
+    { date: "2026-06-18", note: "Brought to spec: first-person origin open and misconception framing, converted fractions to KaTeX, aligned tool description to the current compare/equivalents/simplify behavior, added an FAQ, verified sources, and added the Changelog block." },
+  ]}
+/>

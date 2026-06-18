@@ -1,3 +1,59 @@
-# The Digital Microscope: Bringing Micro-Biology to Remote Classrooms
+import { Figure, Sources, Changelog } from '../../components/content'
 
-Microscopes are prohibitively expensive for many rural schools. Our digital microscope tool bridges this gap, allowing students to observe cellular structures digitally.
+# The microscope: magnification, resolution, and the cell theory it made possible
+
+A decent compound microscope costs more than a rural school's entire science budget for the year, which is why so many Filipino students reach high school having read the word "cell" a hundred times without ever seeing one. A digital version on a shared phone will not replace the real instrument, but it can at least put the image in front of a learner and, just as importantly, teach how the instrument actually works, because a microscope is not simply a thing that "makes stuff bigger."
+
+## Magnification is not the same as resolution
+
+This is the distinction students most often miss, and it is the one that matters. Magnification is how much larger an object appears. Resolution, or resolving power, is the ability to tell two close-together points apart rather than seeing them blur into one. You can magnify a blurry image all you want; past a certain point you just get a bigger blur. A microscope is only useful up to the limit of its resolution, and that limit, not the lens strength, is what decides whether you can see a thing clearly.
+
+A light microscope reaches its magnification with two sets of lenses in series. The total magnification is the product of the two: the eyepiece, or ocular lens, typically magnifies ten times, and whichever objective lens is swung into place multiplies that further. So a 10× eyepiece over a 40× objective gives 400× overall. Because two lenses bend the light, the image you see is flipped: slide the specimen left and it appears to move right. The light source and condenser beneath the stage push light up through the (usually transparent) specimen, and the coarse and fine focus knobs raise and lower the stage to bring it sharp.
+
+That stepping-up of power is what the tool lets you feel. You start at scanner magnification on a mango leaf cell, then jump to high power and finally to oil immersion, the same three positions you would rotate through on a real classroom scope. Click any structure to name it and read what it does, and the line-up itself is a lesson: the rigid cell wall, the chloroplasts, and the big central vacuole are the tells that this is a plant cell and not an animal one. Seeing the chloroplasts is also the quiet payoff, since those are where the photosynthesis from a companion module actually happens.
+
+<Figure
+  src="/images/deep-dives/plant-cell-chloroplasts.jpg"
+  alt="Light micrograph of moss leaf cells, each bounded by a wall and packed with dozens of small green chloroplasts."
+  caption="Real plant cells under a light microscope — leaf cells of the moss Plagiomnium affine. The green discs crowding each cell are chloroplasts, and the sharp boundaries between cells are their walls: the same two 'tells' the visualizer points out on the mango leaf cell."
+  credit="Photograph: Kristian Peters, CC BY-SA 3.0, via Wikimedia Commons."
+/>
+
+## Light versus electron microscopes
+
+The everyday classroom microscope is a light microscope, and the ones undergraduates use magnify up to roughly 400 times, with about 1,000 times reachable using oil-immersion lenses. Their resolution tops out at around 200 nanometres, set by the wavelength of visible light itself. That is good enough to see cells and the larger structures inside them, and it has one real advantage: because it uses ordinary light, you can watch living organisms move. The trade-off is that transparent cells often have to be stained to be visible, and staining usually kills them.
+
+To go finer, you have to abandon light. An electron microscope fires a beam of electrons, whose wavelength is far shorter than that of light, through or across the specimen. OpenStax's Biology 2e gives the numbers: electron microscopes reach magnifications on the order of 100,000 times and resolutions near 50 picometres, hundreds of thousands of times finer than a light microscope. That is what lets us see the internal machinery of a cell. The cost is steep, literally and biologically: the instruments are bulky and expensive, the beam must travel in a vacuum, and the preparation kills the specimen, so a living cell can never be viewed this way.
+
+## How the instrument built the cell theory
+
+Every claim in cell biology rests on what the microscope let people see, and the history makes that dependence obvious. In 1665, in his book *Micrographia*, Robert Hooke looked at a sliver of cork through an early lens and named the little boxes he saw "cells." In the 1670s the Dutch lens-maker Antony van Leeuwenhoek, grinding lenses good enough to see what no one had, described single-celled "animalcules" and discovered bacteria and protozoa.
+
+<Figure
+  src="/images/deep-dives/hooke-cork-micrographia-1665.png"
+  alt="Robert Hooke's 1665 engraving of cork tissue, showing rows of small empty box-like compartments."
+  caption="Hooke's own engraving of cork from Micrographia (1665). The honeycomb of empty chambers reminded him of the small rooms — cells — where monks slept, and the name stuck. This is the first time anyone drew what we now call a cell."
+  credit="Robert Hooke, Micrographia (1665). Public domain, via Wikimedia Commons."
+  maxWidth="26rem"
+/>
+
+It took better lenses and another century and a half to turn those observations into a theory. By the late 1830s the botanist Matthias Schleiden and the zoologist Theodor Schwann had compared enough plant and animal tissue to propose a unified cell theory: that all living things are made of one or more cells, that the cell is the basic unit of life, and, with Rudolf Virchow's later addition, that new cells arise only from existing cells. That is the foundation the whole subject is built on, and not one part of it could have been stated before there was an instrument that could resolve a cell in the first place.
+
+<Sources
+  items={[
+    { label: 'OpenStax, Biology 2e: 4.1 Studying Cells.', href: 'https://openstax.org/books/biology-2e/pages/4-1-studying-cells' },
+    { label: 'OpenStax, Biology 2e: 4.3 Eukaryotic Cells.', href: 'https://openstax.org/books/biology-2e/pages/4-3-eukaryotic-cells' },
+    { label: 'NHGRI Talking Glossary of Genomic and Genetic Terms: Cell.', href: 'https://www.genome.gov/genetics-glossary/Cell' },
+    { label: 'Robert Hooke, Micrographia (1665), cork engraving — public domain, via Wikimedia Commons.', href: 'https://commons.wikimedia.org/wiki/File:Cork_Micrographia_Hooke.png' },
+    { label: 'Plagiomnium affine leaf cells (chloroplasts), Kristian Peters — CC BY-SA 3.0, via Wikimedia Commons.', href: 'https://commons.wikimedia.org/wiki/File:Plagiomnium_affine_laminazellen.jpeg' },
+  ]}
+/>
+
+<Changelog
+  created="2026-06-11"
+  updated="2026-06-18"
+  entries={[
+    { date: "2026-06-18", note: "Added two cited figures: a CC BY-SA light micrograph of moss leaf cells showing chloroplasts, and Robert Hooke's public-domain 1665 cork engraving, each with caption and attribution." },
+    { date: "2026-06-18", note: "Added an accurate description of the tool (three magnification levels on a mango leaf cell, clickable organelles); verified sources live; added the Changelog block." },
+  ]}
+/>

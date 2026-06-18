@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { IntroState, useIntroState } from '../../components/onboarding';
 const ByteEditor = ({ label, color, bits, onChange }: { label: string, color: string, bits: number[], onChange: (bits: number[]) => void }) => {
   const toggleBit = (index: number) => {
     const newBits = [...bits];
@@ -57,6 +58,7 @@ const ByteEditor = ({ label, color, bits, onChange }: { label: string, color: st
 };
 
 const ComputerScienceVisualizer = () => {
+  const intro = useIntroState();
   const [redBits, setRedBits] = useState([0,0,1,0,1,1,0,1]); // 45
   const [greenBits, setGreenBits] = useState([1,0,1,1,0,1,0,0]); // 180
   const [blueBits, setBlueBits] = useState([1,1,1,0,0,0,1,1]); // 227
@@ -81,6 +83,15 @@ const ComputerScienceVisualizer = () => {
       description="Interact with bits to see how raw binary voltage creates physical RGB pixels on a screen."
       guideLink="/blog/computer-science"
     >
+      {!intro.started ? (
+        <div className="w-full max-w-6xl mx-auto">
+          <IntroState
+            lead="Flip the bits in three bytes and watch how binary values build the red, green, and blue of a single pixel."
+            actionLabel="Start toggling bits"
+            onStart={intro.start}
+          />
+        </div>
+      ) : (
       <div className="flex flex-col lg:flex-row gap-8 w-full max-w-6xl mx-auto">
         
         {/* LEFT: Bit Editor */}
@@ -146,6 +157,7 @@ const ComputerScienceVisualizer = () => {
         </div>
 
       </div>
+      )}
     </VisualizerLayout>
   );
 };

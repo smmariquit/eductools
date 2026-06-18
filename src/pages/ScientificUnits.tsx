@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { scientificUnits as units } from '../data/scientificUnits';
 import { Search, X, ChevronLeft, AlertTriangle, Info, ArrowLeft, BookOpen, ExternalLink } from 'lucide-react';
+import { CrayonArt } from '../components/crayon';
 import katex from 'katex';
 import 'katex/dist/katex.min.css';
+import { SIFoundations } from '../components/scientific-units/SIFoundations';
 
 const BlockMath = ({ math }: { math: string }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -147,10 +149,11 @@ const ScientificUnits = () => {
   }, [filteredUnits, selectedUnit]);
 
   return (
+    <>
     <div className="container mx-auto px-4 py-6 max-w-6xl h-auto md:h-[calc(100vh-120px)] flex flex-col">
       <Helmet>
-        <title>Scientific Units Reference | Eductools</title>
-        <meta name="description" content="A comprehensive reference guide to standard scientific units, abbreviations, and their real-world meanings for STEM students." />
+        <title>Scientific Units Reference | EduVisualsPH</title>
+        <meta name="description" content="SI and common scientific units with plain definitions, standard symbols, and the misconceptions students actually hit." />
       </Helmet>
       
       <div className="flex justify-between items-center mb-4 shrink-0">
@@ -163,7 +166,7 @@ const ScientificUnits = () => {
       <div className="mb-6 shrink-0">
         <h1 className="text-3xl md:text-4xl font-extrabold text-primary mb-2 tracking-tight">Scientific Units Explorer</h1>
         <p className="text-sm md:text-base text-base-content/70">
-          In science, a number without a unit is completely meaningless. Browse the standard SI and derived units used across Eductools.
+          In science, a number without a unit is completely meaningless. Browse the standard SI and derived units used across EduVisualsPH.
         </p>
       </div>
 
@@ -240,7 +243,7 @@ const ScientificUnits = () => {
               })
             ) : (
               <div className="text-center py-12 px-4">
-                <span className="text-3xl mb-2 block">🔍</span>
+                <Search className="w-7 h-7 mx-auto mb-2 text-base-content/40" aria-hidden="true" />
                 <h3 className="text-base font-bold text-base-content/80">No units found</h3>
                 <p className="text-xs text-base-content/50 mt-1">Try adjusting your search terms or filters</p>
               </div>
@@ -327,14 +330,17 @@ const ScientificUnits = () => {
                     <div className="pt-4 border-t border-base-200 space-y-2">
                       <h4 className="text-[10px] font-bold uppercase tracking-wider text-base-content/40">Sources &amp; References</h4>
                       <div className="flex flex-wrap gap-2">
-                        {currentUnit.sources.map((source, idx) => (
-                          <div 
-                            key={idx} 
-                            className="inline-flex items-center gap-1 bg-base-200 border border-base-300 rounded-lg px-2.5 py-1 text-xs text-base-content/70 font-medium hover:bg-base-300 transition-colors"
+                        {currentUnit.sources.map((source) => (
+                          <a
+                            key={source.href}
+                            href={source.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 bg-base-200 border border-base-300 rounded-lg px-2.5 py-1 text-xs text-base-content/70 font-medium hover:bg-base-300 hover:text-primary transition-colors"
                           >
                             <ExternalLink className="h-3 w-3 text-base-content/40" />
-                            <span>{source}</span>
-                          </div>
+                            <span>{source.label}</span>
+                          </a>
                         ))}
                       </div>
                     </div>
@@ -343,14 +349,16 @@ const ScientificUnits = () => {
               </div>
 
               <div className="mt-8 pt-6 border-t border-base-200 text-xs text-base-content/40 flex flex-col sm:flex-row justify-between gap-2">
-                <span>Standard scientific reference • Eductools</span>
+                <span>Standard scientific reference • EduVisualsPH</span>
                 <span>Values are defined in SI standard parameters</span>
               </div>
             </div>
           ) : (
             <div className="flex-1 flex flex-col items-center justify-center p-8 text-center bg-base-100">
               <div className="max-w-md space-y-4">
-                <span className="text-5xl block opacity-60">📏</span>
+                <div className="flex justify-center opacity-60">
+                  <CrayonArt name="ruler" size={64} color="sunshine" />
+                </div>
                 <h3 className="text-xl font-bold text-base-content/80">No Unit Selected</h3>
                 <p className="text-sm text-base-content/50">
                   Select a scientific unit from the list on the left to explore its definition, standard notation, and common student misconceptions.
@@ -362,6 +370,11 @@ const ScientificUnits = () => {
 
       </div>
     </div>
+
+    <div className="container mx-auto px-4 pb-16 max-w-6xl">
+      <SIFoundations />
+    </div>
+    </>
   );
 };
 

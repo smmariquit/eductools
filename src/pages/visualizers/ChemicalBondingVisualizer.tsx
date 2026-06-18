@@ -1,132 +1,248 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
-import { motion } from 'framer-motion';
+import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { IntroState, useIntroState } from '../../components/onboarding';
+
+type Mode = 'ionic' | 'covalent';
+
+// Valence electrons placed one-per-side first, then paired — the standard
+// Lewis-dot convention. Returns up to `count` dot coordinates.
+const lewisDots = (cx: number, cy: number, count: number, r = 30, o = 7) => {
+  const slots = [
+    { x: cx - o, y: cy - r }, // top a
+    { x: cx + r, y: cy - o }, // right a
+    { x: cx - o, y: cy + r }, // bottom a
+    { x: cx - r, y: cy - o }, // left a
+    { x: cx + o, y: cy - r }, // top b
+    { x: cx + r, y: cy + o }, // right b
+    { x: cx + o, y: cy + r }, // bottom b
+    { x: cx - r, y: cy + o }, // left b
+  ];
+  return slots.slice(0, Math.max(0, Math.min(8, count)));
+};
+
+const STEPS: Record<Mode, { title: string; body: string; octet: [boolean, boolean] }[]> = {
+  ionic: [
+    { title: 'Valence electrons', body: 'Sodium has 1 valence electron, chlorine has 7. Neither atom has a full outer shell (octet) yet.', octet: [false, false] },
+    { title: 'Electron transfer', body: 'Sodium gives up its single valence electron. In ionic bonding, electrons move from the metal to the non-metal.', octet: [false, false] },
+    { title: 'Ions form', body: 'Sodium becomes Na⁺ (its outer shell is now empty; the shell beneath is already a full octet). Chlorine becomes Cl⁻ with 8 valence electrons.', octet: [true, true] },
+    { title: 'Ionic lattice', body: 'Opposite charges attract and stack into a repeating 3D lattice. That ordered grid is what a grain of table salt (NaCl) is.', octet: [true, true] },
+  ],
+  covalent: [
+    { title: 'Valence electrons', body: 'Two chlorine atoms each have 7 valence electrons, including one unpaired electron each.', octet: [false, false] },
+    { title: 'Atoms approach', body: 'Neither atom will give up an electron, so they move close enough for their unpaired electrons to overlap.', octet: [false, false] },
+    { title: 'Sharing a pair', body: 'The atoms share one pair of electrons. Each chlorine now counts 8 electrons in its outer shell, a full octet.', octet: [true, true] },
+    { title: 'Cl₂ molecule', body: 'The shared pair is a single covalent bond. It holds the two atoms together as one chlorine molecule, Cl₂.', octet: [true, true] },
+  ],
+};
 
 const ChemicalBondingVisualizer = () => {
-  const [bonded, setBonded] = useState(false);
-  const [show3D, setShow3D] = useState(false);
-  const viewerRef = useRef<HTMLDivElement>(null);
-  const viewerInstanceRef = useRef<unknown>(null);
+  const intro = useIntroState();
+  const [mode, setMode] = useState<Mode>('ionic');
+  const [step, setStep] = useState(0);
 
-  const init3DViewer = useCallback(async () => {
-    if (!viewerRef.current || viewerInstanceRef.current) return;
-    
-    // Dynamically import 3Dmol to avoid SSR issues
-    const $3Dmol = await import('3dmol');
-    
-    const viewer = $3Dmol.createViewer(viewerRef.current, {
-      backgroundColor: '0x0f172a',
-      antialias: true,
-    });
+  const steps = STEPS[mode];
+  const current = steps[step];
 
-    // Build NaCl crystal lattice (2x2x2 unit cell)
-    const a = 2.82; // NaCl lattice constant in Angstroms (halved for visualization)
-    for (let x = 0; x < 3; x++) {
-      for (let y = 0; y < 3; y++) {
-        for (let z = 0; z < 3; z++) {
-          // Na+ at corners
-          viewer.addSphere({
-            center: { x: x * a, y: y * a, z: z * a },
-            radius: 0.8,
-            color: '0xef4444',
-          });
-          // Cl- at face centers (offset by half lattice)
-          if (x < 2 && y < 2 && z < 2) {
-            viewer.addSphere({
-              center: { x: x * a + a/2, y: y * a + a/2, z: z * a + a/2 },
-              radius: 1.0,
-              color: '0x22c55e',
-            });
-          }
-        }
-      }
-    }
+  const setModeReset = (m: Mode) => { setMode(m); setStep(0); };
+  const next = () => setStep((s) => Math.min(steps.length - 1, s + 1));
+  const prev = () => setStep((s) => Math.max(0, s - 1));
 
-    // Add labels
-    viewer.addLabel('Na⁺', { position: { x: 0, y: 0, z: 0 }, fontSize: 14, fontColor: 'white', backgroundColor: '0xef4444', backgroundOpacity: 0.8 });
-    viewer.addLabel('Cl⁻', { position: { x: a/2, y: a/2, z: a/2 }, fontSize: 14, fontColor: 'white', backgroundColor: '0x22c55e', backgroundOpacity: 0.8 });
-
-    viewer.zoomTo();
-    viewer.spin('y', 0.5);
-    viewer.render();
-    viewerInstanceRef.current = viewer;
-  }, []);
-
-  useEffect(() => {
-    if (show3D) {
-      init3DViewer();
-    }
-    return () => {
-      viewerInstanceRef.current = null;
-    };
-  }, [show3D, init3DViewer]);
+  const dotCls = 'fill-base-content';
+  const moveCls = 'fill-accent';
+  const shareCls = 'fill-secondary';
 
   return (
     <VisualizerLayout
-      title="Pagbuo ng Asin (Chemical Bonding)"
-      description="Visualize ionic bonding and electron transfer between Sodium (Na) and Chlorine (Cl) to make Table Salt."
+      title="Chemical Bonding: Reaching an Octet"
+      description="Step through how atoms reach a stable octet, either by transferring electrons to form ions (ionic bonding, NaCl) or by sharing a pair to form a molecule (covalent bonding, Cl₂)."
       adSlotId="1006"
       guideLink="/blog/chemical-bonding"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200">
-        <div className="card-body items-center py-12 overflow-x-auto">
+        <div className="card-body p-6 md:p-8 gap-6">
+          {!intro.started ? (
+            <IntroState
+              lead="Choose a bond type and step through how atoms reach a stable octet."
+              options={[
+                {
+                  label: 'Ionic bond (Na + Cl)',
+                  hint: 'Electrons transfer to form ions',
+                  onSelect: () => { setModeReset('ionic'); intro.start(); },
+                },
+                {
+                  label: 'Covalent bond (Cl + Cl)',
+                  hint: 'Atoms share a pair of electrons',
+                  onSelect: () => { setModeReset('covalent'); intro.start(); },
+                },
+              ]}
+            />
+          ) : (
+            <>
 
-          {/* Tab toggle */}
-          <div className="tabs tabs-boxed mb-8">
-            <button className={`tab ${!show3D ? 'tab-active' : ''}`} onClick={() => setShow3D(false)}>2D Electron Transfer</button>
-            <button className={`tab ${show3D ? 'tab-active' : ''}`} onClick={() => setShow3D(true)}>3D Crystal (3Dmol.js)</button>
+          {/* Mode toggle */}
+          <div className="flex flex-wrap gap-2 justify-center">
+            <button type="button" aria-pressed={mode === 'ionic'} onClick={() => setModeReset('ionic')} className={`btn btn-sm ${mode === 'ionic' ? 'btn-primary' : 'btn-outline'}`}>Ionic bond (Na + Cl)</button>
+            <button type="button" aria-pressed={mode === 'covalent'} onClick={() => setModeReset('covalent')} className={`btn btn-sm ${mode === 'covalent' ? 'btn-primary' : 'btn-outline'}`}>Covalent bond (Cl + Cl)</button>
           </div>
 
-          {!show3D ? (
-            <>
-              <div className="flex flex-col md:flex-row gap-8 items-center relative min-w-0 md:min-w-[500px]">
-                {/* Sodium Atom */}
-                <div className="relative w-[200px] h-[200px] flex items-center justify-center">
-                  <div className="z-10 w-12 h-12 bg-red-500 rounded-full flex items-center justify-center font-bold text-white shadow-lg border-2 border-red-700">
-                    Na{bonded && <sup className="ml-0.5 text-xs">+</sup>}
-                  </div>
-                  <div className="absolute w-[80px] h-[80px] border border-base-content/20 rounded-full"></div>
-                  <div className="absolute w-[130px] h-[130px] border border-base-content/20 rounded-full"></div>
-                  <div className="absolute w-[180px] h-[180px] border border-dashed border-base-content/40 rounded-full transition-opacity duration-1000" style={{ opacity: bonded ? 0.1 : 1 }}></div>
-                  {!bonded && (
-                    <motion.div layoutId="transfer-electron" transition={{ duration: 1, ease: "easeInOut" }} className="absolute w-4 h-4 bg-yellow-400 rounded-full shadow-[0_0_15px_#facc15] z-20" style={{ top: '6px', right: '86px' }}></motion.div>
+          {/* Step indicator */}
+          <div className="flex items-center justify-center gap-2">
+            {steps.map((s, i) => (
+              <div key={s.title} className={`h-2 rounded-full transition-all ${i === step ? 'w-8 bg-primary' : i < step ? 'w-2 bg-primary/50' : 'w-2 bg-base-300'}`} aria-hidden="true" />
+            ))}
+          </div>
+
+          {/* Diagram */}
+          <div className="rounded-xl border border-base-300 bg-base-200/40 p-4">
+            <svg viewBox="0 0 360 220" className="w-full max-w-[520px] mx-auto text-base-content" role="img" aria-label={`${mode} bonding, step ${step + 1} of ${steps.length}: ${current.title}. ${current.body}`}>
+
+              {mode === 'ionic' ? (
+                <>
+                  {step < 3 ? (
+                    <>
+                      {/* Sodium */}
+                      <g>
+                        <circle cx="100" cy="110" r="26" className="fill-error/15 stroke-error" strokeWidth="2" />
+                        <text x="100" y="116" textAnchor="middle" fontSize="20" fontWeight="bold" className="fill-error">
+                          Na{step >= 2 ? '⁺' : ''}
+                        </text>
+                        {/* Na valence dot only before transfer */}
+                        {step < 1 && lewisDots(100, 110, 1).map((d, i) => (
+                          <circle key={i} cx={d.x} cy={d.y} r="3.5" className={dotCls} />
+                        ))}
+                        {step === 1 && lewisDots(100, 110, 1).map((d, i) => (
+                          <circle key={i} cx={d.x} cy={d.y} r="3.5" className={moveCls} />
+                        ))}
+                      </g>
+
+                      {/* transfer arrow */}
+                      {step === 1 && (
+                        <g className="stroke-accent" strokeWidth="2.5" fill="none">
+                          <path d="M 138 90 Q 180 70 222 90" markerEnd="url(#arrow)" />
+                        </g>
+                      )}
+
+                      {/* Chlorine */}
+                      <g>
+                        <circle cx="260" cy="110" r="30" className="fill-success/15 stroke-success" strokeWidth="2" />
+                        <text x="260" y="116" textAnchor="middle" fontSize="20" fontWeight="bold" className="fill-success">
+                          Cl{step >= 2 ? '⁻' : ''}
+                        </text>
+                        {lewisDots(260, 110, 7).map((d, i) => (
+                          <circle key={i} cx={d.x} cy={d.y} r="3.5" className={dotCls} />
+                        ))}
+                        {/* gained electron (8th) appears at step 2 */}
+                        {step >= 2 && lewisDots(260, 110, 8).slice(7).map((d, i) => (
+                          <circle key={`g${i}`} cx={d.x} cy={d.y} r="3.5" className={moveCls} />
+                        ))}
+                      </g>
+                    </>
+                  ) : (
+                    // Ionic lattice (step 3)
+                    <g>
+                      {[0, 1, 2, 3].map((row) => (
+                        [0, 1, 2, 3].map((col) => {
+                          const isNa = (row + col) % 2 === 0;
+                          const x = 110 + col * 48;
+                          const y = 50 + row * 40;
+                          return (
+                            <g key={`${row}-${col}`}>
+                              <circle cx={x} cy={y} r={isNa ? 12 : 16} className={isNa ? 'fill-error' : 'fill-success'} />
+                              <text x={x} y={y + 4} textAnchor="middle" fontSize="9" fontWeight="bold" className="fill-base-100">{isNa ? 'Na⁺' : 'Cl⁻'}</text>
+                            </g>
+                          );
+                        })
+                      ))}
+                    </g>
                   )}
-                </div>
+                </>
+              ) : (
+                <>
+                  {step < 3 ? (
+                    <>
+                      {/* Two chlorine atoms; they slide together as the step advances */}
+                      {(() => {
+                        const gap = step === 0 ? 90 : 64; // closer when approaching/sharing
+                        const leftX = 180 - gap;
+                        const rightX = 180 + gap;
+                        return (
+                          <>
+                            <circle cx={leftX} cy="110" r="30" className="fill-success/15 stroke-success" strokeWidth="2" />
+                            <text x={leftX} y="116" textAnchor="middle" fontSize="20" fontWeight="bold" className="fill-success">Cl</text>
+                            <circle cx={rightX} cy="110" r="30" className="fill-success/15 stroke-success" strokeWidth="2" />
+                            <text x={rightX} y="116" textAnchor="middle" fontSize="20" fontWeight="bold" className="fill-success">Cl</text>
 
-                <div className="text-base-content/40 text-4xl hidden md:block font-bold">&rarr;</div>
-                <div className="text-base-content/40 text-4xl block md:hidden font-bold">&darr;</div>
+                            {/* 6 lone electrons on each (away from the bond) */}
+                            {lewisDots(leftX, 110, 6).map((d, i) => (
+                              <circle key={`l${i}`} cx={d.x} cy={d.y} r="3.5" className={dotCls} />
+                            ))}
+                            {lewisDots(rightX, 110, 6).map((d, i) => (
+                              <circle key={`r${i}`} cx={d.x} cy={d.y} r="3.5" className={dotCls} />
+                            ))}
 
-                {/* Chlorine Atom */}
-                <div className="relative w-[220px] h-[220px] flex items-center justify-center mt-8 md:mt-0">
-                  <div className="z-10 w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center font-bold text-white shadow-lg border-2 border-emerald-700">
-                    Cl{bonded && <sup className="ml-0.5 text-xs">-</sup>}
-                  </div>
-                  <div className="absolute w-[80px] h-[80px] border border-base-content/20 rounded-full"></div>
-                  <div className="absolute w-[130px] h-[130px] border border-base-content/20 rounded-full"></div>
-                  <div className="absolute w-[200px] h-[200px] border border-base-content/40 rounded-full bg-emerald-500/5">
-                    <div className="absolute w-3 h-3 bg-blue-400 rounded-full top-[4px] left-[95px]"></div>
-                    <div className="absolute w-3 h-3 bg-blue-400 rounded-full top-[30px] right-[30px]"></div>
-                    <div className="absolute w-3 h-3 bg-blue-400 rounded-full top-[95px] right-[-6px]"></div>
-                    <div className="absolute w-3 h-3 bg-blue-400 rounded-full bottom-[30px] right-[30px]"></div>
-                    <div className="absolute w-3 h-3 bg-blue-400 rounded-full bottom-[4px] left-[95px]"></div>
-                    <div className="absolute w-3 h-3 bg-blue-400 rounded-full bottom-[30px] left-[30px]"></div>
-                    <div className="absolute w-3 h-3 bg-blue-400 rounded-full top-[95px] left-[-6px]"></div>
-                    {bonded && (
-                      <motion.div layoutId="transfer-electron" transition={{ duration: 1, ease: "easeInOut" }} className="absolute w-4 h-4 bg-yellow-400 rounded-full shadow-[0_0_15px_#facc15] z-20" style={{ top: '28px', left: '28px' }}></motion.div>
-                    )}
-                  </div>
-                </div>
+                            {/* the unpaired / shared electrons in the middle */}
+                            {step < 2 ? (
+                              <>
+                                <circle cx={leftX + 32} cy="110" r="3.5" className={dotCls} />
+                                <circle cx={rightX - 32} cy="110" r="3.5" className={dotCls} />
+                              </>
+                            ) : (
+                              <>
+                                <circle cx="180" cy="100" r="3.5" className={shareCls} />
+                                <circle cx="180" cy="120" r="3.5" className={shareCls} />
+                              </>
+                            )}
+                          </>
+                        );
+                      })()}
+                    </>
+                  ) : (
+                    // Cl₂ molecule with single bond (step 3)
+                    <g>
+                      <circle cx="130" cy="110" r="32" className="fill-success/20 stroke-success" strokeWidth="2" />
+                      <circle cx="230" cy="110" r="32" className="fill-success/20 stroke-success" strokeWidth="2" />
+                      <text x="130" y="116" textAnchor="middle" fontSize="22" fontWeight="bold" className="fill-success">Cl</text>
+                      <text x="230" y="116" textAnchor="middle" fontSize="22" fontWeight="bold" className="fill-success">Cl</text>
+                      {/* shared bond pair */}
+                      <circle cx="180" cy="100" r="3.5" className={shareCls} />
+                      <circle cx="180" cy="120" r="3.5" className={shareCls} />
+                      <line x1="162" y1="110" x2="198" y2="110" className="stroke-secondary" strokeWidth="2" />
+                      <text x="180" y="165" textAnchor="middle" fontSize="11" className="fill-base-content/70">single covalent bond</text>
+                    </g>
+                  )}
+                </>
+              )}
+
+              <defs>
+                <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                  <path d="M0,0 L6,3 L0,6 Z" className="fill-accent" />
+                </marker>
+              </defs>
+            </svg>
+          </div>
+
+          {/* Octet status */}
+          <div className="flex flex-wrap gap-3 justify-center">
+            {(mode === 'ionic' ? ['Na', 'Cl'] : ['Cl (left)', 'Cl (right)']).map((atom, i) => (
+              <div key={atom} className={`flex items-center gap-2 px-3 py-1.5 rounded-lg border text-sm font-semibold ${current.octet[i] ? 'border-success/40 bg-success/10 text-success' : 'border-base-300 bg-base-200 text-base-content/60'}`}>
+                <span>{atom}</span>
+                <span>{current.octet[i] ? 'octet satisfied' : 'octet not yet full'}</span>
               </div>
+            ))}
+          </div>
 
-              <button className={`btn btn-lg mt-12 w-full max-w-sm ${bonded ? 'btn-outline' : 'btn-primary'}`} onClick={() => setBonded(!bonded)}>
-                {bonded ? 'Reset Atoms' : 'Transfer Electron (Form NaCl)'}
-              </button>
+          {/* Explanation */}
+          <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-5">
+            <h3 className="font-display font-bold text-primary m-0 mb-1">Step {step + 1} · {current.title}</h3>
+            <p className="text-sm text-base-content/80 m-0">{current.body}</p>
+          </div>
+
+          {/* Step controls */}
+          <div className="flex flex-wrap gap-3 justify-center">
+            <button type="button" className="btn btn-outline btn-sm" onClick={prev} disabled={step === 0}>← Prev</button>
+            <button type="button" className="btn btn-primary btn-sm" onClick={next} disabled={step === steps.length - 1}>Next →</button>
+          </div>
             </>
-          ) : (
-            <div className="w-full">
-              <div ref={viewerRef} className="relative w-full h-[400px] rounded-xl border-[3px] border-slate-700 shadow-inner overflow-hidden" />
-              <p className="text-center text-sm text-base-content/60 mt-4">Drag to rotate • Scroll to zoom • This is a 3D NaCl crystal lattice rendered by <strong>3Dmol.js</strong></p>
-            </div>
           )}
         </div>
       </div>

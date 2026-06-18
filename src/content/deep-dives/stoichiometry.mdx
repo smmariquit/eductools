@@ -1,3 +1,65 @@
-# Stoichiometry: The Math Behind Chemical Reactions
+import { DonutChart, Aside, Sources, Changelog } from '../../components/content'
 
-Stoichiometry doesn't have to be intimidating. This interactive balance scale lets students physically balance atoms on both sides of a chemical equation.
+# Stoichiometry: the recipe math that reactions obey
+
+Stoichiometry has a reputation for being scary, and I think the reputation is mostly a branding problem. The word sounds like something invented to fail students. Strip it back and it is the exact logic of doubling an adobo recipe: if the proportions are locked, knowing how much of one ingredient you have tells you how much of everything else you need and how much you will end up with. I built the limiting-reactant tool to make that proportion something you can feel by dragging a slider, so chemical equations stop reading like spelling to memorize and start reading like ratios.
+
+Before any of that works, though, the equation has to be balanced, so let me start there, because it rests on a rule that is genuinely non-negotiable.
+
+## Balancing is just conservation of mass, written down
+
+A chemical equation has to honor one hard law: atoms are neither created nor destroyed in a reaction, only rearranged. Lavoisier pinned this down more than two centuries ago, and nothing since has dented it. So the count of each element on the left has to equal the count on the right. Take the burning of methane (the main gas in the LPG tank under most Filipino kitchen stoves). Written naively it is
+
+$$ \text{CH}_4 + \text{O}_2 \rightarrow \text{CO}_2 + \text{H}_2\text{O} $$
+
+and it is simply wrong, because the left has two oxygen atoms and the right has three, and the hydrogens do not match either. Balancing means adjusting the *coefficients*, the big numbers out front, and never the subscripts tucked inside a formula, until both sides finally agree:
+
+$$ \text{CH}_4 + 2\,\text{O}_2 \rightarrow \text{CO}_2 + 2\,\text{H}_2\text{O} $$
+
+Now there is one carbon, four hydrogens, and four oxygens on each side. Here is the trap people reach for: changing a subscript to make the numbers work. You cannot, because that turns the substance into something else entirely. Water (H₂O) is not hydrogen peroxide (H₂O₂), even though it is one atom away. You are only ever allowed to add whole molecules, never edit the molecules themselves.
+
+## Coefficients are mole ratios, not gram ratios
+
+Once an equation is balanced, those coefficients become a conversion table. The tool skips the balancing step on purpose and hands you three reactions that are already balanced (the synthesis of water, the Haber process for ammonia, and the making of table salt), so you can focus on what the numbers *mean*. Take the water reaction it opens with, $2\,\text{H}_2 + \text{O}_2 \rightarrow 2\,\text{H}_2\text{O}$. That reads "two moles of hydrogen react with one mole of oxygen to give two moles of water," a clean 2 : 1 : 2 ratio. Drag the hydrogen slider to 8 moles and, if oxygen is plentiful, you get 8 moles of water back. No algebra beyond the ratio itself.
+
+The mistake that catches almost everyone the first time is assuming the ratio also holds by *mass*. It does not, because different atoms weigh wildly different amounts. The 2 : 1 mole ratio of hydrogen to oxygen in water turns into roughly a 1 : 8 ratio by mass, because each oxygen atom is about sixteen times heavier than a hydrogen atom. Percent composition shows the gap at a glance.
+
+<DonutChart
+  title="Two of water's three atoms are hydrogen, yet it is barely a tenth of the weight"
+  unit="%"
+  source="OpenStax, Chemistry 2e §3.2 (computed from standard atomic masses)"
+  data={[
+    { label: 'Oxygen', value: 88.81, color: 'sky' },
+    { label: 'Hydrogen', value: 11.19, color: 'sunshine' },
+  ]}
+/>
+
+Two of the three atoms in a water molecule are hydrogen, and hydrogen still accounts for only about 11% of its weight. That single fact is the whole reason chemists count in moles instead of grams. Moles track the particle count the reaction actually cares about, and a balanced equation speaks only in moles.
+
+## The reactant that runs out first calls the shots
+
+Real reactions almost never start with ingredients in perfect ratio, and that is where the tool earns its keep. Whichever reactant runs out first, the **limiting reactant**, sets a hard ceiling on how much product you can make. Everything else is excess that just sits there unused, and the tool shows it plainly: bump one slider too high and it reports the leftover moles of whatever did not get to react.
+
+The kitchen analogy holds perfectly. With twelve hotdogs and eight buns, you are making eight hotdog sandwiches and stranding four lonely hotdogs, no matter how generous you feel about it. The bun is limiting. The tool does this same comparison with a neat trick you can borrow by hand: it converts each starting amount to "reaction sets" by dividing the moles you have by that reactant's coefficient, and whichever gives the smaller number is the one that limits the reaction. Master that one move (divide by the coefficient, take the smaller) and you have the core of MATATAG Grade 9 stoichiometry, plus most of what a first-year college chemistry course will throw at you.
+
+<Aside variant="tool" title="PhET, Reactants, Products and Leftovers" href="https://phet.colorado.edu/en/simulations/reactants-products-and-leftovers" credit="PhET Interactive Simulations, CU Boulder">
+  PhET frames the same limiting-reactant idea as a sandwich shop before it ever shows you a chemical equation, which is a genuinely good on-ramp for younger students. Our tool jumps straight to real balanced reactions; PhET's is where I would send someone who is still nervous about the whole thing.
+</Aside>
+
+<Sources
+  items={[
+    { label: 'OpenStax, Chemistry 2e §4.1: Writing and Balancing Chemical Equations.', href: 'https://openstax.org/books/chemistry-2e/pages/4-1-writing-and-balancing-chemical-equations' },
+    { label: 'OpenStax, Chemistry 2e §4.3: Reaction Stoichiometry.', href: 'https://openstax.org/books/chemistry-2e/pages/4-3-reaction-stoichiometry' },
+    { label: 'OpenStax, Chemistry 2e §3.2: Determining Empirical and Molecular Formulas (percent composition).', href: 'https://openstax.org/books/chemistry-2e/pages/3-2-determining-empirical-and-molecular-formulas' },
+    { label: 'PhET Interactive Simulations (University of Colorado Boulder): Reactants, Products and Leftovers.', href: 'https://phet.colorado.edu/en/simulations/reactants-products-and-leftovers' },
+  ]}
+/>
+
+<Changelog
+  created="2026-06-11"
+  updated="2026-06-18"
+  entries={[
+    { date: "2026-06-18", note: "Switched the water mass-composition chart from a bar chart to a DonutChart, since it is a part-of-a-whole breakdown of one molecule's mass." },
+    { date: "2026-06-18", note: "Re-toned into the house voice for Grades 9–10 (adobo-recipe open, mass-vs-mole-ratio misconception, LPG-stove methane); corrected the tool description from 'balance scale' to the actual reaction-picker with mole sliders, limiting-reactant output, and leftovers; kept the water-composition chart and verified sources; added PhET credit and the Changelog block." },
+  ]}
+/>

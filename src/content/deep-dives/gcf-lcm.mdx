@@ -1,53 +1,58 @@
-# GcfLcm Deep Dive
+import { Sources, Changelog } from '../../components/content'
 
+# GCF and LCM are the same picture read two ways
 
+I built the GCF and LCM tool because these two get mixed up more than almost anything else at this level, and the mix-up is never really about the kids. It is about how they get taught. Greatest common factor and least common multiple usually arrive as two separate tricks to memorize, with a shaky rule of thumb stapled on ("GCF is the small one, LCM is the big one") and no reason behind it. So students flip a coin on which is which. They are not two tricks. They are two readings of one picture, and once you see the picture you stop guessing.
 
-GCF and LCM: Math Grade 4-5 (MATATAG)
+Here is the thing people get backwards. They think you find the LCM by listing multiples until two columns finally match, and you find the GCF by listing factors and hunting for the biggest shared one. That works for tiny numbers and falls apart the moment the numbers get awkward. Both answers actually come out of the same place: the prime factors of the two numbers.
 
-The 
-Greatest Common Factor (GCF)
- is the largest number that divides evenly into two or more numbers. The 
-Least Common Multiple (LCM)
- is the smallest number that is a multiple of both numbers.
+## Prime factors are the engine
 
-Using Prime Factorization
+Every whole number bigger than 1 can be broken down into a unique stack of prime building blocks (primes are the numbers like 2, 3, 5, 7 that only divide by 1 and themselves). "Unique" is the important word. There is exactly one prime recipe per number, which is what makes this method trustworthy instead of lucky. A factor tree is just the bookkeeping for that break-down. Take 12 and 18, the two numbers the tool starts with:
 
-Step 1:
- Break each number into its prime factors (factor tree).
+$$12 = 2 \times 2 \times 3 = 2^2 \times 3, \qquad 18 = 2 \times 3 \times 3 = 2 \times 3^2.$$
 
-Step 2:
- Put the factors into a Venn diagram.
+The visualizer above draws a real factor tree for each number, splitting off one prime at a time until only primes are left, then prints the recipe underneath. Once both numbers are in this form, you stop guessing and start reading.
 
-Step 3:
- The 
-GCF
- is the product of the 
-common
- (overlapping) factors.
+The **greatest common factor** is the largest number that divides both. You build it from the primes the two numbers *share*. Both 12 and 18 carry one 2 and one 3 in common, so the GCF is $2 \times 3 = 6$. Nothing bigger goes evenly into both.
 
-Step 4:
- The 
-LCM
- is the product of 
-all
- factors in the entire diagram.
+The **least common multiple** is the smallest number that both divide into. You build it from *every* prime that shows up, each taken at its highest power: the $2^2$ from the 12 and the $3^2$ from the 18, giving $2^2 \times 3^2 = 4 \times 9 = 36$.
 
-Example: For 12 and 18:
+The tool makes that split visible with a Venn diagram. The primes the two numbers share sit in the middle overlap, and the leftover primes sit in each number's own circle. Multiply just the overlap and you get the GCF. Multiply the whole diagram, both circles plus the shared middle counted once, and you get the LCM. Same primes, two different harvests.
 
-12 = 2 × 2 × 3
+## A shortcut that also checks your work
 
-18 = 2 × 3 × 3
+There is a clean link between the two that is worth keeping in your head, because it catches mistakes for free. For any two whole numbers $a$ and $b$,
 
-Common: 2 × 3 = 
-GCF = 6
+$$\text{GCF}(a, b) \times \text{LCM}(a, b) = a \times b.$$
 
-All: 2 × 2 × 3 × 3 = 
-LCM = 36
+Test it on our numbers: $6 \times 36 = 216$, and $12 \times 18 = 216$. They match, so the GCF and LCM agree with each other. The tool prints this identity at the bottom with a check mark when both sides line up. It is genuinely useful in an exam, too. Once you have the GCF the careful way, you can get the LCM by dividing, since $\text{LCM} = (a \times b) \div \text{GCF} = 216 \div 6 = 36$, without listing a single multiple. It works because every prime factor of $a$ and $b$ has to land either in the shared pile (the GCF) or the leftover piles (which fill out the LCM), and multiplying the two piles together counts each prime exactly as often as $a \times b$ does.
 
-## Dissection of Variables
+## Where you actually reach for each one
 
-- **Variable 1**: Explanation of how it works in the physical world.
-- **Variable 2**: Deep dive into the math and units.
+The two get confused because both involve factors and multiples, but they answer opposite questions. A concrete scene keeps them straight better than any rule of thumb.
 
----
-*Note: This is a deep dive section that breaks down the variables and the underlying physics/math of the simulation.*
+Reach for the **GCF** when you are breaking something down into equal groups with nothing left over. Say you are packing *goodie bags* for a class party and you have 12 ballpens and 18 notebooks, and you want every bag identical with no leftovers. The most bags you can make is the GCF, 6, each one holding 2 pens and 3 notebooks. The GCF is also what you cancel by to reduce a fraction: $\tfrac{12}{18}$ becomes $\tfrac{2}{3}$ once you divide out the shared 6.
+
+Reach for the **LCM** when you are waiting for two cycles to line up. If one *jeepney* leaves the terminal every 12 minutes and another every 18, they pull out together again after $\text{LCM}(12, 18) = 36$ minutes. Same logic sets the schedule when two fiesta committees rotate on different cycles, or finds the common denominator when you add fractions with unlike bottoms. Equal groups from shared parts means GCF. Smallest meeting point of both cycles means LCM. The factor tree feeds both.
+
+## A note on where this sits
+
+Under the MATATAG curriculum, factors and multiples land in the Grades 4 to 5 range, with prime factorization sitting near the top of that band. The order is reasonable, and I will not pretend the topic is harder than it is. The only real trap is the one above: teaching GCF and LCM as two disconnected drills. Show the shared factor tree once, let a student slide the two numbers around and watch the Venn diagram and the identity update together, and the difference stops being something to memorize and starts being something they can see.
+
+<Sources
+  items={[
+    { label: 'OpenStax, Prealgebra 2e. "Prime Factorization and the Least Common Multiple."', href: 'https://openstax.org/books/prealgebra-2e/pages/2-5-prime-factorization-and-the-least-common-multiple' },
+    { label: 'Weisstein, Eric W. "Greatest Common Divisor." Wolfram MathWorld.', href: 'https://mathworld.wolfram.com/GreatestCommonDivisor.html' },
+    { label: 'Weisstein, Eric W. "Least Common Multiple." Wolfram MathWorld.', href: 'https://mathworld.wolfram.com/LeastCommonMultiple.html' },
+    { label: 'Khan Academy. "Factors and multiples."', href: 'https://www.khanacademy.org/math/pre-algebra/pre-algebra-factors-multiples' },
+  ]}
+/>
+
+<Changelog
+  created="2026-06-11"
+  updated="2026-06-18"
+  entries={[
+    { date: "2026-06-18", note: "Re-toned into the house voice (first-person origin open, misconception framing, plainer Grades 4-6 reading level), aligned the description to the factor-tree/Venn/identity tool, kept all figures, verified sources, and added the Changelog block." },
+  ]}
+/>

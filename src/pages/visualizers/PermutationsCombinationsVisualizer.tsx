@@ -3,6 +3,7 @@ import VisualizerLayout from '../../components/VisualizerLayout';
 import { Slider } from '../../components/ui/Slider';
 import { StatCard } from '../../components/ui/StatCard';
 import { Toggle } from '../../components/ui/Toggle';
+import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
 import katex from 'katex';
 import 'katex/dist/katex.min.css';
 
@@ -28,10 +29,41 @@ const InlineMath = ({ math }: { math: string }) => {
 
 type Mode = 'permutation' | 'combination';
 
+const DEFAULTS = { mode: 'permutation' as Mode, n: 5, r: 3 };
+
+// Descending list of whole numbers from `from` down to `to` (inclusive).
+const descending = (from: number, to: number): number[] => {
+  const out: number[] = [];
+  for (let i = from; i >= to; i--) out.push(i);
+  return out;
+};
+// Factors of k! written out: k × (k−1) × … × 1 (empty product for 0! and 1!).
+const factorialFactors = (k: number): number[] => (k <= 1 ? [] : descending(k, 1));
+const factorsText = (k: number): string => {
+  const f = factorialFactors(k);
+  return f.length === 0 ? '1' : f.join(' × ');
+};
+
 const PermutationsCombinationsVisualizer = () => {
-  const [mode, setMode] = useState<Mode>('permutation');
-  const [n, setN] = useState(5);
-  const [r, setR] = useState(3);
+  const [mode, setMode] = useState<Mode>(DEFAULTS.mode);
+  const [n, setN] = useState(DEFAULTS.n);
+  const [r, setR] = useState(DEFAULTS.r);
+  const fields = useTouchedFields<'mode' | 'n' | 'r'>();
+  const ready = fields.isTouched('mode') && fields.isTouched('n') && fields.isTouched('r');
+
+  const reset = () => {
+    setMode(DEFAULTS.mode);
+    setN(DEFAULTS.n);
+    setR(DEFAULTS.r);
+    fields.reset();
+  };
+
+  const fillExample = () => {
+    setMode(DEFAULTS.mode);
+    setN(DEFAULTS.n);
+    setR(DEFAULTS.r);
+    fields.touchAll(['mode', 'n', 'r']);
+  };
 
   const factorial = (num: number): number => {
     if (num <= 1) return 1;
@@ -101,6 +133,41 @@ const PermutationsCombinationsVisualizer = () => {
     return arrangements;
   }, [n, r, mode]);
 
+  const modeControl = (
+    <Toggle
+      options={[
+        { value: 'permutation', label: 'Permutation (Order Matters)', activeColor: 'primary' },
+        { value: 'combination', label: "Combination (Order Doesn't)", activeColor: 'secondary' }
+      ]}
+      value={mode}
+      onChange={(val) => { setMode(val as 'permutation' | 'combination'); fields.touch('mode'); }}
+    />
+  );
+
+  const nControl = (
+    <Slider
+      label={<>Total items (<span className="font-serif italic">n</span>)</>}
+      value={n}
+      min={2}
+      max={10}
+      colorClass="primary"
+      onChange={e => { const v = Number(e.target.value); setN(v); if (r > v) setR(v); fields.touch('n'); }}
+      aria-valuetext={`${n} total items`}
+    />
+  );
+
+  const rControl = (
+    <Slider
+      label={<>Choose (<span className="font-serif italic">r</span>)</>}
+      value={r}
+      min={1}
+      max={n}
+      colorClass="secondary"
+      onChange={e => { setR(Number(e.target.value)); fields.touch('r'); }}
+      aria-valuetext={`choose ${r}`}
+    />
+  );
+
   return (
     <VisualizerLayout
       title="Permutations & Combinations (Permutasyon at Kumbinasyon)"
@@ -108,18 +175,23 @@ const PermutationsCombinationsVisualizer = () => {
       adSlotId="2020"
       guideLink="/blog/permutations-combinations"
     >
+      {!ready ? (
+        <GuidedInputFlow
+          intro="Choose whether order matters, then set how many items you have and how many to pick."
+          onFillExample={fillExample}
+          onReset={reset}
+          steps={[
+            { id: 'mode', title: 'Pick the counting type', helper: 'Permutation if order matters, combination if not.', complete: fields.isTouched('mode'), children: modeControl },
+            { id: 'n', title: 'Set the total items', helper: 'How many items to choose from (2 to 10).', complete: fields.isTouched('n'), children: nControl },
+            { id: 'r', title: 'Set how many to choose', helper: 'How many to pick (1 to n).', complete: fields.isTouched('r'), children: rControl },
+          ]}
+        />
+      ) : (
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col gap-8">
 
           {/* Mode toggle */}
-          <Toggle 
-            options={[
-              { value: 'permutation', label: 'Permutation (Order Matters)', activeColor: 'primary' },
-              { value: 'combination', label: "Combination (Order Doesn't)", activeColor: 'secondary' }
-            ]}
-            value={mode}
-            onChange={(val) => setMode(val as 'permutation' | 'combination')}
-          />
+          {modeControl}
 
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Visual area */}
@@ -139,7 +211,7 @@ const PermutationsCombinationsVisualizer = () => {
               </div>
 
               {/* Sample arrangements */}
-              <div className="bg-slate-900 rounded-xl p-5 border-2 border-base-300 max-h-[360px] overflow-y-auto">
+              <div className="bg-base-200 rounded-xl p-5 border-2 border-base-300 max-h-[360px] overflow-y-auto">
                 <div className="text-xs font-bold text-base-content/60 uppercase tracking-wider mb-3">
                   {mode === 'permutation' ? 'Arrangements' : 'Groups'} (showing {Math.min(sampleArrangements.length, 20)} of {result > 9999 ? result.toExponential(0) : result})
                 </div>
@@ -173,22 +245,8 @@ const PermutationsCombinationsVisualizer = () => {
             {/* Controls & formula */}
             <div className="w-full lg:w-80 flex flex-col gap-6">
               <div className="bg-base-200 p-6 rounded-xl border border-base-300 flex flex-col gap-5">
-                <Slider
-                  label={<>Total items (<span className="font-serif italic">n</span>)</>}
-                  value={n}
-                  min={2}
-                  max={10}
-                  colorClass="primary"
-                  onChange={e => { const v = Number(e.target.value); setN(v); if (r > v) setR(v); }}
-                />
-                <Slider
-                  label={<>Choose (<span className="font-serif italic">r</span>)</>}
-                  value={r}
-                  min={1}
-                  max={n}
-                  colorClass="secondary"
-                  onChange={e => setR(Number(e.target.value))}
-                />
+                {nControl}
+                {rControl}
               </div>
 
               {/* Formula breakdown */}
@@ -215,6 +273,61 @@ const PermutationsCombinationsVisualizer = () => {
                 />
               </div>
 
+              {/* Step-by-step expansion — factorials are not a black box */}
+              <div className="bg-base-200 p-6 rounded-xl border border-base-300 space-y-3">
+                <h3 className="font-bold text-sm uppercase tracking-wider text-base-content/60">Step-by-step</h3>
+
+                <div className="space-y-1 font-mono text-sm">
+                  <div>
+                    <span className="text-base-content/60">{n}! = </span>
+                    <span className="text-primary">{factorsText(n)}</span>
+                    <span className="text-base-content/60"> = </span>
+                    <span className="font-bold">{factorial(n) > 9999 ? factorial(n).toExponential(1) : factorial(n)}</span>
+                  </div>
+                  <div>
+                    <span className="text-base-content/60">({n}−{r})! = {n - r}! = </span>
+                    <span className="text-accent">{factorsText(n - r)}</span>
+                    <span className="text-base-content/60"> = </span>
+                    <span className="font-bold">{factorial(n - r)}</span>
+                  </div>
+                  {mode === 'combination' && (
+                    <div>
+                      <span className="text-base-content/60">{r}! = </span>
+                      <span className="text-secondary">{factorsText(r)}</span>
+                      <span className="text-base-content/60"> = </span>
+                      <span className="font-bold">{factorial(r)}</span>
+                    </div>
+                  )}
+                </div>
+
+                <div className="border-t border-base-300 pt-3 space-y-2 text-sm">
+                  <p className="m-0 text-base-content/70">
+                    The {n - r}! factors cancel the tail of {n}!, leaving just the first <span className="font-bold">{r}</span> factors going down:
+                  </p>
+                  <div className="font-mono">
+                    <span className="text-primary font-bold">P({n}, {r})</span>
+                    <span className="text-base-content/60"> = </span>
+                    <span>{descending(n, n - r + 1).join(' × ')}</span>
+                    <span className="text-base-content/60"> = </span>
+                    <span className="font-bold text-warning">{nPr > 9999 ? nPr.toExponential(1) : nPr}</span>
+                  </div>
+                  {mode === 'combination' && (
+                    <>
+                      <p className="m-0 text-base-content/70">
+                        Order doesn&rsquo;t matter, so divide by {r}! to remove the {factorial(r)} re-orderings of each group:
+                      </p>
+                      <div className="font-mono">
+                        <span className="text-secondary font-bold">C({n}, {r})</span>
+                        <span className="text-base-content/60"> = </span>
+                        <span>{nPr > 9999 ? nPr.toExponential(1) : nPr} ÷ {factorial(r)}</span>
+                        <span className="text-base-content/60"> = </span>
+                        <span className="font-bold text-warning">{nCr > 9999 ? nCr.toExponential(1) : nCr}</span>
+                      </div>
+                    </>
+                  )}
+                </div>
+              </div>
+
               {/* Comparison */}
               <div className="bg-base-200 p-5 rounded-xl border border-base-300">
                 <h3 className="font-bold text-xs uppercase tracking-wider text-base-content/60 mb-3">Compare</h3>
@@ -236,11 +349,14 @@ const PermutationsCombinationsVisualizer = () => {
                   P is always ≥ C because order creates more arrangements
                 </div>
               </div>
+
+              <button type="button" onClick={reset} className="btn btn-ghost btn-sm self-end">Reset</button>
             </div>
           </div>
 
         </div>
       </div>
+      )}
     </VisualizerLayout>
   );
 };

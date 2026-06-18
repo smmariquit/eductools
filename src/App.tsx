@@ -1,5 +1,5 @@
-import { lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { lazy, Suspense, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Layout from './components/Layout';
 import ErrorBoundary from './components/ErrorBoundary';
 import Home from './pages/Home';
@@ -13,6 +13,7 @@ import Accessibility from './pages/Accessibility';
 import AboutUs from './pages/AboutUs';
 import HelpFaq from './pages/HelpFaq';
 import Contact from './pages/Contact';
+import CrayonGallery from './pages/CrayonGallery';
 
 // Dynamically import all visualizer pages using Vite's glob
 const visualizerPages = import.meta.glob('./pages/visualizers/*Visualizer.tsx') as Record<
@@ -50,9 +51,20 @@ function buildVisualizerRoutes() {
 
 const visualizerRoutes = buildVisualizerRoutes();
 
+// Reset scroll to the top whenever the route changes, so opening a tool
+// always starts at the top instead of inheriting the previous page's scroll.
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Suspense fallback={<div className="flex items-center justify-center min-h-screen text-base-content/50 text-xl font-semibold"><span className="loading loading-spinner loading-lg mr-4"></span>Loading interactive module...</div>}>
         <Routes>
         <Route path="/" element={<Layout />}>
@@ -66,6 +78,7 @@ function App() {
           <Route path="help" element={<HelpFaq />} />
           <Route path="contact" element={<Contact />} />
           <Route path="units" element={<ScientificUnits />} />
+          <Route path="crayon" element={<CrayonGallery />} />
           
           {/* Dynamically generated visualizer routes from file glob */}
           {visualizerRoutes.map(({ path, Component }) => (

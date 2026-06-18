@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <path class="crayon-fill-paper" d="M58 28 Q40 24 33 40 Q29 50 38 58 Q45 64 45 72 Q45 80 53 80 Q60 80 60 73 Q60 64 67 60 Q75 54 72 42 Q69 31 58 28 Z"/>
+  <path class="crayon-draw crayon-stroke-ink" pathLength="1" d="M58 28 Q40 24 33 40 Q29 50 38 58 Q45 64 45 72 Q45 80 53 80 Q60 80 60 73 Q60 64 67 60 Q75 54 72 42 Q69 31 58 28 Z" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path class="crayon-draw crayon-stroke-ink" pathLength="1" d="M48 44 Q52 38 58 42 Q63 46 58 52 Q54 56 55 61" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path class="crayon-stroke-sky" d="M22 42 Q15 50 22 58" stroke-width="3.4" stroke-linecap="round"/>
+  <path class="crayon-stroke-sky" d="M16 36 Q5 50 16 64" stroke-width="3.4" stroke-linecap="round"/>
+</svg>

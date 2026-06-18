@@ -1,3 +1,51 @@
-# Seasons: Tag-init and Tag-ulan
+import { Sources, Changelog } from '../../components/content'
 
-Unlike temperate countries with four seasons, our proximity to the equator gives us distinct wet and dry periods. This tool visualizes Earth's axial tilt to explain why.
+# Why the Philippines Has Two Seasons, Not Four
+
+Ask a Filipino kid to name the seasons and you will almost always get two: tag-init, the hot dry stretch, and tag-ulan, the rains. Ask a kid in Japan or the United States and you will get four. Both kids are right about where they live, and the reason their lists do not match is one of the most reliably mangled topics in earth science. I built the seasons tool with two panels side by side for exactly this reason, because the usual single-globe animation answers the wrong question for us. Here is the short version, said plainly: axial tilt is why temperate countries get four seasons, but it is not the main reason we get two. For that, you have to follow the wind.
+
+## First, the thing people get backwards
+
+The belief I have to clear out before anything else is that seasons come from how close we are to the Sun, that summer is just Earth swinging nearer and winter is Earth drifting away. It is a tidy idea and it is wrong. Earth is actually a touch closer to the Sun in early January, in the dead of the northern winter. Distance is not what changes the seasons. What changes is the angle the sunlight strikes the ground and how many hours of it you get in a day, and both of those are set by the tilt of the planet, not by its distance.
+
+## What the tilt actually does
+
+Earth spins on an axis tipped about 23.5 degrees from straight up relative to its path around the Sun. The important part is that the axis keeps pointing the same way in space all year while the planet circles around. So for one half of the orbit the northern hemisphere leans toward the Sun, and for the other half it leans away. Leaning toward the Sun means the light arrives steep and direct and the days run long, which is summer. Leaning away means slanted, watered-down light and short days, which is winter. Spring and autumn are just the handover in between. That is the whole engine behind a temperate four-season year, and it is what Panel A of the tool animates: drag the month slider and watch which hemisphere tips sunward and where the Sun sits directly overhead.
+
+## Why that barely moves the needle here
+
+The catch is that the tilt's effect is strongest at the poles and weakest at the equator, and the Philippines sits close to the equator. Manila is at about 14.6 degrees north, the figure the tool labels on screen. Down here the midday Sun stays high all year and the day length barely budges off twelve hours. The seasonal swing in sunlight that freezes a temperate winter is simply too small at this latitude to build one. Lowland temperatures wobble by only a few degrees across the entire year. If tilt were the whole story for us, the Philippines would have one mild season running January to December and nothing much to tell the months apart.
+
+So the country does not really run on temperature seasons the way temperate places do. What it runs on is a hard split between wet and dry, and that split is built out of rain, not warmth.
+
+## The monsoon is the real driver
+
+What actually carves the Philippine year in two is the monsoon, the seasonal reversal of the prevailing winds, and it is what Panel B of the tool shows. From roughly June to November the Habagat, the southwest monsoon, drags warm, soaked air off the seas to the southwest and unloads the heavy rains of tag-ulan. From around December to May the Amihan, the northeast monsoon, pushes drier and slightly cooler air down from the northeast; the cool front of that stretch is the tag-lamig, and the hot tail end, March to May, is the tag-init everyone complains about. PAGASA describes the national climate in exactly these terms, a rainy season and a dry season, with the dry season splitting into a cool-dry and a hot-dry part. Flip the month slider in the tool and the wind arrows physically reverse, which is the single picture I most wanted students to carry away.
+
+## Where the two stories actually meet
+
+There is a real nuance worth keeping, because it is the place the two explanations shake hands. The monsoons themselves exist because the Sun's heating slides back and forth between the hemispheres over the year, and that slide is, in the end, a consequence of the same axial tilt. So tilt never actually left the story; it just changed costume. Near the poles it shows up directly, as long cold winters. Near the equator it shows up indirectly, as the wind reversal that decides whether the air over the islands is wringing itself out in an afternoon downpour or sitting dry and dusty. This is the trap I built the second panel to avoid: a tool that only spins a tilted Earth around the Sun will explain Tokyo's winter correctly and quietly mislead a student about Manila's year. The tool even spells the warning out in its own words, that tilt is not why Manila has wet and dry seasons, because that is the exact sentence the standard diagram tempts you into getting wrong.
+
+## A few questions I get
+
+**If we are closer to the Sun in January, why is January not our hottest month?**
+Because distance barely matters for seasons, and what little it does is swamped by everything else. Our heat tracks the Sun's angle and the monsoon, so the hottest stretch is the dry tail end of the Amihan, around April and May, not the January perihelion.
+
+**Do we really get no effect from the tilt at all?**
+We do, just indirectly. The tilt is what drives the Sun's heating north and south through the year, and that is what flips the monsoon. So tilt sets up our wet and dry seasons from a distance, through the wind, rather than handing us a cold winter directly.
+
+<Sources
+  items={[
+    { label: 'NASA Space Place, What Causes the Seasons? (axial tilt and sunlight angle).', href: 'https://spaceplace.nasa.gov/seasons/en/' },
+    { label: 'NASA Science, Earth (planet overview and orbit).', href: 'https://science.nasa.gov/earth/' },
+    { label: 'PAGASA (DOST), Climate of the Philippines (two-season pattern and the monsoons).', href: 'https://www.pagasa.dost.gov.ph/information/climate-philippines' },
+  ]}
+/>
+
+<Changelog
+  created="2026-06-11"
+  updated="2026-06-18"
+  entries={[
+    { date: "2026-06-18", note: "Re-toned into the house voice (origin-story open, distance-to-Sun misconception busted up front, plain-spoken FAQ); tied passages to the tool's two panels and month slider; kept sources and verified them; added the Changelog block." },
+  ]}
+/>

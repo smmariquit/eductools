@@ -1,32 +1,79 @@
-# Permutations & Combinations Deep Dive
+import { LineChart, Sources, Changelog } from '../../components/content'
 
-**Permutations and Combinations: Math Grade 10 (MATATAG)**
+# Does the order matter? Ask that first
 
-Both permutations and combinations deal with choosing items from a group, but they differ in whether **order matters**.
+Almost every student I have watched tackle a counting problem makes the same mistake: they reach for a formula before they have answered the one question that decides everything. I built this tool to slow that reflex down. Before you touch $P$ or $C$, before you plug in a single number, ask whether the *order* of your choices matters. Get that answer right and the rest is just arithmetic. Get it wrong and you will either count the same outcome several times over or miss outcomes entirely.
 
-## Permutation (Pagkakaayos)
+This is the heart of the Grade 10 counting strand under MATATAG. Permutations and combinations both pull a smaller group out of a larger one. The only thing separating them is whether rearranging your picks counts as a brand-new result.
 
-Order **MATTERS**. Choosing a President, VP, and Secretary from 5 people is a permutation because each role is different.
+## Permutation (*pagkakaayos*): order matters
 
-$$
-P(n, r) = \frac{n!}{(n - r)!}
-$$
+Use a permutation when the positions are different from one another. Electing a President, a Vice President, and a Secretary from a 5-member club is a permutation, because making Maria the President and Jose the VP is a genuinely different outcome from Jose as President and Maria as VP. The seats have names, and swapping people between them gives you a different slate. The count is
 
-## Combination (Pagpili)
+$$P(n, r) = \frac{n!}{(n - r)!}.$$
 
-Order **DOES NOT matter**. Choosing 3 people for a committee from 5 is a combination because all committee members have the same role.
+For the club, $P(5, 3) = \frac{5!}{2!} = \frac{120}{2} = 60$ distinct slates of officers. You can also reason it out with no formula at all: 5 choices for President, then 4 left for VP, then 3 for Secretary, and $5 \times 4 \times 3 = 60$. The factorial formula is just bookkeeping for "multiply the descending choices," with the $(n - r)!$ in the denominator cancelling off the choices you never got around to making.
 
-$$
-C(n, r) = \frac{n!}{r!(n - r)!}
-$$
+## Combination (*pagpili*): order does not matter
 
-Notice how permutations always produce a larger number than combinations (or equal, when $r \le 1$). That's because multiple orderings of the same group collapse into one combination!
+Use a combination when the chosen items all play the same role. Picking 3 students from those same 5 to form a committee is a combination, because the committee $\{$Maria, Jose, Ana$\}$ is the same committee no matter what sequence you read the names in. Nobody on it outranks anybody. The count is
 
-## Dissection of Variables
+$$C(n, r) = \frac{n!}{r!(n - r)!}.$$
 
-- **$n$ (Total Items)**: The total number of unique items you have available to choose from.
-- **$r$ (Selected Items)**: The number of items you are actually choosing or arranging.
-- **$!$ (Factorial)**: Multiply a series of descending natural numbers. E.g., $5! = 5 \times 4 \times 3 \times 2 \times 1 = 120$.
+So $C(5, 3) = \frac{120}{6 \times 2} = 10$ committees. Notice that 60 permutations collapsed down to just 10 combinations. The extra factor in the denominator, the $r!$, is doing exactly that collapsing. Every committee of 3 people can be arranged in $3! = 6$ different orders, and a combination treats all 6 of those as one and the same. That is the general relationship worth carrying in your head, $P(n, r) = C(n, r) \times r!$, and it explains *why* a permutation count always comes out larger than (or equal to) the matching combination. Multiple orderings of the same group fold into a single combination, and the gap only closes when $r \le 1$, since with one pick or none there is nothing left to reorder. It is the reason a lotto draw is a combination, not a permutation: the balls come out in some order, but the ticket only cares which six numbers showed up.
 
----
-*Note: This deep dive breaks down the variables and the underlying math of the visualizer.*
+## Why the numbers explode
+
+The engine under both formulas is the **factorial**, the product of the descending counting numbers: $5! = 5 \times 4 \times 3 \times 2 \times 1 = 120$. Factorials grow faster than almost anything students have met before, and seeing that growth is the quickest way to understand why "how many ways" answers get enormous so fast.
+
+<LineChart
+  title="Factorial growth: n! for n = 1 to 6"
+  xLabel="n"
+  yLabel="n!"
+  source='Weisstein, "Factorial," Wolfram MathWorld'
+  series={[
+    {
+      name: 'n!',
+      color: 'berry',
+      points: [
+        { x: 1, y: 1 },
+        { x: 2, y: 2 },
+        { x: 3, y: 6 },
+        { x: 4, y: 24 },
+        { x: 5, y: 120 },
+        { x: 6, y: 720 },
+      ],
+    },
+  ]}
+/>
+
+Going from 5 people to 6 multiplies the arrangements by 6, so the point for $6!$ already shoots up off everything to its left, and $10!$ is past three million. This is also why the "just list them all" approach gives out almost immediately, and why these formulas exist in the first place.
+
+## Reading the variables
+
+When you set up a problem in the tool, only three quantities matter.
+
+- **$n$ (total items)**: how many distinct things you have to choose from.
+- **$r$ (selected items)**: how many you actually pick or arrange, where $r \le n$.
+- **$!$ (factorial)**: the product of the descending counting numbers, with the convention that $0! = 1$ so the formulas still behave when $r$ equals $n$.
+
+Decide order-or-not first, drop $n$ and $r$ into the matching formula, and the answer is one calculation away.
+
+<Sources
+  items={[
+    { label: 'OpenStax, College Algebra 2e: Counting Principles (permutations and combinations).', href: 'https://openstax.org/books/college-algebra-2e/pages/9-5-counting-principles' },
+    { label: 'Weisstein, Eric W. "Permutation." Wolfram MathWorld.', href: 'https://mathworld.wolfram.com/Permutation.html' },
+    { label: 'Weisstein, Eric W. "Combination." Wolfram MathWorld.', href: 'https://mathworld.wolfram.com/Combination.html' },
+    { label: 'Weisstein, Eric W. "Factorial." Wolfram MathWorld.', href: 'https://mathworld.wolfram.com/Factorial.html' },
+    { label: 'Khan Academy. "Combinations."', href: 'https://www.khanacademy.org/math/precalculus/x9e81a4f98389efdf:prob-comb/x9e81a4f98389efdf:combinations/a/combinations' },
+  ]}
+/>
+
+<Changelog
+  created="2026-06-11"
+  updated="2026-06-18"
+  entries={[
+    { date: "2026-06-18", note: "Switched the factorial-growth chart from a bar chart to a LineChart, since it shows a growth curve over n; updated the surrounding prose from 'bar' to 'point'." },
+    { date: "2026-06-18", note: "Re-toned into the house voice (order-matters origin open, officers-vs-committee and lotto scenarios); kept the factorial-growth chart and math; replaced the Cloudflare-blocked Britannica link with OpenStax College Algebra Counting Principles." },
+  ]}
+/>

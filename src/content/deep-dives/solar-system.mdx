@@ -1,3 +1,72 @@
-# Exploring the Solar System: Philippine Astronomy
+import { BarChart, Aside, Sources, Changelog } from '../../components/content'
 
-The Solar System visualizer breaks down the immense scale of our local star system. By allowing students to manipulate planetary orbits, we shift from static textbook images to dynamic astronomical mechanics.
+# The Solar System, Drawn to Scale
+
+I built the solar system tool because nearly every poster I grew up with told the same small lie, and it was always about spacing. To fit eight planets onto one wall, the artist lines them up at friendly, even intervals, and a generation of kids walks away picturing the planets as neighbors taking turns around the Sun. They are not neighbors. The Sun alone holds more than 99 percent of the mass in the entire system, and the planets are flung across distances so large that the tidy classroom drawing is closer to a cartoon than a map. Getting the real scale into a student's head is honestly half the lesson, and it is the half the poster skips.
+
+## The yardstick that makes the numbers usable
+
+Distances out here are miserable to write in kilometers, so astronomers use the astronomical unit, or AU. One AU is just the average distance from the Earth to the Sun, about 150 million kilometers. The reason this unit is so handy is that it puts every other planet in plain proportion: a planet sitting at 5 AU is simply five times farther from the Sun than we are, and you never have to carry a nine-digit number around to say so.
+
+That one move turns an ugly table into something a person can reason about. Light, which is about as fast as anything gets, still needs roughly eight minutes to cross that single AU from the Sun to us, and more than four hours to reach all the way out to Neptune. The jump from eight minutes to four hours is the first real hint that the spacing is the whole story.
+
+## The planets are not evenly spaced
+
+Here is the part the poster hides. The four rocky inner planets are crammed into the first AU and a half, then there is a long, awkward emptiness, and only then do the giants begin, each one sitting roughly twice as far out as the planet before it.
+
+<BarChart
+  title="Average distance of each planet from the Sun (AU)"
+  unit=" AU"
+  max={31}
+  source="OpenStax, Astronomy 2e, Appendix F (orbital data for the planets)"
+  data={[
+    { label: 'Mercury', value: 0.39, color: 'sunshine' },
+    { label: 'Venus', value: 0.72, color: 'sunshine' },
+    { label: 'Earth', value: 1.0, color: 'sky' },
+    { label: 'Mars', value: 1.52, color: 'berry' },
+    { label: 'Jupiter', value: 5.2, color: 'leaf' },
+    { label: 'Saturn', value: 9.54, color: 'leaf' },
+    { label: 'Uranus', value: 19.19, color: 'grape' },
+    { label: 'Neptune', value: 30.06, color: 'grape' },
+  ]}
+/>
+
+Look at how Mercury through Mars barely lift off the bottom of the chart while Neptune runs all the way out to 30 AU. That emptiness is the real geography of the place. Mars, our nearest outer neighbor, is only about 1.5 AU away, and Jupiter does not even start until past 5 AU. The bars also quietly sort the planets into the two families they actually belong to: the small, dense, rocky terrestrial worlds packed in close, and the large gas and ice giants spread thin across the outer dark.
+
+This is exactly why the tool draws the orbits on a log scale instead of a straight ruler, and says so right on screen with a "Not to scale" note. If I spaced the orbits honestly on your phone, Mercury, Venus, Earth, and Mars would pile into a single pixel beside the Sun and Neptune would be off the edge of the room. The log scale is a deliberate cheat so all eight stay visible at once; the honest numbers live in the distance table underneath, where 1 AU is about 149.6 million kilometers and Neptune sits about 77 times farther out than Mercury. The slider that speeds the orbits up is doing the same kind of favor for time, because in real life Neptune would barely twitch while you watched.
+
+## Distance also sets the clock
+
+Distance does more than spread the planets out; it sets how fast they are allowed to move. A planet farther from the Sun has a longer track to cover and feels a weaker pull, so it travels slower and takes far longer to finish one lap. Kepler pinned this down four centuries ago: the square of a planet's orbital period grows with the cube of its average distance, $P^2 \propto a^3$. In practice that means Mercury whips around the Sun in 88 days, Earth takes the year we build our calendars on, and Neptune needs about 165 years, which is long enough that it has not completed a single orbit since it was discovered in 1846.
+
+None of this has to stay abstract from where we are standing. The same naked-eye planets that fill these tables, Venus blazing low at dawn or dusk, the orange dot of Mars, steady Jupiter and Saturn, are all visible from a dark provincial sky on a clear night, and the "A" in PAGASA stands for the astronomical service that keeps track of them. The point of building the thing to scale, rather than handing students one more tidy row of evenly spaced dots, is that they walk away knowing the solar system is mostly empty space with a few worlds set very far apart. That happens to be the truth.
+
+<Aside variant="tool" title="PhET Gravity and Orbits" href="https://phet.colorado.edu/en/simulations/gravity-and-orbits" credit="PhET, CU Boulder">
+  If you want the companion idea to scale, which is why the far planets crawl, this free sim lets you turn gravity on and off and watch the orbits fall apart or speed up. It runs in a browser on a low-end phone, which is the bar I care about, and it makes Kepler's "farther means slower" something you feel instead of memorize.
+</Aside>
+
+## A couple of things people ask
+
+**Why isn't the tool drawn to real scale if scale is the whole point?**
+Because a phone screen cannot hold both ends at once. At true scale the inner planets vanish into a single dot and Neptune falls off the screen. So the picture uses a log scale to keep all eight visible, and the real distances sit in the table right below it. The honesty is in the numbers, not in the spacing of the dots.
+
+**If the Sun is 99 percent of the mass, what is everything else?**
+Mostly Jupiter. The giant planets hold the lion's share of what little mass is left over after the Sun, and the four small rocky worlds we live among barely register. The solar system is one star, a few big balls of gas and ice, and a scatter of rock and dust in a great deal of empty space.
+
+<Sources
+  items={[
+    { label: 'OpenStax, Astronomy 2e, Appendix F: Physical and Orbital Data for the Planets.', href: 'https://openstax.org/books/astronomy-2e/pages/f-physical-and-orbital-data-for-the-planets' },
+    { label: 'NASA Science, Our Solar System: Planets.', href: 'https://science.nasa.gov/solar-system/planets/' },
+    { label: 'NASA/JPL, Solar System Sizes and Distances (reference guide).', href: 'https://d2pn8kiwq2w21t.cloudfront.net/documents/scaless_reference_xJvjKH2.pdf' },
+    { label: 'NASA Science, The Sun.', href: 'https://science.nasa.gov/sun/' },
+    { label: 'PhET Interactive Simulations (CU Boulder), Gravity and Orbits.', href: 'https://phet.colorado.edu/en/simulations/gravity-and-orbits' },
+  ]}
+/>
+
+<Changelog
+  created="2026-06-11"
+  updated="2026-06-18"
+  entries={[
+    { date: "2026-06-18", note: "Re-toned into the house voice (origin-story open, misconception framing, FAQ); converted KaTeX to $...$; added a PhET tool credit; kept the distance chart and verified sources; added the Changelog block." },
+  ]}
+/>

@@ -1,23 +1,72 @@
-# The Ideal Gas Law: A Microscopic Deep Dive
+import { LineChart, Aside, Sources, Changelog } from '../../components/content'
 
-The Gas Laws simulator demonstrates the macro-level effects (Volume, Pressure, Temperature) of micro-level particle interactions. To truly understand why a balloon expands when heated, we must look at the variables mathematically and physically.
+# Why a balloon pushes back: reading the gas laws off the particles
 
-## Dissection of the Variables
+The first time I really understood the gas laws was not in a classroom. It was watching a half-empty bag of chips bought in Baguio puff up tight on the bus ride down to Manila. Nobody added air to the bag. So what pushed the sides out? I built the gas-properties tool to answer exactly that kind of question, because the formulas students are handed (P₁V₁ = P₂V₂ and the rest) tend to get memorized as letters to shuffle, when every one of them is really a count of what billions of invisible particles are doing against a wall.
 
-### 1. Pressure ($P$)
-- **Unit**: Pascals ($\text{Pa}$), Atmospheres ($\text{atm}$), or $\text{mmHg}$.
-- **What it actually is**: Pressure is not a "squeezing force". It is literally the sum of billions of tiny particle collisions against the wall of the container. Every time a gas molecule bounces off the piston, it exerts a microscopic force. The total force over the area of the piston equals the Pressure ($P = \frac{F}{A}$).
+Here is the misconception worth naming first. Pressure is not a gas "squeezing" outward the way a stretched spring pushes. There is no outward urge built into the gas. Pressure ($P$) is just the running total of particle collisions on a surface. Each molecule that smacks the wall delivers a tiny shove, and all those shoves spread over the area give you $P = \frac{F}{A}$. Get that one idea straight and the rest of the topic falls out of it almost for free.
 
-### 2. Volume ($V$)
-- **Unit**: Liters ($\text{L}$) or Cubic Meters ($\text{m}^3$).
-- **What it actually is**: The 3D space the gas is allowed to occupy. In the simulator, increasing the volume gives the particles more distance to travel before hitting a wall. This directly reduces the frequency of collisions, which is why **Boyle's Law** states that Volume and Pressure are inversely proportional ($P_1V_1 = P_2V_2$).
+## What the tool is counting, and why it does not cheat
 
-### 3. Temperature ($T$)
-- **Unit**: Kelvin ($\text{K}$). *(Note: Gas laws completely fail if you use Celsius, because 0 °C would result in impossible math!)*
-- **What it actually is**: Temperature is just the average kinetic energy (speed) of the particles. When you apply heat in the simulator, you are literally speeding up the particles. Faster particles hit the walls harder and more frequently. According to **Charles's Law**, if pressure is held constant, heating the gas must cause the volume to expand to handle the more violent collisions ($\frac{V_1}{T_1} = \frac{V_2}{T_2}$).
+The tool is honest in a way worth pointing out. It does not read pressure back out of a formula. It animates the particles bouncing off a piston and *measures* the pressure from the momentum each one delivers to the walls, then prints that number in atm. When you pause it, the readout switches to the value kinetic theory predicts, so you can check the live measurement against the clean math. Three readouts run along the bottom: pressure, volume (in container units), and temperature (in kelvin).
 
----
-*By combining all these variables, we arrive at the Ideal Gas Law:*
+You drive it by picking one of three laws. Each law pins two of the variables and lets you move a third.
+
+**Boyle's law** holds temperature constant and gives you a volume slider. Shrink the volume and each particle simply travels a shorter distance between wall hits, so the wall gets struck more often and the measured pressure climbs. That is the chips bag in reverse: squeeze the gas into less room and it pushes back harder.
+
+<LineChart
+  title="Boyle's law: halve the volume, double the pressure (one air sample, fixed T)"
+  unit=" psi"
+  xLabel="Volume (mL)"
+  yLabel="Pressure (psi)"
+  source="OpenStax, Chemistry 2e §9.2 (air sample, Fig. 9.13)"
+  series={[
+    {
+      name: 'Pressure',
+      color: 'berry',
+      points: [
+        { x: 7.5, y: 26 },
+        { x: 15.0, y: 13.0 },
+        { x: 30.0, y: 6.5 },
+      ],
+    },
+  ]}
+/>
+
+Notice the product $P \times V$ never moves: 7.5 × 26, 15 × 13, and 30 × 6.5 all land on about 195 psi·mL. That steady product is the fingerprint of an inverse relationship, and it is the same physics your lungs run on every few seconds. Your diaphragm enlarges your chest cavity, the pressure inside drops below the air outside, and air flows in to even things out.
+
+**Charles's law** swaps the volume slider for a temperature one and lets the piston slide so the pressure stays put. Heat the gas and you are literally speeding the particles up, so they would hit harder and more often, but the piston backs off to keep the collision rate balanced, and the gas expands instead. OpenStax's worked case is a tidy one to keep in your pocket: a 0.300 L sample of carbon dioxide warmed from 283 K to 303 K swells to 0.321 L, exactly the small bump the ratio $\frac{V_1}{T_1} = \frac{V_2}{T_2}$ predicts. **Gay-Lussac's law** is the third button: hold the volume fixed, heat the gas, and watch the measured pressure rise as faster particles hand more momentum to each wall.
+
+## Why Kelvin is not optional
+
+This is the step students break most, so I am going to be blunt about it. Gas-law arithmetic only works on the Kelvin scale, full stop. Try Charles's law at 0 °C in Celsius and you are dividing by zero, which the universe politely declines to do. The reason is physical, not bureaucratic: cool a real gas toward $-273.15$ °C and its extrapolated volume and pressure both head for zero, which is why that point is called absolute zero and why the Kelvin scale puts its 0 right there. Celsius parks its zero at the freezing point of water, a spot the molecules find completely arbitrary. So before any gas calculation, convert: $T_\text{K} = T_{°\text{C}} + 273.15$. I have watched otherwise perfect solutions fall apart entirely on this one missed step, which is why the tool's temperature slider is labelled in kelvin and nothing else.
+
+## The separate laws fold into one
+
+Boyle, Charles, Gay-Lussac, and Avogadro (volume and amount of gas) are not four unrelated rules to keep straight. Each just describes how two variables move while the others are held still, and they combine into a single statement that contains all of them:
+
 $$ PV = nRT $$
 
-*Where $n$ is the number of moles of gas, and $R$ is the ideal gas constant.*
+Here $n$ is the number of moles of gas and $R$ is the ideal gas constant, $8.314\ \text{J·mol}^{-1}\text{K}^{-1}$, a value [NIST now fixes exactly](https://physics.nist.gov/cgi-bin/cuu/Value?r). The word "ideal" is doing real work, and it is worth being straight with students about its limits. The equation assumes the particles take up no space of their own and never attract one another. That is close enough for classroom air at ordinary conditions and visibly wrong for a gas near the point where it would condense into a liquid. For everything the tool lets you do, though, $PV = nRT$ is the whole story: know any three of the four quantities and the fourth is fixed.
+
+<Aside variant="tool" title="PhET, Gas Properties" href="https://phet.colorado.edu/en/simulations/gas-properties" credit="PhET Interactive Simulations, CU Boulder">
+  Our tool keeps a tight focus on the three classic two-variable laws. PhET's Gas Properties is the sandbox version: you can pump particles in by hand, add or remove heat, and even split the box into a mix of light and heavy molecules. It is the better tool once a student wants to poke at the model rather than confirm a law.
+</Aside>
+
+<Sources
+  items={[
+    { label: 'OpenStax, Chemistry 2e §9.2: Relating Pressure, Volume, Amount, and Temperature: The Ideal Gas Law.', href: 'https://openstax.org/books/chemistry-2e/pages/9-2-relating-pressure-volume-amount-and-temperature-the-ideal-gas-law' },
+    { label: 'OpenStax, Chemistry 2e §9.1: Gas Pressure.', href: 'https://openstax.org/books/chemistry-2e/pages/9-1-gas-pressure' },
+    { label: 'NIST CODATA: Molar gas constant R.', href: 'https://physics.nist.gov/cgi-bin/cuu/Value?r' },
+    { label: 'PhET Interactive Simulations (University of Colorado Boulder): Gas Properties.', href: 'https://phet.colorado.edu/en/simulations/gas-properties' },
+  ]}
+/>
+
+<Changelog
+  created="2026-06-11"
+  updated="2026-06-18"
+  entries={[
+    { date: "2026-06-18", note: "Switched the Boyle's law chart from a bar chart to a LineChart with volume on the x-axis, so the inverse pressure-volume curve is visible." },
+    { date: "2026-06-18", note: "Re-toned into the house voice for Grades 9–10 (Baguio-to-Manila chips-bag open, pressure-is-collisions misconception); rewrote the tool description to match the three-law buttons and the measured-from-collisions pressure readout; kept the Boyle chart and verified sources; added PhET credit and the Changelog block." },
+  ]}
+/>

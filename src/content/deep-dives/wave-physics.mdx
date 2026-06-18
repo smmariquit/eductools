@@ -1,23 +1,78 @@
-# Wave Physics: Mechanical Interferences
+import { Table, Sources, Changelog } from '../../components/content'
 
-A wave is a disturbance that travels through a medium, transferring energy from one point to another without permanently displacing the medium itself. The 3D surface in this visualizer mathematically models the interference pattern of mechanical waves (like ripples in water).
+# Wave Physics: Why You Cannot Just Set the Speed
 
-## Dissection of the Variables
+When I first showed this wave tool to a science teacher, her first question was, "Where is the speed slider?" It is a fair thing to expect. There is a slider for how tall the wave is, one for how fast it wiggles, and one for how long each wave is, so surely there should be one for speed too. There is not, and the reason it is missing is the most important idea on the whole page. You do not get to set a wave's speed. The wave gets its speed from the string it is travelling on, and the tool computes it for you so it can never lie.
 
-### 1. Laki ng Alon / Amplitude ($A$)
-- **Unit**: Meters ($\text{m}$) or arbitrary units.
-- **What it actually is**: The maximum displacement of the medium from its equilibrium (rest) position. Physically, it represents the energy of the wave. Higher amplitude means a taller, more energetic wave (like a tsunami versus a puddle ripple).
+So let me start with what a wave even is. A wave is a disturbance that carries energy through a material without carrying the material along with it. Drop a stone into a still fishpond and the ripple races outward, but the water itself mostly bobs up and down and stays where it was. The visualizer shows this with a single wave travelling along a string. Watch the pink dot it draws on the string: as the wave passes, that dot only moves up and down, never sideways. The shape moves across the screen, the energy moves across the screen, but the bit of string the dot marks stays home.
 
-### 2. Dalas / Frequency ($f$)
-- **Unit**: Hertz ($\text{Hz}$), where $1\text{ Hz} = 1\text{ cycle per second}$.
-- **What it actually is**: How many wave cycles pass a fixed point in one second. High frequency means the waves are closely packed together (short wavelength). In the simulator math, this is represented by the wave number ($k$), which dictates the spatial frequency across the grid.
+## The three things you can actually change
 
-### 3. Bilis / Speed ($v$)
-- **Unit**: Meters per second ($\text{m/s}$).
-- **What it actually is**: The speed at which the wave propagation travels across the surface. In our equation, this relates to the angular frequency ($\omega$). The relationship between speed, frequency, and wavelength ($\lambda$) is a fundamental wave equation:
-  - $v = f \lambda$
+The tool gives you three sliders, and it is worth slowing down on each one.
 
-### The 3D Wave Equation
-The simulator calculates the height ($Z$) of every point on the mesh using a combined sine and cosine function modulated by time ($t$):
-$$ Z(x, y, t) = A \cdot \sin(kx + \omega t) \cdot \cos(ky + \omega t) $$
-This creates the complex, mesmerizing interference patterns you see, where waves crash into each other to create constructive and destructive interference.
+The first is the *laki ng alon*, or amplitude, which is just how far the string swings away from its resting line, measured in metres. Amplitude is the closest thing a wave has to a measure of energy, but the link is not a simple one-to-one. Wave energy grows with the square of the amplitude, so a wave twice as tall carries about four times the energy. That is the honest difference between a ripple in a puddle and a storm surge: not that one is a little bigger, but that the energy adds up much faster than the height does.
+
+The second is the *dalas*, or frequency, measured in hertz (Hz), where one hertz means one full wave cycle passing each second. Turn the frequency up and the wave wiggles faster.
+
+The third is the *haba ng alon*, or wavelength, written as $\lambda$ and measured in metres. The wavelength is the distance from one crest to the next, and the tool marks it with a little arrow on screen so you can see it directly.
+
+Now here is where the missing speed slider comes back. Those three are not free to do whatever they want, because for any wave the speed is locked to the frequency and wavelength by one short relation:
+
+$$ v = f \lambda $$
+
+The tool treats $v$ as something it calculates, never something you dial in. Set the frequency and the wavelength, and the speed is already decided. This is why pushing the frequency slider while the wavelength stays put makes the wave appear to move faster: you raised $f$, so $v = f\lambda$ went up too.
+
+## The medium decides the speed
+
+Here is the part students usually find backwards. Most people assume that if you shove a wave harder, it goes faster, the way a harder kick sends a ball farther. Waves do not work like that. The speed is mostly a property of the material the wave moves through, not of how hard you started it. A wave travels faster through a stiffer material that snaps back quickly, and slower through a floppier, heavier one. Sound is the everyday example, and the gap between materials is huge.
+
+<Table
+  title="Speed of sound through different media"
+  source="OpenStax, University Physics Vol. 1, Table 17.1 (gases at 0°C, liquids at 20°C)"
+  columns={['Medium', 'Speed of sound (m/s)', '× speed in air']}
+  align={['left', 'right', 'right']}
+  rows={[
+    ['Air', '331', '1.0'],
+    ['Water (fresh)', '1,480', '4.5'],
+    ['Steel', '5,960', '18'],
+  ]}
+/>
+
+Sound crawls through air at about 331 m/s at the freezing point, moves more than four times faster in water, and clears nearly 6,000 m/s in steel. Steel resists being squeezed and springs back almost instantly, so a disturbance hands itself from atom to atom right away, while air is loose and slow to recover. Notice what does not change much across these jumps: the frequency. When a sound crosses from air into water the pitch stays roughly the same, so with $v$ jumping up and $f$ holding steady, the wavelength has to stretch to keep $v = f\lambda$ balanced. The same rule the tool enforces on a string is the rule sound obeys when it crosses from one material into another.
+
+## What the wave is really doing on screen
+
+The visualizer is not faking the motion. It places the string with a height $y$ at every point $x$ along it, then nudges that height as time $t$ ticks forward, following this:
+
+$$ y(x, t) = A \sin\!\left(2\pi\left(\tfrac{x}{\lambda} - f t\right)\right) $$
+
+Do not let the symbols scare you. $A$ is the amplitude slider, $\lambda$ is the wavelength slider, $f$ is the frequency slider, and the $-f t$ part is what slides the whole shape to the right as time passes. Slide the amplitude and the wave grows taller everywhere at once. Slide the wavelength and the crests spread out or crowd together. The readouts below the canvas show the wave speed ($v = f\lambda$), the period ($T = 1/f$, the seconds for one full cycle), and the frequency, all kept in step so nothing on screen can ever break the rule. This is the same physics behind a guitar string's note and the ripples crossing a fishpond, just drawn one line at a time so you can watch it move.
+
+## A few questions I actually get
+
+**Why is there no speed slider?**
+Because speed is not yours to set. For any wave, $v = f\lambda$, so once you choose the frequency and the wavelength the speed is already fixed. The tool calculates it instead of letting you dial it, which is the honest way to show that the relationship cannot be broken.
+
+**Does a taller wave travel faster?**
+No. Amplitude changes how much energy the wave carries, not how fast it moves. On a given string the speed stays the same whether the wave is tall or shallow. Speed comes from the material, not from how hard you started the wave.
+
+**Why does the pink dot only move up and down?**
+Because this is a transverse wave, meaning the string moves at a right angle to the direction the wave travels. The shape and the energy move along the string, but each piece of string just bobs in place. That is the whole point of a wave: it moves energy without moving the material with it.
+
+<Sources
+  items={[
+    { label: 'OpenStax, University Physics Volume 1, 16.1 Traveling Waves.', href: 'https://openstax.org/books/university-physics-volume-1/pages/16-1-traveling-waves' },
+    { label: 'OpenStax, University Physics Volume 1, 17.2 Speed of Sound (Table 17.1).', href: 'https://openstax.org/books/university-physics-volume-1/pages/17-2-speed-of-sound' },
+    { label: 'PhET Interactive Simulations, Wave on a String (University of Colorado Boulder).', href: 'https://phet.colorado.edu/en/simulations/wave-on-a-string' },
+    { label: 'PhET Interactive Simulations, Waves Intro (University of Colorado Boulder).', href: 'https://phet.colorado.edu/en/simulations/waves-intro' },
+  ]}
+/>
+
+<Changelog
+  created="2026-06-11"
+  updated="2026-06-18"
+  entries={[
+    { date: "2026-06-18", note: "Switched the speed-of-sound chart from a bar chart to a Table (reference lookup data) and added a computed '× speed in air' column." },
+    { date: "2026-06-18", note: "Re-toned into the house voice and corrected the tool description to match the visualizer: a 1D transverse traveling wave with amplitude/frequency/wavelength sliders and derived speed v = fλ (was wrongly described as a 3D sin·cos interference mesh with a speed slider). Kept the speed-of-sound chart and verified sources; added the mandatory Changelog block." },
+  ]}
+/>

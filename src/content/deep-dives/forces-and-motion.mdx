@@ -1,25 +1,74 @@
-# Newton's Second Law: Jeepney Dynamics
+import { BarChart, Sources, Changelog } from '../../components/content'
 
-Newton's Second Law of Motion is arguably the most famous equation in classical mechanics. It states that the acceleration of an object is directly proportional to the net force acting on it and inversely proportional to its mass. We can observe this perfectly in the context of a Philippine Jeepney.
+# Newton's Laws and Friction: Jeepney Dynamics
 
-## Dissection of the Variables
+When I built the jeepney visualizer, the hardest decision was not the physics. It was friction. A jeepney pulling away from a stop runs all three of Newton's laws at once, and friction is the quiet partner that makes any of it possible and also the thing that fights the brakes at the corner. I wanted one slider to carry both jobs honestly. This writeup walks through what each knob in the tool is actually doing, and where the simple model stops and the real road begins.
 
-### 1. Pwersa / Net Force ($F$)
-- **Unit**: Newtons ($\text{N}$), where $1\text{ N} = 1\text{ kg}\cdot\text{m/s}^2$.
-- **What it actually is**: Force is an interaction that changes the motion of an object. In the simulator, the engine generates a forward mechanical force. A larger force (stepping harder on the gas pedal) results in a larger acceleration vector.
+The tool gives you three things to change. The applied force is the engine's push in newtons, from zero up to about 8,000 N. The mass runs from an empty jeepney near 1,500 kg to a packed one around 4,000 kg. The friction coefficient is a single road-resistance number, small by design, that stands in for rolling resistance and braking drag. The readouts then show the friction force, the net force, the resulting acceleration, and the velocity building over time. Everything you see falls out of one equation and one coefficient.
 
-### 2. Bigat / Mass ($m$)
-- **Unit**: Kilograms ($\text{kg}$).
-- **What it actually is**: Mass is a measure of an object's inertia, or its resistance to changes in motion. An empty Jeepney ($1500\text{ kg}$) is easy to accelerate. A fully loaded Jeepney ($4000\text{ kg}$ with passengers) possesses high inertia. This is why fully loaded vehicles struggle to speed up quickly.
+## The three laws, one jeepney
 
-### 3. Acceleration ($a$)
-- **Unit**: Meters per second squared ($\text{m/s}^2$).
-- **What it actually is**: The rate at which the Jeepney's velocity changes. According to the formula, $a = \frac{F}{m}$. If you double the force, the acceleration doubles. If you double the mass, the acceleration is cut in half.
+Newton's first law is the reason standing passengers lurch backward when the driver guns it. A body keeps its velocity, zero or otherwise, until a net force changes it, and the property that measures how stubbornly it resists that change is its mass, its inertia. Your body wants to stay put, the floor drags your feet forward, and the rest of you catches up a moment later.
 
-### 4. Velocity ($v$)
-- **Unit**: Meters per second ($\text{m/s}$).
-- **What it actually is**: The speed of the Jeepney in a specific direction. While acceleration is the *change* in speed, velocity is the actual speed at any given moment. It is the integral of acceleration over time:
-  - $v(t) = v_0 + at$
+The second law is the equation the simulator runs on:
 
----
-*Next time you're riding a fully loaded Jeepney, pay attention to how much longer it takes to reach top speed compared to when you are the only passenger. You are experiencing $F = ma$ in real life!*
+$$ \vec{F}_{net} = m\,\vec{a} $$
+
+Acceleration is proportional to the net force and inversely proportional to mass, so $a = F/m$. Double the engine force and the acceleration doubles. Double the load and it halves. An empty jeepney near $1500\text{ kg}$ jumps off the line, while the same engine pushing a packed $4000\text{ kg}$ jeepney produces noticeably less acceleration for the identical press of the pedal. That is exactly what the acceleration readout does when you drag the mass slider to the right and leave the force alone.
+
+The third law is the part people skip, because the force that actually moves the jeepney forward is not the engine. The engine turns the wheels, the tires push backward against the road, and the road pushes forward on the tires by the same amount in the opposite direction. No road grip, no forward push. That is the point where friction stops being a nuisance and becomes the thing doing the work.
+
+## Reading the variables
+
+Net force $F$ is measured in newtons, where $1\text{ N} = 1\text{ kg}\cdot\text{m/s}^2$, and it is the *net* of everything acting at once: engine drive minus road resistance. Mass $m$, in kilograms, is the inertia term. Acceleration $a$, in $\text{m/s}^2$, is the rate the velocity changes, and velocity $v$, in $\text{m/s}$, builds from it over time as $v(t) = v_0 + at$ whenever the force stays steady. One detail worth catching in the tool: if the applied force is smaller than the friction force, the net force reads zero and the jeepney never moves. That is static friction quietly cancelling the engine, the same reason a gentle push on a parked jeepney does nothing at all.
+
+## Friction is not the enemy here
+
+The misconception worth naming out loud is that friction is purely a brake, a tax on motion you would erase if you could. Erase it and the jeepney goes nowhere. The grip between rubber and road sets the ceiling on how hard the tires can push before they spin. That ceiling is the static friction force, $f_s \le \mu_s N$, where $N$ is the normal force (roughly the weight pressing the tires onto the road) and $\mu_s$ is a coefficient that depends entirely on the two surfaces in contact. Once a surface starts sliding, the relevant number drops to the kinetic coefficient $\mu_k$, which is why a braking tire that locks and skids actually grips worse than one still rolling.
+
+That traction ceiling is a different thing from the small resistance coefficient the tool's slider controls, and it pays to keep them apart. The slider models the drag that opposes motion. The coefficients below are the grip that decides how hard the tires can push before they break loose. Both are measured, approximate, and vary a lot with conditions, which is why textbooks quote them to only one or two digits. The spread is the part a driver should care about.
+
+<BarChart
+  title="Coefficient of static friction by surface pair"
+  max={1}
+  source="OpenStax, College Physics 2e, Table 5.1 (static friction)"
+  data={[
+    { label: 'Rubber on dry concrete', value: 1.0, color: 'leaf' },
+    { label: 'Rubber on wet concrete', value: 0.7, color: 'sky' },
+    { label: 'Steel on steel (dry)', value: 0.6, color: 'sunshine' },
+    { label: 'Wood on wood', value: 0.5, color: 'grape' },
+    { label: 'Shoes on ice', value: 0.1, color: 'berry' },
+    { label: 'Teflon on steel', value: 0.04, color: 'ink' },
+  ]}
+/>
+
+Rubber on dry concrete sits near $1.0$, which is most of why a dry road feels secure. Wet it down and the same tires lose about a third of their grip, dropping to roughly $0.7$, which is the entire argument for easing off the gas when it rains.
+
+## Putting it together
+
+Plug in a number. A $2000\text{ kg}$ jeepney whose tires manage $\mu_s = 0.8$ on dry concrete has a grip ceiling of about $f_s = 0.8 \times 2000 \times 9.8 \approx 15{,}700\text{ N}$, and dividing by the mass gives a top acceleration near $7.8\text{ m/s}^2$ before the wheels break loose. On a wet road at $\mu_s = 0.5$ that ceiling falls to roughly $4.9\text{ m/s}^2$. Same engine, same jeepney, very different launch, and all of it falls out of $F = ma$ and a single coefficient.
+
+## A few questions I actually get
+
+**The tool says the net force is zero but I have force applied. Why isn't it moving?**
+Because the applied force has not beaten the friction force yet. While the jeepney is at rest, static friction matches whatever you apply, up to its limit, so the net force stays zero and nothing happens. Push the force slider higher than the friction force and the jeepney finally moves.
+
+**Why does the visualizer's friction coefficient max out so low compared to the table?**
+They are two different uses of the word "coefficient." The slider is a small road-resistance number that opposes motion (rolling and braking drag). The table lists the static traction ceiling, the grip that lets the tires push off at all, which for rubber on dry concrete runs near $1.0$.
+
+<Sources
+  items={[
+    { label: 'OpenStax (2022). College Physics 2e, 4.3 Newton\u2019s Second Law of Motion.', href: 'https://openstax.org/books/college-physics-2e/pages/4-3-newtons-second-law-of-motion-concept-of-a-system' },
+    { label: 'OpenStax (2022). College Physics 2e, 5.1 Friction (Table 5.1, coefficients of friction).', href: 'https://openstax.org/books/college-physics-2e/pages/5-1-friction' },
+    { label: 'HyperPhysics, Georgia State University. Newton\u2019s Laws of Motion.', href: 'http://hyperphysics.phy-astr.gsu.edu/hbase/newt.html' },
+    { label: 'PhET Interactive Simulations, University of Colorado Boulder. Forces and Motion: Basics.', href: 'https://phet.colorado.edu/en/simulations/forces-and-motion-basics' },
+  ]}
+/>
+
+<Changelog
+  created="2026-06-11"
+  updated="2026-06-18"
+  entries={[
+    { date: "2026-06-18", note: "Re-toned into the house voice; aligned the tool walkthrough with the current three-slider build (force, mass, road-resistance coefficient) and its readouts; clarified the slider's resistance coefficient vs. the traction ceiling in the chart; added an FAQ and the Changelog block. Kept all figures and verified sources." },
+  ]}
+/>

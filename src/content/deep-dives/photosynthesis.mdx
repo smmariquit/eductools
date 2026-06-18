@@ -1,48 +1,55 @@
-# Photosynthesis: Unlocking the Mechanics of Plant Biomass
+import { Sources, Changelog } from '../../components/content'
 
-If you ask anyone on the street where a tree gets its mass from, they'll probably point at the dirt. It makes sense, right? We eat solid food to grow, so plants must eat the soil they sit in. 
+# Photosynthesis: where a tree's mass actually comes from
 
-This intuition is incredibly common, but it's completely wrong. 
+Ask most people where a tree gets its bulk and they will point at the soil. It is a reasonable guess. We grow by eating solid food, so it follows that a plant must be eating the ground it stands in. The guess is also wrong, and the experiment that disproved it is almost four centuries old. I built the tool that goes with this writeup around two questions a static diagram never really answers: where does the wood actually come from, and why does a plant on a bright, well-watered day still sometimes refuse to grow any faster.
 
-## The Van Helmont Paradox
+## The Van Helmont willow
 
-Back in 1648, Jan Baptista van Helmont decided to test this "plants eat dirt" theory. He took a willow sapling weighing exactly 5 pounds and planted it in a pot containing exactly 200 pounds of thoroughly dried soil. For five years, he added absolutely nothing but water.
+In the 1640s the Flemish physician Jan Baptista van Helmont set out to test the soil idea properly. He planted a willow sapling of about 5 pounds in a pot holding 200 pounds of oven-dried soil, covered the pot so no stray dirt could blow in, and for five years gave it nothing but water. At the end he pulled the tree out and weighed it: roughly 169 pounds. Then he dried the soil again. It had lost barely two ounces.
 
-When he pulled the tree out five years later, it had grown to a massive 169 pounds. 
+Van Helmont concluded that the new wood had come from the water, which was half right and was about as far as anyone could get without knowing that air is made of anything. The missing 164 pounds did not come from the soil and did not all come from the water either. Most of it was pulled out of the air. The Van Helmont Mass Balance view in the tool reruns his five years on fast-forward: the plant's biomass climbs while the dry-soil figure barely twitches, which is the whole point made visible.
 
-But here's the crazy part: when he dried and re-weighed the soil in the pot, it had lost barely two ounces. The tree hadn't consumed the soil at all. 
+Through carbon fixation, a leaf takes in atmospheric carbon dioxide, strips out the carbon, and uses it to build glucose and then cellulose, the structural sugar that makes up most of the dry weight of wood. The narra or acacia shading a schoolyard is, in a literal sense, assembled mostly from a gas. The overall reaction is the one every Grade 7 learner eventually copies into a notebook:
 
-While van Helmont thought the extra 164 pounds came strictly from the water he added, we now know the truth is way cooler: **plant mass is materialized out of thin air.** 
+$$ 6\,CO_2 + 6\,H_2O \;\xrightarrow{\text{light}}\; C_6H_{12}O_6 + 6\,O_2 $$
 
-Through carbon fixation, plants absorb atmospheric Carbon Dioxide (CO₂), strip away the Carbon atoms, and use them to physically build solid glucose and cellulose. That massive Narra tree outside your window? It's basically constructed from invisible gas.
+Six molecules of carbon dioxide and six of water, driven by light, become one of glucose and six of oxygen. The oxygen is, from the plant's point of view, a waste product. It is also most of the reason we are here.
 
-## Microscopic Gatekeepers: Stomatal Gas Exchange
+## The gates in the leaf: stomatal gas exchange
 
-To actually harvest that invisible carbon, plants rely on microscopic pores called *stomata*, mostly found underneath their leaves. These pores are guarded by two specialized "Guard Cells."
+A leaf cannot fix carbon it cannot reach, and the carbon is outside. To get at it, plants rely on microscopic pores called *stomata*, concentrated on the shaded underside of most leaves. Each pore sits between two guard cells that open and close it.
 
-Think of guard cells like tiny hydraulic doors. When the plant has plenty of water and sunlight, the cells pump in potassium ions. Water follows via osmosis, causing the cells to swell up and bow outward. This pops the pore open.
+The mechanism is hydraulic rather than muscular. When water and light are plentiful, the guard cells actively pump in potassium ions; water follows by osmosis, the cells swell and bow apart, and the pore gapes open. Carbon dioxide diffuses in while oxygen and water vapour diffuse out. The same opening that lets carbon in lets water escape, and that trade-off is the whole problem. In a drought the plant has to choose between keeping the stomata open to keep feeding, at the risk of drying out, or sealing them shut to conserve water and starving its own photosynthesis in the process. Plants in hot, dry conditions tend to err toward closing, which is one reason growth slows long before a plant visibly wilts.
 
-Once the gateway is open, CO₂ rushes in, while Oxygen (O₂) and water vapor rush out. 
+## Limiting factors: why the rate hits a ceiling
 
-But if the soil dries up, the plant is forced to make a brutal choice. It can keep the stomata open to keep harvesting carbon (and risk dehydrating to death), or it can slam the doors shut to save water—halting photosynthesis completely.
+Photosynthesis is not a dial you can turn up without end. It runs at the speed set by whatever resource is scarcest at that moment, an idea usually credited to F. F. Blackman and known as the law of limiting factors. The tool's other view, Stomatal Gas Exchange, hands you three sliders (light, carbon dioxide, and soil water) and a running net rate, so you can hunt for the bottleneck yourself: push light to the ceiling and the rate still stalls if the carbon dioxide slider is low. Two factors dominate that model.
 
-## The Math Behind the Magic: Blackman's Law
+Light is the first. In dim conditions, adding light raises the rate more or less in proportion: more photons, more reactions. But the photosynthetic machinery has a fixed throughput, and once it saturates, extra light does nothing. The rate flattens into a plateau. The visualizer models that curve with a non-rectangular hyperbola, which bends from the initial straight-line response into the ceiling set by the leaf's quantum yield.
 
-Photosynthesis isn't a magic dial you can just turn up infinitely. It's strictly governed by **Blackman's Law of Limiting Factors**. The rule is simple: a biological process is bottlenecked by whichever resource is in shortest supply.
+Carbon dioxide is the second, and it can be limiting even under blinding light. The enzyme that grabs CO₂, Rubisco, can only work as fast as carbon arrives. We model that dependence with Michaelis–Menten kinetics, the standard description of an enzyme whose rate climbs with substrate concentration and then levels off as the enzyme saturates:
 
-### Light Limitation (Non-Rectangular Hyperbola)
-If you're in a dim room and start turning up the lights, photosynthesis speeds up linearly. But eventually, the chloroplasts hit their maximum processing speed. No matter how much brighter you make the lights, the rate hits a hard ceiling. In our visualizer, we model this plateau using a Non-Rectangular Hyperbola equation that factors in the leaf's quantum yield.
+$$ v = \frac{V_{max}\,[CO_2]}{K_m + [CO_2]} $$
 
-### $CO_2$ Limitation (Michaelis-Menten Kinetics)
-Even if you blast the plant with blinding sunlight, it can't build anything if the Rubisco enzyme runs out of carbon to stitch together. We apply Michaelis-Menten kinetic modeling to restrict the photosynthetic speed based on exactly how much atmospheric carbon dioxide is available. 
+Here $V_{max}$ is the ceiling rate and $K_m$ is the CO₂ concentration at which the reaction runs at half that ceiling. The shape is the same plateau again: double the carbon when carbon is scarce and the rate climbs; double it when Rubisco is already saturated and almost nothing happens. Whichever factor is in shortest supply is the one setting the speed, which is exactly the point Blackman was making.
 
----
-*Legend for the Visualizer:* Red dots = Oxygen (O₂). Grey dots = Carbon Dioxide (CO₂).
+In the Stomatal Gas Exchange view you can watch that trade-off directly. The two green guard cells swing apart as water and light rise, and particles stream through the gap: grey dots are the carbon dioxide (CO₂) coming in, red dots the oxygen (O₂) heading out. Drag the water slider down and the pore closes, the particles stop, and the net rate drops to zero no matter how bright you make the light.
 
-## Further Exploration (External Sources)
+<Sources
+  items={[
+    { label: 'OpenStax, Biology 2e: 8.1 Overview of Photosynthesis.', href: 'https://openstax.org/books/biology-2e/pages/8-1-overview-of-photosynthesis' },
+    { label: 'OpenStax, Biology 2e: 8.2 The Light-Dependent Reactions of Photosynthesis.', href: 'https://openstax.org/books/biology-2e/pages/8-2-the-light-dependent-reactions-of-photosynthesis' },
+    { label: 'PhET Interactive Simulations (CU Boulder): Molecules and Light.', href: 'https://phet.colorado.edu/en/simulations/molecules-and-light' },
+    { label: 'LabXchange (Harvard): Diffusion and Osmosis simulation.', href: 'https://www.labxchange.org/library/items/lb:LabXchange:153e34b1:lx_simulation:1' },
+    { label: 'Jon Darkow: Dynamics of Photosynthesis (system-dynamics simulation).', href: 'https://sites.google.com/site/biologydarkow/metabolism/photosynthesis-simulation' },
+  ]}
+/>
 
-If you want to dig deeper into the mechanics of photosynthesis, check out these excellent tools and simulations:
-
-- [PhET Interactive Simulations - Molecules and Light](https://phet.colorado.edu/en/simulations/molecules-and-light): Explore how different wavelengths of light physically interact with atmospheric gases.
-- [LabXchange - Diffusion and Osmosis](https://www.labxchange.org/library/items/lb:LabXchange:153e34b1:lx_simulation:1): A detailed look at how water and gases move across cellular membranes, just like in stomatal gas exchange.
-- [Jon Darkow - Dynamics of Photosynthesis](https://sites.google.com/site/biologydarkow/metabolism/photosynthesis-simulation): An advanced system-dynamics simulation for high school students looking to manipulate ATP and NADPH cycles mathematically.
+<Changelog
+  created="2026-06-11"
+  updated="2026-06-18"
+  entries={[
+    { date: "2026-06-18", note: "Brought fully to spec: tied prose to the tool's two views and three sliders, confirmed the CO₂/O₂ legend matches the current canvas, verified all sources live, added the Changelog block." },
+  ]}
+/>

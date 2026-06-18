@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import React, { lazy, Suspense, type ComponentType } from 'react';
 import AdUnit from '../components/AdUnit';
-import { blogPosts } from '../data/blogPosts';
+import { blogPosts, DEFAULT_AUTHOR } from '../data/blogPosts';
 
 // Map all MDX files using Vite's import.meta.glob (multi-pattern support)
 const mdxComponents = import.meta.glob([
@@ -47,22 +47,40 @@ const BlogPost = () => {
       </div>
       
       <article className="prose prose-lg dark:prose-invert max-w-none bg-base-100 p-8 md:p-12 rounded-2xl shadow-xl border border-base-200">
-        <div className="flex items-center gap-3 mb-8 pb-8 border-b border-base-200 not-prose">
-          <div className="avatar">
-            <div className="w-10 h-10 rounded-full border border-base-300 shadow-sm overflow-hidden">
-              <img src="/team/author.jpg" alt="Simonee Ezekiel Mariquit" className="w-full h-full object-cover" />
+        {(() => {
+          const author = post.author ?? DEFAULT_AUTHOR;
+          return (
+            <div className="flex items-center gap-3 mb-8 pb-8 border-b border-base-200 not-prose">
+              <div className="avatar">
+                <div className="w-10 h-10 rounded-full border border-base-300 shadow-sm overflow-hidden">
+                  <img src={author.avatar ?? DEFAULT_AUTHOR.avatar} alt={author.name} className="w-full h-full object-cover" />
+                </div>
+              </div>
+              <div>
+                {author.url ? (
+                  <a href={author.url} target="_blank" rel="noopener noreferrer" className="font-bold text-base-content hover:text-primary transition-colors">
+                    {author.name}
+                  </a>
+                ) : (
+                  <span className="font-bold text-base-content">{author.name}</span>
+                )}
+                <p className="text-sm text-base-content/60 m-0">{post.date}</p>
+              </div>
             </div>
-          </div>
-          <div>
-            <a href="https://stimmie.dev" target="_blank" rel="noopener noreferrer" className="font-bold text-base-content hover:text-primary transition-colors">
-              Simonee Ezekiel Mariquit
-            </a>
-            <p className="text-sm text-base-content/60 m-0">{post.date}</p>
-          </div>
-        </div>
+          );
+        })()}
         
         <Suspense fallback={<div className="flex justify-center p-12"><span className="loading loading-spinner loading-lg"></span></div>}>
-          {contentComponent ? React.createElement(contentComponent) : <p>Loading content...</p>}
+          {contentComponent ? (
+            React.createElement(contentComponent)
+          ) : (
+            <div className="not-prose text-center py-8">
+              <p className="text-base-content/80">This article file is missing. If you were looking for a tool writeup, open the visualizer instead.</p>
+              {post.toolId && (
+                <Link to={`/visualizer/${post.toolId}`} className="btn btn-primary mt-4">Open the visualizer</Link>
+              )}
+            </div>
+          )}
         </Suspense>
       </article>
 

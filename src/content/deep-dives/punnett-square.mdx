@@ -1,3 +1,51 @@
-# Genetics and the Punnett Square: Traits of Local Flora
+import { DonutChart, Sources, Changelog } from '../../components/content'
 
-Students can cross-pollinate virtual local flowers to see how dominant and recessive alleles express themselves across generations.
+# The Punnett square: predicting traits before the seeds sprout
+
+Cross two red gumamela and you might get red, and you might not. The reason a child can have a trait neither visible parent shows, or why two purebred plants give a tidy mix in the next generation, was worked out in the 1860s by Gregor Mendel counting pea plants in a monastery garden. The square that bears Reginald Punnett's name is just a bookkeeping grid for Mendel's logic: a way to lay out every combination of alleles the offspring could inherit and read off the odds. The tool runs exactly this for gumamela flower colour: pick a genotype for each parent, watch the tool split each one into gametes, and read the genotype and phenotype ratios straight off the filled grid. The grid is worth understanding by hand first, though.
+
+## Alleles, dominant and recessive
+
+Start with the vocabulary, because the whole topic collapses into confusion without it. A gene is the instruction for a trait, and most genes come in alternate versions called alleles. A diploid organism carries two alleles for each gene, one from each parent. If the two copies match, the organism is homozygous for that gene; if they differ, it is heterozygous.
+
+When the two alleles differ, they do not always blend. Often one is dominant: a single copy is enough to show its effect, and it conventionally gets a capital letter. In the tool, *R* is the red gumamela allele and it is dominant. The other is recessive, written lowercase (*r* for white), and it only shows up when an organism inherits two copies. That distinction explains the trait that "skips." A heterozygous *Rr* plant looks red, exactly like a homozygous *RR* plant, but it quietly carries the white allele and can pass it on. The genotype (the alleles present, *RR*, *Rr*, or *rr*) and the phenotype (what you can actually see) are not the same thing, and keeping them separate is most of the battle.
+
+## Reading a cross: the 3:1 and the 9:3:3:1
+
+A Punnett square puts one parent's possible gametes along the top and the other's down the side, then fills each box with the pair that would result. Cross two heterozygotes, *Rr* × *Rr*, and the 2×2 grid gives one *RR*, two *Rr*, and one *rr*. Because *RR* and *Rr* both bloom red, three of the four boxes show the dominant phenotype and one shows the recessive. That is the classic 3:1 ratio: about three red gumamela to one white. It is also the cross the tool opens on, and its ratio panel reads it both ways at once, 1:2:1 by genotype and 3:1 by phenotype. Note the word about. The square gives probabilities, not a guarantee; cross four plants and you will not reliably get exactly three red and one white, any more than four coin flips reliably give two heads. The ratio only emerges cleanly across hundreds or thousands of offspring, which is why Mendel grew so many.
+
+The tool stops at a single gene, but the same logic scales straight up. Track two traits at once, as Mendel did in his peas, and the grid grows to 4×4. Cross a plant heterozygous for both seed shape and seed colour (*RrYy* × *RrYy*, where *R* now stands for round seeds and *Y* for yellow) and the 16 boxes sort into a 9:3:3:1 phenotype ratio: nine showing both dominant traits, three and three showing one of each, and a single box showing both recessive traits together. The chart below shows that breakdown.
+
+<DonutChart
+  title="Expected F2 phenotypes from a dihybrid cross (out of 16 offspring)"
+  source="OpenStax, Biology 2e, §12.3 Laws of Inheritance"
+  data={[
+    { label: 'Round, yellow', value: 9, color: 'sunshine' },
+    { label: 'Round, green', value: 3, color: 'leaf' },
+    { label: 'Wrinkled, yellow', value: 3, color: 'berry' },
+    { label: 'Wrinkled, green', value: 1, color: 'grape' },
+  ]}
+/>
+
+That 9:3:3:1 is really just two independent 3:1 ratios multiplied together, which is Mendel's law of independent assortment in action: the allele a gamete gets for colour has nothing to do with the one it gets for shape. The probability of any specific combination is the product of the separate odds, so round-and-yellow works out to $\tfrac{3}{4} \times \tfrac{3}{4} = \tfrac{9}{16}$, and both-recessive to $\tfrac{1}{4} \times \tfrac{1}{4} = \tfrac{1}{16}$.
+
+A caution worth keeping: this clean arithmetic assumes simple dominance and genes on separate chromosomes. Plenty of real traits, including most of the interesting ones in Philippine garden flowers, involve several genes, incomplete dominance, or linkage, and they do not give 3:1 at all. The Punnett square is the right starting model, not the whole story.
+
+<Sources
+  items={[
+    { label: 'OpenStax, Biology 2e: 12.1 Mendel\u2019s Experiments and the Laws of Probability.', href: 'https://openstax.org/books/biology-2e/pages/12-1-mendels-experiments-and-the-laws-of-probability' },
+    { label: 'OpenStax, Biology 2e: 12.3 Laws of Inheritance.', href: 'https://openstax.org/books/biology-2e/pages/12-3-laws-of-inheritance' },
+    { label: 'NHGRI Talking Glossary of Genomic and Genetic Terms: Allele.', href: 'https://www.genome.gov/genetics-glossary/Allele' },
+    { label: 'NHGRI Talking Glossary of Genomic and Genetic Terms: Dominant.', href: 'https://www.genome.gov/genetics-glossary/Dominant' },
+    { label: 'NHGRI Talking Glossary of Genomic and Genetic Terms: Recessive.', href: 'https://www.genome.gov/genetics-glossary/Recessive' },
+  ]}
+/>
+
+<Changelog
+  created="2026-06-11"
+  updated="2026-06-18"
+  entries={[
+    { date: "2026-06-18", note: "Switched the 9:3:3:1 dihybrid phenotype chart from a bar chart to a DonutChart, since it is a breakdown of the 16 offspring out of a whole." },
+    { date: "2026-06-18", note: "Aligned the worked monohybrid example to the tool's gumamela red/white cross and its genotype/phenotype ratio panel; framed the dihybrid 9:3:3:1 as a Mendel-peas extension beyond the single-gene tool; converted inline math to KaTeX dollar delimiters; verified sources live; added the Changelog block." },
+  ]}
+/>

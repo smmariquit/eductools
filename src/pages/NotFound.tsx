@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
+import { CrayonArt } from '../components/crayon';
 
 const NotFound = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] text-center p-8">
+      <CrayonArt name="rocket" size={120} animate="draw" className="mb-2" />
       <h1 className="text-8xl font-extrabold text-primary mb-4">404</h1>
       <h2 className="text-2xl font-bold text-base-content mb-2">Page Not Found</h2>
       <p className="text-base-content/60 mb-8 max-w-md">

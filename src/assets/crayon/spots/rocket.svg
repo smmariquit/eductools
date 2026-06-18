@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <path class="crayon-fill-paper" d="M50 14 Q66 30 66 54 Q66 62 60 66 L40 66 Q34 62 34 54 Q34 30 50 14 Z"/>
+  <path class="crayon-draw crayon-stroke-ink" pathLength="1" d="M50 14 Q66 30 66 54 Q66 62 60 66 L40 66 Q34 62 34 54 Q34 30 50 14 Z" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle class="crayon-fill-sky" cx="50" cy="42" r="8"/>
+  <circle class="crayon-draw crayon-stroke-ink" pathLength="1" cx="50" cy="42" r="8" stroke-width="4"/>
+  <path class="crayon-fill-berry" d="M34 56 Q24 60 24 74 Q33 70 40 66 Z"/>
+  <path class="crayon-fill-berry" d="M66 56 Q76 60 76 74 Q67 70 60 66 Z"/>
+  <path class="crayon-draw crayon-stroke-ink" pathLength="1" d="M34 56 Q24 60 24 74 Q33 70 40 66 M66 56 Q76 60 76 74 Q67 70 60 66" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path class="crayon-draw crayon-stroke-sunshine" pathLength="1" d="M44 70 Q42 80 46 88 M56 70 Q58 80 54 88 M50 70 L50 92" stroke-width="4.4" stroke-linecap="round"/>
+</svg>

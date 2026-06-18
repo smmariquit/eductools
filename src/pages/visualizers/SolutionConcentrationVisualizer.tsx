@@ -1,10 +1,13 @@
 import { useState, useRef, useEffect } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
 
 const SolutionConcentrationVisualizer = () => {
   const [soluteMass, setSoluteMass] = useState(10); // grams
   const [solventVolume, setSolventVolume] = useState(100); // mL
   const [soluteType, setSoluteType] = useState<'salt' | 'sugar'>('salt');
+  const fields = useTouchedFields<'solute' | 'mass' | 'volume'>();
+  const ready = fields.isTouched('solute') && fields.isTouched('mass') && fields.isTouched('volume');
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animFrameRef = useRef<number>(0);
   const particlesRef = useRef<{ x: number; y: number; vy: number; settled: boolean; opacity: number }[]>([]);
@@ -13,10 +16,18 @@ const SolutionConcentrationVisualizer = () => {
   const solubility = soluteType === 'salt' ? 36 : 200;
   const soluteLabel = soluteType === 'salt' ? 'Asin (NaCl)' : 'Asukal (C₁₂H₂₂O₁₁)';
 
-  // Calculate concentration
-  const totalMass = soluteMass + solventVolume; // approx: 1mL water ≈ 1g
+  // Densities (g/mL) so we never silently treat millilitres as grams.
+  const WATER_DENSITY = 1.0;
+  const soluteDensity = soluteType === 'salt' ? 2.16 : 1.59;
+
+  // Calculate concentration.
+  // Solution MASS = mass of solute + mass of solvent (water: volume × density).
+  const solventMass = solventVolume * WATER_DENSITY; // g
+  const totalMass = soluteMass + solventMass; // g (mass of the whole solution)
   const percentByMass = (soluteMass / totalMass) * 100;
-  const percentByVolume = (soluteMass / solventVolume) * 100; // simplified
+  // %m/v = mass of solute / volume of SOLUTION (solvent + dissolved solute), as g/100mL.
+  const solutionVolume = solventVolume + soluteMass / soluteDensity; // mL
+  const percentByVolume = (soluteMass / solutionVolume) * 100;
   const dissolvedMass = Math.min(soluteMass, (solubility * solventVolume) / 100);
   const undissolvedMass = Math.max(0, soluteMass - dissolvedMass);
   const isSaturated = soluteMass >= (solubility * solventVolume) / 100;
@@ -29,6 +40,70 @@ const SolutionConcentrationVisualizer = () => {
   };
 
   const status = getSolutionStatus();
+
+  const reset = () => {
+    setSoluteMass(10);
+    setSolventVolume(100);
+    setSoluteType('salt');
+    fields.reset();
+  };
+
+  const fillExample = () => {
+    setSoluteType('salt');
+    setSoluteMass(10);
+    setSolventVolume(100);
+    fields.touchAll(['solute', 'mass', 'volume']);
+  };
+
+  const solutePicker = (
+    <>
+      <div className="flex gap-2">
+        <button onClick={() => { setSoluteType('salt'); fields.touch('solute'); }} className={`btn flex-1 btn-sm ${soluteType === 'salt' ? 'btn-primary' : 'btn-outline'}`}>
+          🧂 Asin (NaCl)
+        </button>
+        <button onClick={() => { setSoluteType('sugar'); fields.touch('solute'); }} className={`btn flex-1 btn-sm ${soluteType === 'sugar' ? 'btn-primary' : 'btn-outline'}`}>
+          🍬 Asukal
+        </button>
+      </div>
+      <div className="text-xs text-base-content/50 mt-1">
+        Solubility: {solubility}g per 100mL
+      </div>
+    </>
+  );
+
+  const massSlider = (
+    <div>
+      <label htmlFor="solute-mass" className="flex justify-between mb-2 font-semibold text-sm">
+        <span>Mass ng {soluteLabel}</span>
+        <span className="text-primary">{soluteMass}g</span>
+      </label>
+      <input
+        id="solute-mass"
+        type="range" min="0" max="80" step="1"
+        value={soluteMass}
+        onChange={(e) => { setSoluteMass(Number(e.target.value)); fields.touch('mass'); }}
+        className="range range-primary range-sm"
+        aria-valuetext={`${soluteMass} grams of solute`}
+      />
+    </div>
+  );
+
+  const volumeSlider = (
+    <div>
+      <label htmlFor="solvent-volume" className="flex justify-between mb-2 font-semibold text-sm">
+        <span>Volume ng Tubig</span>
+        <span className="text-secondary">{solventVolume} mL</span>
+      </label>
+      <input
+        id="solvent-volume"
+        type="range" min="50" max="200" step="10"
+        value={solventVolume}
+        onChange={(e) => { setSolventVolume(Number(e.target.value)); fields.touch('volume'); }}
+        className="range range-secondary range-sm"
+        aria-valuetext={`${solventVolume} millilitres of water`}
+      />
+    </div>
+  );
 
   // Initialize particles when solute mass changes
   useEffect(() => {
@@ -56,11 +131,18 @@ const SolutionConcentrationVisualizer = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    const BEAKER_CAPACITY = 250; // mL — full beaker
+
     const animate = () => {
       const w = canvas.width;
       const h = canvas.height;
-      const waterLevel = 60;
-      const waterHeight = h - waterLevel - 20;
+      const beakerTop = 20;
+      const beakerBottom = h - 15;
+      const usableHeight = beakerBottom - beakerTop;
+      // Liquid surface height is tied directly to the solvent-volume slider.
+      const fillFraction = Math.min(1, solventVolume / BEAKER_CAPACITY);
+      const waterLevel = beakerBottom - fillFraction * usableHeight; // y of surface
+      const waterHeight = beakerBottom - waterLevel;
 
       ctx.clearRect(0, 0, w, h);
 
@@ -98,15 +180,19 @@ const SolutionConcentrationVisualizer = () => {
       ctx.fillStyle = `rgba(${waterR}, ${waterG}, ${waterB}, ${waterAlpha})`;
       ctx.fillRect(53, waterLevel, w - 106, waterHeight);
 
-      // Measurement marks
-      ctx.fillStyle = '#475569';
+      // Fixed graduation marks (mL) — a real volume scale, independent of fill.
+      ctx.fillStyle = '#94a3b8';
       ctx.font = '10px Inter, system-ui';
       ctx.textAlign = 'right';
-      for (let i = 0; i <= 5; i++) {
-        const y = waterLevel + (waterHeight / 5) * i;
+      for (let v = 0; v <= BEAKER_CAPACITY; v += 50) {
+        const y = beakerBottom - (v / BEAKER_CAPACITY) * usableHeight;
         ctx.fillRect(50, y, 8, 1);
-        ctx.fillText(`${100 - i * 20}`, 46, y + 4);
+        ctx.fillText(`${v}`, 46, y + 4);
       }
+      // Surface label showing current volume
+      ctx.fillStyle = '#38bdf8';
+      ctx.textAlign = 'left';
+      ctx.fillText(`${solventVolume} mL`, w - 80, waterLevel - 4);
 
       // Undissolved solute at bottom
       if (undissolvedMass > 0) {
@@ -176,6 +262,18 @@ const SolutionConcentrationVisualizer = () => {
       adSlotId="2010"
       guideLink="/blog/solution-concentration"
     >
+      {!ready ? (
+        <GuidedInputFlow
+          intro="Pick a solute, then set how much solute and water you mix to see the concentration and saturation."
+          onFillExample={fillExample}
+          onReset={reset}
+          steps={[
+            { id: 'solute', title: 'Pick a solute', helper: 'Salt or sugar. Sets the solubility limit.', complete: fields.isTouched('solute'), children: solutePicker },
+            { id: 'mass', title: 'Set the solute mass', helper: '0 to 80 g.', complete: fields.isTouched('mass'), children: massSlider },
+            { id: 'volume', title: 'Set the water volume', helper: '50 to 200 mL.', complete: fields.isTouched('volume'), children: volumeSlider },
+          ]}
+        />
+      ) : (
       <div className="card bg-base-100 shadow-xl border border-base-200">
         <div className="card-body p-6 md:p-8 flex flex-col lg:flex-row gap-8">
           {/* Canvas */}
@@ -194,7 +292,7 @@ const SolutionConcentrationVisualizer = () => {
                 <div className="text-xl font-bold font-mono text-primary">{percentByMass.toFixed(1)}%</div>
               </div>
               <div className="text-center p-3 rounded-lg bg-base-200 border border-base-300">
-                <div className="text-xs uppercase tracking-wider font-bold text-base-content/60">% by Volume</div>
+                <div className="text-xs uppercase tracking-wider font-bold text-base-content/60">% m/v</div>
                 <div className="text-xl font-bold font-mono text-secondary">{percentByVolume.toFixed(1)}%</div>
               </div>
               <div className="text-center p-3 rounded-lg bg-base-200 border border-base-300">
@@ -212,58 +310,32 @@ const SolutionConcentrationVisualizer = () => {
           <div className="w-full lg:w-72 flex flex-col gap-6 bg-base-200 p-6 rounded-xl border border-base-300">
             <div>
               <label className="block mb-2 font-bold text-base-content text-sm">Solute (Natutunaw):</label>
-              <div className="flex gap-2">
-                <button onClick={() => setSoluteType('salt')} className={`btn flex-1 btn-sm ${soluteType === 'salt' ? 'btn-primary' : 'btn-outline'}`}>
-                  🧂 Asin (NaCl)
-                </button>
-                <button onClick={() => setSoluteType('sugar')} className={`btn flex-1 btn-sm ${soluteType === 'sugar' ? 'btn-primary' : 'btn-outline'}`}>
-                  🍬 Asukal
-                </button>
-              </div>
-              <div className="text-xs text-base-content/50 mt-1">
-                Solubility: {solubility}g per 100mL
-              </div>
+              {solutePicker}
             </div>
 
-            <div>
-              <label className="flex justify-between mb-2 font-semibold text-sm">
-                <span>Mass ng {soluteLabel}</span>
-                <span className="text-primary">{soluteMass}g</span>
-              </label>
-              <input
-                type="range" min="0" max="80" step="1"
-                value={soluteMass}
-                onChange={(e) => setSoluteMass(Number(e.target.value))}
-                className="range range-primary range-sm"
-              />
-            </div>
+            {massSlider}
 
-            <div>
-              <label className="flex justify-between mb-2 font-semibold text-sm">
-                <span>Volume ng Tubig</span>
-                <span className="text-secondary">{solventVolume} mL</span>
-              </label>
-              <input
-                type="range" min="50" max="200" step="10"
-                value={solventVolume}
-                onChange={(e) => setSolventVolume(Number(e.target.value))}
-                className="range range-secondary range-sm"
-              />
-            </div>
+            {volumeSlider}
 
             {/* Formula display */}
             <div className="bg-base-100 p-4 rounded-lg border border-base-300 space-y-2">
               <div className="text-xs font-bold text-base-content/60 uppercase tracking-wider">Formula</div>
               <div className="text-sm font-mono">
-                <span className="text-primary">%m/m</span> = <span className="text-base-content/80">{soluteMass}g</span> / <span className="text-base-content/80">{totalMass.toFixed(0)}g</span> × 100
+                <span className="text-primary">%m/m</span> = <span className="text-base-content/80">{soluteMass}g</span> / <span className="text-base-content/80">{totalMass.toFixed(0)}g solution</span> × 100
               </div>
               <div className="text-sm font-mono">
-                <span className="text-secondary">%m/v</span> = <span className="text-base-content/80">{soluteMass}g</span> / <span className="text-base-content/80">{solventVolume}mL</span> × 100
+                <span className="text-secondary">%m/v</span> = <span className="text-base-content/80">{soluteMass}g</span> / <span className="text-base-content/80">{solutionVolume.toFixed(0)}mL solution</span> × 100
+              </div>
+              <div className="text-[0.7rem] text-base-content/50 leading-snug">
+                Solution volume = solvent ({solventVolume}mL) + dissolved solute ({(soluteMass / soluteDensity).toFixed(1)}mL at {soluteDensity} g/mL).
               </div>
             </div>
+
+            <button className="btn btn-outline btn-sm" onClick={reset}>Reset</button>
           </div>
         </div>
       </div>
+      )}
     </VisualizerLayout>
   );
 };

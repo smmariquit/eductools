@@ -37,16 +37,8 @@ class ErrorBoundary extends Component<Props, State> {
             <div className="card-body items-center">
               <h2 className="card-title text-error text-2xl mb-2">Something went wrong</h2>
               <p className="text-base-content/70 mb-4">
-                This module failed to load. This might be caused by a browser compatibility issue.
+                This module didn't load properly. Try again, or head back home and reopen it.
               </p>
-              {this.state.error && (
-                <details className="text-sm text-base-content/50 mb-4 w-full">
-                  <summary className="cursor-pointer font-semibold">Error details</summary>
-                  <pre className="mt-2 p-3 bg-base-300 rounded-lg text-left overflow-auto text-xs">
-                    {this.state.error.message}
-                  </pre>
-                </details>
-              )}
               <div className="card-actions">
                 <button
                   className="btn btn-primary"

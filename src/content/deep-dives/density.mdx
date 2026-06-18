@@ -1,3 +1,70 @@
-# Understanding Density: Why Objects Float in the Sulu Sea
+import { Table, Sources, Changelog } from '../../components/content'
 
-Drop different materials into virtual water to observe buoyancy and calculate density using the standard Mass/Volume formula.
+# Density: why some things float and the Sulu Sea holds you up
+
+I got the idea for the density tool watching a kid argue that a coin sinks because it is "heavy." So I dropped a coin and a cork into the same glass in front of her. The coin sank. The cork bobbed. The cork was the heavier of the two. That stopped the argument cold, and it is the cleanest way I know to start this one: weight is not what decides whether a thing floats. Density is. The tool, modeled on [PhET's Density simulation](https://phet.colorado.edu/en/simulations/density), lets you drop materials into a virtual tank and watch the rule play out before anyone touches a formula.
+
+## The thing almost everyone gets backwards
+
+Ask most people why a ship floats and a nail sinks, and they will reach for weight. A ship is far heavier than a nail, so weight clearly is not the answer. What matters is how much mass is packed into a given space. That is density, and it is mass divided by volume:
+
+$$ \rho = \frac{m}{V} $$
+
+usually written in grams per cubic centimetre (g/cm³) for solids and liquids. Density answers a different question than weight does. Weight asks "how much is there?" Density asks "how tightly is it packed?" A kilogram of lead and a kilogram of feathers weigh the same, but the lead sits in a tiny lump while the feathers fill a sack, so the lead is far denser.
+
+Here is a detail worth holding onto: density does not change when you take more or less of a material. A gold ring and a gold bar are both 19.3 g/cm³. That makes density a kind of fingerprint for identifying a material, and it is the reason you cannot pass off a hollow gold brick packed with cheaper lead, since lead's 11.3 g/cm³ gives the fake away the moment you check.
+
+<Table
+  title="Densities of common substances"
+  source="OpenStax, Chemistry 2e §1.4, Table 1.4 (water at 1.0 g/cm³ as the float/sink line)"
+  columns={['Substance', 'Density (g/cm³)', 'In water']}
+  align={['left', 'right', 'center']}
+  rows={[
+    ['Ethanol', '0.79', 'Floats'],
+    ['Ice (0 °C)', '0.92', 'Floats'],
+    ['Water', '1.00', 'Reference line'],
+    ['Iron', '7.9', 'Sinks'],
+    ['Lead', '11.3', 'Sinks'],
+    ['Gold', '19.3', 'Sinks'],
+  ]}
+/>
+
+## The float-or-sink line is the fluid's density
+
+An object floats in a fluid if it is less dense than that fluid, and sinks if it is denser. Water sits at 1.0 g/cm³, so read the table against that line. Ethanol and ice fall below it and float. Iron, lead, and gold tower above it and sink straight to the bottom. That is Archimedes' principle in plain terms: a submerged object gets pushed up by a buoyant force, an upward push from the fluid, equal to the weight of the fluid the object shoves aside. If the object is less dense than the fluid, the fluid it displaces weighs more than the object does, and up it goes.
+
+The tool counts in kilograms per cubic metre rather than g/cm³, so water reads as 1,000 kg/m³ there, the same line in different units (1.0 g/cm³ is exactly 1,000 kg/m³). Set the object's mass and volume and the tool divides one by the other to get its density, compares that against the fluid you picked, and tells you not just whether it floats but how deep it rides. A floating block settles with the fraction of itself under the surface equal to the ratio of the two densities, which is why a block at 600 kg/m³ in fresh water sits with about 60 percent of itself wet.
+
+The strangest entry on that chart is ice, and it matters more than it looks. Almost every substance is denser as a solid than as a liquid, because cooling packs the particles tighter. Water breaks the pattern. Its molecules lock into an open, gap-filled structure when they freeze, so ice at 0.92 g/cm³ is *less* dense than the liquid water it came from, and it floats. If it did not, ponds and lakes would freeze solid from the bottom up and the life in them would not survive a cold season. A small gap, 0.92 against 1.0, with outsized consequences.
+
+## Why the Sulu Sea floats you better than a pool
+
+Step from a freshwater swimming pool into the Sulu Sea and you sit noticeably higher in the water. The reason is dissolved salt. According to [NOAA](https://oceanservice.noaa.gov/facts/whysalty.html), seawater averages about 35 parts per thousand of dissolved salts, roughly 3.5 percent of its weight, mostly sodium and chloride. Those dissolved ions add mass to the water without adding much volume, so seawater is a touch denser than fresh water, near 1,025 kg/m³ against 1,000. Raise the fluid's density and you raise the float line, so a swimmer who barely floats in a pool floats easily at sea. The same effect is pushed to an extreme in the Dead Sea, where the salt load is so high that bathers cannot sink even if they try.
+
+You can rebuild every bit of this in the tool. Switch the fluid from fresh water to seawater and watch a block that was fully sunk lift and ride higher, with nothing about the block itself having changed. That single experiment, the fluid's density deciding the outcome rather than the object's weight, is the whole idea of buoyancy made visible. It is also why a steel ship floats: shaped to displace a huge volume of water, the hull's *average* density (steel plus all the air inside it) drops below the water's, even though the same steel as a solid block would plunge straight down.
+
+## A few questions I actually get
+
+**If something is heavy, why doesn't it always sink?**
+Because sinking is about density, not weight. A massive log floats and a tiny coin sinks. What counts is how much mass is squeezed into the space the object takes up, compared against the fluid around it.
+
+**Why does the same body float in the sea but barely in a pool?**
+Seawater carries dissolved salt, so it is denser than fresh water (about 1,025 kg/m³ versus 1,000). The denser the fluid, the more weight it can hold up for a given size, so you ride higher in the sea than in a pool.
+
+<Sources
+  items={[
+    { label: 'OpenStax, Chemistry 2e §1.4: Measurements (Table 1.4, densities of common substances).', href: 'https://openstax.org/books/chemistry-2e/pages/1-4-measurements' },
+    { label: 'OpenStax, Chemistry 2e §1.6: Mathematical Treatment of Measurement Results.', href: 'https://openstax.org/books/chemistry-2e/pages/1-6-mathematical-treatment-of-measurement-results' },
+    { label: 'NOAA National Ocean Service: Why is the ocean salty? (average salinity ~3.5%).', href: 'https://oceanservice.noaa.gov/facts/whysalty.html' },
+    { label: 'PhET Interactive Simulations (University of Colorado Boulder): Density.', href: 'https://phet.colorado.edu/en/simulations/density' },
+  ]}
+/>
+
+<Changelog
+  created="2026-06-11"
+  updated="2026-06-18"
+  entries={[
+    { date: "2026-06-18", note: "Switched the densities chart from a bar chart to a Table (it is reference lookup data) and added an 'In water' floats/sinks column that the prose already discusses; updated 'read the chart' to 'read the table'." },
+    { date: "2026-06-18", note: "Re-toned into the house voice (origin-story open, heavy-things-sink misconception, plain-spoken FAQ); reconciled the article's g/cm\u00b3 chart with the tool's kg/m\u00b3 readout and its submerged-fraction behavior; kept all figures and verified sources, added the Changelog block." },
+  ]}
+/>

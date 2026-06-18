@@ -1,3 +1,60 @@
-# States of Matter: The Chemistry of Everyday Life
+import { BarChart, Aside, Sources, Changelog } from '../../components/content'
 
-By heating and cooling virtual molecules, students can see firsthand how thermal energy breaks molecular bonds to transition water from ice to liquid to vapor.
+# Ice, water, steam: the same stuff in three moods
+
+I built the states-of-matter tool after watching a Grade 7 class get into a genuine argument over whether the steam rising off a pot of rice was "still water" or "something new." Half the room was sure that boiling turns water into a different substance. It does not, and that mix-up is worth chasing down, because the truth hiding under it is one of the cleanest ideas in chemistry. A solid, a liquid, and a gas can be the exact same material. They are just settling one quiet contest in three different ways.
+
+The contest is between two things every particle is doing at the same time. Each particle has kinetic energy, the energy of motion, which tries to fling it away from its neighbors. Each particle also feels intermolecular forces, the weak attractions (the pull between particles) that try to hold them together. Heating feeds the motion. Cooling lets the attractions win. Whichever side is ahead at a given temperature decides which state you see, and the tool is really just a referee standing over that fight.
+
+## What the slider is actually doing
+
+The tool models a box of 80 water molecules, labelled tubig so nobody forgets it is plain water the whole time. Drag the temperature slider and the badge in the corner flips between Solid (Solido), Liquid (Likido), and Gas (Gas). Watch the particles, not just the label, because each state has its own behavior. In the **solid**, below 0 °C, the particles lock into a packed grid and only jiggle in place. That is why ice keeps its shape: the attractions are winning and the particles cannot get past one another. Warm it above 0 °C and you reach the **liquid**, where particles stay touching but slide around each other, so water holds its volume but pours into the shape of whatever glass you give it. Push past 100 °C and the particles scatter to fill the box. That is the **gas**, where motion has overwhelmed the attractions almost completely.
+
+The slider is marked at 0 °C (freezing) and 100 °C (boiling) for a reason: those are the exact temperatures where this tool switches water from one state to the next, the same two numbers every Filipino kid already knows from the kitchen. One substance, one dial, three behaviors.
+
+## Why iron stays hard while air just floats away
+
+Here is the question the tool quietly raises, and it is the one most people answer wrong on instinct. At the same room temperature, why is a nail solid, the water in your glass liquid, and the air around you a gas? The tempting answer is that they are "made of different stuff," which is true but not the point. The real reason is that the *strength* of the attractions is different from one substance to the next. Weak attractions get beaten by ordinary room-temperature motion, so that substance is already a gas. Strong attractions hold firm well past room temperature, so that substance stays solid.
+
+The halogens show this off nicely, because they are a chemical family that gets steadily heavier going down the group, and heavier molecules pull on each other harder. More pull means you have to supply more heat before the particles can break free into a gas, so the boiling point climbs right alongside the attraction.
+
+<BarChart
+  title="Heavier halogen, stronger pull, higher boiling point"
+  unit=" K"
+  source="OpenStax, Chemistry 2e §10.1, Table 10.1 (halogen boiling points)"
+  data={[
+    { label: 'Fluorine, F₂', value: 85, color: 'sky' },
+    { label: 'Chlorine, Cl₂', value: 238, color: 'leaf' },
+    { label: 'Bromine, Br₂', value: 332, color: 'sunshine' },
+    { label: 'Iodine, I₂', value: 457, color: 'berry' },
+  ]}
+/>
+
+Now line that up against room temperature, which sits around 298 K (about 25 °C), and the chart predicts real life exactly. Fluorine and chlorine boil far below 298 K, so at room temperature they have already left as gases. Bromine boils at 332 K, just above room temperature, which makes it one of the very few elements that is a liquid you could pour. Iodine boils highest of the four and stays a solid you can hold in your hand. Nothing changed about these elements except how strongly their molecules grab each other, and that one difference sorts them into three states at the very same temperature.
+
+## The hidden energy that flattens the thermometer
+
+The tool lets you set a temperature and read off the state, but there is one part of a phase change it cannot show you, so here it is in words. While ice is melting or water is boiling, the temperature stops climbing even though heat keeps pouring in. Put a thermometer in a pot of melting halo-halo ice and it sits stubbornly near 0 °C until the last cube is gone.
+
+That is not a broken thermometer. At a phase change, the incoming energy is spent entirely on breaking the attractions between particles instead of speeding them up, so the temperature holds flat until the change finishes. Water soaks up a surprisingly large amount of this hidden energy to turn into vapor, which is exactly why a steam burn is nastier than a hot-water burn (the steam dumps all that stored energy onto your skin as it condenses) and why sweat cools you down as it evaporates off. The plateau is invisible on a slider, but it is doing real work every time you cook.
+
+<Aside variant="tool" title="PhET, States of Matter" href="https://phet.colorado.edu/en/simulations/states-of-matter" credit="PhET Interactive Simulations, CU Boulder">
+  Our tool keeps things simple by sticking to water. When you want to push further, PhET's version lets you switch between several substances and even watch a phase diagram fill in as you change pressure and temperature. It is the cleaner next step once the basic three-states idea has clicked.
+</Aside>
+
+<Sources
+  items={[
+    { label: 'OpenStax, Chemistry 2e §10.1: Intermolecular Forces (Table 10.1, halogen boiling points).', href: 'https://openstax.org/books/chemistry-2e/pages/10-1-intermolecular-forces' },
+    { label: 'OpenStax, Chemistry 2e §10.2: Properties of Liquids.', href: 'https://openstax.org/books/chemistry-2e/pages/10-2-properties-of-liquids' },
+    { label: 'OpenStax, Chemistry 2e §10.3: Phase Transitions.', href: 'https://openstax.org/books/chemistry-2e/pages/10-3-phase-transitions' },
+    { label: 'PhET Interactive Simulations (University of Colorado Boulder): States of Matter.', href: 'https://phet.colorado.edu/en/simulations/states-of-matter' },
+  ]}
+/>
+
+<Changelog
+  created="2026-06-11"
+  updated="2026-06-18"
+  entries={[
+    { date: "2026-06-18", note: "Re-toned into the house voice for Grades 7–8 (origin-story open, steam misconception busted, kitchen scenarios); corrected the tool description to match the water-only Matter.js slider and moved the phase-change plateau out of 'what the tool shows'; kept the halogen chart and verified sources; added PhET credit and the Changelog block." },
+  ]}
+/>

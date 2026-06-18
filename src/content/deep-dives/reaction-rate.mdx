@@ -1,36 +1,60 @@
-# ReactionRate Deep Dive
+import { Aside, Sources, Changelog } from '../../components/content'
 
+# What has to go right for a collision to become a reaction
 
+I built the reaction-rate tool because of a question I could never answer cleanly at the board: why does grinding something make it react faster, but adding a catalyst, which sounds similar, work in a completely different way? Drawing arrows on a whiteboard was not cutting it. You really need to watch the particles. So the tool fills a box with blue and red molecules bouncing around, and every so often a pair collides and flips to green. Leave it running and the central truth of chemical kinetics surfaces on its own: most collisions do absolutely nothing. A reaction is the rare collision that happens to clear two separate hurdles at the same instant.
 
-Reaction Rates: Science Grade 10 (MATATAG)
+That is the misconception worth naming first, because it is so natural. People assume that if two reactant particles touch, they react. The tool keeps two counters that quietly demolish that idea, labelled "too little energy" and "wrong orientation." Watch them climb far faster than the reaction counter and you see it immediately: touching is necessary, and nowhere near sufficient.
 
-Chemical reactions occur when reactant particles 
-collide
- with enough energy. The 
-Collision Theory
- explains that not all collisions lead to reactions — only those with enough 
-activation energy
- and the correct orientation.
+## Collision theory, and why "they touched" is not enough
 
-Factors Affecting Reaction Rate
+Atoms have to meet before they can swap or share electrons, so a faster reaction does need more meetings per second. That part is obvious. Collision theory, the framework OpenStax builds the whole chapter on, adds two conditions that are easy to skip.
 
-Temperature (Temperatura):
- Higher temperature → faster particles → more energetic collisions → faster reaction.
+First, the particles have to hit with the right orientation. The tool draws a little notch on each reactant marking its reactive site, and a collision only counts if those sites are facing each other. The textbook's example is carbon monoxide reacting with oxygen: lead with the carbon end of CO and you can build the O=C=O of carbon dioxide, but lead with the oxygen end and the very same energetic collision produces nothing. Geometry gets a veto.
 
-Concentration (Konsentrasyon):
- More particles → more frequent collisions → faster reaction.
+Second, the collision has to arrive with enough energy to shove the reactants over a barrier called the **activation energy**, $E_a$ (the minimum energy a collision needs to react). Below that threshold the molecules just bounce apart unchanged. Right at the top of the barrier they pass briefly through a strained, half-bonded arrangement, the transition state, before tipping forward into products. So the honest one-line summary is this: rate equals how often particles collide, multiplied by the fraction of those collisions that are both well aimed and energetic enough.
 
-Catalyst (Katalista):
- Lowers the activation energy needed, so more collisions become successful without changing the products.
+## The three levers, and what each one really moves
 
-Watch the blue and red reactant particles collide — when they have enough energy, they react and turn 
-green
-!
+That picture explains why the classic factors work, and it stops you confusing the two that look alike.
 
-## Dissection of Variables
+**Temperatura (temperature)** is the strongest lever, and it does not work the way most people first guess. Heating the mixture does speed the particles up, so collisions get a little more frequent. But the dominant effect is on the *energy distribution*. The tool shows this directly with a Maxwell-Boltzmann curve underneath the box: raise the temperature and the curve spreads to the right, so a much bigger slice of molecules now carries energy above $E_a$, and the "% above Ea" readout jumps. The numbers in real life are dramatic. For the gas-phase decomposition of hydrogen iodide, [OpenStax lists the rate constant climbing from about $3.5 \times 10^{-7}$ to $4.0 \times 10^{-2}$ L·mol⁻¹·s⁻¹](https://openstax.org/books/chemistry-2e/pages/12-5-collision-theory) as the temperature rises from 555 K to 781 K, roughly a hundred-thousand-fold jump for a couple hundred degrees. That relationship is captured by the Arrhenius equation,
 
-- **Variable 1**: Explanation of how it works in the physical world.
-- **Variable 2**: Deep dive into the math and units.
+$$ k = A\,e^{-E_a / RT} $$
 
----
-*Note: This is a deep dive section that breaks down the variables and the underlying physics/math of the simulation.*
+where the exponential term is exactly the fraction of molecules energetic enough to react. It is also why we keep ulam in the refrigerator. Chilling food does not switch off the spoilage chemistry, it just starves those reactions of energetic collisions, which is the same reason a plate left out on a warm Manila afternoon turns the other way fast.
+
+**Konsentrasyon (concentration)** is the intuitive one. Crowd more reactant particles into the same box (the tool's particle slider does this) and you simply raise the number of collisions per second. More meetings, more chances, faster reaction. Crucially, it changes how *often* particles collide without touching how energetic those collisions are, which is the clean line between concentration and temperature that the tool lets a student see by sliding one control at a time.
+
+**Katalista (catalyst)** is the one to be careful about, because it is the easiest to describe wrongly. A catalyst does not add energy, and it is not used up. It opens an alternative pathway with a lower activation energy, so a bigger share of the ordinary, unremarkable collisions now clear the lower barrier. Flip the catalyst on in the tool and a "catalyst surface" appears along the bottom while the dashed $E_a$ line on the distribution slides left, shading in more of the curve. The reactants and products are unchanged. Only the route between them got cheaper. The enzymes in your own cells are biological catalysts, and they are the reason reactions that would crawl at body temperature run fast enough to keep you alive.
+
+A clarification that matters for MATATAG Grade 10 work: surface area belongs to this same family as concentration. Powdered solids react faster than a single lump for the very same reason, because grinding exposes far more particles at the boundary where collisions can happen. And none of these three levers change whether a reaction *can* happen at all, which is a separate, thermodynamic question. They only change how fast it gets there.
+
+## A couple of questions I actually get
+
+**Does a catalyst make a reaction give more product?**
+No. It only makes the reaction reach its finish line faster. The amount of product you can ultimately get is set by the chemistry and the starting amounts, not by the catalyst, which comes out the other end unchanged.
+
+**If heat just speeds particles up, why is its effect so huge?**
+Because the speed-up is the small part. The big part is that a hotter sample has far more molecules above the activation energy, and only those collisions react. The tool's energy curve makes the difference visible: a modest shift right swallows a large extra slice of molecules past $E_a$.
+
+<Aside variant="tool" title="PhET, Reactions and Rates" href="https://phet.colorado.edu/en/simulations/reactions-and-rates" credit="PhET Interactive Simulations, CU Boulder">
+  PhET's Reactions and Rates lets you draw your own potential-energy curve and watch a single reaction climb the barrier, which pairs well with our tool's birds-eye view of the whole box. Use ours to see the statistics of many collisions, and PhET's to zoom into the energy of one.
+</Aside>
+
+<Sources
+  items={[
+    { label: 'OpenStax, Chemistry 2e §12.5: Collision Theory (orientation, activation energy, HI rate constants).', href: 'https://openstax.org/books/chemistry-2e/pages/12-5-collision-theory' },
+    { label: 'OpenStax, Chemistry 2e §12.2: Factors Affecting Reaction Rates.', href: 'https://openstax.org/books/chemistry-2e/pages/12-2-factors-affecting-reaction-rates' },
+    { label: 'OpenStax, Chemistry 2e §12.7: Catalysis.', href: 'https://openstax.org/books/chemistry-2e/pages/12-7-catalysis' },
+    { label: 'PhET Interactive Simulations (University of Colorado Boulder): Reactions and Rates.', href: 'https://phet.colorado.edu/en/simulations/reactions-and-rates' },
+  ]}
+/>
+
+<Changelog
+  created="2026-06-11"
+  updated="2026-06-18"
+  entries={[
+    { date: "2026-06-18", note: "Re-toned into the house voice for Grades 9–10 (origin-story open, 'touching is not reacting' misconception with the tool's two miss counters); tied the temperature, concentration, and catalyst passages to what the tool actually displays (Maxwell-Boltzmann curve, % above Ea, catalyst surface); added a short FAQ, PhET credit, and the Changelog block; kept and verified all sources." },
+  ]}
+/>

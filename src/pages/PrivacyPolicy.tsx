@@ -3,8 +3,8 @@ import AdUnit from '../components/AdUnit';
 import { Helmet } from 'react-helmet-async';
 
 const PrivacyPolicy = () => {
-  const fullTitle = 'Privacy Policy & Data Processing Agreement | Eductools';
-  const description = 'Eductools privacy policy compliant with the Philippine Data Privacy Act of 2012 (RA 10173). Learn how we protect your data.';
+  const fullTitle = 'Privacy Policy & Data Processing Agreement | EduVisualsPH';
+  const description = 'EduVisualsPH privacy policy compliant with the Philippine Data Privacy Act of 2012 (RA 10173). Learn how we protect your data.';
   const ogImageUrl = `https://eductools.ph/api/og?title=${encodeURIComponent('Privacy Policy')}&desc=${encodeURIComponent(description.slice(0, 100))}`;
 
   return (
@@ -15,7 +15,7 @@ const PrivacyPolicy = () => {
         <meta property="og:title" content={fullTitle} />
         <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Eductools" />
+        <meta property="og:site_name" content="EduVisualsPH" />
         <meta property="og:image" content={ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={fullTitle} />
@@ -41,22 +41,22 @@ const PrivacyPolicy = () => {
         {/* ─── SECTION 1 ─── */}
         <h2>1. Who We Are</h2>
         <p>
-          <strong>Eductools</strong> ("we", "us", "our") is a free, web-based educational platform that provides interactive Science, Technology, Engineering, and Mathematics (STEM) visualizers aligned with the Philippine Department of Education (DepEd) <strong>MATATAG Curriculum</strong>. The platform is designed to supplement formal classroom instruction in Philippine basic education (K-12).
+          <strong>EduVisualsPH</strong> ("we", "us", "our") is a free, web-based educational platform that provides interactive Science, Technology, Engineering, and Mathematics (STEM) visualizers aligned with the Philippine Department of Education (DepEd) <strong>MATATAG Curriculum</strong>. The platform is designed to supplement formal classroom instruction in Philippine basic education (K-12).
         </p>
         <p>
-          Eductools is independently developed and is <strong>not officially affiliated with, endorsed by, or operated by the Department of Education (DepEd)</strong>. It is offered as a supplementary learning resource.
+          EduVisualsPH is independently developed and is <strong>not officially affiliated with, endorsed by, or operated by the Department of Education (DepEd)</strong>. It is offered as a supplementary learning resource.
         </p>
 
         {/* ─── SECTION 2 ─── */}
         <h2>2. Scope of This Policy</h2>
-        <p>This Privacy Policy and Data Processing Agreement ("DPA") applies to all users of the Eductools website and Progressive Web App (PWA), including:</p>
+        <p>This Privacy Policy and Data Processing Agreement ("DPA") applies to all users of the EduVisualsPH website and Progressive Web App (PWA), including:</p>
         <ul>
           <li>Students (including minors under 18 years of age)</li>
           <li>Teachers and educators</li>
           <li>Parents and guardians</li>
           <li>General public visitors</li>
         </ul>
-        <p>This policy covers all data processing activities conducted through the Eductools platform, whether accessed via desktop browser, mobile browser, or the installed PWA.</p>
+        <p>This policy covers all data processing activities conducted through the EduVisualsPH platform, whether accessed via desktop browser, mobile browser, or the installed PWA.</p>
 
         {/* ─── SECTION 3 ─── */}
         <h2>3. Legal Basis for Data Processing</h2>
@@ -68,7 +68,7 @@ const PrivacyPolicy = () => {
 
         {/* ─── SECTION 4 ─── */}
         <h2>4. What Data We Collect</h2>
-        <p>Eductools is designed with a <strong>privacy-first, data-minimization</strong> approach. We collect the absolute minimum data necessary to operate and improve the platform.</p>
+        <p>EduVisualsPH is designed with a <strong>privacy-first, data-minimization</strong> approach. We collect the absolute minimum data necessary to operate and improve the platform.</p>
 
         <h3>4.1. Data We <u>DO</u> Collect</h3>
         <div className="overflow-x-auto not-prose mb-6">
@@ -165,7 +165,7 @@ const PrivacyPolicy = () => {
 
         {/* ─── SECTION 6 ─── */}
         <h2>6. Cookies and Tracking Technologies</h2>
-        <p>Eductools uses the following types of cookies and local storage mechanisms:</p>
+        <p>EduVisualsPH uses the following types of cookies and local storage mechanisms:</p>
         <ul>
           <li><strong>Essential Cookies:</strong> Required for PWA service worker functionality and user preference storage (theme, language). These cannot be disabled without breaking core functionality.</li>
           <li><strong>Analytics Cookies:</strong> PostHog may set cookies for session tracking. These are anonymized and contain no PII.</li>
@@ -214,7 +214,7 @@ const PrivacyPolicy = () => {
 
         {/* ─── SECTION 8 ─── */}
         <h2>8. Protection of Minors</h2>
-        <p>Eductools is designed for use in Philippine basic education (Kindergarten through Grade 12). We recognize that many of our users are minors.</p>
+        <p>EduVisualsPH is designed for use in Philippine basic education (Kindergarten through Grade 12). We recognize that many of our users are minors.</p>
         <ul>
           <li>We <strong>do not</strong> knowingly collect any personally identifiable information from anyone, including minors.</li>
           <li>We <strong>do not</strong> require user accounts or registration of any kind.</li>
@@ -227,7 +227,7 @@ const PrivacyPolicy = () => {
         <p>We implement the following organizational and technical security measures:</p>
         <ul>
           <li><strong>Transport Layer Security (TLS):</strong> All data transmitted between your browser and our servers is encrypted via HTTPS.</li>
-          <li><strong>No Server-Side Database:</strong> Eductools does not operate a user database. There is no centralized store of user information to breach.</li>
+          <li><strong>No Server-Side Database:</strong> EduVisualsPH does not operate a user database. There is no centralized store of user information to breach.</li>
           <li><strong>Content Security Policy (CSP):</strong> We implement CSP headers to prevent cross-site scripting (XSS) attacks.</li>
           <li><strong>Regular Dependency Audits:</strong> We monitor and update our software dependencies to patch known vulnerabilities.</li>
         </ul>
@@ -256,7 +256,7 @@ const PrivacyPolicy = () => {
           <div className="grid gap-3 text-sm">
             <div className="flex gap-2">
               <strong className="w-32 shrink-0">Entity:</strong>
-              <span>Eductools</span>
+              <span>EduVisualsPH</span>
             </div>
             <div className="flex gap-2">
               <strong className="w-32 shrink-0">Email:</strong>
@@ -291,7 +291,7 @@ const PrivacyPolicy = () => {
 
         <div className="divider"></div>
         <p className="text-sm text-base-content/50 italic">
-          This document was last reviewed on June 10, 2026. Eductools is committed to protecting the privacy and rights of Filipino learners, educators, and their families.
+          This document was last reviewed on June 10, 2026. EduVisualsPH is committed to protecting the privacy and rights of Filipino learners, educators, and their families.
         </p>
       </article>
 

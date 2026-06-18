@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { IntroState, useIntroState } from '../../components/onboarding';
 // ==========================================
 // Object Pool for Canvas Particles (GC Friendly)
 // ==========================================
@@ -258,6 +259,7 @@ const StomatalVisualizer = ({ light, co2, water, rate }: { light: number, co2: n
 type ViewMode = 'mass' | 'stomata';
 
 const PhotosynthesisVisualizer = () => {
+  const intro = useIntroState();
   const [viewMode, setViewMode] = useState<ViewMode>('stomata');
   
   // Strict environmental variables
@@ -275,11 +277,36 @@ const PhotosynthesisVisualizer = () => {
       guideLink="/blog/photosynthesis"
     >
       <div className="card bg-base-100 shadow-xl border border-base-200 overflow-hidden">
-        
+        {!intro.started ? (
+          <div className="card-body p-6 md:p-8">
+            <IntroState
+              lead="Explore the limiting factors of photosynthesis by adjusting light, carbon dioxide, and water and watching the rate respond."
+              actionLabel="Start exploring"
+              onStart={intro.start}
+            />
+          </div>
+        ) : (
+        <>
         {/* Navigation Tabs */}
-        <div className="tabs tabs-boxed rounded-none bg-base-200 p-2 flex justify-center border-b border-base-300">
-          <button className={`tab ${viewMode === 'stomata' ? 'tab-active btn-primary text-primary-content font-bold' : ''}`} onClick={() => setViewMode('stomata')}>Stomatal Gas Exchange</button>
-          <button className={`tab ${viewMode === 'mass' ? 'tab-active btn-primary text-primary-content font-bold' : ''}`} onClick={() => setViewMode('mass')}>Van Helmont Mass Balance</button>
+        <div className="bg-base-200 p-2 flex flex-wrap justify-center border-b border-base-300 gap-2" role="tablist" aria-label="Photosynthesis views">
+          <button
+            type="button"
+            role="tab"
+            aria-selected={viewMode === 'stomata'}
+            className={`btn btn-sm font-bold ${viewMode === 'stomata' ? 'btn-primary' : 'btn-ghost'}`}
+            onClick={() => setViewMode('stomata')}
+          >
+            Stomatal Gas Exchange
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={viewMode === 'mass'}
+            className={`btn btn-sm font-bold ${viewMode === 'mass' ? 'btn-primary' : 'btn-ghost'}`}
+            onClick={() => setViewMode('mass')}
+          >
+            Van Helmont Mass Balance
+          </button>
         </div>
 
         <div className="p-4 md:p-8 flex flex-col xl:flex-row gap-8">
@@ -331,6 +358,8 @@ const PhotosynthesisVisualizer = () => {
           </div>
 
         </div>
+        </>
+        )}
       </div>
     </VisualizerLayout>
   );

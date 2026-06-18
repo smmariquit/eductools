@@ -1,3 +1,41 @@
-# Cell Division: Mitosis and Meiosis Visualized
+import { Sources, Changelog } from '../../components/content'
 
-Students can pause and play the intricate stages of mitosis and meiosis, ensuring they understand cellular division without getting lost in textbook diagrams.
+# Cell division: how one cell becomes two, and why it matters which kind
+
+Every cell you have came from another cell that split in two. That single fact sits behind a lot of biology that otherwise looks unrelated: a scraped knee healing over a week, a tadpole becoming a frog, a child resembling but not duplicating either parent. The catch is that there are two different division programs running in your body, and they exist to do almost opposite jobs. Mitosis copies a cell. Meiosis deliberately reshuffles one. Confusing the two is the single most common way students lose marks on this topic, so the diagrams are worth slowing down for.
+
+## The cell cycle and mitosis
+
+Most of a cell's life is not spent dividing at all. It is spent in interphase, the long working period split into G1 (the cell grows and does its job), S (the cell copies its entire DNA so every chromosome now exists as two identical sister chromatids joined at a centromere), and G2 (a final round of growth and checking before division). Only then does the cell enter mitosis, the part the visualizer animates.
+
+Mitosis runs in four stages that blur into one continuous motion, and the visualizer steps through them in order so you can stop on any one. In prophase the duplicated chromosomes condense from loose threads into the compact X-shapes textbooks draw, and the spindle, a scaffold of microtubules, begins to assemble. In metaphase the chromosomes line up single-file across the middle of the cell, which is the moment worth pausing the animation on, because the alignment is what guarantees an even split. In anaphase the spindle pulls the sister chromatids apart toward opposite poles. In telophase a nuclear envelope reforms around each new set, and cytokinesis pinches the cytoplasm into two separate cells. The tool plays that whole loop, interphase through cytokinesis, and lets you walk it one phase at a time.
+
+The outcome is the point. Each daughter cell is diploid and genetically identical to the parent, carrying the full chromosome set (in humans, 46 chromosomes, or 23 pairs). This is the division your body uses constantly for growth, for replacing the skin and gut lining you shed, and for repair. When that scraped knee scabs and the skin closes, mitosis did it.
+
+## Meiosis and the point of variation
+
+Meiosis answers a problem that sexual reproduction creates. If a sperm and an egg each carried a full 46 chromosomes, the fertilised cell would have 92, and the number would double again every generation. So gametes have to be made with half the usual set. Meiosis is the division that halves it.
+
+It does this with two divisions in a row after a single DNA copy, which is why one starting cell yields four cells rather than two, and why each ends up haploid, carrying 23 chromosomes instead of 46. Meiosis I separates the homologous pairs; meiosis II separates the sister chromatids, much as mitosis does. Two divisions, one round of copying, four haploid products.
+
+The more interesting work happens before the cells ever separate. During meiosis I, homologous chromosomes pair up and physically swap segments in a process called crossing over, or recombination, so the chromosome a parent passes on is a patchwork of the two they inherited. On top of that, each homologous pair lines up independently of every other pair, so which copy heads to which pole is effectively a coin flip repeated 23 times. Between recombination and that independent assortment, the number of genetically distinct gametes a single person can produce runs into the trillions. That is the reason siblings resemble each other without being copies, and it is the raw material that natural selection acts on.
+
+So the same machinery, spindles and chromosomes and a tidy split, gets used for two ends that pull in opposite directions. Mitosis preserves; it makes faithful copies so a body can grow and mend. Meiosis diversifies; it scrambles the deck so that no two offspring, and no two gametes, are quite the same. The visualizer animates the mitosis side of that pair, but once you have watched the copy-once-divide-once rhythm play out, the test for telling the two apart is simple to run in your head: count the divisions and count the chromosomes in the products. One division and a full set means mitosis. Two divisions and a halved set means meiosis.
+
+<Sources
+  items={[
+    { label: 'OpenStax, Biology 2e: 10.1 Cell Division.', href: 'https://openstax.org/books/biology-2e/pages/10-1-cell-division' },
+    { label: 'OpenStax, Biology 2e: 10.2 The Cell Cycle.', href: 'https://openstax.org/books/biology-2e/pages/10-2-the-cell-cycle' },
+    { label: 'OpenStax, Biology 2e: 11.1 The Process of Meiosis.', href: 'https://openstax.org/books/biology-2e/pages/11-1-the-process-of-meiosis' },
+    { label: 'NHGRI Talking Glossary of Genomic and Genetic Terms: Mitosis.', href: 'https://www.genome.gov/genetics-glossary/Mitosis' },
+    { label: 'NHGRI Talking Glossary of Genomic and Genetic Terms: Meiosis.', href: 'https://www.genome.gov/genetics-glossary/Meiosis' },
+  ]}
+/>
+
+<Changelog
+  created="2026-06-11"
+  updated="2026-06-18"
+  entries={[
+    { date: "2026-06-18", note: "Corrected the tool description to match the current build (animates the mitosis cycle only, not mitosis and meiosis side by side); verified sources live; added the Changelog block." },
+  ]}
+/>

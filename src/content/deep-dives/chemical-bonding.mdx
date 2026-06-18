@@ -1,3 +1,64 @@
-# Chemical Bonding: The Glue of the Universe
+import { BarChart, Aside, Sources, Changelog } from '../../components/content'
 
-This tool turns abstract electron sharing into a visual drag-and-drop puzzle, helping high school students grasp covalent and ionic interactions.
+# Chemical bonding: a tug-of-war over electrons
+
+I made the bonding tool because students kept treating ionic and covalent bonds as two unrelated facts to memorize for a quiz, the way you might memorize two unrelated capital cities. That framing is the thing I most want to break. Ionic and covalent are not two separate categories with a wall between them. They are the two ends of a single tug-of-war over electrons, and one number tells you where any particular bond lands on the rope. Once that clicks, a long list of "just memorize it" facts collapses into one idea you can reason from.
+
+Almost everything around you is held together by atoms either trading or sharing their outermost electrons, the ones called valence electrons. The tool walks you through both deals one step at a time, with an octet counter (a tally of whether each atom has reached eight outer electrons) so you can watch atoms chase the stable arrangement they are after.
+
+## What the tool actually shows you
+
+There is no dragging here, so do not go looking for it. You pick a bond type with the toggle at the top, **Ionic bond (Na + Cl)** or **Covalent bond (Cl + Cl)**, and then step forward with Next through four frames. The "octet satisfied" tags light up green the moment each atom finishes the deal.
+
+The ionic walkthrough is table salt being born. Sodium starts with a single lonely valence electron and chlorine with seven, one short of a full shell, so neither has its octet yet. Sodium simply hands its electron over. Now sodium is a positively charged ion (Na⁺) and chlorine a negative one (Cl⁻), and the final frame stacks those opposite charges into the repeating 3D grid that an actual grain of asin is. The covalent walkthrough is two chlorine atoms instead. Neither will give an electron up, so they slide together and *share* a pair, and that shared pair, drawn as the line between them, is the single bond that makes one Cl₂ molecule. Same goal in both, a full octet. Completely different route to get there.
+
+## Why a bond's type decides how the stuff behaves
+
+The route matters because it sets the personality of the material. Ionic compounds inherit theirs from that lattice of charges: they form hard, brittle crystals, they melt only at high temperatures, and they conduct electricity once dissolved in water, because the freed ions can finally move and carry charge. That is why a salt solution completes a circuit and a sugar solution does not.
+
+Covalent compounds are built from discrete, electrically neutral molecules rather than a charged grid, so they behave almost oppositely. They tend toward lower melting and boiling points, they are often soft or liquid or gaseous at room temperature, and they usually do not conduct. None of this means the bonds themselves are weak. The bond inside an H₂ molecule is genuinely strong; [OpenStax notes it takes 436 kJ to break a mole of those bonds](https://openstax.org/books/chemistry-2e/pages/7-2-covalent-bonding). The low melting points come from the pull *between* whole molecules being weak, not the bonds *within* them.
+
+## The one number that places the bond
+
+What decides whether atoms transfer or share is **electronegativity**, an atom's pull on the electrons in a bond. Linus Pauling scored it on a scale running from about 0 up to 4. Fluorine is the greediest at 4.0; the group 1 metals like sodium are the most generous. The move that ties the whole topic together is to stop looking at the two atoms separately and look at the *difference* in their electronegativities, written ΔEN.
+
+<BarChart
+  title="The bigger the electronegativity gap, the more ionic the bond"
+  source="OpenStax, Chemistry 2e §7.2 (Pauling electronegativity values)"
+  data={[
+    { label: 'H–H (nonpolar)', value: 0.0, color: 'leaf' },
+    { label: 'C–H (nearly nonpolar)', value: 0.4, color: 'leaf' },
+    { label: 'H–Cl (polar covalent)', value: 0.9, color: 'sunshine' },
+    { label: 'O–H (polar covalent)', value: 1.4, color: 'sunshine' },
+    { label: 'Na–Cl (ionic)', value: 2.1, color: 'berry' },
+  ]}
+/>
+
+Read that chart as one continuous rope, not three boxes. When ΔEN is zero, as in H–H, the two atoms pull equally and the electrons are shared dead even: a pure, nonpolar covalent bond. As the gap grows, the greedier atom hogs the shared pair, and the bond turns **polar covalent**, with a slightly negative end ($\delta^-$) and a slightly positive end ($\delta^+$). The O–H bonds in water are exactly this, which is the root of nearly everything water does. Push the gap large enough, like the 2.1 of Na–Cl, and one atom effectively takes the electron outright, and you are back to an ionic bond.
+
+There is no hard line painted on the rope in nature. OpenStax treats the usual ΔEN cutoffs as a rough guide with real exceptions, so I would not have students worship the exact thresholds. The more reliable habit is to read the periodic table directly: a bond between two nonmetals is generally covalent, and a bond between a metal and a nonmetal is usually ionic, because that is precisely where the big electronegativity gaps live.
+
+## Why this is worth more than exam points
+
+The polarity that ΔEN predicts is not bookkeeping. It is the reason water dissolves salt but shrugs off cooking oil, the reason ice floats instead of sinking and killing everything in a frozen lake, and the reason the two strands of your DNA hold together firmly yet still unzip cleanly every time a cell copies itself. Get a student comfortable reading a bond as a tug-of-war with a measurable winner, and that single skill quietly explains a dozen properties that otherwise look like a list to be crammed.
+
+<Aside variant="tool" title="PhET, Build a Molecule" href="https://phet.colorado.edu/en/simulations/build-a-molecule" credit="PhET Interactive Simulations, CU Boulder">
+  Our tool is a guided, step-by-step story of one bond forming. PhET's Build a Molecule is the open-ended companion: you snap real atoms together yourself and see which combinations are allowed. I point students there once they understand the octet, so they can play instead of follow.
+</Aside>
+
+<Sources
+  items={[
+    { label: 'OpenStax, Chemistry 2e §7.1: Ionic Bonding.', href: 'https://openstax.org/books/chemistry-2e/pages/7-1-ionic-bonding' },
+    { label: 'OpenStax, Chemistry 2e §7.2: Covalent Bonding (electronegativity, bond type, H₂ bond energy).', href: 'https://openstax.org/books/chemistry-2e/pages/7-2-covalent-bonding' },
+    { label: 'OpenStax, Chemistry 2e §7.3: Lewis Symbols and Structures.', href: 'https://openstax.org/books/chemistry-2e/pages/7-3-lewis-symbols-and-structures' },
+    { label: 'PhET Interactive Simulations (University of Colorado Boulder): Build a Molecule.', href: 'https://phet.colorado.edu/en/simulations/build-a-molecule' },
+  ]}
+/>
+
+<Changelog
+  created="2026-06-11"
+  updated="2026-06-18"
+  entries={[
+    { date: "2026-06-18", note: "Re-toned into the house voice for Grades 9–10 (origin-story open, spectrum-not-boxes misconception, Philippine asin example); rewrote the tool description to match the actual step-through octet walkthrough (Na+Cl and Cl+Cl), not a drag-and-drop builder; kept the ΔEN chart and verified sources; added PhET credit and the Changelog block." },
+  ]}
+/>

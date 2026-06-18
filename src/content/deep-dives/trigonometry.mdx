@@ -1,49 +1,50 @@
-# Trigonometry Deep Dive
+import { Sources, Changelog } from '../../components/content'
 
+# Measuring a river you cannot cross
 
+The first time trigonometry felt real to me was not in a classroom. It was watching a survey crew set up a tripod across a road project and read off the height of something they never touched. That is the whole promise of the subject, and it is why I built the tool: trigonometry turns an angle you *can* measure into a length you *cannot* reach. Once that clicks, the chanting and the mnemonics stop feeling like busywork.
 
-Trigonometric Ratios: Math Grade 9 (MATATAG)
+The subject starts from a small observation that does most of the work. In a right triangle, fix one of the two acute angles, and the *ratios* between the sides are locked, no matter how large or small you draw the triangle. MATATAG introduces this formally in Grade 9, and that one fact is the engine under everything that follows.
 
-Trigonometry is the study of relationships between the sides and angles of triangles. The three primary trigonometric ratios are based on a 
-right triangle
-:
+## The ratios are about shape, not size
 
-SOH-CAH-TOA
+Pick an acute angle $\theta$ in a right triangle. The three sides get names relative to that angle. The side directly across from it is the **opposite**, the side touching it that is not the longest is the **adjacent**, and the longest side, the one facing the right angle, is the **hypotenuse**. The three primary ratios are
 
-SOH:
+$$\sin\theta = \frac{\text{opposite}}{\text{hypotenuse}}, \qquad \cos\theta = \frac{\text{adjacent}}{\text{hypotenuse}}, \qquad \tan\theta = \frac{\text{opposite}}{\text{adjacent}}.$$
 
-sin(θ)
- = 
-Opposite
- / 
-Hypotenuse
+The classroom mnemonic SOH-CAH-TOA just packs those three definitions into something you can chant. It is worth memorizing, but it is not the idea. The idea is that two right triangles with the same acute angle are *similar*, so their matching sides scale by the same factor, and a ratio cancels that factor right out. A draftsman's 3-centimeter triangle and a surveyor's 30-meter version of the same angle return the identical $\sin\theta$. That scale-independence is exactly why a ratio you read off a small sketch can tell you something true about a building you measured from across the street.
 
-CAH:
+Because the hypotenuse is always the longest side, the opposite and adjacent are each shorter than it, which forces $\sin\theta$ and $\cos\theta$ to land somewhere between $0$ and $1$ for any acute angle. The tangent has no such ceiling. It climbs without bound as $\theta$ approaches $90^\circ$, because its denominator, the adjacent side, shrinks toward zero.
 
-cos(θ)
- = 
-Adjacent
- / 
-Hypotenuse
+## A few angles worth knowing cold
 
-TOA:
+Set the angle to $45^\circ$ and the triangle becomes isosceles, so the opposite and adjacent are equal and $\sin 45^\circ = \cos 45^\circ = \frac{\sqrt{2}}{2}$. The two ratios meeting at exactly that point is not a quirk of the tool. It is the geometry of a square's diagonal.
 
-tan(θ)
- = 
-Opposite
- / 
-Adjacent
+The other two angles that turn up constantly in physics and engineering are $30^\circ$ and $60^\circ$, which come from slicing an equilateral triangle in half:
 
-Real-World Applications (Paggamit sa Tunay na Buhay)
+$$\sin 30^\circ = \tfrac{1}{2}, \quad \cos 30^\circ = \tfrac{\sqrt{3}}{2}, \qquad \sin 60^\circ = \tfrac{\sqrt{3}}{2}, \quad \cos 60^\circ = \tfrac{1}{2}.$$
 
-Trigonometry is used to calculate the height of buildings, the distance across rivers, the angle of elevation when looking at a mountain peak, and even in navigation and engineering. Filipino surveyors use these ratios every day to measure land parcels and building heights.
+Notice the symmetry: the sine of $30^\circ$ equals the cosine of $60^\circ$. That is the cofunction relationship, $\sin\theta = \cos(90^\circ - \theta)$, and it falls straight out of the fact that one angle's opposite side is the other angle's adjacent side in the same triangle. Swing the angle in the tool and watch the two curves trade places around $45^\circ$. The symmetry is right there.
 
-Try setting the angle to 45° — notice how sin and cos are equal! At 30° and 60°, observe the classic ratios used throughout physics and engineering.
+## What surveyors actually do with it
 
-## Dissection of Variables
+The honest reason trigonometry survived from ancient astronomy all the way into the Grade 9 curriculum is the one I opened with: it converts an angle you can measure into a length you cannot reach. Stand a known distance from the base of a flagpole and measure the angle of elevation to its top. The pole's height is the opposite side, your distance is the adjacent, so $\text{height} = \text{distance} \times \tan\theta$, and you never had to leave the ground.
 
-- **Variable 1**: Explanation of how it works in the physical world.
-- **Variable 2**: Deep dive into the math and units.
+Filipino *surveyors* lean on this every working day. A total station, the tripod-mounted instrument you see along road projects and *subdivision* layouts, is basically a precise reader of angles and distances, and the software behind it is resolving these same three ratios thousands of times to fix the corners of a *lote*. The same trick measures the width of an *ilog* with no boat. Sight a landmark on the far bank, walk a measured distance along your own side, measure the angle back to the landmark, and the river's width comes out of a single tangent calculation. Angle in, length out. That has been the deal since Hipparchus, and it has not changed.
 
----
-*Note: This is a deep dive section that breaks down the variables and the underlying physics/math of the simulation.*
+<Sources
+  items={[
+    { label: 'OpenStax, Algebra and Trigonometry 2e: Right Triangle Trigonometry.', href: 'https://openstax.org/books/algebra-and-trigonometry-2e/pages/7-2-right-triangle-trigonometry' },
+    { label: 'Weisstein, E. W. Trigonometry (Wolfram MathWorld).', href: 'https://mathworld.wolfram.com/Trigonometry.html' },
+    { label: 'Khan Academy: Trigonometry with right triangles.', href: 'https://www.khanacademy.org/math/geometry/hs-geo-trig' },
+    { label: 'DepEd, MATATAG Curriculum (Mathematics, scope and sequence).', href: 'https://www.deped.gov.ph/matatag/' },
+  ]}
+/>
+
+<Changelog
+  created="2026-06-11"
+  updated="2026-06-18"
+  entries={[
+    { date: "2026-06-18", note: "Re-toned with an origin-story open and human title (was a syllabus-style 'Trigonometry Deep Dive' with an abstract open); kept the ratio math, special angles, and surveyor scenarios; verified sources." },
+  ]}
+/>

@@ -1,14 +1,227 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
-@plugin "daisyui" {
-  themes: light --default, dark;
+@plugin "daisyui";
+
+/* ===========================================================================
+   EduVisualsPH — "CRAYON COSMOS" DESIGN SYSTEM
+   A warm storybook-lab aesthetic: cream paper, crayon-box accents, friendly
+   rounded shapes, and hand-drawn SVG art (see src/components/crayon).
+   Whimsical on the surface, boringly usable underneath: AA-level contrast,
+   real focus states, readable type.
+   =========================================================================== */
+
+@plugin "daisyui/theme" {
+  name: "crayon";
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+
+  --color-base-100: #fff8ef; /* cream paper */
+  --color-base-200: #fffdf8;
+  --color-base-300: #f2e6d6;
+  --color-base-content: #2b2b3a; /* ink */
+
+  --color-primary: #2f8fe6; /* sky crayon */
+  --color-primary-content: #ffffff;
+  --color-secondary: #ff6b8a; /* berry crayon */
+  --color-secondary-content: #ffffff;
+  --color-accent: #f5a800; /* sunshine crayon */
+  --color-accent-content: #2b1c00;
+
+  --color-neutral: #2b2b3a;
+  --color-neutral-content: #fff8ef;
+
+  --color-info: #2f8fe6;
+  --color-info-content: #ffffff;
+  --color-success: #2fa46a; /* leaf crayon */
+  --color-success-content: #ffffff;
+  --color-warning: #f5a800;
+  --color-warning-content: #2b1c00;
+  --color-error: #ff6b8a;
+  --color-error-content: #ffffff;
+
+  --radius-selector: 1.25rem;
+  --radius-field: 1rem;
+  --radius-box: 1.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1.5px;
+  --depth: 1;
+  --noise: 0;
+}
+
+/* ===========================================================================
+   TYPOGRAPHY — Baloo 2 (rounded, chunky, friendly) for display,
+   Lexend (reading-optimized) for body.
+   =========================================================================== */
+@theme {
+  --font-sans: "Lexend", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Baloo 2", "Lexend", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
-  /* Tailwind and DaisyUI handle our theme colors now. */
+  --font-body: "Lexend", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Baloo 2", "Lexend", ui-sans-serif, system-ui, sans-serif;
+
+  /* Readability tokens — slightly heavier body weight + generous rhythm so the
+     reading-optimized Lexend stays crisp on cream paper. Cascades from <body>. */
+  --font-weight-body: 450;
+  --text-body-size: 1.0625rem; /* 17px — comfortably above the 16px floor */
+  --leading-body: 1.6;
+  --measure-prose: 70ch; /* comfortable readable line length */
+
+  /* Crayon art palette tokens — referenced by SVG fill classes below.
+     Kept as raw hex (not theme vars) so the crayons stay vivid regardless
+     of surrounding semantic colors. */
+  --crayon-ink: #2b2b3a;
+  --crayon-sky: #2f8fe6;
+  --crayon-berry: #ff6b8a;
+  --crayon-sunshine: #f5a800;
+  --crayon-leaf: #2fa46a;
+  --crayon-grape: #8a6fe0;
+  --crayon-paper: #fff8ef;
 }
 
-[data-theme="light"] {
+body {
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-body);
+  font-size: var(--text-body-size);
+  line-height: var(--leading-body);
+  background-color: var(--color-base-100);
+  color: var(--color-base-content);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
+h1, h2, h3, h4,
+.card-title,
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
 
+/* ===========================================================================
+   READABLE MEASURE — keep long-form body copy from running edge-to-edge.
+   Applies to every prose/long-form block site-wide (blog, deep-dive writeups,
+   policy pages) without touching individual pages. Interactive/canvas areas
+   live outside `.prose`, so they stay full-width. Declared unlayered so it
+   wins over the `max-w-none` utility used on these containers.
+   =========================================================================== */
+.prose {
+  max-width: var(--measure-prose);
+  margin-inline: auto;
+}
+
+/* ===========================================================================
+   AMBIENT BACKGROUND — soft paper dots + warm crayon blobs, like
+   construction paper. Sits behind all content; never intercepts pointer
+   events.
+   =========================================================================== */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image:
+    radial-gradient(680px 520px at 0% 0%, rgba(245, 168, 0, 0.12), transparent 60%),
+    radial-gradient(640px 520px at 100% 8%, rgba(255, 107, 138, 0.10), transparent 60%),
+    radial-gradient(rgba(43, 43, 58, 0.05) 1.5px, transparent 1.5px);
+  background-size: 100% 100%, 100% 100%, 24px 24px;
+}
+
+/* Keep app content above the ambient layer. */
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===========================================================================
+   COMPONENT PERSONALITY — soft, chunky, friendly, hand-cut.
+   =========================================================================== */
+.card {
+  border: 1.5px solid var(--color-base-300);
+  box-shadow: 0 10px 24px -12px rgba(43, 43, 58, 0.35);
+}
+.btn {
+  transition: transform 0.1s ease;
+}
+.btn:active {
+  transform: scale(0.96);
+}
+.badge {
+  font-weight: 700;
+}
+
+/* ===========================================================================
+   CRAYON ART SUPPORT
+   Fill/stroke tokens used inside hand-authored SVGs, plus the signature
+   "draw-on" and idle "wiggle" motions. Authored SVGs reference these classes
+   so a single drawing recolors consistently and animates cheaply.
+   =========================================================================== */
+
+/* Color tokens for paths inside crayon SVGs. Use class, never hardcoded hex. */
+.crayon-ink        { fill: var(--crayon-ink); }
+.crayon-fill-sky      { fill: var(--crayon-sky); }
+.crayon-fill-berry    { fill: var(--crayon-berry); }
+.crayon-fill-sunshine { fill: var(--crayon-sunshine); }
+.crayon-fill-leaf     { fill: var(--crayon-leaf); }
+.crayon-fill-grape    { fill: var(--crayon-grape); }
+.crayon-fill-paper    { fill: var(--crayon-paper); }
+
+.crayon-stroke-ink      { stroke: var(--crayon-ink); }
+.crayon-stroke-sky      { stroke: var(--crayon-sky); }
+.crayon-stroke-berry    { stroke: var(--crayon-berry); }
+.crayon-stroke-sunshine { stroke: var(--crayon-sunshine); }
+.crayon-stroke-leaf     { stroke: var(--crayon-leaf); }
+.crayon-stroke-grape    { stroke: var(--crayon-grape); }
+
+/* The <CrayonArt> wrapper. `color` prop maps to currentColor via text-*. */
+.crayon-art {
+  display: inline-block;
+  line-height: 0;
+  color: var(--crayon-ink);
+}
+.crayon-art svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+/* "draw" — strokes draw themselves. Authored strokes must set pathLength="1"
+   and use the .crayon-draw class to opt in. */
+.crayon-art[data-animate="draw"] .crayon-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: crayon-draw 1.1s ease forwards;
+}
+@keyframes crayon-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* "wiggle" — gentle idle hand-drawn jitter on the whole drawing. */
+.crayon-art[data-animate="wiggle"] svg {
+  transform-origin: center;
+  animation: crayon-wiggle 2.6s ease-in-out infinite;
+}
+@keyframes crayon-wiggle {
+  0%, 100% { transform: rotate(-1.4deg); }
+  50%      { transform: rotate(1.4deg); }
+}
+
+/* ===========================================================================
+   ACCESSIBILITY — respect reduced motion for all flourishes.
+   =========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .btn { transition: none !important; }
+  .crayon-art[data-animate] svg,
+  .crayon-art[data-animate="draw"] .crayon-draw {
+    animation: none !important;
+  }
+  .crayon-art[data-animate="draw"] .crayon-draw {
+    stroke-dashoffset: 0 !important;
+  }
+}

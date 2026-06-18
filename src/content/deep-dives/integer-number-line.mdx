@@ -1,49 +1,44 @@
-# IntegerNumberLine Deep Dive
+import { Sources, Changelog } from '../../components/content'
 
+# Integers on the number line: which way do you walk?
 
+I built the number line tool because I kept meeting Grade 7 students who could pass a sign-rules quiz on Monday and fail the same arithmetic on Friday. They had memorized a wall of rules ("minus times minus is plus," "two negatives make a positive") with no picture underneath, so the rules blurred together and they applied the wrong one under pressure. The fix is not another rule. It is a single picture they can walk along, which is exactly what the visualizer above is.
 
-Integers and Operations: Math Grade 7 (MATATAG)
+The **integers** are the whole numbers stretched out in both directions: $\dots, -3, -2, -1, 0, 1, 2, 3, \dots$ The positives sit to the right of zero, their negatives mirror them on the left, and zero sits in the middle belonging to neither side. Students meet them formally in Grade 7 under MATATAG, but most have used them for years without the label, every time they talked about *utang* (a debt is a negative balance), going three floors down to basement parking, or an aircon set below the temperature outside. The number line just makes that everyday instinct visible.
 
-An 
-integer
- is any whole number, including negative numbers, zero, and positive numbers: ...−3, −2, −1, 0, 1, 2, 3...
+Here is what trips people up, said plainly. They treat a negative sign as a thing that happens to the answer at the end, a rule to remember. It is not. On the number line a negative is a *direction*. Once you read every operation as a walk, with a starting point and a way you are facing, the sign rules stop being something to recall and become something you can watch.
 
-Paano Gamitin ang Number Line
+## The four moves
 
-Addition of a Positive:
- Move to the 
-RIGHT
- on the number line.
+Picture yourself standing on a number, then taking steps.
 
-Addition of a Negative:
- Move to the 
-LEFT
- on the number line.
+**Adding a positive** walks you to the right. Start at $-2$, add 5, take five steps right, and you land on 3, so $-2 + 5 = 3$. **Adding a negative** walks you to the left, because a negative points the other way: $-2 + (-5)$ walks five steps left to $-7$. So far this matches what most students already feel in their gut.
 
-Subtraction of a Positive:
- Move to the 
-LEFT
- (opposite of addition).
+Subtraction is where confidence wobbles, so hold one idea steady: subtracting is the reverse of adding. **Subtracting a positive** walks you left, the opposite of adding one. $3 - 5$ starts at 3, walks five left, and lands on $-2$. **Subtracting a negative** walks you right, because reversing a leftward push turns it into a rightward one. That is the whole reason $4 - (-3) = 7$, the line students recite as "subtracting a negative is adding" without quite believing it. On the number line you can watch it happen: the two negatives cancel, the arrow flips, and you walk right.
 
-Subtraction of a Negative:
- Move to the 
-RIGHT
- (subtracting a negative is adding).
+The cleanest way to say all of it: $a - b$ is the same trip as $a + (-b)$. Turn every subtraction into adding the opposite, and you only ever carry one rule, that adding a positive goes right and adding a negative goes left.
 
-Bakit Mahalaga ang Integers?
+## Distance, opposites, and zero
 
-Understanding integer operations is the 
-absolute foundation
- for all algebra. If you cannot add and subtract negative numbers confidently, you cannot solve equations, work with coordinates, or understand scientific formulas. Every mathematical concept from Grade 8 onward depends on this skill.
+Two more ideas finish the picture. The **absolute value** of a number, written $|n|$, is its distance from zero no matter the direction, so $|-7|$ and $|7|$ are both 7. Distance has no sign, which is why an absolute value is never negative. And the **opposite** of a number is its mirror image across zero: the opposite of 5 is $-5$, the opposite of $-5$ is 5, and the opposite of 0 is itself. Add any number to its opposite and you land back on zero, which is the quiet machinery behind "subtracting a negative is adding."
 
-Use the simulator above to see how the arrows move on the number line. Pay attention to the 
-direction
- of movement — that's the key to understanding integer operations!
+It is worth being honest about *why* teachers lean so hard on this one topic. The claim that integers are the single foundation of all of algebra is an overstatement. Plenty of mathematics rests on other ideas. But the practical version holds up: if signed arithmetic is shaky, almost everything from Grade 8 onward is harder than it needs to be. Solving $2x - 7 = -3$ means adding 7 to a negative. Plotting points on the Cartesian plane means moving left and down into negative coordinates. Slope, scientific notation, and the formulas in physics all assume you can handle signs without stopping to think. Errors there look like algebra mistakes but are usually integer mistakes in disguise, which is why slowing down on the number line now buys back time later.
 
-## Dissection of Variables
+So use the tool the way a beginner should. Pick a starting number, choose an operation, and predict which way the arrow will point *before* you let it move. When your prediction and the arrow disagree, that gap is the thing worth studying. The numbers follow once the direction becomes automatic.
 
-- **Variable 1**: Explanation of how it works in the physical world.
-- **Variable 2**: Deep dive into the math and units.
+<Sources
+  items={[
+    { label: 'OpenStax. Prealgebra 2e, "Introduction to Integers."', href: 'https://openstax.org/books/prealgebra-2e/pages/3-1-introduction-to-integers' },
+    { label: 'Weisstein, Eric W. "Integer." Wolfram MathWorld.', href: 'https://mathworld.wolfram.com/Integer.html' },
+    { label: 'Khan Academy. "Negative numbers" (arithmetic review).', href: 'https://www.khanacademy.org/math/arithmetic/arith-review-negative-numbers' },
+    { label: 'Encyclopaedia Britannica. "Integer."', href: 'https://www.britannica.com/science/integer' },
+  ]}
+/>
 
----
-*Note: This is a deep dive section that breaks down the variables and the underlying physics/math of the simulation.*
+<Changelog
+  created="2026-06-11"
+  updated="2026-06-18"
+  entries={[
+    { date: "2026-06-18", note: "Re-toned into the house voice; converted signed arithmetic to KaTeX; aligned prose with the predict-the-answer number-line tool." },
+  ]}
+/>

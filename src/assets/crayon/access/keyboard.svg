@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <path class="crayon-stroke-ink" d="M27 30 Q22 30 22 35 L22 41 Q22 46 27 46 L33 46 Q38 46 38 41 L38 35 Q38 30 33 30 Z" stroke-width="3.2" stroke-linejoin="round" opacity="0.55"/>
+  <path class="crayon-stroke-ink" d="M27 54 Q22 54 22 59 L22 65 Q22 70 27 70 L33 70 Q38 70 38 65 L38 59 Q38 54 33 54 Z" stroke-width="3.2" stroke-linejoin="round" opacity="0.55"/>
+  <path class="crayon-fill-sky" d="M50 38 Q44 38 44 44 L44 58 Q44 64 50 64 L72 64 Q78 64 78 58 L78 44 Q78 38 72 38 Z" opacity="0.9"/>
+  <path class="crayon-draw crayon-stroke-ink" pathLength="1" d="M50 38 Q44 38 44 44 L44 58 Q44 64 50 64 L72 64 Q78 64 78 58 L78 44 Q78 38 72 38 Z" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path class="crayon-stroke-paper" d="M53 51 H66" stroke-width="3.4" stroke-linecap="round"/>
+  <path class="crayon-stroke-paper" d="M61 46 L67 51 L61 56" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path class="crayon-stroke-paper" d="M70 45 V57" stroke-width="3.4" stroke-linecap="round"/>
+  <path class="crayon-stroke-sunshine" d="M50 33 Q39 33 39 45 L39 57 Q39 69 50 69 L72 69 Q83 69 83 57 L83 45 Q83 33 72 33 Z" stroke-width="3" stroke-linejoin="round" stroke-dasharray="5 5"/>
+</svg>

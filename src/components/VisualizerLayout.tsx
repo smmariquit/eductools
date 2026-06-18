@@ -1,8 +1,11 @@
-import React, { type ReactNode, lazy, Suspense, type ComponentType, useMemo } from 'react';
+import React, { type ReactNode, lazy, Suspense, type ComponentType, useMemo, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { Link2, Check } from 'lucide-react';
 import AdUnit from './AdUnit';
 import { Helmet } from 'react-helmet-async';
 import { visualizerModules } from '../data/registry';
+import { getVisualizerDates, getWriteupDates } from '../data/contentDates';
+import { ContentDatesLine } from './content/ContentDatesLine';
 
 const mdxComponents = import.meta.glob([
   '../content/blog/*.mdx',
@@ -31,11 +34,18 @@ interface VisualizerLayoutProps {
 const VisualizerLayout = ({ title: fallbackTitle, description: fallbackDesc, children, guideLink, adSlotId }: VisualizerLayoutProps) => {
   const location = useLocation();
   const moduleInfo = visualizerModules.find(m => m.path === location.pathname);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(window.location.href);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
   
   const title = moduleInfo ? moduleInfo.title : fallbackTitle;
   const description = moduleInfo ? moduleInfo.description : fallbackDesc;
 
-  const fullTitle = `${title} | Eductools`;
+  const fullTitle = `${title} | EduVisualsPH`;
   const ogImageUrl = `https://eductools.ph/api/og?title=${encodeURIComponent(title)}&desc=${encodeURIComponent(description.slice(0, 100))}`;
 
   const writeupComponent = useMemo(() => {
@@ -43,6 +53,10 @@ const VisualizerLayout = ({ title: fallbackTitle, description: fallbackDesc, chi
     const slug = guideLink.split('/').pop();
     return slug ? getMdxComponent(slug) : null;
   }, [guideLink]);
+
+  const writeupSlug = guideLink?.split('/').pop();
+  const toolDates = moduleInfo ? getVisualizerDates(moduleInfo.id) : undefined;
+  const writeupDates = writeupSlug ? getWriteupDates(writeupSlug) : undefined;
 
   return (
     <div className="w-full">
@@ -52,7 +66,7 @@ const VisualizerLayout = ({ title: fallbackTitle, description: fallbackDesc, chi
         <meta property="og:title" content={fullTitle} />
         <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Eductools" />
+        <meta property="og:site_name" content="EduVisualsPH" />
         <meta property="og:image" content={ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={fullTitle} />
@@ -65,40 +79,61 @@ const VisualizerLayout = ({ title: fallbackTitle, description: fallbackDesc, chi
       
       <div className="pb-4 border-b border-base-300 mb-8 flex justify-between items-start">
         <div>
-          <h1 className="text-3xl font-bold text-primary mb-2">{title}</h1>
-          <p className="text-base-content/80">{description}</p>
-        </div>
-        <div className="hidden md:block">
-          {/* Top Ad Unit to adhere to strategic placement directive without CLS */}
-          <div className="w-[300px] h-[90px] bg-base-200 flex flex-col items-center justify-center rounded-lg border border-base-300 text-xs text-base-content/40">
-            <span className="uppercase tracking-widest font-semibold mb-1">Advertisement</span>
-            <span>(Top Banner)</span>
+          <div className="flex items-center gap-2 mb-1">
+            <h1 className="text-3xl font-bold text-primary">{title}</h1>
+            <div className="tooltip tooltip-bottom" data-tip="Copy link to this tool">
+              <button
+                type="button"
+                onClick={handleCopyLink}
+                aria-label="Copy link to this tool"
+                className="btn btn-ghost btn-sm gap-1.5 normal-case"
+              >
+                {copied ? <Check className="w-4 h-4 text-success" /> : <Link2 className="w-4 h-4" />}
+                <span className={`hidden sm:inline text-xs font-medium ${copied ? 'text-success' : 'text-base-content/70'}`}>
+                  {copied ? 'Copied!' : 'Copy link'}
+                </span>
+              </button>
+            </div>
           </div>
+          <p className="text-sm text-base-content/60 mb-1">
+            By{' '}
+            <a href="https://stimmie.dev" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+              Simonee Ezekiel Mariquit
+            </a>
+          </p>
+          {toolDates && (
+            <ContentDatesLine created={toolDates.created} updated={toolDates.updated} className="mb-2" />
+          )}
+          <p className="text-base-content/80 max-w-prose">{description}</p>
         </div>
+        {adSlotId && (
+          <div className="hidden md:block shrink-0">
+            <AdUnit slotId={adSlotId} format="rectangle" />
+          </div>
+        )}
       </div>
 
       <div className="mb-8">
         {children}
       </div>
 
-      <div className="mt-8 flex justify-center text-xs text-base-content/60">
-        <span className="flex items-center gap-1.5 bg-base-200/50 px-3 py-1.5 rounded-full border border-base-300">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5 text-primary">
-            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" />
-          </svg>
-          Tool developed and verified by <a href="https://stimmie.dev" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold tracking-wide">Simonee Ezekiel Mariquit</a>
-        </span>
-      </div>
-
       {writeupComponent && (
         <div className="mt-16 pt-8 border-t border-base-300">
           <article className="prose prose-lg dark:prose-invert max-w-none bg-base-200 p-8 md:p-12 rounded-2xl shadow-sm border border-base-300">
+            <div className="not-prose mb-6 space-y-1">
+              <p className="text-sm text-base-content/60 m-0">
+                By{' '}
+                <a href="https://stimmie.dev" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                  Simonee Ezekiel Mariquit
+                </a>
+              </p>
+              {writeupDates && (
+                <ContentDatesLine created={writeupDates.created} updated={writeupDates.updated} />
+              )}
+            </div>
             <Suspense fallback={<div className="flex justify-center p-8"><span className="loading loading-spinner"></span></div>}>
               {React.createElement(writeupComponent)}
             </Suspense>
-            <div className="mt-12 pt-6 border-t border-base-300/50 text-sm text-base-content/70 flex justify-end">
-              <span>Writeup by <a href="https://stimmie.dev" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold tracking-wide">Simonee Ezekiel Mariquit</a></span>
-            </div>
           </article>
         </div>
       )}

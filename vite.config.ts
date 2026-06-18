@@ -15,11 +15,11 @@ export default defineConfig({
         enabled: true
       },
       manifest: {
-        name: 'Eductools Philippine Educational Portal',
-        short_name: 'Eductools',
+        name: 'EduVisualsPH Philippine Educational Portal',
+        short_name: 'EduVisualsPH',
         description: 'Interactive educational visualizers aligned with the MATATAG curriculum.',
-        theme_color: '#0f172a',
-        background_color: '#0f172a',
+        theme_color: '#fff8ef',
+        background_color: '#fff8ef',
         display: 'standalone',
         icons: [
           {
@@ -35,8 +35,11 @@ export default defineConfig({
         ]
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg,jpeg,webp,gif,woff,woff2,wav}'],
         maximumFileSizeToCacheInBytes: 5000000, // 5MB to handle 3D assets
+        // SPA: serve the app shell for offline navigations to client-side routes.
+        navigateFallback: 'index.html',
+        navigateFallbackDenylist: [/^\/api\//],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,

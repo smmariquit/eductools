@@ -1,29 +1,75 @@
+import { BarChart, Sources, Changelog } from '../../components/content'
+
 # Projectile Motion: The Physics of Tumbang Preso
 
-Tumbang Preso provides a perfect real-world laboratory to study 2D kinematics. The *pamato* (slipper) acts as a projectile moving under the influence of gravity, tracing a parabolic trajectory. To ensure a *sapul* (direct hit), we must mathematically dissect the variables of the throw.
+I built the projectile tool after losing an argument in a dirt yard. A cousin swore the trick to Tumbang Preso was to throw the *pamato*, the flat slipper, as hard as you can, straight and flat, so it "keeps its speed" all the way to the can. He was half right and half backward, and the half he had backward is the most useful idea in this whole topic. Once the slipper leaves your hand, nothing pushes it forward anymore. Gravity pulls it straight down the entire way, and that is the only thing acting on it. The result is the parabola every player learns to feel long before anyone writes it down.
 
-## Dissection of the Variables
+## The misconception worth busting first
 
-### 1. Anggulo / Launch Angle ($\theta$)
-- **Unit**: Degrees ($^\circ$) or Radians ($\text{rad}$).
-- **What it actually is**: The angle above the horizontal at which the *pamato* is released. This determines the proportion of the initial velocity dedicated to gaining height ($v_y$) versus covering ground distance ($v_x$). The maximum theoretical range in a vacuum occurs at $\theta = 45^\circ$.
+Here is what almost everyone gets wrong, my cousin included. People imagine the slipper's forward motion as something that fades, as if it "runs out" of the push you gave it. It does not. With air resistance set aside, the sideways speed you give the *pamato* at release is the sideways speed it keeps until it lands. What changes is the up-and-down motion, and only that. Gravity never touches the horizontal speed. It spends the whole flight working on the vertical.
 
-### 2. Bilis ng Hagis / Initial Velocity ($v_0$)
-- **Unit**: Meters per second ($\text{m/s}$).
-- **What it actually is**: The speed at which the *pamato* leaves your hand. Because projectile motion is two-dimensional, we break this vector down using trigonometry:
-  - **Horizontal Component**: $v_{0x} = v_0 \cos(\theta)$
-  - **Vertical Component**: $v_{0y} = v_0 \sin(\theta)$
+That single fact, that the two directions ignore each other, is the trick that makes projectile motion solvable at all. Gravity acts only downward, so it bends the vertical path while leaving the horizontal one alone. The slipper climbs, slows, stops for an instant at the top of its arc, and falls back down, all while sailing sideways at a steady rate.
 
-### 3. Taas at Layo / Kinematic Equations ($x, y$)
-- **Unit**: Meters ($\text{m}$).
-- **What it actually is**: The horizontal ($x$) and vertical ($y$) positions of the slipper at any given time ($t$). Since gravity only pulls *downward*, the horizontal speed remains constant, while the vertical speed changes.
-  - $x(t) = v_{0x} \cdot t$
-  - $y(t) = v_{0y} \cdot t - \frac{1}{2}g t^2$
+## Two motions, set with two numbers
 
-### 4. Oras / Time of Flight ($t$)
-- **Unit**: Seconds ($\text{s}$).
-- **What it actually is**: How long the slipper stays in the air. The total time until it hits the ground is determined entirely by the vertical components and gravity:
-  - $t_{\text{total}} = \frac{2v_{0y}}{g}$
+You set both motions at once with the two things the tool lets you choose: a launch angle and a launch speed. The angle $\theta$ is measured above the horizontal, and it decides how the throw is split between sideways and upward. The initial speed $v_0$ is how fast the slipper leaves your hand. Trigonometry breaks that one speed into its two components:
 
----
-*By mastering these variables, players intuitively solve complex kinematic calculus just to knock down a can!*
+$$ v_{0x} = v_0 \cos(\theta) \qquad v_{0y} = v_0 \sin(\theta) $$
+
+A low, flat throw spends almost everything on $v_{0x}$ and skims near the ground. A steep throw pours speed into $v_{0y}$, climbs high, and hangs in the air without travelling far. Position at any instant follows from those components, with gravity $g \approx 9.8\text{ m/s}^2$ bending the vertical path:
+
+$$ x(t) = v_{0x}\,t \qquad y(t) = v_{0y}\,t - \tfrac{1}{2} g t^2 $$
+
+The slipper stays airborne for a time set entirely by the vertical launch and gravity, $t_{\text{total}} = \dfrac{2 v_{0y}}{g}$, and how far it travels in that time is the range. Change the angle or the speed in the tool and you are really changing those two equations, then watching the arc they produce.
+
+## Why 45 degrees wins
+
+On level ground, ignoring air resistance, the horizontal range works out to a clean expression. You can [derive it from the same two equations](https://openstax.org/books/college-physics-2e/pages/3-4-projectile-motion):
+
+$$ R = \dfrac{v_0^2 \sin(2\theta)}{g} $$
+
+The whole behavior lives in that $\sin(2\theta)$ term, which is largest when $2\theta = 90^\circ$, so the maximum range comes at $\theta = 45^\circ$. The same expression also explains a symmetry good players exploit without naming it: any two angles that add up to $90^\circ$ throw the slipper the same distance. A $30^\circ$ throw and a $60^\circ$ throw land in the same spot, one fast and flat, the other slow and high.
+
+<BarChart
+  title="Range at fixed launch speed, as % of the 45\u00b0 maximum"
+  unit="%"
+  max={100}
+  source="Range equation R = v\u2080\u00b2 sin(2\u03b8)/g, OpenStax College Physics 2e \u00a73.4"
+  data={[
+    { label: '15\u00b0', value: 50, color: 'berry' },
+    { label: '30\u00b0', value: 86.6, color: 'sunshine' },
+    { label: '45\u00b0', value: 100, color: 'leaf' },
+    { label: '60\u00b0', value: 86.6, color: 'sky' },
+    { label: '75\u00b0', value: 50, color: 'grape' },
+  ]}
+/>
+
+In an actual game the $45^\circ$ ideal bends a little. Air drag shaves distance off fast, flat throws more than lofted ones, and you are usually not aiming for maximum range anyway. You want the slipper arriving with enough downward speed to knock the can over rather than skip past it, which tends to argue for a slightly steeper, more committed throw than pure range math would suggest. My cousin's flat bullet looked impressive and skittered right past the can more often than not.
+
+## What the player is really solving
+
+Strip away the equations and a skilled player is doing live optimization. They pick an angle and a speed so the horizontal travel matches the distance to the can at the exact moment the vertical drop brings the *pamato* down to can height. Get either motion wrong and the throw sails long or dies short. That is the quiet reason Tumbang Preso never gets boring: every throw is a fresh two-variable problem, and the only calculator anyone uses is their arm.
+
+## A few questions I actually get
+
+**If I throw harder, doesn't it always go farther?**
+Only up to a point, and only if the angle holds. Range grows with the *square* of the launch speed, so more speed helps a lot, but at a fixed speed the angle decides everything through $\sin(2\theta)$. A blazing-fast throw at a near-flat angle still loses to a calmer throw nearer $45^\circ$.
+
+**Why do a steep throw and a flat throw sometimes land in the same place?**
+Because any pair of angles that add to $90^\circ$ shares the same $\sin(2\theta)$, so they share the same range. The steep one hangs in the air longer and the flat one gets there sooner, but they cover the same ground.
+
+<Sources
+  items={[
+    { label: 'OpenStax (2022). College Physics 2e, 3.4 Projectile Motion (range equation and trajectory).', href: 'https://openstax.org/books/college-physics-2e/pages/3-4-projectile-motion' },
+    { label: 'HyperPhysics, Georgia State University. Trajectories and projectile motion.', href: 'http://hyperphysics.phy-astr.gsu.edu/hbase/traj.html' },
+    { label: 'PhET Interactive Simulations, University of Colorado Boulder. Projectile Motion.', href: 'https://phet.colorado.edu/en/simulations/projectile-motion' },
+  ]}
+/>
+
+<Changelog
+  created="2026-06-11"
+  updated="2026-06-18"
+  entries={[
+    { date: "2026-06-18", note: "Re-toned into the house voice (origin-story open, misconception framing on horizontal speed, plain-spoken FAQ); kept tool references high-level, preserved the range chart and verified sources, added the Changelog block." },
+  ]}
+/>

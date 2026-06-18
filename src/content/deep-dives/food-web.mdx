@@ -1,3 +1,49 @@
-# Food Web: Energy Flow in our Rice Paddies
+import { BarChart, Sources, Changelog } from '../../components/content'
 
-This visualizer explores energy flow using a localized food chain: from Palay (Rice) to Tipaklong (Grasshopper), Palaka (Frog), Ahas (Snake), and the Philippine Eagle.
+# Food webs: following energy through a rice paddy
+
+Stand at the edge of a flooded rice field and you are looking at an ecosystem doing accounting. The palay is banking energy from sunlight; the tipaklong eating the leaves is making a withdrawal; the palaka waiting in the mud is living off that grasshopper; and a snake, an ahas, is living off the frog. Trace that line and you have a food chain. The reason ecologists prefer the word web is that the real paddy is messier: the frog eats more than grasshoppers, the snake eats more than frogs, and birds of prey overhead tap into several strands at once. The tool draws exactly that tangle for a Philippine paddy, from the rice and kangkong up through the snail, heron, and snake to a Philippine eagle at the top, and tapping any organism lights up what it eats and what eats it. But the single chain is the right place to start, because it makes one hard rule visible, which is that energy only flows one way and most of it leaks out at every step.
+
+## Producers, consumers, and the levels between
+
+Every ecosystem starts with producers, organisms that make their own food. In the paddy that is the rice and the algae and weeds in the water, capturing sunlight through photosynthesis and storing it as sugars. They are the only members of the system putting new energy in; everything else is spending it.
+
+Above them come the consumers, sorted by how far they sit from the original sunlight. The grasshopper eating rice is a primary consumer, a herbivore feeding directly on producers. The frog eating the grasshopper is a secondary consumer. The snake eating the frog is a tertiary consumer, and a hawk or eagle taking the snake is higher still. Each of these positions is a trophic level, a measure of an organism's distance from the producers that feed the whole system.
+
+Two groups are easy to forget because they work out of sight. Decomposers, the bacteria and fungi in the mud, break down dead rice stalks, dead frogs, and waste, releasing the locked-up nutrients back into the soil and water for the producers to reuse. Energy flows through an ecosystem and is lost, but matter, the nitrogen and phosphorus and carbon, cycles around and is used again. That recycling is what keeps the producers supplied.
+
+## The ten percent problem
+
+Here is the rule the food chain exists to teach. When one trophic level eats the one below it, only a small fraction of the energy stored there ends up stored in the eater. Much of it was already spent on the prey's own living, lost as metabolic heat in line with the second law of thermodynamics, and more is never eaten or never digested. Textbooks often round the transfer to about ten percent per step, and detailed measurements land in that neighbourhood. The classic study of the Silver Springs ecosystem in Florida, reported in OpenStax's Biology 2e, traced the energy directly.
+
+<BarChart
+  title="Energy flow in the Silver Springs ecosystem (kcal/m² per year)"
+  source="OpenStax, Biology 2e, §46.2 (Silver Springs data, after H. T. Odum, 1957)"
+  data={[
+    { label: 'Producers (gross)', value: 20810, color: 'leaf' },
+    { label: 'Net for consumers', value: 7633, color: 'sunshine' },
+    { label: 'Primary consumers', value: 1103, color: 'berry' },
+  ]}
+/>
+
+The producers captured 20,810 kcal per square metre per year. After their own respiration and heat loss, 7,633 was left as net energy available to the primary consumers, and those primary consumers actually built only 1,103 kcal per square metre per year into their own bodies. Energy falls off a cliff at each handoff. The energy pyramid in the tool stacks that same drop as tiers, each roughly a tenth of the one beneath it, with a note for where the missing ninety percent goes (mostly heat from respiration) and a reminder that decomposers feed the cycled nutrients back to the producers.
+
+That single fact explains a feature of every food web: the chains are short. After four to six transfers there is simply not enough energy left to support another level, which is why you find a great many rice plants, fewer grasshoppers, fewer frogs still, and only a handful of top predators across a whole landscape. A bird of prey needs an enormous catchment of producers underneath it to survive, which is also why apex predators are usually the first species to disappear when an ecosystem is squeezed.
+
+It also reframes a familiar argument about food. Because so much energy is lost moving up a level, feeding grain to animals and then eating the animals delivers far less of the original solar energy to a person than eating the grain would. The paddy makes the lesson concrete: the energy that built a kilo of snake started as a great deal more sunlight banked in a great deal more rice.
+
+<Sources
+  items={[
+    { label: 'OpenStax, Biology 2e: 46.2 Energy Flow through Ecosystems.', href: 'https://openstax.org/books/biology-2e/pages/46-2-energy-flow-through-ecosystems' },
+    { label: 'OpenStax, Biology 2e: 46.1 Ecology of Ecosystems.', href: 'https://openstax.org/books/biology-2e/pages/46-1-ecology-of-ecosystems' },
+    { label: 'OpenStax, Biology 2e: 46.3 Biogeochemical Cycles.', href: 'https://openstax.org/books/biology-2e/pages/46-3-biogeochemical-cycles' },
+  ]}
+/>
+
+<Changelog
+  created="2026-06-11"
+  updated="2026-06-18"
+  entries={[
+    { date: "2026-06-18", note: "Tied the prose to the current tool (tappable paddy food web and the ~10% energy pyramid with decomposers); kept the Silver Springs chart and data; verified sources live; added the Changelog block." },
+  ]}
+/>

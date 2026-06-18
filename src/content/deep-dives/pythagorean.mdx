@@ -1,22 +1,47 @@
-# Pythagorean Theorem: Beyond the Triangle
+import { Sources, Changelog } from '../../components/content'
 
-The Pythagorean theorem ($a^2 + b^2 = c^2$) is widely taught as a formula to find the missing side of a right triangle. However, the true mathematical rigor lies in understanding that it's actually an equation relating **areas**.
+# The theorem is about squares, not triangles
 
-## Dissection of the Variables
+I rebuilt the Pythagorean tool after watching a student use $a^2 + b^2 = c^2$ flawlessly for a whole worksheet and then admit, quietly, that he had no idea what the little $2$ was doing up there. He thought squaring was just "the button you press." That is the thing almost everyone gets backwards, so let me say it plainly before anything else: the theorem is not really about the lengths $a$, $b$, and $c$. It is about the *squares* built on those lengths, and squares are areas. Once you see that, the rest of the subject opens up.
 
-### 1. Side $a$ and Side $b$ (The Legs)
-- **Unit**: Linear units ($\text{cm}$, $\text{m}$, etc.)
-- **What they actually are**: The two sides that intersect to form exactly a $90^\circ$ angle. In coordinate geometry, these often represent the $\Delta x$ and $\Delta y$ (change in X and change in Y) between two points.
+Most students meet the equation as a side-finding machine. Feed it two numbers, get the third. That works, and in Grade 9 (where MATATAG places this) it is most of what an exam asks. But it hides why the relationship has held the attention of mathematicians for two and a half thousand years.
 
-### 2. $a^2$ and $b^2$ (The Areas)
-- **Unit**: Square units ($\text{cm}^2$, $\text{m}^2$)
-- **What they actually are**: This is the core visual insight. When you square a number geometrically, you are literally constructing a square shape where every side has that length. $a^2$ is the physical 2D area of a square built attached to side $a$. 
+## It is a statement about areas
 
-### 3. $c$ (The Hypotenuse)
-- **What it actually is**: The longest side of the right triangle, always opposite the right angle. In the real world, this is the "straight-line distance" between two points. Because calculating $c$ involves a square root ($c = \sqrt{a^2 + b^2}$), the result is frequently an irrational number (like $\sqrt{98}$).
+Take a right triangle and draw a real square on each side, the way the old geometers did. The square on leg $a$ has area $a^2$. The square on leg $b$ has area $b^2$. The square on the hypotenuse has area $c^2$. The theorem says the first two areas, added together, exactly equal the third. The simulator makes this literal. Four copies of the triangle sit inside one big square, and as you drag the slider they slide from framing the two small squares ($a^2$ and $b^2$) into framing a single tilted square ($c^2$). The leftover space never changes size during the slide, so the area you started with is the area you end with. That is the proof, done with scissors instead of algebra.
 
-### 4. Pythagorean Triples
-- **What they actually are**: Rare sets of three positive integers $(a, b, c)$ that perfectly satisfy the theorem without producing decimals. The most famous is $3, 4, 5$. If you have a rope with $12$ evenly spaced knots, you can form a $3-4-5$ right triangle. Ancient builders (like the Egyptians) used this exact method to ensure their corners were perfectly square without modern protractors!
+This reframing tells you *why* the algebra works, not just *that* it works. The squaring in $a^2$ is not an abstract operation you do to a length. It is the building of a two-dimensional region. It is also why the theorem has hundreds of separate proofs, many of them pure rearrangements of area with no algebra at all. The collection at cut-the-knot runs past a hundred, including one credited to a sitting U.S. president. None of those proofs would exist if the relationship were only about numbers.
 
----
-*The simulator visually proves this ancient relationship: if you were to cut up the red square ($a^2$) and the green square ($b^2$), the pieces would perfectly fill the area of the blue square ($c^2$) every single time.*
+One useful consequence sits right at the edges. The theorem only holds when the angle between $a$ and $b$ is exactly $90^\circ$. Open that angle wider and the square on the long side grows past $a^2 + b^2$. Pinch it narrower and that square shrinks below. The general rule that covers every angle is the Law of Cosines, $c^2 = a^2 + b^2 - 2ab\cos C$, and the Pythagorean theorem is just its special case, because $\cos 90^\circ = 0$ and the last term vanishes.
+
+## Why your answer is usually an ugly number
+
+Solving for the hypotenuse means $c = \sqrt{a^2 + b^2}$, and most of the time that square root refuses to come out clean. Set both legs to $7$ in the tool and you get $c = \sqrt{98} \approx 9.899$, an irrational number that never ends and never repeats. Legs of $1$ and $1$ give $\sqrt{2}$, the number that, by legend, got a member of the Pythagorean brotherhood drowned for proving it could not be written as a fraction.
+
+This is not a flaw in your arithmetic. Irrational hypotenuses are the normal case, and clean whole-number answers are the rare exception. So when you compute the diagonal across a basketball court or the straight-line distance between two pins on a map, expect a decimal you round at the very end, and keep the square root in symbol form as long as you can so rounding errors do not stack up. In coordinate geometry this same idea is the distance formula, $\sqrt{(\Delta x)^2 + (\Delta y)^2}$, which is just the theorem in different clothes, with the legs standing in for the horizontal and vertical gaps between two points.
+
+## The rope trick that built straight corners
+
+The rare clean cases are the Pythagorean triples, whole-number triplets like $(3,4,5)$, $(5,12,13)$, and $(8,15,17)$ that satisfy the equation with no decimals at all. The tool keeps a few of these as presets so you can flip to them and watch the hypotenuse land on a round number. The smallest, $3$–$4$–$5$, earned its keep on real construction sites long before anyone owned a protractor.
+
+Here is the field method, and Filipino carpenters and *mason* still use a version of it to square up a wall or a foundation. Take a rope, tie twelve evenly spaced knots so it forms twelve equal segments, and peg it into a triangle with sides of $3$, $4$, and $5$ segments. Because $3^2 + 4^2 = 9 + 16 = 25 = 5^2$, the corner between the two short sides comes out to a perfect $90^\circ$. No instrument, no calculation in the moment, just a knotted rope and an identity that cannot lie. The Egyptians usually get the credit for the trick, used to lay out fields and monuments, and it survives because it is cheaper and more reliable than anything you could buy at a hardware store for the same job.
+
+Multiply any triple by a whole number and you get another one, so $(6,8,10)$ and $(9,12,15)$ work too. That is handy when your corner is bigger than five segments of rope will reach.
+
+<Sources
+  items={[
+    { label: 'OpenStax, Algebra and Trigonometry 2e: Right Triangle Trigonometry (Pythagorean relationship).', href: 'https://openstax.org/books/algebra-and-trigonometry-2e/pages/7-2-right-triangle-trigonometry' },
+    { label: 'Bogomolny, A. Pythagorean Theorem and its many proofs (Cut the Knot).', href: 'https://www.cut-the-knot.org/pythagoras/' },
+    { label: 'Weisstein, E. W. Pythagorean Theorem (Wolfram MathWorld).', href: 'https://mathworld.wolfram.com/PythagoreanTheorem.html' },
+    { label: 'Weisstein, E. W. Pythagorean Triple (Wolfram MathWorld).', href: 'https://mathworld.wolfram.com/PythagoreanTriple.html' },
+    { label: 'Khan Academy: The Pythagorean theorem.', href: 'https://www.khanacademy.org/math/cc-eighth-grade-math/cc-8th-geometry/cc-8th-pythagorean-theorem' },
+  ]}
+/>
+
+<Changelog
+  created="2026-06-11"
+  updated="2026-06-18"
+  entries={[
+    { date: "2026-06-18", note: "Re-toned into the house voice (origin-story open, areas-not-lengths misconception, knotted-rope field method); matched the tool's dissection slider and triple presets; kept the math and verified sources." },
+  ]}
+/>
