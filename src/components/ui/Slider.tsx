@@ -8,6 +8,10 @@ import {
 
 export type { SliderMotif };
 
+export interface SliderMark {
+  label: ReactNode;
+}
+
 export interface SliderProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: ReactNode;
   value: number;
@@ -25,6 +29,8 @@ export interface SliderProps extends React.InputHTMLAttributes<HTMLInputElement>
   hideReadout?: boolean;
   /** Rail + motif only — label row omitted (parent supplies context). */
   compact?: boolean;
+  /** Optional scale labels shown under the track (evenly spaced). */
+  marks?: SliderMark[];
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   /** Optional formatter for the value readout (defaults to raw number + unit). */
   formatValue?: (value: number) => string;
@@ -47,6 +53,7 @@ export const Slider: React.FC<SliderProps> = ({
   readout,
   hideReadout = false,
   compact = false,
+  marks,
   ...props
 }) => {
   const generatedId = useId();
@@ -59,7 +66,7 @@ export const Slider: React.FC<SliderProps> = ({
   return (
     <div className={`crayon-slider w-full ${className}`} data-motif={motif}>
       {!compact && (
-        <label htmlFor={inputId} className="crayon-slider__label block mb-2 text-sm font-semibold">
+        <label htmlFor={inputId} className="crayon-slider__label block mb-2 font-semibold">
           <span className="inline-flex flex-wrap items-baseline gap-x-1.5 gap-y-0.5">
             <span>{label}</span>
             {!hideReadout && (
@@ -79,7 +86,7 @@ export const Slider: React.FC<SliderProps> = ({
       <div className="crayon-slider__row flex items-center gap-2.5">
         <CrayonArt
           name={config.art}
-          size={30}
+          size={36}
           color={config.color}
           animate={config.wiggle ? 'wiggle' : 'none'}
           className="crayon-slider__holder shrink-0"
@@ -110,6 +117,14 @@ export const Slider: React.FC<SliderProps> = ({
           />
         </div>
       </div>
+
+      {marks && marks.length > 0 && (
+        <div className="crayon-slider__marks" aria-hidden="true">
+          {marks.map((mark, i) => (
+            <span key={i}>{mark.label}</span>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

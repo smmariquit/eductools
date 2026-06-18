@@ -234,11 +234,11 @@ const StatesOfMatterVisualizer = () => {
 
           <div className="w-full max-w-3xl mt-8 bg-base-200 p-6 rounded-xl border border-base-300">
             <div className="flex justify-end mb-1">
-              <span className="text-sm font-semibold text-base-content">
+              <span className="font-semibold text-base-content">
                 Anyo (State): <span className="text-secondary font-bold">{state}</span>
               </span>
             </div>
-            <p className="text-sm text-base-content/70 mb-4">{ARRANGEMENT[phase]}</p>
+            <p className="text-base-content/70 mb-4">{ARRANGEMENT[phase]}</p>
 
             <Slider
               id="temperature"
@@ -251,14 +251,13 @@ const StatesOfMatterVisualizer = () => {
               colorClass="primary"
               onChange={(e) => setTemperature(Number(e.target.value))}
               aria-valuetext={`${temperature} degrees Celsius, ${state}`}
+              marks={[
+                { label: '-20°C' },
+                { label: '0°C (Freezing)' },
+                { label: '100°C (Boiling)' },
+                { label: '120°C' },
+              ]}
             />
-
-            <div className="flex justify-between text-xs sm:text-sm px-2 mt-4 text-base-content/60 font-medium">
-              <span>-20°C</span>
-              <span>0°C (Freezing)</span>
-              <span>100°C (Boiling)</span>
-              <span>120°C</span>
-            </div>
 
             <div className="flex justify-end mt-4">
               <button className="btn btn-outline btn-sm" onClick={reset}>Reset</button>

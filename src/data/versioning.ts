@@ -20,6 +20,14 @@ export const SITE_VERSION: string = packageJson.version;
 
 export const siteChangelog: ReleaseEntry[] = [
   {
+    version: '1.1.5',
+    date: '2026-06-18',
+    changes: [
+      'Minimum readable font and tap-target sizes enforced across all visualizer tools.',
+      'Sliders: larger labels, motif icons, thumbs, and optional scale marks.',
+    ],
+  },
+  {
     version: '1.1.4',
     date: '2026-06-18',
     changes: [

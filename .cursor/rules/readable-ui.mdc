@@ -1,0 +1,30 @@
+---
+description: Minimum readable type and tap targets inside interactive tools
+alwaysApply: true
+---
+
+# Readable UI in tools
+
+Interactive visualizers wrap content in `.tool-surface` (via `VisualizerLayout`). Respect these floors everywhere inside tools:
+
+| Token | Size | Use for |
+|-------|------|---------|
+| `--text-min-caption` | 14px | Scale labels, hints, metadata, uppercase section tags |
+| `--text-min-ui` | 15px | Helper copy, secondary labels, small buttons |
+| `--text-min-control` | 16px | Slider labels, primary control text |
+| `--touch-min` | 44px | Buttons, slider thumbs, tappable controls |
+| `--crayon-icon-min` | 36px | Crayon motif holders beside sliders |
+
+## Do
+
+- Use shared `<Slider />` for ranges; pass scale endpoints via the `marks` prop (renders `.crayon-slider__marks` at caption size).
+- Use `text-sm` or larger for helper sentences learners must read.
+- Prefer semantic sizes (`text-sm`, `text-base`) — `.tool-surface` bumps undersized utilities automatically.
+
+## Don't
+
+- `text-[10px]`, `text-[11px]`, or `text-xs` for primary instructional copy (captions only).
+- Tiny icon-only controls under 36px beside sliders.
+- One-off pixel font sizes when a design token exists.
+
+New tool UI should be authored assuming `.tool-surface` is active; do not rely on 12px text “looking fine” on desktop.

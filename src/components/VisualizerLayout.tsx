@@ -116,7 +116,7 @@ const VisualizerLayout = ({ title: fallbackTitle, description: fallbackDesc, chi
         )}
       </div>
 
-      <div className="mb-8">
+      <div className="tool-surface mb-8">
         {children}
       </div>
 

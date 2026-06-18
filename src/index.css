@@ -80,6 +80,13 @@
   --crayon-leaf: #2fa46a;
   --crayon-grape: #8a6fe0;
   --crayon-paper: #fff8ef;
+
+  /* Minimum readable sizes inside interactive tools (see .tool-surface). */
+  --text-min-caption: 0.875rem;   /* 14px — floor for hints, scale labels, metadata */
+  --text-min-ui: 0.9375rem;       /* 15px — secondary labels, helper copy */
+  --text-min-control: 1rem;       /* 16px — slider labels, primary control text */
+  --touch-min: 2.75rem;           /* 44px — minimum tap target (WCAG) */
+  --crayon-icon-min: 2.25rem;     /* 36px — slider motif holders */
 }
 
 body {
@@ -249,7 +256,7 @@ body::before {
 }
 
 .crayon-slider__input {
-  --crayon-thumb-size: 1.25rem;
+  --crayon-thumb-size: 1.375rem;
   background: transparent !important;
   overflow: visible !important; /* daisyUI .range clips thumbs with overflow:hidden */
   height: auto !important;
@@ -259,7 +266,7 @@ body::before {
 }
 
 .crayon-slider__input::-webkit-slider-runnable-track {
-  height: 0.55rem;
+  height: 0.65rem;
   border-radius: 999px;
   border: 2px solid color-mix(in srgb, var(--color-base-content) 18%, transparent);
   background: color-mix(in srgb, var(--color-base-100) 70%, transparent);
@@ -267,7 +274,7 @@ body::before {
 }
 
 .crayon-slider__input::-moz-range-track {
-  height: 0.55rem;
+  height: 0.65rem;
   border-radius: 999px;
   border: 2px solid color-mix(in srgb, var(--color-base-content) 18%, transparent);
   background: color-mix(in srgb, var(--color-base-100) 70%, transparent);
@@ -280,7 +287,7 @@ body::before {
   box-sizing: border-box;
   width: var(--crayon-thumb-size);
   height: var(--crayon-thumb-size);
-  margin-top: calc((0.55rem - var(--crayon-thumb-size)) / 2 - 2px);
+  margin-top: calc((0.65rem - var(--crayon-thumb-size)) / 2 - 2px);
   border-radius: 999px;
   border: 3px solid var(--crayon-ink);
   background: var(--crayon-paper);
@@ -355,5 +362,72 @@ body::before {
   --buko-rim-primary: color-mix(in srgb, var(--crayon-sky) 35%, var(--crayon-ink));
   --buko-rim-secondary: color-mix(in srgb, var(--crayon-berry) 35%, var(--crayon-ink));
   filter: drop-shadow(0 4px 10px rgba(43, 43, 58, 0.12));
+}
+
+/* ===========================================================================
+   TOOL SURFACE — interactive visualizers: enforce readable type + tap targets.
+   Wrap tool UI in VisualizerLayout (class tool-surface).
+   =========================================================================== */
+.tool-surface .text-xs,
+.tool-surface [class*="text-[10px]"],
+.tool-surface [class*="text-[11px]"],
+.tool-surface [class*="text-[12px]"] {
+  font-size: var(--text-min-caption);
+}
+
+.tool-surface .text-sm {
+  font-size: var(--text-min-ui);
+}
+
+.tool-surface .btn-sm {
+  min-height: var(--touch-min);
+  font-size: var(--text-min-ui);
+  padding-inline: 1rem;
+}
+
+.tool-surface .btn-xs {
+  min-height: 2.25rem;
+  min-width: 2.25rem;
+  font-size: var(--text-min-caption);
+}
+
+.tool-surface .badge-sm {
+  font-size: var(--text-min-caption);
+  min-height: 1.75rem;
+  padding-inline: 0.65rem;
+}
+
+.crayon-slider__label {
+  font-size: var(--text-min-control);
+}
+
+.crayon-slider__holder {
+  width: var(--crayon-icon-min) !important;
+  height: var(--crayon-icon-min) !important;
+}
+
+.crayon-slider__marks {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding-inline: 0.125rem;
+  font-size: var(--text-min-caption);
+  font-weight: 600;
+  color: color-mix(in srgb, var(--color-base-content) 62%, transparent);
+  line-height: 1.35;
+}
+
+.crayon-slider__marks > * {
+  flex: 1 1 0;
+  text-align: center;
+}
+
+.crayon-slider__marks > *:first-child {
+  text-align: left;
+}
+
+.crayon-slider__marks > *:last-child {
+  text-align: right;
 }
 
