@@ -13,6 +13,11 @@ const eagleStages: ProcessStage[] = [
     title: 'Itlog',
     subtitle: 'Egg',
     illustration: { name: 'life-eagle-egg', color: 'sunshine' },
+    photo: {
+      src: '/images/life-cycles/eagle-nest.jpg',
+      alt: 'Philippine eagle at its nest during the breeding season',
+      credit: 'Photo: markaharpe, CC BY-SA 2.0, via Wikimedia Commons (parent at nest during incubation).',
+    },
     description:
       'A breeding pair lays a single egg — usually only about once every two years. Both parents take turns incubating it for roughly 58 to 60 days.',
     phContext:
@@ -23,6 +28,11 @@ const eagleStages: ProcessStage[] = [
     title: 'Sisiw',
     subtitle: 'Eaglet / hatchling',
     illustration: { name: 'life-eagle-eaglet', color: 'sunshine' },
+    photo: {
+      src: '/images/life-cycles/eagle-eaglet.jpg',
+      alt: 'Downy Philippine eagle nestling in the nest',
+      credit: 'Photo: markaharpe, CC BY-SA 2.0, via Wikimedia Commons.',
+    },
     description:
       'A downy chick hatches and depends entirely on its parents, who hunt and bring food to the nest. Birds develop directly, so the eaglet is already a small eagle — there is no larval or metamorphosis stage.',
   },
@@ -32,9 +42,9 @@ const eagleStages: ProcessStage[] = [
     subtitle: 'Young eagle',
     illustration: { name: 'life-eagle-juvenile', color: 'leaf' },
     photo: {
-      src: '/images/life-cycles/eagle-adult.jpg',
-      alt: 'Philippine eagle perched on a branch with crest feathers raised',
-      credit: 'Photo: shankar s., CC BY 2.0, via Wikimedia Commons (young birds resemble adults but keep learning to hunt).',
+      src: '/images/life-cycles/eagle-juvenile.jpg',
+      alt: 'Young Philippine eagle perched in forest on Mindanao',
+      credit: 'Photo: Francesco Veronesi, CC BY-SA 2.0, via Wikimedia Commons.',
     },
     description:
       'The young eagle fledges and leaves the nest but keeps practising flight and hunting near its parents for many months before living on its own.',
@@ -57,6 +67,11 @@ const eagleStages: ProcessStage[] = [
     title: 'Pagpaparami',
     subtitle: 'Breeding',
     illustration: { name: 'life-eagle-nest', color: 'berry' },
+    photo: {
+      src: '/images/life-cycles/eagle-breeding.jpg',
+      alt: 'Mature Philippine eagle with raised crest and full adult plumage',
+      credit: 'Photo: Olympus Gene Tibubos, CC BY 4.0, via Wikimedia Commons.',
+    },
     description:
       'Eagles only reach breeding age at about five to seven years old. Pairs bond for life and raise just one chick at a time before the cycle begins again.',
     phContext:
@@ -112,8 +127,8 @@ const tamarawStages: ProcessStage[] = [
     subtitle: 'Breeding',
     illustration: { name: 'life-tamaraw-breeding', color: 'berry' },
     photo: {
-      src: '/images/life-cycles/tamaraw-adult.jpg',
-      alt: 'Tamaraw in habitat at Mount Iglit-Baco National Park',
+      src: '/images/life-cycles/tamaraw-breeding.jpg',
+      alt: 'Group of tamaraw on Mindoro grassland',
       credit: 'Photo: Gregg Yan, CC BY-SA 3.0, via Wikimedia Commons.',
     },
     description:

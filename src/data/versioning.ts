@@ -20,6 +20,13 @@ export const SITE_VERSION: string = packageJson.version;
 
 export const siteChangelog: ReleaseEntry[] = [
   {
+    version: '1.2.2',
+    date: '2026-06-18',
+    changes: [
+      'Life cycles tool: every eagle and tamaraw stage now has its own Wikimedia reference photo.',
+    ],
+  },
+  {
     version: '1.2.1',
     date: '2026-06-18',
     changes: [
@@ -162,8 +169,17 @@ const INITIAL_V10: string[] = ['Initial interactive release.'];
 function buildToolRecord(id: string): ToolVersionRecord {
   if (id === 'life-cycles') {
     return {
-      version: '1.2.1',
+      version: '1.2.2',
       changelog: [
+        {
+          version: '1.2.2',
+          date: '2026-06-18',
+          changes: [
+            'All nine life stages (five eagle, four tamaraw) now have distinct reference photos.',
+            'Downloaded five new eagle images (nest, nestling, juvenile, breeding) from Wikimedia Commons.',
+            'Tamaraw breeding stage uses its own group photo instead of reusing the adult image.',
+          ],
+        },
         {
           version: '1.2.1',
           date: '2026-06-18',
