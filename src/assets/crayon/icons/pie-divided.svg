@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <circle class="crayon-fill-paper" cx="50" cy="50" r="32" opacity="0.9"/>
+  <path class="crayon-draw crayon-stroke-ink" pathLength="1" d="M50 50 L50 18 M50 50 L82 50 M50 50 L50 82 M50 50 L18 50" stroke-width="4" stroke-linecap="round"/>
+  <circle class="crayon-draw crayon-stroke-ink" pathLength="1" cx="50" cy="50" r="32" stroke-width="5"/>
+</svg>

@@ -229,6 +229,19 @@ body::before {
 /* ===========================================================================
    WHIMSICAL SLIDERS — crayon motif holder + themed rail behind the track.
    =========================================================================== */
+.crayon-slider__row {
+  overflow: visible;
+}
+
+.crayon-slider__rail {
+  overflow: visible;
+  /* Room for thumb + border + focus ring (range-sm track is shorter than thumb). */
+  padding: 0.45rem 0;
+  min-height: calc(var(--crayon-thumb-size, 1.35rem) + 0.5rem);
+  display: flex;
+  align-items: center;
+}
+
 .crayon-slider__rail-art svg {
   width: 100%;
   height: 100%;
@@ -236,8 +249,13 @@ body::before {
 }
 
 .crayon-slider__input {
-  --crayon-thumb-size: 1.35rem;
+  --crayon-thumb-size: 1.25rem;
   background: transparent !important;
+  overflow: visible !important; /* daisyUI .range clips thumbs with overflow:hidden */
+  height: auto !important;
+  min-height: var(--crayon-thumb-size);
+  --range-thumb-size: var(--crayon-thumb-size);
+  margin: 0;
 }
 
 .crayon-slider__input::-webkit-slider-runnable-track {
@@ -259,6 +277,7 @@ body::before {
 .crayon-slider__input::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
+  box-sizing: border-box;
   width: var(--crayon-thumb-size);
   height: var(--crayon-thumb-size);
   margin-top: calc((0.55rem - var(--crayon-thumb-size)) / 2 - 2px);
@@ -269,9 +288,12 @@ body::before {
     2px 3px 0 rgba(43, 43, 58, 0.22),
     0 0 0 2px color-mix(in srgb, var(--color-primary) 35%, transparent);
   transition: transform 0.12s ease, box-shadow 0.12s ease;
+  /* Prevent subpixel clip against the track box */
+  transform: translateZ(0);
 }
 
 .crayon-slider__input::-moz-range-thumb {
+  box-sizing: border-box;
   width: var(--crayon-thumb-size);
   height: var(--crayon-thumb-size);
   border-radius: 999px;
@@ -283,7 +305,7 @@ body::before {
 }
 
 .crayon-slider__input:active::-webkit-slider-thumb {
-  transform: scale(1.12);
+  transform: translateZ(0) scale(1.12);
 }
 
 .crayon-slider__input:focus-visible::-webkit-slider-thumb {

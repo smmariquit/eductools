@@ -76,9 +76,10 @@ export const Slider: React.FC<SliderProps> = ({
           color={config.color}
           animate={config.wiggle ? 'wiggle' : 'none'}
           className="crayon-slider__holder shrink-0"
+          title={config.hint}
         />
 
-        <div className="crayon-slider__rail relative flex-1 min-w-0 py-1">
+        <div className="crayon-slider__rail relative flex-1 min-w-0">
           {railSvg && (
             <span
               className="crayon-slider__rail-art pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 h-4 opacity-100"

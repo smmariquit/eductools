@@ -20,6 +20,14 @@ export const SITE_VERSION: string = packageJson.version;
 
 export const siteChangelog: ReleaseEntry[] = [
   {
+    version: '1.1.1',
+    date: '2026-06-18',
+    changes: [
+      'Fraction sliders: distinct numerator vs denominator pie icons with clearer meaning.',
+      'Fixed crayon slider thumbs getting clipped top and bottom.',
+    ],
+  },
+  {
     version: '1.1.0',
     date: '2026-06-18',
     changes: [
@@ -86,6 +94,10 @@ const TOOL_V11: Partial<Record<string, string[]>> = {
   ],
   'computer-science': [
     'RGB byte editors with live pixel preview.',
+  ],
+  fractions: [
+    'Numerator and denominator sliders use distinct pie icons (one slice vs divided whole).',
+    'Crayon slider thumb clipping fix.',
   ],
 };
 

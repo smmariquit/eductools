@@ -45,6 +45,8 @@ export interface SliderMotifConfig {
   color: CrayonColor;
   rail: string;
   wiggle?: boolean;
+  /** Accessible label for the decorative motif (what it means). */
+  hint?: string;
 }
 
 export const SLIDER_MOTIFS: Record<SliderMotif, SliderMotifConfig> = {
@@ -75,8 +77,8 @@ export const SLIDER_MOTIFS: Record<SliderMotif, SliderMotifConfig> = {
   number:        { art: 'open-book',     color: 'sky',      rail: 'rail-default' },
   ratio:         { art: 'star',          color: 'grape',    rail: 'rail-default' },
   terms:         { art: 'open-book',     color: 'sunshine', rail: 'rail-default' },
-  fraction:      { art: 'pie-slice',     color: 'berry',    rail: 'rail-default' },
-  denominator:   { art: 'pie-slice',     color: 'sky',      rail: 'rail-default' },
+  fraction:      { art: 'pie-slice',     color: 'berry',    rail: 'rail-default', hint: 'Parts taken — the top number' },
+  denominator:   { art: 'pie-divided',   color: 'sky',      rail: 'rail-default', hint: 'Equal slices in the whole — the bottom number' },
   pressure:      { art: 'beaker',        color: 'leaf',     rail: 'rail-thermo' },
   particles:     { art: 'beaker',        color: 'sky',      rail: 'rail-default' },
   catalyst:      { art: 'leaf',          color: 'leaf',     rail: 'rail-default' },
