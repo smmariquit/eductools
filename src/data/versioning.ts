@@ -20,6 +20,13 @@ export const SITE_VERSION: string = packageJson.version;
 
 export const siteChangelog: ReleaseEntry[] = [
   {
+    version: '1.1.3',
+    date: '2026-06-18',
+    changes: [
+      'Fractions visualizer pies now look like buko pie — golden crust, cream filling, coconut shreds.',
+    ],
+  },
+  {
     version: '1.1.2',
     date: '2026-06-18',
     changes: [
@@ -103,6 +110,7 @@ const TOOL_V11: Partial<Record<string, string[]>> = {
     'RGB byte editors with live pixel preview.',
   ],
   fractions: [
+    'Buko pie illustration — golden crimped crust, cream filling, and coconut shreds on taken slices.',
     'Numerator and denominator sliders use distinct pie icons (one slice vs divided whole).',
     'Crayon slider thumb clipping fix.',
   ],

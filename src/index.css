@@ -337,3 +337,23 @@ body::before {
   transform: rotate(-6deg);
 }
 
+/* ===========================================================================
+   BUKO PIE — fractions visualizer (young coconut cream pie, top-down).
+   =========================================================================== */
+.buko-pie {
+  --buko-cream: var(--crayon-paper);
+  --buko-cream-light: #fffefb;
+  --buko-cream-shadow: #e8dcc8;
+  --buko-taken: #fff5e6;
+  --buko-taken-light: #fffdf8;
+  --buko-empty: #f0e8dc;
+  --buko-crust: color-mix(in srgb, var(--crayon-sunshine) 72%, #8b5a2b);
+  --buko-crust-light: color-mix(in srgb, var(--crayon-sunshine) 88%, #fff8ef);
+  --buko-coconut: #ffffff;
+  --buko-cut: color-mix(in srgb, var(--crayon-ink) 55%, #6b4423);
+  --buko-shadow: var(--crayon-ink);
+  --buko-rim-primary: color-mix(in srgb, var(--crayon-sky) 35%, var(--crayon-ink));
+  --buko-rim-secondary: color-mix(in srgb, var(--crayon-berry) 35%, var(--crayon-ink));
+  filter: drop-shadow(0 4px 10px rgba(43, 43, 58, 0.12));
+}
+

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 import { Slider } from '../../components/ui/Slider';
 import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
+import { BukoPie } from '../../components/visualizers/BukoPie';
 
 const DEFAULTS = { numA: 1, denA: 2, numB: 2, denB: 3 };
 
@@ -12,58 +13,6 @@ const gcd = (a: number, b: number): number => {
     [a, b] = [b, a % b];
   }
   return a || 1;
-};
-
-// One pie slice as an SVG sector path. Angles start at the top and go clockwise.
-const sectorPath = (cx: number, cy: number, r: number, startDeg: number, endDeg: number) => {
-  const toXY = (deg: number) => {
-    const rad = ((deg - 90) * Math.PI) / 180;
-    return [cx + r * Math.cos(rad), cy + r * Math.sin(rad)];
-  };
-  if (endDeg - startDeg >= 359.999) {
-    // full circle: two arcs so the path is valid
-    const [x1, y1] = toXY(startDeg);
-    const [x2, y2] = toXY(startDeg + 180);
-    return `M ${x1} ${y1} A ${r} ${r} 0 1 1 ${x2} ${y2} A ${r} ${r} 0 1 1 ${x1} ${y1} Z`;
-  }
-  const [sx, sy] = toXY(startDeg);
-  const [ex, ey] = toXY(endDeg);
-  const largeArc = endDeg - startDeg > 180 ? 1 : 0;
-  return `M ${cx} ${cy} L ${sx} ${sy} A ${r} ${r} 0 ${largeArc} 1 ${ex} ${ey} Z`;
-};
-
-const Pie = ({ num, den, fillClass }: { num: number; den: number; fillClass: string }) => {
-  const slices = Array.from({ length: den }, (_, i) => i);
-  const step = 360 / den;
-  return (
-    <svg viewBox="0 0 200 200" className="w-full max-w-[220px] mx-auto" role="img" aria-label={`${num} of ${den} slices filled`}>
-      {/* empty pie base */}
-      <circle cx="100" cy="100" r="92" className="text-base-200" fill="currentColor" />
-      {slices.map((i) => (
-        <path
-          key={`s-${i}`}
-          d={sectorPath(100, 100, 90, i * step, (i + 1) * step)}
-          className={i < num ? fillClass : 'text-base-300'}
-          fill="currentColor"
-          fillOpacity={i < num ? 0.85 : 0.25}
-        />
-      ))}
-      {/* slice dividers */}
-      {den > 1 && slices.map((i) => {
-        const rad = ((i * step - 90) * Math.PI) / 180;
-        return (
-          <line
-            key={`l-${i}`}
-            x1="100" y1="100"
-            x2={100 + 90 * Math.cos(rad)} y2={100 + 90 * Math.sin(rad)}
-            className="text-base-100" stroke="currentColor" strokeWidth="1.5"
-          />
-        );
-      })}
-      {/* crust ring */}
-      <circle cx="100" cy="100" r="90" fill="none" className="text-warning" stroke="currentColor" strokeWidth="6" strokeOpacity="0.7" />
-    </svg>
-  );
 };
 
 const FractionsVisualizer = () => {
@@ -158,11 +107,12 @@ const FractionsVisualizer = () => {
     simp: { n: number; d: number; g: number },
     value: number,
     touchKey: 'a' | 'b',
+    variant: 'primary' | 'secondary',
   ) => (
     <div className="rounded-xl border border-base-300 bg-base-200/40 p-5 flex flex-col gap-4">
       <h2 className={`font-display text-lg font-bold m-0 ${accent}`}>{label}</h2>
 
-      <Pie num={Math.min(num, den)} den={den} fillClass={accent} />
+      <BukoPie num={Math.min(num, den)} den={den} variant={variant} />
 
       <div className="flex items-center justify-center gap-4">
         <div className="flex flex-col items-center text-4xl font-black font-mono leading-none">
@@ -215,8 +165,8 @@ const FractionsVisualizer = () => {
         <div className="card-body p-6 md:p-8 flex flex-col gap-6">
 
           <div className="grid md:grid-cols-2 gap-6">
-            {renderColumn('Fraction A', numA, denA, setNumA, setDenA, 'text-primary', 'fracA', sA, valA, 'a')}
-            {renderColumn('Fraction B', numB, denB, setNumB, setDenB, 'text-secondary', 'fracB', sB, valB, 'b')}
+            {renderColumn('Fraction A', numA, denA, setNumA, setDenA, 'text-primary', 'fracA', sA, valA, 'a', 'primary')}
+            {renderColumn('Fraction B', numB, denB, setNumB, setDenB, 'text-secondary', 'fracB', sB, valB, 'b', 'secondary')}
           </div>
 
           {/* Comparison */}
