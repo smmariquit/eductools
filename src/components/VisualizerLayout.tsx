@@ -7,7 +7,7 @@ import { visualizerModules } from '../data/registry';
 import { getVisualizerDates, getWriteupDates } from '../data/contentDates';
 import { getToolVersion } from '../data/versioning';
 import { ContentDatesLine } from './content/ContentDatesLine';
-import { ToolVersionPanel, VersionBadge } from './versioning';
+import { ToolVersionPanel } from './versioning';
 
 const mdxComponents = import.meta.glob([
   '../content/blog/*.mdx',
@@ -107,15 +107,7 @@ const VisualizerLayout = ({ title: fallbackTitle, description: fallbackDesc, chi
           {toolDates && (
             <ContentDatesLine created={toolDates.created} updated={toolDates.updated} className="mb-1" />
           )}
-          {toolVersion && (
-            <div className="flex flex-wrap items-center gap-2 mb-2">
-              <VersionBadge version={toolVersion.version} size="sm" />
-            </div>
-          )}
           <p className="text-base-content/80 max-w-prose">{description}</p>
-          {toolVersion && moduleInfo && (
-            <ToolVersionPanel toolTitle={title} record={toolVersion} />
-          )}
         </div>
         {adSlotId && (
           <div className="hidden md:block shrink-0">
@@ -152,6 +144,12 @@ const VisualizerLayout = ({ title: fallbackTitle, description: fallbackDesc, chi
       {adSlotId && (
         <div className="mt-8">
           <AdUnit slotId={adSlotId} format="auto" />
+        </div>
+      )}
+
+      {toolVersion && moduleInfo && (
+        <div className="mt-10 pt-6 border-t border-base-300/60">
+          <ToolVersionPanel toolTitle={title} record={toolVersion} className="mt-0" />
         </div>
       )}
     </div>

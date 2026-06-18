@@ -20,6 +20,13 @@ export const SITE_VERSION: string = packageJson.version;
 
 export const siteChangelog: ReleaseEntry[] = [
   {
+    version: '1.1.2',
+    date: '2026-06-18',
+    changes: [
+      'Per-tool changelog moved to the bottom of visualizer pages.',
+    ],
+  },
+  {
     version: '1.1.1',
     date: '2026-06-18',
     changes: [
