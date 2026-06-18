@@ -1,8 +1,11 @@
-import { BarChart, Sources, Changelog } from '../../components/content'
+import { BarChart, Changelog, Sources } from '../../components/content'
 
 # The Electromagnetic Spectrum: One Family, Many Faces
 
+
 The first version of the spectrum tool I sketched had three sliders: one for frequency, one for wavelength, one for energy. It felt thorough. It was also wrong, and a physics teacher I showed it to told me so in about four seconds. Those three things are not independent knobs you can set however you like. They are one number wearing three outfits. I rebuilt the tool around a single slider for exactly that reason, and the version above is the result: you move one control, and frequency, wavelength, and photon energy all update together because in nature they are not free to disagree.
+
+
 
 That single-slider design is really the whole lesson hiding in plain sight. It is tempting to think of radio, light, and X-rays as different things, separate chapters in a textbook. Here is the part most people get backwards: they are the same phenomenon at different scales, oscillating electric and magnetic fields travelling through space. The visualizer slides you across that range so you can watch what changes from one band to the next. What changes, really, is just one number.
 
@@ -64,6 +67,7 @@ Seeing and absorbing are different things. Your eyes evolved to detect a narrow 
   created="2026-06-11"
   updated="2026-06-18"
   entries={[
+    { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
     { date: "2026-06-18", note: "Re-toned into the house voice (origin-story open about the single-slider design, misconception framing, plain-spoken FAQ); aligned tool references to the log-scale slider and E = hf readout; kept the order-of-magnitude chart and verified sources; added the mandatory Changelog block." },
   ]}
 />

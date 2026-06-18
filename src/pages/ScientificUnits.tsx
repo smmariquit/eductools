@@ -1,8 +1,10 @@
-import { useState, useMemo, useEffect, useRef } from 'react';
+import { useState, useMemo, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { scientificUnits as units } from '../data/scientificUnits';
+import { unitGuideSlug } from '../lib/unitGuide';
 import { Search, X, ChevronLeft, AlertTriangle, Info, ArrowLeft, BookOpen, ExternalLink } from 'lucide-react';
+import { UnitGuideLink } from '../components/scientific-units/UnitGuideLink';
 import { CrayonArt } from '../components/crayon';
 import katex from 'katex';
 import 'katex/dist/katex.min.css';
@@ -148,6 +150,31 @@ const ScientificUnits = () => {
     return exists ? selectedUnit : (filteredUnits[0] || null);
   }, [filteredUnits, selectedUnit]);
 
+  const selectUnit = useCallback((unit: typeof units[0]) => {
+    setSelectedUnit(unit);
+    setMobileView('detail');
+    const slug = unitGuideSlug(unit.symbol);
+    window.history.replaceState(null, '', `#${encodeURIComponent(slug)}`);
+  }, []);
+
+  useEffect(() => {
+    const pickFromHash = () => {
+      const raw = window.location.hash.slice(1);
+      if (!raw) return;
+      const hash = decodeURIComponent(raw);
+      const found =
+        units.find((u) => unitGuideSlug(u.symbol) === hash) ??
+        units.find((u) => u.symbol === hash);
+      if (found) {
+        setSelectedUnit(found);
+        setMobileView('detail');
+      }
+    };
+    pickFromHash();
+    window.addEventListener('hashchange', pickFromHash);
+    return () => window.removeEventListener('hashchange', pickFromHash);
+  }, []);
+
   return (
     <>
     <div className="container mx-auto px-4 py-6 max-w-6xl h-auto md:h-[calc(100vh-120px)] flex flex-col">
@@ -217,10 +244,7 @@ const ScientificUnits = () => {
                 return (
                   <button
                     key={unit.symbol + unit.name}
-                    onClick={() => {
-                      setSelectedUnit(unit);
-                      setMobileView('detail');
-                    }}
+                    onClick={() => selectUnit(unit)}
                     className={`w-full flex items-center gap-3 p-3 rounded-xl border text-left transition-all ${
                       isActive
                         ? 'bg-base-200 border-base-300 text-primary font-semibold shadow-sm'
@@ -277,8 +301,9 @@ const ScientificUnits = () => {
                     <h2 className="text-3xl md:text-4xl font-black text-base-content tracking-tight">{currentUnit.name}</h2>
                   </div>
                   
-                  <div className="font-mono text-3xl font-black text-accent bg-base-200 border border-base-300 px-6 py-3 rounded-2xl shadow-inner min-w-[100px] text-center self-start sm:self-center">
+                  <div className="font-mono text-3xl font-black text-accent bg-base-200 border border-base-300 px-6 py-3 rounded-2xl shadow-inner min-w-[100px] text-center self-start sm:self-center inline-flex items-center justify-center gap-2">
                     {currentUnit.symbol}
+                    <UnitGuideLink unit={currentUnit.symbol} size={18} className="text-base-content/40" />
                   </div>
                 </div>
 

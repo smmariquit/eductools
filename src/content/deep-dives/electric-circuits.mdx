@@ -1,8 +1,11 @@
-import { BarChart, Sources, Changelog } from '../../components/content'
+import { BarChart, Changelog, Sources } from '../../components/content'
 
 # Electric Circuits: Ohm's Law, Series, and Parallel
 
+
 Every December I lose an evening to the same problem: a string of parol lights that worked last year refuses to light this year, and the culprit is always one dead bulb taking the whole string down with it. That single annoyance is the reason I built this circuit tool, because it is the cleanest example of an idea that confuses a lot of students. How you wire things together changes everything, even when the parts are identical. The visualizer above gives you two identical bulbs, a battery, and a switch, and lets you flip between two ways of wiring them so you can watch the same parts behave completely differently.
+
+
 
 Start with what a circuit even is. A circuit is just a loop that gives electric charge somewhere to go. Connect a battery to a bulb with an unbroken path of metal wire, and tiny charges drift around the loop, dropping their energy in the bulb as light and heat. Break the loop anywhere, like flicking the switch in the tool to OFF, and everything stops at once. This is Grade 8 territory in the Philippine science curriculum, and most of it comes down to one equation and two ways of connecting things.
 
@@ -71,6 +74,7 @@ So that each appliance gets the full mains voltage and works on its own. In para
   created="2026-06-11"
   updated="2026-06-18"
   entries={[
+    { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
     { date: "2026-06-18", note: "Re-toned into the house voice (parol-light origin open, 'does a second bulb dim or brighten' misconception bust, plain-spoken FAQ) at the Grade 7\u20138 reading level; aligned tool references to the two-bulb series/parallel visualizer with its brightness and per-bulb readouts; kept the equivalent-resistance chart and verified sources; added the mandatory Changelog block." },
   ]}
 />

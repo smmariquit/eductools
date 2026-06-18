@@ -3,7 +3,8 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { Check } from 'lucide-react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 import { Slider } from '../../components/ui/Slider';
-import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
+import { MeasuredValue } from '../../components/scientific-units/UnitGuideLink';
+import { GuidedInputFlow, useTouchedFields, useVisualizationGate } from '../../components/onboarding';
 import { PhilippinesMap } from '../../components/maps/PhilippinesMap';
 
 const DEFAULT_WIND = 120; // km/h
@@ -42,7 +43,9 @@ const TyphoonTrackerVisualizer = () => {
   const [simulating, setSimulating] = useState(false);
   const [phase, setPhase] = useState<Phase>('before');
   const fields = useTouchedFields<'wind'>();
-  const ready = fields.isTouched('wind');
+  const gate = useVisualizationGate();
+  const buildComplete = fields.isTouched('wind');
+  const showVisualization = buildComplete && gate.visualizationConfirmed;
   const reduceMotion = useReducedMotion();
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -86,6 +89,7 @@ const TyphoonTrackerVisualizer = () => {
     setSimulating(false);
     setWindSpeed(DEFAULT_WIND);
     setPhase('before');
+    gate.resetVisualization();
     fields.reset();
   };
 
@@ -98,7 +102,9 @@ const TyphoonTrackerVisualizer = () => {
     <div className="bg-base-200 px-4 py-3 rounded-xl border border-base-300">
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
         <label htmlFor="wind-speed" className="text-sm font-bold shrink-0">Maximum Sustained Wind Speed</label>
-        <span className="text-lg font-mono font-bold tabular-nums shrink-0" style={{ color: data.color }}>{windSpeed} km/h</span>
+        <span className="shrink-0" style={{ color: data.color }}>
+          <MeasuredValue value={windSpeed} unit="km/h" valueClassName="text-lg font-mono font-bold tabular-nums" />
+        </span>
         <div className="flex-1 min-w-[12rem] basis-[200px]">
           <Slider
             id="wind-speed"
@@ -109,6 +115,7 @@ const TyphoonTrackerVisualizer = () => {
             min={40}
             max={300}
             step={5}
+            unit=" km/h"
             onChange={(e) => { setWindSpeed(Number(e.target.value)); fields.touch('wind'); }}
             disabled={simulating}
             aria-valuetext={`${windSpeed} km/h, ${data.category}, ${signal.label}`}
@@ -128,11 +135,14 @@ const TyphoonTrackerVisualizer = () => {
       adSlotId="1009"
       guideLink="/blog/typhoon-tracker"
     >
-      {!ready ? (
+      {!showVisualization ? (
         <GuidedInputFlow
           intro="Set the maximum sustained wind speed to see the PAGASA category and wind signal."
           onFillExample={fillExample}
           onReset={reset}
+          awaitingVisualizationConfirm={buildComplete && !gate.visualizationConfirmed}
+          onVisualizationConfirm={gate.confirmVisualization}
+
           steps={[
             { id: 'wind', title: 'Set the wind speed', helper: 'Maximum sustained wind, 40 to 300 km/h.', complete: fields.isTouched('wind'), children: windControl },
           ]}
@@ -198,11 +208,11 @@ const TyphoonTrackerVisualizer = () => {
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div>
                   <span className="text-white/60 text-xs uppercase tracking-wider block">Wind</span>
-                  <strong className="font-mono text-base">{windSpeed} km/h</strong>
+                  <MeasuredValue value={windSpeed} unit="km/h" valueClassName="font-mono text-base" />
                 </div>
                 <div>
                   <span className="text-white/60 text-xs uppercase tracking-wider block">Pressure</span>
-                  <strong className="font-mono text-base">{pressure} hPa</strong>
+                  <MeasuredValue value={pressure} unit="hPa" valueClassName="font-mono text-base" />
                 </div>
                 <div className="col-span-2">
                   <span className="text-white/60 text-xs uppercase tracking-wider block">Est. Storm Surge</span>

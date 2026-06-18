@@ -1,0 +1,70 @@
+---
+description: Raster image conventions — paths, Figure component, alt/credit, and when to use CrayonArt instead
+alwaysApply: true
+---
+
+# Images
+
+## Two asset types
+
+| Type | Location | Render with |
+|------|----------|-------------|
+| **Raster** (JPG, PNG, WebP) | `public/images/<category>/` | `<Figure />` |
+| **Decorative SVG** (icons, spots, rails) | `src/assets/crayon/` | `<CrayonArt />` |
+
+Do **not** use raw `<img>` in app UI or MDX. Exception: third-party embeds encapsulated in `<YouTubeEmbed />`.
+
+## Path convention
+
+All raster URLs: `/images/<category>/<kebab-name>.<ext>`
+
+| Category | Use |
+|----------|-----|
+| `deep-dives/` | Article reference photos |
+| `life-cycles/` | Visualizer reference photos |
+| `team/` | Author avatars |
+| `brand/` | Logos, PWA sources (optional) |
+
+In TypeScript, prefer `imagePath('life-cycles', 'eagle-nest.jpg')` or `images.team.author` from `src/lib/images.ts`.
+
+## `<Figure />` variants
+
+```tsx
+import { Figure } from '../../components/content'
+
+// Articles (default)
+<Figure
+  src="/images/deep-dives/typhoon-haiyan-2013.jpg"
+  alt="…"
+  caption="…"
+  credit="Photo: …, via Wikimedia Commons."
+/>
+
+// Tool detail panels (compact, beside illustration)
+<Figure variant="inline" src="…" alt="…" credit="…" />
+
+// Profile avatars
+<Figure variant="avatar" src={images.team.author} alt="…" />
+```
+
+**Required:** meaningful `alt` on every figure.
+
+**Required for third-party photos:** `credit` with license and source.
+
+**Defaults:** `loading="lazy"`, `decoding="async"` (avatar may use `loading="eager"` above the fold).
+
+## MDX articles
+
+Use `<Figure>` for photos and screenshots — never bare `<img>` or markdown `![](…)`.
+
+End with `<Sources>` listing the image among primary references when it is a cited asset.
+
+## Visualizer reference photos
+
+Attach photos through `ProcessStage.photo` in data; `ProcessCycle` renders them with `<Figure variant="inline" />`.
+
+Pair reference photos with CrayonArt stage illustrations when both exist.
+
+## Social / OG previews
+
+Default share cards use dynamic OG (`/api/og`). Article-specific raster images stay in the page body, not as automatic OG art unless explicitly wired later.

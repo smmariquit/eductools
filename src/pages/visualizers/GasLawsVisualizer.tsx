@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect, useCallback, useSyncExternalStore } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 import { Slider } from '../../components/ui/Slider';
-import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
+import { MeasuredValue } from '../../components/scientific-units/UnitGuideLink';
+import { GuidedInputFlow, useTouchedFields, useVisualizationGate } from '../../components/onboarding';
 
 interface Particle {
   x: number;
@@ -58,7 +59,9 @@ const GasLawsVisualizer = () => {
   const [playing, setPlaying] = useState(!reducedMotion);
   const [measuredP, setMeasuredP] = useState(1);
   const fields = useTouchedFields<'law' | 'param'>();
-  const ready = fields.isTouched('law') && fields.isTouched('param');
+  const gate = useVisualizationGate();
+  const buildComplete = fields.isTouched('law') && fields.isTouched('param');
+  const showVisualization = buildComplete && gate.visualizationConfirmed;
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
@@ -239,6 +242,7 @@ const GasLawsVisualizer = () => {
     setTemperature(REF_TEMP);
     setVolume(BASE_VOLUME);
     setPlaying(!reducedMotion);
+    gate.resetVisualization();
     fields.reset();
   };
 
@@ -306,11 +310,14 @@ const GasLawsVisualizer = () => {
       adSlotId="2009"
       guideLink="/blog/gas-laws"
     >
-      {!ready ? (
+      {!showVisualization ? (
         <GuidedInputFlow
           intro="Pick a gas law, then set the one variable it changes to watch the measured pressure respond."
           onFillExample={fillExample}
           onReset={reset}
+          awaitingVisualizationConfirm={buildComplete && !gate.visualizationConfirmed}
+          onVisualizationConfirm={gate.confirmVisualization}
+
           steps={[
             { id: 'law', title: 'Pick a gas law', helper: 'Sets which variable you control.', complete: fields.isTouched('law'), children: lawPicker },
             {
@@ -338,8 +345,7 @@ const GasLawsVisualizer = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4">
               <div className="text-center p-3 rounded-lg border bg-base-200 border-base-300">
                 <div className="text-xs uppercase tracking-wider font-bold text-base-content/60">Pressure (measured)</div>
-                <div className="text-2xl font-bold font-mono text-primary">{displayP.toFixed(2)}</div>
-                <div className="text-xs text-base-content/50">atm</div>
+                <MeasuredValue value={displayP.toFixed(2)} unit="atm" valueClassName="text-2xl font-bold font-mono text-primary" />
               </div>
               <div className="text-center p-3 rounded-lg border bg-base-200 border-base-300">
                 <div className="text-xs uppercase tracking-wider font-bold text-base-content/60">Volume</div>
@@ -348,8 +354,7 @@ const GasLawsVisualizer = () => {
               </div>
               <div className="text-center p-3 rounded-lg border bg-base-200 border-base-300">
                 <div className="text-xs uppercase tracking-wider font-bold text-base-content/60">Temperature</div>
-                <div className="text-2xl font-bold font-mono">{displayT.toFixed(0)}</div>
-                <div className="text-xs text-base-content/50">K</div>
+                <MeasuredValue value={displayT.toFixed(0)} unit="K" valueClassName="text-2xl font-bold font-mono" />
               </div>
             </div>
             <p className="text-xs text-base-content/60 mt-2 m-0">

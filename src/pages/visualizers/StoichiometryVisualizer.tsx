@@ -1,7 +1,8 @@
 import { useState, useMemo } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 import { Slider } from '../../components/ui/Slider';
-import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
+import { MeasuredValue, UnitSuffix } from '../../components/scientific-units/UnitGuideLink';
+import { GuidedInputFlow, useTouchedFields, useVisualizationGate } from '../../components/onboarding';
 
 interface Reaction {
   id: string;
@@ -50,7 +51,9 @@ const StoichiometryVisualizer = () => {
   const [molesR1, setMolesR1] = useState(DEFAULT_R1);
   const [molesR2, setMolesR2] = useState(DEFAULT_R2);
   const fields = useTouchedFields<'reaction' | 'r1' | 'r2'>();
-  const ready = fields.isTouched('reaction') && fields.isTouched('r1') && fields.isTouched('r2');
+  const gate = useVisualizationGate();
+  const buildComplete = fields.isTouched('reaction') && fields.isTouched('r1') && fields.isTouched('r2');
+  const showVisualization = buildComplete && gate.visualizationConfirmed;
 
   const reaction = REACTIONS.find((r) => r.id === reactionId) ?? REACTIONS[0];
 
@@ -78,6 +81,7 @@ const StoichiometryVisualizer = () => {
     setReactionId(REACTIONS[0].id);
     setMolesR1(DEFAULT_R1);
     setMolesR2(DEFAULT_R2);
+    gate.resetVisualization();
     fields.reset();
   };
 
@@ -146,11 +150,14 @@ const StoichiometryVisualizer = () => {
       adSlotId="2002"
       guideLink="/blog/stoichiometry"
     >
-      {!ready ? (
+      {!showVisualization ? (
         <GuidedInputFlow
           intro="Pick a reaction, then set how many moles of each reactant you start with to find the limiting reactant."
           onFillExample={fillExample}
           onReset={reset}
+          awaitingVisualizationConfirm={buildComplete && !gate.visualizationConfirmed}
+          onVisualizationConfirm={gate.confirmVisualization}
+
           steps={[
             { id: 'reaction', title: 'Pick a reaction', helper: 'Sets the balanced equation and mole ratio.', complete: fields.isTouched('reaction'), children: reactionPicker },
             { id: 'r1', title: `Set moles of ${r1.sym}`, helper: '0 to 12 mol.', complete: fields.isTouched('r1'), children: sliderR1 },
@@ -237,25 +244,29 @@ const StoichiometryVisualizer = () => {
 
               <div className="p-4 rounded-xl bg-success/10 border border-success/30">
                 <div className="text-xs uppercase tracking-wider font-bold text-base-content/60 mb-1">Product formed</div>
-                <div className="text-2xl font-bold text-success font-mono">{fmt(result.productFormed)} mol {product.sym}</div>
+                <div className="text-2xl font-bold text-success font-mono inline-flex items-baseline gap-1 flex-wrap">
+                  <MeasuredValue value={fmt(result.productFormed)} unit="mol" valueClassName="text-2xl font-bold text-success font-mono" />
+                  <span>{product.sym}</span>
+                </div>
                 <p className="text-xs text-base-content/60 mt-1 m-0">
-                  {fmt(result.extent)} reaction sets × {product.coeff} = {fmt(result.productFormed)} mol.
+                  {fmt(result.extent)} reaction sets × {product.coeff} = {fmt(result.productFormed)}{' '}
+                  <UnitSuffix unit="mol" />.
                 </p>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div className="p-4 rounded-xl bg-base-200 border border-base-300">
                   <div className="text-xs uppercase tracking-wider font-bold text-base-content/60 mb-1">{r1.sym} used / left</div>
-                  <div className="font-mono text-sm">used {fmt(result.usedR1)} mol</div>
-                  <div className={`font-mono text-sm font-bold ${result.leftoverR1 > 1e-9 ? 'text-warning' : 'text-base-content/50'}`}>
-                    leftover {fmt(result.leftoverR1)} mol
+                  <div className="font-mono text-sm inline-flex items-baseline gap-1">used <MeasuredValue value={fmt(result.usedR1)} unit="mol" /></div>
+                  <div className={`font-mono text-sm font-bold inline-flex items-baseline gap-1 ${result.leftoverR1 > 1e-9 ? 'text-warning' : 'text-base-content/50'}`}>
+                    leftover <MeasuredValue value={fmt(result.leftoverR1)} unit="mol" />
                   </div>
                 </div>
                 <div className="p-4 rounded-xl bg-base-200 border border-base-300">
                   <div className="text-xs uppercase tracking-wider font-bold text-base-content/60 mb-1">{r2.sym} used / left</div>
-                  <div className="font-mono text-sm">used {fmt(result.usedR2)} mol</div>
-                  <div className={`font-mono text-sm font-bold ${result.leftoverR2 > 1e-9 ? 'text-warning' : 'text-base-content/50'}`}>
-                    leftover {fmt(result.leftoverR2)} mol
+                  <div className="font-mono text-sm inline-flex items-baseline gap-1">used <MeasuredValue value={fmt(result.usedR2)} unit="mol" /></div>
+                  <div className={`font-mono text-sm font-bold inline-flex items-baseline gap-1 ${result.leftoverR2 > 1e-9 ? 'text-warning' : 'text-base-content/50'}`}>
+                    leftover <MeasuredValue value={fmt(result.leftoverR2)} unit="mol" />
                   </div>
                 </div>
               </div>

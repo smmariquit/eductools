@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Layout from './components/Layout';
 import ErrorBoundary from './components/ErrorBoundary';
+import { VisualizerPageSkeleton } from './components/loading';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import Blog from './pages/Blog';
@@ -66,8 +67,7 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <Suspense fallback={<div className="flex items-center justify-center min-h-screen text-base-content/50 text-xl font-semibold"><span className="loading loading-spinner loading-lg mr-4"></span>Loading interactive module...</div>}>
-        <Routes>
+      <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="blog" element={<Blog />} />
@@ -81,25 +81,24 @@ function App() {
           <Route path="changelog" element={<ChangelogPage />} />
           <Route path="units" element={<ScientificUnits />} />
           <Route path="crayon" element={<CrayonGallery />} />
-          
-          {/* Dynamically generated visualizer routes from file glob */}
+
           {visualizerRoutes.map(({ path, Component }) => (
             <Route
               key={path}
               path={path}
               element={
                 <ErrorBoundary>
-                  <Component />
+                  <Suspense fallback={<VisualizerPageSkeleton />}>
+                    <Component />
+                  </Suspense>
                 </ErrorBoundary>
               }
             />
           ))}
 
-          {/* 404 catch-all */}
           <Route path="*" element={<NotFound />} />
         </Route>
-        </Routes>
-      </Suspense>
+      </Routes>
     </BrowserRouter>
   );
 }

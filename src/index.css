@@ -231,6 +231,112 @@ body::before {
   .crayon-art[data-animate="draw"] .crayon-draw {
     stroke-dashoffset: 0 !important;
   }
+  .skeleton-shimmer,
+  .loading-orbit,
+  .loading-orbit__dot,
+  .animate-fade-in,
+  .animate-pulse-soft {
+    animation: none !important;
+  }
+  .skeleton-shimmer {
+    opacity: 0.55;
+  }
+}
+
+/* ===========================================================================
+   LOADING — skeleton shimmer + crayon orbit loader
+   =========================================================================== */
+@keyframes skeleton-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    color-mix(in oklch, var(--color-base-300) 35%, transparent) 0%,
+    color-mix(in oklch, var(--color-base-300) 65%, transparent) 45%,
+    color-mix(in oklch, var(--color-base-300) 35%, transparent) 90%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes loading-orbit-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes loading-orbit-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(0.82); opacity: 0.65; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 0.85; }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.35s ease-out both;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 1.8s ease-in-out infinite;
+}
+
+.loading-orbit {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.loading-orbit--sm { width: 2.25rem; height: 2.25rem; }
+.loading-orbit--md { width: 3rem; height: 3rem; }
+.loading-orbit--lg { width: 3.75rem; height: 3.75rem; }
+
+.loading-orbit__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 2px dashed color-mix(in oklch, var(--color-primary) 35%, transparent);
+  animation: loading-orbit-spin 2.4s linear infinite;
+}
+
+.loading-orbit__dot {
+  position: absolute;
+  border-radius: 9999px;
+  animation: loading-orbit-pulse 1.1s ease-in-out infinite;
+}
+
+.loading-orbit--sm .loading-orbit__dot { width: 0.45rem; height: 0.45rem; }
+.loading-orbit--md .loading-orbit__dot { width: 0.55rem; height: 0.55rem; }
+.loading-orbit--lg .loading-orbit__dot { width: 0.65rem; height: 0.65rem; }
+
+.loading-orbit__dot--sky {
+  top: 0;
+  left: 50%;
+  translate: -50% 0;
+  background: var(--crayon-sky);
+  animation-delay: 0s;
+}
+
+.loading-orbit__dot--berry {
+  bottom: 12%;
+  left: 8%;
+  background: var(--crayon-berry);
+  animation-delay: 0.15s;
+}
+
+.loading-orbit__dot--sunshine {
+  bottom: 12%;
+  right: 8%;
+  background: var(--crayon-sunshine);
+  animation-delay: 0.3s;
 }
 
 /* ===========================================================================

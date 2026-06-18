@@ -1,8 +1,11 @@
-import { Aside, Sources, Changelog } from '../../components/content'
+import { Aside, Changelog, Sources } from '../../components/content'
 
 # What has to go right for a collision to become a reaction
 
+
 I built the reaction-rate tool because of a question I could never answer cleanly at the board: why does grinding something make it react faster, but adding a catalyst, which sounds similar, work in a completely different way? Drawing arrows on a whiteboard was not cutting it. You really need to watch the particles. So the tool fills a box with blue and red molecules bouncing around, and every so often a pair collides and flips to green. Leave it running and the central truth of chemical kinetics surfaces on its own: most collisions do absolutely nothing. A reaction is the rare collision that happens to clear two separate hurdles at the same instant.
+
+
 
 That is the misconception worth naming first, because it is so natural. People assume that if two reactant particles touch, they react. The tool keeps two counters that quietly demolish that idea, labelled "too little energy" and "wrong orientation." Watch them climb far faster than the reaction counter and you see it immediately: touching is necessary, and nowhere near sufficient.
 
@@ -55,6 +58,7 @@ Because the speed-up is the small part. The big part is that a hotter sample has
   created="2026-06-11"
   updated="2026-06-18"
   entries={[
+    { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
     { date: "2026-06-18", note: "Re-toned into the house voice for Grades 9–10 (origin-story open, 'touching is not reacting' misconception with the tool's two miss counters); tied the temperature, concentration, and catalyst passages to what the tool actually displays (Maxwell-Boltzmann curve, % above Ea, catalyst surface); added a short FAQ, PhET credit, and the Changelog block; kept and verified all sources." },
   ]}
 />

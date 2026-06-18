@@ -1,0 +1,45 @@
+---
+description: Mandatory edit-tracking for every content MDX (blog posts and deep-dive writeups). Any time a .mdx under src/content is created or edited — by any agent or subagent — it must carry a visible "Last updated" date and a changelog entry describing the change.
+alwaysApply: true
+---
+
+# MDX edit tracking (always)
+
+Every article under `src/content/blog/` and `src/content/deep-dives/` must end with
+a `<Changelog>` block. This applies to **every** create or edit, by **any** agent
+or subagent, with no exceptions. A project hook (`afterFileEdit`) also auto-stamps
+the date as a backstop, but writing the changelog note is your responsibility.
+
+## What to do on every .mdx edit
+
+1. Make sure `Changelog` is in the content import at the top of the file:
+   `import { Changelog } from '../../components/content'` (combine with any other
+   content imports, e.g. `import { BarChart, Sources, Changelog } from '../../components/content'`).
+2. `<Changelog>` must be the **last element** in the file, after `<Sources>`.
+3. Set `created` to the article's first publication date and `updated` to **today's date** in `YYYY-MM-DD` form, using double quotes:
+   `created="2026-06-11" updated="2026-06-18"`. Use the real current date for `updated` (see the session timestamp). Never change `created` on edits — only set it when the file is first created.
+4. **Prepend** a new entry to `entries` (newest first). Never rewrite or delete
+   past entries — the changelog is append-only history.
+5. The note is one concise line describing what actually changed
+   ("Expanded stub into full article with sources", "Fixed the friction
+   coefficient figure and its citation", "Tightened intro, added trend chart").
+
+## Shape
+
+```mdx
+<Changelog
+  created="2026-06-11"
+  updated="2026-06-18"
+  entries={[
+    { date: "2026-06-18", note: "Expanded into a full article with a chart and verified sources." },
+    { date: "2026-06-17", note: "Initial draft." },
+  ]}
+/>
+```
+
+## Notes
+
+- New files: set `created` to today's date and add a single entry dated today.
+- On edits: bump `updated` and prepend an entry; leave `created` unchanged.
+- Use `YYYY-MM-DD` with double quotes so the auto-stamp hook can keep the date
+  honest; the hook only updates the date, it cannot write your note.

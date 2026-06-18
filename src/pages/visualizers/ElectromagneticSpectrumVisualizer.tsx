@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 import { Slider } from '../../components/ui/Slider';
+import { MeasuredValue } from '../../components/scientific-units/UnitGuideLink';
 import { IntroState, useIntroState } from '../../components/onboarding';
 
 // Physical constants (SI).
@@ -108,16 +109,18 @@ const ElectromagneticSpectrumVisualizer = () => {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6" aria-live="polite">
               <div className="text-center p-3 rounded-lg bg-base-200 border border-base-300">
                 <div className="text-xs uppercase tracking-wider font-bold text-base-content/60">Frequency (f)</div>
-                <div className="text-lg font-bold font-mono text-primary">{formatSci(frequency)} Hz</div>
+                <MeasuredValue value={formatSci(frequency)} unit="Hz" valueClassName="text-lg font-bold font-mono text-primary" />
               </div>
               <div className="text-center p-3 rounded-lg bg-base-200 border border-base-300">
                 <div className="text-xs uppercase tracking-wider font-bold text-base-content/60">Wavelength (λ)</div>
-                <div className="text-lg font-bold font-mono text-secondary">{formatSci(wavelength)} m</div>
+                <MeasuredValue value={formatSci(wavelength)} unit="m" valueClassName="text-lg font-bold font-mono text-secondary" />
               </div>
               <div className="text-center p-3 rounded-lg bg-base-200 border border-base-300">
                 <div className="text-xs uppercase tracking-wider font-bold text-base-content/60">Photon Energy (E)</div>
-                <div className="text-lg font-bold font-mono text-accent">{formatSci(energyEv)} eV</div>
-                <div className="text-[0.65rem] font-mono text-base-content/50">{formatSci(energyJ)} J</div>
+                <MeasuredValue value={formatSci(energyEv)} unit="eV" valueClassName="text-lg font-bold font-mono text-accent" />
+                <div className="text-[0.65rem] font-mono text-base-content/50">
+                  <MeasuredValue value={formatSci(energyJ)} unit="J" />
+                </div>
               </div>
             </div>
 

@@ -1,8 +1,11 @@
-import { LineChart, Aside, Sources, Changelog } from '../../components/content'
+import { Aside, Changelog, LineChart, Sources } from '../../components/content'
 
 # Why a balloon pushes back: reading the gas laws off the particles
 
+
 The first time I really understood the gas laws was not in a classroom. It was watching a half-empty bag of chips bought in Baguio puff up tight on the bus ride down to Manila. Nobody added air to the bag. So what pushed the sides out? I built the gas-properties tool to answer exactly that kind of question, because the formulas students are handed (P₁V₁ = P₂V₂ and the rest) tend to get memorized as letters to shuffle, when every one of them is really a count of what billions of invisible particles are doing against a wall.
+
+
 
 Here is the misconception worth naming first. Pressure is not a gas "squeezing" outward the way a stretched spring pushes. There is no outward urge built into the gas. Pressure ($P$) is just the running total of particle collisions on a surface. Each molecule that smacks the wall delivers a tiny shove, and all those shoves spread over the area give you $P = \frac{F}{A}$. Get that one idea straight and the rest of the topic falls out of it almost for free.
 
@@ -66,6 +69,7 @@ Here $n$ is the number of moles of gas and $R$ is the ideal gas constant, $8.314
   created="2026-06-11"
   updated="2026-06-18"
   entries={[
+    { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
     { date: "2026-06-18", note: "Switched the Boyle's law chart from a bar chart to a LineChart with volume on the x-axis, so the inverse pressure-volume curve is visible." },
     { date: "2026-06-18", note: "Re-toned into the house voice for Grades 9–10 (Baguio-to-Manila chips-bag open, pressure-is-collisions misconception); rewrote the tool description to match the three-law buttons and the measured-from-collisions pressure readout; kept the Boyle chart and verified sources; added PhET credit and the Changelog block." },
   ]}

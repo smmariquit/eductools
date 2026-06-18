@@ -1,8 +1,11 @@
-import { BarChart, Sources, Changelog } from '../../components/content'
+import { BarChart, Changelog, Sources } from '../../components/content'
 
 # Newton's Laws and Friction: Jeepney Dynamics
 
+
 When I built the jeepney visualizer, the hardest decision was not the physics. It was friction. A jeepney pulling away from a stop runs all three of Newton's laws at once, and friction is the quiet partner that makes any of it possible and also the thing that fights the brakes at the corner. I wanted one slider to carry both jobs honestly. This writeup walks through what each knob in the tool is actually doing, and where the simple model stops and the real road begins.
+
+
 
 The tool gives you three things to change. The applied force is the engine's push in newtons, from zero up to about 8,000 N. The mass runs from an empty jeepney near 1,500 kg to a packed one around 4,000 kg. The friction coefficient is a single road-resistance number, small by design, that stands in for rolling resistance and braking drag. The readouts then show the friction force, the net force, the resulting acceleration, and the velocity building over time. Everything you see falls out of one equation and one coefficient.
 
@@ -69,6 +72,7 @@ They are two different uses of the word "coefficient." The slider is a small roa
   created="2026-06-11"
   updated="2026-06-18"
   entries={[
+    { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
     { date: "2026-06-18", note: "Re-toned into the house voice; aligned the tool walkthrough with the current three-slider build (force, mass, road-resistance coefficient) and its readouts; clarified the slider's resistance coefficient vs. the traction ceiling in the chart; added an FAQ and the Changelog block. Kept all figures and verified sources." },
   ]}
 />

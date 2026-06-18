@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Check } from 'lucide-react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 import { Slider } from '../../components/ui/Slider';
-import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
+import { GuidedInputFlow, useTouchedFields, useVisualizationGate } from '../../components/onboarding';
 
 const DEFAULTS = { numA: 12, numB: 18 };
 
@@ -101,9 +101,12 @@ const GcfLcmVisualizer = () => {
   const [numA, setNumA] = useState(DEFAULTS.numA);
   const [numB, setNumB] = useState(DEFAULTS.numB);
   const fields = useTouchedFields<'a' | 'b'>();
-  const ready = fields.isTouched('a') && fields.isTouched('b');
+  const gate = useVisualizationGate();
+  const buildComplete = fields.isTouched('a') && fields.isTouched('b');
+  const showVisualization = buildComplete && gate.visualizationConfirmed;
 
-  const reset = () => { setNumA(DEFAULTS.numA); setNumB(DEFAULTS.numB); fields.reset(); };
+  const reset = () => { setNumA(DEFAULTS.numA); setNumB(DEFAULTS.numB); gate.resetVisualization();
+    fields.reset(); };
 
   const fillExample = () => {
     setNumA(DEFAULTS.numA);
@@ -174,11 +177,14 @@ const GcfLcmVisualizer = () => {
       adSlotId="2015"
       guideLink="/blog/gcf-lcm"
     >
-      {!ready ? (
+      {!showVisualization ? (
         <GuidedInputFlow
           intro="Pick two whole numbers to factor into primes, then find their GCF and LCM."
           onFillExample={fillExample}
           onReset={reset}
+          awaitingVisualizationConfirm={buildComplete && !gate.visualizationConfirmed}
+          onVisualizationConfirm={gate.confirmVisualization}
+
           steps={[
             { id: 'a', title: 'Pick number A', helper: 'A whole number from 2 to 60.', complete: fields.isTouched('a'), children: numAControl },
             { id: 'b', title: 'Pick number B', helper: 'A whole number from 2 to 60.', complete: fields.isTouched('b'), children: numBControl },

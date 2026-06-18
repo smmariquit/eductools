@@ -1,0 +1,43 @@
+---
+description: DepEd K-12 Curriculum Guides (AP, English, Filipino, Math, Science) available as reference for all educational content and features
+alwaysApply: true
+---
+
+# DepEd K-12 Curriculum Guides — Source of Truth
+
+This project is a Philippine educational portal. The official **DepEd K to 12
+Curriculum Guides** have been extracted to markdown and live in
+`docs/curriculum-guides/`. Treat them as the authoritative source for learning
+competencies, standards, scope, and sequence.
+
+| File | Subject | Grades |
+|------|---------|--------|
+| `docs/curriculum-guides/araling-panlipunan.md` | Araling Panlipunan (Social Studies) | K–10 |
+| `docs/curriculum-guides/english.md` | English | K–10 |
+| `docs/curriculum-guides/filipino.md` | Filipino | K–10 |
+| `docs/curriculum-guides/mathematics.md` | Mathematics | 1–10 |
+| `docs/curriculum-guides/science.md` | Science | 3–10 |
+
+## How to use them
+
+- These files are **large** (each ~9k–11k lines of space-aligned table text).
+  **Do NOT read them top-to-bottom.** Use `Grep` to find the relevant grade,
+  domain/strand, or competency, then `Read` only that region with `offset`/`limit`.
+- Useful search anchors: `Grade <n>`, `Quarter`, content-strand names
+  (e.g. `Numbers and Number Sense`, `Patterns and Algebra`), `STANDARD`,
+  `Learning Competencies`, `Performance Standard`, `Content Standard`.
+- Tables are preserved as monospace, space-aligned text (the original PDF layout);
+  read them as columns, not markdown tables.
+
+## When to consult them
+
+When creating or editing learning content, visualizers, blog posts, MDX deep
+dives, school/subject metadata, or any feature that claims curriculum alignment:
+
+- Verify the topic, grade level, and competency wording against the guide before
+  asserting "MATATAG/DepEd-aligned" or mapping a tool to a grade/subject.
+- Prefer the guide's exact strand/competency terminology over invented labels.
+- If content spans multiple subjects, cross-check each relevant guide.
+
+> Note: these are the **K to 12 (Aug 2016)** guides. If a feature targets the newer
+> MATATAG framework specifically, flag any discrepancy rather than assuming parity.

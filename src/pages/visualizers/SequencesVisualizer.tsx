@@ -1,7 +1,7 @@
 import { useState, useSyncExternalStore } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 import { Slider } from '../../components/ui/Slider';
-import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
+import { GuidedInputFlow, useTouchedFields, useVisualizationGate } from '../../components/onboarding';
 
 type SeqType = 'arithmetic' | 'geometric';
 
@@ -39,7 +39,9 @@ const SequencesVisualizer = () => {
   const [nthTerm, setNthTerm] = useState(DEFAULTS.nthTerm);
   const reducedMotion = usePrefersReducedMotion();
   const fields = useTouchedFields<'type' | 'first' | 'rule'>();
-  const ready = fields.isTouched('type') && fields.isTouched('first') && fields.isTouched('rule');
+  const gate = useVisualizationGate();
+  const buildComplete = fields.isTouched('type') && fields.isTouched('first') && fields.isTouched('rule');
+  const showVisualization = buildComplete && gate.visualizationConfirmed;
 
   const generateSequence = (count: number) => {
     const out: number[] = [];
@@ -70,6 +72,7 @@ const SequencesVisualizer = () => {
     setCommonDiff(DEFAULTS.commonDiff);
     setCommonRatio(DEFAULTS.commonRatio);
     setNthTerm(DEFAULTS.nthTerm);
+    gate.resetVisualization();
     fields.reset();
   };
 
@@ -163,11 +166,14 @@ const SequencesVisualizer = () => {
       adSlotId="2013"
       guideLink="/blog/sequences"
     >
-      {!ready ? (
+      {!showVisualization ? (
         <GuidedInputFlow
           intro="Pick a sequence type, then set the first term and its rule to plot the terms."
           onFillExample={fillExample}
           onReset={reset}
+          awaitingVisualizationConfirm={buildComplete && !gate.visualizationConfirmed}
+          onVisualizationConfirm={gate.confirmVisualization}
+
           steps={[
             { id: 'type', title: 'Pick a sequence type', helper: 'Arithmetic adds a step; geometric multiplies.', complete: fields.isTouched('type'), children: typePicker },
             { id: 'first', title: 'Set the first term', helper: 'a₁, from -5 to 10.', complete: fields.isTouched('first'), children: firstSlider },

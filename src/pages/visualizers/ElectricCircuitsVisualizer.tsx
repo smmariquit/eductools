@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 import { Slider } from '../../components/ui/Slider';
+import { MeasuredValue } from '../../components/scientific-units/UnitGuideLink';
 import { IntroState, useIntroState } from '../../components/onboarding';
 
 const BULB_RESISTANCE = 10; // ohms per identical bulb
@@ -146,19 +147,19 @@ const ElectricCircuitsVisualizer = () => {
               <div className="text-xs font-bold text-base-content/60 uppercase tracking-wider">Ohm's Law (I = V/R)</div>
               <div className="flex justify-between font-mono">
                 <span className="text-base-content/70">Bulb resistance R</span>
-                <span>{BULB_RESISTANCE} Ω</span>
+                <MeasuredValue value={BULB_RESISTANCE} unit="Ω" />
               </div>
               <div className="flex justify-between font-mono">
                 <span className="text-base-content/70">Total current I</span>
-                <span className="text-primary">{totalCurrent.toFixed(2)} A</span>
+                <MeasuredValue value={totalCurrent.toFixed(2)} unit="A" valueClassName="text-primary" />
               </div>
               <div className="flex justify-between font-mono">
                 <span className="text-base-content/70">Per-bulb voltage</span>
-                <span>{bulbVoltage.toFixed(2)} V</span>
+                <MeasuredValue value={bulbVoltage.toFixed(2)} unit="V" />
               </div>
               <div className="flex justify-between font-mono">
                 <span className="text-base-content/70">Per-bulb power</span>
-                <span className="text-secondary">{bulbPower.toFixed(2)} W</span>
+                <MeasuredValue value={bulbPower.toFixed(2)} unit="W" valueClassName="text-secondary" />
               </div>
               <div className="flex justify-between font-mono">
                 <span className="text-base-content/70">Brightness</span>

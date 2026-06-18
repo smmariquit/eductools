@@ -10,29 +10,6 @@ const Layout = () => {
     document.documentElement.setAttribute('data-theme', 'crayon');
   }, []);
 
-  // Set favicon to the EduVisualsPH logo
-  useEffect(() => {
-    const svg = `
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-        <rect width="64" height="64" rx="16" fill="#3b82f6" />
-        <path d="M32 8L8 20L32 32L56 20L32 8Z" fill="white" opacity="0.3" stroke="white" stroke-width="2" stroke-linejoin="round"/>
-        <path d="M8 44L32 56L56 44M8 32L32 44L56 32" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="32" cy="32" r="4" fill="white"/>
-      </svg>
-    `;
-    
-    const svgUrl = `data:image/svg+xml;base64,${btoa(svg)}`;
-    
-    let link = document.querySelector("link[rel~='icon']") as HTMLLinkElement;
-    if (!link) {
-      link = document.createElement('link');
-      link.rel = 'icon';
-      document.head.appendChild(link);
-    }
-    
-    link.href = svgUrl;
-  }, []);
-
   return (
     <div className="flex flex-col min-h-screen text-base-content font-sans">
       <header className="bg-base-200 border-b border-base-300 py-4 shadow-sm">

@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 import { Slider } from '../../components/ui/Slider';
-import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
+import { GuidedInputFlow, useTouchedFields, useVisualizationGate } from '../../components/onboarding';
 
 type Shape = 'rectangular-prism' | 'cube' | 'triangular-prism' | 'cylinder';
 
@@ -64,7 +64,9 @@ const SurfaceAreaVisualizer = () => {
   const [hover, setHover] = useState<string | null>(null);
   const rafRef = useRef<number | null>(null);
   const fields = useTouchedFields<'shape' | 'dims'>();
-  const ready = fields.isTouched('shape') && fields.isTouched('dims');
+  const gate = useVisualizationGate();
+  const buildComplete = fields.isTouched('shape') && fields.isTouched('dims');
+  const showVisualization = buildComplete && gate.visualizationConfirmed;
 
   const active = hover ?? pinned;
 
@@ -102,6 +104,7 @@ const SurfaceAreaVisualizer = () => {
     setFold(0);
     setPinned(null);
     setHover(null);
+    gate.resetVisualization();
     fields.reset();
   };
 
@@ -334,11 +337,14 @@ const SurfaceAreaVisualizer = () => {
       adSlotId="2017"
       guideLink="/blog/surface-area"
     >
-      {!ready ? (
+      {!showVisualization ? (
         <GuidedInputFlow
           intro="Pick a 3D shape and set its dimensions to fold up its net and total the surface area."
           onFillExample={fillExample}
           onReset={reset}
+          awaitingVisualizationConfirm={buildComplete && !gate.visualizationConfirmed}
+          onVisualizationConfirm={gate.confirmVisualization}
+
           steps={[
             { id: 'shape', title: 'Choose a shape', helper: 'Prism, cube, triangular prism, or cylinder.', complete: fields.isTouched('shape'), children: shapeSelector },
             { id: 'dims', title: 'Set the dimensions', helper: 'Drag the sliders to size your shape.', complete: fields.isTouched('dims'), children: <div className="flex flex-col gap-5">{dimensionControls}</div> },

@@ -1,7 +1,7 @@
 import { useState, useSyncExternalStore } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 import { Slider } from '../../components/ui/Slider';
-import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
+import { GuidedInputFlow, useTouchedFields, useVisualizationGate } from '../../components/onboarding';
 
 const DEFAULT_MASS = 600; // kg
 const DEFAULT_VOLUME = 1.0; // m³
@@ -36,7 +36,9 @@ const DensityVisualizer = () => {
   const [fluidDensity, setFluidDensity] = useState(DEFAULT_FLUID);
   const reducedMotion = usePrefersReducedMotion();
   const fields = useTouchedFields<'mass' | 'volume' | 'fluid'>();
-  const ready = fields.isTouched('mass') && fields.isTouched('volume') && fields.isTouched('fluid');
+  const gate = useVisualizationGate();
+  const buildComplete = fields.isTouched('mass') && fields.isTouched('volume') && fields.isTouched('fluid');
+  const showVisualization = buildComplete && gate.visualizationConfirmed;
 
   const density = mass / volume; // kg/m³
   const isFloating = density < fluidDensity;
@@ -62,6 +64,7 @@ const DensityVisualizer = () => {
     setMass(DEFAULT_MASS);
     setVolume(DEFAULT_VOLUME);
     setFluidDensity(DEFAULT_FLUID);
+    gate.resetVisualization();
     fields.reset();
   };
 
@@ -148,11 +151,14 @@ const DensityVisualizer = () => {
       adSlotId="2004"
       guideLink="/blog/density"
     >
-      {!ready ? (
+      {!showVisualization ? (
         <GuidedInputFlow
           intro="Set an object's mass and volume and the fluid's density to predict whether it floats or sinks."
           onFillExample={fillExample}
           onReset={reset}
+          awaitingVisualizationConfirm={buildComplete && !gate.visualizationConfirmed}
+          onVisualizationConfirm={gate.confirmVisualization}
+
           steps={[
             { id: 'mass', title: 'Set the mass', helper: 'The object\u2019s mass in kilograms (100 to 3000).', complete: fields.isTouched('mass'), children: massControl },
             { id: 'volume', title: 'Set the volume', helper: 'The object\u2019s volume in cubic metres (0.1 to 3.0).', complete: fields.isTouched('volume'), children: volumeControl },

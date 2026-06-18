@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 import { Slider } from '../../components/ui/Slider';
-import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
+import { MeasuredValue } from '../../components/scientific-units/UnitGuideLink';
+import { GuidedInputFlow, useTouchedFields, useVisualizationGate } from '../../components/onboarding';
 
 const G = 9.8; // m/s²
 const DEFAULT_ANGLE = 35;
@@ -19,7 +20,9 @@ const ProjectileMotionVisualizer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [t, setT] = useState(0);
   const fields = useTouchedFields<'angle' | 'velocity'>();
-  const ready = fields.isTouched('angle') && fields.isTouched('velocity');
+  const gate = useVisualizationGate();
+  const buildComplete = fields.isTouched('angle') && fields.isTouched('velocity');
+  const showVisualization = buildComplete && gate.visualizationConfirmed;
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const rafRef = useRef<number | null>(null);
   const lastTsRef = useRef<number | null>(null);
@@ -232,6 +235,7 @@ const ProjectileMotionVisualizer = () => {
     setT(0);
     setAngle(DEFAULT_ANGLE);
     setVelocity(DEFAULT_VELOCITY);
+    gate.resetVisualization();
     fields.reset();
   };
 
@@ -281,11 +285,14 @@ const ProjectileMotionVisualizer = () => {
       adSlotId="2006"
       guideLink="/blog/projectile-motion"
     >
-      {!ready ? (
+      {!showVisualization ? (
         <GuidedInputFlow
           intro="Set the launch angle and speed, then throw the pamato and read its range, apex, and flight time."
           onFillExample={fillExample}
           onReset={reset}
+          awaitingVisualizationConfirm={buildComplete && !gate.visualizationConfirmed}
+          onVisualizationConfirm={gate.confirmVisualization}
+
           steps={[
             { id: 'angle', title: 'Set the launch angle', helper: 'Angle above the ground (0 to 90 degrees).', complete: fields.isTouched('angle'), children: angleControl },
             { id: 'velocity', title: 'Set the launch speed', helper: 'Throw speed in metres per second (1 to 40).', complete: fields.isTouched('velocity'), children: velocityControl },
@@ -309,24 +316,24 @@ const ProjectileMotionVisualizer = () => {
           <div className="grid grid-cols-3 gap-3 mt-4">
             <div className="text-center p-3 rounded-lg bg-base-200 border border-base-300">
               <div className="text-[10px] uppercase font-bold text-secondary/70">Range (Layo)</div>
-              <div className="font-mono font-bold text-secondary text-lg">{range.toFixed(1)} m</div>
+              <MeasuredValue value={range.toFixed(1)} unit="m" valueClassName="font-mono font-bold text-secondary text-lg" />
             </div>
             <div className="text-center p-3 rounded-lg bg-base-200 border border-base-300">
               <div className="text-[10px] uppercase font-bold text-primary/70">Apex (Taas)</div>
-              <div className="font-mono font-bold text-primary text-lg">{apexHeight.toFixed(1)} m</div>
+              <MeasuredValue value={apexHeight.toFixed(1)} unit="m" valueClassName="font-mono font-bold text-primary text-lg" />
             </div>
             <div className="text-center p-3 rounded-lg bg-base-200 border border-base-300">
               <div className="text-[10px] uppercase font-bold text-accent/70">Flight time</div>
-              <div className="font-mono font-bold text-accent text-lg">{timeOfFlight.toFixed(2)} s</div>
+              <MeasuredValue value={timeOfFlight.toFixed(2)} unit="s" valueClassName="font-mono font-bold text-accent text-lg" />
             </div>
           </div>
 
           {/* Live values */}
           <div className="grid grid-cols-4 gap-3 mt-3 text-center">
-            <div className="text-sm"><div className="text-base-content/60 text-xs">Oras (t)</div><strong className="font-mono">{t.toFixed(2)} s</strong></div>
-            <div className="text-sm"><div className="text-base-content/60 text-xs">Layo (x)</div><strong className="font-mono">{curX.toFixed(1)} m</strong></div>
-            <div className="text-sm"><div className="text-base-content/60 text-xs">Taas (y)</div><strong className="font-mono">{curY.toFixed(1)} m</strong></div>
-            <div className="text-sm"><div className="text-base-content/60 text-xs">Bilis (v_y)</div><strong className="font-mono">{curVy.toFixed(1)} m/s</strong></div>
+            <div className="text-sm"><div className="text-base-content/60 text-xs">Oras (t)</div><MeasuredValue value={t.toFixed(2)} unit="s" valueClassName="font-mono" /></div>
+            <div className="text-sm"><div className="text-base-content/60 text-xs">Layo (x)</div><MeasuredValue value={curX.toFixed(1)} unit="m" valueClassName="font-mono" /></div>
+            <div className="text-sm"><div className="text-base-content/60 text-xs">Taas (y)</div><MeasuredValue value={curY.toFixed(1)} unit="m" valueClassName="font-mono" /></div>
+            <div className="text-sm"><div className="text-base-content/60 text-xs">Bilis (v_y)</div><MeasuredValue value={curVy.toFixed(1)} unit="m/s" valueClassName="font-mono" /></div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mt-6">

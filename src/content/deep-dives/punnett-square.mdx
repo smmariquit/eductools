@@ -1,8 +1,11 @@
-import { DonutChart, Sources, Changelog } from '../../components/content'
+import { Changelog, DonutChart, Sources } from '../../components/content'
 
 # The Punnett square: predicting traits before the seeds sprout
 
+
 Cross two red gumamela and you might get red, and you might not. The reason a child can have a trait neither visible parent shows, or why two purebred plants give a tidy mix in the next generation, was worked out in the 1860s by Gregor Mendel counting pea plants in a monastery garden. The square that bears Reginald Punnett's name is just a bookkeeping grid for Mendel's logic: a way to lay out every combination of alleles the offspring could inherit and read off the odds. The tool runs exactly this for gumamela flower colour: pick a genotype for each parent, watch the tool split each one into gametes, and read the genotype and phenotype ratios straight off the filled grid. The grid is worth understanding by hand first, though.
+
+
 
 ## Alleles, dominant and recessive
 
@@ -45,6 +48,7 @@ A caution worth keeping: this clean arithmetic assumes simple dominance and gene
   created="2026-06-11"
   updated="2026-06-18"
   entries={[
+    { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
     { date: "2026-06-18", note: "Switched the 9:3:3:1 dihybrid phenotype chart from a bar chart to a DonutChart, since it is a breakdown of the 16 offspring out of a whole." },
     { date: "2026-06-18", note: "Aligned the worked monohybrid example to the tool's gumamela red/white cross and its genotype/phenotype ratio panel; framed the dihybrid 9:3:3:1 as a Mendel-peas extension beyond the single-gene tool; converted inline math to KaTeX dollar delimiters; verified sources live; added the Changelog block." },
   ]}

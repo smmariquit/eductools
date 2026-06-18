@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
-import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
+import { GuidedInputFlow, useTouchedFields, useVisualizationGate } from '../../components/onboarding';
 
 const GENOTYPES = ['RR', 'Rr', 'rr'] as const;
 type Genotype = (typeof GENOTYPES)[number];
@@ -26,7 +26,9 @@ const PunnettSquareVisualizer = () => {
   const [parent1, setParent1] = useState<Genotype>(DEFAULT_P1);
   const [parent2, setParent2] = useState<Genotype>(DEFAULT_P2);
   const fields = useTouchedFields<'p1' | 'p2'>();
-  const ready = fields.isTouched('p1') && fields.isTouched('p2');
+  const gate = useVisualizationGate();
+  const buildComplete = fields.isTouched('p1') && fields.isTouched('p2');
+  const showVisualization = buildComplete && gate.visualizationConfirmed;
 
   const p1 = parent1.split('');
   const p2 = parent2.split('');
@@ -52,7 +54,8 @@ const PunnettSquareVisualizer = () => {
     return { cells: grid, genotypeRatio: gRatio, phenotypeRatio: pRatio, genoCounts: gc, phenoCounts: pc };
   }, [parent1, parent2]);
 
-  const reset = () => { setParent1(DEFAULT_P1); setParent2(DEFAULT_P2); fields.reset(); };
+  const reset = () => { setParent1(DEFAULT_P1); setParent2(DEFAULT_P2); gate.resetVisualization();
+    fields.reset(); };
 
   const fillExample = () => { setParent1('Rr'); setParent2('Rr'); fields.touchAll(['p1', 'p2']); };
 
@@ -87,11 +90,14 @@ const PunnettSquareVisualizer = () => {
       adSlotId="2005"
       guideLink="/blog/punnett-square"
     >
-      {!ready ? (
+      {!showVisualization ? (
         <GuidedInputFlow
           intro="Pick each parent's genotype (R = red dominant, r = white recessive) to cross them."
           onFillExample={fillExample}
           onReset={reset}
+          awaitingVisualizationConfirm={buildComplete && !gate.visualizationConfirmed}
+          onVisualizationConfirm={gate.confirmVisualization}
+
           steps={[
             { id: 'p1', title: "Pick Parent 1's genotype", helper: 'RR, Rr, or rr.', complete: fields.isTouched('p1'), children: parent1Buttons },
             { id: 'p2', title: "Pick Parent 2's genotype", helper: 'RR, Rr, or rr.', complete: fields.isTouched('p2'), children: parent2Buttons },

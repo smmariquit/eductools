@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 import { Slider } from '../../components/ui/Slider';
-import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
+import { GuidedInputFlow, useTouchedFields, useVisualizationGate } from '../../components/onboarding';
 
 const DEFAULT_A = 3;
 const DEFAULT_B = 4;
@@ -31,7 +31,9 @@ const PythagoreanVisualizer = () => {
   const [t, setT] = useState(0);
   const rafRef = useRef<number | null>(null);
   const fields = useTouchedFields<'a' | 'b'>();
-  const ready = fields.isTouched('a') && fields.isTouched('b');
+  const gate = useVisualizationGate();
+  const buildComplete = fields.isTouched('a') && fields.isTouched('b');
+  const showVisualization = buildComplete && gate.visualizationConfirmed;
 
   const sideC = Math.sqrt(sideA * sideA + sideB * sideB);
   const areaA = sideA * sideA;
@@ -68,6 +70,7 @@ const PythagoreanVisualizer = () => {
     setSideA(DEFAULT_A);
     setSideB(DEFAULT_B);
     setT(0);
+    gate.resetVisualization();
     fields.reset();
   };
 
@@ -143,11 +146,14 @@ const PythagoreanVisualizer = () => {
       adSlotId="2018"
       guideLink="/blog/pythagorean"
     >
-      {!ready ? (
+      {!showVisualization ? (
         <GuidedInputFlow
           intro="Set the two shorter sides (legs) of a right triangle, then watch the squares rearrange to prove a² + b² = c²."
           onFillExample={fillExample}
           onReset={reset}
+          awaitingVisualizationConfirm={buildComplete && !gate.visualizationConfirmed}
+          onVisualizationConfirm={gate.confirmVisualization}
+
           steps={[
             { id: 'a', title: 'Choose side a', helper: 'The first leg, from 1 to 12 units.', complete: fields.isTouched('a'), children: sliderA },
             { id: 'b', title: 'Choose side b', helper: 'The second leg, from 1 to 12 units.', complete: fields.isTouched('b'), children: sliderB },

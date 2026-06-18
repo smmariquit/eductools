@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useId, useState, useSyncExternalStore } 
 import { motion } from 'framer-motion';
 import { Play, Pause, SkipBack, SkipForward, RotateCcw, ChevronRight } from 'lucide-react';
 import { CrayonArt, type CrayonColor } from '../crayon';
+import { Figure } from '../content/Figure';
 
 export interface StageIllustration {
   /** Registered crayon SVG file name (without extension). */
@@ -209,17 +210,12 @@ export const ProcessCycle: React.FC<ProcessCycleProps> = ({
               <StageNodeArt stage={activeStage} size="detail" />
             </div>
             {activeStage.photo && (
-              <figure className="flex-1 min-w-0 m-0">
-                <img
-                  src={activeStage.photo.src}
-                  alt={activeStage.photo.alt}
-                  className="w-full max-h-52 object-cover rounded-xl border border-base-300"
-                  loading="lazy"
-                />
-                <figcaption className="text-tool-caption text-base-content/55 mt-2 leading-snug">
-                  {activeStage.photo.credit}
-                </figcaption>
-              </figure>
+              <Figure
+                variant="inline"
+                src={activeStage.photo.src}
+                alt={activeStage.photo.alt}
+                credit={activeStage.photo.credit}
+              />
             )}
           </div>
         )}

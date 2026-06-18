@@ -1,0 +1,49 @@
+---
+description: Tool onboarding — intro, build, and visualization phases require explicit learner confirmation
+alwaysApply: true
+---
+
+# Tool onboarding phases
+
+Parameter tools use three phases. **Never** jump straight from the first slider touch to a full animation or chart.
+
+## 1. Intro (optional)
+
+Explore tools with no required inputs use `<IntroState>` — the learner picks a path or presses Start before anything loads.
+
+## 2. Build (`GuidedInputFlow`)
+
+Slider / input tools use `<GuidedInputFlow>` step-by-step:
+
+- One active step at a time; completed steps stay editable.
+- The right panel stays a **placeholder** while building — no pies, plots, or simulations yet.
+- `useTouchedFields` marks a step complete when the learner **engages** that control (sliders always have a value; "touched" ≠ "confirmed").
+
+## 3. Visualization (explicit confirm)
+
+When every step is complete, **do not** render the visualization automatically.
+
+Use `useVisualizationGate()`:
+
+```tsx
+const gate = useVisualizationGate();
+const buildComplete = /* all steps touched or filled */;
+const showVisualization = buildComplete && gate.visualizationConfirmed;
+
+{!showVisualization ? (
+  <GuidedInputFlow
+    awaitingVisualizationConfirm={buildComplete && !gate.visualizationConfirmed}
+    onVisualizationConfirm={gate.confirmVisualization}
+    onReset={() => { /* reset values */ gate.resetVisualization(); fields.reset(); }}
+    …
+  />
+) : (
+  /* full visualization */
+)}
+```
+
+`onFillExample` may pre-fill values and touch fields, but it must **not** call `confirmVisualization` — the learner still presses **Show visualization**.
+
+## Sliders during build
+
+Sliders belong **above** expanding output (see `slider-ux.mdc`). During the build phase there is no heavy output beside the placeholder / confirm panel.

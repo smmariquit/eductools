@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 import { Slider } from '../../components/ui/Slider';
-import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
+import { GuidedInputFlow, useTouchedFields, useVisualizationGate } from '../../components/onboarding';
 
 const DEFAULT_ANGLE = 30;
 const DEFAULT_HYP = 10;
@@ -10,7 +10,9 @@ const TrigonometryVisualizer = () => {
   const [angle, setAngle] = useState(DEFAULT_ANGLE); // degrees
   const [hypotenuse, setHypotenuse] = useState(DEFAULT_HYP); // length
   const fields = useTouchedFields<'angle'>();
-  const ready = fields.isTouched('angle');
+  const gate = useVisualizationGate();
+  const buildComplete = fields.isTouched('angle');
+  const showVisualization = buildComplete && gate.visualizationConfirmed;
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const angleRad = (angle * Math.PI) / 180;
@@ -24,6 +26,7 @@ const TrigonometryVisualizer = () => {
   const reset = () => {
     setAngle(DEFAULT_ANGLE);
     setHypotenuse(DEFAULT_HYP);
+    gate.resetVisualization();
     fields.reset();
   };
 
@@ -206,11 +209,14 @@ const TrigonometryVisualizer = () => {
       adSlotId="2012"
       guideLink="/blog/trigonometry"
     >
-      {!ready ? (
+      {!showVisualization ? (
         <GuidedInputFlow
           intro="Set the angle to draw the right triangle and its matching unit-circle point."
           onFillExample={fillExample}
           onReset={reset}
+          awaitingVisualizationConfirm={buildComplete && !gate.visualizationConfirmed}
+          onVisualizationConfirm={gate.confirmVisualization}
+
           steps={[
             { id: 'angle', title: 'Set the angle', helper: 'Between 5° and 85°.', complete: fields.isTouched('angle'), children: angleSlider },
           ]}

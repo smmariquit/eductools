@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 import { Slider } from '../../components/ui/Slider';
-import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
+import { GuidedInputFlow, useTouchedFields, useVisualizationGate } from '../../components/onboarding';
 import { BukoFractionViz } from '../../components/visualizers/BukoFractionViz';
 import {
   addFractions,
@@ -93,13 +93,16 @@ const FractionsVisualizer = () => {
   const [numB, setNumB] = useState(DEFAULTS.numB);
   const [denB, setDenB] = useState(DEFAULTS.denB);
   const fields = useTouchedFields<'a' | 'b'>();
-  const ready = fields.isTouched('a') && fields.isTouched('b');
+  const gate = useVisualizationGate();
+  const buildComplete = fields.isTouched('a') && fields.isTouched('b');
+  const showVisualization = buildComplete && gate.visualizationConfirmed;
 
   const reset = () => {
     setNumA(DEFAULTS.numA);
     setDenA(DEFAULTS.denA);
     setNumB(DEFAULTS.numB);
     setDenB(DEFAULTS.denB);
+    gate.resetVisualization();
     fields.reset();
   };
 
@@ -186,7 +189,9 @@ const FractionsVisualizer = () => {
           <span className="badge badge-outline badge-sm">{kindLabel[kind]}</span>
         </div>
 
-        <BukoFractionViz num={num} den={den} variant={variant} />
+        {renderFractionSliders(num, den, setNum, setDen, idPrefix, touchKey, colorClass)}
+
+        <BukoFractionViz num={num} den={den} variant={variant} className="min-h-[11rem]" />
 
         <div className="grid sm:grid-cols-2 gap-4">
           <div className="rounded-lg border border-base-300 bg-base-100/80 p-3 text-center">
@@ -215,8 +220,6 @@ const FractionsVisualizer = () => {
             ))}
           </div>
         </div>
-
-        {renderFractionSliders(num, den, setNum, setDen, idPrefix, touchKey, colorClass)}
       </div>
     );
   };
@@ -228,11 +231,14 @@ const FractionsVisualizer = () => {
       adSlotId="1010"
       guideLink="/blog/fractions"
     >
-      {!ready ? (
+      {!showVisualization ? (
         <GuidedInputFlow
           intro="Build two signed fractions (numerator can be negative or larger than the denominator). Then compare them, add them with a common denominator, and see improper and mixed forms."
           onFillExample={fillExample}
           onReset={reset}
+          awaitingVisualizationConfirm={buildComplete && !gate.visualizationConfirmed}
+          onVisualizationConfirm={gate.confirmVisualization}
+
           steps={[
             {
               id: 'a',

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import VisualizerLayout from '../../components/VisualizerLayout';
 import { Slider } from '../../components/ui/Slider';
+import { MeasuredValue, UnitSuffix } from '../../components/scientific-units/UnitGuideLink';
 import { IntroState, useIntroState } from '../../components/onboarding';
 // ==========================================
 // Object Pool for Canvas Particles (GC Friendly)
@@ -125,7 +125,7 @@ const VanHelmontSimulation = ({ rate }: { rate: number }) => {
           </div>
           <div className="bg-base-100 px-4 py-2 rounded shadow border border-base-300 text-center w-full">
             <div className="text-xs uppercase text-base-content/60 font-bold tracking-wider">Plant Biomass</div>
-            <div className="text-xl font-mono font-bold text-emerald-600">{plantMass.toFixed(2)} kg</div>
+            <MeasuredValue value={plantMass.toFixed(2)} unit="kg" valueClassName="text-xl font-mono font-bold text-emerald-600" />
           </div>
         </div>
 
@@ -137,7 +137,7 @@ const VanHelmontSimulation = ({ rate }: { rate: number }) => {
           </div>
           <div className="bg-base-100 px-4 py-2 rounded shadow border border-base-300 text-center w-full">
             <div className="text-xs uppercase text-base-content/60 font-bold tracking-wider">Dry Soil Mass</div>
-            <div className="text-xl font-mono font-bold text-amber-700">{soilMass.toFixed(4)} kg</div>
+            <MeasuredValue value={soilMass.toFixed(4)} unit="kg" valueClassName="text-xl font-mono font-bold text-amber-700" />
           </div>
         </div>
       </div>
@@ -330,7 +330,7 @@ const PhotosynthesisVisualizer = () => {
               min={0}
               max={2000}
               colorClass="warning"
-              readout={<>{light} <Link to="/units#μmol-m⁻²-s⁻¹" className="text-[10px] hover:text-warning/70 underline decoration-dotted" title="Photosynthetic Photon Flux Density">μmol m⁻² s⁻¹</Link></>}
+              readout={<>{light} <UnitSuffix unit="μmol m⁻² s⁻¹" className="text-[10px]" /></>}
               onChange={(e) => setLight(Number(e.target.value))}
             />
 
@@ -341,7 +341,7 @@ const PhotosynthesisVisualizer = () => {
               min={0}
               max={1000}
               colorClass="neutral"
-              readout={<>{co2} <Link to="/units#ppm" className="text-[10px] hover:text-neutral-400 underline decoration-dotted" title="Parts Per Million">ppm</Link></>}
+              readout={<>{co2} <UnitSuffix unit="ppm" className="text-[10px]" /></>}
               onChange={(e) => setCo2(Number(e.target.value))}
             />
 

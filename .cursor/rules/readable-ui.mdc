@@ -17,7 +17,7 @@ Interactive visualizers wrap content in `.tool-surface` (via `VisualizerLayout`)
 
 ## Do
 
-- Use shared `<Slider />` for ranges; pass scale endpoints via the `marks` prop (renders `.crayon-slider__marks` at caption size).
+- Use shared `<Slider />` for ranges — min · mid · max scale labels render automatically under the rail (override with `marks` when needed).
 - Use `text-sm` or larger for helper sentences learners must read.
 - Prefer semantic sizes (`text-sm`, `text-base`) — `.tool-surface` bumps undersized utilities automatically.
 

@@ -1,5 +1,7 @@
 import React, { type ReactNode, useId, useMemo } from 'react';
 import { CrayonArt } from '../crayon';
+import { UnitGuideLink, UnitSuffix } from '../scientific-units/UnitGuideLink';
+import { unitGuideHref } from '../../lib/unitGuide';
 import {
   SLIDER_MOTIFS,
   getSliderRailSvg,
@@ -29,11 +31,61 @@ export interface SliderProps extends React.InputHTMLAttributes<HTMLInputElement>
   hideReadout?: boolean;
   /** Rail + motif only — label row omitted (parent supplies context). */
   compact?: boolean;
-  /** Optional scale labels shown under the track (evenly spaced). */
+  /**
+   * Scale labels under the track. Defaults to min · mid · max when omitted.
+   * Pass `[]` or set `showScaleMarks={false}` to hide.
+   */
   marks?: SliderMark[];
+  /** When true (default), render min / midpoint / max under the rail. */
+  showScaleMarks?: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   /** Optional formatter for the value readout (defaults to raw number + unit). */
   formatValue?: (value: number) => string;
+}
+
+function decimalsForStep(step: number): number {
+  if (!Number.isFinite(step) || step <= 0) return 0;
+  const parts = String(step).split('.');
+  return parts[1]?.length ?? 0;
+}
+
+function roundToStep(n: number, step: number): number {
+  if (!Number.isFinite(step) || step <= 0) return n;
+  const factor = 1 / step;
+  return Math.round(n * factor) / factor;
+}
+
+function formatScaleMark(
+  n: number,
+  unit: string,
+  step: number,
+  formatValue?: (value: number) => string,
+): string {
+  if (formatValue) return formatValue(n);
+  const rounded = roundToStep(n, step);
+  const text = Number.isInteger(rounded)
+    ? String(rounded)
+    : rounded.toFixed(decimalsForStep(step));
+  return `${text}${unit}`;
+}
+
+function buildScaleMarks(
+  min: number,
+  max: number,
+  step: number,
+  unit: string,
+  formatValue?: (value: number) => string,
+): SliderMark[] {
+  if (min === max) {
+    return [{ label: formatScaleMark(min, unit, step, formatValue) }];
+  }
+  const mid = roundToStep((min + max) / 2, step);
+  const marks: SliderMark[] = [{ label: formatScaleMark(min, unit, step, formatValue) }];
+  if (mid !== min && mid !== max) {
+    marks.push({ label: formatScaleMark(mid, unit, step, formatValue) });
+  }
+  marks.push({ label: formatScaleMark(max, unit, step, formatValue) });
+  return marks;
 }
 
 export const Slider: React.FC<SliderProps> = ({
@@ -54,6 +106,7 @@ export const Slider: React.FC<SliderProps> = ({
   hideReadout = false,
   compact = false,
   marks,
+  showScaleMarks = true,
   ...props
 }) => {
   const generatedId = useId();
@@ -61,7 +114,33 @@ export const Slider: React.FC<SliderProps> = ({
   const config = SLIDER_MOTIFS[motif];
   const railSvg = useMemo(() => getSliderRailSvg(config.rail), [config.rail]);
   const displayValue = formatValue ? formatValue(value) : `${value}${unit}`;
+  const unitTrimmed = unit.trim();
+  const hasUnitGuide = Boolean(unitTrimmed && unitGuideHref(unitTrimmed));
   const pct = max === min ? 0 : ((value - min) / (max - min)) * 100;
+
+  const scaleMarks = useMemo(() => {
+    if (!showScaleMarks) return [];
+    if (marks !== undefined) return marks;
+    return buildScaleMarks(min, max, step, unit, formatValue);
+  }, [showScaleMarks, marks, min, max, step, unit, formatValue]);
+
+  const renderReadout = () => {
+    if (readout != null) return readout;
+    if (formatValue) {
+      return (
+        <>
+          {displayValue}
+          {hasUnitGuide && <UnitGuideLink unit={unitTrimmed} size={12} className="ml-0.5" />}
+        </>
+      );
+    }
+    return (
+      <>
+        {value}
+        <UnitSuffix unit={unit} />
+      </>
+    );
+  };
 
   return (
     <div className={`crayon-slider w-full ${className}`} data-motif={motif}>
@@ -74,8 +153,8 @@ export const Slider: React.FC<SliderProps> = ({
                 <span className="text-base-content/35 font-normal" aria-hidden="true">
                   ·
                 </span>
-                <span className={`text-${colorClass} font-mono tabular-nums`}>
-                  {readout ?? displayValue}
+                <span className={`text-${colorClass} font-mono tabular-nums inline-flex items-baseline gap-0.5`}>
+                  {renderReadout()}
                 </span>
               </>
             )}
@@ -118,10 +197,19 @@ export const Slider: React.FC<SliderProps> = ({
         </div>
       </div>
 
-      {marks && marks.length > 0 && (
+      {scaleMarks.length > 0 && (
         <div className="crayon-slider__marks" aria-hidden="true">
-          {marks.map((mark, i) => (
-            <span key={i}>{mark.label}</span>
+          {scaleMarks.map((mark, i) => (
+            <span key={i} className="inline-flex items-center justify-center gap-0.5">
+              {typeof mark.label === 'string' && unitTrimmed && unitGuideHref(unitTrimmed) ? (
+                <>
+                  {mark.label.replace(new RegExp(`${unitTrimmed.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`), '').trimEnd()}
+                  <UnitSuffix unit={unit} />
+                </>
+              ) : (
+                mark.label
+              )}
+            </span>
           ))}
         </div>
       )}

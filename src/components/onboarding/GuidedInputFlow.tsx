@@ -1,5 +1,5 @@
 import React, { type ReactNode, useEffect, useId, useRef } from 'react';
-import { Check, Lock, Wand2, RotateCcw } from 'lucide-react';
+import { ArrowRight, Check, Lock, Wand2, RotateCcw } from 'lucide-react';
 
 export interface GuidedStep {
   /** Stable identifier for the step. */
@@ -35,6 +35,16 @@ export interface GuidedInputFlowProps {
   /** Returns the tool to its empty start. */
   onReset?: () => void;
   resetLabel?: string;
+  /**
+   * When true, every step is done but the learner has not confirmed yet.
+   * Shows a calm preview + confirm button instead of jumping to the visualization.
+   */
+  awaitingVisualizationConfirm?: boolean;
+  /** Called when the learner explicitly opts in to the visualization. */
+  onVisualizationConfirm?: () => void;
+  visualizationConfirmLabel?: string;
+  /** Short line under the confirm heading. */
+  visualizationConfirmHint?: ReactNode;
   className?: string;
 }
 
@@ -63,6 +73,10 @@ export const GuidedInputFlow: React.FC<GuidedInputFlowProps> = ({
   fillExampleLabel = 'Fill an example for me',
   onReset,
   resetLabel = 'Reset',
+  awaitingVisualizationConfirm = false,
+  onVisualizationConfirm,
+  visualizationConfirmLabel = 'Show visualization',
+  visualizationConfirmHint = 'Nothing animates until you press this — adjust the sliders first if you want.',
   className = '',
 }) => {
   const total = steps.length;
@@ -93,6 +107,25 @@ export const GuidedInputFlow: React.FC<GuidedInputFlowProps> = ({
   if (isReady) {
     return children ? <div className={className}>{children}</div> : null;
   }
+
+  const previewPanel = awaitingVisualizationConfirm ? (
+    <div className="flex flex-1 flex-col items-center justify-center gap-4 rounded-xl border-2 border-dashed border-primary/40 bg-base-100 p-8 text-center min-h-[260px]">
+      <p className="text-sm font-semibold text-base-content m-0">Inputs are set</p>
+      <p className="max-w-sm text-sm text-base-content/65 m-0">{visualizationConfirmHint}</p>
+      {onVisualizationConfirm && (
+        <button
+          type="button"
+          onClick={onVisualizationConfirm}
+          className="btn btn-primary gap-2"
+        >
+          {visualizationConfirmLabel}
+          <ArrowRight className="h-4 w-4" aria-hidden="true" />
+        </button>
+      )}
+    </div>
+  ) : (
+    placeholder ?? defaultPlaceholder('Fill in the values to build your visualization.')
+  );
 
   return (
     <div className={className}>
@@ -188,7 +221,7 @@ export const GuidedInputFlow: React.FC<GuidedInputFlowProps> = ({
         </section>
 
         <div className="flex">
-          {placeholder ?? defaultPlaceholder('Fill in the values to build your visualization.')}
+          {previewPanel}
         </div>
       </div>
     </div>

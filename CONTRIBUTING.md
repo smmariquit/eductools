@@ -36,6 +36,7 @@ This repo ships machine-readable conventions in `.cursor/rules/`. They apply to
 human and AI contributors alike — please skim them:
 
 - `writing-tone.mdc` — how prose should read, and the link-and-verify rule.
+- `images.mdc` — raster paths, `<Figure>` variants, alt/credit requirements.
 - `mdx-changelog.mdc` — edit tracking for articles (see below).
 - `curriculum-guides.mdc` — how to use the bundled DepEd curriculum guides.
 
@@ -56,7 +57,8 @@ Articles are MDX. A few non-negotiables:
    import { BarChart, Sources, Changelog } from '../../components/content'
    ```
    `<BarChart>` for comparisons/breakdowns (values must match the cited figure
-   exactly), `<Figure>` for credited images.
+   exactly), `<Figure>` for credited images (see `images.mdc` — paths under
+   `/images/<category>/`, never raw `<img>`).
 3. **Always end with `<Sources>`** — a numbered list of the primary references the
    article relies on, each with a live URL.
 4. **Always end the file with `<Changelog>`.** On every edit, bump `updated` to

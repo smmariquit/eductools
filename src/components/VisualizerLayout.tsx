@@ -1,4 +1,4 @@
-import React, { type ReactNode, lazy, Suspense, type ComponentType, useMemo, useState } from 'react';
+import React, { type ReactNode, Suspense, useMemo, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Link2, Check } from 'lucide-react';
 import AdUnit from './AdUnit';
@@ -7,23 +7,12 @@ import { visualizerModules } from '../data/registry';
 import { getVisualizerDates, getWriteupDates } from '../data/contentDates';
 import { getToolVersion } from '../data/versioning';
 import { ContentDatesLine } from './content/ContentDatesLine';
+import { StudyExamples } from './content/StudyExamples';
+import { WriteupExercises } from './content/WriteupExercises';
 import { ToolVersionPanel } from './versioning';
-
-const mdxComponents = import.meta.glob([
-  '../content/blog/*.mdx',
-  '../content/deep-dives/*.mdx'
-]);
-
-const mdxCache = new Map<string, React.LazyExoticComponent<ComponentType<Record<string, unknown>>>>();
-function getMdxComponent(id: string) {
-  if (!mdxCache.has(id)) {
-    let importFn = mdxComponents[`../content/blog/${id}.mdx`] || mdxComponents[`../content/deep-dives/${id}.mdx`];
-    if (importFn) {
-      mdxCache.set(id, lazy(importFn as () => Promise<{ default: ComponentType }>));
-    }
-  }
-  return mdxCache.get(id) ?? null;
-}
+import { getMdxComponent } from '../lib/writeupMdx';
+import { WriteupSkeleton } from './loading/WriteupSkeleton';
+import { LoadingIndicator } from './ui/LoadingIndicator';
 
 interface VisualizerLayoutProps {
   title: string;
@@ -134,9 +123,18 @@ const VisualizerLayout = ({ title: fallbackTitle, description: fallbackDesc, chi
                 <ContentDatesLine created={writeupDates.created} updated={writeupDates.updated} />
               )}
             </div>
-            <Suspense fallback={<div className="flex justify-center p-8"><span className="loading loading-spinner"></span></div>}>
+            {moduleInfo && <StudyExamples moduleId={moduleInfo.id} className="mb-8" />}
+            <Suspense
+              fallback={
+                <div className="py-6">
+                  <LoadingIndicator label="Loading writeup…" size="sm" className="mb-8" />
+                  <WriteupSkeleton />
+                </div>
+              }
+            >
               {React.createElement(writeupComponent)}
             </Suspense>
+            {moduleInfo && <WriteupExercises moduleId={moduleInfo.id} />}
           </article>
         </div>
       )}

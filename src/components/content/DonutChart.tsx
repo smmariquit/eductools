@@ -1,4 +1,5 @@
 import React from 'react';
+import { UnitSuffix } from '../scientific-units/UnitGuideLink';
 import type { CrayonColor } from './BarChart';
 
 export interface DonutDatum {
@@ -77,9 +78,9 @@ export const DonutChart: React.FC<DonutChartProps> = ({ title, data, unit = '', 
                 aria-hidden="true"
               />
               <span className="flex-1 text-base-content/80">{s.label}</span>
-              <span className="shrink-0 font-mono text-sm font-bold text-base-content">
+              <span className="shrink-0 font-mono text-sm font-bold text-base-content inline-flex items-baseline gap-0.5">
                 {s.value}
-                {unit}
+                <UnitSuffix unit={unit} />
               </span>
             </li>
           ))}

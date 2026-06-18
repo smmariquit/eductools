@@ -1,32 +1,28 @@
-import { useParams, Link } from 'react-router-dom';
-import React, { lazy, Suspense, type ComponentType } from 'react';
+import { useParams, Link, Navigate } from 'react-router-dom';
+import React, { Suspense, useMemo } from 'react';
 import AdUnit from '../components/AdUnit';
-import { blogPosts, DEFAULT_AUTHOR } from '../data/blogPosts';
-
-// Map all MDX files using Vite's import.meta.glob (multi-pattern support)
-const mdxComponents = import.meta.glob([
-  '../content/blog/*.mdx',
-  '../content/deep-dives/*.mdx'
-]);
-
-// Cache lazy components at module level to prevent re-creation on render
-const mdxCache = new Map<string, React.LazyExoticComponent<ComponentType<Record<string, unknown>>>>();
-function getMdxComponent(id: string) {
-  if (!mdxCache.has(id)) {
-    // Try to find the file in either directory
-    let importFn = mdxComponents[`../content/blog/${id}.mdx`] || mdxComponents[`../content/deep-dives/${id}.mdx`];
-    if (importFn) {
-      mdxCache.set(id, lazy(importFn as () => Promise<{ default: ComponentType }>));
-    }
-  }
-  return mdxCache.get(id) ?? null;
-}
+import { Figure } from '../components/content/Figure';
+import { StudyExamples } from '../components/content/StudyExamples';
+import { WriteupExercises } from '../components/content/WriteupExercises';
+import { findBlogPost, DEFAULT_AUTHOR } from '../data/blogPosts';
+import { visualizerModules } from '../data/registry';
+import { resolveStudyExamplesId } from '../data/studyExamples';
+import { getMdxComponent } from '../lib/writeupMdx';
+import { resolveWriteupSlug } from '../lib/writeupSlugs';
+import { WriteupSkeleton } from '../components/loading/WriteupSkeleton';
+import { LoadingIndicator } from '../components/ui/LoadingIndicator';
 
 const BlogPost = () => {
   const { id } = useParams<{ id: string }>();
-  const post = id ? blogPosts.find(p => p.id === id) : null;
 
-  const contentComponent = React.useMemo(() => id ? getMdxComponent(id) : null, [id]);
+  if (id && id !== resolveWriteupSlug(id)) {
+    return <Navigate to={`/blog/${resolveWriteupSlug(id)}`} replace />;
+  }
+
+  const post = id ? findBlogPost(id) : null;
+  const toolModule = post?.toolId ? visualizerModules.find((m) => m.id === post.toolId) : undefined;
+
+  const contentComponent = useMemo(() => (id ? getMdxComponent(id) : null), [id]);
 
   if (!post || !id) {
     return (
@@ -41,8 +37,8 @@ const BlogPost = () => {
     <div className="container mx-auto px-4 py-8 max-w-3xl">
       <div className="mb-8 flex justify-between items-center">
         <Link to="/blog" className="btn btn-ghost">&larr; Back to Articles</Link>
-        {post.toolId && (
-          <Link to={`/visualizer/${post.toolId}`} className="btn btn-primary">Try the Visualizer Tool</Link>
+        {post.toolId && toolModule && (
+          <Link to={toolModule.path} className="btn btn-primary">Try the Visualizer Tool</Link>
         )}
       </div>
       
@@ -53,7 +49,11 @@ const BlogPost = () => {
             <div className="flex items-center gap-3 mb-8 pb-8 border-b border-base-200 not-prose">
               <div className="avatar">
                 <div className="w-10 h-10 rounded-full border border-base-300 shadow-sm overflow-hidden">
-                  <img src={author.avatar ?? DEFAULT_AUTHOR.avatar} alt={author.name} className="w-full h-full object-cover" />
+                  <Figure
+                    variant="avatar"
+                    src={author.avatar ?? DEFAULT_AUTHOR.avatar}
+                    alt={author.name}
+                  />
                 </div>
               </div>
               <div>
@@ -70,18 +70,29 @@ const BlogPost = () => {
           );
         })()}
         
-        <Suspense fallback={<div className="flex justify-center p-12"><span className="loading loading-spinner loading-lg"></span></div>}>
+        <StudyExamples moduleId={resolveStudyExamplesId(post.toolId || post.id)} />
+
+        <Suspense
+          fallback={
+            <div className="py-4">
+              <LoadingIndicator label="Loading article…" size="sm" className="mb-8" />
+              <WriteupSkeleton paragraphs={6} />
+            </div>
+          }
+        >
           {contentComponent ? (
             React.createElement(contentComponent)
           ) : (
             <div className="not-prose text-center py-8">
               <p className="text-base-content/80">This article file is missing. If you were looking for a tool writeup, open the visualizer instead.</p>
-              {post.toolId && (
-                <Link to={`/visualizer/${post.toolId}`} className="btn btn-primary mt-4">Open the visualizer</Link>
+              {post.toolId && toolModule && (
+                <Link to={toolModule.path} className="btn btn-primary mt-4">Open the visualizer</Link>
               )}
             </div>
           )}
         </Suspense>
+
+        <WriteupExercises moduleId={resolveStudyExamplesId(post.toolId || post.id)} />
       </article>
 
       <div className="mt-12">

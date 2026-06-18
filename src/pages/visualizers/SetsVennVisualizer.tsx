@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
-import { GuidedInputFlow } from '../../components/onboarding';
+import { GuidedInputFlow, useVisualizationGate } from '../../components/onboarding';
 
 type Operation = 'union' | 'intersection' | 'differenceAB' | 'differenceBA';
 
@@ -54,11 +54,14 @@ const SetsVennVisualizer = () => {
     onlyB: operation === 'union' || operation === 'differenceBA',
   };
 
-  const ready = setA.length > 0 && setB.length > 0;
+  const gate = useVisualizationGate();
+  const buildComplete = setA.length > 0 && setB.length > 0;
+  const showVisualization = buildComplete && gate.visualizationConfirmed;
 
   const reset = () => {
     setSetAInput('');
     setSetBInput('');
+    gate.resetVisualization();
     setOperation('union');
   };
 
@@ -130,11 +133,14 @@ const SetsVennVisualizer = () => {
       adSlotId="2016"
       guideLink="/blog/sets-venn"
     >
-      {!ready ? (
+      {!showVisualization ? (
         <GuidedInputFlow
           intro="Type two sets of numbers, then shade their union, intersection, or difference on a Venn diagram."
           onFillExample={fillExample}
           onReset={reset}
+          awaitingVisualizationConfirm={buildComplete && !gate.visualizationConfirmed}
+          onVisualizationConfirm={gate.confirmVisualization}
+
           steps={[
             { id: 'a', title: 'Type Set A', helper: 'Comma-separated numbers, e.g. 1, 2, 3, 4, 5.', complete: setA.length > 0, children: inputA },
             { id: 'b', title: 'Type Set B', helper: 'Comma-separated numbers, e.g. 3, 4, 5, 6, 7.', complete: setB.length > 0, children: inputB },

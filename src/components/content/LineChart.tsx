@@ -1,4 +1,5 @@
 import React from 'react';
+import { UnitSuffix } from '../scientific-units/UnitGuideLink';
 import type { CrayonColor } from './BarChart';
 
 export interface LinePoint {
@@ -87,14 +88,23 @@ export const LineChart: React.FC<LineChartProps> = ({ title, series, xLabel, yLa
 
   return (
     <figure className="not-prose my-8 rounded-2xl border border-base-300 bg-base-200 p-5 shadow-sm">
-      {title && <figcaption className="mb-4 font-display text-base font-bold text-base-content">{title}</figcaption>}
+      {title && (
+        <figcaption className="mb-4 font-display text-base font-bold text-base-content">
+          {title}
+          {unit.trim() && (
+            <span className="ml-2 inline-flex items-baseline font-normal text-sm text-base-content/70">
+              (<UnitSuffix unit={unit} />)
+            </span>
+          )}
+        </figcaption>
+      )}
       <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full" role="img" aria-label={title ?? 'Line chart'}>
         {/* y gridlines + labels */}
         {ticks.map((t) => (
           <g key={`y-${t}`}>
             <line x1={PAD.left} y1={sy(t)} x2={W - PAD.right} y2={sy(t)} stroke="currentColor" strokeOpacity={0.12} strokeWidth={1} />
             <text x={PAD.left - 6} y={sy(t)} textAnchor="end" dominantBaseline="middle" className="fill-base-content/60" fontSize={9}>
-              {formatTick(t)}{unit}
+              {formatTick(t)}
             </text>
           </g>
         ))}

@@ -20,6 +20,78 @@ export const SITE_VERSION: string = packageJson.version;
 
 export const siteChangelog: ReleaseEntry[] = [
   {
+    version: '1.2.13',
+    date: '2026-06-18',
+    changes: [
+      'Blog index lists every tool writeup; /blog/{slug} serves the same deep-dive MDX as each visualizer.',
+      'Writeup exercises: auto-check for integer answers, reveal dropdown for open questions.',
+      'Crayon-orbit loader and skeleton UIs while visualizers, writeups, and blog articles load.',
+    ],
+  },
+  {
+    version: '1.2.12',
+    date: '2026-06-18',
+    changes: [
+      'Each tool writeup and blog article now ends with 3–5 exercises or reflection questions.',
+    ],
+  },
+  {
+    version: '1.2.11',
+    date: '2026-06-18',
+    changes: [
+      'Study examples now render inside each tool writeup (and blog articles), not in the tool header above the canvas.',
+    ],
+  },
+  {
+    version: '1.2.10',
+    date: '2026-06-18',
+    changes: [
+      'Question-mark links beside scientific units across sliders, charts, and tool readouts — each opens the matching unit guide.',
+    ],
+  },
+  {
+    version: '1.2.9',
+    date: '2026-06-18',
+    changes: [
+      'States of Matter: toggle between water and other substances (mercury, ethanol, dry ice, iron) with substance-specific melting and boiling points.',
+    ],
+  },
+  {
+    version: '1.2.8',
+    date: '2026-06-18',
+    changes: [
+      'All sliders now show min, midpoint, and max labels under the track by default.',
+    ],
+  },
+  {
+    version: '1.2.7',
+    date: '2026-06-18',
+    changes: [
+      'Guided-input tools require an explicit “Show visualization” confirm — no flashbang on first slider touch.',
+    ],
+  },
+  {
+    version: '1.2.6',
+    date: '2026-06-18',
+    changes: [
+      'Standardized raster images: /images/<category>/ paths, Figure variants (article, inline, avatar), and images.mdc rule.',
+    ],
+  },
+  {
+    version: '1.2.5',
+    date: '2026-06-18',
+    changes: [
+      'Every tool and writeup now lists one or two common study examples in the header and deep-dive.',
+    ],
+  },
+  {
+    version: '1.2.4',
+    date: '2026-06-18',
+    changes: [
+      'Fractions tool: sliders stay fixed above the buko pie preview while values change.',
+    ],
+  },
+  {
     version: '1.2.3',
     date: '2026-06-18',
     changes: [
@@ -221,8 +293,16 @@ function buildToolRecord(id: string): ToolVersionRecord {
 
   if (id === 'fractions') {
     return {
-      version: '1.2.0',
+      version: '1.2.1',
       changelog: [
+        {
+          version: '1.2.1',
+          date: '2026-06-18',
+          changes: [
+            'Fraction sliders sit above the buko pie preview so controls do not shift while dragging.',
+            'Reserved min-height on the pie area to reduce layout jump below the sliders.',
+          ],
+        },
         {
           version: '1.2.0',
           date: '2026-06-18',

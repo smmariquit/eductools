@@ -1,4 +1,5 @@
 import React from 'react';
+import { UnitSuffix } from '../scientific-units/UnitGuideLink';
 
 export type CrayonColor = 'ink' | 'sky' | 'berry' | 'sunshine' | 'leaf' | 'grape';
 
@@ -48,9 +49,9 @@ export const BarChart: React.FC<BarChartProps> = ({ title, data, unit = '', max,
                     aria-label={`${d.label}: ${d.value}${unit}`}
                   />
                 </div>
-                <span className="w-14 shrink-0 text-right font-mono text-sm font-bold text-base-content">
+                <span className="w-14 shrink-0 text-right font-mono text-sm font-bold text-base-content inline-flex items-baseline justify-end gap-0.5">
                   {d.value}
-                  {unit}
+                  <UnitSuffix unit={unit} />
                 </span>
               </div>
             </div>

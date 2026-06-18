@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 import { Slider } from '../../components/ui/Slider';
+import { MeasuredValue } from '../../components/scientific-units/UnitGuideLink';
 import { IntroState, useIntroState } from '../../components/onboarding';
 
 type ViewMode = 'map' | 'homeostasis' | 'vascular' | 'absorption' | 'reflex';
@@ -636,11 +637,11 @@ const ReflexEngine = () => {
           <div className="flex flex-col gap-6">
             <div className={`w-20 h-20 rounded-full flex flex-col items-center justify-center font-bold text-xs border-4 transition-all duration-300 ${phase === 'MOTOR' ? 'bg-success text-success-content border-success scale-110' : 'bg-base-100 border-base-300 text-base-content/50'}`}>
               <span>Extensor</span>
-              <span className="opacity-70 font-mono mt-1">{extensorVoltage}mV</span>
+              <span className="opacity-70 font-mono mt-1 inline-flex items-baseline gap-0.5"><MeasuredValue value={extensorVoltage} unit="mV" /></span>
             </div>
             <div className={`w-20 h-20 rounded-full flex flex-col items-center justify-center font-bold text-xs border-4 transition-all duration-300 ${phase === 'MOTOR' ? 'bg-error text-error-content border-error scale-110' : 'bg-base-100 border-base-300 text-base-content/50'}`}>
               <span>Flexor</span>
-              <span className="opacity-70 font-mono mt-1">{flexorVoltage}mV</span>
+              <span className="opacity-70 font-mono mt-1 inline-flex items-baseline gap-0.5"><MeasuredValue value={flexorVoltage} unit="mV" /></span>
             </div>
           </div>
         </div>

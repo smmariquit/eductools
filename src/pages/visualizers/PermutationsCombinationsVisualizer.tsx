@@ -3,7 +3,7 @@ import VisualizerLayout from '../../components/VisualizerLayout';
 import { Slider } from '../../components/ui/Slider';
 import { StatCard } from '../../components/ui/StatCard';
 import { Toggle } from '../../components/ui/Toggle';
-import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
+import { GuidedInputFlow, useTouchedFields, useVisualizationGate } from '../../components/onboarding';
 import katex from 'katex';
 import 'katex/dist/katex.min.css';
 
@@ -49,12 +49,15 @@ const PermutationsCombinationsVisualizer = () => {
   const [n, setN] = useState(DEFAULTS.n);
   const [r, setR] = useState(DEFAULTS.r);
   const fields = useTouchedFields<'mode' | 'n' | 'r'>();
-  const ready = fields.isTouched('mode') && fields.isTouched('n') && fields.isTouched('r');
+  const gate = useVisualizationGate();
+  const buildComplete = fields.isTouched('mode') && fields.isTouched('n') && fields.isTouched('r');
+  const showVisualization = buildComplete && gate.visualizationConfirmed;
 
   const reset = () => {
     setMode(DEFAULTS.mode);
     setN(DEFAULTS.n);
     setR(DEFAULTS.r);
+    gate.resetVisualization();
     fields.reset();
   };
 
@@ -177,11 +180,14 @@ const PermutationsCombinationsVisualizer = () => {
       adSlotId="2020"
       guideLink="/blog/permutations-combinations"
     >
-      {!ready ? (
+      {!showVisualization ? (
         <GuidedInputFlow
           intro="Choose whether order matters, then set how many items you have and how many to pick."
           onFillExample={fillExample}
           onReset={reset}
+          awaitingVisualizationConfirm={buildComplete && !gate.visualizationConfirmed}
+          onVisualizationConfirm={gate.confirmVisualization}
+
           steps={[
             { id: 'mode', title: 'Pick the counting type', helper: 'Permutation if order matters, combination if not.', complete: fields.isTouched('mode'), children: modeControl },
             { id: 'n', title: 'Set the total items', helper: 'How many items to choose from (2 to 10).', complete: fields.isTouched('n'), children: nControl },

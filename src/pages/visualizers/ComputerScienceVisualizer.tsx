@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import VisualizerLayout from '../../components/VisualizerLayout';
+import { UnitGuideLink } from '../../components/scientific-units/UnitGuideLink';
 import { IntroState, useIntroState } from '../../components/onboarding';
 const ByteEditor = ({ label, color, bits, onChange }: { label: string, color: string, bits: number[], onChange: (bits: number[]) => void }) => {
   const toggleBit = (index: number) => {
@@ -102,8 +102,8 @@ const ComputerScienceVisualizer = () => {
           </div>
           
           <p className="text-sm text-base-content/70 mb-6">
-            Click the <Link to="/units#b" className="underline decoration-dotted font-bold hover:text-primary">Bits</Link> below to toggle their voltage state (0 or 1). 
-            Each block of 8 bits forms a single <Link to="/units#B" className="underline decoration-dotted font-bold hover:text-primary">Byte</Link>.
+            Click the <span className="inline-flex items-center gap-0.5 font-bold">Bits<UnitGuideLink unit="b" size={12} /></span> below to toggle their voltage state (0 or 1).
+            Each block of 8 bits forms a single <span className="inline-flex items-center gap-0.5 font-bold">Byte<UnitGuideLink unit="B" size={12} /></span>.
           </p>
 
           <ByteEditor label="Red" color="#ef4444" bits={redBits} onChange={setRedBits} />
@@ -113,7 +113,7 @@ const ComputerScienceVisualizer = () => {
 
         {/* RIGHT: Pixel Output */}
         <div className="lg:w-96 flex flex-col">
-          <h2 className="text-2xl font-black text-secondary mb-4">Physical <Link to="/units#px" className="underline decoration-dotted hover:text-secondary/70">Pixel</Link> Output</h2>
+          <h2 className="text-2xl font-black text-secondary mb-4">Physical <span className="inline-flex items-center gap-1">Pixel<UnitGuideLink unit="px" size={14} /></span> Output</h2>
           
           <div className="bg-base-200 border border-base-300 rounded-xl flex-1 flex flex-col overflow-hidden shadow-lg">
             

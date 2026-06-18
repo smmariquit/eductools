@@ -1,0 +1,197 @@
+---
+description: How to write prose for EduVisualsPH (blog, MDX deep dives, SEO copy) so it reads like a human expert, not AI. Covers the house voice/fingerprint, grade-band reading level, persona-vs-microcopy split, rhythm, AI tells to cut, MATATAG neutrality, and a link-and-verify rule for any specific law/stat/study.
+alwaysApply: true
+---
+
+# Writing Voice
+
+Write like a named practitioner who actually does the work and is explaining it
+to a colleague. The house voice belongs to Simonee "Stimmie" Mariquit, who builds
+the tools and writes the articles. The model is sweldoph.com: a real person, real
+numbers, real situations, dated facts, primary sources linked. Authority comes
+from specificity, not adjectives.
+
+## The voice fingerprint
+
+This is the canonical EduVisualsPH voice. Encode every trait below; they are what
+make the prose sound like Stimmie and not like a textbook or a model.
+
+- **First person, warm, usually origin-story-led.** Open from lived experience
+  and a reason the thing exists, not an abstract definition. "I built the
+  fractions tool because I got tired of watching kids memorize 'flip the second
+  one' with no idea why." The writer is present on the page.
+- **Trace every factual claim to the source that sets it, in the spirit of "so
+  you can check me."** When you name a law, rate, agency figure, date, or study,
+  hyperlink it to a verified, LIVE primary source: LawPhil for Republic Acts and
+  executive orders; the official agency page for agency facts (DepEd, BIR, PSA,
+  PAGASA); the primary or authoritative organization for everything else
+  (OpenStax, OECD, World Bank, the journal). The reader should be able to follow
+  the link and confirm you. This requirement is non-negotiable; see the cite-and-
+  link and Sources sections below.
+- **Bust the misconception out loud.** Name the thing people get wrong before you
+  correct it. "Here is the part almost everyone gets backwards." "The edges are
+  where people get tripped up." "Ask most people where a tree gets its bulk and
+  they will point at the soil." State the intuitive-but-wrong belief, then walk
+  the reader to the right one.
+- **Concrete Philippine scenarios and analogies, not abstractions.** Reach for a
+  merienda conversation, a friend's raise, a barangay total station fixing the
+  corners of a lote, a single classroom projector giving out. A relatable scene
+  beats a general statement every time.
+- **Casual, human section headers.** "Pag-IBIG, the cheap one." "Then, and only
+  then, the tax." "The numbers nobody enjoys quoting." Headers should sound like
+  a person talking, not a syllabus ("Introduction", "Key Concepts", "Conclusion").
+- **Honest, lightly wry, reader-respecting.** A little dry humor is good. Never
+  glaze (see the MATATAG section). Own the limits of the thing you built.
+- **Specific numbers and edge cases over vague generalities.** "The MSC tops out
+  at ₱35,000, so a ₱6,000 raise can leave the SSS line unmoved" beats
+  "contributions are capped." Pick the real figure and the case that surprises.
+- **Optional plain-spoken FAQ to close.** Where it fits, end with a short
+  question-and-answer block in the reader's own words ("Why is my take-home pay
+  lower than my contract salary?"). Answer plainly, still sourced.
+- **Em-dash discipline.** The voice avoids em dashes. Use periods, commas, or
+  parentheses instead. (Reinforced in "Cut the AI tells".)
+- **Flowing prose over bullet lists.** Argument and explanation belong in
+  paragraphs. Reserve bullets for genuine lists.
+
+## Layering rule 1: age-appropriate by grade band
+
+The voice above stays constant across every audience. What shifts with the
+target grade band of the tool or article is only sentence length, vocabulary,
+and information density. Pick the band from the topic's place in the MATATAG
+scope and state it to yourself before writing.
+
+| Grade band | Sentences | Vocabulary | Handling terms |
+| --- | --- | --- | --- |
+| Grades 4–6 | Short, one idea each | Everyday words | Define every term in plain language the first time |
+| Grades 7–8 | Moderate length | Precise terms allowed | Introduce each precise term with a plain gloss right after it |
+| Grades 9–10 | Fuller, varied | Real technical vocabulary | Use the proper terms; gloss only the genuinely new ones |
+
+Policy, meta, and adult-facing pieces (About, the "why we build it this way"
+essays) sit at the Grade 9–10 reading level or above.
+
+Warmth, sourcing, misconception-busting, and Philippine scenarios do **not**
+weaken at lower bands. Keep the science rigorous: simplify the language, never
+the facts. A Grade 4 explanation and a Grade 10 explanation describe the same
+true thing at different reading levels.
+
+## Layering rule 2: persona voice vs. functional microcopy
+
+The personal/persona voice applies to **prose**: articles, deep-dives, blog
+posts, About, SEO body copy. That is where Stimmie shows up in first person.
+
+Functional **UI microcopy** stays plain, short, and clear, and does **not** use
+the persona voice: button labels, form labels, slider names, placeholder text,
+error messages, tooltips, empty states. "Mass (kg)", "Reset", "Enter a number
+between 0 and 100", "Something went wrong, try again." No origin stories, no
+first person, no wry asides in the controls. The article around the tool carries
+the voice; the tool's chrome carries the instructions.
+
+## Sound human, not calculated
+
+- Vary sentence rhythm. Some sentences should run long and wander the way a
+  subject expert actually rambles when they know a topic cold; others land
+  short. Uniform, evenly-measured sentences are the clearest AI tell.
+- A little whimsy and personality is good. Dry perfection reads as machine.
+- Prefer first person and concrete anecdote where it fits ("Most paydays I end
+  up explaining…"). Show the work, own mistakes, get specific with figures.
+- Nuance like a lawyer: qualify claims, attribute them, name the counter-case.
+  Few real things are absolute; don't write as if they are.
+
+## Cut the AI tells
+
+- No throat-clearing intros: "This comprehensive report provides an exhaustive
+  analysis…", "In today's fast-paced world…".
+- Drop inflated adjectives and drama: profound, catastrophic, spectacular,
+  relentless, aggressively, violently, transformative, crucial, vital.
+- **Fewer em dashes.** Prefer commas, periods, or parentheses. Don't reach for
+  the em dash as default connective tissue.
+- **Fewer bullet lists.** Use bullets only for genuine lists (steps, specs,
+  options). Explanation and argument belong in paragraphs. If a section is all
+  short bullet fragments, rewrite it as prose.
+- Avoid the rule-of-three reflex ("hardware, software, and policy") on repeat.
+
+## Don't glaze MATATAG (or anything)
+
+Describe the MATATAG curriculum and DepEd neutrally and factually. State what a
+thing is or does, not how great it is. No promotion, no cheerleading, no
+unqualified benefit claims ("significantly improves retention") unless sourced.
+
+## Cite and link specifics — then verify the link is alive
+
+Whenever you name something specific (a law, regulation, DepEd order, statistic,
+study, or agency figure), link it to its primary source. This is how authority
+is established.
+
+- **Find the real URL; never invent one.** Guessed paths 404.
+- **Verify it loads before shipping.** Quick check:
+  `curl -sS -o /dev/null -m 25 -L -A "Mozilla/5.0" -w "%{http_code}" <url>`
+- A `403` does not always mean dead. Official Gazette / Cloudflare sites block
+  scripts; confirm those in a real browser before discarding the link.
+- **Canonical sources that verify cleanly:**
+  - Republic Acts → LawPhil, pattern
+    `https://lawphil.net/statutes/repacts/ra<year>/ra_<num>_<year>.html`
+    (e.g. RA 10533 → `.../ra2013/ra_10533_2013.html`, returns 200).
+  - Tax/BIR → `bir.gov.ph`; curriculum → `deped.gov.ph` and the local
+    `docs/curriculum-guides/`. For source selection/licensing use the
+    `citing-curriculum-content` skill.
+- In MDX, use plain markdown links: `[RA 10533](https://lawphil.net/...)`.
+
+## Show the data, then list the sources
+
+Two separate requirements. Treat the first as "when applicable" and the second
+as non-negotiable.
+
+- **Add a visual when it carries the point better than a sentence.** If a writeup
+  leans on figures, a comparison, a trend, or a composition, render it instead of
+  just stating it. Use the crayon-styled content components, imported directly in
+  the MDX (no markdown table dumps for numeric data). **Pick the shape that fits
+  the data, not whatever is handy.** Every one of these carries a `source`:
+  - `import { BarChart, DonutChart, LineChart, Table, Figure, Sources } from '../../components/content'`
+  - `<BarChart>` for comparing magnitudes across independent categories (wind
+    speeds, densities-as-ranking, electronegativity gaps). Pass `max={100}` for
+    percentages.
+  - `<DonutChart>` for part-of-a-whole / composition, where the pieces sum to a
+    total (mass composition, where a resource is stored, a phenotype ratio out of
+    16). Slices are sized exactly by `value`.
+  - `<LineChart>` for a trend or relationship over an ordered/continuous axis
+    (growth over n, an inverse P–V curve, terms of a sequence). Numeric `x` values
+    are scaled; string `x` values are even categories. Supports multiple `series`.
+  - `<Table>` for multi-attribute reference data, where looking up values matters
+    more than comparing bar lengths (material → density → floats?, medium →
+    refractive index → speed).
+  - `<Figure>` for images/screenshots — see `images.mdc` for paths and variants;
+    always include `alt`, `caption`, and `credit` for third-party photos.
+  - Do not invent or round-distort numbers to make a chart look cleaner. The bars,
+    slices, points, and cells must match the cited figure exactly.
+- **Always close with a `<Sources>` block.** Every writeup ends with a numbered
+  references list, even if the same links already appear inline. List every
+  primary source the piece relies on, with its full citation and live URL. The
+  same verify-the-link rule applies to everything in the list.
+
+## Show your hand as a practitioner
+
+Authority also comes from pointing readers to things you actually rate. Where it
+genuinely fits, add one expert touch to a writeup. Do not force all of these into
+every article, and never fake them — each must be real and verified.
+
+- **Let an authority explain it.** Embed a video from a credible figure or
+  institution with `<YouTubeEmbed id="..." title="..." creator="..." />`. Prefer
+  recognized experts and educators (university channels, PhET, well-regarded
+  explainers). Confirm the video exists and the channel is reputable; introduce
+  it in your own voice ("the clearest 10 minutes on this is...").
+- **Recommend a book you stand behind** with `<Aside variant="book" title="..."
+  href="..." credit="Author">`. Link a legitimate source (publisher, OpenStax,
+  archive.org). Say why it earned the spot, in first person.
+- **Credit other tools.** When another tool does something well, link it and tip
+  your hat: `<Aside variant="tool" title="PhET ..." href="..." credit="PhET, CU Boulder">`.
+  Generosity reads as confidence, and it is honest.
+
+Import these from the content barrel:
+`import { YouTubeEmbed, Aside } from '../../components/content'`. They still sit
+above the mandatory `<Sources>` and `<Changelog>` blocks, and anything you link
+goes in `<Sources>` too.
+
+## One-line gut check
+
+If a paragraph could have been written by someone who never did the work and
+never read the source, rewrite it.

@@ -1,14 +1,16 @@
 import { useState, useRef, useEffect } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 import { Slider } from '../../components/ui/Slider';
-import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
+import { GuidedInputFlow, useTouchedFields, useVisualizationGate } from '../../components/onboarding';
 
 const SolutionConcentrationVisualizer = () => {
   const [soluteMass, setSoluteMass] = useState(10); // grams
   const [solventVolume, setSolventVolume] = useState(100); // mL
   const [soluteType, setSoluteType] = useState<'salt' | 'sugar'>('salt');
   const fields = useTouchedFields<'solute' | 'mass' | 'volume'>();
-  const ready = fields.isTouched('solute') && fields.isTouched('mass') && fields.isTouched('volume');
+  const gate = useVisualizationGate();
+  const buildComplete = fields.isTouched('solute') && fields.isTouched('mass') && fields.isTouched('volume');
+  const showVisualization = buildComplete && gate.visualizationConfirmed;
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animFrameRef = useRef<number>(0);
   const particlesRef = useRef<{ x: number; y: number; vy: number; settled: boolean; opacity: number }[]>([]);
@@ -46,6 +48,7 @@ const SolutionConcentrationVisualizer = () => {
     setSoluteMass(10);
     setSolventVolume(100);
     setSoluteType('salt');
+    gate.resetVisualization();
     fields.reset();
   };
 
@@ -261,11 +264,14 @@ const SolutionConcentrationVisualizer = () => {
       adSlotId="2010"
       guideLink="/blog/solution-concentration"
     >
-      {!ready ? (
+      {!showVisualization ? (
         <GuidedInputFlow
           intro="Pick a solute, then set how much solute and water you mix to see the concentration and saturation."
           onFillExample={fillExample}
           onReset={reset}
+          awaitingVisualizationConfirm={buildComplete && !gate.visualizationConfirmed}
+          onVisualizationConfirm={gate.confirmVisualization}
+
           steps={[
             { id: 'solute', title: 'Pick a solute', helper: 'Salt or sugar. Sets the solubility limit.', complete: fields.isTouched('solute'), children: solutePicker },
             { id: 'mass', title: 'Set the solute mass', helper: '0 to 80 g.', complete: fields.isTouched('mass'), children: massSlider },

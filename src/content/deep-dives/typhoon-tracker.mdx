@@ -1,8 +1,11 @@
-import { BarChart, Figure, Sources, Changelog } from '../../components/content'
+import { BarChart, Changelog, Figure, Sources } from '../../components/content'
 
 # Reading a Typhoon the Way PAGASA Does
 
+
 I built the typhoon tracker because the labels on a storm bulletin are the closest thing we have to a national second language, and most people learn them the hard way, mid-storm, when it is too late to look anything up. An average of about twenty tropical cyclones enter the Philippine Area of Responsibility each year, the box the tool draws on the map and labels PAR, and somewhere between eight and nine of them make landfall. That makes the Philippines one of the most cyclone-exposed countries on Earth, and it makes the gap between a "tropical depression" and a "super typhoon" worth understanding before you need it. The names are not bureaucratic trivia. Each one is a specific wind-speed threshold that tells you roughly how much damage to brace for.
+
+
 
 <Figure
   src="/images/deep-dives/typhoon-haiyan-2013.jpg"
@@ -66,6 +69,7 @@ Yes. In March 2022 PAGASA lowered the super-typhoon threshold from 220 km/h to 1
   created="2026-06-11"
   updated="2026-06-18"
   entries={[
+    { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
     { date: "2026-06-18", note: "Added a public-domain NASA/MODIS satellite image of Typhoon Haiyan (Yolanda) approaching the Philippines, with caption and attribution." },
     { date: "2026-06-18", note: "Re-toned into the house voice (origin-story open, category-vs-signal confusion busted, plain-spoken FAQ); tied passages to the tool's PAR map, wind-signal panel, and DRRR checklist; kept the 2022 category chart and verified sources; added the Changelog block." },
   ]}

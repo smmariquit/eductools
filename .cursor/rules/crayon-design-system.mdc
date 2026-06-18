@@ -1,0 +1,43 @@
+---
+description: Crayon Cosmos design system — the single theme + hand-drawn SVG art framework. Use crayon art for decoration/illustration in any UI work.
+alwaysApply: true
+---
+
+# Crayon Cosmos Design System
+
+EduVisualsPH has ONE design system: **Crayon Cosmos** (warm storybook lab — cream
+paper, crayon accents, Fredoka/Nunito, rounded shapes) plus a hand-drawn SVG art
+framework. Theme `crayon` is defined in `src/index.css` and is the only theme.
+Full docs: `docs/design-system/crayon.md`.
+
+## Using crayon art
+
+```tsx
+import { CrayonArt } from '../components/crayon';
+<CrayonArt name="beaker" size={34} color="sky" animate="draw" />
+```
+
+- Art auto-discovered from `src/assets/crayon/<category>/<name>.svg` (icons,
+  spots, flourishes, accents). `name` = file name without `.svg`.
+- Props: `name`, `size`/`width`/`height`, `color` (ink|sky|berry|sunshine|leaf|grape|paper),
+  `animate` (none|draw|wiggle), `title` (omit => decorative/aria-hidden).
+- Subject icons: `crayonArtForTags(tags)` from `../components/crayon/subjectArt`.
+- Preview all art at the `/crayon` route.
+
+## Adding new art (drop-in, no wiring)
+
+Create `src/assets/crayon/<category>/<kebab-name>.svg` to spec:
+- `viewBox="0 0 100 100"`, NO width/height on the root `<svg>`.
+- Colors via classes only (never hardcoded hex): `crayon-fill-*` /
+  `crayon-stroke-*` / `crayon-ink`, or `currentColor` to follow the `color` prop.
+- Crayon feel: round caps/joins, chunky stroke-width (~5), slightly wobbly paths.
+- Self-drawing strokes: add `pathLength="1"` + class `crayon-draw`.
+
+## Rules
+
+- Crayon art is decoration/illustration ONLY — never over data, inputs, or
+  visualizer canvases; keep those crisp and legible.
+- Default art to decorative (no `title`); add `title` only for meaningful images.
+- Don't reintroduce other themes (Stardust/Pop Lab were retired) or hardcode
+  colors — use DaisyUI semantic tokens + the crayon color classes.
+- Motion must respect `prefers-reduced-motion` (already handled globally).

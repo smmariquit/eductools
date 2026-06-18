@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 import { Slider } from '../../components/ui/Slider';
-import { GuidedInputFlow, useTouchedFields } from '../../components/onboarding';
+import { GuidedInputFlow, useTouchedFields, useVisualizationGate } from '../../components/onboarding';
 
 const DEFAULTS = { num1: 3, num2: -5, operation: '+' as '+' | '-' };
 
@@ -13,7 +13,9 @@ const IntegerNumberLineVisualizer = () => {
   const [guess, setGuess] = useState('');
   const [revealed, setRevealed] = useState(false);
   const fields = useTouchedFields<'num1' | 'op' | 'num2'>();
-  const ready = fields.isTouched('num1') && fields.isTouched('op') && fields.isTouched('num2');
+  const gate = useVisualizationGate();
+  const buildComplete = fields.isTouched('num1') && fields.isTouched('op') && fields.isTouched('num2');
+  const showVisualization = buildComplete && gate.visualizationConfirmed;
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const result = operation === '+' ? num1 + num2 : num1 - num2;
@@ -203,6 +205,7 @@ const IntegerNumberLineVisualizer = () => {
     setPredictMode(false);
     setGuess('');
     setRevealed(false);
+    gate.resetVisualization();
     fields.reset();
   };
 
@@ -287,11 +290,14 @@ const IntegerNumberLineVisualizer = () => {
       adSlotId="2011"
       guideLink="/blog/integer-number-line"
     >
-      {!ready ? (
+      {!showVisualization ? (
         <GuidedInputFlow
           intro="Set the first number, the operation, and the second number to hop the arrows along the line."
           onFillExample={fillExample}
           onReset={reset}
+          awaitingVisualizationConfirm={buildComplete && !gate.visualizationConfirmed}
+          onVisualizationConfirm={gate.confirmVisualization}
+
           steps={[
             { id: 'num1', title: 'Set the first number', helper: 'From -15 to 15.', complete: fields.isTouched('num1'), children: num1Slider },
             { id: 'op', title: 'Pick the operation', helper: 'Add or subtract.', complete: fields.isTouched('op'), children: operationPicker },

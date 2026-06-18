@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 import { Slider } from '../../components/ui/Slider';
+import { MeasuredValue } from '../../components/scientific-units/UnitGuideLink';
 import { IntroState, useIntroState } from '../../components/onboarding';
 
 const CANVAS_W = 600;
@@ -167,15 +168,15 @@ const WavePhysicsVisualizer = () => {
           <div className="grid grid-cols-3 gap-3">
             <div className="text-center p-3 rounded-lg bg-base-200 border border-base-300">
               <div className="text-xs uppercase tracking-wider font-bold text-base-content/60">Wave Speed (v = fλ)</div>
-              <div className="text-xl font-bold font-mono text-accent">{speed.toFixed(2)} m/s</div>
+              <MeasuredValue value={speed.toFixed(2)} unit="m/s" valueClassName="text-xl font-bold font-mono text-accent" />
             </div>
             <div className="text-center p-3 rounded-lg bg-base-200 border border-base-300">
               <div className="text-xs uppercase tracking-wider font-bold text-base-content/60">Period (T = 1/f)</div>
-              <div className="text-xl font-bold font-mono text-primary">{period.toFixed(2)} s</div>
+              <MeasuredValue value={period.toFixed(2)} unit="s" valueClassName="text-xl font-bold font-mono text-primary" />
             </div>
             <div className="text-center p-3 rounded-lg bg-base-200 border border-base-300">
               <div className="text-xs uppercase tracking-wider font-bold text-base-content/60">Frequency</div>
-              <div className="text-xl font-bold font-mono text-secondary">{frequency.toFixed(1)} Hz</div>
+              <MeasuredValue value={frequency.toFixed(1)} unit="Hz" valueClassName="text-xl font-bold font-mono text-secondary" />
             </div>
           </div>
         </div>

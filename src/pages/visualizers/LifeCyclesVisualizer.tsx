@@ -3,6 +3,7 @@ import { AlertTriangle, Zap } from 'lucide-react';
 import VisualizerLayout from '../../components/VisualizerLayout';
 import ProcessCycle, { type ProcessStage } from '../../components/visualizers/ProcessCycle';
 import { IntroState, useIntroState } from '../../components/onboarding';
+import { imagePath } from '../../lib/images';
 
 type Subject = 'eagle' | 'tamaraw' | 'mosquito' | 'cockroach';
 type Pace = 'slow' | 'fast';
@@ -22,7 +23,7 @@ const eagleStages: ProcessStage[] = [
     subtitle: 'Egg',
     illustration: { name: 'life-eagle-egg', color: 'sunshine' },
     photo: {
-      src: '/images/life-cycles/eagle-nest.jpg',
+      src: imagePath('life-cycles', 'eagle-nest.jpg'),
       alt: 'Philippine eagle at its nest during the breeding season',
       credit: 'Photo: markaharpe, CC BY-SA 2.0, via Wikimedia Commons (parent at nest during incubation).',
     },
@@ -37,7 +38,7 @@ const eagleStages: ProcessStage[] = [
     subtitle: 'Eaglet / hatchling',
     illustration: { name: 'life-eagle-eaglet', color: 'sunshine' },
     photo: {
-      src: '/images/life-cycles/eagle-eaglet.jpg',
+      src: imagePath('life-cycles', 'eagle-eaglet.jpg'),
       alt: 'Downy Philippine eagle nestling in the nest',
       credit: 'Photo: markaharpe, CC BY-SA 2.0, via Wikimedia Commons.',
     },
@@ -50,7 +51,7 @@ const eagleStages: ProcessStage[] = [
     subtitle: 'Young eagle',
     illustration: { name: 'life-eagle-juvenile', color: 'leaf' },
     photo: {
-      src: '/images/life-cycles/eagle-juvenile.jpg',
+      src: imagePath('life-cycles', 'eagle-juvenile.jpg'),
       alt: 'Young Philippine eagle perched in forest on Mindanao',
       credit: 'Photo: Francesco Veronesi, CC BY-SA 2.0, via Wikimedia Commons.',
     },
@@ -63,7 +64,7 @@ const eagleStages: ProcessStage[] = [
     subtitle: 'Fully grown',
     illustration: { name: 'life-eagle-adult', color: 'sky' },
     photo: {
-      src: '/images/life-cycles/eagle-adult.jpg',
+      src: imagePath('life-cycles', 'eagle-adult.jpg'),
       alt: 'Adult Philippine eagle with shaggy crest and brown-and-white plumage',
       credit: 'Photo: shankar s., CC BY 2.0, via Wikimedia Commons.',
     },
@@ -76,7 +77,7 @@ const eagleStages: ProcessStage[] = [
     subtitle: 'Breeding',
     illustration: { name: 'life-eagle-nest', color: 'berry' },
     photo: {
-      src: '/images/life-cycles/eagle-breeding.jpg',
+      src: imagePath('life-cycles', 'eagle-breeding.jpg'),
       alt: 'Mature Philippine eagle with raised crest and full adult plumage',
       credit: 'Photo: Olympus Gene Tibubos, CC BY 4.0, via Wikimedia Commons.',
     },
@@ -94,7 +95,7 @@ const tamarawStages: ProcessStage[] = [
     subtitle: 'Calf',
     illustration: { name: 'life-tamaraw-calf', color: 'leaf' },
     photo: {
-      src: '/images/life-cycles/tamaraw-calf.jpg',
+      src: imagePath('life-cycles', 'tamaraw-calf.jpg'),
       alt: 'Young tamaraw on Mindoro grassland',
       credit: 'Photo: Gregg Yan, CC BY-SA 3.0, via Wikimedia Commons.',
     },
@@ -109,7 +110,7 @@ const tamarawStages: ProcessStage[] = [
     subtitle: 'Juvenile',
     illustration: { name: 'life-tamaraw-juvenile', color: 'sunshine' },
     photo: {
-      src: '/images/life-cycles/tamaraw-closeup.jpg',
+      src: imagePath('life-cycles', 'tamaraw-closeup.jpg'),
       alt: 'Close-up of a tamaraw with V-shaped horns',
       credit: 'Photo: Gregg Yan, CC BY-SA 3.0, via Wikimedia Commons.',
     },
@@ -122,7 +123,7 @@ const tamarawStages: ProcessStage[] = [
     subtitle: 'Fully grown',
     illustration: { name: 'life-tamaraw-adult', color: 'ink' },
     photo: {
-      src: '/images/life-cycles/tamaraw-adult.jpg',
+      src: imagePath('life-cycles', 'tamaraw-adult.jpg'),
       alt: 'Adult tamaraw bull crossing a grassy field on Mindoro',
       credit: 'Photo: Gregg Yan, CC BY-SA 3.0, via Wikimedia Commons.',
     },
@@ -135,7 +136,7 @@ const tamarawStages: ProcessStage[] = [
     subtitle: 'Breeding',
     illustration: { name: 'life-tamaraw-breeding', color: 'berry' },
     photo: {
-      src: '/images/life-cycles/tamaraw-breeding.jpg',
+      src: imagePath('life-cycles', 'tamaraw-breeding.jpg'),
       alt: 'Group of tamaraw on Mindoro grassland',
       credit: 'Photo: Gregg Yan, CC BY-SA 3.0, via Wikimedia Commons.',
     },
@@ -153,7 +154,7 @@ const mosquitoStages: ProcessStage[] = [
     subtitle: 'Egg',
     illustration: { name: 'life-mosquito-egg', color: 'sunshine' },
     photo: {
-      src: '/images/life-cycles/mosquito-egg.jpg',
+      src: imagePath('life-cycles', 'mosquito-egg.jpg'),
       alt: 'Cluster of mosquito eggs on water',
       credit: 'Photo: NIAID, public domain, via Wikimedia Commons.',
     },
@@ -168,7 +169,7 @@ const mosquitoStages: ProcessStage[] = [
     subtitle: 'Larva / wriggler',
     illustration: { name: 'life-mosquito-larva', color: 'leaf' },
     photo: {
-      src: '/images/life-cycles/mosquito-larva.jpg',
+      src: imagePath('life-cycles', 'mosquito-larva.jpg'),
       alt: 'Mosquito larvae swimming in water',
       credit: 'Photo: James Gathany, CDC, CC BY 2.5, via Wikimedia Commons.',
     },
@@ -181,7 +182,7 @@ const mosquitoStages: ProcessStage[] = [
     subtitle: 'Pupa / tumbler',
     illustration: { name: 'life-mosquito-pupa', color: 'sky' },
     photo: {
-      src: '/images/life-cycles/mosquito-pupa.jpg',
+      src: imagePath('life-cycles', 'mosquito-pupa.jpg'),
       alt: 'Mosquito pupa among larvae in water',
       credit: 'Photo: Tanvir Rahat, CC BY-SA 4.0, via Wikimedia Commons.',
     },
@@ -194,7 +195,7 @@ const mosquitoStages: ProcessStage[] = [
     subtitle: 'Imago',
     illustration: { name: 'life-mosquito-adult', color: 'berry' },
     photo: {
-      src: '/images/life-cycles/mosquito-adult.jpg',
+      src: imagePath('life-cycles', 'mosquito-adult.jpg'),
       alt: 'Adult Aedes mosquito feeding',
       credit: 'Photo: Muhammad Mahdi Karim, GFDL 1.2, via Wikimedia Commons.',
     },
@@ -212,7 +213,7 @@ const cockroachStages: ProcessStage[] = [
     subtitle: 'Egg case',
     illustration: { name: 'life-cockroach-egg', color: 'sunshine' },
     photo: {
-      src: '/images/life-cycles/cockroach-egg.jpg',
+      src: imagePath('life-cycles', 'cockroach-egg.jpg'),
       alt: 'American cockroach carrying an egg case',
       credit: 'Photo: Rahul-kumi, CC BY-SA 4.0, via Wikimedia Commons.',
     },
@@ -225,7 +226,7 @@ const cockroachStages: ProcessStage[] = [
     subtitle: 'Nymph',
     illustration: { name: 'life-cockroach-nymph', color: 'leaf' },
     photo: {
-      src: '/images/life-cycles/cockroach-nymph.jpg',
+      src: imagePath('life-cycles', 'cockroach-nymph.jpg'),
       alt: 'Young cockroach nymph',
       credit: 'Photo: Insects Unlocked, CC0, via Wikimedia Commons.',
     },
@@ -238,7 +239,7 @@ const cockroachStages: ProcessStage[] = [
     subtitle: 'Fully grown',
     illustration: { name: 'life-cockroach-adult', color: 'ink' },
     photo: {
-      src: '/images/life-cycles/cockroach-adult.jpg',
+      src: imagePath('life-cycles', 'cockroach-adult.jpg'),
       alt: 'Adult American cockroach',
       credit: 'Photo: Eugene Zelenko, CC BY-SA 4.0, via Wikimedia Commons.',
     },
@@ -251,7 +252,7 @@ const cockroachStages: ProcessStage[] = [
     subtitle: 'Breeding',
     illustration: { name: 'life-cockroach-breeding', color: 'berry' },
     photo: {
-      src: '/images/life-cycles/cockroach-breeding.jpg',
+      src: imagePath('life-cycles', 'cockroach-breeding.jpg'),
       alt: 'Cockroach egg case on a leaf',
       credit: 'Photo: public domain, via Wikimedia Commons.',
     },

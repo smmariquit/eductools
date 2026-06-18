@@ -1,8 +1,11 @@
-import { Table, Sources, Changelog } from '../../components/content'
+import { Changelog, Sources, Table } from '../../components/content'
 
 # Wave Physics: Why You Cannot Just Set the Speed
 
+
 When I first showed this wave tool to a science teacher, her first question was, "Where is the speed slider?" It is a fair thing to expect. There is a slider for how tall the wave is, one for how fast it wiggles, and one for how long each wave is, so surely there should be one for speed too. There is not, and the reason it is missing is the most important idea on the whole page. You do not get to set a wave's speed. The wave gets its speed from the string it is travelling on, and the tool computes it for you so it can never lie.
+
+
 
 So let me start with what a wave even is. A wave is a disturbance that carries energy through a material without carrying the material along with it. Drop a stone into a still fishpond and the ripple races outward, but the water itself mostly bobs up and down and stays where it was. The visualizer shows this with a single wave travelling along a string. Watch the pink dot it draws on the string: as the wave passes, that dot only moves up and down, never sideways. The shape moves across the screen, the energy moves across the screen, but the bit of string the dot marks stays home.
 
@@ -72,6 +75,7 @@ Because this is a transverse wave, meaning the string moves at a right angle to 
   created="2026-06-11"
   updated="2026-06-18"
   entries={[
+    { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
     { date: "2026-06-18", note: "Switched the speed-of-sound chart from a bar chart to a Table (reference lookup data) and added a computed '× speed in air' column." },
     { date: "2026-06-18", note: "Re-toned into the house voice and corrected the tool description to match the visualizer: a 1D transverse traveling wave with amplitude/frequency/wavelength sliders and derived speed v = fλ (was wrongly described as a 3D sin·cos interference mesh with a speed slider). Kept the speed-of-sound chart and verified sources; added the mandatory Changelog block." },
   ]}

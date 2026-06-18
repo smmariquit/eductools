@@ -1,5 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import { Figure } from '../components/content/Figure';
+import { images } from '../lib/images';
 
 const AboutUs = () => {
   return (
@@ -31,8 +33,8 @@ const AboutUs = () => {
         <h2>Meet the maker</h2>
         <div className="flex flex-col sm:flex-row gap-6 items-start mt-6 not-prose">
           <div className="avatar shrink-0 mx-auto sm:mx-0">
-            <div className="w-32 rounded-2xl ring-2 ring-base-300 shadow-md">
-              <img src="/team/author.jpg" alt="Simonee Ezekiel Mariquit" />
+            <div className="w-32 rounded-2xl ring-2 ring-base-300 shadow-md overflow-hidden">
+              <Figure variant="avatar" src={images.team.author} alt="Simonee Ezekiel Mariquit" />
             </div>
           </div>
           <div className="text-base-content/80 space-y-4 text-base leading-relaxed">
