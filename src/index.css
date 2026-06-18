@@ -361,7 +361,16 @@ body::before {
   --buko-shadow: var(--crayon-ink);
   --buko-rim-primary: color-mix(in srgb, var(--crayon-sky) 35%, var(--crayon-ink));
   --buko-rim-secondary: color-mix(in srgb, var(--crayon-berry) 35%, var(--crayon-ink));
+  --buko-rim-accent: color-mix(in srgb, var(--crayon-sunshine) 45%, var(--crayon-ink));
   filter: drop-shadow(0 4px 10px rgba(43, 43, 58, 0.12));
+}
+
+.buko-pie[data-variant="accent"] circle[stroke*="buko-rim"] {
+  stroke: var(--buko-rim-accent);
+}
+
+.buko-pie[data-variant="accent"] {
+  --buko-rim-primary: var(--buko-rim-accent);
 }
 
 /* ===========================================================================
@@ -395,6 +404,14 @@ body::before {
   font-size: var(--text-min-caption);
   min-height: 1.75rem;
   padding-inline: 0.65rem;
+}
+
+.text-tool-caption {
+  font-size: var(--text-min-caption);
+}
+
+.text-tool-ui {
+  font-size: var(--text-min-ui);
 }
 
 .crayon-slider__label {

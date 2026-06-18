@@ -20,6 +20,13 @@ export const SITE_VERSION: string = packageJson.version;
 
 export const siteChangelog: ReleaseEntry[] = [
   {
+    version: '1.2.0',
+    date: '2026-06-18',
+    changes: [
+      'Fractions tool: improper and mixed forms, negative values, and addition with common denominators.',
+    ],
+  },
+  {
     version: '1.1.6',
     date: '2026-06-18',
     changes: [
@@ -146,6 +153,33 @@ const DEFAULT_V11: string[] = [
 const INITIAL_V10: string[] = ['Initial interactive release.'];
 
 function buildToolRecord(id: string): ToolVersionRecord {
+  if (id === 'fractions') {
+    return {
+      version: '1.2.0',
+      changelog: [
+        {
+          version: '1.2.0',
+          date: '2026-06-18',
+          changes: [
+            'Improper and mixed fraction notation with multi-pie buko visuals.',
+            'Signed numerators (negative = pie owed, hatched slices).',
+            'Add fractions: LCD rename, step-by-step work, and sum pie.',
+          ],
+        },
+        {
+          version: '1.1.0',
+          date: '2026-06-18',
+          changes: TOOL_V11.fractions ?? DEFAULT_V11,
+        },
+        {
+          version: '1.0.0',
+          date: '2026-06-10',
+          changes: INITIAL_V10,
+        },
+      ],
+    };
+  }
+
   return {
     version: '1.1.0',
     changelog: [

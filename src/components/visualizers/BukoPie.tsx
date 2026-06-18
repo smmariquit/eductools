@@ -91,27 +91,42 @@ const coconutShreds = (
   return lines;
 };
 
+export type BukoPieIntent = 'have' | 'owe' | 'neutral';
+
 export interface BukoPieProps {
   num: number;
   den: number;
   /** Rim accent on the pie tin — matches fraction A/B column color. */
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'accent';
+  /** Positive = slices you have; negative = slices owed (hatched). */
+  intent?: BukoPieIntent;
   className?: string;
+  ariaLabel?: string;
 }
 
-export const BukoPie = ({ num, den, variant = 'primary', className = '' }: BukoPieProps) => {
-  const slices = Array.from({ length: den }, (_, i) => i);
-  const step = 360 / den;
-  const filled = Math.min(num, den);
-  const uid = `buko-${variant}`;
+export const BukoPie = ({
+  num,
+  den,
+  variant = 'primary',
+  intent = 'have',
+  className = '',
+  ariaLabel,
+}: BukoPieProps) => {
+  const safeDen = Math.max(1, den);
+  const slices = Array.from({ length: safeDen }, (_, i) => i);
+  const step = 360 / safeDen;
+  const filled = Math.max(0, Math.min(num, safeDen));
+  const uid = `buko-${variant}-${intent}`;
+  const isOwe = intent === 'owe';
 
   return (
     <svg
       viewBox="0 0 200 200"
       className={`buko-pie w-full max-w-[240px] mx-auto ${className}`.trim()}
       role="img"
-      aria-label={`${filled} of ${den} buko pie slices`}
+      aria-label={ariaLabel ?? `${isOwe ? 'owe ' : ''}${filled} of ${safeDen} buko pie slices`}
       data-variant={variant}
+      data-intent={intent}
     >
       <defs>
         <radialGradient id={`${uid}-cream`} cx="42%" cy="38%" r="68%">
@@ -120,10 +135,13 @@ export const BukoPie = ({ num, den, variant = 'primary', className = '' }: BukoP
           <stop offset="100%" stopColor="var(--buko-cream-shadow)" />
         </radialGradient>
         <radialGradient id={`${uid}-taken`} cx="38%" cy="35%" r="72%">
-          <stop offset="0%" stopColor="var(--buko-taken-light)" />
-          <stop offset="50%" stopColor="var(--buko-taken)" />
+          <stop offset="0%" stopColor={isOwe ? '#ffe8ee' : 'var(--buko-taken-light)'} />
+          <stop offset="50%" stopColor={isOwe ? '#ffc8d4' : 'var(--buko-taken)'} />
           <stop offset="100%" stopColor="var(--buko-cream-shadow)" />
         </radialGradient>
+        <pattern id={`${uid}-hatch`} width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+          <line x1="0" y1="0" x2="0" y2="8" stroke="var(--crayon-berry)" strokeWidth="2.5" opacity="0.45" />
+        </pattern>
         <linearGradient id={`${uid}-crust`} x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="var(--buko-crust-light)" />
           <stop offset="100%" stopColor="var(--buko-crust)" />
@@ -139,7 +157,13 @@ export const BukoPie = ({ num, den, variant = 'primary', className = '' }: BukoP
         cy="100"
         r="96"
         fill="none"
-        stroke={variant === 'primary' ? 'var(--buko-rim-primary)' : 'var(--buko-rim-secondary)'}
+        stroke={
+          variant === 'primary'
+            ? 'var(--buko-rim-primary)'
+            : variant === 'accent'
+              ? 'var(--buko-rim-accent)'
+              : 'var(--buko-rim-secondary)'
+        }
         strokeWidth="3.5"
         opacity="0.55"
       />
@@ -151,19 +175,28 @@ export const BukoPie = ({ num, den, variant = 'primary', className = '' }: BukoP
       {slices.map((i) => {
         const taken = i < filled;
         return (
-          <path
-            key={`slice-${i}`}
-            d={sectorPath(100, 100, 86, i * step, (i + 1) * step)}
-            fill={taken ? `url(#${uid}-taken)` : 'var(--buko-empty)'}
-            stroke="none"
-          />
+          <g key={`slice-${i}`}>
+            <path
+              d={sectorPath(100, 100, 86, i * step, (i + 1) * step)}
+              fill={taken ? `url(#${uid}-taken)` : 'var(--buko-empty)'}
+              stroke="none"
+            />
+            {taken && isOwe && (
+              <path
+                d={sectorPath(100, 100, 86, i * step, (i + 1) * step)}
+                fill={`url(#${uid}-hatch)`}
+                stroke="none"
+              />
+            )}
+          </g>
         );
       })}
 
-      {/* Coconut shreds on taken slices */}
-      {slices.slice(0, filled).map((i) => (
-        <g key={`shreds-${i}`}>{coconutShreds(100, 100, 86, i * step, (i + 1) * step, i)}</g>
-      ))}
+      {/* Coconut shreds on taken slices (positive amounts only) */}
+      {!isOwe &&
+        slices.slice(0, filled).map((i) => (
+          <g key={`shreds-${i}`}>{coconutShreds(100, 100, 86, i * step, (i + 1) * step, i)}</g>
+        ))}
 
       {/* Per-slice outer crust cap */}
       {slices.map((i) => (
