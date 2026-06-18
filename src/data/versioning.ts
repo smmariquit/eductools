@@ -20,6 +20,13 @@ export const SITE_VERSION: string = packageJson.version;
 
 export const siteChangelog: ReleaseEntry[] = [
   {
+    version: '1.2.3',
+    date: '2026-06-18',
+    changes: [
+      'Life cycles tool: mosquito and cockroach added as fast-breeding contrasts to the eagle and tamaraw.',
+    ],
+  },
+  {
     version: '1.2.2',
     date: '2026-06-18',
     changes: [
@@ -169,8 +176,17 @@ const INITIAL_V10: string[] = ['Initial interactive release.'];
 function buildToolRecord(id: string): ToolVersionRecord {
   if (id === 'life-cycles') {
     return {
-      version: '1.2.2',
+      version: '1.2.3',
       changelog: [
+        {
+          version: '1.2.3',
+          date: '2026-06-18',
+          changes: [
+            'Mosquito (complete metamorphosis) and cockroach (incomplete metamorphosis) join as fast-breeding contrasts.',
+            'Four-species picker grouped into slow endemic breeders vs fast multipliers.',
+            'Eight new stage illustrations and Wikimedia reference photos for insect life stages.',
+          ],
+        },
         {
           version: '1.2.2',
           date: '2026-06-18',
