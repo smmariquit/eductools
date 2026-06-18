@@ -1,7 +1,19 @@
 import React, { useCallback, useEffect, useId, useState, useSyncExternalStore } from 'react';
 import { motion } from 'framer-motion';
 import { Play, Pause, SkipBack, SkipForward, RotateCcw, ChevronRight } from 'lucide-react';
-import { CrayonArt } from '../crayon';
+import { CrayonArt, type CrayonColor } from '../crayon';
+
+export interface StageIllustration {
+  /** Registered crayon SVG file name (without extension). */
+  name: string;
+  color?: CrayonColor;
+}
+
+export interface StagePhoto {
+  src: string;
+  alt: string;
+  credit: string;
+}
 
 export interface ProcessStage {
   /** Stable identifier for the stage. */
@@ -14,7 +26,11 @@ export interface ProcessStage {
   description: string;
   /** Optional Philippine-context note tied to this stage. */
   phContext?: string;
-  /** Optional visual (emoji string or any node) shown inside the node. */
+  /** Hand-drawn crayon spot/icon for this stage (preferred). */
+  illustration?: StageIllustration;
+  /** Optional reference photo in the detail panel (with credit). */
+  photo?: StagePhoto;
+  /** Fallback visual (emoji or custom node) if no illustration. */
   art?: React.ReactNode;
 }
 
@@ -55,6 +71,29 @@ const usePrefersReducedMotion = (): boolean =>
       : false),
     () => false,
   );
+
+const StageNodeArt = ({ stage, size }: { stage: ProcessStage; size: 'node' | 'detail' }) => {
+  const box = size === 'node' ? 44 : 120;
+  if (stage.illustration) {
+    return (
+      <CrayonArt
+        name={stage.illustration.name}
+        size={box}
+        color={stage.illustration.color ?? 'ink'}
+        className="shrink-0"
+        title={size === 'detail' ? stage.title : undefined}
+      />
+    );
+  }
+  if (stage.art) {
+    return (
+      <span className={size === 'node' ? 'text-2xl md:text-3xl leading-none' : 'text-5xl leading-none'} aria-hidden="true">
+        {stage.art}
+      </span>
+    );
+  }
+  return null;
+};
 
 /**
  * Data-driven cycle / process visualizer. Renders an ordered set of stages
@@ -164,6 +203,26 @@ export const ProcessCycle: React.FC<ProcessCycleProps> = ({
         aria-live="polite"
         aria-atomic="true"
       >
+        {(activeStage.illustration || activeStage.photo || activeStage.art) && (
+          <div className="flex flex-col sm:flex-row gap-4 mb-4 items-center sm:items-start">
+            <div className="shrink-0 rounded-2xl border border-base-300 bg-base-100 p-3 shadow-sm">
+              <StageNodeArt stage={activeStage} size="detail" />
+            </div>
+            {activeStage.photo && (
+              <figure className="flex-1 min-w-0 m-0">
+                <img
+                  src={activeStage.photo.src}
+                  alt={activeStage.photo.alt}
+                  className="w-full max-h-52 object-cover rounded-xl border border-base-300"
+                  loading="lazy"
+                />
+                <figcaption className="text-tool-caption text-base-content/55 mt-2 leading-snug">
+                  {activeStage.photo.credit}
+                </figcaption>
+              </figure>
+            )}
+          </div>
+        )}
         <div className="flex items-baseline gap-3 flex-wrap">
           <span className="badge badge-primary badge-sm font-semibold">
             {mode === 'linear'
@@ -287,7 +346,7 @@ const CycleDiagram: React.FC<DiagramProps> = ({
   });
 
   return (
-    <div className="relative mx-auto w-full max-w-[440px] aspect-square">
+    <div className="relative mx-auto w-full max-w-[480px] aspect-square">
       <svg
         viewBox="0 0 100 100"
         className="absolute inset-0 w-full h-full"
@@ -325,6 +384,7 @@ const CycleDiagram: React.FC<DiagramProps> = ({
           const left = 50 + nodeR * Math.cos(a);
           const top = 50 + nodeR * Math.sin(a);
           const isActive = i === active;
+          const hasIllustration = Boolean(stage.illustration);
           return (
             <button
               key={stage.id}
@@ -341,16 +401,16 @@ const CycleDiagram: React.FC<DiagramProps> = ({
               style={{
                 left: `${left}%`,
                 top: `${top}%`,
-                width: 'clamp(64px, 22%, 92px)',
-                height: 'clamp(64px, 22%, 92px)',
+                width: hasIllustration ? 'clamp(76px, 24%, 108px)' : 'clamp(64px, 22%, 92px)',
+                height: hasIllustration ? 'clamp(76px, 24%, 108px)' : 'clamp(64px, 22%, 92px)',
               }}
             >
-              {stage.art && (
-                <span className="text-2xl md:text-3xl leading-none" aria-hidden="true">
-                  {stage.art}
+              {(stage.illustration || stage.art) && (
+                <span className="flex items-center justify-center mb-0.5">
+                  <StageNodeArt stage={stage} size="node" />
                 </span>
               )}
-              <span className="mt-0.5 text-[0.6rem] md:text-xs font-semibold leading-tight px-1 line-clamp-2">
+              <span className="text-tool-caption font-semibold leading-tight px-1 line-clamp-2">
                 {stage.title}
               </span>
             </button>
@@ -406,9 +466,9 @@ const LinearDiagram: React.FC<LinearDiagramProps> = ({
                   : 'border-base-300 bg-base-100 text-base-content hover:border-primary/60'
               }`}
             >
-              {stage.art && (
-                <span className="text-3xl leading-none" aria-hidden="true">
-                  {stage.art}
+              {(stage.illustration || stage.art) && (
+                <span className="flex items-center justify-center">
+                  <StageNodeArt stage={stage} size="node" />
                 </span>
               )}
               <span className="text-sm font-semibold leading-tight">{stage.title}</span>

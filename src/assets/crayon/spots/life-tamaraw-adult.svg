@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <ellipse class="crayon-fill-paper" cx="46" cy="54" rx="32" ry="20"/>
+  <ellipse class="crayon-draw crayon-stroke-ink" pathLength="1" cx="46" cy="54" rx="32" ry="20" stroke-width="4.5"/>
+  <circle class="crayon-fill-paper" cx="76" cy="42" r="14"/>
+  <circle class="crayon-draw crayon-stroke-ink" pathLength="1" cx="76" cy="42" r="14" stroke-width="4"/>
+  <path class="crayon-draw crayon-stroke-ink" pathLength="1" d="M68 28 L66 16 M84 28 L86 16" stroke-width="4" stroke-linecap="round"/>
+  <circle class="crayon-fill-ink" cx="80" cy="41" r="2.2"/>
+  <path class="crayon-draw crayon-stroke-ink" pathLength="1" d="M22 66 L18 82 M36 68 L34 84 M52 68 L54 84 M64 66 L68 82" stroke-width="4.5" stroke-linecap="round"/>
+  <path class="crayon-draw crayon-stroke-leaf" pathLength="1" d="M10 84 Q50 76 90 84" stroke-width="3" stroke-linecap="round"/>
+</svg>

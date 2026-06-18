@@ -12,7 +12,7 @@ const eagleStages: ProcessStage[] = [
     id: 'egg',
     title: 'Itlog',
     subtitle: 'Egg',
-    art: '🥚',
+    illustration: { name: 'life-eagle-egg', color: 'sunshine' },
     description:
       'A breeding pair lays a single egg — usually only about once every two years. Both parents take turns incubating it for roughly 58 to 60 days.',
     phContext:
@@ -22,7 +22,7 @@ const eagleStages: ProcessStage[] = [
     id: 'eaglet',
     title: 'Sisiw',
     subtitle: 'Eaglet / hatchling',
-    art: '🐣',
+    illustration: { name: 'life-eagle-eaglet', color: 'sunshine' },
     description:
       'A downy chick hatches and depends entirely on its parents, who hunt and bring food to the nest. Birds develop directly, so the eaglet is already a small eagle — there is no larval or metamorphosis stage.',
   },
@@ -30,7 +30,12 @@ const eagleStages: ProcessStage[] = [
     id: 'juvenile',
     title: 'Juvenile',
     subtitle: 'Young eagle',
-    art: '🪶',
+    illustration: { name: 'life-eagle-juvenile', color: 'leaf' },
+    photo: {
+      src: '/images/life-cycles/eagle-adult.jpg',
+      alt: 'Philippine eagle perched on a branch with crest feathers raised',
+      credit: 'Photo: shankar s., CC BY 2.0, via Wikimedia Commons (young birds resemble adults but keep learning to hunt).',
+    },
     description:
       'The young eagle fledges and leaves the nest but keeps practising flight and hunting near its parents for many months before living on its own.',
   },
@@ -38,7 +43,12 @@ const eagleStages: ProcessStage[] = [
     id: 'adult',
     title: 'Adult',
     subtitle: 'Fully grown',
-    art: '🦅',
+    illustration: { name: 'life-eagle-adult', color: 'sky' },
+    photo: {
+      src: '/images/life-cycles/eagle-adult.jpg',
+      alt: 'Adult Philippine eagle with shaggy crest and brown-and-white plumage',
+      credit: 'Photo: shankar s., CC BY 2.0, via Wikimedia Commons.',
+    },
     description:
       'A full-grown eagle is a top forest predator. A single pair needs thousands of hectares of forest to find enough prey to survive.',
   },
@@ -46,7 +56,7 @@ const eagleStages: ProcessStage[] = [
     id: 'breeding',
     title: 'Pagpaparami',
     subtitle: 'Breeding',
-    art: '🪺',
+    illustration: { name: 'life-eagle-nest', color: 'berry' },
     description:
       'Eagles only reach breeding age at about five to seven years old. Pairs bond for life and raise just one chick at a time before the cycle begins again.',
     phContext:
@@ -59,7 +69,12 @@ const tamarawStages: ProcessStage[] = [
     id: 'calf',
     title: 'Guya',
     subtitle: 'Calf',
-    art: '🐃',
+    illustration: { name: 'life-tamaraw-calf', color: 'leaf' },
+    photo: {
+      src: '/images/life-cycles/tamaraw-calf.jpg',
+      alt: 'Young tamaraw on Mindoro grassland',
+      credit: 'Photo: Gregg Yan, CC BY-SA 3.0, via Wikimedia Commons.',
+    },
     description:
       'A cow gives birth to a single calf after a gestation of about 276 to 315 days, typically only once every two years.',
     phContext:
@@ -69,7 +84,12 @@ const tamarawStages: ProcessStage[] = [
     id: 'juvenile',
     title: 'Bisiro',
     subtitle: 'Juvenile',
-    art: '🐃',
+    illustration: { name: 'life-tamaraw-juvenile', color: 'sunshine' },
+    photo: {
+      src: '/images/life-cycles/tamaraw-closeup.jpg',
+      alt: 'Close-up of a tamaraw with V-shaped horns',
+      credit: 'Photo: Gregg Yan, CC BY-SA 3.0, via Wikimedia Commons.',
+    },
     description:
       'As a mammal, the tamaraw develops directly: the calf is a small version of the adult with no metamorphosis. It stays with its mother for two to four years.',
   },
@@ -77,7 +97,12 @@ const tamarawStages: ProcessStage[] = [
     id: 'adult',
     title: 'Adult',
     subtitle: 'Fully grown',
-    art: '🐃',
+    illustration: { name: 'life-tamaraw-adult', color: 'ink' },
+    photo: {
+      src: '/images/life-cycles/tamaraw-adult.jpg',
+      alt: 'Adult tamaraw bull crossing a grassy field on Mindoro',
+      credit: 'Photo: Gregg Yan, CC BY-SA 3.0, via Wikimedia Commons.',
+    },
     description:
       'The tamaraw is fully grown at around six years old — a stocky, solitary grazer of Mindoro\'s grasslands and forest edges.',
   },
@@ -85,7 +110,12 @@ const tamarawStages: ProcessStage[] = [
     id: 'breeding',
     title: 'Pagpaparami',
     subtitle: 'Breeding',
-    art: '❤️',
+    illustration: { name: 'life-tamaraw-breeding', color: 'berry' },
+    photo: {
+      src: '/images/life-cycles/tamaraw-adult.jpg',
+      alt: 'Tamaraw in habitat at Mount Iglit-Baco National Park',
+      credit: 'Photo: Gregg Yan, CC BY-SA 3.0, via Wikimedia Commons.',
+    },
     description:
       'Mature animals breed slowly, producing a single calf about every two years, which restarts the cycle.',
     phContext:
@@ -101,7 +131,7 @@ const LifeCyclesVisualizer = () => {
   return (
     <VisualizerLayout
       title="Life Cycles: Philippine Eagle & Tamaraw"
-      description="Follow the developmental stages of two critically endangered Philippine endemics and see why slow breeders are so fragile."
+      description="Follow the developmental stages of two critically endangered Philippine endemics — with hand-drawn stage art and reference photos."
       adSlotId="1002"
       guideLink="/blog/life-cycles"
     >
@@ -127,9 +157,9 @@ const LifeCyclesVisualizer = () => {
             <>
           <div className="text-center">
             <h2 className="text-lg font-bold text-base-content mb-1">Choose an endemic species</h2>
-            <p className="text-sm text-base-content/70 mb-4">
+            <p className="text-base-content/70 mb-4 max-w-prose mx-auto">
               Both are birds and mammals that develop directly — no metamorphosis — but they breed
-              very slowly.
+              very slowly. Tap a stage in the loop, or use Play to walk through it.
             </p>
             <Toggle<Subject>
               value={subject}

@@ -20,6 +20,13 @@ export const SITE_VERSION: string = packageJson.version;
 
 export const siteChangelog: ReleaseEntry[] = [
   {
+    version: '1.2.1',
+    date: '2026-06-18',
+    changes: [
+      'Life cycles tool: hand-drawn stage illustrations plus Wikimedia reference photos in the detail panel.',
+    ],
+  },
+  {
     version: '1.2.0',
     date: '2026-06-18',
     changes: [
@@ -153,6 +160,33 @@ const DEFAULT_V11: string[] = [
 const INITIAL_V10: string[] = ['Initial interactive release.'];
 
 function buildToolRecord(id: string): ToolVersionRecord {
+  if (id === 'life-cycles') {
+    return {
+      version: '1.2.1',
+      changelog: [
+        {
+          version: '1.2.1',
+          date: '2026-06-18',
+          changes: [
+            'Nine crayon life-stage drawings (eagle + tamaraw) replace emoji in the cycle diagram.',
+            'Reference photos from Wikimedia Commons in the stage detail panel with credits.',
+            'Larger cycle nodes and illustration + photo layout in ProcessCycle.',
+          ],
+        },
+        {
+          version: '1.1.0',
+          date: '2026-06-18',
+          changes: TOOL_V11['life-cycles'] ?? DEFAULT_V11,
+        },
+        {
+          version: '1.0.0',
+          date: '2026-06-10',
+          changes: INITIAL_V10,
+        },
+      ],
+    };
+  }
+
   if (id === 'fractions') {
     return {
       version: '1.2.0',

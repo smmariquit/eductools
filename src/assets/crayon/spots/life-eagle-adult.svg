@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <path class="crayon-fill-leaf" d="M50 18 Q72 24 76 46 Q74 68 50 74 Q26 68 24 46 Q28 24 50 18 Z" opacity="0.3"/>
+  <path class="crayon-fill-sunshine" d="M50 22 Q68 28 70 46 Q68 62 50 66 Q32 62 30 46 Q32 28 50 22 Z"/>
+  <path class="crayon-draw crayon-stroke-ink" pathLength="1" d="M50 22 Q68 28 70 46 Q68 62 50 66 Q32 62 30 46 Q32 28 50 22 Z" stroke-width="4.5"/>
+  <path class="crayon-fill-paper" d="M44 34 L56 34 L54 46 L46 46 Z"/>
+  <path class="crayon-draw crayon-stroke-sunshine" pathLength="1" d="M36 26 Q50 14 64 26 M34 30 Q50 18 66 30 M32 34 Q50 22 68 34" stroke-width="3" stroke-linecap="round"/>
+  <circle class="crayon-fill-ink" cx="44" cy="40" r="2.2"/>
+  <circle class="crayon-fill-ink" cx="56" cy="40" r="2.2"/>
+  <path class="crayon-draw crayon-stroke-berry" pathLength="1" d="M50 66 L50 84 M34 76 L50 84 L66 76" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path class="crayon-draw crayon-stroke-leaf" pathLength="1" d="M22 50 L10 42 M78 50 L90 42" stroke-width="4" stroke-linecap="round"/>
+</svg>
