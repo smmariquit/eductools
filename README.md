@@ -13,7 +13,7 @@ Live site: <https://eductools.ph>
 ## What's inside
 
 - **Interactive visualizers** for Physics, Chemistry, Biology, Earth Science, and
-  Math, built with `three` / react-three-fiber, `matter-js`, `cytoscape`, and `3dmol`.
+ Math, built with `three` / react-three-fiber, `matter-js`, `cytoscape`, and `3dmol`.
 - **Deep-dive articles** in MDX with real math (KaTeX), charts, and cited sources.
 - **Offline-first PWA** so tools keep working when the network does not.
 - **Programmatic SEO pages** (per-school) served by a separate Next.js app.
@@ -72,20 +72,20 @@ src/
 Articles are held to a specific bar, enforced by project rules in `.cursor/rules/`:
 
 - **Voice** (`writing-tone.mdc`): write like a human expert; cite specific claims
-  and link them to primary sources you have verified are live.
+ and link them to primary sources you have verified are live.
 - **Visuals + sources**: add a chart where real data helps, and always end an
-  article with a `<Sources>` block of verified references.
+ article with a `<Sources>` block of verified references.
 - **Edit tracking** (`mdx-changelog.mdc`): every `.mdx` ends with a `<Changelog>`;
-  any edit bumps the `updated` date and appends a one-line note. A Git-tracked
-  `afterFileEdit` hook auto-stamps the date as a backstop.
+ any edit bumps the `updated` date and appends a one-line note. A Git-tracked
+ `afterFileEdit` hook auto-stamps the date as a backstop.
 - **Sourcing** (`.cursor/skills/citing-curriculum-content/`): how to pick and
-  license curriculum and subject-matter sources.
+ license curriculum and subject-matter sources.
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for the full workflow.
 
 ## Contributing
 
-Issues and pull requests are welcome — bug fixes, scientific corrections, new
+Issues and pull requests are welcome: bug fixes, scientific corrections, new
 visualizers, translations, and docs. Start with [CONTRIBUTING.md](./CONTRIBUTING.md)
 and our [Code of Conduct](./CODE_OF_CONDUCT.md).
 
@@ -94,7 +94,7 @@ and our [Code of Conduct](./CODE_OF_CONDUCT.md).
 Source code is released under the [Apache License 2.0](./LICENSE).
 
 Bundled or referenced **educational content** from third parties keeps its own
-license — for example PhET (CC-BY 4.0), CK-12 (CC-BY-NC 3.0), OpenStax
+license: for example PhET (CC-BY 4.0), CK-12 (CC-BY-NC 3.0), OpenStax
 (CC-BY 4.0), and Philippine government works (DepEd, DOST-SEI). Respect those
 terms when reusing content. EduVisualsPH is an independent project and is not
 affiliated with or endorsed by DepEd or any government agency.
