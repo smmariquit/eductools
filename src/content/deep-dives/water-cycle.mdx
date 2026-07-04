@@ -2,10 +2,7 @@ import { Changelog, DonutChart, Sources } from '../../components/content'
 
 # The Water Cycle: Siklo ng Tubig in an Archipelago
 
-
 I built the water cycle tool because this is the first big science idea most Filipino kids meet, and it is easy to nod along to without ever really seeing it. So here is the idea in one line. Water keeps moving between the sea, the sky, and the land, around and around, and it has been doing this for billions of years. We call that loop the water cycle, or siklo ng tubig.
-
-
 
 The amount of water on Earth barely changes. What changes is where the water is and what form it takes. It can be liquid in the ocean, an invisible gas in the air, or ice on a cold mountain. In a country made of more than seven thousand islands, where the sea is always close and the rain pours for half the year, this loop is about as easy to see as it gets.
 
@@ -24,14 +21,14 @@ After the rain lands, the tool follows two more steps, runoff and collection. So
 Here is the part that surprises people. Because water is always moving, it feels like there is plenty to go around. There is not much we can easily use. Almost all of Earth's water, more than 96 percent, is salty ocean water, and we cannot drink that. Only a small slice is fresh water. And most of that fresh water is not in the rivers and lakes we use either.
 
 <DonutChart
-  title="Where Earth's freshwater is stored (% of all freshwater)"
-  unit="%"
-  source="USGS Water Science School, 'Where is Earth's Water?'"
-  data={[
-    { label: 'Ice caps & glaciers', value: 68.7, color: 'sky' },
-    { label: 'Groundwater', value: 30.1, color: 'leaf' },
-    { label: 'Surface & other', value: 1.2, color: 'sunshine' },
-  ]}
+ title="Where Earth's freshwater is stored (% of all freshwater)"
+ unit="%"
+ source="USGS Water Science School, 'Where is Earth's Water?'"
+ data={[
+ { label: 'Ice caps & glaciers', value: 68.7, color: 'sky' },
+ { label: 'Groundwater', value: 30.1, color: 'leaf' },
+ { label: 'Surface & other', value: 1.2, color: 'sunshine' },
+ ]}
 />
 
 Look at the chart. About two-thirds of all fresh water is frozen solid in ice caps and glaciers. Almost all the rest is underground. The rivers, lakes, and streams that most homes and farms actually drink from add up to barely more than one percent of the fresh water. That is a number worth sitting with. The water we depend on is a thin layer that the cycle keeps recycling. When the rains stop for a while, that layer drops fast, and a dam like Angat can get worryingly low.
@@ -43,19 +40,19 @@ What gives the Philippine water cycle its beat is the monsoon. For about half th
 This is the part you can check from your own window. The puddle that dries up on a hot tag-init afternoon is evaporation. The fog stuck to a mountain in the morning is condensation. The flood from a Habagat downpour is just precipitation falling faster than the ground and the drains can carry it back to the sea. None of these are separate events. They are the same water, the same loop, caught at different steps.
 
 <Sources
-  items={[
-    { label: "USGS Water Science School, 'Where is Earth's Water?' (water distribution figures).", href: 'https://www.usgs.gov/water-science-school/science/where-earths-water' },
-    { label: 'NOAA National Ocean Service, The Water Cycle.', href: 'https://oceanservice.noaa.gov/facts/watercycle.html' },
-    { label: 'PAGASA (DOST), Climate of the Philippines (monsoons: Habagat and Amihan).', href: 'https://www.pagasa.dost.gov.ph/information/climate-philippines' },
-  ]}
+ items={[
+ { label: "USGS Water Science School, 'Where is Earth's Water?' (water distribution figures).", href: 'https://www.usgs.gov/water-science-school/science/where-earths-water' },
+ { label: 'NOAA National Ocean Service, The Water Cycle.', href: 'https://oceanservice.noaa.gov/facts/watercycle.html' },
+ { label: 'PAGASA (DOST), Climate of the Philippines (monsoons: Habagat and Amihan).', href: 'https://www.pagasa.dost.gov.ph/information/climate-philippines' },
+ ]}
 />
 
 <Changelog
-  created="2026-06-11"
-  updated="2026-06-18"
-  entries={[
-    { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
-    { date: "2026-06-18", note: "Switched the freshwater-storage chart from a bar chart to a DonutChart, since it is a part-of-a-whole breakdown." },
-    { date: "2026-06-18", note: "Re-toned into the house voice at a Grade 4-6 reading level (origin-story open, plain definitions, misconception about water abundance busted); walked the tool's six stages; kept the freshwater chart and verified sources; added the Changelog block." },
-  ]}
+ created="2026-06-11"
+ updated="2026-06-18"
+ entries={[
+ { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
+ { date: "2026-06-18", note: "Switched the freshwater-storage chart from a bar chart to a DonutChart, since it is a part-of-a-whole breakdown." },
+ { date: "2026-06-18", note: "Re-toned into the house voice at a Grade 4-6 reading level (origin-story open, plain definitions, misconception about water abundance busted); walked the tool's six stages; kept the freshwater chart and verified sources; added the Changelog block." },
+ ]}
 />
