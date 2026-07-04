@@ -2,10 +2,7 @@ import { Changelog, Sources } from '../../components/content'
 
 # Sets and Venn diagrams: sorting the world into braces
 
-
 I built the sets tool because the notation scares students off a topic they already understand. Braces and the $\cup$ and $\cap$ symbols look like a foreign alphabet, so a Grade 7 class freezes up over ideas they use every day. Ask them to list what is in their bag and they have already done set theory. They just have not written the braces yet. The visualizer above shades the regions as you build them, so the picture lands first and the symbols turn into labels for something you can already see.
-
-
 
 A **set** is a well-defined collection of distinct objects, and the two words carrying the weight there are "well-defined" and "distinct." Well-defined means anyone can agree whether something belongs. "The even numbers from 1 to 10" is a set. "The nice numbers" is not, because nice is an opinion, not a rule. Distinct means you never write the same thing twice. The set of letters in the word *BANANA* is $\{B, A, N\}$, not $\{B, A, N, A, N, A\}$. Each member shows up once, and order does not matter, so $\{B, A, N\}$ and $\{N, A, B\}$ are the same set.
 
@@ -32,19 +29,19 @@ $$n(A \cup B) = n(A) + n(B) - n(A \cap B).$$
 You add the two counts and subtract the overlap once, because adding both sets whole counts every shared member twice. If 18 students take robotics, 15 take chess, and 6 do both, the number in at least one club is $18 + 15 - 6 = 27$, not 33. Shade the regions in the tool first, and that formula stops being something to memorize and becomes something you can point at.
 
 <Sources
-  items={[
-    { label: 'Weisstein, Eric W. "Set." Wolfram MathWorld.', href: 'https://mathworld.wolfram.com/Set.html' },
-    { label: 'Weisstein, Eric W. "Venn Diagram." Wolfram MathWorld.', href: 'https://mathworld.wolfram.com/VennDiagram.html' },
-    { label: 'Khan Academy. "Intersection and union of sets."', href: 'https://www.khanacademy.org/math/statistics-probability/probability-library/basic-set-ops/a/intersection-and-union-of-sets' },
-    { label: 'Encyclopaedia Britannica. "Set theory."', href: 'https://www.britannica.com/science/set-theory' },
-  ]}
+ items={[
+ { label: 'Weisstein, Eric W. "Set." Wolfram MathWorld.', href: 'https://mathworld.wolfram.com/Set.html' },
+ { label: 'Weisstein, Eric W. "Venn Diagram." Wolfram MathWorld.', href: 'https://mathworld.wolfram.com/VennDiagram.html' },
+ { label: 'Khan Academy. "Intersection and union of sets."', href: 'https://www.khanacademy.org/math/statistics-probability/probability-library/basic-set-ops/a/intersection-and-union-of-sets' },
+ { label: 'Encyclopaedia Britannica. "Set theory."', href: 'https://www.britannica.com/science/set-theory' },
+ ]}
 />
 
 <Changelog
-  created="2026-06-11"
-  updated="2026-06-18"
-  entries={[
-    { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
-    { date: "2026-06-18", note: "Re-toned into the house voice; moved set notation to KaTeX; tied examples to the live Venn shading and inclusion-exclusion count." },
-  ]}
+ created="2026-06-11"
+ updated="2026-06-18"
+ entries={[
+ { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
+ { date: "2026-06-18", note: "Re-toned into the house voice; moved set notation to KaTeX; tied examples to the live Venn shading and inclusion-exclusion count." },
+ ]}
 />
