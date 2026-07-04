@@ -2,10 +2,7 @@ import { Changelog, LineChart, Sources } from '../../components/content'
 
 # Does the order matter? Ask that first
 
-
 Almost every student I have watched tackle a counting problem makes the same mistake: they reach for a formula before they have answered the one question that decides everything. I built this tool to slow that reflex down. Before you touch $P$ or $C$, before you plug in a single number, ask whether the *order* of your choices matters. Get that answer right and the rest is just arithmetic. Get it wrong and you will either count the same outcome several times over or miss outcomes entirely.
-
-
 
 This is the heart of the Grade 10 counting strand under MATATAG. Permutations and combinations both pull a smaller group out of a larger one. The only thing separating them is whether rearranging your picks counts as a brand-new result.
 
@@ -30,24 +27,24 @@ So $C(5, 3) = \frac{120}{6 \times 2} = 10$ committees. Notice that 60 permutatio
 The engine under both formulas is the **factorial**, the product of the descending counting numbers: $5! = 5 \times 4 \times 3 \times 2 \times 1 = 120$. Factorials grow faster than almost anything students have met before, and seeing that growth is the quickest way to understand why "how many ways" answers get enormous so fast.
 
 <LineChart
-  title="Factorial growth: n! for n = 1 to 6"
-  xLabel="n"
-  yLabel="n!"
-  source='Weisstein, "Factorial," Wolfram MathWorld'
-  series={[
-    {
-      name: 'n!',
-      color: 'berry',
-      points: [
-        { x: 1, y: 1 },
-        { x: 2, y: 2 },
-        { x: 3, y: 6 },
-        { x: 4, y: 24 },
-        { x: 5, y: 120 },
-        { x: 6, y: 720 },
-      ],
-    },
-  ]}
+ title="Factorial growth: n! for n = 1 to 6"
+ xLabel="n"
+ yLabel="n!"
+ source='Weisstein, "Factorial," Wolfram MathWorld'
+ series={[
+ {
+ name: 'n!',
+ color: 'berry',
+ points: [
+ { x: 1, y: 1 },
+ { x: 2, y: 2 },
+ { x: 3, y: 6 },
+ { x: 4, y: 24 },
+ { x: 5, y: 120 },
+ { x: 6, y: 720 },
+ ],
+ },
+ ]}
 />
 
 Going from 5 people to 6 multiplies the arrangements by 6, so the point for $6!$ already shoots up off everything to its left, and $10!$ is past three million. This is also why the "just list them all" approach gives out almost immediately, and why these formulas exist in the first place.
@@ -63,21 +60,21 @@ When you set up a problem in the tool, only three quantities matter.
 Decide order-or-not first, drop $n$ and $r$ into the matching formula, and the answer is one calculation away.
 
 <Sources
-  items={[
-    { label: 'OpenStax, College Algebra 2e: Counting Principles (permutations and combinations).', href: 'https://openstax.org/books/college-algebra-2e/pages/9-5-counting-principles' },
-    { label: 'Weisstein, Eric W. "Permutation." Wolfram MathWorld.', href: 'https://mathworld.wolfram.com/Permutation.html' },
-    { label: 'Weisstein, Eric W. "Combination." Wolfram MathWorld.', href: 'https://mathworld.wolfram.com/Combination.html' },
-    { label: 'Weisstein, Eric W. "Factorial." Wolfram MathWorld.', href: 'https://mathworld.wolfram.com/Factorial.html' },
-    { label: 'Khan Academy. "Combinations."', href: 'https://www.khanacademy.org/math/precalculus/x9e81a4f98389efdf:prob-comb/x9e81a4f98389efdf:combinations/a/combinations' },
-  ]}
+ items={[
+ { label: 'OpenStax, College Algebra 2e: Counting Principles (permutations and combinations).', href: 'https://openstax.org/books/college-algebra-2e/pages/9-5-counting-principles' },
+ { label: 'Weisstein, Eric W. "Permutation." Wolfram MathWorld.', href: 'https://mathworld.wolfram.com/Permutation.html' },
+ { label: 'Weisstein, Eric W. "Combination." Wolfram MathWorld.', href: 'https://mathworld.wolfram.com/Combination.html' },
+ { label: 'Weisstein, Eric W. "Factorial." Wolfram MathWorld.', href: 'https://mathworld.wolfram.com/Factorial.html' },
+ { label: 'Khan Academy. "Combinations."', href: 'https://www.khanacademy.org/math/precalculus/x9e81a4f98389efdf:prob-comb/x9e81a4f98389efdf:combinations/a/combinations' },
+ ]}
 />
 
 <Changelog
-  created="2026-06-11"
-  updated="2026-06-18"
-  entries={[
-    { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
-    { date: "2026-06-18", note: "Switched the factorial-growth chart from a bar chart to a LineChart, since it shows a growth curve over n; updated the surrounding prose from 'bar' to 'point'." },
-    { date: "2026-06-18", note: "Re-toned into the house voice (order-matters origin open, officers-vs-committee and lotto scenarios); kept the factorial-growth chart and math; replaced the Cloudflare-blocked Britannica link with OpenStax College Algebra Counting Principles." },
-  ]}
+ created="2026-06-11"
+ updated="2026-06-18"
+ entries={[
+ { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
+ { date: "2026-06-18", note: "Switched the factorial-growth chart from a bar chart to a LineChart, since it shows a growth curve over n; updated the surrounding prose from 'bar' to 'point'." },
+ { date: "2026-06-18", note: "Re-toned into the house voice (order-matters origin open, officers-vs-committee and lotto scenarios); kept the factorial-growth chart and math; replaced the Cloudflare-blocked Britannica link with OpenStax College Algebra Counting Principles." },
+ ]}
 />
