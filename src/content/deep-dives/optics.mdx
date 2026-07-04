@@ -2,10 +2,7 @@ import { Changelog, Sources, Table } from '../../components/content'
 
 # Optics: How Light Bounces, Bends, and Forms Images
 
-
 The thing that got me to build this optics tool was the back of a spoon. Look at your reflection in the bowl of a metal spoon and you are upside down; flip it over and you are suddenly upright, but tiny. Same spoon, same face, two completely different images, and most people have stared at this since childhood without ever being told why. The answer is just two short rules about how light behaves at a surface, and once they click, the spoon stops being a magic trick and becomes geometry you can predict. The visualizer above lets you slide an object toward and away from a curved mirror and watch the image flip, shrink, and grow, which is the fastest way to feel the rules instead of memorizing them.
-
-
 
 ## The image behind the mirror is not really there
 
@@ -30,17 +27,17 @@ $$ n_1 \sin\theta_1 = n_2 \sin\theta_2 $$
 The bigger the jump in index between the two materials, the harder the ray turns. That is why a pencil standing in a glass of water looks snapped at the surface, and why a diamond throws light around far more dramatically than a chip of window glass.
 
 <Table
-  title="Index of refraction of common media (light at 589 nm)"
-  source="OpenStax, University Physics Vol. 3, Table 1.1 (speed inside computed as 1/n)"
-  columns={['Medium', 'Index of refraction', 'Light speed inside (× c)']}
-  align={['left', 'right', 'right']}
-  rows={[
-    ['Water (fresh)', '1.333', '0.75'],
-    ['Glass (crown)', '1.52', '0.66'],
-    ['Glass (flint)', '1.66', '0.60'],
-    ['Zircon', '1.923', '0.52'],
-    ['Diamond', '2.419', '0.41'],
-  ]}
+ title="Index of refraction of common media (light at 589 nm)"
+ source="OpenStax, University Physics Vol. 3, Table 1.1 (speed inside computed as 1/n)"
+ columns={['Medium', 'Index of refraction', 'Light speed inside (× c)']}
+ align={['left', 'right', 'right']}
+ rows={[
+ ['Water (fresh)', '1.333', '0.75'],
+ ['Glass (crown)', '1.52', '0.66'],
+ ['Glass (flint)', '1.66', '0.60'],
+ ['Zircon', '1.923', '0.52'],
+ ['Diamond', '2.419', '0.41'],
+ ]}
 />
 
 Water sits at 1.333, ordinary crown glass at 1.52, and diamond all the way up at 2.419, which means light moves at less than half its vacuum speed inside a diamond. That steep index is also why total internal reflection is so easy to trigger in a cut diamond: light bouncing around inside struggles to escape, so it keeps reflecting until it finally exits through a facet, and the stone appears to sparkle from within. Zircon, at 1.923, is the classic cheaper stand-in for exactly this reason.
@@ -65,22 +62,22 @@ A real image is where light rays actually meet, so you can catch it on a screen,
 Light from the underwater part of the pencil bends as it leaves the water and enters the air, because the two materials have different indices of refraction. Your eye still assumes the light came straight, so it places that part of the pencil in the wrong spot, and the pencil appears to jump sideways at the waterline.
 
 <Sources
-  items={[
-    { label: 'OpenStax, University Physics Volume 3, 1.1 The Propagation of Light (Table 1.1, index of refraction).', href: 'https://openstax.org/books/university-physics-volume-3/pages/1-1-the-propagation-of-light' },
-    { label: 'OpenStax, University Physics Volume 3, 1.3 Refraction (Snell\'s law).', href: 'https://openstax.org/books/university-physics-volume-3/pages/1-3-refraction' },
-    { label: 'OpenStax, University Physics Volume 3, 2.2 Spherical Mirrors.', href: 'https://openstax.org/books/university-physics-volume-3/pages/2-2-spherical-mirrors' },
-    { label: 'OpenStax, University Physics Volume 3, 2.4 Thin Lenses.', href: 'https://openstax.org/books/university-physics-volume-3/pages/2-4-thin-lenses' },
-    { label: 'PhET Interactive Simulations, Bending Light (University of Colorado Boulder).', href: 'https://phet.colorado.edu/en/simulations/bending-light' },
-    { label: 'PhET Interactive Simulations, Geometric Optics (University of Colorado Boulder).', href: 'https://phet.colorado.edu/en/simulations/geometric-optics' },
-  ]}
+ items={[
+ { label: 'OpenStax, University Physics Volume 3, 1.1 The Propagation of Light (Table 1.1, index of refraction).', href: 'https://openstax.org/books/university-physics-volume-3/pages/1-1-the-propagation-of-light' },
+ { label: 'OpenStax, University Physics Volume 3, 1.3 Refraction (Snell\'s law).', href: 'https://openstax.org/books/university-physics-volume-3/pages/1-3-refraction' },
+ { label: 'OpenStax, University Physics Volume 3, 2.2 Spherical Mirrors.', href: 'https://openstax.org/books/university-physics-volume-3/pages/2-2-spherical-mirrors' },
+ { label: 'OpenStax, University Physics Volume 3, 2.4 Thin Lenses.', href: 'https://openstax.org/books/university-physics-volume-3/pages/2-4-thin-lenses' },
+ { label: 'PhET Interactive Simulations, Bending Light (University of Colorado Boulder).', href: 'https://phet.colorado.edu/en/simulations/bending-light' },
+ { label: 'PhET Interactive Simulations, Geometric Optics (University of Colorado Boulder).', href: 'https://phet.colorado.edu/en/simulations/geometric-optics' },
+ ]}
 />
 
 <Changelog
-  created="2026-06-11"
-  updated="2026-06-18"
-  entries={[
-    { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
-    { date: "2026-06-18", note: "Switched the index-of-refraction chart from a bar chart to a Table (reference lookup data) and added a computed 'light speed inside (× c)' column, which the prose references." },
-    { date: "2026-06-18", note: "Re-toned into the house voice (spoon-reflection origin open, virtual-image misconception bust, casual headers, plain-spoken FAQ); clarified that the visualizer covers mirrors specifically while keeping refraction and lenses as supporting physics; kept the index-of-refraction chart and verified sources; added the mandatory Changelog block." },
-  ]}
+ created="2026-06-11"
+ updated="2026-06-18"
+ entries={[
+ { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
+ { date: "2026-06-18", note: "Switched the index-of-refraction chart from a bar chart to a Table (reference lookup data) and added a computed 'light speed inside (× c)' column, which the prose references." },
+ { date: "2026-06-18", note: "Re-toned into the house voice (spoon-reflection origin open, virtual-image misconception bust, casual headers, plain-spoken FAQ); clarified that the visualizer covers mirrors specifically while keeping refraction and lenses as supporting physics; kept the index-of-refraction chart and verified sources; added the mandatory Changelog block." },
+ ]}
 />
