@@ -63,7 +63,7 @@ export const YouTubeEmbed: React.FC<YouTubeEmbedProps> = ({ id, title, creator, 
         {title}
         {creator && <span className="text-base-content/50"> — {creator}</span>}
         <span className="block text-xs">
-          <a href={watchUrl} target="_blank" rel="noopener noreferrer" className="link link-hover text-primary">
+          <a href={watchUrl} target="_blank" rel="noopener noreferrer" className="font-semibold underline text-[#1d4ed8]">
             Watch on YouTube
           </a>
         </span>

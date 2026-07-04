@@ -28,7 +28,7 @@ export const Sources: React.FC<SourcesProps> = ({ items, title = 'Sources' }) =>
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="link link-hover text-primary underline-offset-2"
+              className="font-semibold underline text-[#1d4ed8] underline-offset-2"
             >
               {item.label}
             </a>
