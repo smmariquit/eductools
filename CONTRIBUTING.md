@@ -6,11 +6,11 @@ a Filipino translation, adding a visualizer, or writing a deep-dive article.
 
 ## Ways to contribute
 
-- **Report a problem** — open an issue. Scientific or factual errors are high
-  priority; please include a source if you can.
-- **Suggest a module or feature** — open a feature request describing the topic,
-  the target grade level, and what the interaction should teach.
-- **Send a pull request** — for code, content, or docs.
+- **Report a problem**: open an issue. Scientific or factual errors are high
+ priority; please include a source if you can.
+- **Suggest a module or feature**: open a feature request describing the topic,
+ the target grade level, and what the interaction should teach.
+- **Send a pull request**: for code, content, or docs.
 
 ## Local setup
 
@@ -33,12 +33,12 @@ npm run build
 ## Project conventions
 
 This repo ships machine-readable conventions in `.cursor/rules/`. They apply to
-human and AI contributors alike — please skim them:
+human and AI contributors alike: please skim them:
 
-- `writing-tone.mdc` — how prose should read, and the link-and-verify rule.
-- `images.mdc` — raster paths, `<Figure>` variants, alt/credit requirements.
-- `mdx-changelog.mdc` — edit tracking for articles (see below).
-- `curriculum-guides.mdc` — how to use the bundled DepEd curriculum guides.
+- `writing-tone.mdc`: how prose should read, and the link-and-verify rule.
+- `images.mdc`: raster paths, `<Figure>` variants, alt/credit requirements.
+- `mdx-changelog.mdc`: edit tracking for articles (see below).
+- `curriculum-guides.mdc`: how to use the bundled DepEd curriculum guides.
 
 Sourcing guidance lives in `.cursor/skills/citing-curriculum-content/`.
 
@@ -47,23 +47,23 @@ Sourcing guidance lives in `.cursor/skills/citing-curriculum-content/`.
 Articles are MDX. A few non-negotiables:
 
 1. **Cite specifics.** Any law, statistic, study, or agency figure must link to a
-   primary source you have confirmed is live:
-   ```bash
+ primary source you have confirmed is live:
+ ```bash
    curl -sS -o /dev/null -m 25 -L -A "Mozilla/5.0" -w "%{http_code}" <url>
    ```
 2. **Add a visual where it helps.** Use the content components instead of dumping
-   numbers into a table:
-   ```mdx
+ numbers into a table:
+ ```mdx
    import { BarChart, Sources, Changelog } from '../../components/content'
    ```
-   `<BarChart>` for comparisons/breakdowns (values must match the cited figure
-   exactly), `<Figure>` for credited images (see `images.mdc` — paths under
-   `/images/<category>/`, never raw `<img>`).
-3. **Always end with `<Sources>`** — a numbered list of the primary references the
-   article relies on, each with a live URL.
+ `<BarChart>` for comparisons/breakdowns (values must match the cited figure
+ exactly), `<Figure>` for credited images (see `images.mdc`: paths under
+ `/images/<category>/`, never raw `<img>`).
+3. **Always end with `<Sources>`**: a numbered list of the primary references the
+ article relies on, each with a live URL.
 4. **Always end the file with `<Changelog>`.** On every edit, bump `updated` to
-   today and prepend a one-line entry. History is append-only.
-   ```mdx
+ today and prepend a one-line entry. History is append-only.
+ ```mdx
    <Changelog
      updated="2026-06-18"
      entries={[
@@ -72,18 +72,18 @@ Articles are MDX. A few non-negotiables:
      ]}
    />
    ```
-   A project hook auto-stamps the `updated` date as a backstop, but you are
-   responsible for writing the changelog note.
+ A project hook auto-stamps the `updated` date as a backstop, but you are
+ responsible for writing the changelog note.
 5. **Keep math in KaTeX** (`$...$` / `$$...$$`) and do not break the syntax.
 
 ## Adding a visualizer
 
 1. Register it in `src/data/registry.ts` (id, title, description, path, tags).
 2. Build the React component under `src/pages/` or `src/components/` and wire its
-   route.
+ route.
 3. Add a matching deep-dive article at `src/content/deep-dives/<id>.mdx`.
-4. Prefer small, dependency-light, offline-friendly implementations — many users
-   are on low-end phones and weak connections.
+4. Prefer small, dependency-light, offline-friendly implementations: many users
+ are on low-end phones and weak connections.
 
 ## Pull request checklist
 
