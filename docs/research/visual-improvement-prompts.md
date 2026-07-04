@@ -70,7 +70,7 @@ Priority reflects how badly the **current 2D diagram** misrepresents, clutters, 
 I am improving the diagram for a "Fractions Visualizer" in a Philippine K-12 (MATATAG) math web app for Grades 1-3. It draws two pie/circle area models ("buko pie") each cut into d equal sectors with n sectors shaded, then compares the two fractions. Current problems: filled vs empty sectors are shown only by opacity of the same color (poor contrast and bad for color-blind kids); a decorative "crust ring" at the rim visually merges with the radial slice dividers; and the A-vs-B comparison is only numeric (cross-multiplication) with no shared visual.
 
 Research and report, with citations:
-(a) The canonical, research-backed ways fractions are diagrammed for early primary in reputable sources (PhET Fractions, OpenStax/Illustrative Mathematics, Van de Walle, DepEd/MATATAG Grade 1-3 numeracy materials) — area/circle models vs bar/tape vs number-line models, and when each is recommended.
+(a) The canonical, research-backed ways fractions are diagrammed for early primary in reputable sources (PhET Fractions, OpenStax/Illustrative Mathematics, Van de Walle, DepEd/MATATAG Grade 1-3 numeracy materials): area/circle models vs bar/tape vs number-line models, and when each is recommended.
 (b) Common misconceptions a circle/pie fraction model can reinforce (e.g., that fractions are always "parts of a pizza," difficulty comparing unlike denominators, equal-area but unequal-looking sectors) and how the visual should avoid them.
 (c) Visual-design best practices for fraction area models: ensuring sectors read as equal, distinguishing filled parts with both color AND pattern/fill (WCAG contrast, color-blind-safe palettes), label placement, and how to compare two fractions visually (overlaying a common-denominator grid, or aligned tape bars).
 (d) Grade 1-3 appropriate representation under MATATAG: vocabulary, complexity limits (denominator ceilings), and Filipino-context framing.
@@ -92,7 +92,7 @@ Return prioritized, specific recommendations a developer can implement.
 I am improving an "Integer Number Line" canvas diagram in a Philippine MATATAG Grade 7 math app. It shows integer addition/subtraction as directional "hops": one arrow from 0 to the first number, a second arrow to the result, with a hidden-answer "predict" mode. Current problems: the two hop arrows are stacked at nearly fixed heights and their labels overlap when numbers are large or one hop is short; minor ticks stay dense at wide ranges; and canvas text is not DPI-scaled (blurry).
 
 Research and report, with citations:
-(a) The canonical way integer addition/subtraction is diagrammed on a number line in reputable sources (PhET, OpenStax, Illustrative Mathematics, DepEd Grade 7 modules) — hop/jump arrows, "facing" direction for subtraction, two-color (positive/negative) conventions.
+(a) The canonical way integer addition/subtraction is diagrammed on a number line in reputable sources (PhET, OpenStax, Illustrative Mathematics, DepEd Grade 7 modules): hop/jump arrows, "facing" direction for subtraction, two-color (positive/negative) conventions.
 (b) Misconceptions to avoid: "subtracting a negative" confusion, treating the minus sign as both operation and sign, direction-vs-magnitude confusion, and how arrow diagrams can mislead.
 (c) Visual-design best practices for number-line hop diagrams: vertical stacking/offset of arrows to prevent label collision, arrowhead sizing for short hops, tick density and labeling at different scales, color-blind-safe positive/negative coding, reduced-motion behavior, and crisp canvas text (devicePixelRatio).
 (d) Grade 7 MATATAG-appropriate conventions and Filipino framing (e.g., debt/temperature contexts).
@@ -110,7 +110,7 @@ Return specific, implementable recommendations.
 - Factor-tree node radius is fixed (`R=17`) with `GAP=48`; deep trees (e.g. 48 = 2×2×2×2×3) can get tall and the right-leaning recursion produces visually lopsided trees.
 
 ```text
-I am improving the diagrams for a "GCF & LCM Explorer" in a Philippine MATATAG Grade 4-5 math app. It shows two prime-factor trees and a Venn-style diagram of shared vs unique prime factors, then computes GCF, LCM, and verifies GCF×LCM = A×B. The current "Venn" is faked with two overlapping CSS circles and a floating cluster of factor badges in the middle — factors are not actually contained within the correct lens regions, and badges overflow or collide when there are several primes. The factor trees are also lopsided (right-recursive) and can get tall.
+I am improving the diagrams for a "GCF & LCM Explorer" in a Philippine MATATAG Grade 4-5 math app. It shows two prime-factor trees and a Venn-style diagram of shared vs unique prime factors, then computes GCF, LCM, and verifies GCF×LCM = A×B. The current "Venn" is faked with two overlapping CSS circles and a floating cluster of factor badges in the middle: factors are not actually contained within the correct lens regions, and badges overflow or collide when there are several primes. The factor trees are also lopsided (right-recursive) and can get tall.
 
 Research and report, with citations:
 (a) The canonical way GCF/LCM via prime factorization is diagrammed (factor trees, and the Venn-diagram method where shared primes go in the intersection) in reputable sources (OpenStax, Illustrative Mathematics, DepEd Grade 4-5 materials, NRICH).
@@ -177,7 +177,7 @@ Return implementable specifics.
 I am improving a bar-chart diagram for a "Sequences & Patterns" tool in a Philippine MATATAG Grade 8 math app. It plots the first n terms of an arithmetic or geometric sequence as bars above/below a zero line. Current problem: for geometric sequences the final term dwarfs the others so early bars collapse to a minimum height and the chart is unreadable (off-scale); value labels also overlap when bars are tall or numerous.
 
 Research and report, with citations:
-(a) How arithmetic vs geometric sequences are canonically visualized in reputable sources (OpenStax, Illustrative Mathematics, Desmos, DepEd Grade 8 materials) — linear bar/point plots for arithmetic, and the standard handling of exponential growth (log scale, point/line plots, or dual views).
+(a) How arithmetic vs geometric sequences are canonically visualized in reputable sources (OpenStax, Illustrative Mathematics, Desmos, DepEd Grade 8 materials): linear bar/point plots for arithmetic, and the standard handling of exponential growth (log scale, point/line plots, or dual views).
 (b) Misconceptions to avoid: conflating arithmetic and geometric growth, misreading a linear-scale chart of exponential data, and not seeing the common difference vs common ratio.
 (c) Visual-design best practices for charts spanning large value ranges: when/how to offer a log scale, point-and-line vs bars, label de-cluttering, color-coding the highlighted nth term, and accessible/reduced-motion transitions.
 (d) Grade 8 appropriate representation (introducing log scale carefully or providing a toggle with explanation).
@@ -220,7 +220,7 @@ Return implementable specifics.
 I am improving a right-triangle + unit-circle canvas diagram for a "Trigonometry Visualizer" in a Philippine MATATAG Grade 9 math app. It draws a right triangle with adjacent/opposite/hypotenuse labeled and SOH-CAH-TOA readouts, plus a small unit circle in the corner. Current problems: side labels use fixed offsets and can run off-canvas or overlap the triangle; the corner unit circle can collide with the triangle at large sizes/small angles; the triangle isn't recentered to fit so it crowds one edge; and canvas text isn't DPI-scaled.
 
 Research and report, with citations:
-(a) The canonical way right-triangle trig ratios and the unit circle are diagrammed in reputable sources (OpenStax Trigonometry/Precalculus, PhET, Khan Academy, DepEd Grade 9 materials) — including how SOH-CAH-TOA and the unit circle are linked.
+(a) The canonical way right-triangle trig ratios and the unit circle are diagrammed in reputable sources (OpenStax Trigonometry/Precalculus, PhET, Khan Academy, DepEd Grade 9 materials): including how SOH-CAH-TOA and the unit circle are linked.
 (b) Misconceptions to avoid: opposite/adjacent depend on the reference angle; sin/cos as ratios independent of triangle size; confusing degrees/radians; and that tan→∞ near 90°.
 (c) Visual-design best practices: label placement that never overlaps edges or runs off-canvas (leader lines, edge-aware anchoring), auto-fit/recentering of the figure as parameters change, separating or linking the unit circle without overlap, color-coding sides to ratios accessibly, and crisp DPI-correct canvas text.
 (d) Grade 9 appropriate representation (special angles 30/45/60, ratio emphasis).
@@ -241,7 +241,7 @@ Return implementable specifics.
 I am improving the visual for a "Permutations & Combinations" tool in a Philippine MATATAG Grade 10 math app. It shows n colored lettered tokens, lists up to 20 sample arrangements/groups, and renders the nPr / nCr formulas. The current visual is mainly an enumerated list; it doesn't structurally show WHY order matters (permutations) vs not (combinations), and large counts just say "…and N more."
 
 Research and report, with citations:
-(a) The canonical ways permutations and combinations are diagrammed in reputable sources (OpenStax, Illustrative Mathematics, NRICH, DepEd Grade 10 materials) — slot/box diagrams (n × (n−1) × …), decision trees, and the "divide by r! to remove ordering" visual.
+(a) The canonical ways permutations and combinations are diagrammed in reputable sources (OpenStax, Illustrative Mathematics, NRICH, DepEd Grade 10 materials): slot/box diagrams (n × (n−1) × …), decision trees, and the "divide by r! to remove ordering" visual.
 (b) Misconceptions to avoid: using permutations when order doesn't matter (and vice versa), double-counting, and the meaning of the r! divisor.
 (c) Visual-design best practices for combinatorics diagrams: showing the multiplication of choices (filling slots), a tree that prunes for combinations, accessible color/labeling, and handling large counts (show structure, not exhaustive lists).
 (d) Grade 10 appropriate representation and Filipino context (e.g., committees vs rankings).
@@ -264,7 +264,7 @@ Return implementable specifics.
 I am improving the diagram for a "Forces and Motion" (Newton's second law) tool in a Philippine MATATAG Grade 8 physics app, themed around a jeepney. Currently it just slides a jeepney graphic along a looping road and shows a text "F →" plus numeric net force/acceleration. There is no proper free-body diagram and no scaled force vectors (friction, applied force, weight, normal).
 
 Research and report, with citations:
-(a) The canonical way Newton's second law and friction are diagrammed in reputable sources (PhET "Forces and Motion: Basics", OpenStax University/College Physics, DepEd Grade 8 materials) — free-body diagrams with proportional arrows, net-force arrows, and how applied vs friction forces are shown.
+(a) The canonical way Newton's second law and friction are diagrammed in reputable sources (PhET "Forces and Motion: Basics", OpenStax University/College Physics, DepEd Grade 8 materials): free-body diagrams with proportional arrows, net-force arrows, and how applied vs friction forces are shown.
 (b) Misconceptions to avoid: motion requires a continuous net force (vs Newton's first law), confusing velocity with acceleration, friction acting even when balanced, and that heavier = automatically slower.
 (c) Visual-design best practices for force vectors: arrow length proportional to magnitude with a visible scale/legend, consistent color per force type (accessible), placing arrows at the body's center, a net-force resultant arrow, and reduced-motion options.
 (d) Grade 8 appropriate representation and Filipino (jeepney) framing.
@@ -283,13 +283,13 @@ Return implementable specifics.
 - The brightness glow is the only working visual signal of the physics.
 
 ```text
-I am rebuilding the diagram for an "Electric Circuits" tool (series vs parallel) in a Philippine MATATAG Grade 8 physics app. The current "circuit" is just a CSS rectangle with a battery, a switch button, and two glowing bulb-circles stuck to the edges — there are NO wires forming a closed loop, and the series-vs-parallel topology is not actually drawn (bulbs are merely repositioned). It only conveys physics through a brightness glow and a numeric Ohm's-law readout.
+I am rebuilding the diagram for an "Electric Circuits" tool (series vs parallel) in a Philippine MATATAG Grade 8 physics app. The current "circuit" is just a CSS rectangle with a battery, a switch button, and two glowing bulb-circles stuck to the edges: there are NO wires forming a closed loop, and the series-vs-parallel topology is not actually drawn (bulbs are merely repositioned). It only conveys physics through a brightness glow and a numeric Ohm's-law readout.
 
 Research and report, with citations:
-(a) The canonical way series and parallel circuits are diagrammed in reputable sources (PhET "Circuit Construction Kit: DC", OpenStax, IEC 60617 / ANSI circuit symbols, DepEd Grade 8 materials) — proper schematic symbols for cell/battery, lamp, switch, and closed conductive loops, plus how series vs parallel wiring differs visually.
+(a) The canonical way series and parallel circuits are diagrammed in reputable sources (PhET "Circuit Construction Kit: DC", OpenStax, IEC 60617 / ANSI circuit symbols, DepEd Grade 8 materials): proper schematic symbols for cell/battery, lamp, switch, and closed conductive loops, plus how series vs parallel wiring differs visually.
 (b) Misconceptions to avoid: current "used up" by the first bulb, current flowing out both battery terminals and "meeting," that parallel bulbs are dimmer, and confusing voltage with current.
 (c) Visual-design best practices for circuit schematics: standard symbols, clear closed loops, animated current/electron-flow indicators (with reduced-motion fallback), node/junction dots, color-coding, and labeling current/voltage at each element accessibly.
-(d) Grade 8 MATATAG-appropriate level — whether to use formal IEC symbols or friendly pictorial-but-correct components, and Filipino framing.
+(d) Grade 8 MATATAG-appropriate level: whether to use formal IEC symbols or friendly pictorial-but-correct components, and Filipino framing.
 (e) Concrete redesign: a true SVG schematic with a closed loop (battery → switch → bulbs → back), correct series wiring (single loop) and parallel wiring (two branches across the battery), animated current flow whose speed/density reflects current, and per-element voltage/current labels. Provide a recommended layout/topology for both modes.
 Return implementable specifics.
 ```
@@ -306,10 +306,10 @@ Return implementable specifics.
 - Canvas not DPI-scaled.
 
 ```text
-I am fixing the canvas diagram for a "Projectile Motion" tool (themed as the Filipino game tumbang preso) in a Philippine MATATAG Grade 9 physics app. A pamato (slipper) is launched at an angle/velocity toward a can 20 m away. The BIG problem is scale: the pixels-per-meter is a fixed constant, so for many angle/velocity combinations the projectile flies off the right edge or far above the top of the canvas — the trajectory is frequently off-screen. The object also spins decoratively, and the parabolic path is not traced.
+I am fixing the canvas diagram for a "Projectile Motion" tool (themed as the Filipino game tumbang preso) in a Philippine MATATAG Grade 9 physics app. A pamato (slipper) is launched at an angle/velocity toward a can 20 m away. The BIG problem is scale: the pixels-per-meter is a fixed constant, so for many angle/velocity combinations the projectile flies off the right edge or far above the top of the canvas: the trajectory is frequently off-screen. The object also spins decoratively, and the parabolic path is not traced.
 
 Research and report, with citations:
-(a) The canonical way projectile motion is diagrammed in reputable sources (PhET "Projectile Motion", OpenStax University Physics, DepEd Grade 9 materials) — traced parabola, range/max-height markers, velocity-component vectors, and axes with a distance scale.
+(a) The canonical way projectile motion is diagrammed in reputable sources (PhET "Projectile Motion", OpenStax University Physics, DepEd Grade 9 materials): traced parabola, range/max-height markers, velocity-component vectors, and axes with a distance scale.
 (b) Misconceptions to avoid: horizontal velocity decreasing during flight, vertical and horizontal motion not being independent, the object needing a forward force to keep moving, and 45° always being optimal regardless of launch/landing height.
 (c) Visual-design best practices: auto-scaling the viewport to fit the full trajectory (range and apex) with a dynamic but labeled distance/height scale, drawing the parabola as a trace, showing decomposed velocity vectors, avoiding misleading rotation, and DPI-correct rendering.
 (d) Grade 9 appropriate representation and units.
@@ -331,7 +331,7 @@ Return implementable specifics.
 I am polishing a canvas diagram for a "Wave Physics" tool in a Philippine MATATAG Grade 10 physics app. It animates a 1D transverse traveling wave on a string with a highlighted particle (to show purely vertical motion) and a wavelength marker, with v=fλ derived. It mostly works; concerns are a possibly crowded wavelength label at small λ, hard-coded colors, no DPI scaling, and only transverse (no longitudinal) representation.
 
 Research and report, with citations:
-(a) The canonical way transverse (and longitudinal) waves and the v=fλ relationship are diagrammed in reputable sources (PhET "Wave on a String", OpenStax, DepEd Grade 10 materials) — labeling wavelength, amplitude, crest/trough, and showing that medium particles oscillate in place.
+(a) The canonical way transverse (and longitudinal) waves and the v=fλ relationship are diagrammed in reputable sources (PhET "Wave on a String", OpenStax, DepEd Grade 10 materials): labeling wavelength, amplitude, crest/trough, and showing that medium particles oscillate in place.
 (b) Misconceptions to avoid: the medium travels with the wave, amplitude affecting speed or wavelength, and confusing frequency with speed.
 (c) Visual-design best practices: clear amplitude/wavelength annotations without label collisions at small λ, a period/time indicator on the tracked particle, themable colors, DPI-correct rendering, and reduced-motion (static labeled snapshot) support.
 (d) Grade 10 appropriate representation, and whether to add a longitudinal-wave view.
@@ -352,7 +352,7 @@ Return implementable specifics.
 I am improving the diagram for an "Electromagnetic Spectrum" tool in a Philippine MATATAG Grade 10 physics app. A log-frequency slider drives a single animated sine wave (more cycles = higher frequency) and shows the current band's name plus c=fλ and E=hf readouts. Problems: there is no full labeled spectrum chart (radio→gamma) showing where the current selection sits; the visible-light "rainbow" doesn't render (a CSS gradient string is wrongly used as an SVG stroke, so it falls back to white); and the lone wave is non-uniformly stretched with a meaningless fixed amplitude.
 
 Research and report, with citations:
-(a) The canonical way the EM spectrum is diagrammed in reputable sources (NASA Science "Tour of the EMS", OpenStax, NIST, DepEd Grade 10 materials) — a labeled band/ruler ordered by wavelength/frequency, the visible-light expansion, and representative scales/objects per band.
+(a) The canonical way the EM spectrum is diagrammed in reputable sources (NASA Science "Tour of the EMS", OpenStax, NIST, DepEd Grade 10 materials): a labeled band/ruler ordered by wavelength/frequency, the visible-light expansion, and representative scales/objects per band.
 (b) Misconceptions to avoid: that visible light is a large part of the spectrum, that higher frequency = "stronger," confusing wavelength and frequency direction, and ionizing vs non-ionizing boundaries.
 (c) Visual-design best practices: a full labeled spectrum band with a movable marker, correct rendering of the visible rainbow (SVG gradient defs), log-axis labeling, accessible color use (don't rely on hue alone), and a single representative wave with honest, uniform scaling.
 (d) Grade 10 appropriate representation and Filipino/real-world examples per band.
@@ -371,12 +371,12 @@ Return implementable specifics.
 - Hard-coded dark/light fallback colors; canvas not DPI-scaled.
 
 ```text
-I am improving a canvas ray-diagram tool for mirrors (concave, convex, plane) in a Philippine MATATAG Grade 10 physics app. It traces principal rays to locate the image and reports real/virtual, upright/inverted, enlarged/diminished. Problem: the mirror is DRAWN as a curved arc whose curvature is decorative and does not correspond to the focal length, while rays actually reflect off a flat plane (thin-mirror approximation) — so F and C markers can look inconsistent with the mirror's shape. Also the image height is clamped near the focal point (silent mis-scaling) and ray back-extensions for virtual images are fragile.
+I am improving a canvas ray-diagram tool for mirrors (concave, convex, plane) in a Philippine MATATAG Grade 10 physics app. It traces principal rays to locate the image and reports real/virtual, upright/inverted, enlarged/diminished. Problem: the mirror is DRAWN as a curved arc whose curvature is decorative and does not correspond to the focal length, while rays actually reflect off a flat plane (thin-mirror approximation): so F and C markers can look inconsistent with the mirror's shape. Also the image height is clamped near the focal point (silent mis-scaling) and ray back-extensions for virtual images are fragile.
 
 Research and report, with citations:
-(a) The canonical ray diagrams for concave/convex/plane mirrors in reputable sources (PhET "Geometric Optics", OpenStax, HyperPhysics, DepEd Grade 10 materials) — the standard principal rays, sign conventions, and how the mirror, F, and C are drawn consistently.
+(a) The canonical ray diagrams for concave/convex/plane mirrors in reputable sources (PhET "Geometric Optics", OpenStax, HyperPhysics, DepEd Grade 10 materials): the standard principal rays, sign conventions, and how the mirror, F, and C are drawn consistently.
 (b) Misconceptions to avoid: virtual images "don't exist," confusing real vs virtual, image always same size, and that the mirror's drawn curvature is unrelated to f (it must be consistent).
-(c) Visual-design best practices: making the drawn mirror curvature consistent with the focal length (radius of curvature R=2f), drawing exactly the conventional principal rays, clearly distinguishing real (solid) vs virtual (dashed) rays/images, handling object-near-F extremes gracefully (don't silently clamp — pan/zoom or annotate), themable colors, and DPI-correct text.
+(c) Visual-design best practices: making the drawn mirror curvature consistent with the focal length (radius of curvature R=2f), drawing exactly the conventional principal rays, clearly distinguishing real (solid) vs virtual (dashed) rays/images, handling object-near-F extremes gracefully (don't silently clamp: pan/zoom or annotate), themable colors, and DPI-correct text.
 (d) Grade 10 appropriate scope and conventions.
 (e) Concrete fixes: either draw a geometrically consistent curved mirror (with arc radius = 2f and correct reflection) OR clearly present a labeled "thin mirror plane" so the flat-plane reflection is honest; remove silent image clamping in favor of auto-fit/annotation; and robust virtual-ray back-extension to the image.
 Return implementable specifics.
@@ -396,8 +396,8 @@ Return implementable specifics.
 I am polishing a "Density and Buoyancy" tank diagram in a Philippine MATATAG Grade 7 physics app. A cube floats at the correct submerged fraction (ratio of densities) or sinks. It works, but there are no buoyant-force/weight arrows, no displaced-water indication, and the underwater vs above-water portion of the object isn't visually distinguished.
 
 Research and report, with citations:
-(a) The canonical way density and buoyancy/floating are diagrammed in reputable sources (PhET "Buoyancy"/"Density", OpenStax, DepEd Grade 7 materials) — submerged fraction, displaced fluid, and force arrows (weight vs buoyant force).
-(b) Misconceptions to avoid: heavier objects always sink, size determines sinking, and that floating objects have no gravity acting — plus the role of the fluid's density.
+(a) The canonical way density and buoyancy/floating are diagrammed in reputable sources (PhET "Buoyancy"/"Density", OpenStax, DepEd Grade 7 materials): submerged fraction, displaced fluid, and force arrows (weight vs buoyant force).
+(b) Misconceptions to avoid: heavier objects always sink, size determines sinking, and that floating objects have no gravity acting: plus the role of the fluid's density.
 (c) Visual-design best practices: clearly shading the submerged portion, showing displaced-water level change, proportional weight/buoyant-force arrows with a legend, accessible color, and reduced-motion settling animation.
 (d) Grade 7 appropriate representation and Filipino fluid examples (seawater vs fresh water vs oil).
 (e) Concrete additions: distinct shading for the underwater portion, optional buoyant-force vs weight arrows, and a displaced-water cue, while keeping the existing correct submerged-fraction geometry.
@@ -418,7 +418,7 @@ Return implementable specifics.
 I am polishing a "Gas Laws" particle-piston simulator in a Philippine MATATAG Grade 10 physics/chemistry app. Particles bounce in a chamber and pressure is measured from wall collisions (kinetic theory) rather than read from PV=nRT. It's solid; concerns: the piston handle/label can overlap particles at large volume, particle-temperature coloring isn't accessibility-checked, and pressure is shown only as a number (no gauge).
 
 Research and report, with citations:
-(a) The canonical way kinetic molecular theory and Boyle/Charles/Gay-Lussac are diagrammed in reputable sources (PhET "Gas Properties", OpenStax Chemistry, DepEd Grade 10 materials) — piston, particle speed/temperature representation, and pressure gauges.
+(a) The canonical way kinetic molecular theory and Boyle/Charles/Gay-Lussac are diagrammed in reputable sources (PhET "Gas Properties", OpenStax Chemistry, DepEd Grade 10 materials): piston, particle speed/temperature representation, and pressure gauges.
 (b) Misconceptions to avoid: pressure as a static "amount of gas," temperature as "heat," particles losing energy over time, and confusing the three laws' held-constant variable.
 (c) Visual-design best practices: an accessible temperature-to-color mapping with a legend, a visible pressure gauge tied to the measured collisions, piston/handle layout that never overlaps particles or labels, and reduced-motion handling.
 (d) Grade 10 appropriate representation.
@@ -441,9 +441,9 @@ Return implementable specifics.
 I am polishing a "Digital Logic: Bits to Pixels" tool in a Philippine K-12 computer-science context (Grades 8-10). Users toggle 8 bits per RGB channel; a swatch shows the resulting color and three bars show each channel 0-255. The bars use a negative-margin fill trick without a labeled scale, and additive color mixing (how 3 subpixels make one color) isn't shown beyond the swatch.
 
 Research and report, with citations:
-(a) The canonical way binary place value, byte→0-255 mapping, and additive RGB color are explained/diagrammed in reputable sources (CS Unplugged, code.org, Khan Academy, color-science references) — including subpixel/additive-mixing visuals.
+(a) The canonical way binary place value, byte→0-255 mapping, and additive RGB color are explained/diagrammed in reputable sources (CS Unplugged, code.org, Khan Academy, color-science references): including subpixel/additive-mixing visuals.
 (b) Misconceptions to avoid: bits as decimal digits, RGB as subtractive (paint) mixing, and that "more bits = brighter."
-(c) Visual-design best practices: clearly labeled channel bars/meters (0-255 axis), an additive-mixing diagram (overlapping R/G/B light), accessible color use (don't rely on the swatch alone for color-blind users — show hex/values), and place-value annotation.
+(c) Visual-design best practices: clearly labeled channel bars/meters (0-255 axis), an additive-mixing diagram (overlapping R/G/B light), accessible color use (don't rely on the swatch alone for color-blind users: show hex/values), and place-value annotation.
 (d) Grade 8-10 appropriate representation.
 (e) Concrete additions/fixes: a labeled 0-255 meter per channel, an additive RGB-overlap diagram, and a clearer binary-place-value-to-channel-value link.
 Return implementable specifics.
@@ -464,7 +464,7 @@ Return implementable specifics.
 I am polishing a Matter.js particle simulation for a "States of Matter" tool in a Philippine MATATAG Grade 3 science app (water as solid/liquid/gas). Particles lock in a grid (solid), pool at the bottom (liquid), or disperse (gas) as temperature crosses 0 °C and 100 °C. Concerns: the change is abrupt at the exact temperatures (no melting/boiling transition shown), the solid "lattice" looks like a pile of balls at the bottom rather than a fixed-shape crystal, and the gas can drift to a corner instead of filling the space.
 
 Research and report, with citations:
-(a) The canonical way the particle (kinetic) model of solids/liquids/gases is diagrammed for primary grades in reputable sources (PhET "States of Matter: Basics", OpenStax, DepEd/MATATAG Grade 3 materials) — particle spacing, arrangement, and motion per state, and how melting/boiling are shown.
+(a) The canonical way the particle (kinetic) model of solids/liquids/gases is diagrammed for primary grades in reputable sources (PhET "States of Matter: Basics", OpenStax, DepEd/MATATAG Grade 3 materials): particle spacing, arrangement, and motion per state, and how melting/boiling are shown.
 (b) Misconceptions to avoid: particles only exist in some states, particles changing size/shape with state, gas particles "having nothing between them" vs filling the container, and that phase change is instantaneous.
 (c) Visual-design best practices for particle-model diagrams at Grade 3: clear container/shape cues (fixed shape vs takes-shape-of-container vs fills-container), legible particle counts, motion that reads as vibrate/flow/fly-apart, accessible color, and reduced-motion options.
 (d) Grade 3 appropriate vocabulary and simplicity (Tagalog: solido/likido/gas).
@@ -486,7 +486,7 @@ Return implementable specifics.
 I am improving a canvas "Solution Concentration Lab" (virtual beaker) in a Philippine MATATAG Grade 7 chemistry app. It shows water at a volume-tied level, dissolved particles drifting, and an undissolved pile at the bottom past the solubility limit, with %m/m, %m/v, and saturation status. Concerns: the beaker is just a rectangle (doesn't look like a beaker), the undissolved pile sits at the canvas bottom regardless of water level, dissolved particles crowd into a thin band at low fill, and saturation/supersaturation is conveyed mostly by a badge rather than a clear visual gauge.
 
 Research and report, with citations:
-(a) The canonical way solutions, concentration, and saturation/solubility are diagrammed in reputable sources (PhET "Concentration"/"Sugar and Salt Solutions", OpenStax Chemistry, DepEd Grade 7 materials) — solute particles in solution, undissolved solute at the bottom, and saturation indicators.
+(a) The canonical way solutions, concentration, and saturation/solubility are diagrammed in reputable sources (PhET "Concentration"/"Sugar and Salt Solutions", OpenStax Chemistry, DepEd Grade 7 materials): solute particles in solution, undissolved solute at the bottom, and saturation indicators.
 (b) Misconceptions to avoid: dissolved solute "disappears" (mass not conserved), concentration depends only on solute amount (not solution volume), and saturation as a fixed property regardless of temperature/volume.
 (c) Visual-design best practices: a recognizable beaker shape with an accurate liquid level, undissolved solute resting at the actual liquid floor, particle density that scales believably with dissolved mass, a clear saturation gauge (dissolved vs solubility ceiling), accessible color, and DPI-correct rendering.
 (d) Grade 7 appropriate representation and Filipino solute examples (asin/asukal).
@@ -508,7 +508,7 @@ Return implementable specifics.
 I am improving an SVG step-through diagram for a "Chemical Bonding" tool in a Philippine MATATAG Grade 9 chemistry app, covering ionic (NaCl) and covalent (Cl₂) bonding with Lewis dots and an octet tracker. Problems: valence electrons are drawn as single dots placed one-per-side rather than as proper lone PAIRS (Lewis convention); the covalent shared pair overlaps the bond line; there are no electron-shell (Bohr) rings so "octet" is asserted in text; and the ionic lattice is a flat checkerboard.
 
 Research and report, with citations:
-(a) The canonical conventions for Lewis dot structures and Bohr shell diagrams in reputable sources (IUPAC recommendations, OpenStax Chemistry, DepEd Grade 9 materials) — how lone pairs are grouped, how bonding pairs are shown, and how the octet rule is depicted.
+(a) The canonical conventions for Lewis dot structures and Bohr shell diagrams in reputable sources (IUPAC recommendations, OpenStax Chemistry, DepEd Grade 9 materials): how lone pairs are grouped, how bonding pairs are shown, and how the octet rule is depicted.
 (b) Misconceptions to avoid: ionic "sharing," covalent "transfer," that Na⁺ achieves an octet by emptying its shell (it actually exposes a full inner shell), dots vs shells confusion, and that NaCl is a discrete molecule rather than a lattice.
 (c) Visual-design best practices: correct paired-dot placement, distinguishing bonding pairs from lone pairs, optional Bohr shells to show the outer shell filling to 8, a 3-D-cued ionic lattice, accessible color, and clear step transitions.
 (d) Grade 9 appropriate representation (Lewis dots and/or Bohr shells per MATATAG).
@@ -529,8 +529,8 @@ Return implementable specifics.
 I am polishing a "Reaction Rate / Collision Theory" tool in a Philippine MATATAG Grade 10 chemistry app. It has a particle box (reactions need sufficient energy AND correct orientation, shown by a notch) and a Maxwell-Boltzmann distribution with a shaded fraction above the activation energy and a movable Ea line. It's solid; concerns: the orientation "notch" is subtle at small particle size, the MB x-axis lacks tick values, and the catalyst is a labeled strip that doesn't visibly interact with particles.
 
 Research and report, with citations:
-(a) The canonical way collision theory and Maxwell-Boltzmann distributions are diagrammed in reputable sources (OpenStax Chemistry, RSC, PhET reactions, DepEd Grade 10 materials) — effective vs ineffective collisions, orientation, the Ea threshold, and how a catalyst is represented.
-(b) Misconceptions to avoid: every collision reacts, temperature changes Ea (it doesn't — it shifts the distribution), catalysts are consumed, and confusing the area-above-Ea with rate magnitude.
+(a) The canonical way collision theory and Maxwell-Boltzmann distributions are diagrammed in reputable sources (OpenStax Chemistry, RSC, PhET reactions, DepEd Grade 10 materials): effective vs ineffective collisions, orientation, the Ea threshold, and how a catalyst is represented.
+(b) Misconceptions to avoid: every collision reacts, temperature changes Ea (it doesn't: it shifts the distribution), catalysts are consumed, and confusing the area-above-Ea with rate magnitude.
 (c) Visual-design best practices: making molecular orientation clearly visible (a distinct reactive face, not a thin notch), labeled axes on the MB curve, an honest catalyst depiction (lowering Ea, providing a surface), accessible color, and reduced-motion handling.
 (d) Grade 10 appropriate representation.
 (e) Concrete fixes: a clearer reactive-site/orientation depiction, axis ticks/labels on the MB distribution, and a catalyst that visibly relates to the lowered Ea line (and optionally the particle interactions).
@@ -550,7 +550,7 @@ Return implementable specifics.
 I am improving the visual for a "Stoichiometry: Limiting Reactant" tool in a Philippine MATATAG Grade 12 chemistry app. It shows a balanced equation, two "reaction sets" comparison bars (shorter one limits), and result cards. The current visual is abstract bars + numbers; there is no particle/molecule-level picture of reactants combining in the mole ratio with the excess reactant left over.
 
 Research and report, with citations:
-(a) The canonical ways limiting-reactant problems are diagrammed in reputable sources (OpenStax Chemistry, RSC, DepEd/SHS chemistry materials) — "before/after" molecule diagrams, mole-ratio groupings, and BCA (before-change-after) tables.
+(a) The canonical ways limiting-reactant problems are diagrammed in reputable sources (OpenStax Chemistry, RSC, DepEd/SHS chemistry materials): "before/after" molecule diagrams, mole-ratio groupings, and BCA (before-change-after) tables.
 (b) Misconceptions to avoid: the limiting reactant is simply the one with fewer moles (ignoring coefficients), leftover product instead of leftover reactant, and that the excess reactant disappears.
 (c) Visual-design best practices: a particle/molecule "before vs after" diagram that groups reactants by the mole ratio and shows leftover excess as concrete units, clear coefficient-aware grouping, accessible color, and pairing the visual with the existing numeric bars.
 (d) Grade 12 appropriate representation.
@@ -570,11 +570,11 @@ Return implementable specifics.
 - Stage size/scale doesn't convey growth; emoji rendering varies by platform/OS.
 
 ```text
-I am improving a "Life Cycles" visualizer for two Philippine endemic species (Philippine eagle and tamaraw) in a MATATAG Grade 4 biology app. Stages are currently shown as a ring of emoji nodes — and the tamaraw reuses the SAME buffalo emoji for calf, juvenile, and adult, so no developmental change is visible. I want a proper life-cycle diagram.
+I am improving a "Life Cycles" visualizer for two Philippine endemic species (Philippine eagle and tamaraw) in a MATATAG Grade 4 biology app. Stages are currently shown as a ring of emoji nodes: and the tamaraw reuses the SAME buffalo emoji for calf, juvenile, and adult, so no developmental change is visible. I want a proper life-cycle diagram.
 
 Research and report, with citations:
-(a) The canonical way animal life cycles (direct development, no metamorphosis) are diagrammed for primary grades in reputable sources (DepEd/MATATAG Grade 4 materials, encyclopedic/zoo/IUCN sources for these species) — circular life-cycle layouts, stage labeling, and showing growth from young to adult.
-(b) Misconceptions to avoid: that birds/mammals undergo metamorphosis like insects/frogs, that young look unlike adults, and that all species develop at the same pace (these are slow breeders — a key conservation point).
+(a) The canonical way animal life cycles (direct development, no metamorphosis) are diagrammed for primary grades in reputable sources (DepEd/MATATAG Grade 4 materials, encyclopedic/zoo/IUCN sources for these species): circular life-cycle layouts, stage labeling, and showing growth from young to adult.
+(b) Misconceptions to avoid: that birds/mammals undergo metamorphosis like insects/frogs, that young look unlike adults, and that all species develop at the same pace (these are slow breeders: a key conservation point).
 (c) Visual-design best practices: distinct, accurate stage illustrations that show real size/feature changes (egg→chick→juvenile→adult; calf→juvenile→adult), consistent style, accessible labeling, and avoiding platform-dependent emoji.
 (d) Grade 4 appropriate representation and Filipino terms (itlog, sisiw, guya, etc.).
 (e) Concrete fixes: recommend a set of accurate, distinct per-stage illustrations (or a style spec) replacing emoji, a circular layout that conveys the slow once-every-two-years cycle, and how to emphasize the conservation angle visually.
@@ -616,7 +616,7 @@ Return implementable, sourced guidance (with reference figures to emulate).
 I am polishing a "Philippine rice-paddy Food Web" tool in a MATATAG Grade 5 biology app. It uses a Cytoscape.js graph (producers→apex) with tap-to-highlight, plus a CSS energy pyramid (10% rule) and a decomposer note. It's solid; concerns: small node labels, ensuring arrow direction (who-eats-whom) is unambiguous, and the decomposer being only a text/emoji note rather than integrated as a recycling pathway.
 
 Research and report, with citations:
-(a) The canonical way food webs and energy pyramids are diagrammed in reputable sources (OpenStax Biology, DepEd Grade 5 materials, ecology texts) — arrow direction convention (energy flow from prey to predator), trophic-level coloring, the ~10% rule, and decomposers/recyclers.
+(a) The canonical way food webs and energy pyramids are diagrammed in reputable sources (OpenStax Biology, DepEd Grade 5 materials, ecology texts): arrow direction convention (energy flow from prey to predator), trophic-level coloring, the ~10% rule, and decomposers/recyclers.
 (b) Misconceptions to avoid: arrows showing "who eats whom" backwards, food webs as simple chains, energy being recycled (it's lost as heat) vs nutrients being recycled, and decomposers sitting "at the top."
 (c) Visual-design best practices: legible node labels in dense graphs, unambiguous directional arrows with a legend, trophic coloring (accessible), and integrating decomposers as an explicit nutrient-recycling arrow back to producers.
 (d) Grade 5 appropriate representation and Filipino organism names.
@@ -638,7 +638,7 @@ Return implementable specifics.
 I am improving an SVG "Virtual Microscope" plant-cell diagram in a Philippine MATATAG Grade 7 biology app. Users zoom (40x/100x/400x) and click organelles. Problems: the cell is an irregular quadrilateral (not the canonical brick-shaped plant cell), the central vacuole is an off-center blob rather than the dominant central structure, organelle proportions are off (nucleus too big, chloroplasts/mitochondria tiny), and zoom uses a fixed origin so edge organelles pan out of view at high magnification, with no scale bar.
 
 Research and report, with citations:
-(a) The canonical way a plant cell and its organelles are diagrammed in reputable sources (OpenStax Biology, DepEd Grade 7 materials, standard cell-biology figures) — overall cell shape, the large central vacuole, relative organelle sizes/positions, and what's visible at light-microscope magnifications.
+(a) The canonical way a plant cell and its organelles are diagrammed in reputable sources (OpenStax Biology, DepEd Grade 7 materials, standard cell-biology figures): overall cell shape, the large central vacuole, relative organelle sizes/positions, and what's visible at light-microscope magnifications.
 (b) Misconceptions to avoid: plant cells being round like animal cells, the nucleus dominating the cell (the vacuole usually does), all organelles being visible/large at 40x, and confusing chloroplasts/mitochondria.
 (c) Visual-design best practices: accurate cell shape and organelle proportions, a magnification scale bar, zoom that lets the user center on a clicked organelle (or keeps the focused organelle in view), accessible highlighting, and reduced-motion zoom.
 (d) Grade 7 appropriate representation and which structures to label.
@@ -659,7 +659,7 @@ Return implementable, sourced guidance (with reference figures to emulate).
 I am polishing a "Punnett Square" tool in a Philippine MATATAG Grade 8 biology app for a monohybrid cross (R = red dominant, r = white recessive in gumamela). It shows gamete splitting, a 2x2 grid, and genotype/phenotype ratios. It's correct; concerns: phenotype is conveyed mainly by cell color (accessibility), the gamete-contribution concept is mostly textual, and only a 2x2 monohybrid case is supported.
 
 Research and report, with citations:
-(a) The canonical way Punnett squares and gamete formation are diagrammed in reputable sources (OpenStax Biology, DepEd Grade 8 materials, genetics texts) — gamete rows/columns, allele combination in cells, and genotype vs phenotype ratio reading.
+(a) The canonical way Punnett squares and gamete formation are diagrammed in reputable sources (OpenStax Biology, DepEd Grade 8 materials, genetics texts): gamete rows/columns, allele combination in cells, and genotype vs phenotype ratio reading.
 (b) Misconceptions to avoid: ratios as guarantees rather than probabilities, dominant = "more common," confusing genotype and phenotype, and that each parent passes both alleles.
 (c) Visual-design best practices: encoding phenotype with color AND a pattern/label (color-blind-safe), clearly showing each parent contributing one allele per gamete, and an optional path toward dihybrid/incomplete-dominance without clutter.
 (d) Grade 8 appropriate representation and Filipino (gumamela) framing.
@@ -681,8 +681,8 @@ Return implementable specifics.
 I am improving a two-tab "Photosynthesis" tool in a Philippine MATATAG Grade 11-12 biology app: (1) stomatal gas exchange (two green ellipse "guard cells" parting by an aperture, CO2/O2 particles), and (2) a Van Helmont mass-balance view where the plant is a TREE EMOJI that scales up. Problems: the Van Helmont plant is an emoji not a diagram; the guard cells are plain ellipses rather than the canonical kidney-bean guard-cell pair forming a stomatal pore, and particles spawn even when nearly closed; and the limiting-factor relationships (light/CO2/water) aren't shown as a clear graph.
 
 Research and report, with citations:
-(a) The canonical way stomata/guard cells and photosynthesis limiting factors are diagrammed in reputable sources (OpenStax Biology, RSC/SAPS, DepEd SHS materials, classic limiting-factor graphs) — kidney-bean guard cells forming a pore, gas exchange direction, and rate-vs-factor curves with plateaus.
-(b) Misconceptions to avoid: plants gaining mass mostly from soil (Van Helmont's point — it's from atmospheric CO2), stomata as simple holes, O2 as the "food," and that one factor alone always limits regardless of others.
+(a) The canonical way stomata/guard cells and photosynthesis limiting factors are diagrammed in reputable sources (OpenStax Biology, RSC/SAPS, DepEd SHS materials, classic limiting-factor graphs): kidney-bean guard cells forming a pore, gas exchange direction, and rate-vs-factor curves with plateaus.
+(b) Misconceptions to avoid: plants gaining mass mostly from soil (Van Helmont's point: it's from atmospheric CO2), stomata as simple holes, O2 as the "food," and that one factor alone always limits regardless of others.
 (c) Visual-design best practices: accurate kidney-bean guard-cell geometry with an aperture that gates particle flow, a limiting-factor line graph (rate vs light/CO2) showing plateaus and the active limiter, accessible color, consistent styling across tabs, and reduced-motion options.
 (d) Grade 11-12 appropriate level (limiting factors; whether the advanced rate models are warranted or should be simplified).
 (e) Concrete fixes: replace the tree emoji with a real before/after plant + air/soil mass-balance diagram; redraw guard cells as a kidney-bean pair whose aperture controls particle gating; add a limiting-factor graph; and unify styling.
@@ -699,14 +699,14 @@ Return implementable, sourced guidance (with reference figures to emulate).
 - No visual of chromosome number being conserved (the stated "key idea").
 
 ```text
-I am replacing the diagram for a "Mitosis: Cell Division" tool in a Philippine MATATAG Grade 11-12 biology app. The phases (interphase, prophase, metaphase, anaphase, telophase, cytokinesis) are currently shown as a ring of arbitrary EMOJI with text only — there is NO depiction of chromosomes, sister chromatids, spindle fibres, the metaphase plate, or the dividing cell. The whole point (what happens to chromosomes each phase) is not visualized.
+I am replacing the diagram for a "Mitosis: Cell Division" tool in a Philippine MATATAG Grade 11-12 biology app. The phases (interphase, prophase, metaphase, anaphase, telophase, cytokinesis) are currently shown as a ring of arbitrary EMOJI with text only: there is NO depiction of chromosomes, sister chromatids, spindle fibres, the metaphase plate, or the dividing cell. The whole point (what happens to chromosomes each phase) is not visualized.
 
 Research and report, with citations:
-(a) The canonical way the phases of mitosis are diagrammed in reputable sources (OpenStax Biology, DepEd SHS materials, standard cell-biology figures) — chromosomes/sister chromatids, centromeres, spindle apparatus, nuclear envelope breakdown/reformation, metaphase plate alignment, and cytokinesis.
+(a) The canonical way the phases of mitosis are diagrammed in reputable sources (OpenStax Biology, DepEd SHS materials, standard cell-biology figures): chromosomes/sister chromatids, centromeres, spindle apparatus, nuclear envelope breakdown/reformation, metaphase plate alignment, and cytokinesis.
 (b) Misconceptions to avoid: chromosomes appearing from nothing, DNA copied more than once, daughter cells differing genetically, plant vs animal cytokinesis differences, and confusing chromosomes with chromatids.
 (c) Visual-design best practices for a phase sequence: showing a cell with a small, trackable chromosome set through each phase (so number conservation is visible), spindle/plate depiction, clear stage transitions, accessible color, and reduced-motion stepping.
 (d) Grade 11-12 appropriate detail and whether to use animal and/or plant cell.
-(e) Concrete redesign: a per-phase cell illustration that actually shows 2-4 chromosomes condensing, aligning, separating, and the cell dividing — replacing emoji — with consistent chromosome coloring so learners can track that each daughter gets a full set.
+(e) Concrete redesign: a per-phase cell illustration that actually shows 2-4 chromosomes condensing, aligning, separating, and the cell dividing: replacing emoji: with consistent chromosome coloring so learners can track that each daughter gets a full set.
 Return implementable, sourced guidance (with reference figures/animations to emulate).
 ```
 
@@ -725,11 +725,11 @@ Return implementable, sourced guidance (with reference figures/animations to emu
 I am refining a 3D "Solar System Explorer" (React Three Fiber) in a Philippine MATATAG Grade 6 earth-science app. For visibility it uses a LOG-compressed distance scale and exaggerated planet sizes, with circular coplanar orbits. I want to ensure it's pedagogically honest and well-labeled rather than reinforcing scale misconceptions.
 
 Research and report, with citations:
-(a) How the solar system is canonically represented in reputable sources (NASA Solar System, OpenStax Astronomy, DepEd Grade 6 materials) — the tension between true scale (impossible on one screen) and visibility, and how reputable visualizations disclose compressed scales.
+(a) How the solar system is canonically represented in reputable sources (NASA Solar System, OpenStax Astronomy, DepEd Grade 6 materials): the tension between true scale (impossible on one screen) and visibility, and how reputable visualizations disclose compressed scales.
 (b) Misconceptions to avoid: planets are close together / similar sizes, orbits are strongly elliptical or all in obviously different planes, and that the textbook "lined-up planets" image is real.
 (c) Visual-design best practices: clearly labeling "distances/sizes not to scale (log)," offering a true-scale toggle or comparison, accessible planet labeling, and reduced-motion orbit animation.
 (d) Grade 6 appropriate representation and Filipino framing.
-(e) Concrete fixes: prominent not-to-scale labeling, an optional true-scale or scale-comparison mode, and (optionally) slight orbital inclination/eccentricity cues — while keeping the current readable layout.
+(e) Concrete fixes: prominent not-to-scale labeling, an optional true-scale or scale-comparison mode, and (optionally) slight orbital inclination/eccentricity cues: while keeping the current readable layout.
 Return implementable specifics.
 ```
 
@@ -746,7 +746,7 @@ Return implementable specifics.
 I am improving a two-panel SVG "Seasons & Earth's Tilt" tool in a Philippine MATATAG Grade 6 earth-science app: (1) Earth at four orbital positions with a 23.5° axis, and (2) hemisphere insolation with Philippine monsoon (Amihan/Habagat) arrows. Problems: the orbit panel doesn't clearly show the lit/dark hemisphere or how a fixed tilt direction causes opposite seasons around the orbit; monsoon arrows are fixed-coordinate and can clip the Philippines marker/edge; and I must ensure the axis stays pointing the same way in space at all four positions.
 
 Research and report, with citations:
-(a) The canonical way the cause of seasons (axial tilt + revolution, not distance) and monsoons are diagrammed in reputable sources (NASA, OpenStax Astronomy/Earth science, PAGASA/DOST for Amihan/Habagat, DepEd Grade 6 materials) — fixed axis direction, solstice/equinox positions, day/night terminator, and insolation angle.
+(a) The canonical way the cause of seasons (axial tilt + revolution, not distance) and monsoons are diagrammed in reputable sources (NASA, OpenStax Astronomy/Earth science, PAGASA/DOST for Amihan/Habagat, DepEd Grade 6 materials): fixed axis direction, solstice/equinox positions, day/night terminator, and insolation angle.
 (b) Misconceptions to avoid: seasons caused by Earth-Sun distance, the axis tilting toward the Sun year-round, both hemispheres having the same season, and that the Philippines has four temperate seasons.
 (c) Visual-design best practices: showing the lit/dark hemisphere (terminator), keeping the axis fixed in space across positions, clearly differentiated/labeled monsoon arrows that don't clip, accessible color, and reduced-motion.
 (d) Grade 6 appropriate representation and the Philippine wet/dry + Amihan/Habagat framing.
@@ -764,10 +764,10 @@ Return implementable specifics.
 - Processes like transpiration, infiltration, and groundwater flow aren't depicted spatially.
 
 ```text
-I am replacing the diagram for a "Water Cycle" tool in a Philippine MATATAG Grade 4 earth-science app. It currently shows the stages (evaporation, condensation, precipitation, collection) as an abstract ring of EMOJI with text — there is no landscape, no spatial flow (ocean→sky→mountains→rivers→ocean), and no directional transport. The water cycle is inherently spatial, so a ring of icons misrepresents it.
+I am replacing the diagram for a "Water Cycle" tool in a Philippine MATATAG Grade 4 earth-science app. It currently shows the stages (evaporation, condensation, precipitation, collection) as an abstract ring of EMOJI with text: there is no landscape, no spatial flow (ocean→sky→mountains→rivers→ocean), and no directional transport. The water cycle is inherently spatial, so a ring of icons misrepresents it.
 
 Research and report, with citations:
-(a) The canonical way the water cycle is diagrammed in reputable sources (USGS Water Cycle diagram, NASA, DepEd/MATATAG Grade 4 materials) — a landscape cross-section (sea, land, mountains, sky) with labeled arrows for evaporation, transpiration, condensation, precipitation, runoff, infiltration, and groundwater.
+(a) The canonical way the water cycle is diagrammed in reputable sources (USGS Water Cycle diagram, NASA, DepEd/MATATAG Grade 4 materials): a landscape cross-section (sea, land, mountains, sky) with labeled arrows for evaporation, transpiration, condensation, precipitation, runoff, infiltration, and groundwater.
 (b) Misconceptions to avoid: the cycle as a fixed linear sequence, rain coming "straight back" to the same spot, ignoring transpiration/groundwater, and clouds "holding" water like containers.
 (c) Visual-design best practices: a spatial landscape layout with clearly directioned, labeled arrows, sun as the energy driver, accessible color, and reduced-motion (animated droplets optional).
 (d) Grade 4 appropriate representation and Filipino context (e.g., monsoon rain, rice paddies, rivers to the sea).
@@ -785,10 +785,10 @@ Return implementable, sourced guidance (with reference figures to emulate).
 - No Philippine-specific context (e.g., Philippine Trench, Philippine Fault, Pacific Ring of Fire) is shown spatially.
 
 ```text
-I am replacing the diagram for a "Plate Tectonics" tool in a Philippine MATATAG Grade 10 earth-science app. Boundary types/processes are currently shown as a ring of EMOJI with text — there are NO cross-sections, no plate-motion arrows, no mantle, and no depiction of divergent/convergent/transform boundaries or their landforms. Plate tectonics is inherently spatial/cross-sectional, so an emoji ring misrepresents it.
+I am replacing the diagram for a "Plate Tectonics" tool in a Philippine MATATAG Grade 10 earth-science app. Boundary types/processes are currently shown as a ring of EMOJI with text: there are NO cross-sections, no plate-motion arrows, no mantle, and no depiction of divergent/convergent/transform boundaries or their landforms. Plate tectonics is inherently spatial/cross-sectional, so an emoji ring misrepresents it.
 
 Research and report, with citations:
-(a) The canonical way plate boundaries are diagrammed in reputable sources (USGS "This Dynamic Earth", OpenStax/earth-science texts, PHIVOLCS/DOST for Philippine context, DepEd Grade 10 materials) — cross-sections of divergent (mid-ocean ridge), convergent (subduction zone with trench + volcanic arc, or collision), and transform boundaries, with mantle convection and plate-motion arrows.
+(a) The canonical way plate boundaries are diagrammed in reputable sources (USGS "This Dynamic Earth", OpenStax/earth-science texts, PHIVOLCS/DOST for Philippine context, DepEd Grade 10 materials): cross-sections of divergent (mid-ocean ridge), convergent (subduction zone with trench + volcanic arc, or collision), and transform boundaries, with mantle convection and plate-motion arrows.
 (b) Misconceptions to avoid: continents floating on water, plates moving fast/visibly, all boundaries producing the same features, and earthquakes/volcanoes being unrelated to boundaries.
 (c) Visual-design best practices: clear cross-sectional schematics per boundary type with motion arrows, consistent layering (crust/lithosphere/asthenosphere), accessible color, labels for landforms (ridge/trench/arc/fault), and reduced-motion.
 (d) Grade 10 appropriate representation and Philippine framing (Philippine Trench, Philippine Fault, Ring of Fire).
@@ -808,7 +808,7 @@ Return implementable, sourced guidance (with reference figures to emulate).
 I am improving a "Rock Cycle" tool in a Philippine MATATAG Grade 11 earth-science app. It shows rock types and processes (igneous, sedimentary, metamorphic; weathering, melting, etc.) as a ring of EMOJI with text. Concerns: emoji can't convey what each rock type looks like, and the rock cycle's MULTIPLE pathways (rocks can take shortcuts, not just one loop) aren't represented.
 
 Research and report, with citations:
-(a) The canonical way the rock cycle is diagrammed in reputable sources (USGS, OpenStax/geology texts, DepEd SHS materials) — the three rock types as nodes, the transforming processes as labeled arrows, and the multiple (non-linear) pathways including shortcuts.
+(a) The canonical way the rock cycle is diagrammed in reputable sources (USGS, OpenStax/geology texts, DepEd SHS materials): the three rock types as nodes, the transforming processes as labeled arrows, and the multiple (non-linear) pathways including shortcuts.
 (b) Misconceptions to avoid: the rock cycle as a single fixed loop, rocks always passing through every stage, and that the cycle happens quickly/visibly.
 (c) Visual-design best practices: representing rock types with recognizable textures/appearances (not arbitrary icons), labeling transforming processes on arrows, showing multiple/branching pathways, accessible color, and reduced-motion.
 (d) Grade 11 appropriate representation and Philippine rock/landform examples.
@@ -829,7 +829,7 @@ Return implementable, sourced guidance (with reference figures to emulate).
 I am improving an SVG "Typhoon Tracker" tool in a Philippine MATATAG Grade 11-12 DRRR/earth-science app. It shows a stylized Philippines map, a rotating spiral cyclone with an eye, and a category-colored track polyline with PAGASA wind-signal context. Problems: the map is a rough blob, the storm isn't to scale, there's no forecast cone (track uncertainty) and no wind-signal radius rings, and the spiral/eye are decorative rather than tied to intensity.
 
 Research and report, with citations:
-(a) The canonical way tropical cyclones and their tracks are diagrammed in authoritative sources (PAGASA/DOST advisories and Tropical Cyclone Wind Signal system, JTWC, NOAA/NHC cone-of-uncertainty graphics) — track lines, forecast cones, wind-radius/signal rings, and category color scales.
+(a) The canonical way tropical cyclones and their tracks are diagrammed in authoritative sources (PAGASA/DOST advisories and Tropical Cyclone Wind Signal system, JTWC, NOAA/NHC cone-of-uncertainty graphics): track lines, forecast cones, wind-radius/signal rings, and category color scales.
 (b) Misconceptions to avoid: the forecast cone showing the storm's size (it shows track uncertainty), the eye being the most dangerous part, wind signals being the same everywhere, and that the line is a certain path.
 (c) Visual-design best practices: a recognizable (reasonably accurate) Philippine map, an honest storm size/scale, a forecast cone and wind-signal rings, an accessible category color scale (PAGASA signals), and clear labeling.
 (d) Grade 11-12 DRRR-appropriate representation and PAGASA terminology (Signal No. 1-5).

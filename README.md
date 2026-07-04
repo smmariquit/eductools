@@ -37,34 +37,34 @@ Prerequisites: **Node.js 20+** and npm.
 git clone https://github.com/smmariquit/eduvisualsph.git
 cd eduvisualsph
 npm install
-npm run dev        # Vite dev server (the main app)
+npm run dev # Vite dev server (the main app)
 ```
 
 Useful scripts:
 
 ```bash
-npm run build      # type-check + production build (tsc -b && vite build)
-npm run lint       # eslint
-npm run preview    # preview the production build
+npm run build # type-check + production build (tsc -b && vite build)
+npm run lint # eslint
+npm run preview # preview the production build
 ```
 
 ## Project layout
 
 ```
 src/
-  components/        Shared UI (Layout, Footer, content components, crayon art)
-    content/         MDX building blocks: BarChart, Figure, Sources, Changelog
-    crayon/          Hand-drawn SVG art system (CrayonArt + registry)
-  content/
-    blog/            Blog articles (.mdx)
-    deep-dives/      Per-visualizer explainer articles (.mdx)
-  data/              registry.ts (visualizers), blogPosts.ts, etc.
-  pages/             Route components (Home, BlogPost, AboutUs, ...)
-  index.css          Tailwind v4 + DaisyUI theme + design tokens
+ components/ Shared UI (Layout, Footer, content components, crayon art)
+ content/ MDX building blocks: BarChart, Figure, Sources, Changelog
+ crayon/ Hand-drawn SVG art system (CrayonArt + registry)
+ content/
+ blog/ Blog articles (.mdx)
+ deep-dives/ Per-visualizer explainer articles (.mdx)
+ data/ registry.ts (visualizers), blogPosts.ts, etc.
+ pages/ Route components (Home, BlogPost, AboutUs, ...)
+ index.css Tailwind v4 + DaisyUI theme + design tokens
 .cursor/
-  rules/             Project conventions (writing tone, MDX changelog, ...)
-  skills/            Sourcing/citation workflow for curriculum content
-  hooks/             afterFileEdit hook that stamps MDX "last updated" dates
+ rules/ Project conventions (writing tone, MDX changelog, ...)
+ skills/ Sourcing/citation workflow for curriculum content
+ hooks/ afterFileEdit hook that stamps MDX "last updated" dates
 ```
 
 ## Writing and content standards

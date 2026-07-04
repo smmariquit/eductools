@@ -80,11 +80,11 @@ Follow this so the drawing recolors with the system and animates cheaply.
 
 ```svg
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
-  <!-- fill shape sits behind the ink outline -->
-  <path class="crayon-fill-sky" d="M..." opacity="0.9"/>
-  <!-- ink outline, draws itself -->
-  <path class="crayon-draw crayon-stroke-ink" pathLength="1"
-        d="M..." stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+ <!-- fill shape sits behind the ink outline -->
+ <path class="crayon-fill-sky" d="M..." opacity="0.9"/>
+ <!-- ink outline, draws itself -->
+ <path class="crayon-draw crayon-stroke-ink" pathLength="1"
+ d="M..." stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
 ```
 
