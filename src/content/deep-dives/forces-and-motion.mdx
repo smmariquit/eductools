@@ -2,10 +2,7 @@ import { BarChart, Changelog, Sources } from '../../components/content'
 
 # Newton's Laws and Friction: Jeepney Dynamics
 
-
 When I built the jeepney visualizer, the hardest decision was not the physics. It was friction. A jeepney pulling away from a stop runs all three of Newton's laws at once, and friction is the quiet partner that makes any of it possible and also the thing that fights the brakes at the corner. I wanted one slider to carry both jobs honestly. This writeup walks through what each knob in the tool is actually doing, and where the simple model stops and the real road begins.
-
-
 
 The tool gives you three things to change. The applied force is the engine's push in newtons, from zero up to about 8,000 N. The mass runs from an empty jeepney near 1,500 kg to a packed one around 4,000 kg. The friction coefficient is a single road-resistance number, small by design, that stands in for rolling resistance and braking drag. The readouts then show the friction force, the net force, the resulting acceleration, and the velocity building over time. Everything you see falls out of one equation and one coefficient.
 
@@ -32,17 +29,17 @@ The misconception worth naming out loud is that friction is purely a brake, a ta
 That traction ceiling is a different thing from the small resistance coefficient the tool's slider controls, and it pays to keep them apart. The slider models the drag that opposes motion. The coefficients below are the grip that decides how hard the tires can push before they break loose. Both are measured, approximate, and vary a lot with conditions, which is why textbooks quote them to only one or two digits. The spread is the part a driver should care about.
 
 <BarChart
-  title="Coefficient of static friction by surface pair"
-  max={1}
-  source="OpenStax, College Physics 2e, Table 5.1 (static friction)"
-  data={[
-    { label: 'Rubber on dry concrete', value: 1.0, color: 'leaf' },
-    { label: 'Rubber on wet concrete', value: 0.7, color: 'sky' },
-    { label: 'Steel on steel (dry)', value: 0.6, color: 'sunshine' },
-    { label: 'Wood on wood', value: 0.5, color: 'grape' },
-    { label: 'Shoes on ice', value: 0.1, color: 'berry' },
-    { label: 'Teflon on steel', value: 0.04, color: 'ink' },
-  ]}
+ title="Coefficient of static friction by surface pair"
+ max={1}
+ source="OpenStax, College Physics 2e, Table 5.1 (static friction)"
+ data={[
+ { label: 'Rubber on dry concrete', value: 1.0, color: 'leaf' },
+ { label: 'Rubber on wet concrete', value: 0.7, color: 'sky' },
+ { label: 'Steel on steel (dry)', value: 0.6, color: 'sunshine' },
+ { label: 'Wood on wood', value: 0.5, color: 'grape' },
+ { label: 'Shoes on ice', value: 0.1, color: 'berry' },
+ { label: 'Teflon on steel', value: 0.04, color: 'ink' },
+ ]}
 />
 
 Rubber on dry concrete sits near $1.0$, which is most of why a dry road feels secure. Wet it down and the same tires lose about a third of their grip, dropping to roughly $0.7$, which is the entire argument for easing off the gas when it rains.
@@ -60,19 +57,19 @@ Because the applied force has not beaten the friction force yet. While the jeepn
 They are two different uses of the word "coefficient." The slider is a small road-resistance number that opposes motion (rolling and braking drag). The table lists the static traction ceiling, the grip that lets the tires push off at all, which for rubber on dry concrete runs near $1.0$.
 
 <Sources
-  items={[
-    { label: 'OpenStax (2022). College Physics 2e, 4.3 Newton\u2019s Second Law of Motion.', href: 'https://openstax.org/books/college-physics-2e/pages/4-3-newtons-second-law-of-motion-concept-of-a-system' },
-    { label: 'OpenStax (2022). College Physics 2e, 5.1 Friction (Table 5.1, coefficients of friction).', href: 'https://openstax.org/books/college-physics-2e/pages/5-1-friction' },
-    { label: 'HyperPhysics, Georgia State University. Newton\u2019s Laws of Motion.', href: 'http://hyperphysics.phy-astr.gsu.edu/hbase/newt.html' },
-    { label: 'PhET Interactive Simulations, University of Colorado Boulder. Forces and Motion: Basics.', href: 'https://phet.colorado.edu/en/simulations/forces-and-motion-basics' },
-  ]}
+ items={[
+ { label: 'OpenStax (2022). College Physics 2e, 4.3 Newton\u2019s Second Law of Motion.', href: 'https://openstax.org/books/college-physics-2e/pages/4-3-newtons-second-law-of-motion-concept-of-a-system' },
+ { label: 'OpenStax (2022). College Physics 2e, 5.1 Friction (Table 5.1, coefficients of friction).', href: 'https://openstax.org/books/college-physics-2e/pages/5-1-friction' },
+ { label: 'HyperPhysics, Georgia State University. Newton\u2019s Laws of Motion.', href: 'http://hyperphysics.phy-astr.gsu.edu/hbase/newt.html' },
+ { label: 'PhET Interactive Simulations, University of Colorado Boulder. Forces and Motion: Basics.', href: 'https://phet.colorado.edu/en/simulations/forces-and-motion-basics' },
+ ]}
 />
 
 <Changelog
-  created="2026-06-11"
-  updated="2026-06-18"
-  entries={[
-    { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
-    { date: "2026-06-18", note: "Re-toned into the house voice; aligned the tool walkthrough with the current three-slider build (force, mass, road-resistance coefficient) and its readouts; clarified the slider's resistance coefficient vs. the traction ceiling in the chart; added an FAQ and the Changelog block. Kept all figures and verified sources." },
-  ]}
+ created="2026-06-11"
+ updated="2026-06-18"
+ entries={[
+ { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
+ { date: "2026-06-18", note: "Re-toned into the house voice; aligned the tool walkthrough with the current three-slider build (force, mass, road-resistance coefficient) and its readouts; clarified the slider's resistance coefficient vs. the traction ceiling in the chart; added an FAQ and the Changelog block. Kept all figures and verified sources." },
+ ]}
 />
