@@ -28,7 +28,7 @@ const CookieConsent = () => {
           <div className="text-sm text-base-content/80 leading-relaxed">
             <strong className="text-base-content block mb-1 text-base">Cookies on EduVisualsPH</strong>
             We use cookies for analytics and advertising (Google Analytics & AdSense). No student or personal data you enter is collected — all computation runs entirely in your browser.{' '}
-            <Link to="/privacy" className="link link-primary font-medium hover:text-primary-focus">
+            <Link to="/privacy" className="font-semibold underline text-[#1d4ed8] hover:text-[#1e40af]">
               Privacy Policy
             </Link>
           </div>
