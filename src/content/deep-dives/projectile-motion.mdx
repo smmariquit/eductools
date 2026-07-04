@@ -2,10 +2,7 @@ import { BarChart, Changelog, Sources } from '../../components/content'
 
 # Projectile Motion: The Physics of Tumbang Preso
 
-
 I built the projectile tool after losing an argument in a dirt yard. A cousin swore the trick to Tumbang Preso was to throw the *pamato*, the flat slipper, as hard as you can, straight and flat, so it "keeps its speed" all the way to the can. He was half right and half backward, and the half he had backward is the most useful idea in this whole topic. Once the slipper leaves your hand, nothing pushes it forward anymore. Gravity pulls it straight down the entire way, and that is the only thing acting on it. The result is the parabola every player learns to feel long before anyone writes it down.
-
-
 
 ## The misconception worth busting first
 
@@ -34,17 +31,17 @@ $$ R = \dfrac{v_0^2 \sin(2\theta)}{g} $$
 The whole behavior lives in that $\sin(2\theta)$ term, which is largest when $2\theta = 90^\circ$, so the maximum range comes at $\theta = 45^\circ$. The same expression also explains a symmetry good players exploit without naming it: any two angles that add up to $90^\circ$ throw the slipper the same distance. A $30^\circ$ throw and a $60^\circ$ throw land in the same spot, one fast and flat, the other slow and high.
 
 <BarChart
-  title="Range at fixed launch speed, as % of the 45\u00b0 maximum"
-  unit="%"
-  max={100}
-  source="Range equation R = v\u2080\u00b2 sin(2\u03b8)/g, OpenStax College Physics 2e \u00a73.4"
-  data={[
-    { label: '15\u00b0', value: 50, color: 'berry' },
-    { label: '30\u00b0', value: 86.6, color: 'sunshine' },
-    { label: '45\u00b0', value: 100, color: 'leaf' },
-    { label: '60\u00b0', value: 86.6, color: 'sky' },
-    { label: '75\u00b0', value: 50, color: 'grape' },
-  ]}
+ title="Range at fixed launch speed, as % of the 45\u00b0 maximum"
+ unit="%"
+ max={100}
+ source="Range equation R = v\u2080\u00b2 sin(2\u03b8)/g, OpenStax College Physics 2e \u00a73.4"
+ data={[
+ { label: '15\u00b0', value: 50, color: 'berry' },
+ { label: '30\u00b0', value: 86.6, color: 'sunshine' },
+ { label: '45\u00b0', value: 100, color: 'leaf' },
+ { label: '60\u00b0', value: 86.6, color: 'sky' },
+ { label: '75\u00b0', value: 50, color: 'grape' },
+ ]}
 />
 
 In an actual game the $45^\circ$ ideal bends a little. Air drag shaves distance off fast, flat throws more than lofted ones, and you are usually not aiming for maximum range anyway. You want the slipper arriving with enough downward speed to knock the can over rather than skip past it, which tends to argue for a slightly steeper, more committed throw than pure range math would suggest. My cousin's flat bullet looked impressive and skittered right past the can more often than not.
@@ -62,18 +59,18 @@ Only up to a point, and only if the angle holds. Range grows with the *square* o
 Because any pair of angles that add to $90^\circ$ shares the same $\sin(2\theta)$, so they share the same range. The steep one hangs in the air longer and the flat one gets there sooner, but they cover the same ground.
 
 <Sources
-  items={[
-    { label: 'OpenStax (2022). College Physics 2e, 3.4 Projectile Motion (range equation and trajectory).', href: 'https://openstax.org/books/college-physics-2e/pages/3-4-projectile-motion' },
-    { label: 'HyperPhysics, Georgia State University. Trajectories and projectile motion.', href: 'http://hyperphysics.phy-astr.gsu.edu/hbase/traj.html' },
-    { label: 'PhET Interactive Simulations, University of Colorado Boulder. Projectile Motion.', href: 'https://phet.colorado.edu/en/simulations/projectile-motion' },
-  ]}
+ items={[
+ { label: 'OpenStax (2022). College Physics 2e, 3.4 Projectile Motion (range equation and trajectory).', href: 'https://openstax.org/books/college-physics-2e/pages/3-4-projectile-motion' },
+ { label: 'HyperPhysics, Georgia State University. Trajectories and projectile motion.', href: 'http://hyperphysics.phy-astr.gsu.edu/hbase/traj.html' },
+ { label: 'PhET Interactive Simulations, University of Colorado Boulder. Projectile Motion.', href: 'https://phet.colorado.edu/en/simulations/projectile-motion' },
+ ]}
 />
 
 <Changelog
-  created="2026-06-11"
-  updated="2026-06-18"
-  entries={[
-    { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
-    { date: "2026-06-18", note: "Re-toned into the house voice (origin-story open, misconception framing on horizontal speed, plain-spoken FAQ); kept tool references high-level, preserved the range chart and verified sources, added the Changelog block." },
-  ]}
+ created="2026-06-11"
+ updated="2026-06-18"
+ entries={[
+ { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
+ { date: "2026-06-18", note: "Re-toned into the house voice (origin-story open, misconception framing on horizontal speed, plain-spoken FAQ); kept tool references high-level, preserved the range chart and verified sources, added the Changelog block." },
+ ]}
 />
