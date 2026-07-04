@@ -2,10 +2,7 @@ import { Aside, Changelog, LineChart, Sources } from '../../components/content'
 
 # Why a balloon pushes back: reading the gas laws off the particles
 
-
 The first time I really understood the gas laws was not in a classroom. It was watching a half-empty bag of chips bought in Baguio puff up tight on the bus ride down to Manila. Nobody added air to the bag. So what pushed the sides out? I built the gas-properties tool to answer exactly that kind of question, because the formulas students are handed (P₁V₁ = P₂V₂ and the rest) tend to get memorized as letters to shuffle, when every one of them is really a count of what billions of invisible particles are doing against a wall.
-
-
 
 Here is the misconception worth naming first. Pressure is not a gas "squeezing" outward the way a stretched spring pushes. There is no outward urge built into the gas. Pressure ($P$) is just the running total of particle collisions on a surface. Each molecule that smacks the wall delivers a tiny shove, and all those shoves spread over the area give you $P = \frac{F}{A}$. Get that one idea straight and the rest of the topic falls out of it almost for free.
 
@@ -18,22 +15,22 @@ You drive it by picking one of three laws. Each law pins two of the variables an
 **Boyle's law** holds temperature constant and gives you a volume slider. Shrink the volume and each particle simply travels a shorter distance between wall hits, so the wall gets struck more often and the measured pressure climbs. That is the chips bag in reverse: squeeze the gas into less room and it pushes back harder.
 
 <LineChart
-  title="Boyle's law: halve the volume, double the pressure (one air sample, fixed T)"
-  unit=" psi"
-  xLabel="Volume (mL)"
-  yLabel="Pressure (psi)"
-  source="OpenStax, Chemistry 2e §9.2 (air sample, Fig. 9.13)"
-  series={[
-    {
-      name: 'Pressure',
-      color: 'berry',
-      points: [
-        { x: 7.5, y: 26 },
-        { x: 15.0, y: 13.0 },
-        { x: 30.0, y: 6.5 },
-      ],
-    },
-  ]}
+ title="Boyle's law: halve the volume, double the pressure (one air sample, fixed T)"
+ unit=" psi"
+ xLabel="Volume (mL)"
+ yLabel="Pressure (psi)"
+ source="OpenStax, Chemistry 2e §9.2 (air sample, Fig. 9.13)"
+ series={[
+ {
+ name: 'Pressure',
+ color: 'berry',
+ points: [
+ { x: 7.5, y: 26 },
+ { x: 15.0, y: 13.0 },
+ { x: 30.0, y: 6.5 },
+ ],
+ },
+ ]}
 />
 
 Notice the product $P \times V$ never moves: 7.5 × 26, 15 × 13, and 30 × 6.5 all land on about 195 psi·mL. That steady product is the fingerprint of an inverse relationship, and it is the same physics your lungs run on every few seconds. Your diaphragm enlarges your chest cavity, the pressure inside drops below the air outside, and air flows in to even things out.
@@ -53,24 +50,24 @@ $$ PV = nRT $$
 Here $n$ is the number of moles of gas and $R$ is the ideal gas constant, $8.314\ \text{J·mol}^{-1}\text{K}^{-1}$, a value [NIST now fixes exactly](https://physics.nist.gov/cgi-bin/cuu/Value?r). The word "ideal" is doing real work, and it is worth being straight with students about its limits. The equation assumes the particles take up no space of their own and never attract one another. That is close enough for classroom air at ordinary conditions and visibly wrong for a gas near the point where it would condense into a liquid. For everything the tool lets you do, though, $PV = nRT$ is the whole story: know any three of the four quantities and the fourth is fixed.
 
 <Aside variant="tool" title="PhET, Gas Properties" href="https://phet.colorado.edu/en/simulations/gas-properties" credit="PhET Interactive Simulations, CU Boulder">
-  Our tool keeps a tight focus on the three classic two-variable laws. PhET's Gas Properties is the sandbox version: you can pump particles in by hand, add or remove heat, and even split the box into a mix of light and heavy molecules. It is the better tool once a student wants to poke at the model rather than confirm a law.
+ Our tool keeps a tight focus on the three classic two-variable laws. PhET's Gas Properties is the sandbox version: you can pump particles in by hand, add or remove heat, and even split the box into a mix of light and heavy molecules. It is the better tool once a student wants to poke at the model rather than confirm a law.
 </Aside>
 
 <Sources
-  items={[
-    { label: 'OpenStax, Chemistry 2e §9.2: Relating Pressure, Volume, Amount, and Temperature: The Ideal Gas Law.', href: 'https://openstax.org/books/chemistry-2e/pages/9-2-relating-pressure-volume-amount-and-temperature-the-ideal-gas-law' },
-    { label: 'OpenStax, Chemistry 2e §9.1: Gas Pressure.', href: 'https://openstax.org/books/chemistry-2e/pages/9-1-gas-pressure' },
-    { label: 'NIST CODATA: Molar gas constant R.', href: 'https://physics.nist.gov/cgi-bin/cuu/Value?r' },
-    { label: 'PhET Interactive Simulations (University of Colorado Boulder): Gas Properties.', href: 'https://phet.colorado.edu/en/simulations/gas-properties' },
-  ]}
+ items={[
+ { label: 'OpenStax, Chemistry 2e §9.2: Relating Pressure, Volume, Amount, and Temperature: The Ideal Gas Law.', href: 'https://openstax.org/books/chemistry-2e/pages/9-2-relating-pressure-volume-amount-and-temperature-the-ideal-gas-law' },
+ { label: 'OpenStax, Chemistry 2e §9.1: Gas Pressure.', href: 'https://openstax.org/books/chemistry-2e/pages/9-1-gas-pressure' },
+ { label: 'NIST CODATA: Molar gas constant R.', href: 'https://physics.nist.gov/cgi-bin/cuu/Value?r' },
+ { label: 'PhET Interactive Simulations (University of Colorado Boulder): Gas Properties.', href: 'https://phet.colorado.edu/en/simulations/gas-properties' },
+ ]}
 />
 
 <Changelog
-  created="2026-06-11"
-  updated="2026-06-18"
-  entries={[
-    { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
-    { date: "2026-06-18", note: "Switched the Boyle's law chart from a bar chart to a LineChart with volume on the x-axis, so the inverse pressure-volume curve is visible." },
-    { date: "2026-06-18", note: "Re-toned into the house voice for Grades 9–10 (Baguio-to-Manila chips-bag open, pressure-is-collisions misconception); rewrote the tool description to match the three-law buttons and the measured-from-collisions pressure readout; kept the Boyle chart and verified sources; added PhET credit and the Changelog block." },
-  ]}
+ created="2026-06-11"
+ updated="2026-06-18"
+ entries={[
+ { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
+ { date: "2026-06-18", note: "Switched the Boyle's law chart from a bar chart to a LineChart with volume on the x-axis, so the inverse pressure-volume curve is visible." },
+ { date: "2026-06-18", note: "Re-toned into the house voice for Grades 9–10 (Baguio-to-Manila chips-bag open, pressure-is-collisions misconception); rewrote the tool description to match the three-law buttons and the measured-from-collisions pressure readout; kept the Boyle chart and verified sources; added PhET credit and the Changelog block." },
+ ]}
 />
