@@ -16,7 +16,7 @@ const TOOLS_PER_PAGE = 9;
 const Home = () => {
   const fullTitle = 'Interactive STEM Visualizers | EduVisualsPH';
   const description = 'Free interactive STEM visualizers aligned with the Philippine DepEd MATATAG curriculum. Explore Physics, Chemistry, Biology, and Earth Science.';
-  const ogImageUrl = `https://eductools.ph/api/og?title=${encodeURIComponent('Interactive STEM Visualizers')}&desc=${encodeURIComponent(description.slice(0, 100))}`;
+ const ogImageUrl = `https://eductools.ph/api/og?title=${encodeURIComponent('Interactive STEM Visualizers')}&desc=${encodeURIComponent(description.slice(0, 100))}`;
 
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -174,8 +174,8 @@ const Home = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-ghost btn-sm border border-base-300 shadow-sm hover:shadow-md transition-shadow"
-            title="EduVisualsPH is open source — view the code on GitHub"
-            aria-label="View source on GitHub"
+ title="EduVisualsPH is open source: view the code on GitHub"
+ aria-label="View source on GitHub"
           >
             <GitHubMark className="w-4 h-4" />
             <span className="max-sm:hidden">GitHub</span>
@@ -198,7 +198,7 @@ const Home = () => {
         <div className="w-full md:w-1/3 relative" ref={searchBoxRef}>
           <input 
             type="text" 
-            placeholder="Search tools..." 
+ placeholder="Search tools..." 
             value={searchQuery}
             onChange={(e) => { setSearchQuery(e.target.value); setShowSuggestions(true); }}
             onFocus={() => { if (searchQuery.trim()) setShowSuggestions(true); }}
@@ -287,14 +287,14 @@ const Home = () => {
             <button 
               onClick={() => setViewMode('grid')}
               className={`btn btn-sm btn-square ${viewMode === 'grid' ? 'btn-primary' : 'btn-ghost'}`}
-              title="Grid View"
+ title="Grid View"
             >
               <LayoutGrid className="w-4 h-4" />
             </button>
             <button 
               onClick={() => setViewMode('list')}
               className={`btn btn-sm btn-square ${viewMode === 'list' ? 'btn-primary' : 'btn-ghost'}`}
-              title="List View"
+ title="List View"
             >
               <List className="w-4 h-4" />
             </button>
@@ -398,7 +398,7 @@ const Home = () => {
             { label: 'Department of Education, "MATATAG Curriculum"', href: 'https://www.deped.gov.ph/matatag/' },
             { label: 'Republic Act No. 10533, Enhanced Basic Education Act of 2013 (LawPhil)', href: 'https://lawphil.net/statutes/repacts/ra2013/ra_10533_2013.html' },
             { label: 'Freeman et al. (2014), "Active learning increases student performance in science, engineering, and mathematics," PNAS 111(23)', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4060654/' },
-            { label: 'PhET Interactive Simulations — Research, University of Colorado Boulder', href: 'https://phet.colorado.edu/en/research' },
+ { label: 'PhET Interactive Simulations: Research, University of Colorado Boulder', href: 'https://phet.colorado.edu/en/research' },
           ]}
         />
       </article>

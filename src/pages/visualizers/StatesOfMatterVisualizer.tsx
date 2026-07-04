@@ -33,9 +33,9 @@ const STATE_LABEL: Record<Phase, string> = {
 };
 
 const ARRANGEMENT: Record<Phase, string> = {
-  solid: 'Packed lattice — particles locked in place, only vibrating.',
-  liquid: 'Sliding — particles stay close but flow past one another.',
-  gas: 'Dispersed — particles spread out to fill the container.',
+ solid: 'Packed lattice: particles locked in place, only vibrating.',
+ liquid: 'Sliding: particles stay close but flow past one another.',
+ gas: 'Dispersed: particles spread out to fill the container.',
 };
 
 const StatesOfMatterVisualizer = () => {
@@ -229,8 +229,8 @@ const StatesOfMatterVisualizer = () => {
 
   return (
     <VisualizerLayout
-      title="Mga Anyo ng Bagay (States of Matter)"
-      description="Heat or cool particles and compare water with mercury, ethanol, dry ice, and iron — each substance has its own melting and boiling points."
+ title="Mga Anyo ng Bagay (States of Matter)"
+ description="Heat or cool particles and compare water with mercury, ethanol, dry ice, and iron: each substance has its own melting and boiling points."
       adSlotId="1001"
       guideLink="/blog/states-of-matter"
     >

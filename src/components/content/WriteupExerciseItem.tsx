@@ -54,7 +54,7 @@ export const WriteupExerciseItem: React.FC<WriteupExerciseItemProps> = ({ exerci
               }}
               onKeyDown={handleKeyDown}
               className="input input-bordered input-sm w-28 font-mono bg-base-100"
-              placeholder="Answer"
+ placeholder="Answer"
               aria-invalid={status === 'incorrect'}
             />
             <button type="button" className="btn btn-sm btn-primary" onClick={handleCheck}>
