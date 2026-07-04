@@ -2,10 +2,7 @@ import { BarChart, Changelog, Sources } from '../../components/content'
 
 # Your phone does not know what a photo is
 
-
 I made this tool because of a question a student asked that I could not answer cleanly on the spot: "If the computer stores my photo, what is it actually storing?" We talk about the "digital" world as if it floats free of the physical one, but a computer does not understand numbers, text, or pictures in any direct sense. It understands voltage. Everything else is a convention we stacked on top of voltage so that humans could get useful work out of it. Tracing that stack from a single electrical state up to a full-color photo is one of the more satisfying things to show a student, because every step is concrete and nothing has to be taken on faith.
-
-
 
 ## What a bit really is
 
@@ -20,18 +17,18 @@ Reading tens of millions of individual 1s and 0s is hopeless for a person, so bi
 Each position in a byte carries a fixed value, a power of two, and the number a pattern stands for is just the sum of the place values that are switched on. Those place values double as you move from right to left:
 
 <BarChart
-  title="Place values of an 8-bit byte (powers of two)"
-  source='Weisstein, "Binary," Wolfram MathWorld'
-  data={[
-    { label: 'bit 0 (2⁰)', value: 1, color: 'sky' },
-    { label: 'bit 1 (2¹)', value: 2, color: 'sky' },
-    { label: 'bit 2 (2²)', value: 4, color: 'leaf' },
-    { label: 'bit 3 (2³)', value: 8, color: 'leaf' },
-    { label: 'bit 4 (2⁴)', value: 16, color: 'sunshine' },
-    { label: 'bit 5 (2⁵)', value: 32, color: 'sunshine' },
-    { label: 'bit 6 (2⁶)', value: 64, color: 'berry' },
-    { label: 'bit 7 (2⁷)', value: 128, color: 'berry' },
-  ]}
+ title="Place values of an 8-bit byte (powers of two)"
+ source='Weisstein, "Binary," Wolfram MathWorld'
+ data={[
+ { label: 'bit 0 (2⁰)', value: 1, color: 'sky' },
+ { label: 'bit 1 (2¹)', value: 2, color: 'sky' },
+ { label: 'bit 2 (2²)', value: 4, color: 'leaf' },
+ { label: 'bit 3 (2³)', value: 8, color: 'leaf' },
+ { label: 'bit 4 (2⁴)', value: 16, color: 'sunshine' },
+ { label: 'bit 5 (2⁵)', value: 32, color: 'sunshine' },
+ { label: 'bit 6 (2⁶)', value: 64, color: 'berry' },
+ { label: 'bit 7 (2⁷)', value: 128, color: 'berry' },
+ ]}
 />
 
 Turn on every position and you add $128 + 64 + 32 + 16 + 8 + 4 + 2 + 1 = 255$, which is why the largest value a single byte holds is 255, not 256. (256 is the *count* of patterns, once you include zero.) To write these patterns compactly, programmers use **hexadecimal**, base 16, which counts 0 through 9 and then A through F before rolling over. Two hex digits cover one byte exactly, so `00000000` is `00` and `11111111` is `FF`. Hex is not a different kind of number, just a shorter way to spell the same bits.
@@ -43,20 +40,20 @@ So how does voltage become a photograph? Through **pixels** (picture elements). 
 Three bytes per pixel is 24 bits, which is where the term "24-bit true color" comes from. Because each of the three channels has 256 settings, the total is $256 \times 256 \times 256 = 16{,}777{,}216$ distinct colors, more than the human eye can reliably tell apart. The tool makes this chain visible. You get three rows of eight switches, one row per color channel, and each row shows its own decimal and hex value as you flip bits. Beside them, a single pixel updates live to the color those three bytes describe, along with a bar for how bright each subpixel is and the final hex code. Hit Randomize a few times, or just toggle one bit in the red row and watch the color shift, and the jump from "voltage" to "image" stops feeling like magic and starts feeling like counting.
 
 <Sources
-  items={[
-    { label: 'Weisstein, Eric W. "Binary." Wolfram MathWorld.', href: 'https://mathworld.wolfram.com/BinaryNumber.html' },
-    { label: 'CS Unplugged. "Binary Numbers."', href: 'https://www.csunplugged.org/en/topics/binary-numbers/' },
-    { label: 'MDN Web Docs. "RGB" (Glossary).', href: 'https://developer.mozilla.org/en-US/docs/Glossary/RGB' },
-    { label: 'Khan Academy. "Computers and the Internet."', href: 'https://www.khanacademy.org/computing/computers-and-internet' },
-    { label: 'PhET Interactive Simulations. "Color Vision."', href: 'https://phet.colorado.edu/en/simulations/color-vision' },
-  ]}
+ items={[
+ { label: 'Weisstein, Eric W. "Binary." Wolfram MathWorld.', href: 'https://mathworld.wolfram.com/BinaryNumber.html' },
+ { label: 'CS Unplugged. "Binary Numbers."', href: 'https://www.csunplugged.org/en/topics/binary-numbers/' },
+ { label: 'MDN Web Docs. "RGB" (Glossary).', href: 'https://developer.mozilla.org/en-US/docs/Glossary/RGB' },
+ { label: 'Khan Academy. "Computers and the Internet."', href: 'https://www.khanacademy.org/computing/computers-and-internet' },
+ { label: 'PhET Interactive Simulations. "Color Vision."', href: 'https://phet.colorado.edu/en/simulations/color-vision' },
+ ]}
 />
 
 <Changelog
-  created="2026-06-11"
-  updated="2026-06-18"
-  entries={[
-    { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
-    { date: "2026-06-18", note: "Re-toned into the house voice (origin-story open, voltage-not-numbers misconception); matched the tool's three RGB byte editors, live pixel, and Randomize; replaced the Cloudflare-blocked Britannica link with Wolfram MathWorld." },
-  ]}
+ created="2026-06-11"
+ updated="2026-06-18"
+ entries={[
+ { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
+ { date: "2026-06-18", note: "Re-toned into the house voice (origin-story open, voltage-not-numbers misconception); matched the tool's three RGB byte editors, live pixel, and Randomize; replaced the Cloudflare-blocked Britannica link with Wolfram MathWorld." },
+ ]}
 />
