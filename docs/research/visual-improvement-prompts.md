@@ -1,4 +1,4 @@
-# Visual-Improvement Deep Research Prompts — EduVisualsPH
+# Visual-Improvement Deep Research Prompts: EduVisualsPH
 
 This document contains one tailored **Google Deep Research** prompt per visualizer in the EduVisualsPH library (Philippine K–12 STEM, MATATAG-aligned). Each prompt is meant to be pasted into Google Deep Research (or a comparable agentic research tool) to gather actionable, sourced guidance for improving that tool's **diagram/visual** for accuracy, clarity, and pedagogy.
 
@@ -11,7 +11,7 @@ Each prompt asks the research agent for:
 
 The observations below come from reading each component's source (read-only). Sections are grouped by subject. A priority triage table follows.
 
-## Priority triage — 2D-diagram issues
+## Priority triage: 2D-diagram issues
 
 Priority reflects how badly the **current 2D diagram** misrepresents, clutters, or under-serves the concept (High = fix first).
 
@@ -62,7 +62,7 @@ Priority reflects how badly the **current 2D diagram** misrepresents, clutters, 
 
 **Observed issues:**
 - Sector geometry is sound, but the warning-colored "crust ring" (`r=90`, strokeWidth 6) sits at the same radius as the slice divider line endpoints, so dividers visually merge into the crust at the rim.
-- Filled vs. empty sectors are distinguished mostly by opacity (0.85 vs 0.25) of the *same* hue — weak for color-vision-deficient learners and low-contrast on small screens.
+- Filled vs. empty sectors are distinguished mostly by opacity (0.85 vs 0.25) of the *same* hue: weak for color-vision-deficient learners and low-contrast on small screens.
 - Equivalent-fraction badges always show ×1…×4 even when the fraction is already at a large denominator, which can crowd on narrow screens.
 - No common-denominator visual when comparing A vs B (only cross-multiplication text), so the "which is bigger" claim isn't shown geometrically.
 
@@ -105,7 +105,7 @@ Return specific, implementable recommendations.
 **Current visual:** Two SVG prime-factor trees, a CSS "Venn diagram" of shared/unique prime factors built from two overlapping `rounded-full` divs with negative margins, plus GCF/LCM results.
 
 **Observed issues:**
-- The Venn is a CSS hack: two `w-48 h-48` circles pulled together with `-mr-12`/`-ml-12` and an absolutely-positioned center stack for shared factors. It is **not** a true two-set intersection — the "overlap" region is just a floating badge cluster with `max-w-20`, and unique-factor badges use `pr-10`/`pl-10` padding to dodge the center rather than being properly bounded inside each lens.
+- The Venn is a CSS hack: two `w-48 h-48` circles pulled together with `-mr-12`/`-ml-12` and an absolutely-positioned center stack for shared factors. It is **not** a true two-set intersection: the "overlap" region is just a floating badge cluster with `max-w-20`, and unique-factor badges use `pr-10`/`pl-10` padding to dodge the center rather than being properly bounded inside each lens.
 - With several prime factors, badges wrap and can overflow the circle or collide with the center cluster; nothing clips to the circle geometry.
 - Factor-tree node radius is fixed (`R=17`) with `GAP=48`; deep trees (e.g. 48 = 2×2×2×2×3) can get tall and the right-leaning recursion produces visually lopsided trees.
 
@@ -126,10 +126,10 @@ Return implementable specifics.
 **Current visual:** An SVG net of a rectangular prism / cube / triangular prism / cylinder that folds up via per-face scale transforms, with each face linked to a term in the surface-area formula.
 
 **Observed issues:**
-- The cylinder's lateral rectangle width is `2πr` but **capped** at 150px (`Math.min(sz(lat),150)`) while the circular caps use the true diameter scale, so the unrolled lateral face is off-scale relative to the caps — the "2πr" length isn't visually trustworthy.
+- The cylinder's lateral rectangle width is `2πr` but **capped** at 150px (`Math.min(sz(lat),150)`) while the circular caps use the true diameter scale, so the unrolled lateral face is off-scale relative to the caps: the "2πr" length isn't visually trustworthy.
 - "Fold" is faked by 1-D `scale()` foreshortening about a hinge; faces shrink to a line rather than rotating in perspective, so the intermediate states don't read as a real 3-D fold and the triangular-prism slant faces don't visibly meet.
 - Face labels (`fontSize=10`) can overlap on small faces; labels fade out by `fold*1.6` but small dimensions still crowd at flat state.
-- `sz()` clamps each dimension to 16–120px independently, so a 10×1 prism shows nearly-square faces — the net's proportions don't match the entered dimensions.
+- `sz()` clamps each dimension to 16–120px independently, so a 10×1 prism shows nearly-square faces: the net's proportions don't match the entered dimensions.
 
 ```text
 I am improving the diagram for a "Surface Area Builder" in a Philippine MATATAG Grade 6 math app. It draws the 2D net of a rectangular prism, cube, triangular prism, or cylinder and "folds" it into 3D, mapping each face to a term in the surface-area formula. Current problems: the cylinder's unrolled lateral face (length 2πr) is capped to a fixed pixel width so it is off-scale vs the circular caps; per-axis pixel clamping distorts face proportions vs the real dimensions; the "fold" is a 1D scale-to-a-line trick that doesn't read as a true 3D fold; and small-face labels overlap.
@@ -169,7 +169,7 @@ Return implementable specifics.
 **Current visual:** A CSS bar chart with a real zero baseline (positive bars up, negative down), a differences/ratios row, and a formula builder.
 
 **Observed issues:**
-- Bars are scaled to `maxPos`/`maxNeg` of the *visible* terms. For geometric sequences (e.g., r=2, 8 terms → 384) the last term dwarfs the rest, so all early bars collapse to the `MIN_BAR=4px` floor and the chart conveys little until the final spike — a classic off-scale failure for exponential growth.
+- Bars are scaled to `maxPos`/`maxNeg` of the *visible* terms. For geometric sequences (e.g., r=2, 8 terms → 384) the last term dwarfs the rest, so all early bars collapse to the `MIN_BAR=4px` floor and the chart conveys little until the final spike: a classic off-scale failure for exponential growth.
 - Value labels sit just outside each bar end; for tall bars near the top they clamp to `top:0` and can overlap the term above; many terms (n up to 15) make labels tiny (`text-[10px]`) and crowded.
 - No log-scale option, so exponential sequences are essentially unreadable as a bar chart.
 
@@ -212,7 +212,7 @@ Return implementable specifics.
 
 **Observed issues:**
 - Side labels are placed with fixed offsets: "Opposite" is drawn at `bx+20` (right of the vertical leg) and can run off the right edge of the canvas at large adjacent lengths; the rotated "Hypotenuse" label can overlap the triangle interior at small angles.
-- The unit-circle reference is anchored at `(w-100, 90)` r=60 — at large hypotenuse + small angle, the triangle's apex region and the unit circle compete for the top-right space (potential overlap).
+- The unit-circle reference is anchored at `(w-100, 90)` r=60: at large hypotenuse + small angle, the triangle's apex region and the unit circle compete for the top-right space (potential overlap).
 - Triangle is pinned to a fixed origin; as angle/hypotenuse change, the figure shifts asymmetrically and can crowd one edge while leaving dead space on the other (no recentering to fit).
 - Canvas text is not DPI-scaled (blurry on retina); dark `#0f172a` background is hard-coded rather than themed.
 
@@ -251,14 +251,14 @@ Return implementable specifics.
 
 # Physics
 
-## Forces and Motion — Jeepney Dynamics (G8)
+## Forces and Motion: Jeepney Dynamics (G8)
 
 **Current visual:** A DOM "road" with a jeepney div that translates along a looping track; a single text "F →" label appears above it when force > 0; a numeric panel reports friction, net force, acceleration, velocity.
 
 **Observed issues:**
 - No real **free-body diagram**: the only force shown is a text "F →" with no scaled vector; friction, weight, and normal forces are not drawn at all, so the F=ma story is numeric, not visual.
 - The force indicator is not proportional (just text), so changing the slider doesn't change any arrow length.
-- The jeepney loops by `(x/40)%1`, so position resets every 40 m with no odometer/scale markers — motion reads as "treadmill" rather than travel.
+- The jeepney loops by `(x/40)%1`, so position resets every 40 m with no odometer/scale markers: motion reads as "treadmill" rather than travel.
 
 ```text
 I am improving the diagram for a "Forces and Motion" (Newton's second law) tool in a Philippine MATATAG Grade 8 physics app, themed around a jeepney. Currently it just slides a jeepney graphic along a looping road and shows a text "F →" plus numeric net force/acceleration. There is no proper free-body diagram and no scaled force vectors (friction, applied force, weight, normal).
@@ -276,10 +276,10 @@ Return implementable specifics.
 
 **Current visual:** A CSS box (`aspect-video` bordered div) with a battery div on the left edge, an ON/OFF button at the bottom, and two bulb circles positioned absolutely on the top edge (series) or stacked on the right (parallel). Glow intensity tracks computed power.
 
-**Observed issues — HIGH:**
+**Observed issues: HIGH:**
 - This is **not a circuit schematic**. There are no wires forming a closed loop; the battery, switch, and bulbs are decorations pinned to the edges of a rectangle. Current has nowhere to "flow."
 - Series vs parallel **topology is not faithfully drawn**: "series" puts two bulbs side-by-side on the top edge with no series wiring; "parallel" stacks them on the right with two short `border-b` lines that don't form real parallel branches back to the battery.
-- No conventional component symbols (cell, lamp, switch), no current-direction indicator, so the physics (same current in series, full voltage across each parallel branch) isn't visible — it's only in the text readout.
+- No conventional component symbols (cell, lamp, switch), no current-direction indicator, so the physics (same current in series, full voltage across each parallel branch) isn't visible: it's only in the text readout.
 - The brightness glow is the only working visual signal of the physics.
 
 ```text
@@ -294,14 +294,14 @@ Research and report, with citations:
 Return implementable specifics.
 ```
 
-## Projectile Motion Visualizer — Tumbang Preso (G9)
+## Projectile Motion Visualizer: Tumbang Preso (G9)
 
 **Current visual:** A dark canvas with a fixed scale (`pixelsPerMeter=15`), a ground line, a target "lata" at 20 m, an angle arc + velocity vector at launch, and a spinning slipper ("pamato") following the trajectory; a HUD shows t, x, y, vᵧ.
 
-**Observed issues — HIGH (off-scale):**
-- **Fixed scale doesn't fit the motion.** `pixelsPerMeter=15` with a 600px-wide canvas only covers ~37 m horizontally (`startX=50`), yet `v₀x·t` for v₀=40 m/s easily exceeds that, so the projectile flies off the right edge. Vertically, max height for high angle/velocity (v₀=40, 90° → ~81 m → ~1224 px) vastly exceeds the 400px canvas — the arc disappears off the top.
+**Observed issues: HIGH (off-scale):**
+- **Fixed scale doesn't fit the motion.** `pixelsPerMeter=15` with a 600px-wide canvas only covers ~37 m horizontally (`startX=50`), yet `v₀x·t` for v₀=40 m/s easily exceeds that, so the projectile flies off the right edge. Vertically, max height for high angle/velocity (v₀=40, 90° → ~81 m → ~1224 px) vastly exceeds the 400px canvas: the arc disappears off the top.
 - No auto-scaling/auto-fit to the actual range and apex, so most parameter combinations render an off-canvas or clipped trajectory.
-- The slipper **spins** (`ctx.rotate(t*10)`) — a decorative effect that misrepresents projectile rotation and can distract from the parabola.
+- The slipper **spins** (`ctx.rotate(t*10)`): a decorative effect that misrepresents projectile rotation and can distract from the parabola.
 - The trajectory path itself isn't drawn (only the moving object), so the parabola shape and symmetry aren't visible as a trace.
 - Canvas not DPI-scaled.
 
@@ -322,10 +322,10 @@ Return implementable specifics.
 **Current visual:** A light canvas showing a 1-D transverse traveling wave on a string (10 m shown), a highlighted oscillating particle with a vertical guide, and a wavelength span marker between crests. Speed is derived as v=fλ.
 
 **Observed issues:**
-- Solid build; amplitude (≤1.5 m) at `PX_PER_M≈56` gives ≤84 px against a 130 px half-height, so it fits — low risk.
+- Solid build; amplitude (≤1.5 m) at `PX_PER_M≈56` gives ≤84 px against a 130 px half-height, so it fits: low risk.
 - The wavelength marker recomputes the first crest each frame; at small λ the `λ = x.x m` label between close crests can crowd; at λ near the 5 m max only one span fits.
 - Hard-coded colors (`#2f8fe6`, etc.) instead of theme variables; canvas not DPI-scaled (mild blur).
-- Only a transverse wave is shown — no longitudinal option, and no explicit phase/period time marker on the particle.
+- Only a transverse wave is shown: no longitudinal option, and no explicit phase/period time marker on the particle.
 
 ```text
 I am polishing a canvas diagram for a "Wave Physics" tool in a Philippine MATATAG Grade 10 physics app. It animates a 1D transverse traveling wave on a string with a highlighted particle (to show purely vertical motion) and a wavelength marker, with v=fλ derived. It mostly works; concerns are a possibly crowded wavelength label at small λ, hard-coded colors, no DPI scaling, and only transverse (no longitudinal) representation.
@@ -344,7 +344,7 @@ Return implementable specifics.
 **Current visual:** A single animated SVG sine wave whose cycle count grows with frequency (1–27 cycles), a colored "band" card naming the current region, and linked c=fλ and E=hf numeric readouts on a log-frequency slider.
 
 **Observed issues:**
-- There is **no full labeled spectrum band/ruler** showing all regions (radio→gamma) with wavelength/frequency axes — the canonical EM-spectrum chart. The user sees only the *current* region's name, not where it sits on the whole spectrum.
+- There is **no full labeled spectrum band/ruler** showing all regions (radio→gamma) with wavelength/frequency axes: the canonical EM-spectrum chart. The user sees only the *current* region's name, not where it sits on the whole spectrum.
 - The visible-light case can't actually render its rainbow: `data.color` for visible light is a CSS `linear-gradient(...)` string assigned to an SVG `stroke`, which is invalid, so it falls back to white.
 - The single wave uses `strokeWidth=0.5` in a `0 0 100 20` viewBox with `preserveAspectRatio="none"`, so the wave is non-uniformly stretched and the amplitude is fixed (doesn't encode anything).
 
@@ -360,13 +360,13 @@ Research and report, with citations:
 Return implementable specifics.
 ```
 
-## Optics Simulator — Mirrors (G10)
+## Optics Simulator: Mirrors (G10)
 
 **Current visual:** A canvas ray-tracing tool for concave/convex/plane mirrors: principal axis, a curved (decorative arc) or flat mirror, F and C markers, an object arrow, up to 4 principal/chief rays, and the located image (real solid / virtual dashed). Image properties are reported.
 
 **Observed issues:**
 - The mirror is **drawn as a curved arc** (`ctx.arc` with an arbitrary center `MIRROR_X + curvature*2.5` and radius `mirrorHeight/1.6`) but rays are reflected off the **flat plane** `x=MIRROR_X` (thin-mirror approximation). The drawn curvature does not match the focal length, so F/C marker positions can look inconsistent with the mirror's apparent shape.
-- The image arrow top is clamped (`Math.max(12, Math.min(h-12, ...))`) when the object is near F (large magnification), so the image can be silently mis-scaled at extremes.
+- The image arrow top is clamped (`Math.max(12, Math.min(h-12,...))`) when the object is near F (large magnification), so the image can be silently mis-scaled at extremes.
 - Diverging-ray back-extensions and the dashed virtual image rely on careful layering; at some parameters the extension length (`ext=300`) may not reach the canvas edge or may overshoot.
 - Hard-coded dark/light fallback colors; canvas not DPI-scaled.
 
@@ -387,7 +387,7 @@ Return implementable specifics.
 **Current visual:** A DOM water tank (350 px) with a dashed water surface; a colored cube whose pixel size scales with `cbrt(volume)*60` floats with the correct submerged fraction (density ratio) or sinks to the bottom. Numeric density readout and float/sink badge.
 
 **Observed issues:**
-- Submerged-fraction logic is correct and the float depth is meaningful — generally solid.
+- Submerged-fraction logic is correct and the float depth is meaningful: generally solid.
 - No buoyant-force or weight arrows, so Archimedes' principle (why it floats) is numeric, not visual.
 - Cube size scales with volume but the water level is fixed; a large cube (volume 3 → ~86 px) plus large submerged fraction can place the cube near the tank floor with little context, and there's no displaced-water indication.
 - "Submerged %" is shown as text but the waterline crossing the cube is the only visual cue (no shading of the underwater portion distinct from above-water).
@@ -412,7 +412,7 @@ Return implementable specifics.
 - Conceptually strong (pressure emerges from collisions). Mostly polish.
 - The piston "handle" is a bar drawn to the right of the chamber; at large volume (containerWidth near full width) the handle area nearly vanishes and the `← Volume →` label sits at the chamber center, which can overlap dense particles.
 - Particle color encodes temperature via a custom RGB ramp (not theme/accessible-checked); no explicit speed/scale legend.
-- No pressure gauge graphic — pressure is a number only; the collision→pressure link would benefit from a visible gauge.
+- No pressure gauge graphic: pressure is a number only; the collision→pressure link would benefit from a visible gauge.
 
 ```text
 I am polishing a "Gas Laws" particle-piston simulator in a Philippine MATATAG Grade 10 physics/chemistry app. Particles bounce in a chamber and pressure is measured from wall collisions (kinetic theory) rather than read from PV=nRT. It's solid; concerns: the piston handle/label can overlap particles at large volume, particle-temperature coloring isn't accessibility-checked, and pressure is shown only as a number (no gauge).
@@ -433,7 +433,7 @@ Return implementable specifics.
 **Current visual:** Three 8-bit byte editors (toggle buttons with place-value labels 128…1), a large color swatch showing the resulting RGB hex, and three subpixel bars whose heights track R/G/B (0–255) via a negative-margin fill trick.
 
 **Observed issues:**
-- The subpixel "bars" use a fixed `h-16` track with `marginTop: -(value/255)*64` overlay — a hack that works but is fragile and not labeled with an axis (0–255 scale not shown on the bar).
+- The subpixel "bars" use a fixed `h-16` track with `marginTop: -(value/255)*64` overlay: a hack that works but is fragile and not labeled with an axis (0–255 scale not shown on the bar).
 - Conceptually clear; not a scientific "diagram" with accuracy concerns, but the link from binary place values to the 0–255 channel could be made more explicit visually.
 - No representation of how three subpixels physically combine into one perceived color (additive mixing) beyond the single swatch.
 
@@ -456,7 +456,7 @@ Return implementable specifics.
 **Current visual:** A Matter.js physics canvas with 80 water "particles." Below 0 °C they spring back to lattice home sites (solid, only vibrating); 0–100 °C they flow (liquid, gravity pools them); above 100 °C they disperse (gas). Color and damping change per phase.
 
 **Observed issues:**
-- Phase change is **abrupt** at exactly 0 and 100 °C — no melting/boiling transition is visualized (particles snap between behaviors), which can imply phase change is instantaneous.
+- Phase change is **abrupt** at exactly 0 and 100 °C: no melting/boiling transition is visualized (particles snap between behaviors), which can imply phase change is instantaneous.
 - The solid lattice is a rectangular grid pinned at the bottom; it reads more like "stacked balls at the bottom" than a crystalline lattice with a defined shape, and there's no container/beaker outline distinguishing solid shape from liquid pooling.
 - Gas uses `gravity.scale=0` so particles can drift to one corner depending on residual velocities rather than uniformly filling the space.
 
@@ -477,8 +477,8 @@ Return implementable specifics.
 **Current visual:** A dark canvas beaker (drawn as a rectangle with a small lip) with a volume-tied water level, fixed mL graduation marks, drifting dissolved particles, and an undissolved "pile" (half-ellipse) at the bottom when past the solubility limit; readouts for %m/m, %m/v, dissolved mass, saturation status.
 
 **Observed issues:**
-- The "beaker" is a plain rectangle (vertical sides + lip ticks); it doesn't read as a beaker (no tapered/rounded base) — minor realism gap.
-- The undissolved pile is drawn at a fixed bottom location (`h-18`) regardless of the **water level**; at low solvent volume (50 mL) the water surface is high up but the pile sits at the very bottom — fine, but dissolved particles are clamped to `waterLevel+10 … h-30`, so at low fill they crowd into a thin band.
+- The "beaker" is a plain rectangle (vertical sides + lip ticks); it doesn't read as a beaker (no tapered/rounded base): minor realism gap.
+- The undissolved pile is drawn at a fixed bottom location (`h-18`) regardless of the **water level**; at low solvent volume (50 mL) the water surface is high up but the pile sits at the very bottom: fine, but dissolved particles are clamped to `waterLevel+10 … h-30`, so at low fill they crowd into a thin band.
 - Particle count caps at 80 and is a coarse proxy for mass; saturation vs supersaturation is shown by status badge and pile size, not by a clear "dissolved vs solubility ceiling" gauge.
 - Hard-coded dark colors; canvas not DPI-scaled.
 
@@ -499,7 +499,7 @@ Return implementable specifics.
 **Current visual:** A stepped SVG sequence for ionic (Na+Cl→NaCl) and covalent (Cl+Cl→Cl₂): atoms as circles with Lewis dots, an electron-transfer arrow (ionic), a shared pair (covalent), an ionic lattice grid (step 4), and a Cl₂ molecule with a bond line. Octet status chips.
 
 **Observed issues:**
-- **Lewis dots are placed one-per-side then singly**, not grouped into proper lone *pairs* on each side — so the standard Lewis convention (paired dots) isn't followed, and a chlorine's "7 then +1" can look like 8 single dots rather than 4 pairs.
+- **Lewis dots are placed one-per-side then singly**, not grouped into proper lone *pairs* on each side: so the standard Lewis convention (paired dots) isn't followed, and a chlorine's "7 then +1" can look like 8 single dots rather than 4 pairs.
 - The covalent shared pair (two dots) overlaps the drawn bond line; in the final Cl₂ the bond line and the shared-pair dots are both present and visually compete.
 - No electron-shell (Bohr) rings are shown, so "outer shell / octet" is asserted by chips/text rather than depicted as a shell filling up.
 - The ionic lattice is a flat 4×4 checkerboard (no 3-D cue), and Na⁺ vs Cl⁻ sizing (12 vs 16 r) is only roughly to ionic-radius scale.
@@ -522,7 +522,7 @@ Return implementable specifics.
 
 **Observed issues:**
 - Strong, well-built tool. The reactive site is shown only as a short "notch" line from the particle center; orientation success/failure may be hard to perceive at small particle radius (7 px).
-- The MB curve is qualitative (relative units, clearly labeled as such) — accurate enough but the x-axis has no tick values, only "low/high energy."
+- The MB curve is qualitative (relative units, clearly labeled as such): accurate enough but the x-axis has no tick values, only "low/high energy."
 - Catalyst is shown as a tinted strip labeled "CATALYST SURFACE" at the bottom; the mechanism (lowering Eₐ) is shown by moving the dashed line, which is good, but the surface strip doesn't visibly *do* anything to particles.
 
 ```text
@@ -542,7 +542,7 @@ Return implementable specifics.
 **Current visual:** A balanced-equation header with colored coefficients, two mole sliders, two horizontal "reaction-sets" comparison bars (the shorter one limits), and result cards (limiting reactant, product formed, leftovers).
 
 **Observed issues:**
-- The visual is essentially **two comparison bars + text cards** — there is no particle/molecule-level depiction of reactant molecules combining in the mole ratio and an excess reactant being left over (the most intuitive way to "see" the limiting reactant).
+- The visual is essentially **two comparison bars + text cards**: there is no particle/molecule-level depiction of reactant molecules combining in the mole ratio and an excess reactant being left over (the most intuitive way to "see" the limiting reactant).
 - The bars normalize to `maxExtent`, which is good, but they convey "reaction sets" abstractly; a learner may not connect bar length to actual molecule counts.
 - No visual of the leftover/excess reactant as physical leftover units.
 
@@ -565,7 +565,7 @@ Return implementable specifics.
 **Current visual:** A shared `ProcessCycle` ring component showing 4–5 stages as **emoji nodes** (🥚🐣🪶🦅🪺 for the eagle; 🐃 reused for calf/juvenile/adult plus ❤️ for the tamaraw) with a detail panel and Philippine-context notes.
 
 **Observed issues:**
-- The "diagram" is a ring of **emoji**, not actual life-cycle illustrations — the tamaraw uses the **same 🐃 emoji for calf, juvenile, and adult**, so the visual conveys no developmental change.
+- The "diagram" is a ring of **emoji**, not actual life-cycle illustrations: the tamaraw uses the **same 🐃 emoji for calf, juvenile, and adult**, so the visual conveys no developmental change.
 - The ring layout is generic (shared with the rock cycle, water cycle, mitosis), so there's nothing species- or biology-specific in the imagery.
 - Stage size/scale doesn't convey growth; emoji rendering varies by platform/OS.
 
@@ -583,9 +583,9 @@ Return implementable, sourced guidance (including reference images/figures to em
 
 ## Human Body Systems (G5)
 
-**Current visual:** Four canvas/DOM sub-views: (1) Homeostasis — a blobby "lungs" arc + a plain red circle "heart" that pulse with activity intensity; (2) Vascular — a circle heart with polyline vessels and flowing dots; (3) Absorption — a villus bezier with capillary loop + lacteal and moving particles; (4) Reflex arc — DOM circle nodes (Sensory/Spinal/Extensor/Flexor) with an absolutely-positioned SVG of hard-coded connector lines.
+**Current visual:** Four canvas/DOM sub-views: (1) Homeostasis: a blobby "lungs" arc + a plain red circle "heart" that pulse with activity intensity; (2) Vascular: a circle heart with polyline vessels and flowing dots; (3) Absorption: a villus bezier with capillary loop + lacteal and moving particles; (4) Reflex arc: DOM circle nodes (Sensory/Spinal/Extensor/Flexor) with an absolutely-positioned SVG of hard-coded connector lines.
 
-**Observed issues — HIGH:**
+**Observed issues: HIGH:**
 - **Anatomically loose, abstract shapes.** The homeostasis "lungs" are a single quadratic-curve blob and the heart is a plain circle; they aren't connected and don't resemble the cardiorespiratory system.
 - **Reflex-arc connectors are misaligned.** The connector `<svg>` uses fixed pixel coordinates (`M 50 80 L 300 80`, etc.) inside a responsive, flex-laid-out, padded container, so the lines do not actually join the circle nodes across viewport sizes.
 - Vessel/structure **labels are placed at fixed midpoints** and can overlap the heart, the capillary boxes, or run off-canvas (e.g., long "Blood Capillary (Absorbs Sugars/Amino Acids)" text).
@@ -603,12 +603,12 @@ Research and report, with citations:
 Return implementable, sourced guidance (with reference figures to emulate).
 ```
 
-## Food Web — Philippine Rice Paddy (G5)
+## Food Web: Philippine Rice Paddy (G5)
 
 **Current visual:** A Cytoscape.js force/breadthfirst graph of rice-paddy organisms (producers→apex) with tap-to-highlight neighborhoods, an info panel (eats/eaten-by), and a CSS energy pyramid (10% rule) plus a decomposer note.
 
 **Observed issues:**
-- Robust, library-managed layout — generally strong.
+- stable, library-managed layout: generally strong.
 - Node labels are small (`9px`) with two-line wrapping; in a dense web some node labels can be hard to read, and the breadthfirst layout direction (arrows prey→predator) should be verified as unambiguous to students.
 - The energy pyramid is a clean CSS tier stack; the decomposer is described in text/♻ emoji rather than integrated into the web/pyramid as a recycling arrow.
 
@@ -624,7 +624,7 @@ Research and report, with citations:
 Return implementable specifics.
 ```
 
-## Virtual Microscope — Plant Cell (G7)
+## Virtual Microscope: Plant Cell (G7)
 
 **Current visual:** An SVG plant (mango leaf) cell inside a round microscope viewport, zoomable via Framer Motion scale (40×/100×/400×) with a fixed transform origin; organelles are clickable shapes (cell wall polygon, vacuole blob, nucleus circle, chloroplast/mitochondria ellipses) with a callout panel.
 
@@ -652,7 +652,7 @@ Return implementable, sourced guidance (with reference figures to emulate).
 
 **Observed issues:**
 - Solid and correct; limited to a single-gene 2×2 monohybrid cross (no dihybrid/incomplete-dominance options).
-- Dominant cells use red fill with light text; recessive cells are outlined white — color carries the phenotype, so a legend/pattern would help color-blind users.
+- Dominant cells use red fill with light text; recessive cells are outlined white: color carries the phenotype, so a legend/pattern would help color-blind users.
 - The gamete-split arrows are simple "↓" glyphs; the conceptual link (each parent contributes one allele) is textual.
 
 ```text
@@ -669,7 +669,7 @@ Return implementable specifics.
 
 ## Photosynthesis Simulator (G11–12)
 
-**Current visual:** Two tabs. (1) Stomatal gas exchange — a canvas with two big green ellipse "guard cells" that part by an aperture, with CO₂/O₂ particles spawning by rate. (2) Van Helmont mass balance — a 🌳 **emoji** that scales up as biomass grows beside a soil block. Sliders for light/CO₂/water drive a non-rectangular-hyperbola + Michaelis–Menten rate.
+**Current visual:** Two tabs. (1) Stomatal gas exchange: a canvas with two big green ellipse "guard cells" that part by an aperture, with CO₂/O₂ particles spawning by rate. (2) Van Helmont mass balance: a 🌳 **emoji** that scales up as biomass grows beside a soil block. Sliders for light/CO₂/water drive a non-rectangular-hyperbola + Michaelis–Menten rate.
 
 **Observed issues:**
 - The Van Helmont view represents the plant as a **scaling tree emoji**, not a diagram; soil is two faint bars. Mass change is shown by emoji scale + numbers.
@@ -693,8 +693,8 @@ Return implementable, sourced guidance (with reference figures to emulate).
 
 **Current visual:** The shared `ProcessCycle` ring with 6 stages (Interphase→Cytokinesis) shown as **emoji nodes** (🧬🌀🪢↔️🔵✌️) plus a per-stage text description.
 
-**Observed issues — HIGH:**
-- The core learning goal is **what happens to the chromosomes** at each phase — but the diagram is a ring of **emoji**, with no depiction of chromosomes, sister chromatids, spindle fibres, the metaphase plate, or the cell membrane pinching. The science is entirely in the text.
+**Observed issues: HIGH:**
+- The core learning goal is **what happens to the chromosomes** at each phase: but the diagram is a ring of **emoji**, with no depiction of chromosomes, sister chromatids, spindle fibres, the metaphase plate, or the cell membrane pinching. The science is entirely in the text.
 - Generic shared ring layout offers nothing mitosis-specific; the emoji (🪢 knot, ✌️ peace sign) are arbitrary and platform-dependent.
 - No visual of chromosome number being conserved (the stated "key idea").
 
@@ -717,9 +717,9 @@ Return implementable, sourced guidance (with reference figures/animations to emu
 **Current visual:** A React-Three-Fiber 3-D scene: the Sun + 8 planets on circular orbits, with a **log-compressed orbital-distance scale** and deliberately exaggerated planet sizes for visibility; speed/scale controls and a planet info panel.
 
 **Observed issues:**
-- 3-D and well-built. The **scale is intentionally non-physical** (log distances, exaggerated sizes) — pedagogically reasonable but must be clearly labeled as not-to-scale to avoid misconceptions.
+- 3-D and well-built. The **scale is intentionally non-physical** (log distances, exaggerated sizes): pedagogically reasonable but must be clearly labeled as not-to-scale to avoid misconceptions.
 - Circular (not elliptical) coplanar orbits; all planets shown in one plane with uniform circular paths.
-- As a 3-D scene it's outside the "2D off-scale/overlap" problem class — low priority for the 2D-diagram cleanup, but the scale caveat matters pedagogically.
+- As a 3-D scene it's outside the "2D off-scale/overlap" problem class: low priority for the 2D-diagram cleanup, but the scale caveat matters pedagogically.
 
 ```text
 I am refining a 3D "Solar System Explorer" (React Three Fiber) in a Philippine MATATAG Grade 6 earth-science app. For visibility it uses a LOG-compressed distance scale and exaggerated planet sizes, with circular coplanar orbits. I want to ensure it's pedagogically honest and well-labeled rather than reinforcing scale misconceptions.
@@ -738,7 +738,7 @@ Return implementable specifics.
 **Current visual:** Two SVG panels: (1) a Sun–Earth orbit showing Earth at four orbital positions with a 23.5° tilted axis; (2) a hemisphere-insolation panel with the Philippines marked and monsoon (Amihan/Habagat) arrows, plus a "why the Philippines has wet/dry not 4 seasons" note.
 
 **Observed issues:**
-- The orbital panel shows the tilt but **doesn't clearly show the lit vs dark hemisphere** (day/night terminator) or how the *same* axial direction produces opposite seasons across the orbit — the key seasons mechanism.
+- The orbital panel shows the tilt but **doesn't clearly show the lit vs dark hemisphere** (day/night terminator) or how the *same* axial direction produces opposite seasons across the orbit: the key seasons mechanism.
 - Monsoon arrows in panel 2 are drawn at fixed coordinates and can **clip the Philippines marker or the panel edge**; the wind direction reversal (Amihan NE vs Habagat SW) needs to be unambiguous.
 - Earth's tilt direction must remain **fixed in space** across all four orbital positions (a common diagram error is to "tilt toward the Sun" at every position).
 
@@ -758,7 +758,7 @@ Return implementable specifics.
 
 **Current visual:** The shared `ProcessCycle` ring with stages (evaporation, condensation, precipitation, collection, …) shown as **emoji nodes** (☀️💨☁️🌧️🌊 etc.) and per-stage text.
 
-**Observed issues — HIGH:**
+**Observed issues: HIGH:**
 - The water cycle is fundamentally a **spatial landscape process** (ocean → sky → mountains → rivers → back to sea), but it's rendered as an **abstract emoji ring** with no landscape, no sun-driven directionality, and no spatial relationship between stages.
 - Emoji are platform-dependent and don't show transport (e.g., wind moving clouds inland, runoff flowing downhill).
 - Processes like transpiration, infiltration, and groundwater flow aren't depicted spatially.
@@ -779,7 +779,7 @@ Return implementable, sourced guidance (with reference figures to emulate).
 
 **Current visual:** The shared `ProcessCycle` ring presenting boundary types/processes as **emoji nodes** (🌋🏔️〰️ etc.) with text descriptions.
 
-**Observed issues — HIGH:**
+**Observed issues: HIGH:**
 - Plate boundaries are inherently **cross-sectional/spatial** (divergent ridge, convergent subduction with a trench + volcanic arc, transform strike-slip), but the tool shows an **emoji ring** with no cross-section, no plate motion arrows, no mantle, and no depiction of what happens at each boundary type.
 - The three boundary types and their landforms (ridges, trenches, volcanoes, faults) cannot be distinguished from emoji.
 - No Philippine-specific context (e.g., Philippine Trench, Philippine Fault, Pacific Ring of Fire) is shown spatially.
@@ -801,7 +801,7 @@ Return implementable, sourced guidance (with reference figures to emulate).
 **Current visual:** The shared `ProcessCycle` ring with rock types/processes (igneous, sedimentary, metamorphic; weathering, melting, etc.) as **emoji nodes** with text.
 
 **Observed issues:**
-- The rock cycle is genuinely cyclic, so a ring is a defensible layout — but using **emoji** for rock types/processes conveys little (a learner can't distinguish igneous vs sedimentary vs metamorphic from icons), and the **multiple pathways** (the rock cycle is not a single loop — rocks can skip stages) aren't shown.
+- The rock cycle is genuinely cyclic, so a ring is a defensible layout: but using **emoji** for rock types/processes conveys little (a learner can't distinguish igneous vs sedimentary vs metamorphic from icons), and the **multiple pathways** (the rock cycle is not a single loop: rocks can skip stages) aren't shown.
 - No depiction of the agents (heat/pressure, weathering/erosion, melting/cooling) acting between rock types, and no rock textures/appearances.
 
 ```text
@@ -822,7 +822,7 @@ Return implementable, sourced guidance (with reference figures to emulate).
 
 **Observed issues:**
 - The Philippine landmass is a **rough stylized blob**, and the cyclone's size relative to the map isn't to scale; the track is a simple polyline.
-- There is **no forecast cone** (track uncertainty) and no wind-signal radius rings around the storm — both are central to PAGASA's real advisories.
+- There is **no forecast cone** (track uncertainty) and no wind-signal radius rings around the storm: both are central to PAGASA's real advisories.
 - The eye/bands are decorative (radial gradient + rotation) rather than tied to category/intensity in a quantitative way.
 
 ```text
