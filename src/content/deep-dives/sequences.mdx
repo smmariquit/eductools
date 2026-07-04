@@ -2,10 +2,7 @@ import { Changelog, LineChart, Sources } from '../../components/content'
 
 # Sequences: when adding loses to multiplying
 
-
 I built the sequences tool because the hard part of this topic is not spotting a pattern, it is making the leap from *seeing* one to *writing* it as a rule. That is where a lot of students stall. They can continue $2, 5, 8, 11, \dots$ all day, then freeze when asked for the hundredth term, because continuing means counting and a rule means jumping straight there. A sequence is just an ordered list of numbers that follows a rule, and once you can name the rule you can land on the hundredth term without listing the ninety-nine before it. The two patterns that carry most of the Grade 10 work are the arithmetic and the geometric, and the gap between how they grow is wider than almost anyone expects going in.
-
-
 
 Here is the misconception the bar chart is built to break. Students assume a constant multiplier is just "a bit faster" than a constant addition, like two cars at slightly different speeds. It is not a bit faster. Multiplying buries adding so completely that no head start on the adding side can save it. You have to see it to believe it.
 
@@ -28,27 +25,27 @@ $$a_n = a_1 \cdot r^{\,n-1}.$$
 Same starting point, but now the tenth term is $a_{10} = 2 \cdot 2^{\,10-1} = 2 \cdot 2^9 = 2 \cdot 512 = 1024$. Hold that next to the arithmetic version, which crawled to only 29 by its tenth term from the identical start of 2.
 
 <LineChart
-  title="First ten terms: same start (a₁ = 2), different rule"
-  xLabel="Term (n)"
-  source="Computed from the aₙ formulas (OpenStax, Algebra and Trigonometry 2e)"
-  series={[
-    {
-      name: 'Arithmetic (d = 3)',
-      color: 'sky',
-      points: [
-        { x: 1, y: 2 }, { x: 2, y: 5 }, { x: 3, y: 8 }, { x: 4, y: 11 }, { x: 5, y: 14 },
-        { x: 6, y: 17 }, { x: 7, y: 20 }, { x: 8, y: 23 }, { x: 9, y: 26 }, { x: 10, y: 29 },
-      ],
-    },
-    {
-      name: 'Geometric (r = 2)',
-      color: 'berry',
-      points: [
-        { x: 1, y: 2 }, { x: 2, y: 4 }, { x: 3, y: 8 }, { x: 4, y: 16 }, { x: 5, y: 32 },
-        { x: 6, y: 64 }, { x: 7, y: 128 }, { x: 8, y: 256 }, { x: 9, y: 512 }, { x: 10, y: 1024 },
-      ],
-    },
-  ]}
+ title="First ten terms: same start (a₁ = 2), different rule"
+ xLabel="Term (n)"
+ source="Computed from the aₙ formulas (OpenStax, Algebra and Trigonometry 2e)"
+ series={[
+ {
+ name: 'Arithmetic (d = 3)',
+ color: 'sky',
+ points: [
+ { x: 1, y: 2 }, { x: 2, y: 5 }, { x: 3, y: 8 }, { x: 4, y: 11 }, { x: 5, y: 14 },
+ { x: 6, y: 17 }, { x: 7, y: 20 }, { x: 8, y: 23 }, { x: 9, y: 26 }, { x: 10, y: 29 },
+ ],
+ },
+ {
+ name: 'Geometric (r = 2)',
+ color: 'berry',
+ points: [
+ { x: 1, y: 2 }, { x: 2, y: 4 }, { x: 3, y: 8 }, { x: 4, y: 16 }, { x: 5, y: 32 },
+ { x: 6, y: 64 }, { x: 7, y: 128 }, { x: 8, y: 256 }, { x: 9, y: 512 }, { x: 10, y: 1024 },
+ ],
+ },
+ ]}
 />
 
 That is the whole story of exponential growth in one picture. Adding wins early and loses forever. A constant multiplier bigger than 1 eventually swamps any constant addition, no matter how large the step. It is the reason the informal *"5-6"* loan can outrun the income meant to pay it back, since the balance multiplies each cycle while the wages only add. It is also why a forwarded *chain message* or a virus reaches everyone so fast: each round multiplies the last. When $0 < r < 1$ the same machinery runs in reverse, halving toward zero, which is how a bouncing ball's height or a draining battery fades out.
@@ -60,21 +57,21 @@ Most exam problems hand you a few terms and ask for the rule, so the diagnostic 
 Two cautions that catch people out. First, the exponent in the geometric formula is $n - 1$, not $n$. The first term is multiplied by $r^0 = 1$, which leaves it untouched, exactly as it should. Second, a list of numbers is under no obligation to be arithmetic or geometric at all. The Fibonacci sequence $1, 1, 2, 3, 5, 8, \dots$, where each term is the sum of the previous two, is neither, and plenty of real patterns are neither. So test before you assume, instead of forcing every list into one of the two tidy boxes.
 
 <Sources
-  items={[
-    { label: 'OpenStax, Algebra and Trigonometry 2e. "Sequences and Their Notations."', href: 'https://openstax.org/books/algebra-and-trigonometry-2e/pages/13-1-sequences-and-their-notations' },
-    { label: 'OpenStax, Algebra and Trigonometry 2e. "Arithmetic Sequences."', href: 'https://openstax.org/books/algebra-and-trigonometry-2e/pages/13-2-arithmetic-sequences' },
-    { label: 'OpenStax, Algebra and Trigonometry 2e. "Geometric Sequences."', href: 'https://openstax.org/books/algebra-and-trigonometry-2e/pages/13-3-geometric-sequences' },
-    { label: 'Weisstein, Eric W. "Arithmetic Progression." Wolfram MathWorld.', href: 'https://mathworld.wolfram.com/ArithmeticProgression.html' },
-    { label: 'Khan Academy. "Sequences."', href: 'https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:sequences' },
-  ]}
+ items={[
+ { label: 'OpenStax, Algebra and Trigonometry 2e. "Sequences and Their Notations."', href: 'https://openstax.org/books/algebra-and-trigonometry-2e/pages/13-1-sequences-and-their-notations' },
+ { label: 'OpenStax, Algebra and Trigonometry 2e. "Arithmetic Sequences."', href: 'https://openstax.org/books/algebra-and-trigonometry-2e/pages/13-2-arithmetic-sequences' },
+ { label: 'OpenStax, Algebra and Trigonometry 2e. "Geometric Sequences."', href: 'https://openstax.org/books/algebra-and-trigonometry-2e/pages/13-3-geometric-sequences' },
+ { label: 'Weisstein, Eric W. "Arithmetic Progression." Wolfram MathWorld.', href: 'https://mathworld.wolfram.com/ArithmeticProgression.html' },
+ { label: 'Khan Academy. "Sequences."', href: 'https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:sequences' },
+ ]}
 />
 
 <Changelog
-  created="2026-06-11"
-  updated="2026-06-18"
-  entries={[
-    { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
-    { date: "2026-06-18", note: "Replaced the two-bar 'tenth term' chart with a LineChart of the first ten terms of both sequences, so the arithmetic ramp vs geometric curve is visible; updated 'bars' to 'lines' in the prose." },
-    { date: "2026-06-18", note: "Re-toned into the house voice (first-person origin open, multiplier-vs-adding misconception, Philippine scenarios), corrected the MATATAG placement to Grade 10, kept the tenth-term chart and its figures, verified sources, and added the Changelog block." },
-  ]}
+ created="2026-06-11"
+ updated="2026-06-18"
+ entries={[
+ { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
+ { date: "2026-06-18", note: "Replaced the two-bar 'tenth term' chart with a LineChart of the first ten terms of both sequences, so the arithmetic ramp vs geometric curve is visible; updated 'bars' to 'lines' in the prose." },
+ { date: "2026-06-18", note: "Re-toned into the house voice (first-person origin open, multiplier-vs-adding misconception, Philippine scenarios), corrected the MATATAG placement to Grade 10, kept the tenth-term chart and its figures, verified sources, and added the Changelog block." },
+ ]}
 />
