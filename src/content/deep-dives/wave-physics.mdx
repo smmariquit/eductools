@@ -2,10 +2,7 @@ import { Changelog, Sources, Table } from '../../components/content'
 
 # Wave Physics: Why You Cannot Just Set the Speed
 
-
 When I first showed this wave tool to a science teacher, her first question was, "Where is the speed slider?" It is a fair thing to expect. There is a slider for how tall the wave is, one for how fast it wiggles, and one for how long each wave is, so surely there should be one for speed too. There is not, and the reason it is missing is the most important idea on the whole page. You do not get to set a wave's speed. The wave gets its speed from the string it is travelling on, and the tool computes it for you so it can never lie.
-
-
 
 So let me start with what a wave even is. A wave is a disturbance that carries energy through a material without carrying the material along with it. Drop a stone into a still fishpond and the ripple races outward, but the water itself mostly bobs up and down and stays where it was. The visualizer shows this with a single wave travelling along a string. Watch the pink dot it draws on the string: as the wave passes, that dot only moves up and down, never sideways. The shape moves across the screen, the energy moves across the screen, but the bit of string the dot marks stays home.
 
@@ -30,15 +27,15 @@ The tool treats $v$ as something it calculates, never something you dial in. Set
 Here is the part students usually find backwards. Most people assume that if you shove a wave harder, it goes faster, the way a harder kick sends a ball farther. Waves do not work like that. The speed is mostly a property of the material the wave moves through, not of how hard you started it. A wave travels faster through a stiffer material that snaps back quickly, and slower through a floppier, heavier one. Sound is the everyday example, and the gap between materials is huge.
 
 <Table
-  title="Speed of sound through different media"
-  source="OpenStax, University Physics Vol. 1, Table 17.1 (gases at 0°C, liquids at 20°C)"
-  columns={['Medium', 'Speed of sound (m/s)', '× speed in air']}
-  align={['left', 'right', 'right']}
-  rows={[
-    ['Air', '331', '1.0'],
-    ['Water (fresh)', '1,480', '4.5'],
-    ['Steel', '5,960', '18'],
-  ]}
+ title="Speed of sound through different media"
+ source="OpenStax, University Physics Vol. 1, Table 17.1 (gases at 0°C, liquids at 20°C)"
+ columns={['Medium', 'Speed of sound (m/s)', '× speed in air']}
+ align={['left', 'right', 'right']}
+ rows={[
+ ['Air', '331', '1.0'],
+ ['Water (fresh)', '1,480', '4.5'],
+ ['Steel', '5,960', '18'],
+ ]}
 />
 
 Sound crawls through air at about 331 m/s at the freezing point, moves more than four times faster in water, and clears nearly 6,000 m/s in steel. Steel resists being squeezed and springs back almost instantly, so a disturbance hands itself from atom to atom right away, while air is loose and slow to recover. Notice what does not change much across these jumps: the frequency. When a sound crosses from air into water the pitch stays roughly the same, so with $v$ jumping up and $f$ holding steady, the wavelength has to stretch to keep $v = f\lambda$ balanced. The same rule the tool enforces on a string is the rule sound obeys when it crosses from one material into another.
@@ -63,20 +60,20 @@ No. Amplitude changes how much energy the wave carries, not how fast it moves. O
 Because this is a transverse wave, meaning the string moves at a right angle to the direction the wave travels. The shape and the energy move along the string, but each piece of string just bobs in place. That is the whole point of a wave: it moves energy without moving the material with it.
 
 <Sources
-  items={[
-    { label: 'OpenStax, University Physics Volume 1, 16.1 Traveling Waves.', href: 'https://openstax.org/books/university-physics-volume-1/pages/16-1-traveling-waves' },
-    { label: 'OpenStax, University Physics Volume 1, 17.2 Speed of Sound (Table 17.1).', href: 'https://openstax.org/books/university-physics-volume-1/pages/17-2-speed-of-sound' },
-    { label: 'PhET Interactive Simulations, Wave on a String (University of Colorado Boulder).', href: 'https://phet.colorado.edu/en/simulations/wave-on-a-string' },
-    { label: 'PhET Interactive Simulations, Waves Intro (University of Colorado Boulder).', href: 'https://phet.colorado.edu/en/simulations/waves-intro' },
-  ]}
+ items={[
+ { label: 'OpenStax, University Physics Volume 1, 16.1 Traveling Waves.', href: 'https://openstax.org/books/university-physics-volume-1/pages/16-1-traveling-waves' },
+ { label: 'OpenStax, University Physics Volume 1, 17.2 Speed of Sound (Table 17.1).', href: 'https://openstax.org/books/university-physics-volume-1/pages/17-2-speed-of-sound' },
+ { label: 'PhET Interactive Simulations, Wave on a String (University of Colorado Boulder).', href: 'https://phet.colorado.edu/en/simulations/wave-on-a-string' },
+ { label: 'PhET Interactive Simulations, Waves Intro (University of Colorado Boulder).', href: 'https://phet.colorado.edu/en/simulations/waves-intro' },
+ ]}
 />
 
 <Changelog
-  created="2026-06-11"
-  updated="2026-06-18"
-  entries={[
-    { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
-    { date: "2026-06-18", note: "Switched the speed-of-sound chart from a bar chart to a Table (reference lookup data) and added a computed '× speed in air' column." },
-    { date: "2026-06-18", note: "Re-toned into the house voice and corrected the tool description to match the visualizer: a 1D transverse traveling wave with amplitude/frequency/wavelength sliders and derived speed v = fλ (was wrongly described as a 3D sin·cos interference mesh with a speed slider). Kept the speed-of-sound chart and verified sources; added the mandatory Changelog block." },
-  ]}
+ created="2026-06-11"
+ updated="2026-06-18"
+ entries={[
+ { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
+ { date: "2026-06-18", note: "Switched the speed-of-sound chart from a bar chart to a Table (reference lookup data) and added a computed '× speed in air' column." },
+ { date: "2026-06-18", note: "Re-toned into the house voice and corrected the tool description to match the visualizer: a 1D transverse traveling wave with amplitude/frequency/wavelength sliders and derived speed v = fλ (was wrongly described as a 3D sin·cos interference mesh with a speed slider). Kept the speed-of-sound chart and verified sources; added the mandatory Changelog block." },
+ ]}
 />
