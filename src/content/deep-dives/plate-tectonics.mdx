@@ -2,10 +2,7 @@ import { BarChart, Changelog, Sources } from '../../components/content'
 
 # Plate Tectonics and Why the Philippines Shakes
 
-
 I built the plate tectonics tool around a single switch, divergent, convergent, transform, because almost everything that matters about living here comes down to which of those three is happening under your feet. The setup is this. The hard outer shell of the Earth is cracked into a few dozen rigid plates that drift, very slowly, over the hotter and softer rock beneath them. They move about as fast as your fingernails grow, a few centimeters a year, which sounds harmless right up until you remember the plates are continent-sized and they grind against each other along their edges. Almost everything dramatic in geology happens at those edges, and the Philippines is built on a particularly crowded stretch of them.
-
-
 
 The nickname for our neighborhood is the Pacific Ring of Fire, the rough horseshoe around the Pacific basin where most of the world's earthquakes and active volcanoes line up. Here is the first thing I want to correct, because people reach for it: the Ring of Fire is not a curse and it is not a coincidence. It is just the map of where oceanic plates are colliding with and sinking beneath other plates. The archipelago sits where the Philippine Sea Plate presses against the larger Sunda block to the west, which is why we are on the ring rather than somewhere quiet.
 
@@ -20,14 +17,14 @@ Where two plates converge and one of them is denser oceanic crust, that slab ben
 Put a country on top of two subduction zones and a fault that runs its entire length, and constant earthquakes stop being a surprise. Worldwide, the pattern of how often quakes of a given size happen is remarkably steady, and it follows a steep curve: small quakes are background noise, and the genuinely large ones are rare.
 
 <BarChart
-  title="Earthquakes worldwide per year, by magnitude (long-term average)"
-  source="USGS Earthquake Hazards Program, Lists, Maps, and Statistics (long-term annual averages)"
-  data={[
-    { label: 'Magnitude 5–5.9', value: 1319, color: 'sky' },
-    { label: 'Magnitude 6–6.9', value: 134, color: 'leaf' },
-    { label: 'Magnitude 7–7.9', value: 15, color: 'sunshine' },
-    { label: 'Magnitude 8+', value: 1, color: 'berry' },
-  ]}
+ title="Earthquakes worldwide per year, by magnitude (long-term average)"
+ source="USGS Earthquake Hazards Program, Lists, Maps, and Statistics (long-term annual averages)"
+ data={[
+ { label: 'Magnitude 5–5.9', value: 1319, color: 'sky' },
+ { label: 'Magnitude 6–6.9', value: 134, color: 'leaf' },
+ { label: 'Magnitude 7–7.9', value: 15, color: 'sunshine' },
+ { label: 'Magnitude 8+', value: 1, color: 'berry' },
+ ]}
 />
 
 Those are global figures, but they explain the local experience. A magnitude 5 quake, strong enough to rattle dishes and crack plaster, happens somewhere on Earth more than a thousand times a year, and a healthy share of those land in our corner of the Ring of Fire. The great magnitude 8 events that redraw coastlines come along about once a year worldwide. That is the reason preparedness here is built around the common, moderate quake that gives no warning, rather than the rare giant everyone pictures.
@@ -45,19 +42,19 @@ Not in the sense of making it stop. The collision is permanent on any human time
 Because nothing melts there. At a transform boundary the plates just grind sideways past each other; no slab is dragged down to the depths where rock turns to magma. You get powerful earthquakes and no volcanic arc, which is why the tool drops the volcano step entirely on the transform setting.
 
 <Sources
-  items={[
-    { label: 'USGS, This Dynamic Earth: Plate Tectonics and People (Ring of Fire).', href: 'https://pubs.usgs.gov/gip/dynamic/fire.html' },
-    { label: 'USGS, This Dynamic Earth: Understanding Plate Motions (boundary types and subduction).', href: 'https://pubs.usgs.gov/gip/dynamic/understanding.html' },
-    { label: 'USGS, This Dynamic Earth: Developing the Theory.', href: 'https://pubs.usgs.gov/gip/dynamic/dynamic.html' },
-    { label: 'USGS Earthquake Hazards Program, Lists, Maps, and Statistics: estimated annual frequency by magnitude.', href: 'https://www.usgs.gov/programs/earthquake-hazards/lists-maps-and-statistics' },
-  ]}
+ items={[
+ { label: 'USGS, This Dynamic Earth: Plate Tectonics and People (Ring of Fire).', href: 'https://pubs.usgs.gov/gip/dynamic/fire.html' },
+ { label: 'USGS, This Dynamic Earth: Understanding Plate Motions (boundary types and subduction).', href: 'https://pubs.usgs.gov/gip/dynamic/understanding.html' },
+ { label: 'USGS, This Dynamic Earth: Developing the Theory.', href: 'https://pubs.usgs.gov/gip/dynamic/dynamic.html' },
+ { label: 'USGS Earthquake Hazards Program, Lists, Maps, and Statistics: estimated annual frequency by magnitude.', href: 'https://www.usgs.gov/programs/earthquake-hazards/lists-maps-and-statistics' },
+ ]}
 />
 
 <Changelog
-  created="2026-06-11"
-  updated="2026-06-18"
-  entries={[
-    { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
-    { date: "2026-06-18", note: "Re-toned into the house voice (origin-story open, Ring-of-Fire and earthquakes-vs-volcanoes misconceptions busted, FAQ); aligned with the tool's three-boundary toggle and PH faults; replaced the dead USGS earthquake-statistics link with the live Lists, Maps, and Statistics page; added the Changelog block." },
-  ]}
+ created="2026-06-11"
+ updated="2026-06-18"
+ entries={[
+ { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
+ { date: "2026-06-18", note: "Re-toned into the house voice (origin-story open, Ring-of-Fire and earthquakes-vs-volcanoes misconceptions busted, FAQ); aligned with the tool's three-boundary toggle and PH faults; replaced the dead USGS earthquake-statistics link with the live Lists, Maps, and Statistics page; added the Changelog block." },
+ ]}
 />
