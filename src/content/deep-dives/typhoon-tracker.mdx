@@ -2,16 +2,13 @@ import { BarChart, Changelog, Figure, Sources } from '../../components/content'
 
 # Reading a Typhoon the Way PAGASA Does
 
-
 I built the typhoon tracker because the labels on a storm bulletin are the closest thing we have to a national second language, and most people learn them the hard way, mid-storm, when it is too late to look anything up. An average of about twenty tropical cyclones enter the Philippine Area of Responsibility each year, the box the tool draws on the map and labels PAR, and somewhere between eight and nine of them make landfall. That makes the Philippines one of the most cyclone-exposed countries on Earth, and it makes the gap between a "tropical depression" and a "super typhoon" worth understanding before you need it. The names are not bureaucratic trivia. Each one is a specific wind-speed threshold that tells you roughly how much damage to brace for.
 
-
-
 <Figure
-  src="/images/deep-dives/typhoon-haiyan-2013.jpg"
-  alt="Satellite view of Super Typhoon Haiyan, a vast spiral of cloud with a clear eye, approaching the islands of the central Philippines."
-  caption="Super Typhoon Haiyan (Yolanda) on 7 November 2013, hours before its catastrophic central-Philippines landfall. The tight, cloud-free eye ringed by a dense spiral is the signature of a storm at peak strength."
-  credit="Image: NASA / LAADS Web (MODIS, Terra satellite). Public domain, via Wikimedia Commons."
+ src="/images/deep-dives/typhoon-haiyan-2013.jpg"
+ alt="Satellite view of Super Typhoon Haiyan, a vast spiral of cloud with a clear eye, approaching the islands of the central Philippines."
+ caption="Super Typhoon Haiyan (Yolanda) on 7 November 2013, hours before its catastrophic central-Philippines landfall. The tight, cloud-free eye ringed by a dense spiral is the signature of a storm at peak strength."
+ credit="Image: NASA / LAADS Web (MODIS, Terra satellite). Public domain, via Wikimedia Commons."
 />
 
 ## How a low-pressure area becomes a typhoon
@@ -25,16 +22,16 @@ This is also why typhoons fall apart quickly once they cross land or cooler wate
 PAGASA sorts tropical cyclones by their maximum sustained winds, and it revised the scale in March 2022, adding a severe-tropical-storm tier and lowering the super-typhoon threshold from the old 220 km/h down to 185 km/h to line up with international practice. A low-pressure area that tightens into a closed circulation with winds up to 62 km/h is a tropical depression; above that, the named categories begin.
 
 <BarChart
-  title="PAGASA tropical cyclone categories: minimum sustained wind (km/h)"
-  unit=" km/h"
-  max={200}
-  source="PAGASA (DOST), classification adopted 23 March 2022"
-  data={[
-    { label: 'Tropical Storm', value: 62, color: 'sunshine' },
-    { label: 'Severe Tropical Storm', value: 89, color: 'sunshine' },
-    { label: 'Typhoon', value: 118, color: 'berry' },
-    { label: 'Super Typhoon', value: 185, color: 'berry' },
-  ]}
+ title="PAGASA tropical cyclone categories: minimum sustained wind (km/h)"
+ unit=" km/h"
+ max={200}
+ source="PAGASA (DOST), classification adopted 23 March 2022"
+ data={[
+ { label: 'Tropical Storm', value: 62, color: 'sunshine' },
+ { label: 'Severe Tropical Storm', value: 89, color: 'sunshine' },
+ { label: 'Typhoon', value: 118, color: 'berry' },
+ { label: 'Super Typhoon', value: 185, color: 'berry' },
+ ]}
 />
 
 So a tropical storm runs 62 to 88 km/h, a severe tropical storm 89 to 117, a typhoon 118 to 184, and anything at 185 km/h or above is a super typhoon. The thresholds are deliberately not evenly spaced, because wind damage is not linear. The force a wind exerts climbs with the square of its speed, so the step from a tropical storm to a typhoon is a far bigger leap in destructive power than the bare numbers suggest. It is also why the tool's storm-surge estimate and the size of the swirl on the map both jump as you push the slider up.
@@ -56,21 +53,21 @@ Because the signal is about your location, not the storm's headline category. A 
 Yes. In March 2022 PAGASA lowered the super-typhoon threshold from 220 km/h to 185 km/h and added the severe-tropical-storm tier, so older charts and newer ones do not always match. The tool uses the current 2022 bands.
 
 <Sources
-  items={[
-    { label: 'PAGASA (DOST), About Tropical Cyclones (classification as of 23 March 2022).', href: 'https://www.pagasa.dost.gov.ph/information/about-tropical-cyclone' },
-    { label: 'NOAA National Ocean Service, What is a cyclone?', href: 'https://oceanservice.noaa.gov/facts/cyclone.html' },
-    { label: 'NOAA National Hurricane Center, Saffir-Simpson Hurricane Wind Scale (1-minute winds).', href: 'https://www.nhc.noaa.gov/aboutsshws.php' },
-    { label: 'PAGASA (DOST), Climate of the Philippines (typhoon season context).', href: 'https://www.pagasa.dost.gov.ph/information/climate-philippines' },
-    { label: 'Typhoon Haiyan, 7 November 2013 (NASA/MODIS, Terra) — public domain, via Wikimedia Commons.', href: 'https://commons.wikimedia.org/wiki/File:Haiyan_2013-11-07_1345Z_(alternate,_borderless).png' },
-  ]}
+ items={[
+ { label: 'PAGASA (DOST), About Tropical Cyclones (classification as of 23 March 2022).', href: 'https://www.pagasa.dost.gov.ph/information/about-tropical-cyclone' },
+ { label: 'NOAA National Ocean Service, What is a cyclone?', href: 'https://oceanservice.noaa.gov/facts/cyclone.html' },
+ { label: 'NOAA National Hurricane Center, Saffir-Simpson Hurricane Wind Scale (1-minute winds).', href: 'https://www.nhc.noaa.gov/aboutsshws.php' },
+ { label: 'PAGASA (DOST), Climate of the Philippines (typhoon season context).', href: 'https://www.pagasa.dost.gov.ph/information/climate-philippines' },
+ { label: 'Typhoon Haiyan, 7 November 2013 (NASA/MODIS, Terra): public domain, via Wikimedia Commons.', href: 'https://commons.wikimedia.org/wiki/File:Haiyan_2013-11-07_1345Z_(alternate,_borderless).png' },
+ ]}
 />
 
 <Changelog
-  created="2026-06-11"
-  updated="2026-06-18"
-  entries={[
-    { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
-    { date: "2026-06-18", note: "Added a public-domain NASA/MODIS satellite image of Typhoon Haiyan (Yolanda) approaching the Philippines, with caption and attribution." },
-    { date: "2026-06-18", note: "Re-toned into the house voice (origin-story open, category-vs-signal confusion busted, plain-spoken FAQ); tied passages to the tool's PAR map, wind-signal panel, and DRRR checklist; kept the 2022 category chart and verified sources; added the Changelog block." },
-  ]}
+ created="2026-06-11"
+ updated="2026-06-18"
+ entries={[
+ { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
+ { date: "2026-06-18", note: "Added a public-domain NASA/MODIS satellite image of Typhoon Haiyan (Yolanda) approaching the Philippines, with caption and attribution." },
+ { date: "2026-06-18", note: "Re-toned into the house voice (origin-story open, category-vs-signal confusion busted, plain-spoken FAQ); tied passages to the tool's PAR map, wind-signal panel, and DRRR checklist; kept the 2022 category chart and verified sources; added the Changelog block." },
+ ]}
 />
