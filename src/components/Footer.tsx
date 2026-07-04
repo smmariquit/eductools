@@ -51,7 +51,7 @@ const Footer = () => {
             <Coffee className="w-4 h-4" />
             Buy me a kape
           </a>
-          <p className="mt-4 text-xs font-semibold text-base-content/50">
+          <p className="mt-4 text-xs font-semibold text-base-content/70">
             © {new Date().getFullYear()} EduVisualsPH. Code under the Apache 2.0 License.
           </p>
         </aside>
