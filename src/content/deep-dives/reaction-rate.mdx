@@ -2,10 +2,7 @@ import { Aside, Changelog, Sources } from '../../components/content'
 
 # What has to go right for a collision to become a reaction
 
-
 I built the reaction-rate tool because of a question I could never answer cleanly at the board: why does grinding something make it react faster, but adding a catalyst, which sounds similar, work in a completely different way? Drawing arrows on a whiteboard was not cutting it. You really need to watch the particles. So the tool fills a box with blue and red molecules bouncing around, and every so often a pair collides and flips to green. Leave it running and the central truth of chemical kinetics surfaces on its own: most collisions do absolutely nothing. A reaction is the rare collision that happens to clear two separate hurdles at the same instant.
-
-
 
 That is the misconception worth naming first, because it is so natural. People assume that if two reactant particles touch, they react. The tool keeps two counters that quietly demolish that idea, labelled "too little energy" and "wrong orientation." Watch them climb far faster than the reaction counter and you see it immediately: touching is necessary, and nowhere near sufficient.
 
@@ -42,23 +39,23 @@ No. It only makes the reaction reach its finish line faster. The amount of produ
 Because the speed-up is the small part. The big part is that a hotter sample has far more molecules above the activation energy, and only those collisions react. The tool's energy curve makes the difference visible: a modest shift right swallows a large extra slice of molecules past $E_a$.
 
 <Aside variant="tool" title="PhET, Reactions and Rates" href="https://phet.colorado.edu/en/simulations/reactions-and-rates" credit="PhET Interactive Simulations, CU Boulder">
-  PhET's Reactions and Rates lets you draw your own potential-energy curve and watch a single reaction climb the barrier, which pairs well with our tool's birds-eye view of the whole box. Use ours to see the statistics of many collisions, and PhET's to zoom into the energy of one.
+ PhET's Reactions and Rates lets you draw your own potential-energy curve and watch a single reaction climb the barrier, which pairs well with our tool's birds-eye view of the whole box. Use ours to see the statistics of many collisions, and PhET's to zoom into the energy of one.
 </Aside>
 
 <Sources
-  items={[
-    { label: 'OpenStax, Chemistry 2e §12.5: Collision Theory (orientation, activation energy, HI rate constants).', href: 'https://openstax.org/books/chemistry-2e/pages/12-5-collision-theory' },
-    { label: 'OpenStax, Chemistry 2e §12.2: Factors Affecting Reaction Rates.', href: 'https://openstax.org/books/chemistry-2e/pages/12-2-factors-affecting-reaction-rates' },
-    { label: 'OpenStax, Chemistry 2e §12.7: Catalysis.', href: 'https://openstax.org/books/chemistry-2e/pages/12-7-catalysis' },
-    { label: 'PhET Interactive Simulations (University of Colorado Boulder): Reactions and Rates.', href: 'https://phet.colorado.edu/en/simulations/reactions-and-rates' },
-  ]}
+ items={[
+ { label: 'OpenStax, Chemistry 2e §12.5: Collision Theory (orientation, activation energy, HI rate constants).', href: 'https://openstax.org/books/chemistry-2e/pages/12-5-collision-theory' },
+ { label: 'OpenStax, Chemistry 2e §12.2: Factors Affecting Reaction Rates.', href: 'https://openstax.org/books/chemistry-2e/pages/12-2-factors-affecting-reaction-rates' },
+ { label: 'OpenStax, Chemistry 2e §12.7: Catalysis.', href: 'https://openstax.org/books/chemistry-2e/pages/12-7-catalysis' },
+ { label: 'PhET Interactive Simulations (University of Colorado Boulder): Reactions and Rates.', href: 'https://phet.colorado.edu/en/simulations/reactions-and-rates' },
+ ]}
 />
 
 <Changelog
-  created="2026-06-11"
-  updated="2026-06-18"
-  entries={[
-    { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
-    { date: "2026-06-18", note: "Re-toned into the house voice for Grades 9–10 (origin-story open, 'touching is not reacting' misconception with the tool's two miss counters); tied the temperature, concentration, and catalyst passages to what the tool actually displays (Maxwell-Boltzmann curve, % above Ea, catalyst surface); added a short FAQ, PhET credit, and the Changelog block; kept and verified all sources." },
-  ]}
+ created="2026-06-11"
+ updated="2026-06-18"
+ entries={[
+ { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
+ { date: "2026-06-18", note: "Re-toned into the house voice for Grades 9–10 (origin-story open, 'touching is not reacting' misconception with the tool's two miss counters); tied the temperature, concentration, and catalyst passages to what the tool actually displays (Maxwell-Boltzmann curve, % above Ea, catalyst surface); added a short FAQ, PhET credit, and the Changelog block; kept and verified all sources." },
+ ]}
 />
