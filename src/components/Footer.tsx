@@ -58,7 +58,7 @@ const Footer = () => {
 
         {/* Company Section */}
         <nav>
-          <header className="footer-title text-[#3f3f46] font-bold mb-4 uppercase tracking-wider">Company</header>
+          <header className="text-[#27272a] opacity-100 font-bold mb-4 uppercase tracking-wider text-sm">Company</header>
           <div className="flex flex-col gap-3 text-sm">
             <Link to="/about" className="link link-hover text-base-content hover:text-primary transition-colors font-medium">About Us</Link>
             <Link to="/changelog" className="link link-hover text-base-content hover:text-primary transition-colors font-medium">Changelog</Link>
@@ -69,7 +69,7 @@ const Footer = () => {
 
         {/* Legal Section */}
         <nav>
-          <header className="footer-title text-[#3f3f46] font-bold mb-4 uppercase tracking-wider">Legal</header>
+          <header className="text-[#27272a] opacity-100 font-bold mb-4 uppercase tracking-wider text-sm">Legal</header>
           <div className="flex flex-col gap-3 text-sm">
             <Link to="/privacy" className="link link-hover text-base-content hover:text-primary transition-colors font-medium">Privacy Policy</Link>
             <Link to="/terms" className="link link-hover text-base-content hover:text-primary transition-colors font-medium">Terms of Use</Link>
