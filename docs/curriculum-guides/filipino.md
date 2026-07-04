@@ -4135,7 +4135,7 @@ K to 12 Filipino Gabay Pangkurikulum Mayo 2016 Pahina 77 ng 190
  pamamagitan ng sariling salita paggamit ng aklatan
  paggamit ng una, palatandaang
  pangalawa, nagbibigay ng
- sumunod at kahulugan:  panghuli - paglalarawan
+ sumunod at kahulugan: panghuli - paglalarawan
  (1.13)
 
 IKAAPAT NA MARKAHAN

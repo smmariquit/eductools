@@ -2817,7 +2817,7 @@ Sense of whole represent, 1.1: Whole Numbers
  subtraction of recognize and Math 3 pp. 15: 17 Rods/Number Sticks,
  whole numbers represent, 2. BEAM LG Gr. 3 Module 250 pcs/set
  including money ordinal numbers 1.1: Whole Numbers
- up to 100th in 3. MTB-MLE Group:  various forms Teacher’s Guide
+ up to 100th in 3. MTB-MLE Group: various forms Teacher’s Guide
  and contexts. 4. Lesson Guide in Elem.
  Math Grade 3. 2005. pp.
  2. gives the place value and
@@ -2843,7 +2843,7 @@ Sense of whole represent, 1.1: Whole Numbers
  Math 3 pp. 18 - 27
  2. BEAM LG Gr. 3 Module
  1.1: Whole Numbers
- 3. MTB-MLE Group:  Teacher’s Guide
+ 3. MTB-MLE Group: Teacher’s Guide
  4. Lesson Guide in Elem.
  Math Grade 3. 2005. pp.
  3. reads and writes numbers
@@ -2864,7 +2864,7 @@ Sense of whole represent, 1.1: Whole Numbers
  2. BEAM LG Gr. 3 Module
  1.2: Whole Numbers
  3. DLP Gr. 4 Module 5
- 4. MTB-MLE Group:  Teacher’s Guide
+ 4. MTB-MLE Group: Teacher’s Guide
  5. Lesson Guide in Elem.
  4. rounds numbers to the
  M3NS-Ib- Math Grade 3. 2005. pp.
@@ -2892,7 +2892,7 @@ Sense of whole represent, 1.1: Whole Numbers
  2001. pp. 4-7
  1. BEAM LG Gr. 3 Module
  1.1: Whole Numbers
- 2. MTB-MLE Group:  Teacher’s Guide
+ 2. MTB-MLE Group: Teacher’s Guide
  3. Lesson Guide in Elem.
  5. compares numbers up to Math Grade 3. 2005. pp.
  M3NS-Ib-
@@ -2909,7 +2909,7 @@ Sense of whole represent, 1.1: Whole Numbers
  in increasing or decreasing Guide
  13.3
  order.
- 7. identifies ordinal numbers 1. MTB-MLE Group:  from 1st to 100th with Teacher’s Guide
+ 7. identifies ordinal numbers 1. MTB-MLE Group: from 1st to 100th with Teacher’s Guide
  M3NS-Ic-
  emphasis on the 21st to 100th 2. Mathematics for
  16.3
@@ -2947,7 +2947,7 @@ Sense of whole represent, 1.1: Whole Numbers
  Math 3 pp.52: 56
  2. BEAM LG Gr. 3 Module
  1.3: Whole Numbers
- 3. MTB-MLE Group:  Teacher’s Guide
+ 3. MTB-MLE Group: Teacher’s Guide
  4. Lesson Guide in Elem.
  10. compares values of the Math Grade 3. 2005. pp.
  different denominations of M3NS-Id- 52-56
@@ -2963,7 +2963,7 @@ Sense of whole represent, 1.1: Whole Numbers
  1. Lesson Guide in Elem.
  Math 3 pp.70: 80
  11. adds 3- to 4-digit numbers 2. DLP Gr. 3 Module 12, 13
- up to three addends with M3NS-Id- 3. MTB-MLE Group:  sums up to 10 000 without 27.6 Teacher’s Guide
+ up to three addends with M3NS-Id- 3. MTB-MLE Group: sums up to 10 000 without 27.6 Teacher’s Guide
  and with regrouping. 4. Lesson Guide in Elem.
  Math Grade 3. 2005. pp.
  69-72
@@ -2985,7 +2985,7 @@ Sense of whole represent, 1.1: Whole Numbers
  1. LG in Elem. Math 3
  pp.81: 84
  2. DLP Gr. 3 Module 14
- 3. MTB-MLE Group:  Teacher’s Guide
+ 3. MTB-MLE Group: Teacher’s Guide
  4. Lesson Guide in Elem.
  12. estimates the sum of 3- to 4-
  M3NS-Ie- Math Grade 3. 2005. pp.
@@ -3001,7 +3001,7 @@ Sense of whole represent, 1.1: Whole Numbers
  1. Lesson Guide in Elem.
  Math 3 pp.85: 90
  2. DLP Gr. 3 Module 15
- 3. MTB-MLE Group:  Teacher’s Guide
+ 3. MTB-MLE Group: Teacher’s Guide
  13. adds mentally 2-digit and 1-
  4. Lesson Guide in Elem.
  digit numbers without or with M3NS-Ie-
@@ -3026,7 +3026,7 @@ Sense of whole represent, 1.1: Whole Numbers
  85-90
  1. LG in Elem. Math 4
  pp.35: 36
- 2. MTB-MLE Group:  14. adds mentally 2- to 3-digit Teacher’s Guide
+ 2. MTB-MLE Group: 14. adds mentally 2- to 3-digit Teacher’s Guide
  numbers with multiples of M3NS-Ie- 3. Grade School
  hundreds using appropriate 28.8 Mathematics Grade 4.
  strategies. 2003. pp. 32-33
@@ -3036,7 +3036,7 @@ Sense of whole represent, 1.1: Whole Numbers
  1. Lesson Guide in Elem.
  Math 3 pp.95: 99
  2. DLP Gr. 3 Module 16
- 3. MTB-MLE Group:  Teacher’s Guide
+ 3. MTB-MLE Group: Teacher’s Guide
  4. Lesson Guide in Elem.
  Math Grade 3. 2005. pp.
  92-98
@@ -3079,7 +3079,7 @@ Sense of whole represent, 1.1: Whole Numbers
  2. BEAM LG Gr. 3 Module 1
  : Subtraction
  3. DLP Gr. 3 Module 17, 18
- 4. MTB-MLE Group:  Teacher’s Guide
+ 4. MTB-MLE Group: Teacher’s Guide
  5. Lesson Guide in Elem.
  17. subtracts 3-to 4-digit
  Math Grade 3. 2005. pp.
@@ -3101,7 +3101,7 @@ Sense of whole represent, 1.1: Whole Numbers
  2. BEAM LG Gr. 3 Module 1
  : Subtraction
  18. estimates the difference of
- 3. MTB-MLE Group:  two numbers with three to M3NS-Ih-
+ 3. MTB-MLE Group: two numbers with three to M3NS-Ih-
  Teacher’s Guide
  four digits with reasonable 36
  4. Lesson Guide in Elem.
@@ -3130,11 +3130,11 @@ Sense of whole represent, 1.1: Whole Numbers
  Math 3 pp.149: 154
  2. BEAM LG Gr. 3 Module 1
  : Subtraction
- 3. MTB-MLE Group:  Teacher’s Guide
+ 3. MTB-MLE Group: Teacher’s Guide
  4. Lesson Guide in Elem.
  Math Grade 3. 2005. pp.
  146-151
- 19. subtracts mentally 1- to 2:  5. Lesson Guide in Elem.
+ 19. subtracts mentally 1- to 2: 5. Lesson Guide in Elem.
  digits numbers without and M3NS-Ih-
  Math Grade 3. 2010. pp.
  with regrouping using 33.5
@@ -3149,7 +3149,7 @@ Sense of whole represent, 1.1: Whole Numbers
  8. Mathematics for
  Everyday Life Grade 4.
  2000. pp. 38-39*
- 20. subtracts mentally 2- to 3: 1. MTB-MLE Group:  digits numbers with Teacher’s Guide
+ 20. subtracts mentally 2- to 3: 1. MTB-MLE Group: digits numbers with Teacher’s Guide
  M3NS-Ii-
  multiples of hundreds 2. Grade School
  33.6
@@ -3165,11 +3165,11 @@ Sense of whole represent, 1.1: Whole Numbers
  Math 3 pp.155: 169
  2. BEAM LG Gr. 3 Module 2
  : Application of
- Subtraction, Module 3:  Application of Addition
+ Subtraction, Module 3: Application of Addition
  and Subtraction
  3. DLP Gr. 3 Module 19, Gr.
  4 Module 19
- 4. MTB-MLE Group:  21. solves routine and non-
+ 4. MTB-MLE Group: 21. solves routine and non-
  Teacher’s Guide
  routine problems involving
  5. Lesson Guide in Elem.
@@ -3206,7 +3206,7 @@ Sense of whole represent, 1.1: Whole Numbers
  The learner... The learner... The learner...
 Grade 3- SECOND QUARTER
  1. BEAM LG Gr.2 Module: Numbers and demonstrates is able to apply Multiplication
-Number understanding of multiplication and 23. visualizes multiplication of 2. MTB-MLE Group:  M3NS-IIa-
+Number understanding of multiplication and 23. visualizes multiplication of 2. MTB-MLE Group: M3NS-IIa-
 Sense multiplication and division of whole numbers 1 to 10 by 6,7,8 Teacher’s Guide
  41.2
  division of whole numbers including and 9. 3. Mathematics for
@@ -3220,7 +3220,7 @@ Sense multiplication and division of whole numbers 1 to 10 by 6,7,8 Teacher’s 
  1. Lesson Guide in Elem.
  Math 3 pp.170: 174
  2. DLP Gr. 5 Module 3
- 3. MTB-MLE Group:  Teacher’s Guide
+ 3. MTB-MLE Group: Teacher’s Guide
  4. Lesson Guide in Elem.
  25. applies the commutative M3NS-IIb- Math Grade 3. 2005. pp.
  property of multiplication. 40.4 167-172
@@ -3231,11 +3231,11 @@ Sense multiplication and division of whole numbers 1 to 10 by 6,7,8 Teacher’s 
  Math Grade 3. 2012. pp.
  170-175
  26. multiplies 2-digit by 1-digit 1. DLP Gr. 4 Module 29
- numbers using the M3NS-IIb- 2. MTB-MLE Group:  distributive property of 40.5 Teacher’s Guide
+ numbers using the M3NS-IIb- 2. MTB-MLE Group: distributive property of 40.5 Teacher’s Guide
  multiplication.
  27. multiplies three 1-digit 1. DLP Gr. 4 Module 26, Gr.
  numbers using the M3NS-IIb- 5 Module 3
- associative property of 40.6 2. MTB-MLE Group:  multiplication. Teacher’s Guide
+ associative property of 40.6 2. MTB-MLE Group: multiplication. Teacher’s Guide
  28. multiplies 2- to 3-digit M3NS-IIc- 1. Lesson Guide in Elem.
  numbers by 1-digit numbers 43.1 Math 3 pp.185: 193
 
@@ -3244,7 +3244,7 @@ Sense multiplication and division of whole numbers 1 to 10 by 6,7,8 Teacher’s 
  CONTENT STANDARDS STANDARDS CODE LEARNING MATERIALS MATH EQUIPMENT
 
  The learner... The learner... The learner...
- without or with regrouping. 2. MTB-MLE Group:  Teacher’s Guide
+ without or with regrouping. 2. MTB-MLE Group: Teacher’s Guide
  3. Lesson Guide in Elem.
  Math Grade 3. 2005. pp.
  172-177; 188-181
@@ -3265,13 +3265,13 @@ Sense multiplication and division of whole numbers 1 to 10 by 6,7,8 Teacher’s 
  B: Multiplying Whole
  Numbers With
  Regrouping
- 1. MTB-MLE Group:  29. multiplies 2-digit numbers by Teacher’s Guide
+ 1. MTB-MLE Group: 29. multiplies 2-digit numbers by Teacher’s Guide
  M3NS-IIc-
  2-digit numbers without 2. Mathematics for
  43.2
  regrouping. Everyday Use Grade 3.
  1997. pp. 96-98*
- 1. MTB-MLE Group:  30. multiplies 2-digit number by
+ 1. MTB-MLE Group: 30. multiplies 2-digit number by
  Teacher’s Guide
  2-digit numbers with M3NS-IIc-
  2. Mathematics for
@@ -3312,7 +3312,7 @@ Sense multiplication and division of whole numbers 1 to 10 by 6,7,8 Teacher’s 
  numbers by Guide
  43.5
  1 000.
- 1. MTB-MLE Group:  Teacher’s Guide
+ 1. MTB-MLE Group: Teacher’s Guide
  2. Lesson Guide in Elem.
  Math Grade 3. 2005. pp.
  201-205
@@ -3333,7 +3333,7 @@ Sense multiplication and division of whole numbers 1 to 10 by 6,7,8 Teacher’s 
  The learner... The learner... The learner...
  1. Lesson Guide in Elem.
  Math 3 pp.212: 215
- 2. MTB-MLE Group:  Teacher’s Guide
+ 2. MTB-MLE Group: Teacher’s Guide
  3. Lesson Guide in Elem.
  Math Grade 3. 2005. pp.
  209-213
@@ -3354,7 +3354,7 @@ Sense multiplication and division of whole numbers 1 to 10 by 6,7,8 Teacher’s 
  2000.pp. 64-65*
  1. Lesson Guide in Elem.
  Math 3 pp.216: 222
- 2. MTB-MLE Group:  35. solves routine and non- Teacher’s Guide
+ 2. MTB-MLE Group: 35. solves routine and non- Teacher’s Guide
  routine problems involving 3. Lesson Guide in Elem.
  multiplication without or with Math Grade 3. 2005. pp.
  addition and subtraction of M3NS-IIe- 214-217; 217-220
@@ -3387,17 +3387,17 @@ Sense multiplication and division of whole numbers 1 to 10 by 6,7,8 Teacher’s 
  numbers.
  38. visualizes division of numbers 1. BEAM LG Gr.2 Module
  up to 100 by 6,7,8,and 9 M3NS-IIg- 11: Division
- (multiplication table of 6, 7, 51.2 2. MTB-MLE Group:  8, and 9). Teacher’s Guide
+ (multiplication table of 6, 7, 51.2 2. MTB-MLE Group: 8, and 9). Teacher’s Guide
  1. BEAM LG Gr.2 Module
  39. visualizes and states basic
  M3NS-IIg- 11: Division
  division facts of numbers up
- 51.3 2. MTB-MLE Group:  to 10.
+ 51.3 2. MTB-MLE Group: to 10.
  Teacher’s Guide
  1. Lesson Guide in Elem.
  Math 3 pp.229: 236
  2. DLP Gr. 3 Module 29
- 3. MTB-MLE Group:  Teacher’s Guide
+ 3. MTB-MLE Group: Teacher’s Guide
  4. Lesson Guide in Elem.
  40. divides 2- to 3-digit numbers Math Grade 3. 2005. pp.
  M3NS-IIh-
@@ -3462,7 +3462,7 @@ Sense multiplication and division of whole numbers 1 to 10 by 6,7,8 Teacher’s 
  The learner... The learner... The learner...
  Application of Division
  3. DLP Gr. 3 Module 32
- 4. MTB-MLE Group:  Teacher’s Guide
+ 4. MTB-MLE Group: Teacher’s Guide
  5. Lesson Guide in Elem.
  Math Grade 3. 2005. pp.
  268-274
@@ -3478,7 +3478,7 @@ Sense multiplication and division of whole numbers 1 to 10 by 6,7,8 Teacher’s 
  9. Mathematics for
  Everyday Life Grade 4.
  2000. pp. 86-87*
- 1. MTB-MLE Group:  42. estimates the quotient of 2- Teacher’s Guide
+ 1. MTB-MLE Group: 42. estimates the quotient of 2- Teacher’s Guide
  M3NS-IIi-
  to 3- digit numbers by 1- to 2. Lesson Guide in Elem.
  55.1
@@ -3487,7 +3487,7 @@ Sense multiplication and division of whole numbers 1 to 10 by 6,7,8 Teacher’s 
  1. Lesson Guide in Elem.
  Math 3 pp.276: 280
  2. DLP Gr. 3 Module 39
- 3. MTB-MLE Group:  43. divides mentally 2-digit Teacher’s Guide
+ 3. MTB-MLE Group: 43. divides mentally 2-digit Teacher’s Guide
  numbers by 1-digit numbers M3NS-IIi- 4. Lesson Guide in Elem.
  without remainder using 52.2 Math Grade 3. 2010. pp.
  appropriate strategies. 276-280
@@ -3515,7 +3515,7 @@ Sense multiplication and division of whole numbers 1 to 10 by 6,7,8 Teacher’s 
  11: Division, Gr.3
  Module: Application of
  Division
- 3. MTB-MLE Group:  44. solves routine and non- Teacher’s Guide
+ 3. MTB-MLE Group: 44. solves routine and non- Teacher’s Guide
  routine problems involving 4. Lesson Guide in Elem.
  division of 2- to 4-digit Math Grade 3. 2005. pp.
  numbers by 1- to 2-digit 278-282; 283-286; 287-
@@ -3549,7 +3549,7 @@ Number understanding of represent proper and p. 27
 Sense proper and improper, improper, similar and 2. DLP Gr. 3 Module 7
  similar and dissimilar dissimilar and equivalent 3. BEAM LG Gr.3 Module
  and equivalent fractions in various 1.2
- fractions. forms and contexts. 4. MTB-MLE Group:  Teacher’s Guide
+ fractions. forms and contexts. 4. MTB-MLE Group: Teacher’s Guide
  5. Lesson Guide in Elem.
  46. identifies odd and even M3NS-IIIa- Math Grade 3. 2005. pp.
  numbers. 63 44-49
@@ -3565,7 +3565,7 @@ Sense proper and improper, improper, similar and 2. DLP Gr. 3 Module 7
  1. Lesson Guide in Elem.
  Math 3 pp.305: 311
  2. DLP Gr. 3 Module 37
- 3. MTB-MLE Group:  Teacher’s Guide
+ 3. MTB-MLE Group: Teacher’s Guide
  4. Lesson Guide in Elem.
  47. visualizes and represents Math Grade 3. 2005. pp.
  M3NS-IIIa-
@@ -3595,7 +3595,7 @@ Sense proper and improper, improper, similar and 2. DLP Gr. 3 Module 7
  1. BEAM LG Gr.3 Module 1-
  Identify and Order
  Fractions
- 2. MTB-MLE Group:  Teacher’s Guide
+ 2. MTB-MLE Group: Teacher’s Guide
  48. reads and writes fractions 3. Mathematics for
  that are equal to one and M3NS-IIIb- Everyday Use Grade 3.
  greater than one in symbols 76.3 1997. pp.168-169*
@@ -3617,7 +3617,7 @@ Sense proper and improper, improper, similar and 2. DLP Gr. 3 Module 7
  1. DLP Gr. 4 Module 58, 59
  2. Lesson Guide in Elem.
  50. visualizes and represents M3NS-IIIc- Math 4 p.197
- dissimilar fractions. 72.6 3. MTB-MLE Group:  Teacher’s Guide
+ dissimilar fractions. 72.6 3. MTB-MLE Group: Teacher’s Guide
  4. MISOSA Grade 4 Module
 
  CONTENT PERFORMANCE
@@ -3632,8 +3632,8 @@ Sense proper and improper, improper, similar and 2. DLP Gr. 3 Module 7
  6. Mathematics for
  Everyday Life Grade 4.
  2000. pp.96-97*
- 1. MISOSA Module Gr.6:  Comparing Fractions
- 2. MTB-MLE Group:  Teacher’s Guide
+ 1. MISOSA Module Gr.6: Comparing Fractions
+ 2. MTB-MLE Group: Teacher’s Guide
  3. Proded Mathematics.30A:
  Comparing Parts of a
  Whole, 30B: Comparing
@@ -3650,11 +3650,11 @@ Sense proper and improper, improper, similar and 2. DLP Gr. 3 Module 7
  2003. pp. 106-109*
  1. BEAM LG Gr.5 Module 2,
  Gr.6 Module 29
- 2. MISOSA Gr. 5 Module:  Ordering Dissimilar
+ 2. MISOSA Gr. 5 Module: Ordering Dissimilar
  52. visualizes, represents, and
  Fractions
  arranges dissimilar fractions M3NS-IIId-
- 3. MTB-MLE Group:  in increasing or decreasing 78.3
+ 3. MTB-MLE Group: in increasing or decreasing 78.3
  Teacher’s Guide
  order.
  4. Mathematics for
@@ -3677,9 +3677,9 @@ Sense proper and improper, improper, similar and 2. DLP Gr. 3 Module 7
  Math 5 p.63
  2. BEAM LG Gr.5 Module 2
  3. MISOSA Gr. 5 and 6
- Modules:  Equal/Equivalent
+ Modules: Equal/Equivalent
  Fractions
- 53. visualizes and generates M3NS-IIIe- 4. MTB-MLE Group:  equivalent fractions. 72.7 Teacher’s Guide
+ 53. visualizes and generates M3NS-IIIe- 4. MTB-MLE Group: equivalent fractions. 72.7 Teacher’s Guide
  5. Lesson Guide in Elem.
  Math Grade 3. 2012. pp.
  63-68
@@ -3712,7 +3712,7 @@ Sense proper and improper, improper, similar and 2. DLP Gr. 3 Module 7
  The learner... The learner... The learner...
  3. BEAM LG Gr.3 Module 7
  : Line and Line Segment
- 4. MTB-MLE Group:  Teacher’s Guide
+ 4. MTB-MLE Group: Teacher’s Guide
  5. Lesson Guide in Elem.
  Math Grade 3. 2005. pp.
  327-335
@@ -3733,7 +3733,7 @@ Sense proper and improper, improper, similar and 2. DLP Gr. 3 Module 7
  2. DLP Gr. 3 Module 43
  3. BEAM LG Gr.3 Module 7
  : Line and Line Segment
- 4. MTB-MLE Group:  Teacher’s Guide
+ 4. MTB-MLE Group: Teacher’s Guide
  56. visualizes, identifies and 5. Lesson Guide in Elem.
  M3GE-IIIf-
  draws congruent line Math Grade 3. 2005. pp.
@@ -3762,7 +3762,7 @@ Sense proper and improper, improper, similar and 2. DLP Gr. 3 Module 7
  M3GE-IIIg-
  symmetry in the : Line and Line Segment
  7.3
- environment and in design. 3. MTB-MLE Group:  Teacher’s Guide
+ environment and in design. 3. MTB-MLE Group: Teacher’s Guide
  58. identifies and draws the line MTB-MLE Group: Teacher’s
  M3GE-IIIg-
  of symmetry in a given Guide
@@ -3772,7 +3772,7 @@ Sense proper and improper, improper, similar and 2. DLP Gr. 3 Module 7
  Math 3 pp.357: 362
  2. BEAM LG Gr.3 Module 7
  : Line and Line Segment
- 3. MTB-MLE Group:  Teacher’s Guide
+ 3. MTB-MLE Group: Teacher’s Guide
  59. completes a symmetric figure 4. Lesson Guide in Elem.
  M3GE-IIIh-
  with respect to a given line of Math Grade 3. 2005. pp.
@@ -3788,7 +3788,7 @@ Sense proper and improper, improper, similar and 2. DLP Gr. 3 Module 7
  60. tessellates the plane using
  8.3 Math 3 pp. 345: 356 pcs/set
  triangles, squares and other
- 2. MTB-MLE Group:  shapes that can tessellate.
+ 2. MTB-MLE Group: shapes that can tessellate.
  Teacher’s Guide
 Patterns and demonstrates is able to apply 61. determines the missing MTB-MLE Group: Teacher’s
 Algebra understanding of knowledge of term/s in a given M3AL-IIIi-4 Guide
@@ -3846,7 +3846,7 @@ Measurement demonstrates is able to apply Math 3 pp.368: 372
  2. BEAM LG Gr.2 Module 9-
  Time Measure, Gr. 3
  Module 8
- 64. visualizes, and represents, 3. MTB-MLE Group:  and converts time measure Teacher’s Guide
+ 64. visualizes, and represents, 3. MTB-MLE Group: and converts time measure Teacher’s Guide
  64.1 days to week, month 4. Lesson Guide in Elem.
  and year and vice Math Grade 3. 2005. pp.
  M3ME-IVa-
@@ -3864,7 +3864,7 @@ Measurement demonstrates is able to apply Math 3 pp.368: 372
  1. Lesson Guide in Elem.
  Math 3 pp.376: 379
  2. BEAM LG Gr.3 Module 8
- 3. MTB-MLE Group:  Teacher’s Guide
+ 3. MTB-MLE Group: Teacher’s Guide
  4. Lesson Guide in Elem.
  Math Grade 3. 2005. pp.
  65. visualizes, and represents,
@@ -3894,7 +3894,7 @@ Measurement demonstrates is able to apply Math 3 pp.368: 372
  13-14, 19
  1. DLP Gr. 3 Module 45 Plastic Ruler, 12
  2. BEAM LG Gr.3 Module 1 inches or 30cm
- 3. MTB-MLE Group:  Teacher’s Guide Double-pan Balance,
+ 3. MTB-MLE Group: Teacher’s Guide Double-pan Balance,
  4. Lesson Guide in Elem. 500g
  Math Grade 3. 2010. pp.
  410-413
@@ -3946,7 +3946,7 @@ Measurement demonstrates is able to apply Math 3 pp.368: 372
  2. BEAM LG Gr.2 Module
  18: Mass and Capacity, Measuring cup,
  Gr.3 Module 1-Capacity 250mL, plastic
- 3. MTB-MLE Group:  Teacher’s Guide Liter Volume Set (liter
+ 3. MTB-MLE Group: Teacher’s Guide Liter Volume Set (liter
  68. visualizes, and represents, 4. Lesson Guide in Elem. Cases)
  and finds the capacity of a M3ME-IVc- Math Grade 3. 2005. pp.
  container using milliliter and 41 406-409
@@ -3961,7 +3961,7 @@ Measurement demonstrates is able to apply Math 3 pp.368: 372
  1. Lesson Guide in Elem.
  Math 3 pp.413: 416
  69. visualizes, and represents,
- 2. MTB-MLE Group:  and solves routine and non- M3ME-IVd-
+ 2. MTB-MLE Group: and solves routine and non- M3ME-IVd-
  Teacher’s Guide
  routine problems involving 42
  3. Lesson Guide in Elem.
@@ -4001,7 +4001,7 @@ Measurement demonstrates is able to apply Math 3 pp.368: 372
  1. BEAM LG Gr.3 Module 9 4.
  : Area
  72. visualizes, and represents,
- 2. MTB-MLE Group:  and finds the area of a M3ME-IVe-
+ 2. MTB-MLE Group: and finds the area of a M3ME-IVe-
  Teacher’s Guide
  rectangle and square in 45
  3. Mathematics for
@@ -4012,7 +4012,7 @@ Measurement demonstrates is able to apply Math 3 pp.368: 372
  73. solves routine and non- Math 3 pp.398: 405
  routine problems involving M3ME-IVf- 2. BEAM LG Gr.3 Module 9
  areas of squares and 46 : Area
- rectangles. 3. MTB-MLE Group:  Teacher’s Guide
+ rectangles. 3. MTB-MLE Group: Teacher’s Guide
 
  CONTENT PERFORMANCE
  LEARNING COMPETENCY
@@ -4049,7 +4049,7 @@ Probability understanding of bar interpret simple variable using existing Guide
  terms sure, likely, graphs) and describe Math 3 pp.430: 433
  equally likely, unlikely, outcomes of familiar 2. BEAM LG Gr.4 Module
  and impossible to events using the terms 15: Bar Graphs
- happen. sure, likely, equally 76. sorts, classifies, and 3. MTB-MLE Group:  likely, unlikely, and organizes data in tabular Teacher’s Guide
+ happen. sure, likely, equally 76. sorts, classifies, and 3. MTB-MLE Group: likely, unlikely, and organizes data in tabular Teacher’s Guide
  M3SP-IVg-
  impossible to happen. form and presents this into 4. Lesson Guide in Elem.
  2.3
@@ -4069,7 +4069,7 @@ Probability understanding of bar interpret simple variable using existing Guide
  2. DLP Gr. 4 Module 88, 89
  3. BEAM LG Gr.4 Module
  15: Bar Graphs
- 4. MTB-MLE Group:  77. infers and interprets data Teacher’s Guide
+ 4. MTB-MLE Group: 77. infers and interprets data Teacher’s Guide
  presented in different kinds M3SP-IVh- 5. Mathematics for
  of bar graphs (vertical/ 3.3 Everyday Use Grade 3.
  horizontal). 1997. pp. 235-237*
@@ -4270,7 +4270,7 @@ Sense whole numbers up to whole numbers up Math Grade 3. 2010.
  Mathematics Grade 3.
  2012. pp. 204-211
  9. multiplies mentally 2-digit by 1. BEAM LG Gr.3 Module
- 1-to 2-digit numbers with 1-Multiplication, Gr. 4:  products up to 200 and Module 4:  M4NS-Id-
+ 1-to 2-digit numbers with 1-Multiplication, Gr. 4: products up to 200 and Module 4: M4NS-Id-
  explains the strategies used. Multiplication
  42.3
  2. DLP Gr. 4 Module 31
@@ -4420,7 +4420,7 @@ Sense whole numbers up to whole numbers up Math Grade 3. 2010.
  Material. Multiplication
  and Division in Daily
  Life. 2001. pp. 18-28
- 1. MISOSA Module Gr. 4:  Division of Whole
+ 1. MISOSA Module Gr. 4: Division of Whole
  Numbers by 10, 100
  and 1000
  2. TEEP Grade 3. 2005.
@@ -4439,7 +4439,7 @@ Sense whole numbers up to whole numbers up Math Grade 3. 2010.
  Elementary
  Mathematics Grade 4.
  2012. pp. 122-125
- 15. estimates the quotient of 3- to MISOSA Module Gr.4:  4-digit dividends by 1- to 2- M4NS-Ig- Estimating Quotients
+ 15. estimates the quotient of 3- to MISOSA Module Gr.4: 4-digit dividends by 1- to 2- M4NS-Ig- Estimating Quotients
  digit divisors with reasonable 55.2
  results.
  1. BEAM LG Gr.3 Module
@@ -4487,7 +4487,7 @@ Sense whole numbers up to whole numbers up Math Grade 3. 2010.
  on Division, Gr. 4
  Module 5: Division
  17. solves routine and non-routine
- 2. MISOSA Module Gr. 4:  problems involving division of
+ 2. MISOSA Module Gr. 4: problems involving division of
  One-Step Word
  3- to 4-digit numbers by 1- to
  Problems involving
@@ -4523,7 +4523,7 @@ Sense whole numbers up to whole numbers up Math Grade 3. 2010.
  1. BEAM LG Gr. 4 Module
  5: Division
  2. DLP Gr. 6 Module 3
- 3. MISOSA Module Gr. 4:  Two- to Three-Step
+ 3. MISOSA Module Gr. 4: Two- to Three-Step
  Word Problems
  involving Division
  4. TEEP Grade 3. 2005.
@@ -4587,7 +4587,7 @@ Sense factors and factors and 1. TEEP Grade 5. 2005.
  and mixed 2. Lesson Guide in Elem.
  numbers 2. is able to Math Gr. 5 p. 30
  24. differentiates prime from M4NS-IIb-
- recognize and 3. MISOSA Gr. 5 Module:  composite numbers. 66
+ recognize and 3. MISOSA Gr. 5 Module: composite numbers. 66
  represent Prime and Composite
  improper Numbers
  fractions and 4. TEEP Grade 5. 2005.
@@ -4615,7 +4615,7 @@ Sense factors and factors and 1. TEEP Grade 5. 2005.
  1: Subsets of Whole
  Numbers
  2. DLP Gr. 5 Module 10
- M4NS-IIb- 3. MISOSA Gr. 5 Module:  25. writes a given number as a
+ M4NS-IIb- 3. MISOSA Gr. 5 Module: 25. writes a given number as a
  67 Prime Factors of a
  product of its prime factors.
  Number
@@ -4665,7 +4665,7 @@ Sense factors and factors and 1. TEEP Grade 5. 2005.
  Factor Pairs
  1. Lesson Guide in Elem.
  Math Gr. 5 p.44
- 2. MISOSA Gr. 5 Module:  Least Common Multiple
+ 2. MISOSA Gr. 5 Module: Least Common Multiple
  3. TEEP Grade 5. 2005.
  27. finds the common multiples pp. 41-44
  and least common multiple 4. Lesson Guide in Elem.
@@ -4725,7 +4725,7 @@ Sense factors and factors and 1. TEEP Grade 5. 2005.
  mixed numbers and vice Math Gr. 4 p.209, Gr. 6
  80
  versa. p. 170
- 4. MISOSA Module Gr. 4:  Improper to Mixed
+ 4. MISOSA Module Gr. 4: Improper to Mixed
  Numbers
  5. TEEP Grade 4. 2005.
 
@@ -4823,7 +4823,7 @@ Sense factors and factors and 1. TEEP Grade 5. 2005.
  EQUIPMENT
  The learner… The learner… The learner…
  2012. pp.124-128
- 8. BALS Video:  Pagdaragdag at
+ 8. BALS Video: Pagdaragdag at
  Pagbabawas ng
  Desimal
  1. BEAM LG Gr.4 Module
@@ -4850,7 +4850,7 @@ Sense factors and factors and 1. TEEP Grade 5. 2005.
  Fractions
  2. Lesson Guide in Elem.
  Math Gr. 5 p. 83, 124
- 3. MISOSA Gr. 5 Module:  35. visualizes addition and M4NS-IIg-
+ 3. MISOSA Gr. 5 Module: 35. visualizes addition and M4NS-IIg-
  Visualization of
  subtraction of dissimilar 82.3
  Dissimilar Fractions
@@ -4885,16 +4885,16 @@ Sense factors and factors and 1. TEEP Grade 5. 2005.
  Math Gr. 4 217, 235,
  Gr. 5 p. 79, 90, 94, 128
  : 136
- 4. MISOSA Module Gr.4:  Addition of Similar
+ 4. MISOSA Module Gr.4: Addition of Similar
  36. performs addition and Fractions, Fractions and
  M4NS-IIg-
  subtraction of similar and Whole Numbers,
  83
  dissimilar fractions. Subtraction of Similar
  Fractions
- 5. MISOSA Module Gr.5:  Addition of Dissimilar
+ 5. MISOSA Module Gr.5: Addition of Dissimilar
  Fractions
- 6. MISOSA Module Gr.6:  Subtraction of
+ 6. MISOSA Module Gr.6: Subtraction of
  Dissimilar Fractions in
  Simple Forms
  7. TEEP Grade 4. 2005.
@@ -5041,9 +5041,9 @@ Sense factors and factors and 1. TEEP Grade 5. 2005.
  3. Lesson Guide in Elem.
  Math Gr. 5 p.231, Gr. 6
  p. 159
- 4. MISOSA Module Gr. 4:  Common Fractions as
+ 4. MISOSA Module Gr. 4: Common Fractions as
  Decimals
- 5. MISOSA Module Gr.5:  Renaming Fractions in
+ 5. MISOSA Module Gr.5: Renaming Fractions in
  Decimal Form
  6. Lesson Guide in Elem.
  Math Grade 4. 2010.
@@ -5064,7 +5064,7 @@ Sense factors and factors and 1. TEEP Grade 5. 2005.
  2012. pp. 231-237
  1. BEAM LG Gr.4 Module Place Value Chart
  41. gives the place value and the 7: Decimals with Decimal Pockets
- value of a digit of a given 2. MISOSA Module Gr. 4:  decimal number through M4NS-IIi- Place Value of Decimals
+ value of a digit of a given 2. MISOSA Module Gr. 4: decimal number through M4NS-IIi- Place Value of Decimals
  hundredths. 101.1 3. Lesson Guide in Elem.
  Math Grade 4. 2010.
  pp. 153-156
@@ -5190,7 +5190,7 @@ Geometry demonstrates is able to construct and Math Grade 3. 2010. blackboard
  3. Lesson Guide in Elem.
  Math Gr. 4 p.287, 290,
  293
- 47. describes and illustrates 4. MISOSA Module Gr. 4:  M4GE-
+ 47. describes and illustrates 4. MISOSA Module Gr. 4: M4GE-
  different angles (right, acute, Congruent Angles
  IIIb-14
  and obtuse) using models. 5. TEEP Grade 4. 2005.
@@ -5224,7 +5224,7 @@ Geometry demonstrates is able to construct and Math Grade 3. 2010. blackboard
  Learning Material. Mga
  Linya at Anggulo. 2001.
  pp. 13-22
- 12. BALS Video:  Shapes and Figures
+ 12. BALS Video: Shapes and Figures
  Around Us
  13. BALS Video: Lines
  and Angles
@@ -5392,7 +5392,7 @@ Measurement demonstrates is able to apply the Equivalency Learning
  Equivalency Learning
  Material. Perimeter and
  Areas. 1999. pp. 5-9
- 10. BALS Video:  Lesson 2: Finding the
+ 10. BALS Video: Lesson 2: Finding the
  Perimeter
  1. BEAM LG Gr.4 Module
  18: Perimeter
@@ -5486,7 +5486,7 @@ Grade 4- FOURTH QUARTER
  3. Lesson Guide in Elem.
  Math Gr. 5 p.372, 377,
  Gr. 6 p. 373, 378
- 4. MISOSA Module Gr.5:  Area of a Trapezoid
+ 4. MISOSA Module Gr.5: Area of a Trapezoid
  5. TEEP Grade 4. 2005.
  pp. 314-317
  6. TEEP Grade 5. 2005.
@@ -5711,7 +5711,7 @@ Number understanding of and represent 2. BEAM LG Gr. 4 Module
 Sense whole numbers up whole numbers up 1- Whole Numbers
  to 10 000 000. to 10 000 000 in 3. Lesson Guide in Elem.
  various forms and Math Gr. 4 p. 1
- 2. demonstrates contexts. 4. MISOSA Gr. 4 Module:  understanding of Numbers through
+ 2. demonstrates contexts. 4. MISOSA Gr. 4 Module: understanding of Numbers through
  divisibility, order of 2. is able to apply Billions
  operations, factors divisibility, order of 5. Lesson Guide in Elem.
  and multiples, and operations, factors Mathematics Grade 4.
@@ -5775,7 +5775,7 @@ Sense whole numbers up whole numbers up 1- Whole Numbers
  Numbers
  3. Lesson Guide in Elem.
  Math Gr. 4 p. 13
- 4. MISOSA Gr. 4 Module:  3. rounds numbers to the
+ 4. MISOSA Gr. 4 Module: 3. rounds numbers to the
  M5NS-Ia- Rounding Numbers
  nearest hundred thousand
  15.3 5. Lesson Guide in Elem.
@@ -5873,7 +5873,7 @@ Sense whole numbers up whole numbers up 1- Whole Numbers
  operations using the PMDAS
  or GMDAS rule.
  1. DLP Gr. 5 Module 9
- 2. BEAM LG Gr. 6:  Number Theory
+ 2. BEAM LG Gr. 6: Number Theory
  3. Lesson Guide in Elem.
  11. finds the common factors and
  M5NS-Id- Math Gr. 5 p.33, Gr. 6
@@ -5902,7 +5902,7 @@ Sense whole numbers up whole numbers up 1- Whole Numbers
  Mathematics Grade 5.
  2012. pp. 33-37
  1. DLP Gr. 5 Module 11
- 2. BEAM LG Gr. 6:  Number Theory
+ 2. BEAM LG Gr. 6: Number Theory
  3. Lesson Guide in Elem.
  Math Gr. 5 p.44, Gr. 6
  p. 151
@@ -6124,7 +6124,7 @@ Sense whole numbers up whole numbers up 1- Whole Numbers
  3. Lesson Guide in Elem.
  Math Gr. 4 p. 250, Gr.
  5 p.180
- 4. MISOSA Gr. 5 Module:  Visualization of
+ 4. MISOSA Gr. 5 Module: Visualization of
  Multiplication of
  Fractions
  5. Lesson Guide in Elem.
@@ -6298,7 +6298,7 @@ Grade 5- SECOND QUARTER
 Numbers and 1. demonstrates 1. is able to 2. Lesson Guide in Elem. with Decimal Pockets
 Number understanding of recognize and Math Gr. 5 p.237, Gr. 6
 Sense decimals. represent p. 38
- decimals in 3. MISOSA Module Gr.6:  2. demonstrates various forms and Place Value of Decimals
+ decimals in 3. MISOSA Module Gr.6: 2. demonstrates various forms and Place Value of Decimals
  understanding of contexts. 4. Lesson Guide in Elem.
  the four Mathematics Grade 4.
  fundamental 2. is able to apply 2005. pp. 151-154
@@ -6360,7 +6360,7 @@ Sense decimals. represent p. 38
  3. Lesson Guide in Elem.
  Math Gr. 5 p.241, Gr. 6
  p.43
- 4. MISOSA Module Gr.6:  30. reads and writes decimal Read and Write
+ 4. MISOSA Module Gr.6: 30. reads and writes decimal Read and Write
  M5NS-IIa-
  numbers through ten Decimals
  102.2
@@ -6447,7 +6447,7 @@ Sense decimals. represent p. 38
  2
  3. Lesson Guide in Elem.
  Math Gr. 6 p. 46
- 4. MISOSA Module Gr.6:  Compare and Order
+ 4. MISOSA Module Gr.6: Compare and Order
  Decimals
  5. Lesson Guide in Elem.
  32. compares and arranges M5NS-IIb-
@@ -6614,7 +6614,7 @@ Sense decimals. represent p. 38
  The learner… The learner… The learner…
  Mathematics Grade 5.
  2012. pp. 274-275
- 1. MISOSA Gr. 5 Module:  Multiplication of
+ 1. MISOSA Gr. 5 Module: Multiplication of
  Decimals and Whole
  Numbers
  2. Lesson Guide in Elem.
@@ -6630,7 +6630,7 @@ Sense decimals. represent p. 38
  1999. pp. 174-175*
  1. Lesson Guide in Elem.
  Math Gr. 5 p.279, 282
- 2. MISOSA Gr. 5 Module:  Multiplication of
+ 2. MISOSA Gr. 5 Module: Multiplication of
  Decimals through
  Hundredths
  3. Lesson Guide in Elem.
@@ -6660,7 +6660,7 @@ Sense decimals. represent p. 38
  Decimals. 2001. pp. 4-
  16
  1. DLP Gr. 6 Module 13
- 2. MISOSA Module Gr.6:  Estimating Quotients of
+ 2. MISOSA Module Gr.6: Estimating Quotients of
  Decimals
  41. estimates the products of
  M5NS-IIe- 3. Lesson Guide in Elem.
@@ -6671,7 +6671,7 @@ Sense decimals. represent p. 38
  4. Lesson Guide in Elem.
  Mathematics Grade 6.
  2012. pp. 70-73
- 1. MISOSA Gr. 5 Module:  Word Problems on
+ 1. MISOSA Gr. 5 Module: Word Problems on
  Multiplication of
  Decimals
  2. Lesson Guide in Elem.
@@ -6729,7 +6729,7 @@ Sense decimals. represent p. 38
  13
  3. Lesson Guide in Elem.
  Math Gr. 5 p.314
- 44. divides decimals with up to 2 M5NS-IIf- 4. MISOSA Gr. 5 Module:  decimal places. 116.1 Division of Decimals
+ 44. divides decimals with up to 2 M5NS-IIf- 4. MISOSA Gr. 5 Module: decimal places. 116.1 Division of Decimals
  5. Lesson Guide in
  Elementary
  Mathematics Grade 5.
@@ -6790,7 +6790,7 @@ Sense decimals. represent p. 38
  1. DLP Grade 5 Module 43
  2. BEAM LG Gr. 5 Module
  13
- 3. MISOSA Gr. 5 Module:  Word Problems on
+ 3. MISOSA Gr. 5 Module: Word Problems on
  Division of Decimals
  4. Lesson Guide in Elem.
  Mathematics Grade 5.
@@ -6842,7 +6842,7 @@ Sense decimals. represent p. 38
  operations of decimals and
  whole numbers including
  money.
- 1. MISOSA Gr. 5 Module:  Visualization of Ratio
+ 1. MISOSA Gr. 5 Module: Visualization of Ratio
  2. Mathematics for
  49. visualizes the ratio of 2 given M5NS-IIh- Everyday Life Grade 4.
  numbers. 122 2000. p. 134*
@@ -6854,7 +6854,7 @@ Sense decimals. represent p. 38
  9, Gr. 6 Module 11
  3. Lesson Guide in Elem.
  Math Gr. 5 p.218
- 4. MISOSA Gr. 5 Module:  Expressing Ratio
+ 4. MISOSA Gr. 5 Module: Expressing Ratio
  5. Lesson Guide in Elem.
  Mathematics Grade 6.
  2005. pp. 273-276
@@ -6884,7 +6884,7 @@ Sense decimals. represent p. 38
  9
  3. Lesson Guide in Elem.
  Math Gr. 5 p.227
- 4. MISOSA Gr. 5 Module:  Proportion
+ 4. MISOSA Gr. 5 Module: Proportion
  51. identifies and writes M5NS-IIi-
  5. Lesson Guide in Elem.
  equivalent ratios. 124
@@ -6897,7 +6897,7 @@ Sense decimals. represent p. 38
  Proportion
  1. Lesson Guide in Elem.
  Math Gr. 5 p.222
- 2. MISOSA Gr. 5 Module:  Ratio in its Simplest
+ 2. MISOSA Gr. 5 Module: Ratio in its Simplest
  Form
  3. Lesson Guide in Elem.
  Mathematics Grade 5.
@@ -7229,7 +7229,7 @@ Measurement demonstrates is able to apply 1. NFE Accreditation and
  2: Circumference
  3. Lesson Guide in Elem.
  Math Gr. 5 p.366
- 79. finds the circumference of a M5ME- 4. MISOSA Gr. 5 Module:  circle. IIIi-70 Circumference of a
+ 79. finds the circumference of a M5ME- 4. MISOSA Gr. 5 Module: circle. IIIi-70 Circumference of a
  Circle
  5. Lesson Guide in Elem.
  Mathematics Grade 5.
@@ -7259,7 +7259,7 @@ Measurement demonstrates is able to apply 1. NFE Accreditation and
  2: Circumference
  2. Lesson Guide in Elem.
  Math Gr. 5 p.369
- 3. MISOSA Gr. 5 Module:  Word Problems on
+ 3. MISOSA Gr. 5 Module: Word Problems on
  Circumference
  4. Lesson Guide in Elem.
  Mathematics Grade 5.
@@ -7297,7 +7297,7 @@ Measurement demonstrates is able to apply 14: Area blackboard
  3. Lesson Guide in Elem.
  the area of a circle. IVa-73
  Math Gr. 5 p.382
- 4. MISOSA Gr. 5 Module:  Area of a Circle
+ 4. MISOSA Gr. 5 Module: Area of a Circle
  1. DLP Gr. 5 Module 53
  2. BEAM LG Gr. 5 Module
  14: Area
@@ -7390,7 +7390,7 @@ Measurement demonstrates is able to apply 14: Area blackboard
  18: Volume
  3. Lesson Guide in Elem.
  Math Gr. 5 p.395
- 4. MISOSA Gr. 5 Module:  Volume of a
+ 4. MISOSA Gr. 5 Module: Volume of a
  Rectangular Prism
  5. Lesson Guide in Elem.
  Mathematics Grade 5.
@@ -7493,7 +7493,7 @@ Measurement demonstrates is able to apply 14: Area blackboard
  temperature(e.g. inside the 3. Lesson Guide in Elem.
  IVf-86
  classroom). Math Gr. 5 p.409
- 4. MISOSA Gr. 5 Module:  Temperature
+ 4. MISOSA Gr. 5 Module: Temperature
  1. Lesson Guide in Elem.
  Mathematics Grade 5.
  2005. pp. 339-342
@@ -7528,7 +7528,7 @@ Measurement demonstrates is able to apply 14: Area blackboard
 Statistics and demonstrates is able to create and 20: Line Graph
 Probability understanding of line interpret 98. collects data on one to two M5SP- 2. Lesson Guide in Elem.
  graphs and experimental representations of data variables using any source. IVg-1.5 Math Gr. 5 p.417
- probability. (tables and line graphs) 3. MISOSA Gr. 5 Module:  and apply experimental Line Graph
+ probability. (tables and line graphs) 3. MISOSA Gr. 5 Module: and apply experimental Line Graph
  probability in 1. DLP Gr. 5 Module 58,
  mathematical problems 59
  and real-life situations. 2. BEAM LG Gr. 5 Module
@@ -7732,7 +7732,7 @@ Sense four fundamental involving fractions and 223
  Mathematics Grade 6.
  2012. pp. 237-244,
  250-253
- 10. BALS Video:  Lesson 2:
+ 10. BALS Video: Lesson 2:
  Multiplication and
  Division of Mixed
  Numbers
@@ -8540,7 +8540,7 @@ Sense of operations, ratio and operations, ratio and
  2. DLP Gr. 6 Module 68,
  69
  3. BEAM LG Gr. 6
- Module 18:  Expression and
+ Module 18: Expression and
  Integers
  45. compares and arranges M6NS-IIh- 4. Lesson Guide in
  integers. 154 Elementary Math
@@ -8628,7 +8628,7 @@ Algebra understanding of knowledge of sequence, strategies (looking for a
  1. Lesson Guide in Elem.
  Math Gr. 6 p.1, 3
  2. BEAM LG Gr. 6
- Module 18:  Expression and
+ Module 18: Expression and
  Integers
  3. Lesson Guide in
  Elementary Math
@@ -8957,7 +8957,7 @@ Probability understanding of pie interpret
  1. Lesson Guide in Elem. Calculator, Scientific
  Math Gr. 6 p.349
  2. BEAM LG Gr. 6
- Module 17:  Prediction and
+ Module 17: Prediction and
  85. performs experiments and
  M6SP-IVh-21 Outcome
  records outcomes.
@@ -8972,14 +8972,14 @@ Probability understanding of pie interpret
  MATERIALS EQUIPMENT
  The learner… The learner… The learner…
  86. makes listings and diagrams 1. BEAM LG Gr. 6
- of outcomes and tells the Module 17:  number of favorable outcomes M6SP-IVi-22 Prediction and
+ of outcomes and tells the Module 17: number of favorable outcomes M6SP-IVi-22 Prediction and
  and chances using these Outcome
  listings and diagrams.
  1. Lesson Guide in Elem.
  Math Gr. 6 p.347
  2. DLP Gr. 6 Module 67
  3. BEAM LG Gr. 6
- Module 17:  Prediction and
+ Module 17: Prediction and
  87. makes simple predictions of Outcome
  events based on the results of M6SP-IVi-23 4. Lesson Guide in
  experiments. Elementary Math
@@ -10055,7 +10055,7 @@ Geometry demonstrates 1. is able to formulate
  43. illustrates the SAS, ASA and SSS
  problems involving M8GE-IIId-e-1 3. BEAM III: Module 10:
  congruence postulates.***
- congruent triangles Triangle Congruence:  using appropriate Triangles: Different and
+ congruent triangles Triangle Congruence: using appropriate Triangles: Different and
  and accurate yet the same
  representations. 4. DLM 3: Module 1:
  Triangle Congruence

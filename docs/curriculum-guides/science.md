@@ -2919,13 +2919,13 @@ Learning Materials and equipment technical specifications may be accessed at htt
  a simple DC circuit and electromagnet that is
  Fourth Year. switch
  the relationship between useful for home school
- Rabago, Lilia e. 3 assembles:  electricity and or community
+ Rabago, Lilia e. 3 assembles: electricity and or community
  M., Ph.D., et socket with
  magnetism in
  al. 2001. pp. bulb, terminal
  electromagnets
  308-310. * binding
- f. 100 g:  magnet wire
+ f. 100 g: magnet wire
  #20
  g. 1 pc: iron
  core rod (10-
@@ -3832,7 +3832,7 @@ Learning Materials and equipment technical specifications may be accessed at htt
  5. 11 Electric with bulb,
  Circuits. terminal
  Distance binding
- Learning f. 100 g:  Modules. DLP magnet wire
+ Learning f. 100 g: Modules. DLP magnet wire
  35. #20
  6. BEAM 5. Unit g. 1 pc: iron
  5. 11 Electric core rod
@@ -3920,7 +3920,7 @@ Learning Materials and equipment technical specifications may be accessed at htt
  25.
 
  4. demonstrate the practical and S6FE- 1. MISOSA 5. Pulley Set:
- safe uses of simple machines. IIIc-j-4 Module 19. a. 1 pc:  2. OHSP. Module double
+ safe uses of simple machines. IIIc-j-4 Module 19. a. 1 pc: 2. OHSP. Module double
  11. Lesson 3. pulley
  3. EASE Physics. b. 1 pc: single
  Module 11. pulley

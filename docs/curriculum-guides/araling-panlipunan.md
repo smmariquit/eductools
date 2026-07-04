@@ -2671,7 +2671,7 @@ K to 12 Araling Panlipunan Gabay Pangkurikulum Mayo 2016 Pahina 62ng 240
  (Content Standard) (Performance Standard) ( Learning Competencies)
 UNANG MARKAHAN - Ang Mga Lalawigan Sa Aking Rehiyon
 A. Ang Kinalalagyan ng mga Ang mag-aaral ay… Ang mag-aaral ay… 1. Naipaliliwanagi ang 1. Pilot School MTB-MLE
- Lalawigan sa Aking Rehiyon kahulugan ng mga simbolo Lesson 5 (Grade 3:  naipamamalas ang pang- nakapaglalarawan ng pisikal na ginagamit sa mapa sa 1st quarter)
+ Lalawigan sa Aking Rehiyon kahulugan ng mga simbolo Lesson 5 (Grade 3: naipamamalas ang pang- nakapaglalarawan ng pisikal na ginagamit sa mapa sa 1st quarter)
 Batayang heograpiya unawa sa kinalalagyan na kapaligiran ng mga tulong ng panuntunan (ei. 2. * Pagsibol ng Lahing
  1. direksyon ng mga lalawigan sa lalawigan sa rehiyong katubigan, kabundukan, Pilipino 2.
  2. relatibong lokasyon rehiyong kinabibilangan kinabibilangan gamit ang etc) 2003.pp.36-37
@@ -4469,7 +4469,7 @@ Batayang heograpiya mapanuring pag-unawa pagmamalaki sa nabuong kinalalagyan ng 
 1. Absolute na lokasyon gamit at kaalaman sa kabihasnan ng mga sa mundo gamit ang 3. Pilot School MTB-MLE
  ang mapa kasanayang sinaunang Pilipinogamit ang mapa batay sa ”absolute (Grade 3: 2nd quarter)
  1.1 Prime meridian, pangheograpiya, ang kaalaman sa kasanayang location” nito (longitude 4. Pilot School MTB-MLE
- International Date mga teorya sa pangheograpikal at at latitude) Lesson 1 (Grade 3:  Line, Equator, North pinagmulan ng lahing mahahalagang konteksto ng 1.2 Natutukoy ang 1st quarter)
+ International Date mga teorya sa pangheograpikal at at latitude) Lesson 1 (Grade 3: Line, Equator, North pinagmulan ng lahing mahahalagang konteksto ng 1.2 Natutukoy ang 1st quarter)
  and South Poles, Pilipino upang kasaysayan ng lipunan at relatibong lokasyon 5. EASE I Module 2
  Tropics of Cancer and mapahahalagahan ang bansa kabilang ang mga (relative location) ng 6. * Sibika at Kultura 3.
  Capricorn at Arctic and konteksto ng lipunan/ teorya ng pinagmulan at Pilipinas batay sa karatig 2000. pp.25-27
@@ -4517,7 +4517,7 @@ K to 12 Araling Panlipunan Gabay Pangkurikulum Mayo 2016 Pahina 102ng 240
  55-65
  2. Nailalarawan ang klima ng 1. MISOSA 4 Lesson 9-11
  Pilipinas bilang isang 2. Pilot School MTB-MLE
- bansang tropikal ayon Lesson 1 (Grade 3:  salokasyon nito sa mundo 1st quarter)
+ bansang tropikal ayon Lesson 1 (Grade 3: salokasyon nito sa mundo 1st quarter)
  2.1 Natutukoy ang mga salik 3. EASE I Module 2
  na may kinalaman sa 4. * HEKASI para sa mga
  klima ng bansa tulad ng Batang Pilipino 4.
@@ -9693,7 +9693,7 @@ K to 12 Araling Panlipunan Gabay Pangkurikulum Mayo 2016 Pahina 214ng 240
  Pang-ekonomiya, at mamamayan Projects).
  Panlipunan) 2001. pp. 42-
  3. Mga Suliraning 47
- Pangkapaligiran sa 2. BALS Video:  Sariling Pamayanan Preparing For
+ Pangkapaligiran sa 2. BALS Video: Sariling Pamayanan Preparing For
  Calamities
  Halimbawa: 4. Naiuugnay ang gawain at
  waste management, desisyon ng tao sa
@@ -9739,7 +9739,7 @@ K to 12 Araling Panlipunan Gabay Pangkurikulum Mayo 2016 Pahina 215ng 240
  Education
  Projects).
  2001. pp. 4-43
- 5. BALS Video:  Preparing For
+ 5. BALS Video: Preparing For
  Calamities
  5. Natutukoy ang mga ahensiya
  ng pamahalaan na
