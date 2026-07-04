@@ -246,7 +246,7 @@ const Home = () => {
           
           {/* Grade Filter */}
           <div className="flex items-center gap-2">
-          <label htmlFor="grade-level-filter" className="text-xs tracking-widest uppercase font-semibold text-base-content/80">Grade Level</label>
+          <label htmlFor="grade-level-filter" className="text-xs tracking-widest uppercase font-semibold text-base-content">Grade Level</label>
           <select 
             id="grade-level-filter"
             value={activeGrade} 
@@ -261,7 +261,7 @@ const Home = () => {
 
         {/* Subject Filter */}
         <div className="flex items-center gap-2">
-          <label htmlFor="subject-area-filter" className="text-xs tracking-widest uppercase font-semibold text-base-content/80">Subject Area</label>
+          <label htmlFor="subject-area-filter" className="text-xs tracking-widest uppercase font-semibold text-base-content">Subject Area</label>
           <select 
             id="subject-area-filter"
             value={activeSubject} 
