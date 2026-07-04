@@ -19,8 +19,8 @@
 
 - Primary sources only, each with a live URL that resolves.
 - Philippine law via LawPhil; agency figures from the agency itself (DepEd, PSA,
-  PAGASA, BIR); science from the authoritative organization (OpenStax, OECD,
-  World Bank, the journal).
+ PAGASA, BIR); science from the authoritative organization (OpenStax, OECD,
+ World Bank, the journal).
 - Note any figure that cannot be traced to a primary source instead of using it.
 
 ## Constraints
@@ -38,4 +38,4 @@ citation (full reference + live URL), ready to drop into a `<Sources>` block.
 
 <Paste the sourced research here. Example shape:>
 
-- Claim. — [Source label](https://example.org/primary-source) (verified YYYY-MM-DD)
+- Claim.: [Source label](https://example.org/primary-source) (verified YYYY-MM-DD)
