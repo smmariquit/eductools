@@ -2,10 +2,7 @@ import { Aside, BarChart, Changelog, Sources } from '../../components/content'
 
 # Chemical bonding: a tug-of-war over electrons
 
-
 I made the bonding tool because students kept treating ionic and covalent bonds as two unrelated facts to memorize for a quiz, the way you might memorize two unrelated capital cities. That framing is the thing I most want to break. Ionic and covalent are not two separate categories with a wall between them. They are the two ends of a single tug-of-war over electrons, and one number tells you where any particular bond lands on the rope. Once that clicks, a long list of "just memorize it" facts collapses into one idea you can reason from.
-
-
 
 Almost everything around you is held together by atoms either trading or sharing their outermost electrons, the ones called valence electrons. The tool walks you through both deals one step at a time, with an octet counter (a tally of whether each atom has reached eight outer electrons) so you can watch atoms chase the stable arrangement they are after.
 
@@ -26,15 +23,15 @@ Covalent compounds are built from discrete, electrically neutral molecules rathe
 What decides whether atoms transfer or share is **electronegativity**, an atom's pull on the electrons in a bond. Linus Pauling scored it on a scale running from about 0 up to 4. Fluorine is the greediest at 4.0; the group 1 metals like sodium are the most generous. The move that ties the whole topic together is to stop looking at the two atoms separately and look at the *difference* in their electronegativities, written ΔEN.
 
 <BarChart
-  title="The bigger the electronegativity gap, the more ionic the bond"
-  source="OpenStax, Chemistry 2e §7.2 (Pauling electronegativity values)"
-  data={[
-    { label: 'H–H (nonpolar)', value: 0.0, color: 'leaf' },
-    { label: 'C–H (nearly nonpolar)', value: 0.4, color: 'leaf' },
-    { label: 'H–Cl (polar covalent)', value: 0.9, color: 'sunshine' },
-    { label: 'O–H (polar covalent)', value: 1.4, color: 'sunshine' },
-    { label: 'Na–Cl (ionic)', value: 2.1, color: 'berry' },
-  ]}
+ title="The bigger the electronegativity gap, the more ionic the bond"
+ source="OpenStax, Chemistry 2e §7.2 (Pauling electronegativity values)"
+ data={[
+ { label: 'H–H (nonpolar)', value: 0.0, color: 'leaf' },
+ { label: 'C–H (nearly nonpolar)', value: 0.4, color: 'leaf' },
+ { label: 'H–Cl (polar covalent)', value: 0.9, color: 'sunshine' },
+ { label: 'O–H (polar covalent)', value: 1.4, color: 'sunshine' },
+ { label: 'Na–Cl (ionic)', value: 2.1, color: 'berry' },
+ ]}
 />
 
 Read that chart as one continuous rope, not three boxes. When ΔEN is zero, as in H–H, the two atoms pull equally and the electrons are shared dead even: a pure, nonpolar covalent bond. As the gap grows, the greedier atom hogs the shared pair, and the bond turns **polar covalent**, with a slightly negative end ($\delta^-$) and a slightly positive end ($\delta^+$). The O–H bonds in water are exactly this, which is the root of nearly everything water does. Push the gap large enough, like the 2.1 of Na–Cl, and one atom effectively takes the electron outright, and you are back to an ionic bond.
@@ -46,23 +43,23 @@ There is no hard line painted on the rope in nature. OpenStax treats the usual �
 The polarity that ΔEN predicts is not bookkeeping. It is the reason water dissolves salt but shrugs off cooking oil, the reason ice floats instead of sinking and killing everything in a frozen lake, and the reason the two strands of your DNA hold together firmly yet still unzip cleanly every time a cell copies itself. Get a student comfortable reading a bond as a tug-of-war with a measurable winner, and that single skill quietly explains a dozen properties that otherwise look like a list to be crammed.
 
 <Aside variant="tool" title="PhET, Build a Molecule" href="https://phet.colorado.edu/en/simulations/build-a-molecule" credit="PhET Interactive Simulations, CU Boulder">
-  Our tool is a guided, step-by-step story of one bond forming. PhET's Build a Molecule is the open-ended companion: you snap real atoms together yourself and see which combinations are allowed. I point students there once they understand the octet, so they can play instead of follow.
+ Our tool is a guided, step-by-step story of one bond forming. PhET's Build a Molecule is the open-ended companion: you snap real atoms together yourself and see which combinations are allowed. I point students there once they understand the octet, so they can play instead of follow.
 </Aside>
 
 <Sources
-  items={[
-    { label: 'OpenStax, Chemistry 2e §7.1: Ionic Bonding.', href: 'https://openstax.org/books/chemistry-2e/pages/7-1-ionic-bonding' },
-    { label: 'OpenStax, Chemistry 2e §7.2: Covalent Bonding (electronegativity, bond type, H₂ bond energy).', href: 'https://openstax.org/books/chemistry-2e/pages/7-2-covalent-bonding' },
-    { label: 'OpenStax, Chemistry 2e §7.3: Lewis Symbols and Structures.', href: 'https://openstax.org/books/chemistry-2e/pages/7-3-lewis-symbols-and-structures' },
-    { label: 'PhET Interactive Simulations (University of Colorado Boulder): Build a Molecule.', href: 'https://phet.colorado.edu/en/simulations/build-a-molecule' },
-  ]}
+ items={[
+ { label: 'OpenStax, Chemistry 2e §7.1: Ionic Bonding.', href: 'https://openstax.org/books/chemistry-2e/pages/7-1-ionic-bonding' },
+ { label: 'OpenStax, Chemistry 2e §7.2: Covalent Bonding (electronegativity, bond type, H₂ bond energy).', href: 'https://openstax.org/books/chemistry-2e/pages/7-2-covalent-bonding' },
+ { label: 'OpenStax, Chemistry 2e §7.3: Lewis Symbols and Structures.', href: 'https://openstax.org/books/chemistry-2e/pages/7-3-lewis-symbols-and-structures' },
+ { label: 'PhET Interactive Simulations (University of Colorado Boulder): Build a Molecule.', href: 'https://phet.colorado.edu/en/simulations/build-a-molecule' },
+ ]}
 />
 
 <Changelog
-  created="2026-06-11"
-  updated="2026-06-18"
-  entries={[
-    { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
-    { date: "2026-06-18", note: "Re-toned into the house voice for Grades 9–10 (origin-story open, spectrum-not-boxes misconception, Philippine asin example); rewrote the tool description to match the actual step-through octet walkthrough (Na+Cl and Cl+Cl), not a drag-and-drop builder; kept the ΔEN chart and verified sources; added PhET credit and the Changelog block." },
-  ]}
+ created="2026-06-11"
+ updated="2026-06-18"
+ entries={[
+ { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
+ { date: "2026-06-18", note: "Re-toned into the house voice for Grades 9–10 (origin-story open, spectrum-not-boxes misconception, Philippine asin example); rewrote the tool description to match the actual step-through octet walkthrough (Na+Cl and Cl+Cl), not a drag-and-drop builder; kept the ΔEN chart and verified sources; added PhET credit and the Changelog block." },
+ ]}
 />
