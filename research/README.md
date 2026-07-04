@@ -15,19 +15,19 @@ so the article that follows can trace every claim to a real source.
 Start from [`_template.md`](./_template.md). Every prompt should make these
 explicit so the research comes back usable:
 
-- **Objective** — the one question the research must answer.
-- **Target** — the tool/article it feeds, and the MATATAG grade band and subject
-  (cross-checked against `docs/curriculum-guides/`).
-- **Key questions** — the specific sub-questions to chase down.
-- **Source requirements** — primary sources only, with live URLs. Republic Acts
-  via LawPhil, agency facts via the agency (DepEd, PSA, PAGASA, BIR), science via
-  the authoritative org (OpenStax, OECD, World Bank, the journal). No guessed
-  URLs; every link must resolve.
-- **Output format** — usually a findings section with each claim followed by its
-  citation, ready to drop into a `<Sources>` block.
-- **Constraints** — describe MATATAG and DepEd neutrally and factually; no
-  unqualified benefit claims; flag anything that cannot be sourced rather than
-  inventing it.
+- **Objective**: the one question the research must answer.
+- **Target**: the tool/article it feeds, and the MATATAG grade band and subject
+ (cross-checked against `docs/curriculum-guides/`).
+- **Key questions**: the specific sub-questions to chase down.
+- **Source requirements**: primary sources only, with live URLs. Republic Acts
+ via LawPhil, agency facts via the agency (DepEd, PSA, PAGASA, BIR), science via
+ the authoritative org (OpenStax, OECD, World Bank, the journal). No guessed
+ URLs; every link must resolve.
+- **Output format**: usually a findings section with each claim followed by its
+ citation, ready to drop into a `<Sources>` block.
+- **Constraints**: describe MATATAG and DepEd neutrally and factually; no
+ unqualified benefit claims; flag anything that cannot be sourced rather than
+ inventing it.
 
 ## Naming
 
@@ -39,16 +39,16 @@ descriptive slug for exploratory topics that do not map to a tool yet.
 
 1. Copy `_template.md` to `<topic-slug>.md` and fill in the prompt.
 2. Run the deep research; paste the sourced findings back into the same file
-   under a "Findings" section, with live links.
+ under a "Findings" section, with live links.
 3. Verify every link loads before relying on it
-   (`curl -sS -o /dev/null -m 25 -L -A "Mozilla/5.0" -w "%{http_code}" <url>`).
+ (`curl -sS -o /dev/null -m 25 -L -A "Mozilla/5.0" -w "%{http_code}" <url>`).
 4. Write the article in `src/content/`, carrying the sources into its
-   `<Sources>` block.
+ `<Sources>` block.
 
 ## Related rules and references
 
 - Writing voice, sourcing, and MATATAG neutrality: `.cursor/rules/writing-tone.mdc`
 - Curriculum alignment and grade bands: `.cursor/rules/curriculum-guides.mdc` and
-  `docs/curriculum-guides/`
+ `docs/curriculum-guides/`
 - Source selection and licensing for curriculum content:
-  `.cursor/skills/citing-curriculum-content/SKILL.md`
+ `.cursor/skills/citing-curriculum-content/SKILL.md`
