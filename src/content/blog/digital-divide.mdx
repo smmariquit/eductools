@@ -2,10 +2,7 @@ import { Changelog, DonutChart, Sources } from '../../components/content'
 
 # What's actually plugged in at the other end
 
-
 I built our first classroom simulation thinking the hard part was the physics. Then I watched a teacher in a real public school try to run it, and the projector that was supposed to display it flickered out halfway through the lesson. The science was fine. The Tuesday it ran on was the whole story. Ever since, I have spent a strange amount of time on a question most edtech skips right past: what is actually plugged in at the other end? You can write the most careful tool in the world, and it still runs on whatever the school happens to have that day.
-
-
 
 The ambition isn't the problem. It's written into the law. The [Enhanced Basic Education Act of 2013](https://lawphil.net/statutes/repacts/ra2013/ra_10533_2013.html) put information and communications technology and "21st-century skills" into the curriculum as policy, not aspiration, and it told schools to contextualize and localize their teaching to the learners in front of them. That is the right instinct. It also quietly assumes a floor of electricity, devices, connectivity, and teacher time that a great many schools simply do not stand on. So before I talk about tools, I want to be honest about the floor, and trace every number to the people who actually counted it, so you can check me.
 
@@ -16,14 +13,14 @@ When the Philippines sat the OECD's PISA test for the first time in 2018, the re
 You can argue about how much weight one international test deserves, and people reasonably do. What's harder to wave away is that the domestic picture says the same thing. The World Bank's [learning poverty measure](https://documents1.worldbank.org/curated/en/972851624613012971/pdf/Philippines-Learning-Poverty-Brief-2021.pdf) is just the share of ten-year-olds who can't read and understand a simple, age-appropriate story, and it sat at roughly 90 percent during the pandemic years, up from an already-high 69.5 percent in 2019. The gap doesn't close on its own as kids get older. When DepEd ran its first Senior High School Literacy and Numeracy Assessment in March 2026, the Second Congressional Commission on Education reported that [87 percent of the Grade 11 students assessed were not independent readers](https://edcom2.gov.ph/improvements-seen-but-half-of-learners-still-below-grade-level-in-literacy/), with only about 13 percent able to read a text at their own grade level and actually understand it. These are seventeen-year-olds two years from a diploma.
 
 <DonutChart
-  title="Grade 11 reading levels, SHS-LNA pilot (March 2026)"
-  unit="%"
-  source="EDCOM 2, analysis of DepEd SHS-LNA data, 2026"
-  data={[
-    { label: 'Frustration', value: 58.9, color: 'berry' },
-    { label: 'Instructional', value: 28.5, color: 'sunshine' },
-    { label: 'Independent', value: 12.58, color: 'leaf' },
-  ]}
+ title="Grade 11 reading levels, SHS-LNA pilot (March 2026)"
+ unit="%"
+ source="EDCOM 2, analysis of DepEd SHS-LNA data, 2026"
+ data={[
+ { label: 'Frustration', value: 58.9, color: 'berry' },
+ { label: 'Instructional', value: 28.5, color: 'sunshine' },
+ { label: 'Independent', value: 12.58, color: 'leaf' },
+ ]}
 />
 
 A tool that animates photosynthesis does not fix any of that. I say it plainly because the temptation in this sector is to pretend otherwise, and I have caught myself doing it.
@@ -64,24 +61,24 @@ No, and that's the trap. Connectivity is the visible layer. Underneath it sit so
 Neither, yet. The first pilot year showed real Grade 2 gains and real strain on teachers, both in the same [PIDS evaluation](https://serp-p.pids.gov.ph/publication/public/view?slug=promise-and-growing-pains-in-curriculum-reform-a-mixed-methods-evaluation-of-matatag-k-to-10-curri). One year is too early to call. Anyone selling you certainty in either direction is selling something.
 
 <Sources
-  items={[
-    { label: 'Republic Act 10533, Enhanced Basic Education Act of 2013 (LawPhil).', href: 'https://lawphil.net/statutes/repacts/ra2013/ra_10533_2013.html' },
-    { label: 'OECD (2019). PISA 2018 Results: Philippines Country Note.', href: 'https://www.oecd.org/content/dam/oecd/en/about/programmes/edu/pisa/publications/national-reports/pisa-2018/featured-country-specific-overviews/PISA2018_CN_PHL.pdf' },
-    { label: 'World Bank (2020). PISA 2018 Philippines National Report (Main Report).', href: 'https://documents1.worldbank.org/curated/en/184251593328815913/pdf/Main-Report.pdf' },
-    { label: 'World Bank (2021). Philippines Learning Poverty Brief.', href: 'https://documents1.worldbank.org/curated/en/972851624613012971/pdf/Philippines-Learning-Poverty-Brief-2021.pdf' },
-    { label: 'EDCOM 2 (2026). Improvements seen, but half of learners still below grade level in literacy.', href: 'https://edcom2.gov.ph/improvements-seen-but-half-of-learners-still-below-grade-level-in-literacy/' },
-    { label: 'Philippine Institute for Development Studies (2025). Promise and Growing Pains in Curriculum Reform: A Mixed-Methods Evaluation of MATATAG K to 10.', href: 'https://serp-p.pids.gov.ph/publication/public/view?slug=promise-and-growing-pains-in-curriculum-reform-a-mixed-methods-evaluation-of-matatag-k-to-10-curri' },
-    { label: 'Executive Order 138, s. 2021, Full Devolution of Certain Functions (LawPhil).', href: 'https://lawphil.net/executive/execord/eo2021/eo_138_2021.html' },
-    { label: 'Republic Act 12028, Academic Recovery and Accessible Learning (ARAL) Program Act, 2024 (LawPhil).', href: 'https://lawphil.net/statutes/repacts/ra2024/ra_12028_2024.html' },
-  ]}
+ items={[
+ { label: 'Republic Act 10533, Enhanced Basic Education Act of 2013 (LawPhil).', href: 'https://lawphil.net/statutes/repacts/ra2013/ra_10533_2013.html' },
+ { label: 'OECD (2019). PISA 2018 Results: Philippines Country Note.', href: 'https://www.oecd.org/content/dam/oecd/en/about/programmes/edu/pisa/publications/national-reports/pisa-2018/featured-country-specific-overviews/PISA2018_CN_PHL.pdf' },
+ { label: 'World Bank (2020). PISA 2018 Philippines National Report (Main Report).', href: 'https://documents1.worldbank.org/curated/en/184251593328815913/pdf/Main-Report.pdf' },
+ { label: 'World Bank (2021). Philippines Learning Poverty Brief.', href: 'https://documents1.worldbank.org/curated/en/972851624613012971/pdf/Philippines-Learning-Poverty-Brief-2021.pdf' },
+ { label: 'EDCOM 2 (2026). Improvements seen, but half of learners still below grade level in literacy.', href: 'https://edcom2.gov.ph/improvements-seen-but-half-of-learners-still-below-grade-level-in-literacy/' },
+ { label: 'Philippine Institute for Development Studies (2025). Promise and Growing Pains in Curriculum Reform: A Mixed-Methods Evaluation of MATATAG K to 10.', href: 'https://serp-p.pids.gov.ph/publication/public/view?slug=promise-and-growing-pains-in-curriculum-reform-a-mixed-methods-evaluation-of-matatag-k-to-10-curri' },
+ { label: 'Executive Order 138, s. 2021, Full Devolution of Certain Functions (LawPhil).', href: 'https://lawphil.net/executive/execord/eo2021/eo_138_2021.html' },
+ { label: 'Republic Act 12028, Academic Recovery and Accessible Learning (ARAL) Program Act, 2024 (LawPhil).', href: 'https://lawphil.net/statutes/repacts/ra2024/ra_12028_2024.html' },
+ ]}
 />
 
 <Changelog
-  created="2026-06-11"
-  updated="2026-06-18"
-  entries={[
-    { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
-    { date: "2026-06-18", note: "Switched the Grade 11 reading-levels chart from a bar chart to a DonutChart, since the three levels are shares of one cohort." },
-    { date: "2026-06-18", note: "Re-toned into the house voice (origin-story open, misconception framing, plain-spoken FAQ); kept all figures and verified sources; added the mandatory Changelog block." },
-  ]}
+ created="2026-06-11"
+ updated="2026-06-18"
+ entries={[
+ { date: "2026-06-18", note: "Added a “Examples you might study” block with one or two common classroom problems." },
+ { date: "2026-06-18", note: "Switched the Grade 11 reading-levels chart from a bar chart to a DonutChart, since the three levels are shares of one cohort." },
+ { date: "2026-06-18", note: "Re-toned into the house voice (origin-story open, misconception framing, plain-spoken FAQ); kept all figures and verified sources; added the mandatory Changelog block." },
+ ]}
 />
