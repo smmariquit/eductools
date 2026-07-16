@@ -197,8 +197,8 @@ export const ProcessCycle: React.FC<ProcessCycleProps> = ({
       {/* Active-stage detail panel (announced to screen readers) */}
       <motion.div
         key={activeStage.id}
-        initial={reducedMotion ? false : { opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={false}
+        animate={{ opacity: 1 }}
         transition={motionTransition}
         className="rounded-2xl border border-base-300 bg-base-200 p-5 md:p-6"
         aria-live="polite"
@@ -215,6 +215,8 @@ export const ProcessCycle: React.FC<ProcessCycleProps> = ({
                 src={activeStage.photo.src}
                 alt={activeStage.photo.alt}
                 credit={activeStage.photo.credit}
+                loading="eager"
+                fetchPriority="high"
               />
             )}
           </div>
@@ -389,7 +391,7 @@ const CycleDiagram: React.FC<DiagramProps> = ({
               aria-pressed={isActive}
               aria-label={`Stage ${i + 1}: ${stage.title}`}
               tabIndex={isActive ? 0 : -1}
-              className={`absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center rounded-full border-2 text-center transition-all motion-reduce:transition-none focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/40 ${
+              className={`absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center rounded-full border-2 text-center transition-[border-color,background-color,color,transform,box-shadow] motion-reduce:transition-none focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/40 ${
                 isActive
                   ? 'border-primary bg-primary text-primary-content shadow-lg scale-110 z-10'
                   : 'border-base-300 bg-base-100 text-base-content hover:border-primary/60'
@@ -456,7 +458,7 @@ const LinearDiagram: React.FC<LinearDiagramProps> = ({
               aria-pressed={isActive}
               aria-label={`Step ${i + 1}: ${stage.title}`}
               tabIndex={isActive ? 0 : -1}
-              className={`flex-1 md:min-w-[120px] md:max-w-[180px] flex flex-col items-center justify-center gap-1 rounded-2xl border-2 p-3 text-center transition-all motion-reduce:transition-none focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/40 ${
+              className={`flex-1 md:min-w-[120px] md:max-w-[180px] flex flex-col items-center justify-center gap-1 rounded-2xl border-2 p-3 text-center transition-[border-color,background-color,color,transform,box-shadow] motion-reduce:transition-none focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/40 ${
                 isActive
                   ? 'border-primary bg-primary text-primary-content shadow-lg md:scale-105 z-10'
                   : 'border-base-300 bg-base-100 text-base-content hover:border-primary/60'

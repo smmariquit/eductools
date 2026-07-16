@@ -186,7 +186,7 @@ const SeasonsVisualizer = () => {
                 {/* rain dots during wet season */}
                 {monsoon.season.startsWith('Tag-ulan') &&
                   [...Array(14)].map((_, i) => (
-                    <circle key={i} cx={120 + (i % 7) * 12} cy={90 + Math.floor(i / 7) * 90 + (i % 3) * 10} r="2.4" fill="#1d4ed8" fillOpacity="0.7" />
+                    <circle key={i} cx={120 + (i % 7) * 12} cy={90 + Math.floor(i / 7) * 90 + (i % 3) * 10} r="2.4" fill="var(--accent)" fillOpacity="0.7" />
                   ))}
               </svg>
 

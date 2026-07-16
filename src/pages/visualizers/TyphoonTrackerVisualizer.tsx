@@ -60,7 +60,7 @@ const TyphoonTrackerVisualizer = () => {
     if (speed <= 88) return { category: 'Tropical Storm (TS)', surge: '0.5m - 1.0m', color: '#10b981', size: 90 };
     if (speed <= 117) return { category: 'Severe Tropical Storm (STS)', surge: '1.0m - 2.0m', color: '#f59e0b', size: 120 };
     if (speed <= 184) return { category: 'Typhoon (TY)', surge: '2.0m - 3.0m', color: '#ef4444', size: 160 };
-    return { category: 'Super Typhoon (STY)', surge: '> 3.0m', color: '#8b5cf6', size: 220 };
+    return { category: 'Super Typhoon (STY)', surge: '> 3.0m', color: 'var(--crayon-ink)', size: 220 };
   };
 
   // PAGASA Tropical Cyclone Wind Signal (TCWS), 2022 wind-speed bands.

@@ -157,7 +157,7 @@ const SequencesVisualizer = () => {
       ? 'bg-primary/70'
       : 'bg-secondary/70';
 
-  const transition = reducedMotion ? '' : 'transition-all duration-500';
+  const transition = reducedMotion ? '' : 'transition-[height,background-color] duration-500';
 
   return (
     <VisualizerLayout

@@ -113,7 +113,7 @@ const VanHelmontSimulation = ({ rate }: { rate: number }) => {
       <div className="flex gap-8 items-end mb-8 relative">
         {/* CO2 entering from air */}
         {isSimulating && rate > 0 && (
-          <div className="absolute -top-10 left-1/2 -translate-x-1/2 text-base-content/50 text-xs animate-bounce flex flex-col items-center gap-1">
+          <div className="absolute -top-10 left-1/2 -translate-x-1/2 text-base-content/50 text-xs flex flex-col items-center gap-1">
             <span className="font-mono bg-base-100 px-2 py-1 rounded-md border border-base-300">↓ Absorbing CO₂</span>
           </div>
         )}

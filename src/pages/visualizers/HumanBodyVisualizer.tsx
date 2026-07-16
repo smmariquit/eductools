@@ -625,21 +625,21 @@ const ReflexEngine = () => {
       <div className="w-full bg-base-200 p-4 md:p-5 rounded-xl border border-base-300 relative overflow-hidden">
         <div className="flex justify-between items-center mb-8 relative z-10">
           <div className="text-center">
-            <div className={`w-20 h-20 rounded-full flex items-center justify-center font-bold text-xs border-4 transition-all duration-300 ${phase === 'STIM' ? 'bg-warning text-warning-content border-warning scale-110' : 'bg-base-100 border-base-300 text-base-content/50'}`}>
+            <div className={`w-20 h-20 rounded-full flex items-center justify-center font-bold text-xs border-4 transition-[background-color,border-color,color,transform] duration-300 ${phase === 'STIM' ? 'bg-warning text-warning-content border-warning scale-110' : 'bg-base-100 border-base-300 text-base-content/50'}`}>
               Sensory
             </div>
           </div>
           <div className="text-center">
-            <div className={`w-24 h-24 rounded-full flex items-center justify-center font-bold text-xs border-4 transition-all duration-300 ${phase === 'SYNAPSE' ? 'bg-primary text-primary-content border-primary scale-110' : 'bg-base-100 border-base-300 text-base-content/50'}`}>
+            <div className={`w-24 h-24 rounded-full flex items-center justify-center font-bold text-xs border-4 transition-[background-color,border-color,color,transform] duration-300 ${phase === 'SYNAPSE' ? 'bg-primary text-primary-content border-primary scale-110' : 'bg-base-100 border-base-300 text-base-content/50'}`}>
               Spinal Cord
             </div>
           </div>
           <div className="flex flex-col gap-6">
-            <div className={`w-20 h-20 rounded-full flex flex-col items-center justify-center font-bold text-xs border-4 transition-all duration-300 ${phase === 'MOTOR' ? 'bg-success text-success-content border-success scale-110' : 'bg-base-100 border-base-300 text-base-content/50'}`}>
+            <div className={`w-20 h-20 rounded-full flex flex-col items-center justify-center font-bold text-xs border-4 transition-[background-color,border-color,color,transform] duration-300 ${phase === 'MOTOR' ? 'bg-success text-success-content border-success scale-110' : 'bg-base-100 border-base-300 text-base-content/50'}`}>
               <span>Extensor</span>
               <span className="opacity-70 font-mono mt-1 inline-flex items-baseline gap-0.5"><MeasuredValue value={extensorVoltage} unit="mV" /></span>
             </div>
-            <div className={`w-20 h-20 rounded-full flex flex-col items-center justify-center font-bold text-xs border-4 transition-all duration-300 ${phase === 'MOTOR' ? 'bg-error text-error-content border-error scale-110' : 'bg-base-100 border-base-300 text-base-content/50'}`}>
+            <div className={`w-20 h-20 rounded-full flex flex-col items-center justify-center font-bold text-xs border-4 transition-[background-color,border-color,color,transform] duration-300 ${phase === 'MOTOR' ? 'bg-error text-error-content border-error scale-110' : 'bg-base-100 border-base-300 text-base-content/50'}`}>
               <span>Flexor</span>
               <span className="opacity-70 font-mono mt-1 inline-flex items-baseline gap-0.5"><MeasuredValue value={flexorVoltage} unit="mV" /></span>
             </div>

@@ -471,7 +471,7 @@ const ReactionRateVisualizer = () => {
               <div className="flex items-center gap-2">
                 <div className="flex-1 bg-base-300 rounded-full h-4 overflow-hidden">
                   <div
-                    className={`h-full rounded-full transition-all duration-500 ${hasCatalyst ? 'bg-secondary' : 'bg-error'}`}
+                    className={`h-full rounded-full transition-[width,background-color] duration-500 ${hasCatalyst ? 'bg-secondary' : 'bg-error'}`}
                     style={{ width: `${(activationEnergy / 9) * 100}%` }}
                   />
                 </div>

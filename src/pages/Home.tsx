@@ -159,7 +159,7 @@ const Home = () => {
       <div className="py-8 border-b border-base-300 mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <div className="flex items-center gap-3">
-            <CrayonArt name="rocket" size={52} animate="wiggle" className="hidden sm:inline-block shrink-0" />
+            <CrayonArt name="rocket" size={52} className="hidden sm:inline-block shrink-0" />
             <h1 className="text-4xl font-extrabold text-primary mb-0">Learning Modules &amp; Visualizers</h1>
           </div>
           <CrayonArt name="underline-squiggle" width="clamp(160px, 60%, 280px)" height={18} className="block mt-1 mb-3" animate="draw" />
@@ -363,23 +363,23 @@ const Home = () => {
         <h3>What this has to do with MATATAG</h3>
         <p>
           DepEd's{' '}
-          <a href="https://www.deped.gov.ph/matatag/" target="_blank" rel="noopener noreferrer" className="font-semibold underline text-[#1d4ed8]">MATATAG curriculum</a>{' '}
+          <a href="https://www.deped.gov.ph/matatag/" target="_blank" rel="noopener noreferrer" className="font-semibold underline text-[color:var(--link)]">MATATAG curriculum</a>{' '}
           is built on a related observation. It cuts down the sheer number of learning competencies
           so a class can sit with the foundational ones instead of sprinting through an overloaded
           list, the same decongestion goal behind the{' '}
-          <a href="https://lawphil.net/statutes/repacts/ra2013/ra_10533_2013.html" target="_blank" rel="noopener noreferrer" className="font-semibold underline text-[#1d4ed8]">K-12 reform</a>{' '}
+          <a href="https://lawphil.net/statutes/repacts/ra2013/ra_10533_2013.html" target="_blank" rel="noopener noreferrer" className="font-semibold underline text-[color:var(--link)]">K-12 reform</a>{' '}
           it grew out of. Fewer topics, more time on each. A visualizer is one way to spend that
           time: load a single concept and actually poke at it until it makes sense.
         </p>
         <h3>What the research actually says</h3>
         <p>
           I try not to oversell this. The careful version comes from Freeman and colleagues'{' '}
-          <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4060654/" target="_blank" rel="noopener noreferrer" className="font-semibold underline text-[#1d4ed8]">2014 meta-analysis of 225 STEM studies</a>,
+          <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4060654/" target="_blank" rel="noopener noreferrer" className="font-semibold underline text-[color:var(--link)]">2014 meta-analysis of 225 STEM studies</a>,
           which found that students who do something in class, rather than only listen, score about
           6% higher on exams, and that students stuck in plain lectures were roughly 1.5 times more
           likely to fail. That is undergraduate data, not Grade 8, so I won't pretend it maps one to
           one onto a junior-high science class. But the direction lines up with what{' '}
-          <a href="https://phet.colorado.edu/en/research" target="_blank" rel="noopener noreferrer" className="font-semibold underline text-[#1d4ed8]">PhET at the University of Colorado Boulder</a>{' '}
+          <a href="https://phet.colorado.edu/en/research" target="_blank" rel="noopener noreferrer" className="font-semibold underline text-[color:var(--link)]">PhET at the University of Colorado Boulder</a>{' '}
           has found over years of building interactive sims, and with what I watch happen in person
           when a student drags a slider and the graph moves with them.
         </p>
@@ -388,7 +388,7 @@ const Home = () => {
           The last piece is access. A school with a single shared projector and a temperamental
           connection should still be able to open these, so they load in any browser, keep working
           offline once cached, and cost nothing. The code is public on{' '}
-          <a href="https://github.com/smmariquit/eduvisualsph" target="_blank" rel="noopener noreferrer" className="font-semibold underline text-[#1d4ed8]">GitHub</a>,
+          <a href="https://github.com/smmariquit/eduvisualsph" target="_blank" rel="noopener noreferrer" className="font-semibold underline text-[color:var(--link)]">GitHub</a>,
           which means a teacher can check exactly what a simulation is doing before trusting it in
           front of a class. None of this replaces a good teacher. It just makes the abstract part a
           little less abstract.

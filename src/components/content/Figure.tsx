@@ -16,6 +16,8 @@ export interface FigureProps {
   /** Pixel width/height for `avatar` when not filling a parent box. */
   size?: number;
   loading?: 'lazy' | 'eager';
+  /** Set high on the primary above-fold image for LCP. */
+  fetchPriority?: 'high' | 'low' | 'auto';
   className?: string;
 }
 
@@ -47,9 +49,11 @@ export const Figure: React.FC<FigureProps> = ({
   maxWidth,
   size,
   loading,
+  fetchPriority,
   className = '',
 }) => {
   const lazy = loading ?? (variant === 'avatar' ? 'eager' : 'lazy');
+  const priority = fetchPriority ?? (lazy === 'eager' ? 'high' : 'auto');
   const showCaption = Boolean(caption || credit);
   const imgStyle = size ? { width: size, height: size } : undefined;
 
@@ -58,6 +62,7 @@ export const Figure: React.FC<FigureProps> = ({
       src={src}
       alt={alt}
       loading={lazy}
+      fetchPriority={priority}
       decoding="async"
       style={imgStyle}
       className={`${variantImgClass[variant]} ${className}`.trim()}

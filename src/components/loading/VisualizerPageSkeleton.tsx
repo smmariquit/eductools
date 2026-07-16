@@ -3,7 +3,7 @@ import { LoadingIndicator } from '../ui/LoadingIndicator';
 
 /** Full-page skeleton while a visualizer route chunk loads. Layout (header/footer) stays visible. */
 export const VisualizerPageSkeleton = () => (
-  <div className="w-full animate-fade-in" aria-busy="true" aria-label="Loading visualizer">
+  <div className="w-full" aria-busy="true" aria-label="Loading visualizer">
     <Skeleton variant="button" className="w-36 mb-6" />
 
     <div className="pb-4 border-b border-base-300 mb-8 flex justify-between items-start gap-6">

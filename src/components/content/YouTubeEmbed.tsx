@@ -48,7 +48,7 @@ export const YouTubeEmbed: React.FC<YouTubeEmbedProps> = ({ id, title, creator, 
               src={thumb}
               alt=""
               loading="lazy"
-              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              className="h-full w-full object-cover"
             />
             <span className="absolute inset-0 bg-black/20 transition-colors group-hover:bg-black/30" />
             <span className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-base-100/90 shadow-lg transition-transform group-hover:scale-110">
@@ -63,7 +63,7 @@ export const YouTubeEmbed: React.FC<YouTubeEmbedProps> = ({ id, title, creator, 
         {title}
         {creator && <span className="text-base-content/50"> — {creator}</span>}
         <span className="block text-xs">
-          <a href={watchUrl} target="_blank" rel="noopener noreferrer" className="font-semibold underline text-[#1d4ed8]">
+          <a href={watchUrl} target="_blank" rel="noopener noreferrer" className="font-semibold underline text-[color:var(--link)]">
             Watch on YouTube
           </a>
         </span>

@@ -87,7 +87,7 @@ const MicroscopeVisualizer = () => {
                 originX: focus.x / 100,
                 originY: focus.y / 100,
               }}
-              transition={reduceMotion ? { duration: 0 } : { type: 'spring', bounce: 0.2, duration: 0.8 }}
+              transition={reduceMotion ? { duration: 0 } : { duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               className="absolute top-0 left-0 w-full h-full"
             >
               <svg viewBox="0 0 100 100" width="100%" height="100%" className="text-base-content">

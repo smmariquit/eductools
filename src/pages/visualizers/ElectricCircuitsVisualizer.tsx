@@ -97,17 +97,17 @@ const ElectricCircuitsVisualizer = () => {
                 {/* Bulbs */}
                 {isSeries ? (
                   <div className="absolute top-[-24px] left-1/2 -translate-x-1/2 bg-neutral px-8 flex gap-8">
-                     <div className="w-12 h-12 rounded-full border-2 border-slate-600 bg-slate-700 transition-all duration-300" style={bulbStyle(brightness)} />
-                     <div className="w-12 h-12 rounded-full border-2 border-slate-600 bg-slate-700 transition-all duration-300" style={bulbStyle(brightness)} />
+                     <div className="w-12 h-12 rounded-full border-2 border-slate-600 bg-slate-700 transition-[background-color,box-shadow] duration-300" style={bulbStyle(brightness)} />
+                     <div className="w-12 h-12 rounded-full border-2 border-slate-600 bg-slate-700 transition-[background-color,box-shadow] duration-300" style={bulbStyle(brightness)} />
                   </div>
                 ) : (
                   <div className="absolute top-0 right-0 h-full w-1/2 flex flex-col justify-evenly items-end pr-[20%]">
                      {/* Parallel wires */}
                      <div className="w-full border-b-4 border-warning/30 flex justify-center">
-                        <div className="w-12 h-12 rounded-full border-2 border-slate-600 bg-slate-700 -translate-y-1/2 transition-all duration-300" style={bulbStyle(brightness)} />
+                        <div className="w-12 h-12 rounded-full border-2 border-slate-600 bg-slate-700 -translate-y-1/2 transition-[background-color,box-shadow] duration-300" style={bulbStyle(brightness)} />
                      </div>
                      <div className="w-full border-b-4 border-warning/30 flex justify-center">
-                        <div className="w-12 h-12 rounded-full border-2 border-slate-600 bg-slate-700 -translate-y-1/2 transition-all duration-300" style={bulbStyle(brightness)} />
+                        <div className="w-12 h-12 rounded-full border-2 border-slate-600 bg-slate-700 -translate-y-1/2 transition-[background-color,box-shadow] duration-300" style={bulbStyle(brightness)} />
                      </div>
                   </div>
                 )}

@@ -88,7 +88,7 @@ const ChemicalBondingVisualizer = () => {
           {/* Step indicator */}
           <div className="flex items-center justify-center gap-2">
             {steps.map((s, i) => (
-              <div key={s.title} className={`h-2 rounded-full transition-all ${i === step ? 'w-8 bg-primary' : i < step ? 'w-2 bg-primary/50' : 'w-2 bg-base-300'}`} aria-hidden="true" />
+              <div key={s.title} className={`h-2 rounded-full transition-[width,background-color] ${i === step ? 'w-8 bg-primary' : i < step ? 'w-2 bg-primary/50' : 'w-2 bg-base-300'}`} aria-hidden="true" />
             ))}
           </div>
 

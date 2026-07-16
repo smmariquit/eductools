@@ -37,7 +37,7 @@ export const WATER_SUBSTANCE: SubstancePhaseModel = {
   tempMax: 120,
   defaultTemp: 20,
   colors: {
-    solid: { fill: '#93c5fd', stroke: '#1d4ed8' },
+    solid: { fill: 'var(--crayon-sky)', stroke: 'var(--accent)' },
     liquid: { fill: '#3b82f6', stroke: '#1e3a8a' },
     gas: { fill: '#c084fc', stroke: '#7e22ce' },
   },

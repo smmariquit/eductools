@@ -60,6 +60,15 @@
 }
 
 :root {
+  /* Semantic brand palette — prefer these over one-off hex in UI chrome */
+  --shell: var(--color-base-200);
+  --ink: var(--color-base-content);
+  --accent: var(--color-primary);
+  --paper: var(--color-base-100);
+  --link: var(--color-primary);
+  --link-hover: color-mix(in srgb, var(--color-primary) 75%, var(--color-base-content));
+  --muted-ink: color-mix(in srgb, var(--ink) 65%, var(--paper));
+
   --font-body: "Lexend", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Baloo 2", "Lexend", ui-sans-serif, system-ui, sans-serif;
 
@@ -400,7 +409,7 @@ body::before {
   box-shadow:
     2px 3px 0 rgba(43, 43, 58, 0.22),
     0 0 0 2px color-mix(in srgb, var(--color-primary) 35%, transparent);
-  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  transition: transform 0.12s ease;
   /* Prevent subpixel clip against the track box */
   transform: translateZ(0);
 }

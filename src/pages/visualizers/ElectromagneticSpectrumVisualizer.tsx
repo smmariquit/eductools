@@ -34,7 +34,7 @@ const getSpectrumData = (freq: number) => {
   if (freq < 1e12) return { name: 'Microwaves', desc: 'Used for cell signals and warming leftover Adobo.', color: '#ea580c' };
   if (freq < 4e14) return { name: 'Infrared', desc: 'Felt as heat, used in TV remotes.', color: '#ca8a04' };
   if (freq < 7.9e14) return { name: 'Visible Light', desc: 'The colors we see (Bahaghari).', color: 'linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet)' };
-  if (freq < 1e16) return { name: 'Ultraviolet', desc: 'Causes sunburns when at the beach in Boracay.', color: '#8b5cf6' };
+  if (freq < 1e16) return { name: 'Ultraviolet', desc: 'Causes sunburns when at the beach in Boracay.', color: 'var(--crayon-grape)' };
   if (freq < 1e19) return { name: 'X-Rays', desc: 'Used in hospitals for medical imaging.', color: '#c026d3' };
   return { name: 'Gamma Rays', desc: 'Highly penetrating, emitted by radioactive decay.', color: '#e11d48' };
 };
@@ -86,7 +86,7 @@ const ElectromagneticSpectrumVisualizer = () => {
                 fill="none"
                 stroke={data.name === 'Visible Light' ? 'white' : data.color}
                 strokeWidth="0.5"
-                style={{ transition: 'all 0.3s ease-in-out' }}
+                style={{ transition: 'stroke 0.3s ease-out' }}
               />
             </svg>
             <div className="absolute top-4 left-4 text-white/50 text-xs tracking-widest font-mono">

@@ -232,7 +232,7 @@ const DensityVisualizer = () => {
                 width: `${sideLength}px`,
                 height: `${sideLength}px`,
                 background: isFloating ? 'var(--color-warning)' : 'var(--color-error)',
-                transition: reducedMotion ? 'none' : 'top 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                transition: reducedMotion ? 'none' : 'top 0.6s cubic-bezier(0.22, 1, 0.36, 1)',
               }}
             >
               <span className="text-[10px] sm:text-xs">{mass} kg</span>

@@ -33,7 +33,7 @@ const ByteEditor = ({ label, color, bits, onChange }: { label: string, color: st
           <button 
             key={i}
             onClick={() => toggleBit(i)}
-            className={`flex-1 aspect-square rounded-md flex items-center justify-center font-mono font-bold text-xl sm:text-2xl transition-all duration-200 ${
+            className={`flex-1 aspect-square rounded-md flex items-center justify-center font-mono font-bold text-xl sm:text-2xl transition-colors duration-200 ${
               bit === 1 
                 ? 'bg-primary text-primary-content shadow-inner scale-95 border-b-0' 
                 : 'bg-base-100 text-base-content/40 hover:bg-base-300 border-b-4 border-base-300'
@@ -134,17 +134,17 @@ const ComputerScienceVisualizer = () => {
             <div className="p-6 bg-base-100 flex justify-between gap-4">
               <div className="flex-1 flex flex-col items-center">
                 <div className="w-full h-8 rounded-t-md opacity-20" style={{ backgroundColor: '#ef4444' }} />
-                <div className="w-full h-16 rounded-b-md transition-all duration-200" style={{ backgroundColor: '#ef4444', height: `${(r/255)*64}px`, marginTop: `-${(r/255)*64}px` }} />
+                <div className="w-full h-16 rounded-b-md transition-[height,margin-top] duration-200" style={{ backgroundColor: '#ef4444', height: `${(r/255)*64}px`, marginTop: `-${(r/255)*64}px` }} />
                 <span className="font-mono font-bold mt-2 text-sm">{r}</span>
               </div>
               <div className="flex-1 flex flex-col items-center">
                 <div className="w-full h-8 rounded-t-md opacity-20" style={{ backgroundColor: '#22c55e' }} />
-                <div className="w-full h-16 rounded-b-md transition-all duration-200" style={{ backgroundColor: '#22c55e', height: `${(g/255)*64}px`, marginTop: `-${(g/255)*64}px` }} />
+                <div className="w-full h-16 rounded-b-md transition-[height,margin-top] duration-200" style={{ backgroundColor: '#22c55e', height: `${(g/255)*64}px`, marginTop: `-${(g/255)*64}px` }} />
                 <span className="font-mono font-bold mt-2 text-sm">{g}</span>
               </div>
               <div className="flex-1 flex flex-col items-center">
                 <div className="w-full h-8 rounded-t-md opacity-20" style={{ backgroundColor: '#3b82f6' }} />
-                <div className="w-full h-16 rounded-b-md transition-all duration-200" style={{ backgroundColor: '#3b82f6', height: `${(b/255)*64}px`, marginTop: `-${(b/255)*64}px` }} />
+                <div className="w-full h-16 rounded-b-md transition-[height,margin-top] duration-200" style={{ backgroundColor: '#3b82f6', height: `${(b/255)*64}px`, marginTop: `-${(b/255)*64}px` }} />
                 <span className="font-mono font-bold mt-2 text-sm">{b}</span>
               </div>
             </div>
