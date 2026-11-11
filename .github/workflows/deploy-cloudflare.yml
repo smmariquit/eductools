@@ -28,5 +28,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # The action's default Wrangler (3.90) cannot read wrangler.jsonc.
+          wranglerVersion: "4.90.0"
           # Static assets Worker (wrangler.jsonc); the old Pages project is no longer served.
           command: deploy
